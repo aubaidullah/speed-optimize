@@ -33,7 +33,7 @@ const Home =({data,headers})=>{
         return <MobileList data={data}/>
     }
     else{
-        return <DeskList data = {data}/>
+        return <MobileList data={data}/>
     }
     // console.log(headers['user-agent'])
     // return <>
