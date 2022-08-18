@@ -6,6 +6,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+*{
+  scrollbar-width:none;
+}
 
 a {
   color: inherit;
@@ -14,4 +17,84 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.carousel img.img-responsive {
+  width: 100%;
+  vertical-align: top;
+  -webkit-transform: scaleX(1.5);
+  transform: scaleX(1.5);
+  object-fit: contain;
+  border: 0;
+  max-height: 500px;
+  border-radius:0 0 50% 50% !important
+}
+
+.slider_banner .slide{
+  height: 100%;
+}
+
+.search_input input {
+  height: 79px;
+  border-radius: 40px;
+  padding: 15px 50px;
+  font-size: 20px;
+  font-weight: 400;
+  /* position: relative; */
+  z-index: 52;
+  border: none;
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,.12);
+  -webkit-box-shadow: 0 3px 6px 0 rgba(0,0,0,.12);
+  -ms-box-shadow: 0 3px 6px 0 rgba(0,0,0,.12);
+  -o-box-shadow: 0 3px 6px 0 rgba(0,0,0,.12);
+}
+
+.search_input{
+  position: absolute;
+  max-width: 800px;
+  left: 15px;
+  right: 15px;
+  margin: auto;
+  /* bottom: -60px; */
+  transform: translateY(-50px);
+
+}
+
+.m_s_icon{
+  position: absolute;
+  right: 15px;
+  top: 27px;
+  font-size: 30px;
+  color: #c7c7c7;
+}
+
+.des_cont{
+  position: absolute;
+  bottom: 20px;
+  width: 80%;
+  margin: 0 auto;
+  right: 0;
+  left: 0;
+}
+
+.des_cont .des_location{
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+}
+.des_cont .listing {
+  font-size: 13px;
+  color: #fff;
+  font-weight: 200;
+}
+.des_img .des_cont{
+  transition: -webkit-transform .2s;
+  transition: transform .2s;
+  transition: transform .2s,-webkit-transform .2s;  
+}
+
+.des_img:hover .des_cont {
+  transform: translateY(-20px);
 }

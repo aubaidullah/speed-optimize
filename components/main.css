@@ -1,0 +1,118 @@
+body{
+  font-size:14px;
+}
+
+p{
+  margin: 0 0 10px;
+}
+a{
+    text-decoration: none;
+    color:unset;
+}
+a:focus, a:hover {
+    color: #23527c;
+    /* text-decoration: underline; */
+  }
+
+#nprogress .bar {
+    /* background: linear-gradient(to right,#00c4a7,#276cda,#00c4a7) !important; */
+    background:linear-gradient(to right,#f79421 11%,#f06726 51%,#dc2d4d);
+    height: 5px;
+    /* box-shadow: 0 0 10px #29d, 0 0 5px #29d; */
+    /* box-shadow: 0 0 10px #f79421, 0 0 5px #f79421; */
+    /* box-shadow: none; */
+  }
+  #nprogress .peg {
+    box-shadow: 0 0 10px #f79421, 0 0 5px #f79421;
+  }
+  /* #nprogress .peg {
+
+  } */
+  
+  #nprogress .spinner-icon {
+    border-top-color: #f79421 !important;
+    border-left-color: #f79421 !important;
+  }
+  .form-control{
+    height:40px;
+    font-size: 14px;
+  }
+
+  .form-control:focus {
+    border-color: #ef672d;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(239,103,45,.6);
+  }
+
+
+  .btn_login:hover {
+    color: #fff;
+    background-image: linear-gradient(#dc2d4d,#dc2d4d);
+  }
+
+  .btn_facebook, .btn_google, .btn_login {
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  .btn_login {
+    background-image: linear-gradient(118deg,#f79421 17%,#f06726 54%,#dc2d4d 95%);
+    color: #fff;
+  }
+
+  .login_header{
+    margin-bottom: 25px;
+  }
+  .f_12px{
+    font-size: 12px;
+  }
+
+  .login_header h4{
+    margin-top: 10px;
+  }
+  .DatePicker{
+    width: 100%;
+  }
+  .DatePicker__input{
+    text-align: left !important;
+  }
+  ._inline__{
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .user_rating {
+    font-size: 9px;
+    color: #999;
+    margin-left: 5px;
+  }  
+  .d_rating{
+    margin-left:10px;
+    vertical-align: bottom;
+  }
+
+
+.bread_icon{
+  color: #ccc;
+  font-size: 12px;
+  margin:8px;
+}
+.desk_display_none{
+  display: none;
+}
+.mb_display_none{
+  display: block;
+}
+@media (max-width: 464px){
+  .mb_display_none{
+      display: none;
+  }
+  .desk_display_none{
+    display: block;
+  }
+}

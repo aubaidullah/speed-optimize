@@ -1,58 +1,51 @@
-import axios from "axios"
-import Image from "next/image"
-// import Package from "../components/package"
-// import ListPageMobile from '../components/list_page.mobile'
-// import ListPage from '../components/list_page.desktop'
-import {useEffect,useState} from 'react'
-import dynamic from 'next/dynamic';
+import RelatedTour from "../components/detail/related_tours";
+import { getbanner, getHome } from "../components/Graphql/Queries";
+import client from "../components/Graphql/service";
+import Banner from "../components/home/banner"
+import State from "../components/home/state";
+import Nav from "../components/Nav"
 
+const Home_Page = ({home}) =>{
 
-const MobileList = dynamic(() => import('../components/list_page.mobile'), {
-    ssr: true,
-});
+    return <>
+    <Nav />
+    <Banner data={home.banners} />
+    <State data = {home.states}/>
+    {/* <RelatedTour data={home} /> */}
+    {/* <State data = {home.states}/> */}
+        <section className="container">
+            <section>
+                
+            </section>
+            
+        </section>
+    </>
 
-const DeskList = dynamic(() => import('../components/list_page.desktop'), {
-    ssr: true,
-});
-
-
-const Home =({data,headers})=>{
-    const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('Android') || headers['user-agent'].includes('IPhone'))
-    useEffect(()=>{
-        if (headers['user-agent'].includes('Android')==true || headers['user-agent'].includes('IPhone')==true){
-            setIsMobile(true)
-        }
-        else{
-            setIsMobile(false)
-            // return <ListPage data = {data}/>
-        }    
-    },[isMobile])
-
-    if (isMobile==true){
-        // return <ListPageMobile data = {data}/>
-        return <MobileList data={data}/>
-    }
-    else{
-        return <MobileList data={data}/>
-    }
-    // console.log(headers['user-agent'])
-    // return <>
-    //     <ListPage data = {data}/>
-    // </>
+    // return <h1>HomePage</h1>
 }
+
+// getbanner
+
+
 
 export async function getServerSideProps(context) {
     // Fetch data from external API
-    const res = await axios.post(`https://admintest.kiomoi.com/api/v1/package/list`,{'av':'1.3',name:"",pt:'WEBSITE'})
-    const data = res.data.output.packages
-    const headers = context.req.headers
-    // console.log(data)
-    // const data = await res.json()
-  
-    // Pass data to the page via props
-    return { props: { data,headers}}
+    context.res.setHeader('Cache-Control', 's-maxage=10'); 
+    // const headers = context.req.headers
+    
+    const res = await client.query({query:getHome,variables:{input:{'av':'','id':'','pt':''}}})  
+    // const data = res.data.allpackage.output.packages.slice(0, 10)
+
+    // const data = res.data.allpackage.output.packages
+
+    // const region = res.data.allpackage.output.region??null
+    // const places = res.data.allpackage.output.fcities
+    // console.log(places)
+    // console.log(res.data.home.output)
+    return {props:{home:res.data.home.output}}
+    // return { props: { data,headers,region,places}}
   }
-  
 
 
-export default Home
+
+export default Home_Page
