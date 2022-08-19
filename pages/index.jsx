@@ -1,4 +1,5 @@
-import RelatedTour from "../components/detail/related_tours";
+// import RelatedTour from "../components/detail/related_tours";
+import HomePackages from "../components/home/packages";
 import { getbanner, getHome } from "../components/Graphql/Queries";
 import client from "../components/Graphql/service";
 import Banner from "../components/home/banner"
@@ -11,7 +12,7 @@ const Home_Page = ({home}) =>{
     <Nav />
     <Banner data={home.banners} />
     <State data = {home.states}/>
-    {/* <RelatedTour data={home} /> */}
+    <HomePackages data={home} />
     {/* <State data = {home.states}/> */}
         <section className="container">
             <section>
