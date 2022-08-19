@@ -40,9 +40,11 @@
     "react-rangeslider": "^2.2.0",
     "react-redux": "^8.0.2",
     "react-responsive-carousel": "^3.2.23",
+    "react-slick": "^0.29.0",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
     "simple-react-validator": "^1.6.1",
+    "slick-carousel": "^1.8.1",
     "sweetalert": "^2.1.2",
     "twind": "^0.16.17"
   },

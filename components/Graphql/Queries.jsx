@@ -50,6 +50,19 @@ query banner($input:Payload!) {
 
 
 
+
+export const getTravelGuideHome = gql`
+fragment Payload on REST {
+    id: Int
+  }
+query travelguide($input:Payload!) {
+    travelguide(input:$input) @rest(type: "travelguide",method:"POST", path: "/api/v1/travelguide/list") {
+      output
+    }
+  }
+`;
+
+
 export const getHome = gql`
     fragment Payload on REST {
       id: Int

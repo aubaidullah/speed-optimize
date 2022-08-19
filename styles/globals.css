@@ -98,3 +98,8 @@ a {
 .des_img:hover .des_cont {
   transform: translateY(-20px);
 }
+
+
+.justify-bewteen {
+  justify-content: space-between;
+}

@@ -3,6 +3,7 @@ import MultiCarousel2 from "react-multi-carousel";
 import {BsDot,BsStarFill,BsStarHalf,BsChevronDown} from 'react-icons/bs'
 import Link from 'next/link'
 import Image from 'next/image'
+import {FaRupeeSign} from 'react-icons/fa'
 import {tw} from 'twind'
 
 const HomePackages = ({data}) =>{
@@ -104,9 +105,9 @@ const HomePackages = ({data}) =>{
         
         return (
           <Link href={aurl}>
-            <a>
+            <a href={aurl}>
               <div className="col-sm-12 col-xs-12" style={{paddingLeft:'15px',paddingRight:'15px'}}>
-                <div className="top_rated_box _st_box _tr_box">
+                <div className={tw`top_rated_box _st_box _tr_box bg-white`}>
                   <div className="des_img">
                     <Image
                       className="img-responsive"
@@ -155,17 +156,18 @@ const HomePackages = ({data}) =>{
                       </div>
                       <div className="user_rating">
                         {item.sratings}{" "}
-                        <i className="fa fa-circle" aria-hidden="true"></i>
+                        <BsDot className='inline'/>
                         {item.susers} User Rating
                       </div>
                     </div>
   
                     {item.discount > 0 ? (
                       <>
-                        <span className="_list_p">{item.percent}% Off</span>
-                        <div className={tw`cut_price price-cut text-right`}>
+                        <span className="_list_p" style={{display:'none'}}>{item.percent}% Off</span>
+                        <div className={tw`text-right`}>
+                        <FaRupeeSign className='inline' style={{color:"#999",fontSize:'12px',marginBottom:'4px'}} />
                           <del>
-                            <i className="fa fa-inr"></i>
+                            {/* <i className="fa fa-inr"></i> */}
                             {item.price}/-
                           </del>
                         </div>
@@ -173,13 +175,13 @@ const HomePackages = ({data}) =>{
                     ) : (
                       <>
                         <div className="m-bot20"></div>
-                        <div className="m-bot20"></div>
+                        {/* <div className="m-bot20"></div> */}
                       </>
                     )}
                     <div className={tw`price_tag flex items-center justify-between`}>
                       <span className="start_from">Started from</span>
                       <span className="price_inr" style={{ position: "unset" }}>
-                        <i className="fa fa-inr"></i>
+                      <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
                         {item.finalprice}/-
                       </span>
                     </div>
@@ -203,9 +205,12 @@ const HomePackages = ({data}) =>{
                           <p></p>
                       </div>
                       <div className={tw`2w-full`}>
-                          <a href="/holidays">
-                              <div className="btn_view_more">View All</div>
-                          </a>
+                          <Link href={'/holidays/'}>
+                            <a href="/holidays/">
+                                <div className="btn_view_more">View All</div>
+                            </a>
+                          </Link>
+
                       </div>
 
                   </div>

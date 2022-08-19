@@ -10,10 +10,14 @@ import '../components/main.css'
 import '../styles/leadform.css'
 import '../styles/nav.css'
 import '../styles/detail.css'
+import '../styles/homepage.css'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import 'react-rangeslider/lib/index.css'
 // import "react-multi-carousel/"
 import 'react-multi-carousel/lib/styles.css';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 import { ApolloProvider } from "@apollo/client";
 import client from '../components/Graphql/service'
 import {wrapper} from '../redux_fx/store'
