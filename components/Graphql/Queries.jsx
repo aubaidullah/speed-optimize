@@ -72,6 +72,26 @@ query reviews($input:Payload!) {
 `;
 
 
+export const getarticleQuery = gql`
+fragment Payload on REST {
+  av: String,
+  pt: String,
+  geoid: Int,
+  id: String,
+  pagenum: Int,
+  pid: Int,
+  size: Int,
+  type: String
+
+}
+query articles($input:Payload!) {
+    articles(input:$input) @rest(type: "articles",method:"POST", path: "/api/v1/article/list") {
+      output
+    }
+  }
+`;
+
+
 // export const getallpackages = gql`
 // fragment Payload on REST {
 //     id: Int

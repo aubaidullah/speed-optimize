@@ -927,3 +927,81 @@ ul.breadcrumb {
 .comment_box:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,.2);
 }
+.bg_orange_ {
+  background-color: #fac526;
+}
+
+._latest_stories_ .stories_, ._latest_stories_ h4 {
+  color: #fff;
+}
+.bg_orange_ .btn_view_more {
+  border: 1px solid #fff;
+  color: #fff;
+}
+.bg_orange_ h4{
+  color: #fff;
+}
+
+.bg_orange_ .top_rated_box {
+  transition: box-shadow .2s;
+}
+.bg_orange_ .popular_dest {
+  height: 300px;
+}
+._latest_stories_ .top_rated_box {
+  border-radius: 18px;
+}
+
+._latest_stories_ .recent_img {
+  margin: 0;
+}
+.recent_img {
+  height: 160px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.recent_img img {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+._latest_stories_ .tour_details h4 {
+  font-size: 16px;
+}
+.tour_details h4 {
+  font-size: 21px;
+  font-weight: 700;
+  color: #403f3f;
+}
+._latest_stories_ .recent_img {
+  margin: 0;
+}
+
+.tour_details p {
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.17;
+  letter-spacing: normal;
+  text-align: left;
+  color: #999;
+  margin-bottom: 30px;
+}
+.anchor_link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #f06726;
+}
+.bg_orange_ .anchor_link {
+  position: absolute;
+  bottom: 5%;
+}
+
+._latest_stories_ .tour_details p {
+  color: #000;
+  font-weight: 400;
+}
