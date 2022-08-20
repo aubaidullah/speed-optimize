@@ -8,12 +8,13 @@ const TravelGuide = ({data}) =>{
 
     const SampleNextArrow = ()=> {
         // const { className, style, onClick } = props;
-        return <div className="custom-btn right-custom-btn" />;
+        // {tw`hidden lg:carousel-button-group lg:block `}
+        return <div className={tw`hidden lg:block custom-btn right-custom-btn`} />;
       }
   
     const SamplePrevArrow = () => {
         // const { className, style, onClick } = props;
-        return <div className="custom-btn left-custom-btn" />;
+        return <div className={tw`hidden lg:block custom-btn left-custom-btn`} />;
       }
 
 

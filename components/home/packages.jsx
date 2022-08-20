@@ -44,7 +44,7 @@ const HomePackages = ({data}) =>{
           carouselState: { currentSlide },
         } = rest;
         return (
-          <div className="carousel-button-group">
+          <div className={tw`hidden lg:carousel-button-group lg:block `}>
             <button
               className={`${currentSlide === 0 ? "disable" : ""} left-custom-btn`}
               onClick={() => previous()}
