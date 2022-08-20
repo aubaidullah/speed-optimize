@@ -872,3 +872,58 @@ ul.breadcrumb {
   height: 17px;
   margin-right: 5px;
 }
+
+
+.comment_box {
+  height: 370px;
+  border-radius: 15px;
+  background-color: #fff;
+  padding: 20px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.text-comment {
+  font-size: 14px;
+  color: #403f3f;
+  font-weight: 400;
+  padding: 20px 0;
+  height: 30%;
+}
+
+
+.user_img_round {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.user_title {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.divider_line {
+  width: 40px;
+  height: 1px;
+  background-color: #000;
+  margin: 20px auto;
+}
+
+.verified {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+}
+.verified i, .verified span {
+  font-size: 9px;
+  color: #999;
+}
+
+.comment_box:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,.2);
+}

@@ -37,6 +37,53 @@ query allpackage($input:Payload!) {
 `;
 
 
+
+// fragment Payload on REST {
+//   av: String,
+//   pt: String,
+//   geoid: Int,
+//   id: String,
+//   pagenum: Int,
+//   pid: Int,
+//   size: Int,
+//   type: String
+
+// }
+
+
+
+export const getreviewsQuery = gql`
+fragment Payload on REST {
+  av: String,
+  pt: String,
+  geoid: Int,
+  id: String,
+  pagenum: Int,
+  pid: Int,
+  size: Int,
+  type: String
+
+}
+query reviews($input:Payload!) {
+    reviews(input:$input) @rest(type: "reviews",method:"POST", path: "/api/v1/review/list") {
+      output
+    }
+  }
+`;
+
+
+// export const getallpackages = gql`
+// fragment Payload on REST {
+//     id: Int
+//   }
+// query allpackage($input:Payload!) {
+//     allpackage(input:$input) @rest(type: "package",method:"POST", path: "/api/v1/package/list") {
+//       output
+//     }
+//   }
+// `;
+
+
 export const getbanner = gql`
 fragment Payload on REST {
     id: Int

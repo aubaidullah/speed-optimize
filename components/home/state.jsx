@@ -16,6 +16,7 @@ const State = ({data}) =>{
   
         return (
           <>
+          <Link href={aurl}>
             <a href={aurl}>
               {" "}
               <div class="px-2 _cr_mb">
@@ -36,7 +37,8 @@ const State = ({data}) =>{
                   </div>
                 </div>
               </div>
-            </a>{" "}
+            </a>
+            </Link>
           </>
         );
       });
