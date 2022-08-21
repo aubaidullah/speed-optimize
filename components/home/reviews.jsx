@@ -66,7 +66,7 @@ const Reviews = ({data}) =>{
               if (item.review.length > 0) {
                 var options = { year: "numeric", month: "long", day: "numeric" };
                 return (
-                  <>
+                  <div key={j}>
                     <div className={tw`col-sm-12 col-xs-12 _cr_mb px-4`} key={i}>
                       <div className="comment_box _box_shadow">
                         <div className="qoute_ text-center">
@@ -102,7 +102,7 @@ const Reviews = ({data}) =>{
                         </div>
                       </div>
                     </div>
-                  </>
+                  </div>
                 );
               }
             }
@@ -111,7 +111,7 @@ const Reviews = ({data}) =>{
 
 
         
-        return <>
+        return <div>
         <section className={tw`Reviews mt-16`}>
             <div className="container">
                 <div className='row'>
@@ -154,6 +154,6 @@ const Reviews = ({data}) =>{
                 </div>
             </div>
         </section>
-    </>        
+    </div>
 } 
 export default Reviews

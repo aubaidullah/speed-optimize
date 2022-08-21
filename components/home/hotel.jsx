@@ -71,7 +71,7 @@ const Hotel = ({data}) =>{
         });
   
         return (
-          <>
+          <div key={i}>
             <div className="col-sm-12 col-xs-12 _cr_mb px-4" key={i}>
               <div className="top_rated_box _box_shadow _bottom _hotel_shadow">
                 <div className="des_img">
@@ -121,7 +121,7 @@ const Hotel = ({data}) =>{
                 </div>
               </div>
             </div>
-          </>
+          </div>
         );
       });
 

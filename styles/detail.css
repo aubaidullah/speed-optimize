@@ -824,31 +824,31 @@ ul.breadcrumb {
     font-size: 18px;
   }
 
-.title_kiomoi h4 {
-  font-size: 16px;
-}  
-.btn_view_more {
-  padding: 5px 15px;
-}
-.title_kiomoi{
-  padding-right: 5px;
-  padding-left: 5px;
-}
+  .title_kiomoi h4 {
+    font-size: 16px;
+  }
+  .btn_view_more {
+    padding: 5px 15px;
+  }
+  .title_kiomoi{
+    padding-right: 5px;
+    padding-left: 5px;
+  }
   .detail_slide_nav {
     display: none;
-}
-#photos .carousel .slide img {
-  height: 200px !important;
-}
-#photos {
-  margin-bottom: 15px;
-}
-.__btn_clr {
-  color: #fff;
-  border: none;
-  background-image: none;
-  background-color: grey;
-}
+  }
+  #photos .carousel .slide img {
+    height: 200px !important;
+  }
+  #photos {
+    margin-bottom: 15px;
+  }
+  .__btn_clr {
+    color: #fff;
+    border: none;
+    background-image: none;
+    background-color: grey;
+  }
   ._titles_, ._titles {
     font-size: 16px;
   }
@@ -859,33 +859,34 @@ ul.breadcrumb {
     display: none;
     top: 2%;
     height: 90%;
-}
-._50m {
-  margin: 10px 0 20px;
+  }
+  ._50m {
+    margin: 10px 0 20px;
   }
   .bets_price {
     display: none;
-}
-.box_design_common {
-  padding: 25px 5px 0;
-}
-.dest-first .row, .Recently_booked_trips .row, .TopRatedTours .row {
-  margin: 0 auto;
-}
+  }
 
-._pay_policy {
-  width: 100%;
-  margin-bottom: 20px;
-}
-.btn_view_more {
-  line-height: 120%;
-  vertical-align: middle;
-  margin-top: -5px;
-}
+  .box_design_common {
+    padding: 25px 5px 0;
+  }
+  .dest-first .row, .Recently_booked_trips .row, .TopRatedTours .row {
+    margin: 0 auto;
+  }
 
-.carousel-button-group{
-  display: none;
-}
+  ._pay_policy {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .btn_view_more {
+    line-height: 120%;
+    vertical-align: middle;
+    margin-top: -5px;
+  }
+
+  .carousel-button-group{
+    display: none;
+  }
 
 }
 

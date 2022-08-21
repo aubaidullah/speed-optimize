@@ -51,7 +51,7 @@ const TravelGuide = ({data}) =>{
         var d = ReactHtmlParser(item.overviewDesc.substring(0, 100));
   
         return (
-          <>
+          <div key={i}>
           <Link href={aurl}>
             <a href={aurl}>
               <div className="col-sm-12 col-xs-12 _cr_mb px-2" key={i}>
@@ -69,13 +69,13 @@ const TravelGuide = ({data}) =>{
                   </div>
                   <div className={tw`_inline col-sm-8 col-xs-7 pt-2 pb-2 pl-3 pr-3`}>
                     <h4>{item.cityName}</h4>
-                    <p>{d}..</p>
+                    <div className='p'>{d}..</div>
                   </div>
                 </div>
               </div>
             </a>
             </Link>
-          </>
+          </div>
         );
       });
 

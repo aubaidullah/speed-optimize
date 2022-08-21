@@ -104,7 +104,7 @@ const HomePackages = ({data}) =>{
         
         
         return (
-          <Link href={aurl}>
+          <Link href={aurl} key={i}>
             <a href={aurl}>
               <div className="col-sm-12 col-xs-12" style={{paddingLeft:'15px',paddingRight:'15px'}}>
                 <div className={tw`top_rated_box _st_box _tr_box bg-white`}>

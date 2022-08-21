@@ -16,7 +16,7 @@ const Banner = ({data}) =>{
             className={"slider_banner slider_overlay"}
         >
             {data.map((e,index)=>{
-                return <img src={e.i} className="img-responsive"/>
+                return <img src={e.i} key={index} className="img-responsive"/>
             })}
 
 

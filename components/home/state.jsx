@@ -15,14 +15,14 @@ const State = ({data}) =>{
           item.id + "/";
   
         return (
-          <>
+          <div key={i}>
           <Link href={aurl}>
             <a href={aurl}>
               {" "}
-              <div class="px-2 _cr_mb">
-                <div class="des_img">
+              <div className="px-2 _cr_mb">
+                <div className="des_img">
                   <img
-                    class="img-responsive"
+                    className="img-responsive"
                     style={{borderRadius:'8px'}}
                     src={
                       item.im.split("~")[0]
@@ -31,15 +31,15 @@ const State = ({data}) =>{
                     }
                     alt=""
                   />
-                  <div class="des_cont">
-                    <div class="des_location">{item.nm}</div>
-                    <div class="listing">{item.cnt} Listings</div>
+                  <div className="des_cont">
+                    <div className="des_location">{item.nm}</div>
+                    <div className="listing">{item.cnt} Listings</div>
                   </div>
                 </div>
               </div>
             </a>
             </Link>
-          </>
+          </div>
         );
       });
 
