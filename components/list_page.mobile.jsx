@@ -4,7 +4,7 @@ import {TiChevronRight} from 'react-icons/ti'
 import BreadCrumbs from "./breadcrumbs"
 import {tw} from 'twind'
 import dynamic from 'next/dynamic';
-import { useState } from "react"
+import { useState,useEffect } from "react"
 // import { useSelector } from "react-redux"
 import FilterBy from "./list/filter"
 import { ScrollWrapper } from 'react-bottom-scroll';
@@ -21,6 +21,8 @@ const ListPageMobile = ({data,region,places,isMobile}) =>{
     
     const [filter,setFilter] = useState({keyword:""})
     const [limit,setLimit] = useState(10)
+    const [overviewlimit,setOverviewlimit] = useState(200)
+    const [overview,setOverview] = useState()
     
     const setFiltering = (keyword) =>{
         // console.log(keyword)
@@ -40,6 +42,15 @@ const ListPageMobile = ({data,region,places,isMobile}) =>{
             },                    
         ]
     }
+
+    var d = region?.desc
+    // console.log(d)
+
+    useEffect(()=>{
+        if (region !== null)
+        setOverview(d.substring(0, overviewlimit))  
+    },[overviewlimit])
+
     return <article>
 
         <BreadCrumbs bread={bread}/>
@@ -48,12 +59,34 @@ const ListPageMobile = ({data,region,places,isMobile}) =>{
                     <h2>Kiomoi packages</h2>
                 </div> */}
                 {region?
-                <div className={tw`p-4 bg-white mb-4`}>
+                <div className={tw`p-4 bg-white mb-4 _box_shadow_`}>
                 <h2 className={tw`text-2xl pb-2`}>{region?.name}</h2>
                 <div>
-                    {ReactHtmlParser(region?.desc)}
+                    {ReactHtmlParser(overview)}
+                    {overviewlimit == 150 ||
+                        overviewlimit == 200 ? (
+                        <a
+                        onClick={() =>
+                            setOverviewlimit(10000)
+                        }
+                        className="_plus_more"
+                        >
+                        +more
+                        </a>
+                    ) : (
+                        <a
+                        onClick={()=>setOverviewlimit(200)}
+                        className="_plus_more"
+                        >
+                        -less
+                        </a>
+                    )}
+
                 </div>
-                </div>:""
+                </div>
+                
+                
+                :""
                 }
 
                 <div className={tw`flex flex-wrap`}>

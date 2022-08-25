@@ -107,3 +107,10 @@ a {
 .bg_orange_ {
   background-color: #fac526;
 }
+
+._plus_more{
+  cursor: pointer;
+}
+._box_shadow{
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,.16);
+}
