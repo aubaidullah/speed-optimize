@@ -25,9 +25,29 @@ query package($input:Payload!) {
 `;
 
 
-export const getallpackages = gql`
+export const getStateByCityQuery = gql`
 fragment Payload on REST {
-    id: Int
+    av: String,
+    id: String,
+    pt: String,
+    text: String
+  }
+query state($input:Payload!) {
+    state(input:$input) @rest(type: "state",method:"POST", path: "/api/v1/geo/statebycity") {
+      output
+    }
+  }
+`;
+
+
+export const getallpackages = gql`
+  fragment Payload on REST {
+    av: String,
+    pt: String,
+    id: String,
+    name:String,
+    type: String
+
   }
 query allpackage($input:Payload!) {
     allpackage(input:$input) @rest(type: "package",method:"POST", path: "/api/v1/package/list") {

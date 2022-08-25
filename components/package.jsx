@@ -57,7 +57,8 @@ const Package = ({item}) =>{
                         <div className="col-lg-12 col-sm-12">
                             <div>
                             {/* holidays/shimla-chandigarh-tour-package-110/ */}
-                                <Link href={`${url}`}>
+                            {/* holidays/eastern-delight-tour-package-191 */}
+                                <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true}>
                                     <div className='row'>
                                         <div className='col-sm-4 col-xs-12'>
                                             <div className="_row ov_auto desk_display_none">

@@ -10,7 +10,9 @@ import client from '../../components/Graphql/service'
 import {getpackage,getrelatedpackage} from '../../components/Graphql/Queries'
 import {tw} from 'twind'
 import BreadCrumbs from '../../components/breadcrumbs';
-
+import {
+    useRouter
+  } from 'next/router'
 // import { Carousel } from "react-responsive-carousel";
 
 

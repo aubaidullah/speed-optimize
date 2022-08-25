@@ -8,6 +8,7 @@ import { useState } from "react"
 // import { useSelector } from "react-redux"
 import FilterBy from "./list/filter"
 import { ScrollWrapper } from 'react-bottom-scroll';
+import ReactHtmlParser from "react-html-parser";
 
 // const FilterBy = dynamic(() => import('./list/filter'), {
 //     ssr: true,
@@ -46,6 +47,15 @@ const ListPageMobile = ({data,region,places,isMobile}) =>{
                 {/* <div className="row" style={{marginBottom:'30px'}}>
                     <h2>Kiomoi packages</h2>
                 </div> */}
+                {region?
+                <div className={tw`p-4 bg-white mb-4`}>
+                <h2 className={tw`text-2xl pb-2`}>{region?.name}</h2>
+                <div>
+                    {ReactHtmlParser(region?.desc)}
+                </div>
+                </div>:""
+                }
+
                 <div className={tw`flex flex-wrap`}>
                     {!isMobile?
                     <div className={tw`w-full lg:w-1/4 pr-5`}>

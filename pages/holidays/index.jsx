@@ -24,7 +24,7 @@ const DeskList = dynamic(() => import('../../components/list_page.mobile'), {
 
 
 const Home =({data,headers,region,places})=>{
-    const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('Android') || headers['user-agent'].includes('IPhone'))
+    const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('android') || headers['user-agent'].includes('iphone'))
     
     const dispatch = useDispatch()
     // const data = useSelector(state=>state.packages)
@@ -32,29 +32,15 @@ const Home =({data,headers,region,places})=>{
     useEffect(()=>{
         dispatch(getPackages(data))
     },[])
-    // const pdata = useSelector(state=>state.package.package)
-    // console.log(pdata)
-
-    // const filter = useSelector(state=>state.filter)
-    // console.log(filter)
     const pdata = data
 
-    // useEffect(()=>{
-    //     if(filter.search.length>=2){
-    //         pdata = data.filter(item=>item.name.toLowerCase().includes(filter.search?.toLowerCase()))
-    //     }
-    //     else{
-    //         pdata = data
-    //     }
-        
-    // },[filter.search])
 
     
 
 
     
     useEffect(()=>{
-        if (headers['user-agent'].includes('Android')==true || headers['user-agent'].includes('IPhone')==true){
+        if (headers['user-agent'].includes('android')==true || headers['user-agent'].includes('iphone')==true){
             setIsMobile(true)
         }
         else{
@@ -70,10 +56,7 @@ const Home =({data,headers,region,places})=>{
     else{
         return <><Nav/><DeskList data = {pdata??[]} region = {region} places={places} isMobile={isMobile}/></>
     }
-    // console.log(headers['user-agent'])
-    // return <>
-    //     <ListPage data = {data}/>
-    // </>
+
 }
 
 export async function getServerSideProps(context) {
@@ -89,6 +72,7 @@ export async function getServerSideProps(context) {
     const region = res.data.allpackage.output.region??null
     const places = res.data.allpackage.output.fcities
     // console.log(places)
+    headers['user-agent'] = headers['user-agent'].toLocaleLowerCase()
 
     return { props: { data,headers,region,places}}
   }
