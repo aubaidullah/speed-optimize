@@ -29,7 +29,7 @@ const TravelGuide = ({data}) =>{
                 <h1 className={tw`text-2xl font-bold`}>Top Travel Guides</h1>
 
 
-                <section className={tw`mt-4`}>
+                <section className={tw`mt-10`}>
                     <div className={tw`flex flex-wrap`}>
                         {data.map((e,index)=>{
                             return <div className={tw`w-full lg:w-1/3 md:w-1/2 px-2 mb-5`} key={index}>
