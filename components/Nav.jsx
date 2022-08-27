@@ -59,23 +59,27 @@ return <>
                         </div>
                         <div className="item_group flt_right">
                             <div className="item flt_left">
-                                <div className = "c_it" 
-                                    onMouseOver={() => setTripover(true)}
-                                    onMouseOut={() => setTripover(false)}
-                                >
-                                    <img src={tripover?"/icons/icons/ICO-TRIPS-orange.png":"/icons/icons/ICO TRIPS.png"} />
-                                    <span className="nav-text">Trips</span>
-                                </div>
+                                <Link href={"/holidays/"}>
+                                    <div className = "c_it" 
+                                        onMouseOver={() => setTripover(true)}
+                                        onMouseOut={() => setTripover(false)}
+                                    >
+                                        <img src={tripover?"/icons/icons/ICO-TRIPS-orange.png":"/icons/icons/ICO TRIPS.png"} />
+                                        <span className="nav-text">Trips</span>
+                                    </div>
+                                </Link>
                                 
                             </div>
                             <div className="item flt_left">
-                                <div className = "c_it"
-                                    onMouseOver={() => setExploreover(true)}
-                                    onMouseOut={() => setExploreover(false)}                
-                                >
-                                    <img src={exploreover?"/icons/icons/ICO-EXPLORE-orange.png":"/icons/icons/ICO EXPLORE.png"} />
-                                    <span className="nav-text">Explore</span>
-                                </div>
+                                <Link href={"/travel-guide/"}>
+                                    <div className = "c_it"
+                                        onMouseOver={() => setExploreover(true)}
+                                        onMouseOut={() => setExploreover(false)}                
+                                    >
+                                        <img src={exploreover?"/icons/icons/ICO-EXPLORE-orange.png":"/icons/icons/ICO EXPLORE.png"} />
+                                        <span className="nav-text">Explore</span>
+                                    </div>
+                                </Link>
 
                             </div>
                             <div className="item flt_left">
