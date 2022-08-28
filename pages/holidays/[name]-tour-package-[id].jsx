@@ -128,7 +128,7 @@ const DetailPage = ({data,related}) =>{
                             class="slider_banner slider_overlay"
                         >
                             {data.package.images.split(',').map((e,index)=>{
-                                return <Image className='img' src={e} layout="fill" />
+                                return <Image className='img' src={e} layout="fill" key={index} />
                             })}
                         </Carousel>
                     </div>
@@ -154,24 +154,13 @@ export async function getServerSideProps(context) {
 
     let name = query.split('-tour-package-')[0]
     let _id = query.split('-tour-package-')[1]
-    // const response = await axios.post(`${Constants.api}/api/v1/package/${_id}/`,{"id":_id})
-    // const data = response.data.output
-    
-
-    // client.query({query:getpackage,variables:{input:{id:110}}}).then(response =>{
-    //     // console.log(response.data.package.output)
-    //     return {props:{data:response.data.package.output}}
-    // })
-
 
     const res = await client.query({query:getpackage,variables:{input:{id:_id}}})  
     
     let postD = {"av":"1.3","id":0,"name":res.data.package.output.package.region.split(",")[0],"pt":"WEBSITE","type":"STATE"}
     const relatedpack = await client.query({query:getrelatedpackage,variables:{input:postD}})
-    // console.log(res.data.package.output)
     
     return {props:{data:res.data.package.output,related:relatedpack.data.package.output}}
-    // return { props: { data,headers}}
   }
 
 

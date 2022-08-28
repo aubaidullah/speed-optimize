@@ -13,6 +13,18 @@ query package($input:Payload!) {
 `;
 
 
+export const getTravelGuideDetail = gql`
+fragment Payload on REST {
+    id: Int
+  }
+query travelGuide($input:Payload!) {
+    travelGuide(input:$input) @rest(type: "travelGuide",method:"POST", path: "/api/v1/travelguide/{args.input.id}/") {
+      output
+    }
+  }
+`;
+
+
 export const getrelatedpackage = gql`
 fragment Payload on REST {
     id: Int

@@ -13,6 +13,10 @@ const nextConfig = {
       {
         source: '/holidays/:city-tour-packages',
         destination: '/holidays/city-package'
+      },
+      {
+        source: '/travel-guide/india/city-:city/:id',
+        destination: '/travel-guide/india/detail'
       }
     ]
   }  

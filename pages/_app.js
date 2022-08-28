@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import '../styles/package.css'
+import '../styles/travel-guide.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import '@fortawesome/fontawesome-free'
 import '@fortawesome/fontawesome-svg-core'
