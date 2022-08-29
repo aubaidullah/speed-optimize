@@ -281,7 +281,6 @@ const Content = ({data}) =>{
                                     ) : (
                                         <a
                                         onClick={()=>setOverviewlimit(200)}
-                                        // onClick={() => this.setState({ overviewlimit: 200 })}
                                         className="_plus_more"
                                         >
                                         -less
