@@ -35,8 +35,8 @@ const TravelGuide = ({data}) =>{
                             return <div className={tw`w-full lg:w-1/3 md:w-1/2 px-2 mb-5`} key={index}>
                                     
                                     <h2 className={tw`text-xl mb-2 font-bold`}>{e.cityName}</h2>
-                                    <Link href="/">
-                                        <a href="/">
+                                    <Link href={`/travel-guide/india/city-${e.cityName.replace(/\s+/g, "-").toLowerCase()}/${e.id}`}>
+                                        <a href={`/travel-guide/india/city-${e.cityName.replace(/\s+/g, "-").toLowerCase()}/${e.id}`}>
                                             <div className={tw`bg-white rounded-2xl _box_shadow`}>
                                                 <div className={tw`h-56`}>
                                                     <img className={tw`rounded-t-2xl`} style={{height:'100%',width:'100%'}}

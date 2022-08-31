@@ -3,14 +3,19 @@ import {IoLocationSharp} from 'react-icons/io5'
 import client from "../../../../components/Graphql/service";
 import { getTravelGuideDetail } from "../../../../components/Graphql/Queries";
 import {tw} from 'twind'
+import { useState,useEffect } from "react";
 import BreadCrumbs from "../../../../components/breadcrumbs";
 import { Carousel } from "react-responsive-carousel";
 import {BsDot} from 'react-icons/bs'
 import axios from "axios";
 import {FaRupeeSign} from 'react-icons/fa'
 import Link from 'next/link'
+import ReactHtmlParser from "react-html-parser";
 const TravelGuideDetail = ({data,weather}) =>{
     // console.log(data)
+    const [overviewlimit,setOverviewlimit] = useState(200)
+    const [overview,setOverview] = useState()
+
     const bread = {
         disabled:{
             item: `${data.tg.cityName}`
@@ -35,6 +40,17 @@ const TravelGuideDetail = ({data,weather}) =>{
             <img src={img.i} className="img" />
         </div>
     })
+
+    // var d = region?.desc
+
+    var d = data.tg?.overviewDesc
+
+    useEffect(()=>{
+        if (data.tg?.overviewDesc !== null)
+        setOverview(d.substring(0, overviewlimit))  
+    },[overviewlimit])
+
+
 
 // calender_multi_clr.png
     const rightBlock = ({icon,heading,desc}) =>{
@@ -88,7 +104,6 @@ const TravelGuideDetail = ({data,weather}) =>{
             <div className={tw`flex flex-wrap`}>
                 <div className={tw`w-full lg:w-2/3`}>
                     <div>
-
                         <Carousel
                         showArrows={true}
                         showStatus={false}
@@ -204,6 +219,95 @@ const TravelGuideDetail = ({data,weather}) =>{
                     </div>
                 </div>                 
 
+            </div>
+
+            <div className={tw`mt-4 w-full lg:w-2/3`}>
+                <div>
+                    <h2 className={tw`text-xl font-bold`}>Overview</h2>
+                    <div className={tw``}>
+                        <div className="Shape_42">
+                        {ReactHtmlParser(overview)}
+                        {overviewlimit == 150 ||
+                            overviewlimit == 200 ? (
+                            <a
+                            onClick={() =>
+                                setOverviewlimit(10000)
+                            }
+                            className="_plus_more"
+                            >
+                            +more
+                            </a>
+                        ) : (
+                            <a
+                            onClick={()=>setOverviewlimit(200)}
+                            className="_plus_more"
+                            >
+                            -less
+                            </a>
+                        )}
+                        </div>
+
+                    </div>
+
+
+                    <div>
+                        <div className={tw`flex justify-between`}>
+                            <h2 className={tw`text-xl font-bold`}>Attractions in {data.tg.cityName}</h2> 
+
+                            <div>
+                                <Link href={'/travel-guide'}>
+                                    <a href={'/travel-guide/'}>
+                                        <div className='btn_view_more'>
+                                            View all
+                                        </div>
+                                        
+                                        </a>
+                                </Link>
+                            </div>
+                        </div>
+                        <div className={tw``}>
+                            <div className="Shape_42">
+
+                                <div className={tw`flex flex-wrap`}>
+                                    
+                                        {
+                                                data.attn.map((item,i)=>{
+                                                    let url = "/travel-guide/india/attraction"+"-"+item.name.trim().replace(/\s+/g,' ').replace(/-/g,"").replace(/\s+/g, "-").toLowerCase()+"/"+item.id+"/"
+                                                    return (
+                                                        <div className={tw`w-1/4 p-2`}>
+                                                            <Link href={url} key={i}>
+                                                                <div>
+                                                                    <div class="image-squre__">
+                                                                    <img
+                                                                        style={{height:'100%',width:'100%'}}
+                                                                        src={
+                                                                        item.images.length > 0 ? item.images : "/icons/logo-icon.png"
+                                                                        }
+                                                                        alt=""
+                                                                    />
+                                                                    
+                                                                    </div>
+                                                                    <p>{item.name}</p>
+                                                                </div>
+
+                                                                
+                                                            </Link>
+                                                        </div>
+                                                        
+                                                    )
+                                                })
+                                        }
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                
             </div>
         </section>
         
