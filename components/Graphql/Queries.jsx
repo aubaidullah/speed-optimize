@@ -37,6 +37,41 @@ query package($input:Payload!) {
 `;
 
 
+export const getTravelPackage = gql`
+fragment Payload on REST {
+    av: String,
+    geoid:Int,
+    id:String,
+    pagenum:Int,
+    pid:Int,
+    pt:String,
+    size:Int,
+    type:String
+  }
+query package($input:Payload!) {
+    package(input:$input) @rest(type: "package",method:"POST", path: "/api/v1/package/slist") {
+      output
+    }
+  }
+`;
+
+
+export const getTravelHotel = gql`
+fragment Payload on REST {
+    av: String,
+    id:String,
+    name:String,
+    pt:String
+    type:String
+  }
+query hotels($input:Payload!) {
+    hotels(input:$input) @rest(type: "hotels",method:"POST", path: "/api/v1/hotel/list") {
+      output
+    }
+  }
+`;
+
+
 export const getStateByCityQuery = gql`
 fragment Payload on REST {
     av: String,
@@ -118,6 +153,24 @@ fragment Payload on REST {
 }
 query articles($input:Payload!) {
     articles(input:$input) @rest(type: "articles",method:"POST", path: "/api/v1/article/list") {
+      output
+    }
+  }
+`;
+
+
+export const getQnaQuery = gql`
+fragment Payload on REST {
+  av: String,
+  did: String,
+  pagenum: Int,
+  pt: String,
+  size: Int,
+  tgid: String
+
+}
+query qna($input:Payload!) {
+    qna(input:$input) @rest(type: "qna",method:"POST", path: "/api/v1/qna/list") {
       output
     }
   }

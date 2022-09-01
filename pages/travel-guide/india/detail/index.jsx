@@ -1,7 +1,7 @@
 import Nav from "../../../../components/Nav"
 import {IoLocationSharp} from 'react-icons/io5'
 import client from "../../../../components/Graphql/service";
-import { getTravelGuideDetail } from "../../../../components/Graphql/Queries";
+import { getTravelGuideDetail,getTravelPackage,getTravelHotel, getarticleQuery, getQnaQuery } from "../../../../components/Graphql/Queries";
 import {tw} from 'twind'
 import { useState,useEffect } from "react";
 import BreadCrumbs from "../../../../components/breadcrumbs";
@@ -11,7 +11,14 @@ import axios from "axios";
 import {FaRupeeSign} from 'react-icons/fa'
 import Link from 'next/link'
 import ReactHtmlParser from "react-html-parser";
-const TravelGuideDetail = ({data,weather}) =>{
+import HomePackages from "../../../../components/home/packages";
+import Hotel from "../../../../components/home/hotel";
+import Articles from "../../../../components/home/articles";
+import QnaListing from "../../../../components/Qna";
+
+
+
+const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
     // console.log(data)
     const [overviewlimit,setOverviewlimit] = useState(200)
     const [overview,setOverview] = useState()
@@ -306,9 +313,60 @@ const TravelGuideDetail = ({data,weather}) =>{
 
                     </div>
 
+
+                    <div style={{display:'none'}}>
+                        <div className="faq-acc">
+                            <div aria-multiselectable="true" className="panel-group" id="accordion" role="tablist">
+                                <div className="panel panel-default">
+                                    <div
+                                    class="panel-heading"
+                                    id="howtoreach"
+                                    role="tab"
+                                    >
+                                        <h4 class="panel-title">
+                                        <a
+                                            aria-controls="headingOne"
+                                            aria-expanded="false"
+                                            className="collapsed"
+                                            role={"button"}
+                                            // data-parent="#accordion"
+                                            data-toggle="collapse"
+                                            href="#collapseOne"
+                                            >
+                                            {data.tg.howToReachwHeading}
+                                            </a>
+                                        </h4>
+                                    </div>
+
+                                    <div
+                                        className="panel-collapse collapse"
+                                        id="collapseOne"
+                                        aria-expanded="false"
+                                        // style={{ height: "0px" }}
+                                        >
+                                        <div className="panel-body">
+                                            <div>
+                                            {ReactHtmlParser(
+                                                data.tg.howToReachDesc
+                                            )}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
+                
             </div>
+            <HomePackages data={packages} />
+            <Hotel data={hotels}/>
+            <Articles data={article}/>
+            
+            <QnaListing data={qna} travelGuide={true}/>
         </section>
         
     </>
@@ -316,7 +374,7 @@ const TravelGuideDetail = ({data,weather}) =>{
 
 export async function getServerSideProps(context) {
     context.res.setHeader('Cache-Control', 's-maxage=10'); 
-    console.log(context.query)
+    // console.log(context.query)
     let _id = context.query.id
     const res = await client.query({query:getTravelGuideDetail,variables:{input:{id:_id}}})
 
@@ -324,13 +382,77 @@ export async function getServerSideProps(context) {
     let lng = res.data.travelGuide.output.city.lng
 
     const resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=d6429646ecc55c8a9d2856f91d10ff4f&units=metric`)
-    
-    console.log(resp)
+    // console.log(resp)
 
+    console.log(res.data.travelGuide.output.gid)
+    let json_data = {
+        'av': '',
+        'geoid': res.data.travelGuide.output.gid,
+        'id': '',
+        'pagenum': 1,
+        'pid': 0,
+        'pt': 'Website',
+        'size': 10,
+        'type': 'CITY',
+    }
+    
+    const res1 = await client.query({query:getTravelPackage,variables:{input:json_data}})
+
+    const packages = res1.data.package.output
     // const res_travel = await client.query({query:getTravelGuideHome,variables:{input:{'av':'1.3','pt':'WEBSITE','geoid':0,'id':'0','pagenum':0,'pid':0,'type':0}}})
     // let data = res_travel.data.travelguide.output
     // console.log(res.data)
-    return {props:{data:res.data.travelGuide.output,weather:resp.data}}
+
+    let hotel_data = {
+        'av': '1.3',
+        'name': '',
+        'id': res.data.travelGuide.output.gid,
+        'pt': 'Website',
+        'type': 'City',
+    }
+
+    const hotel_res = await client.query({query:getTravelHotel,variables:{input:hotel_data}})
+    const hotels = hotel_res.data.hotels.output.hotels
+
+
+    let article_data = {
+        'av': '1.3',
+        'pt': 'WEBSITE',
+        'geoid': 0,
+        'id': 'string',
+        'pagenum': 1,
+        'pid': 0,
+        'size': 20,
+        'type': 0,
+    }
+
+    // getQnaQuery
+
+
+    const article_res = await client.query({query:getarticleQuery,variables:{input:article_data}})
+    const article = article_res.data.articles.output.articles
+
+
+
+    let qna_data = {
+        'av': '',
+        'tgid': `${_id}`,
+        'did': '',
+        'pagenum': 1,
+        'pt': '',
+        'size': 17,
+    }
+
+    const qna_res = await client.query({query:getQnaQuery,variables:{input:qna_data}})
+    const qna = qna_res.data.qna.output.qna
+
+    // console.log(qna)
+
+
+    
+
+
+    return {props:{data:res.data.travelGuide.output,weather:resp.data,packages,hotels,article,qna}}
   }
 
 

@@ -11,6 +11,7 @@ import '../components/main.css'
 import '../styles/leadform.css'
 import '../styles/nav.css'
 import '../styles/detail.css'
+import '../styles/qna.css'
 import '../styles/homepage.css'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import 'react-rangeslider/lib/index.css'
