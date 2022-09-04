@@ -15,6 +15,7 @@ import HomePackages from "../../../../components/home/packages";
 import Hotel from "../../../../components/home/hotel";
 import Articles from "../../../../components/home/articles";
 import QnaListing from "../../../../components/Qna";
+import Content from "../../../../components/trave-guide/content";
 
 
 
@@ -22,6 +23,7 @@ const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
     // console.log(data)
     const [overviewlimit,setOverviewlimit] = useState(200)
     const [overview,setOverview] = useState()
+    const [attlimit,setAttlimit] = useState(4)
 
     const bread = {
         disabled:{
@@ -276,9 +278,9 @@ const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
                             <div className="Shape_42">
 
                                 <div className={tw`flex flex-wrap`}>
-                                    
                                         {
-                                                data.attn.map((item,i)=>{
+                                                data.attn.slice(0,attlimit).map((item,i)=>{
+                                                    
                                                     let url = "/travel-guide/india/attraction"+"-"+item.name.trim().replace(/\s+/g,' ').replace(/-/g,"").replace(/\s+/g, "-").toLowerCase()+"/"+item.id+"/"
                                                     return (
                                                         <div className={tw`w-1/4 p-2`}>
@@ -304,60 +306,25 @@ const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
                                                     )
                                                 })
                                         }
+                                </div>
 
-
+                                <div>
+                                    <a onClick={()=>attlimit==4?setAttlimit(100):setAttlimit(4)}>
+                                        <div className='btn_view_more'>
+                                            View 
+                                            {attlimit==4?" All ":" Less "}
+                                             
+                                            
+                                            Tourist place in {data.tg.cityName}
+                                        </div>    
+                                    </a>                                    
                                 </div>
 
                             </div>
                         </div>
 
                     </div>
-
-
-                    <div style={{display:'none'}}>
-                        <div className="faq-acc">
-                            <div aria-multiselectable="true" className="panel-group" id="accordion" role="tablist">
-                                <div className="panel panel-default">
-                                    <div
-                                    class="panel-heading"
-                                    id="howtoreach"
-                                    role="tab"
-                                    >
-                                        <h4 class="panel-title">
-                                        <a
-                                            aria-controls="headingOne"
-                                            aria-expanded="false"
-                                            className="collapsed"
-                                            role={"button"}
-                                            // data-parent="#accordion"
-                                            data-toggle="collapse"
-                                            href="#collapseOne"
-                                            >
-                                            {data.tg.howToReachwHeading}
-                                            </a>
-                                        </h4>
-                                    </div>
-
-                                    <div
-                                        className="panel-collapse collapse"
-                                        id="collapseOne"
-                                        aria-expanded="false"
-                                        // style={{ height: "0px" }}
-                                        >
-                                        <div className="panel-body">
-                                            <div>
-                                            {ReactHtmlParser(
-                                                data.tg.howToReachDesc
-                                            )}
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                    <Content data={data}/>
                 </div>
                 
                 
