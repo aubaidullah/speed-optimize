@@ -334,6 +334,15 @@ const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
             <Articles data={article}/>
             
             <QnaListing data={qna} travelGuide={true}/>
+            <Link href={`/qna/${data.tg.cityName}-${data.tg.id}`}>
+                <a className="anchore_coment _w100 _m_" href={`/qna/${data.tg.cityName}-${data.tg.id}`}>
+                    <div>
+                        View All QNA
+                    </div>
+                    
+                </a>            
+            </Link>
+
         </section>
         
     </>

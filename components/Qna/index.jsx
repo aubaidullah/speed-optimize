@@ -10,6 +10,8 @@ import {tw} from 'twind'
 // import { QNALoading } from '../components/skeleton_l';
 // import * as Constants from "../Constants";
 import ReactHtmlParser from "react-html-parser";
+import BreadCrumbs from '../breadcrumbs';
+import Nav from '../Nav';
 //,{props,city = false,tgid = false}
 const QnaListing = ({data,travelGuide}) => {
     const [qna, setQna] = useState([]);
@@ -117,37 +119,41 @@ const QnaListing = ({data,travelGuide}) => {
 
     // useEffect(() => getQNA(), [])
     // console.log(props)
+    const bread = {
+        disabled:{
+            item: `${data[0]?.geoname} QNA`
+        },
+        enabled :[
+            {
+                item:"Kiomoi",
+                href:"/"
+            }                     
+        ]
+    }   
+
     return <>
         {/* {show ? <Guest show={show} setShow={() => setShow(!show)} /> : null} */}
+        
+        {travelGuide==false?
+        <Nav />:""
+        }
+        
+        
+        
+        
+        
         <main className={`main _listing_page ${travelGuide==false?'_70':''}`}>
         {/* <main className={`main _listing_page _70`}> */}
+        {
+        travelGuide==false?
+        <BreadCrumbs bread={bread} />:""
+        }
+        
+
             <div className="container" style={{textAlign:'left'}}>
                 
-                {travelGuide==false?
-                <>
-                <div class="row">
-                    <ul class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
-                        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                            <a itemprop="item" href="/" class="_b_active">
-                                <span itemprop="name">
-                                    Kiomoi
-                                </span>
-                                <meta itemprop="position" content="1" />
 
-                            </a>
-                        </li>
-                        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                            <span itemprop="name">
-                                Qna
-                            {props.cityname??props.match.params.city} QnA
-                            </span>
-                            <meta itemprop="position" content="2" />
-                        </li>
-                    </ul>
-                </div>
-                
-
-                <div className='qna-box'>
+                {/* <div className='qna-box'>
                     <div>
                         <h4>{data[0]?.geoname} QnA</h4>
                         YOUR QUERIES AND ANSWERS
@@ -158,9 +164,11 @@ const QnaListing = ({data,travelGuide}) => {
                             <div> Ask a Question</div>
                         </button>
                     </div>
-                </div>
-                </>
-            :<div className={tw`mt-4 qna-box`}>
+                </div> */}
+
+
+            
+            <div className={tw`mt-4 qna-box`}>
                 
                 <div className={tw`flex justify-between`}>
                     <div>
@@ -177,7 +185,7 @@ const QnaListing = ({data,travelGuide}) => {
                 </div>
 
             </div>
-            }
+            
 
 
                 <br />
