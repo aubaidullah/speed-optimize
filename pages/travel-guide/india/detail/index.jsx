@@ -387,7 +387,7 @@ export async function getServerSideProps(context) {
     }
 
     const hotel_res = await client.query({ query: getTravelHotel, variables: { input: hotel_data } })
-    const hotels = hotel_res.data.hotels.output.hotels
+    const hotels = hotel_res.data.hotels.output?.hotels ??[]
 
 
     let article_data = {
