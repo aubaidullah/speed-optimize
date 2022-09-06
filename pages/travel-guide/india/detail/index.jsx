@@ -130,7 +130,7 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna }) =>
                     </div>
                 </div>
                 <div className={tw`w-full lg:w-1/3`}>
-                    <div className={tw`pl-6`}>
+                    <div className={tw`pl-0 lg:pl-6 `}>
                         <div className="_b_right_list_1">
                             <div className="_asia_india">
                                 <div className={tw`flex justify-between`}>
