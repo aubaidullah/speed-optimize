@@ -1,14 +1,14 @@
 import Nav from "../../../../components/Nav"
-import {IoLocationSharp} from 'react-icons/io5'
+import { IoLocationSharp } from 'react-icons/io5'
 import client from "../../../../components/Graphql/service";
-import { getTravelGuideDetail,getTravelPackage,getTravelHotel, getarticleQuery, getQnaQuery } from "../../../../components/Graphql/Queries";
-import {tw} from 'twind'
-import { useState,useEffect } from "react";
+import { getTravelGuideDetail, getTravelPackage, getTravelHotel, getarticleQuery, getQnaQuery } from "../../../../components/Graphql/Queries";
+import { tw } from 'twind'
+import { useState, useEffect } from "react";
 import BreadCrumbs from "../../../../components/breadcrumbs";
 import { Carousel } from "react-responsive-carousel";
-import {BsDot} from 'react-icons/bs'
+import { BsDot } from 'react-icons/bs'
 import axios from "axios";
-import {FaRupeeSign} from 'react-icons/fa'
+import { FaRupeeSign } from 'react-icons/fa'
 import Link from 'next/link'
 import ReactHtmlParser from "react-html-parser";
 import HomePackages from "../../../../components/home/packages";
@@ -19,32 +19,32 @@ import Content from "../../../../components/trave-guide/content";
 
 
 
-const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
+const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna }) => {
     // console.log(data)
-    const [overviewlimit,setOverviewlimit] = useState(200)
-    const [overview,setOverview] = useState()
-    const [attlimit,setAttlimit] = useState(4)
+    const [overviewlimit, setOverviewlimit] = useState(200)
+    const [overview, setOverview] = useState()
+    const [attlimit, setAttlimit] = useState(4)
 
     const bread = {
-        disabled:{
+        disabled: {
             item: `${data.tg.cityName}`
         },
-        enabled :[
+        enabled: [
             {
-                item:"Kiomoi",
-                href:"/"
+                item: "Kiomoi",
+                href: "/"
             },
             {
-                item:"Travel Guide",
-                href:"/travel-guide/"
+                item: "Travel Guide",
+                href: "/travel-guide/"
             },
             {
-                item:"India",
-                href:"/travel-guide/"
-            }                        
+                item: "India",
+                href: "/travel-guide/"
+            }
         ]
-    }    
-    const imagesRender = data.images.map((img,index)=>{
+    }
+    const imagesRender = data.images.map((img, index) => {
         return <div key={index}>
             <img src={img.i} className="img" />
         </div>
@@ -54,21 +54,21 @@ const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
 
     var d = data.tg?.overviewDesc
 
-    useEffect(()=>{
+    useEffect(() => {
         if (data.tg?.overviewDesc !== null)
-        setOverview(d.substring(0, overviewlimit))  
-    },[overviewlimit])
+            setOverview(d.substring(0, overviewlimit))
+    }, [overviewlimit])
 
 
 
-// calender_multi_clr.png
-    const rightBlock = ({icon,heading,desc}) =>{
+    // calender_multi_clr.png
+    const rightBlock = ({ icon, heading, desc }) => {
         return <div className={tw`flex`}>
             <div>
-                <img src={`/icons/${icon}`} alt="" className={tw`inline`} style={{height:'15.7px'}}/>
+                <img src={`/icons/${icon}`} alt="" className={tw`inline`} style={{ height: '15.7px' }} />
             </div>
             <div className={tw`ml-2`}>
-                <div className={ tw`t_12px font-bold`}>{heading}</div>
+                <div className={tw`t_12px font-bold`}>{heading}</div>
                 <div className="t_12px">{desc}</div>
             </div>
         </div>
@@ -76,37 +76,37 @@ const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
 
 
 
-    
+
     return <>
-    <Nav />
-    <BreadCrumbs bread={bread}/>
+        <Nav />
+        <BreadCrumbs bread={bread} />
         <section className="container">
             <h1 className={tw`text-2xl font-bold`}>{data.tg.cityName}</h1>
             <div className="detail_slide_nav _30px">
                 <ul>
                     <li>
-                    <a href="#photos" className="_c_default">
-                        Photos
-                    </a>
+                        <a href="#photos" className="_c_default">
+                            Photos
+                        </a>
                     </li>
                     <li>
-                    <a href="#overview">Overview</a>
+                        <a href="#overview">Overview</a>
                     </li>
                     <li>
-                    <a href="#itinery">Fair, Festivals & Activities</a>
+                        <a href="#itinery">Fair, Festivals & Activities</a>
                     </li>
                     <li>
-                    <a href="#hotels">How to Reach</a>
+                        <a href="#hotels">How to Reach</a>
                     </li>
                     <li>
-                    <a href="#inclusions">Weather & Useful Facts</a>
+                        <a href="#inclusions">Weather & Useful Facts</a>
                     </li>
                     <li>
-                    <a href="#tnc">Food, Eat & Dine</a>
+                        <a href="#tnc">Food, Eat & Dine</a>
                     </li>
                     <li>
-                    <a href="#tnc">Shopping & Market</a>
-                    </li>                    
+                        <a href="#tnc">Shopping & Market</a>
+                    </li>
                 </ul>
             </div>
 
@@ -114,20 +114,19 @@ const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
                 <div className={tw`w-full lg:w-2/3`}>
                     <div>
                         <Carousel
-                        showArrows={true}
-                        showStatus={false}
-                        showThumbs={false}
-                        infinite={true}
-                        autoPlay={true}
-                        class=""
+                            showArrows={true}
+                            showStatus={false}
+                            showThumbs={false}
+                            infinite={true}
+                            autoPlay={true}
+                            class=""
                         >
-                        {imagesRender.length > 0 ? (
-                            imagesRender
-                        ) : (
-                            <img src="/logo-icon.png" />
-                        )}
+                            {imagesRender.length > 0 ? (
+                                imagesRender
+                            ) : (
+                                <img src="/logo-icon.png" />
+                            )}
                         </Carousel>
-
                     </div>
                 </div>
                 <div className={tw`w-full lg:w-1/3`}>
@@ -136,9 +135,9 @@ const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
                             <div className="_asia_india">
                                 <div className={tw`flex justify-between`}>
                                     <div>
-                                        <IoLocationSharp className='inline'/>
+                                        <IoLocationSharp className='inline' />
                                         {data.tg.cityName}
-                                        <BsDot className={tw`inline`}/> India
+                                        <BsDot className={tw`inline`} /> India
                                     </div>
                                     <div className="cir_bg">
                                         {data.city.ratings}/5
@@ -146,27 +145,27 @@ const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
                                 </div>
                             </div>
 
-                            
+
                             <div className={tw`p-2`}>
                                 <div className={tw`bg-white pb-2`}>
                                     <div className={tw`flex justify-between`}>
                                         <div className={tw`w-full lg:1/2`}>
                                             {
-                                                rightBlock({icon:'calender_multi_clr.png', heading:'Best Session' ,desc:data.city.visitTime})
+                                                rightBlock({ icon: 'calender_multi_clr.png', heading: 'Best Session', desc: data.city.visitTime })
                                             }
 
                                             {
-                                                rightBlock({icon:'language.png', heading:'Ideal Duration' ,desc:data.city.idealTripDuration})
+                                                rightBlock({ icon: 'language.png', heading: 'Ideal Duration', desc: data.city.idealTripDuration })
                                             }
                                         </div>
 
                                         <div className={tw`w-full lg:1/2`}>
                                             {
-                                                rightBlock({icon:'train.png', heading:'Station:' ,desc:data.city.nearbyRailway})
+                                                rightBlock({ icon: 'train.png', heading: 'Station:', desc: data.city.nearbyRailway })
                                             }
 
                                             {
-                                                rightBlock({icon:'plane_icon.png', heading:'Major Airports' ,desc:data.city.nearbyAirport})
+                                                rightBlock({ icon: 'plane_icon.png', heading: 'Major Airports', desc: data.city.nearbyAirport })
                                             }
                                         </div>
 
@@ -177,7 +176,7 @@ const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
                                     <div className={tw`flex justify-between`}>
                                         <div className={tw`w-full lg:1/2`}>
                                             {
-                                                rightBlock({icon:'whether_icon.png', heading:'Weather' ,desc:`${weather?.main?.temp} ° C`})
+                                                rightBlock({ icon: 'whether_icon.png', heading: 'Weather', desc: `${weather?.main?.temp} ° C` })
                                             }
 
                                         </div>
@@ -185,7 +184,7 @@ const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
                                         <div className={tw`w-full lg:1/2`}>
 
                                             {
-                                                rightBlock({icon:'plane_icon.png', heading:'Weather Type' ,desc:weather?.weather[0]?.main})
+                                                rightBlock({ icon: 'plane_icon.png', heading: 'Weather Type', desc: weather?.weather[0]?.main })
                                             }
                                         </div>
 
@@ -197,21 +196,21 @@ const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
                                     <div className={tw`flex justify-between`}>
                                         <div className={tw`w-full lg:1/2`}>
                                             <div className="price_inr">
-                                                <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
-                                                {data.mincost/100}/-
+                                                <FaRupeeSign className='inline' style={{ color: "#f79421", fontSize: '15px', marginBottom: '4px' }} />
+                                                {data.mincost / 100}/-
                                             </div>
-                                            <div className="price_inr" style={{fontSize:'9px'}}>
+                                            <div className="price_inr" style={{ fontSize: '9px' }}>
                                                 onwards
                                             </div>
 
                                         </div>
 
                                         <div className={tw`w-full lg:1/2`}>
-                                            <div style={{float:'right'}}>
+                                            <div style={{ float: 'right' }}>
                                                 <Link href={`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/`}>
-                                                <a>
-                                                    <button className="btn_listing_t _font_big">VIEW PACKAGES</button>
-                                                </a>
+                                                    <a>
+                                                        <button className="btn_listing_t _font_big">VIEW PACKAGES</button>
+                                                    </a>
                                                 </Link>
                                             </div>
                                         </div>
@@ -219,14 +218,14 @@ const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
                                     </div>
                                 </div>
                                 <div className={tw`pt-2`}>
-                                    <div className="btn_listing _btn_clr" style={{width:'100%',textAlign:'center',padding:'8px 15px',fontSize:'12px'}}>KNOW MORE & GET CUSTOMIZE</div>
+                                    <div className="btn_listing _btn_clr" style={{ width: '100%', textAlign: 'center', padding: '8px 15px', fontSize: '12px' }}>KNOW MORE & GET CUSTOMIZE</div>
                                 </div>
 
 
                             </div>
                         </div>
                     </div>
-                </div>                 
+                </div>
 
             </div>
 
@@ -235,25 +234,25 @@ const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
                     <h2 className={tw`text-xl font-bold`}>Overview</h2>
                     <div className={tw``}>
                         <div className="Shape_42">
-                        {ReactHtmlParser(overview)}
-                        {overviewlimit == 150 ||
-                            overviewlimit == 200 ? (
-                            <a
-                            onClick={() =>
-                                setOverviewlimit(10000)
-                            }
-                            className="_plus_more"
-                            >
-                            +more
-                            </a>
-                        ) : (
-                            <a
-                            onClick={()=>setOverviewlimit(200)}
-                            className="_plus_more"
-                            >
-                            -less
-                            </a>
-                        )}
+                            {ReactHtmlParser(overview)}
+                            {overviewlimit == 150 ||
+                                overviewlimit == 200 ? (
+                                <a
+                                    onClick={() =>
+                                        setOverviewlimit(10000)
+                                    }
+                                    className="_plus_more"
+                                >
+                                    +more
+                                </a>
+                            ) : (
+                                <a
+                                    onClick={() => setOverviewlimit(200)}
+                                    className="_plus_more"
+                                >
+                                    -less
+                                </a>
+                            )}
                         </div>
 
                     </div>
@@ -261,7 +260,7 @@ const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
 
                     <div>
                         <div className={tw`flex justify-between`}>
-                            <h2 className={tw`text-xl font-bold`}>Attractions in {data.tg.cityName}</h2> 
+                            <h2 className={tw`text-xl font-bold`}>Attractions in {data.tg.cityName}</h2>
 
                             <div>
                                 <Link href={'/travel-guide'}>
@@ -269,8 +268,8 @@ const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
                                         <div className='btn_view_more'>
                                             View all
                                         </div>
-                                        
-                                        </a>
+
+                                    </a>
                                 </Link>
                             </div>
                         </div>
@@ -278,81 +277,81 @@ const TravelGuideDetail = ({data,weather,packages,hotels,article,qna}) =>{
                             <div className="Shape_42">
 
                                 <div className={tw`flex flex-wrap`}>
-                                        {
-                                                data.attn.slice(0,attlimit).map((item,i)=>{
-                                                    
-                                                    let url = "/travel-guide/india/attraction"+"-"+item.name.trim().replace(/\s+/g,' ').replace(/-/g,"").replace(/\s+/g, "-").toLowerCase()+"/"+item.id+"/"
-                                                    return (
-                                                        <div className={tw`w-1/4 p-2`}>
-                                                            <Link href={url} key={i}>
-                                                                <div>
-                                                                    <div class="image-squre__">
-                                                                    <img
-                                                                        style={{height:'100%',width:'100%'}}
-                                                                        src={
-                                                                        item.images.length > 0 ? item.images : "/icons/logo-icon.png"
-                                                                        }
-                                                                        alt=""
-                                                                    />
-                                                                    
-                                                                    </div>
-                                                                    <p>{item.name}</p>
-                                                                </div>
+                                    {
+                                        data.attn.slice(0, attlimit).map((item, i) => {
 
-                                                                
-                                                            </Link>
+                                            let url = "/travel-guide/india/attraction" + "-" + item.name.trim().replace(/\s+/g, ' ').replace(/-/g, "").replace(/\s+/g, "-").toLowerCase() + "/" + item.id + "/"
+                                            return (
+                                                <div className={tw`w-1/4 p-2`}>
+                                                    <Link href={url} key={i}>
+                                                        <div>
+                                                            <div class="image-squre__">
+                                                                <img
+                                                                    style={{ height: '100%', width: '100%' }}
+                                                                    src={
+                                                                        item.images.length > 0 ? item.images : "/icons/logo-icon.png"
+                                                                    }
+                                                                    alt=""
+                                                                />
+
+                                                            </div>
+                                                            <p>{item.name}</p>
                                                         </div>
-                                                        
-                                                    )
-                                                })
-                                        }
+
+
+                                                    </Link>
+                                                </div>
+
+                                            )
+                                        })
+                                    }
                                 </div>
 
                                 <div>
-                                    <a onClick={()=>attlimit==4?setAttlimit(100):setAttlimit(4)}>
+                                    <a onClick={() => attlimit == 4 ? setAttlimit(100) : setAttlimit(4)}>
                                         <div className='btn_view_more'>
-                                            View 
-                                            {attlimit==4?" All ":" Less "}
-                                             
-                                            
+                                            View
+                                            {attlimit == 4 ? " All " : " Less "}
+
+
                                             Tourist place in {data.tg.cityName}
-                                        </div>    
-                                    </a>                                    
+                                        </div>
+                                    </a>
                                 </div>
 
                             </div>
                         </div>
 
                     </div>
-                    <Content data={data}/>
+                    <Content data={data} />
                 </div>
-                
-                
+
+
             </div>
             <HomePackages data={packages} />
-            <Hotel data={hotels}/>
-            <Articles data={article}/>
-            
-            <QnaListing data={qna} travelGuide={true}/>
+            <Hotel data={hotels} />
+            <Articles data={article} />
+
+            <QnaListing data={qna} travelGuide={true} />
             <Link href={`/qna/${data.tg.cityName}-${data.tg.id}`}>
                 <a className="anchore_coment _w100 _m_" href={`/qna/${data.tg.cityName}-${data.tg.id}`}>
                     <div>
                         View All QNA
                     </div>
-                    
-                </a>            
+
+                </a>
             </Link>
 
         </section>
-        
+
     </>
 }
 
 export async function getServerSideProps(context) {
-    context.res.setHeader('Cache-Control', 's-maxage=10'); 
+    context.res.setHeader('Cache-Control', 's-maxage=10');
     // console.log(context.query)
     let _id = context.query.id
-    const res = await client.query({query:getTravelGuideDetail,variables:{input:{id:_id}}})
+    const res = await client.query({ query: getTravelGuideDetail, variables: { input: { id: _id } } })
 
     let lat = res.data.travelGuide.output.city.lat
     let lng = res.data.travelGuide.output.city.lng
@@ -371,8 +370,8 @@ export async function getServerSideProps(context) {
         'size': 10,
         'type': 'CITY',
     }
-    
-    const res1 = await client.query({query:getTravelPackage,variables:{input:json_data}})
+
+    const res1 = await client.query({ query: getTravelPackage, variables: { input: json_data } })
 
     const packages = res1.data.package.output
     // const res_travel = await client.query({query:getTravelGuideHome,variables:{input:{'av':'1.3','pt':'WEBSITE','geoid':0,'id':'0','pagenum':0,'pid':0,'type':0}}})
@@ -387,7 +386,7 @@ export async function getServerSideProps(context) {
         'type': 'City',
     }
 
-    const hotel_res = await client.query({query:getTravelHotel,variables:{input:hotel_data}})
+    const hotel_res = await client.query({ query: getTravelHotel, variables: { input: hotel_data } })
     const hotels = hotel_res.data.hotels.output.hotels
 
 
@@ -405,7 +404,7 @@ export async function getServerSideProps(context) {
     // getQnaQuery
 
 
-    const article_res = await client.query({query:getarticleQuery,variables:{input:article_data}})
+    const article_res = await client.query({ query: getarticleQuery, variables: { input: article_data } })
     const article = article_res.data.articles.output.articles
 
 
@@ -419,17 +418,17 @@ export async function getServerSideProps(context) {
         'size': 17,
     }
 
-    const qna_res = await client.query({query:getQnaQuery,variables:{input:qna_data}})
+    const qna_res = await client.query({ query: getQnaQuery, variables: { input: qna_data } })
     const qna = qna_res.data.qna.output.qna
 
     // console.log(qna)
 
 
-    
 
 
-    return {props:{data:res.data.travelGuide.output,weather:resp.data,packages,hotels,article,qna}}
-  }
+
+    return { props: { data: res.data.travelGuide.output, weather: resp.data, packages, hotels, article, qna } }
+}
 
 
 export default TravelGuideDetail

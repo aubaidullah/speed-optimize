@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  images:{
-    domains:['res.cloudinary.com','img.kiomoi.com']
+  images: {
+    domains: ['res.cloudinary.com', 'img.kiomoi.com']
   },
   async rewrites() {
     return [
@@ -19,11 +19,15 @@ const nextConfig = {
         destination: '/travel-guide/india/detail'
       },
       {
+        source: '/travel-guide/india/attraction-:place/:id',
+        destination: '/travel-guide/india/attractions'
+      },
+      {
         source: '/qna/:city-:id',
         destination: '/qna'
-      }      
+      }
     ]
-  }  
+  }
 }
 
 module.exports = nextConfig

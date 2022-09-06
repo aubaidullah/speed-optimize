@@ -1,6 +1,7 @@
 import React from 'react';
-import { useState,useRef } from 'react';
+import { useState, useRef } from 'react';
 import { Modal } from 'react-bootstrap';
+import { GrClose } from 'react-icons/gr';
 import swal from 'sweetalert'
 import axios from 'axios';
 import * as Constants from "./Constants";
@@ -20,30 +21,30 @@ const Guest = (props) => {
     const handleGuestSubmit = async e => {
         e.preventDefault()
         const data = {
-            email: props.email??guest.email,
-            mobile: props.mobile??guest.mobile,
+            email: props.email ?? guest.email,
+            mobile: props.mobile ?? guest.mobile,
             password: '',
             av: '',
             dp: '',
             pt: ''
         }
-        const nm = props.name?props.name.split(" "):guest.name.split(" ")
+        const nm = props.name ? props.name.split(" ") : guest.name.split(" ")
         data.fname = nm[0]
         nm.length === 1 ? data.lname = '' : data.lname = nm[1]
 
 
         console.log(registervalidatorn.current.allValid())
-        if(registervalidatorn.current.allValid()){
-            const response = await axios.post(Constants.api+'/api/v1/user/guestlogin', data)
+        if (registervalidatorn.current.allValid()) {
+            const response = await axios.post(Constants.api + '/api/v1/user/guestlogin', data)
             if (response?.data?.result === 'success') {
                 setShow(!show)
                 setOtpModal(!otpModal)
                 return
             }
             swal(response?.data?.msg)
-        }else{
+        } else {
             registervalidatorn.current.showMessages()
-            forceUpdate(1)            
+            forceUpdate(1)
         }
 
     }
@@ -51,22 +52,22 @@ const Guest = (props) => {
     // On OTP Submitted
     const handleOTPSubmit = async e => {
         e.preventDefault()
-        if(registervalidator.current.allValid()){
-        const response = await axios.post(Constants.api+'/api/v1/user/verifyotp', { username: props.mobile??guest.mobile, authcode: guestOTP, av: '', pt: '' })
-        if (response?.data?.result === 'success') {
-            const { fn, id, em, mob } = { ...response?.data?.output }
-            localStorage.setItem('username', fn)
-            localStorage.setItem('userid', id)
-            localStorage.setItem('useremail', em)
-            localStorage.setItem('userphone', mob)
-            setOtpModal(!otpModal)
-            setGuest({ fname: '', lname: '', email: '', mobile: '', password: '', av: '', dp: '', pt: '' })
-            setGuestOTP('')
-            props.setShow()
-            return
-        }
+        if (registervalidator.current.allValid()) {
+            const response = await axios.post(Constants.api + '/api/v1/user/verifyotp', { username: props.mobile ?? guest.mobile, authcode: guestOTP, av: '', pt: '' })
+            if (response?.data?.result === 'success') {
+                const { fn, id, em, mob } = { ...response?.data?.output }
+                localStorage.setItem('username', fn)
+                localStorage.setItem('userid', id)
+                localStorage.setItem('useremail', em)
+                localStorage.setItem('userphone', mob)
+                setOtpModal(!otpModal)
+                setGuest({ fname: '', lname: '', email: '', mobile: '', password: '', av: '', dp: '', pt: '' })
+                setGuestOTP('')
+                props.setShow()
+                return
+            }
 
-        }else{
+        } else {
             registervalidator.current.showMessages()
             forceUpdate(1)
         }
@@ -92,7 +93,7 @@ const Guest = (props) => {
                         }}
                         onClick={() => setShow(!show)}
                         aria-hidden="true">
-                        <i class="fa fa-close"></i>
+                        <GrClose style={{ cursor: 'pointer' }} />
                     </span>
                     <div>
                         <form onSubmit={handleGuestSubmit}>
@@ -100,12 +101,12 @@ const Guest = (props) => {
                                 <div class="wrapper_login">
                                     <div class="body_login">
                                         <div class="login_header">
-                                            <img
+                                            {/* <img
                                                 src={require("../assets/logo-icon.png")}
                                                 height="50"
                                                 alt=""
-                                            />
-                                            <h4>{props.name?"Your Details":"Enter Following Details"}</h4>
+                                            /> */}
+                                            <h4>{props.name ? "Your Details" : "Enter Following Details"}</h4>
                                         </div>
                                     </div>
                                     <div class="form-group ">
@@ -116,8 +117,8 @@ const Guest = (props) => {
                                             onChange={handleChange}
                                             required
                                             placeholder="Enter your Name"
-                                            value={props.name??guest.name}
-                                            disabled={props.name?true:false}
+                                            value={props.name ?? guest.name}
+                                            disabled={props.name ? true : false}
                                         />
                                     </div>
                                     <div class="form-group">
@@ -128,17 +129,17 @@ const Guest = (props) => {
                                             onChange={handleChange}
                                             required
                                             placeholder="Enter your Email ID"
-                                            value={props.email??guest.email}
-                                            disabled={props.email?true:false}
+                                            value={props.email ?? guest.email}
+                                            disabled={props.email ? true : false}
 
                                         />
                                         <div class="Invalid_num">
                                             {registervalidatorn.current.message(
-                                            "email",
-                                            props.email??guest.email,
-                                            "required|email"
+                                                "email",
+                                                props.email ?? guest.email,
+                                                "required|email"
                                             )}
-                                        </div>                                        
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <input
@@ -146,9 +147,9 @@ const Guest = (props) => {
                                             class="form-control"
                                             name="mobile"
                                             onKeyPress={(event) => {
-                                            if (!/[0-9]/.test(event.key)) {
-                                                event.preventDefault();
-                                            }
+                                                if (!/[0-9]/.test(event.key)) {
+                                                    event.preventDefault();
+                                                }
                                             }}
                                             onChange={handleChange}
                                             required
@@ -156,19 +157,19 @@ const Guest = (props) => {
                                             // minLength="10"
                                             pattern="[0-9.]+"
                                             // maxLength="10"
-                                            value={props.mobile??guest.mobile}
-                                            disabled={props.mobile?true:false}
+                                            value={props.mobile ?? guest.mobile}
+                                            disabled={props.mobile ? true : false}
                                             maxLength={10}
                                             max={10}
-                                            size={10}    
+                                            size={10}
 
 
                                         />
                                         <div class="Invalid_num">
                                             {registervalidatorn.current.message(
-                                            "mobile",
-                                            props.mobile??guest.mobile,
-                                            "required|min:10|max:10"
+                                                "mobile",
+                                                props.mobile ?? guest.mobile,
+                                                "required|min:10|max:10"
                                             )}
                                         </div>
 
@@ -197,7 +198,7 @@ const Guest = (props) => {
                         }}
                         onClick={() => setOtpModal(!otpModal)}
                         aria-hidden="true">
-                        <i class="fa fa-close"></i>
+                        <GrClose style={{ cursor: 'pointer' }} />
                     </span>
 
                     <div>
@@ -220,9 +221,9 @@ const Guest = (props) => {
                                 />
                                 <div class="Invalid_num">
                                     {registervalidator.current.message(
-                                    "otp",
-                                    guestOTP,
-                                    "required"
+                                        "otp",
+                                        guestOTP,
+                                        "required"
                                     )}
                                 </div>
                             </div>

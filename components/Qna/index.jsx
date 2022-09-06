@@ -3,17 +3,18 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { FiCornerRightDown } from 'react-icons/fi';
 import { FaRegQuestionCircle } from 'react-icons/fa';
 import { Modal, Collapse } from 'react-bootstrap';
+import { GrClose } from 'react-icons/gr';
 import swal from 'sweetalert';
 import axios from "axios";
-import {tw} from 'twind'
-// import Guest from '../components/guest';
+import { tw } from 'twind'
+import Guest from '../../components/guest';
 // import { QNALoading } from '../components/skeleton_l';
 // import * as Constants from "../Constants";
 import ReactHtmlParser from "react-html-parser";
 import BreadCrumbs from '../breadcrumbs';
 import Nav from '../Nav';
-//,{props,city = false,tgid = false}
-const QnaListing = ({data,travelGuide}) => {
+
+const QnaListing = ({ data, travelGuide }) => {
     const [qna, setQna] = useState([]);
     const [open, setOpen] = useState(false);
     const [question, setQuestion] = useState(null);
@@ -21,7 +22,6 @@ const QnaListing = ({data,travelGuide}) => {
     const [reply, setReply] = useState({ qid: 0, question: '' })
     const [replyModal, setReplyModal] = useState(false)
     const [loading, setLoading] = useState(true)
-    // const [tgid]
 
     // guest Show or Hide
     const [show, setShow] = useState(false);
@@ -30,8 +30,8 @@ const QnaListing = ({data,travelGuide}) => {
     const postQuestion = async () => {
         if (localStorage.getItem('userid') && question) {
             const { userid, username } = { ...localStorage }
-            const data = { av: '', did: '', pt: '', tgid: props.tgid??props.match.params.id, userid, username,question }
-            const response = await axios.post(Constants.api+'/api/v1/qna/add', data)
+            const data = { av: '', did: '', pt: '', tgid: props.tgid ?? props.match.params.id, userid, username, question }
+            const response = await axios.post(Constants.api + '/api/v1/qna/add', data)
             if (response?.data?.result === 'success') {
                 getQNA()
                 setOpen(false)
@@ -42,12 +42,14 @@ const QnaListing = ({data,travelGuide}) => {
             swal('Something Went Wrong! ')
         }
         return false
+
     }
 
     // On Question Submit
     const handleQuestionSubmit = async e => {
         e.preventDefault()
         const result = await postQuestion()
+        console.log(result)
         if (!result) {
             setOpen(!open)
             setShow(!show)
@@ -58,8 +60,8 @@ const QnaListing = ({data,travelGuide}) => {
     const postReply = async () => {
         if (localStorage.getItem('userid') && reply) {
             const { userid, username } = { ...localStorage }
-            const data = { ...reply, av: '', did: '', pt: '', tgid: props.tgid??props.match.params.id, userid, username }
-            const response = await axios.post(Constants.api+'/api/v1/qna/reply', data)
+            const data = { ...reply, av: '', did: '', pt: '', tgid: props.tgid ?? props.match.params.id, userid, username }
+            const response = await axios.post(Constants.api + '/api/v1/qna/reply', data)
             if (response?.data?.result === 'success') {
                 getQNA()
                 setReplyModal(false)
@@ -84,29 +86,25 @@ const QnaListing = ({data,travelGuide}) => {
 
     useEffect(() => {
         if (question && question !== '') {
-            console.log(question)
-            console.log("POST QUESTION")
             postQuestion()
             return
         }
         if (reply && reply?.question !== '') {
-            console.log("POST REPLY")
             postReply()
             return
         }
     }, [show]
     )
-    // console.log(props)
 
     const getQNA = () => {
-        const qna = axios.post(Constants.api+'/api/v1/qna/list',
+        const qna = axios.post(Constants.api + '/api/v1/qna/list',
             {
                 "av": "",
-                "tgid":props.tgid??props.match.params.id,
+                "tgid": props.tgid ?? props.match.params.id,
                 "did": "",
                 "pagenum": 1,
                 "pt": "",
-                "size": props.tgid!=undefined?17:1000
+                "size": props.tgid != undefined ? 17 : 1000
             }
         ).then((resp) => {
             console.log(resp)
@@ -117,41 +115,28 @@ const QnaListing = ({data,travelGuide}) => {
         })
     }
 
-    // useEffect(() => getQNA(), [])
-    // console.log(props)
     const bread = {
-        disabled:{
+        disabled: {
             item: `${data[0]?.geoname} QNA`
         },
-        enabled :[
+        enabled: [
             {
-                item:"Kiomoi",
-                href:"/"
-            }                     
+                item: "Kiomoi",
+                href: "/"
+            }
         ]
-    }   
+    }
 
     return <>
-        {/* {show ? <Guest show={show} setShow={() => setShow(!show)} /> : null} */}
-        
-        {travelGuide==false?
-        <Nav />:""
-        }
-        
-        
-        
-        
-        
-        <main className={`main _listing_page ${travelGuide==false?'_70':''}`}>
-        {/* <main className={`main _listing_page _70`}> */}
-        {
-        travelGuide==false?
-        <BreadCrumbs bread={bread} />:""
-        }
-        
-
-            <div className="container" style={{textAlign:'left'}}>
-                
+        {show ? <Guest show={show} setShow={() => setShow(!show)} /> : null}
+        {travelGuide == false ? <Nav /> : ""}
+        <main className={`main _listing_page ${travelGuide == false ? '_70' : ''}`}>
+            {/* <main className={`main _listing_page _70`}> */}
+            {
+                travelGuide == false ?
+                    <BreadCrumbs bread={bread} /> : ""
+            }
+            <div className="container" style={{ textAlign: 'left' }}>
 
                 {/* <div className='qna-box'>
                     <div>
@@ -166,27 +151,21 @@ const QnaListing = ({data,travelGuide}) => {
                     </div>
                 </div> */}
 
+                <div className={tw`mt-4 qna-box`}>
+                    <div className={tw`flex justify-between`}>
+                        <div>
+                            <h4 className={tw`text-xl font-bold`}>{data[0]?.geoname} QnA</h4>
+                            <p style={{ fontSize: '12px', color: '#999' }}>YOUR QUERIES AND ANSWERS</p>
+                        </div>
+                        <div>
+                            <a className={tw`btn_view_more _logo_clr flex flex-wrap items-center`} onClick={() => setOpen(!open)}>
+                                <FaRegQuestionCircle style={{ fontSize: '13px' }} />
+                                <div className={tw`ml-2`}> Ask a Question</div>
+                            </a>
+                        </div>
 
-            
-            <div className={tw`mt-4 qna-box`}>
-                
-                <div className={tw`flex justify-between`}>
-                    <div>
-                        <h4 className={tw`text-xl font-bold`}>{data[0]?.geoname} QnA</h4>
-                        <p style={{fontSize:'12px',color:'#999'}}>YOUR QUERIES AND ANSWERS</p>
                     </div>
-                    <div>
-                        <a className={tw`btn_view_more _logo_clr flex flex-wrap items-center`} onClick={() => setOpen(!open)}>
-                            <FaRegQuestionCircle style={{ fontSize: '13px' }} />
-                            <div className={tw`ml-2`}> Ask a Question</div>
-                        </a>
-                    </div>
-
                 </div>
-
-            </div>
-            
-
 
                 <br />
                 <div>
@@ -200,7 +179,7 @@ const QnaListing = ({data,travelGuide}) => {
                                             <div>
                                                 <AiOutlinePlus style={{ cursor: "pointer", fontSize: "17px", color: 'grey' }} onClick={() => collapse === index ? setCollapse(null) : setCollapse(index)} />
                                             </div>
-                                            <p style={{ color: '#606060', fontSize: '15px',fontWeight:'bold' }}>{ReactHtmlParser(e.question)}</p>
+                                            <p style={{ color: '#606060', fontSize: '15px', fontWeight: 'bold' }}>{ReactHtmlParser(e.question)}</p>
                                         </div>
                                         <div>
                                             <button class="reply-btn" onClick={() => {
@@ -217,15 +196,15 @@ const QnaListing = ({data,travelGuide}) => {
                                             <div style={{ marginTop: '25px' }}>
                                                 <div style={{ display: 'flex' }}>
                                                     <div className="coment_photo">
-                                                        <div style={{height:'50px',width:'50px',borderRadius:'50px',background:`#${Math.floor(Math.random()*16777215).toString(16)}`,display:'flex'}}>
-                                                            <span style={{display:'block',textAlign:'center',alignSelf:'center',fontSize:'30px',color:'white',marginLeft:'15px'}}>
-                                                            {e.username[0].toUpperCase()}
+                                                        <div style={{ height: '50px', width: '50px', borderRadius: '50px', background: `#${Math.floor(Math.random() * 16777215).toString(16)}`, display: 'flex' }}>
+                                                            <span style={{ display: 'block', textAlign: 'center', alignSelf: 'center', fontSize: '30px', color: 'white', marginLeft: '15px' }}>
+                                                                {e.username[0].toUpperCase()}
                                                             </span>
                                                         </div>
                                                         {/* <img src={require("../assets/coment_photo.png")} alt="" /> */}
                                                     </div>
                                                     <div style={{ marginLeft: '10px', alignSelf: 'center' }}>
-                                                        <div style={{ color: 'grey',fontSize:'13px', fontWeight: 'bold', textTransform: 'uppercase' }}>{e.username}</div>
+                                                        <div style={{ color: 'grey', fontSize: '13px', fontWeight: 'bold', textTransform: 'uppercase' }}>{e.username}</div>
                                                         <div style={{ fontSize: '11px', color: '#606060' }}>Asked on {e.createdDate}</div>
                                                     </div>
                                                 </div>
@@ -245,7 +224,7 @@ const QnaListing = ({data,travelGuide}) => {
                                                             {e?.replies?.map((rp) => {
                                                                 return <>
                                                                     <div style={{ marginBottom: '30px' }}>
-                                                                        <div style={{ border: '1px solid #eaeaea', background: 'white', padding: '10px', borderRadius: '5px',textAlign:'left'}}>
+                                                                        <div style={{ border: '1px solid #eaeaea', background: 'white', padding: '10px', borderRadius: '5px', textAlign: 'left' }}>
                                                                             {ReactHtmlParser(rp.replyText)}
                                                                         </div>
                                                                         <div>
@@ -255,15 +234,15 @@ const QnaListing = ({data,travelGuide}) => {
                                                                                         <img src={require("../assets/coment_photo.png")} alt="" />
                                                                                     </div> */}
 
-                                                                                    <div style={{height:'50px',width:'50px',borderRadius:'50px',background:`#${Math.floor(Math.random()*16777215).toString(16)}`,display:'flex'}}>
-                                                                                        <span style={{display:'block',textAlign:'center',alignSelf:'center',fontSize:'30px',color:'white',marginLeft:'15px'}}>
-                                                                                        {rp.username[0].toUpperCase()}
+                                                                                    <div style={{ height: '50px', width: '50px', borderRadius: '50px', background: `#${Math.floor(Math.random() * 16777215).toString(16)}`, display: 'flex' }}>
+                                                                                        <span style={{ display: 'block', textAlign: 'center', alignSelf: 'center', fontSize: '30px', color: 'white', marginLeft: '15px' }}>
+                                                                                            {rp.username[0].toUpperCase()}
                                                                                         </span>
                                                                                     </div>
 
 
                                                                                     <div style={{ marginLeft: '10px', alignSelf: 'center' }}>
-                                                                                        <div style={{ color: 'grey', fontWeight: 'bold',fontSize:'13px', textTransform: 'uppercase' }}>{rp?.username}</div>
+                                                                                        <div style={{ color: 'grey', fontWeight: 'bold', fontSize: '13px', textTransform: 'uppercase' }}>{rp?.username}</div>
                                                                                         <div style={{ fontSize: '11px', color: '#606060' }}>Replied on {e.createdDate}</div>
                                                                                     </div>
                                                                                 </div>
@@ -296,7 +275,7 @@ const QnaListing = ({data,travelGuide}) => {
                     onClick={() => setOpen(!open)}
                     aria-hidden="true"
                 >
-                    <i class="fa fa-close"></i>
+                    <GrClose style={{ cursor: 'pointer' }} />
                 </span>
                 <div>
                     <form onSubmit={handleQuestionSubmit}>
@@ -316,7 +295,7 @@ const QnaListing = ({data,travelGuide}) => {
                                     <textarea
                                         name="question"
                                         class="form-control"
-                                        style={{height:'200px'}}
+                                        style={{ height: '200px' }}
                                         required
                                         value={question ? question : ''}
                                         onChange={e => setQuestion(e.target.value)}
@@ -347,7 +326,7 @@ const QnaListing = ({data,travelGuide}) => {
                     onClick={() => setReplyModal(!replyModal)}
                     aria-hidden="true"
                 >
-                    <i class="fa fa-close"></i>
+                    <GrClose style={{ cursor: 'pointer' }} />
                 </span>
                 <div>
                     <form onSubmit={handleReplySubmit}>
@@ -365,7 +344,7 @@ const QnaListing = ({data,travelGuide}) => {
                                 </div>
                                 <div class="form-group">
                                     <textarea
-                                    style={{height:'200px'}}
+                                        style={{ height: '200px' }}
                                         name="question"
                                         class="form-control"
                                         required
