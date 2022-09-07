@@ -7,6 +7,7 @@ import {FaRupeeSign} from 'react-icons/fa'
 import {tw} from 'twind'
 
 const HomePackages = ({data}) =>{
+  
     const [responsive,Setresponsive] = useState({})
 
 

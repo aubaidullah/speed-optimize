@@ -42,14 +42,12 @@ const QnaListing = ({ data, travelGuide }) => {
             swal('Something Went Wrong! ')
         }
         return false
-
     }
 
     // On Question Submit
     const handleQuestionSubmit = async e => {
         e.preventDefault()
         const result = await postQuestion()
-        console.log(result)
         if (!result) {
             setOpen(!open)
             setShow(!show)

@@ -10,6 +10,7 @@ import { Carousel } from "react-responsive-carousel";
 import ReactHtmlParser from "react-html-parser";
 import axios from "axios";
 import Nav from "../../../components/Nav";
+import * as Constant from '../../../components/Constants'
 import BreadCrumbs from "../../../components/breadcrumbs";
 
 const Attraction = ({ data }) => {
@@ -361,7 +362,7 @@ export async function getServerSideProps(context) {
     let _id = context.query.id;
 
     const resp = await axios.post(
-        `https://admin.kiomoi.com/api/v1/attraction/${_id}`,
+        `${Constant.api}/api/v1/attraction/${_id}`,
         {
             id: _id,
         })
