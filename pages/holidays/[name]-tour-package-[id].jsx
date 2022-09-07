@@ -77,7 +77,6 @@ const DetailPage = ({ data, related, reviews }) => {
             const response = await axios.post(Constants.api + "/api/v1/review/add", leaddata)
             if ('success') {
                 swal("", "Thanks for your Valuable Feedback. ", "success");
-                setRating(0)
                 setReviewText("")
             }
             return
