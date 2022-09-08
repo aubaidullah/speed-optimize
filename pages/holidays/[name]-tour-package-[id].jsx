@@ -1,14 +1,13 @@
-import { BsDot, BsStarFill, BsStarHalf } from 'react-icons/bs'
+import { BsDot, BsStarFill, BsStarHalf, BsStar, BsFillCheckCircleFill, BsPlusLg } from 'react-icons/bs'
 import { getpackage, getrelatedpackage, getreviewsQuery } from '../../components/Graphql/Queries'
 import { tw } from 'twind'
 import { Carousel } from "react-responsive-carousel";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ReactStars from "react-rating-stars-component";
 import Image from 'next/image'
 import swal from "sweetalert";
 import RightBar from '../../components/detail/rightbar';
 import Content from '../../components/detail/content';
-import Reviews from '../../components/home/reviews';
 import RelatedTour from '../../components/detail/related_tours'
 import client from '../../components/Graphql/service'
 import Guest from '../../components/guest';
@@ -26,6 +25,10 @@ const DetailPage = ({ data, related, reviews }) => {
     const [reviewText, setReviewText] = useState("");
 
     const [show, setShow] = useState(null);
+
+    const [maxReview, setMaxReview] = useState(5);
+
+    const [images, setImages] = useState([]);
 
     var userRating = []
     var i = 0
@@ -63,7 +66,11 @@ const DetailPage = ({ data, related, reviews }) => {
             return
         }
         if (localStorage.getItem('userid')) {
+
             let leaddata = new FormData();
+
+            images.forEach(image => leaddata.append("files", image))
+
             leaddata.append("pid", data.package.id);
             leaddata.append("pname", data.package.name);
             leaddata.append("mobile", localStorage.getItem("userphone"));
@@ -74,13 +81,75 @@ const DetailPage = ({ data, related, reviews }) => {
             leaddata.append("ptype", "STATE");
             leaddata.append("recommended", true);
             leaddata.append("bdate", moment(new Date()).format("YYYY-M-D"));
+
             const response = await axios.post(Constants.api + "/api/v1/review/add", leaddata)
-            if ('success') {
+
+            if (response?.data?.result === 'success') {
                 swal("", "Thanks for your Valuable Feedback. ", "success");
                 setReviewText("")
+                setImages([])
             }
+
             return
         } else { setShow(!show) }
+    }
+
+    const reviewRender = reviews.reviews.slice(0, maxReview).map(function (item, index) {
+        return (
+            <div className={tw`my-5`}>
+                <div className={tw`w-full lg:w-2/3 flex flex-col md:flex-row justify-between items-start md:items-center`}>
+                    <div className={tw`flex justify-between items-center gap-3 ms-2`}>
+                        <div class="coment_photo">
+                            <img src={`/icons/user_photo.png`} className={tw`rounded-full`} alt="" />
+                        </div>
+                        <div class="coment_title-">
+                            <h3 className={tw`h1_title fs-6`}>{item.cName}</h3>
+                        </div>
+                    </div>
+                    <div className={tw`w-full md:w-auto`}>
+                        <div>
+                            <div className={tw`flex flex-row-reverse`}>
+                                {Array.from('12345').reverse().map(i => (Number(i) <= item.ratings) ? <BsStarFill key={i} className={tw`d_icon_size inline`} /> : <BsStar key={i} className={tw`d_icon_size inline`} />)}
+                            </div>
+                        </div>
+                        <div className={tw`flex flex-row-reverse items-center`}>
+                            <div>
+                                <BsFillCheckCircleFill
+                                    size={10}
+                                    color='gray'
+                                    style={{
+                                        display: 'inline',
+                                        marginRight: 3
+                                    }}
+                                />
+                                <span className={tw`text-xs`}>Verfied Review</span>
+                                <span className={tw`mx-1`}> | </span>
+                                <span className={tw`text-xs`}>
+                                    {moment(item.modifiedDate).format('DD MMMM YYYY, HH:MM')}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={tw`ms-2 mt-2 w-full lg:w-2/3`}>
+                    <details>
+                        <summary className={tw`text-xs font-semibold`} style={{ color: '#f06726' }}>
+                            <span>
+                                Read
+                            </span>
+                        </summary>
+                        <p className={tw`text-md ms-2 mt-2`}>{item.review}</p>
+                    </details>
+                </div>
+            </div>
+        );
+    });
+
+    // Handle Image Change
+    const imageChange = e => {
+        if (e?.target?.files && e?.target?.files?.length > 0) {
+            setImages([...images, e.target.files[0]])
+        }
     }
 
     return <>
@@ -168,28 +237,28 @@ const DetailPage = ({ data, related, reviews }) => {
             <div className={tw`title_kiomoi`}>
                 <h4>Give Your Review on this Package</h4>
                 <form onSubmit={reviewSubmit}>
-                    <div className={tw`box_comment_post Shape_42 p-5 mt-4 w-full lg:w-2/3`}>
-                        <div className={tw`flex justify-between`}>
+                    <div className={tw`box_comment_post Shape_42 p-3 p-md-4 p-lg-5 mt-4 w-full lg:w-2/3`}>
+                        <div className={tw`flex justify-between items-center`}>
                             <div>
-                                <p class="your_feed">Your Feedback*</p>
+                                <span className={tw`text-xs md:text-lg font-semibold md:font-normal`}>Your Feedback*</span>
                             </div>
                             <div>
                                 <div className={tw`flex items-center`}>
-                                    <span class="your_feed fs-6 me-1">Rate your trip : </span>
+                                    <span className={tw`text-xs md:text-base me-1`}>Rate your trip : </span>
                                     <ReactStars
                                         count={5}
                                         value={rating}
                                         onChange={rating => setRating(rating)}
-                                        size={24}
+                                        size={20}
                                         activeColor="#ffd700"
                                     />
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group style_form">
+                        <div class="form-group style_form mt-2">
                             <textarea
-                                class="form-control"
+                                className={tw`form-control`}
                                 name="review"
                                 required
                                 value={reviewText}
@@ -199,20 +268,73 @@ const DetailPage = ({ data, related, reviews }) => {
                             />
                         </div>
                         <div className={tw`flex justify-between`}>
-                            <div class="upload-icon"></div>
+                            <div className={tw`flex items-center text-xs md:text-lg font-semibold md:font-normal`}>
+                                <div>
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={imageChange}
+                                        style={{ display: 'none' }}
+                                        id="contained-button-file"
+                                    />
+                                    Upload Photos
+                                </div>
+                                <label htmlFor="contained-button-file">
+                                    <div className={tw`border p-2 ms-3 cursor-pointer`}>
+                                        <BsPlusLg />
+                                    </div>
+                                </label>
+                            </div>
                             <div>
                                 <button
                                     type="submit"
-                                    class="btn_anchor submit_btn _btn_post px-5"
+                                    className={`btn_anchor submit_btn _btn_post px-4`}
                                 >
                                     Submit
                                 </button>
                             </div>
                         </div>
+
+                        <div className="row mt-2 gy-3">
+                            {images && (
+                                images.map((image, i) => {
+                                    return (
+                                        <div key={i} className="col-6 col-md-4">
+                                            <div>
+                                                <img
+                                                    src={URL.createObjectURL(image)}
+                                                    alt="Image"
+                                                    style={{
+                                                        width: '100%',
+                                                        maxHeight: 300
+                                                    }}
+                                                />
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            )}
+                        </div>
                     </div>
                 </form>
             </div>
-            <Reviews data={reviews.reviews} />
+            <div class="review_client_list">
+                <div className={tw`title_kiomoi`}>
+                    <h4>Reviews</h4>
+                    <hr className={tw`w-full lg:w-2/3 mt-3`} />
+                </div>
+                <div class="_line_review"></div>
+                {reviews.reviews.length > 0 ? reviewRender : "No Reviews yet"}
+                {reviews.reviews.length > 0 && maxReview == 5 ?
+                    <div
+                        className={tw`w-full lg:w-2/3 flex flex-row-reverse text-lg font-bold cursor-pointer`}
+                        onClick={() => setMaxReview(reviews.count)}
+                    >
+                        View All
+                    </div>
+                    :
+                    ""}
+            </div>
         </section >
 
     </>
