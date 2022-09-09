@@ -1,0 +1,142 @@
+import { tw } from 'twind';
+import { AiFillTwitterCircle, AiFillInstagram } from 'react-icons/ai';
+import { TiSocialYoutubeCircular, TiSocialLinkedinCircular } from 'react-icons/ti';
+import { FaFacebook } from 'react-icons/fa';
+
+const Footer = () => {
+    return (
+        <div className={tw`w-100 overflow-hidden mt-5`}>
+            <div className={tw`flex justify-center py-3`} style={{ background: '#505050' }}>
+                <ul className={tw`flex gap-2 custom-footer`}>
+                    <li className={tw`cursor-pointer text-xs md:text-lg`}>
+                        <a href="/aboutus/">About us </a>
+                        <span className={tw`fs-6 md:fs-4`}> | </span>
+                    </li>
+                    <li className={tw`cursor-pointer text-xs md:text-lg`}>
+                        <a href="/privacy/">Privacy </a>
+                        <span className={tw`fs-6 md:fs-4`}> | </span>
+                    </li>
+                    <li className={tw`cursor-pointer text-xs md:text-lg`}>
+                        <a href="/terms-and-conditions/">Term & Conditions </a>
+                        <span className={tw`fs-6 md:fs-4`}> | </span>
+                    </li>
+                    <li className={tw`cursor-pointer text-xs md:text-lg`}>
+                        <a href="/bookingdetail/">My Bookings </a>
+                        <span className={tw`fs-6 md:fs-4`}></span>
+                    </li>
+                </ul>
+            </div>
+            <div className={tw`flex pb-3 pt-4`} style={{ background: '#373739' }}>
+                <div className='row'>
+                    <div className={tw`payment_secure flex flex-col justify-center items-center px-4 md:px-0 col-12 col-md-4`}>
+                        <div>
+                            <h4 className={tw`font-semibold md:font-bold mb-3 text-center md:text-start text-base md:text-xl`}>Secure Payment</h4>
+                            <div className={tw`flex gap-3 mb-4 md:mb-0`}>
+                                <span>
+                                    <img
+                                        src={"icons/payment_icons/1.png"}
+                                        alt=""
+                                    />
+                                </span>
+                                <span>
+                                    <img
+                                        src={"icons/payment_icons/2.png"}
+                                        alt=""
+                                    />
+                                </span>
+                                <span>
+                                    <img
+                                        src={"icons/payment_icons/3.png"}
+                                        alt=""
+                                    />
+                                </span>
+                                <span>
+                                    <img
+                                        src={"icons/payment_icons/4.png"}
+                                        alt=""
+                                    />
+                                </span>
+                                <span>
+                                    <img
+                                        src={"icons/payment_icons/5.png"}
+                                        alt=""
+                                    />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr className={tw`col-12 col-md-4 text-white w-80 m-auto mb-3 d-block d-md-none`} />
+                    <div className={tw`payment_secure follow-links col-12 col-md-4`}>
+                        <h4 className={tw`font-semibold md:font-bold mb-3 px-3 md:px-0 text-center text-base md:text-xl`}>Follow us on</h4>
+                        <ul className={tw`flex justify-center px-3 md:px-0 gap-4 mb-3 md:mb-0`}>
+                            <li className={tw`cursor-pointer`} style={{ fontSize: 33 }}>
+                                <a href="https://www.facebook.com/thekiomoi/" target="_blank">
+                                    <FaFacebook />
+                                </a>
+                            </li>
+                            <li className={tw`cursor-pointer text-4xl`}>
+                                <a href="https://twitter.com/ki_omoi" target="_blank">
+                                    <AiFillTwitterCircle />
+                                </a>
+                            </li>
+                            <li className={tw`cursor-pointer text-4xl`}>
+                                <a href="https://www.instagram.com/kiomoi_travel/" target="_blank">
+                                    <AiFillInstagram />
+                                </a>
+                            </li>
+                            <li className={tw`cursor-pointer text-4xl`}>
+                                <a href="https://www.youtube.com/channel/UCPq6EimDUQ2eknEJgyLqnnA" target="_blank">
+                                    <TiSocialYoutubeCircular />
+                                </a>
+                            </li>
+                            <li className={tw`cursor-pointer text-4xl`}>
+                                <a href="https://www.linkedin.com/company/kiomoi/" target="_blank">
+                                    <TiSocialLinkedinCircular />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr className={tw`col-12 col-md-4 text-white w-80 m-auto mb-4 d-block d-md-none`} />
+                    <div className={tw`col-12 col-md-4 flex justify-center items-center px-4 md:px-0`}>
+                        <div className={tw`whatsapp-footer flex gap-4`}>
+                            <img
+                                src={"/icons/whatsapp.png"}
+                                alt=""
+                            />
+                            <div class="WhatsApp_">
+                                <h4 className={tw`text-md md:text-lg font-bold mb-2`}>WHATSAPP</h4>
+                                <a className={tw`text-md md:text-lg font-semibold md:font-bold text-white`} href="whatsapp://send?phone=+919650687940">
+                                    +919650687940
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr className={tw`col-12 col-md-4 text-white w-80 m-auto my-4 d-block d-md-none`} />
+                    <div class={tw`container text_footer_bottom text-center mt-3`}>
+                        <div>
+                            <p style={{ fontSize: "13px" }} className={tw`font-semibold`}>
+                                H-187, Lohia Road, Sector-63, Noida 201301 India
+                            </p>
+                            <p style={{ fontSize: "13px" }} className={tw`font-semibold`}>
+                                Call: +91- 8448298660 / +91- 9650687940 | Email: info@kiomoi.com
+                            </p>
+                        </div>
+                        <p className={tw`font-semibold`}>
+                            Copyright 2022 © Kiomoi Rights Reserved.
+                        </p>
+                        <p>Kiomoi and the logos are registered trademarks of IHR Travel Services Pvt Ltd</p>
+                        <p className={tw`px-5 font-semibold`}>
+                            The content and images used on this site are copyright protected
+                            and copyrights vests with the respective owners. The usage of
+                            the content and images on this website is intended to promote
+                            the works and no endorsement of the artist shall be implied.
+                            Unauthorized use is prohibited and punishable by law.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default Footer;
