@@ -21,6 +21,30 @@
     line-height: 1.6;    
 }
 
+
+._stories_services {
+  padding-left: 0;
+}
+/* .faqs_list, .services_listing {
+  display: inline-block;
+  padding: 20px 15px;
+    padding-left: 15px;
+  width: 100%;
+} */
+
+.services_listing .btn_view_more{
+  color:#f06726;
+}
+.services_listing .btn_view_more:hover {
+  background-color: #f06726;
+  color: white;
+}
+
+.article-det b {
+  margin-bottom: 15px;
+  display: block;
+}
+
 .t_12px{
     font-size: 12px;
 }

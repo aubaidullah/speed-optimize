@@ -225,3 +225,16 @@ export const getHome = gql`
       }
     }  
 `
+
+
+
+export const getArticle = gql`
+fragment Payload on REST {
+    id: Int
+  }
+query travelArticle($input:Payload!) {
+    travelArticle(input:$input) @rest(type: "travelArticle",method:"GET", path: "/api/v1/article/{args.input.id}/") {
+      output
+    }
+  }
+`;

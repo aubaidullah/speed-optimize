@@ -67,10 +67,12 @@ const Articles = ({data}) =>{
                 <div className="tour_details">
                   <h4 className='my-2'>{item.heading}</h4>
                   <div className="t_detail">{ReactHtmlParser(res)} </div>
+                  <Link href={aurl}>
                   <a href={aurl} className="anchor_link _50">
                     Read Full Story{"  "}
                     <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
                   </a>
+                  </Link>
                 </div>
               </div>                  
 
