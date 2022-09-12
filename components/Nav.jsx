@@ -51,15 +51,15 @@ const Nav = () => {
     }
 
     return <>
-        {showLogin ? <Login show={showLogin} setShowLogin={setShowLogin} /> : null}
-        <nav className={tw``} style={{ overflow: 'auto', zIndex: 1 }}>
+        <nav className={tw`shadow-sm_`} style={{ overflow: 'auto', zIndex: 1 }}>
+            {showLogin ? <Login show={showLogin} setShowLogin={setShowLogin} /> : null}
             {!showSearch ?
-                <div className={tw`flex justify-between items-center`}>
-                    <div className={tw`ms-4 flex justify-between gap-3 items-center`}>
-                        <div>
+                <div>
+                    <div className="item_group flt_left">
+                        <div className="logo_item flt_left">
                             <img src="/icons/kiomoi.png" style={{ width: '30px' }} />
                         </div>
-                        <div>
+                        <div className="item_group flt_right">
                             <div className="item flt_left">
                                 <Link href={"/holidays/"}>
                                     <div className="c_it"
@@ -96,16 +96,16 @@ const Nav = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={tw`flex gap:2 md:gap-5 me-2`}>
-                        <div className={tw`nav-icon rounded-full cursor-pointer`} onClick={() => SetshowSearch(true)}>
+                    <div className="item_group flt_right right_icons">
+                        <div className="item flt_left" onClick={() => SetshowSearch(true)}>
                             <HiOutlineSearch
-                                size={"19px"}
+                                size={"20px"}
                             />
                         </div>
-                        <div className={tw`nav-icon rounded-full cursor-pointer`}>
+                        <div className="item flt_left">
                             <FaRegUser
                                 onClick={() => setShowLogin(!showLogin)}
-                                size={"18px"}
+                                size={"20px"}
                             />
                         </div>
                     </div>
