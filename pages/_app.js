@@ -41,6 +41,11 @@ Router.events.on('routeChangeError', () => NProgress.done());
 function MyApp({ Component, pageProps }) {
   return (
     <>
+      <style jsx>{`
+        .model-content{
+          background-color:'red';
+        }
+      `}</style>
       <ApolloProvider client={client}>
         <Component {...pageProps} />
       </ApolloProvider>

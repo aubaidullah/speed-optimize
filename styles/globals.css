@@ -33,6 +33,13 @@ a {
   box-sizing: border-box;
 }
 
+.modal-content {
+  -webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border: 0 solid rgba(0, 0, 0, .2) !important;
+  border-radius: 20px !important;
+}
+
 .carousel img.img-responsive {
   width: 100%;
   vertical-align: top;
@@ -124,6 +131,10 @@ a {
   background-color: #fac526;
 }
 
+.text-orange {
+  color: #f05927;
+}
+
 ._plus_more {
   cursor: pointer;
 }
@@ -164,9 +175,63 @@ a {
   color: #999;
   font-size: 12px;
 }
-
+.nav-icon{
+  padding: 13px;
+}
+:hover.nav-icon{
+  background-color: rgb(227, 224, 224);
+}
 .whatsapp-footer img {
   height: 60px;
+}
+
+.btn_facebook {
+  transition: 0.2s ease-in;
+  background-color: #fff;
+  color: #ef6725 !important;
+  border: 1px solid #ef6725 !important;
+}
+
+.btn_facebook {
+  transition: 0.2s ease-in;
+  -webkit-transition: 0.2s ease-in;
+  -moz-transition: 0.2s ease-in;
+  -ms-transition: 0.2s ease-in;
+  -o-transition: 0.2s ease-in;
+}
+
+.btn_facebook:hover {
+  background-image: linear-gradient(118deg,
+      #f79421 17%,
+      #f06726 54%,
+      #dc2d4d 95%);
+  color: #fff !important;
+}
+
+.login_width span {
+  background-color: #fff;
+  padding: 6px 10px;
+  font-weight: 500;
+}
+
+.login_width:after {
+  position: absolute;
+  content: "";
+  height: 1px;
+  background-color: #000;
+  opacity: 0.3;
+  left: 0;
+  right: 0;
+  top: 10px;
+  z-index: -1;
+}
+
+.login_width {
+  position: relative;
+  margin: 30px 0;
+  font-size: 14px;
+  z-index: 2;
+  color: #333e66;
 }
 
 @media only screen and (max-width: 600px) {
