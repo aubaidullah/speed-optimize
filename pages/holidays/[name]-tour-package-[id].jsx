@@ -99,10 +99,10 @@ const DetailPage = ({ data, related, reviews }) => {
             <div className={tw`my-5`}>
                 <div className={tw`w-full lg:w-2/3 flex flex-col md:flex-row justify-between items-start md:items-center`}>
                     <div className={tw`flex justify-between items-center gap-3 ms-2`}>
-                        <div class="coment_photo">
+                        <div className="coment_photo">
                             <img src={`/icons/user_photo.png`} className={tw`rounded-full`} alt="" />
                         </div>
-                        <div class="coment_title-">
+                        <div className="coment_title-">
                             <h3 className={tw`h1_title fs-6`}>{item.cName}</h3>
                         </div>
                     </div>
@@ -206,7 +206,7 @@ const DetailPage = ({ data, related, reviews }) => {
                     </div>
                 </div>
                 <div className='col-sm-8 col-xs-12' id="photos">
-                    <div class="slider_details">
+                    <div className="slider_details">
                         <Carousel
                             showStatus={false}
                             showThumbs={false}
@@ -214,7 +214,7 @@ const DetailPage = ({ data, related, reviews }) => {
                             showIndicators={false}
                             infinite={true}
                             autoPlay={true}
-                            class="slider_banner slider_overlay"
+                            className="slider_banner slider_overlay"
                         >
                             {data.package.images.split(',').map((e, index) => {
                                 return <Image className='img' src={e} layout="fill" key={index} />
@@ -256,7 +256,7 @@ const DetailPage = ({ data, related, reviews }) => {
                             </div>
                         </div>
 
-                        <div class="form-group style_form mt-2">
+                        <div className="form-group style_form mt-2">
                             <textarea
                                 className={tw`form-control`}
                                 name="review"
@@ -318,12 +318,12 @@ const DetailPage = ({ data, related, reviews }) => {
                     </div>
                 </form>
             </div>
-            <div class="review_client_list">
+            <div className="review_client_list">
                 <div className={tw`title_kiomoi`}>
                     <h4>Reviews</h4>
                     <hr className={tw`w-full lg:w-2/3 mt-3`} />
                 </div>
-                <div class="_line_review"></div>
+                <div className="_line_review"></div>
                 {reviews.reviews.length > 0 ? reviewRender : "No Reviews yet"}
                 {reviews.reviews.length > 0 && maxReview == 5 ?
                     <div

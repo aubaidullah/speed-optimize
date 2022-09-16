@@ -11,13 +11,13 @@ const Tabs=({title,desc})=>{
             <div aria-multiselectable="true" className="panel-group" id="accordion" role="tablist">
                 <div className="panel panel-default">
                     <div
-                    class="panel-heading"
+                    className="panel-heading"
                     id="howtoreach"
                     role="tab"
                     >
                         
                         
-                        <h4 class="panel-title">
+                        <h4 className="panel-title">
                         <a
                             aria-controls="headingOne"
                             aria-expanded="false"

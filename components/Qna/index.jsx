@@ -180,7 +180,7 @@ const QnaListing = ({ data, travelGuide }) => {
                                             <p style={{ color: '#606060', fontSize: '15px', fontWeight: 'bold' }}>{ReactHtmlParser(e.question)}</p>
                                         </div>
                                         <div>
-                                            <button class="reply-btn" onClick={() => {
+                                            <button className="reply-btn" onClick={() => {
                                                 setReply({ qid: e.id, question: '' })
                                                 setReplyModal(!replyModal)
                                                 collapse === index ? setCollapse(null) : setCollapse(index)
@@ -263,7 +263,7 @@ const QnaListing = ({ data, travelGuide }) => {
             </div>
         </main>
         <Modal
-            class="query"
+            className="query"
             show={open}
             animation={false}
             backdrop="static">
@@ -277,10 +277,10 @@ const QnaListing = ({ data, travelGuide }) => {
                 </span>
                 <div>
                     <form onSubmit={handleQuestionSubmit}>
-                        <div class="wrapper-box">
-                            <div class="wrapper_login">
-                                <div class="body_login">
-                                    <div class="login_header">
+                        <div className="wrapper-box">
+                            <div className="wrapper_login">
+                                <div className="body_login">
+                                    <div className="login_header">
                                         {/* <img
                                             src={require("../assets/logo-icon.png")}
                                             height="50"
@@ -289,10 +289,10 @@ const QnaListing = ({ data, travelGuide }) => {
                                         <h4>Ask a Question</h4>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div className="form-group">
                                     <textarea
                                         name="question"
-                                        class="form-control"
+                                        className="form-control"
                                         style={{ height: '200px' }}
                                         required
                                         value={question ? question : ''}
@@ -302,8 +302,8 @@ const QnaListing = ({ data, travelGuide }) => {
                                     >
                                     </textarea>
                                 </div>
-                                <div class="form-group">
-                                    <button class="btn btn_login" type="submit">
+                                <div className="form-group">
+                                    <button className="btn btn_login" type="submit">
                                         Ask your Question
                                     </button>
                                 </div>
@@ -314,7 +314,7 @@ const QnaListing = ({ data, travelGuide }) => {
             </Modal.Body>
         </Modal>
         <Modal
-            class="reply"
+            className="reply"
             show={replyModal}
             animation={false}
             backdrop="static">
@@ -328,10 +328,10 @@ const QnaListing = ({ data, travelGuide }) => {
                 </span>
                 <div>
                     <form onSubmit={handleReplySubmit}>
-                        <div class="wrapper-box">
-                            <div class="wrapper_login">
-                                <div class="body_login">
-                                    <div class="login_header">
+                        <div className="wrapper-box">
+                            <div className="wrapper_login">
+                                <div className="body_login">
+                                    <div className="login_header">
                                         {/* <img
                                             src={require("../assets/logo-icon.png")}
                                             height="50"
@@ -340,11 +340,11 @@ const QnaListing = ({ data, travelGuide }) => {
                                         <h4>YOUR REPLY</h4>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div className="form-group">
                                     <textarea
                                         style={{ height: '200px' }}
                                         name="question"
-                                        class="form-control"
+                                        className="form-control"
                                         required
                                         value={reply?.question !== '' ? reply.question : ''}
                                         onChange={e => setReply({ ...reply, [e.target.name]: e.target.value })}
@@ -353,8 +353,8 @@ const QnaListing = ({ data, travelGuide }) => {
                                     >
                                     </textarea>
                                 </div>
-                                <div class="form-group">
-                                    <button class="btn btn_login" type="submit">
+                                <div className="form-group">
+                                    <button className="btn btn_login" type="submit">
                                         Submit
                                     </button>
                                 </div>

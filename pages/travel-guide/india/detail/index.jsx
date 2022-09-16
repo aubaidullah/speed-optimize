@@ -119,7 +119,7 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna }) =>
                             showThumbs={false}
                             infinite={true}
                             autoPlay={true}
-                            class=""
+                            className=""
                         >
                             {imagesRender.length > 0 ? (
                                 imagesRender
@@ -285,7 +285,7 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna }) =>
                                                 <div className={tw`w-1/4 p-2`}>
                                                     <Link href={url} key={i}>
                                                         <div>
-                                                            <div class="image-squre__">
+                                                            <div className="image-squre__">
                                                                 <img
                                                                     style={{ height: '100%', width: '100%' }}
                                                                     src={

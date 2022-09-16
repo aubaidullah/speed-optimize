@@ -70,8 +70,8 @@ const Content = ({data}) =>{
         //   <div className="i">
             <tr key={i}>
               {/* <td>
-              <div class="__col_1">
-                <div class="_num">{i + 1}</div>
+              <div className="__col_1">
+                <div className="_num">{i + 1}</div>
               </div>
             </td> */}
               <td>
@@ -184,7 +184,7 @@ const Content = ({data}) =>{
 
 
     return <>
-        <section class="inclusions">
+        <section className="inclusions">
             <div className='container'>
                 <div className='row'>
                     <div className='col-sm-12'>

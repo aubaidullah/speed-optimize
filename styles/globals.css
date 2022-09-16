@@ -175,12 +175,15 @@ a {
   color: #999;
   font-size: 12px;
 }
-.nav-icon{
+
+.nav-icon {
   padding: 13px;
 }
-:hover.nav-icon{
+
+:hover.nav-icon {
   background-color: rgb(227, 224, 224);
 }
+
 .whatsapp-footer img {
   height: 60px;
 }
@@ -234,7 +237,32 @@ a {
   color: #333e66;
 }
 
+.booking-detail {
+  padding: 0px 60px;
+}
+
+.custom-payment {
+  padding: 0px 10px !important;
+}
+
+.tag {
+  padding: 5px 10px;
+  border: 1px solid #c9c4c4;
+  border-radius: 20px;
+  color: #a19b9b;
+  font-size: 12px;
+  line-height: 20px;
+}
+
 @media only screen and (max-width: 600px) {
+  .custom-payment {
+    padding: 0px !important;
+  }
+
+  .booking-detail {
+    padding: 0px 15px;
+  }
+
   .payment_secure img {
     height: 20px;
   }

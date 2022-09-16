@@ -173,7 +173,7 @@ const Package = ({item}) =>{
                                                             //     (match, i) => (
                                                             //       <>
                                                             //         &nbsp;{" "}
-                                                            //         <i class="fa  fa-long-arrow-right"></i>{" "}
+                                                            //         <i className="fa  fa-long-arrow-right"></i>{" "}
                                                             //       </>
                                                             //     )
                                                             //   )

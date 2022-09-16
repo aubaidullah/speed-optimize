@@ -81,7 +81,7 @@ const Guest = (props) => {
     return (
         <>
             <Modal
-                class="login_modal"
+                className="login_modal"
                 show={show}
                 animation={false}
                 backdrop="static">
@@ -97,10 +97,10 @@ const Guest = (props) => {
                     </span>
                     <div>
                         <form onSubmit={handleGuestSubmit}>
-                            <div class="wrapper-box">
-                                <div class="wrapper_login">
-                                    <div class="body_login">
-                                        <div class="login_header">
+                            <div className="wrapper-box">
+                                <div className="wrapper_login">
+                                    <div className="body_login">
+                                        <div className="login_header">
                                             {/* <img
                                                 src={require("../assets/logo-icon.png")}
                                                 height="50"
@@ -109,10 +109,10 @@ const Guest = (props) => {
                                             <h4>{props.name ? "Your Details" : "Enter Following Details"}</h4>
                                         </div>
                                     </div>
-                                    <div class="form-group ">
+                                    <div className="form-group ">
                                         <input
                                             type="text"
-                                            class="form-control"
+                                            className="form-control"
                                             name="name"
                                             onChange={handleChange}
                                             required
@@ -121,10 +121,10 @@ const Guest = (props) => {
                                             disabled={props.name ? true : false}
                                         />
                                     </div>
-                                    <div class="form-group">
+                                    <div className="form-group">
                                         <input
                                             type="email"
-                                            class="form-control"
+                                            className="form-control"
                                             name="email"
                                             onChange={handleChange}
                                             required
@@ -133,7 +133,7 @@ const Guest = (props) => {
                                             disabled={props.email ? true : false}
 
                                         />
-                                        <div class="Invalid_num">
+                                        <div className="Invalid_num">
                                             {registervalidatorn.current.message(
                                                 "email",
                                                 props.email ?? guest.email,
@@ -141,10 +141,10 @@ const Guest = (props) => {
                                             )}
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div className="form-group">
                                         <input
                                             type="text"
-                                            class="form-control"
+                                            className="form-control"
                                             name="mobile"
                                             onKeyPress={(event) => {
                                                 if (!/[0-9]/.test(event.key)) {
@@ -165,7 +165,7 @@ const Guest = (props) => {
 
 
                                         />
-                                        <div class="Invalid_num">
+                                        <div className="Invalid_num">
                                             {registervalidatorn.current.message(
                                                 "mobile",
                                                 props.mobile ?? guest.mobile,
@@ -174,8 +174,8 @@ const Guest = (props) => {
                                         </div>
 
                                     </div>
-                                    <div class="form-group">
-                                        <button class="btn btn_login" type="submit">
+                                    <div className="form-group">
+                                        <button className="btn btn_login" type="submit">
                                             CONTINUE
                                         </button>
                                     </div>
@@ -186,7 +186,7 @@ const Guest = (props) => {
                 </Modal.Body>
             </Modal>
             <Modal
-                class="body_otp"
+                className="body_otp"
                 show={otpModal}
                 animation={false}
                 backdrop="static">
@@ -202,16 +202,16 @@ const Guest = (props) => {
                     </span>
 
                     <div>
-                        <div class="login_header">
-                            <p class="text_color">
+                        <div className="login_header">
+                            <p className="text_color">
                                 We sent an sms with confirmation code to your mobile number
                             </p>
                         </div>
                         <form onSubmit={handleOTPSubmit}>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <input
                                     type="text"
-                                    class="form-control"
+                                    className="form-control"
                                     name="otp"
                                     onChange={e => setGuestOTP(e.target.value)}
                                     value={guestOTP}
@@ -219,7 +219,7 @@ const Guest = (props) => {
                                     minLength="6"
                                     maxLength="6"
                                 />
-                                <div class="Invalid_num">
+                                <div className="Invalid_num">
                                     {registervalidator.current.message(
                                         "otp",
                                         guestOTP,
@@ -227,16 +227,16 @@ const Guest = (props) => {
                                     )}
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <button class="btn btn_facebook" type="submit">
+                            <div className="form-group">
+                                <button className="btn btn_facebook" type="submit">
                                     Submit OTP
                                 </button>
                             </div>
                         </form>
-                        <div class="form-group">
-                            <p class="proceed_clr">
+                        <div className="form-group">
+                            <p className="proceed_clr">
                                 BY proceeding, you agree to the{" "}
-                                <a href="" class="tnc_color">
+                                <a href="" className="tnc_color">
                                     Terms & Conditions
                                 </a>
                             </p>

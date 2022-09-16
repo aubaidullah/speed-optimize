@@ -2,6 +2,7 @@ import { tw } from 'twind';
 import { AiFillTwitterCircle, AiFillInstagram } from 'react-icons/ai';
 import { TiSocialYoutubeCircular, TiSocialLinkedinCircular } from 'react-icons/ti';
 import { FaFacebook } from 'react-icons/fa';
+import Link from 'next/link';
 
 const Footer = () => {
     return (
@@ -9,19 +10,19 @@ const Footer = () => {
             <div className={tw`flex justify-center py-3`} style={{ background: '#505050' }}>
                 <ul className={tw`flex gap-2 custom-footer`}>
                     <li className={tw`cursor-pointer text-xs md:text-lg`}>
-                        <a href="/aboutus/">About us </a>
+                        <Link href="/aboutus/">About us </Link>
                         <span className={tw`fs-6 md:fs-4`}> | </span>
                     </li>
                     <li className={tw`cursor-pointer text-xs md:text-lg`}>
-                        <a href="/privacy/">Privacy </a>
+                        <Link href="/privacy/">Privacy </Link>
                         <span className={tw`fs-6 md:fs-4`}> | </span>
                     </li>
                     <li className={tw`cursor-pointer text-xs md:text-lg`}>
-                        <a href="/terms-and-conditions/">Term & Conditions </a>
+                        <Link href="/terms-and-conditions/">Term & Conditions </Link>
                         <span className={tw`fs-6 md:fs-4`}> | </span>
                     </li>
                     <li className={tw`cursor-pointer text-xs md:text-lg`}>
-                        <a href="/bookingdetail/">My Bookings </a>
+                        <Link href="/bookingdetail/">My Bookings </Link>
                         <span className={tw`fs-6 md:fs-4`}></span>
                     </li>
                 </ul>
@@ -103,7 +104,7 @@ const Footer = () => {
                                 src={"/icons/whatsapp.png"}
                                 alt=""
                             />
-                            <div class="WhatsApp_">
+                            <div className="WhatsApp_">
                                 <h4 className={tw`text-md md:text-lg font-bold mb-2`}>WHATSAPP</h4>
                                 <a className={tw`text-md md:text-lg font-semibold md:font-bold text-white`} href="whatsapp://send?phone=+919650687940">
                                     +919650687940
@@ -112,7 +113,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <hr className={tw`col-12 col-md-4 text-white w-80 m-auto my-4 d-block d-md-none`} />
-                    <div class={tw`container text_footer_bottom text-center mt-3`}>
+                    <div className={tw`container text_footer_bottom text-center mt-3`}>
                         <div>
                             <p style={{ fontSize: "13px" }} className={tw`font-semibold`}>
                                 H-187, Lohia Road, Sector-63, Noida 201301 India
