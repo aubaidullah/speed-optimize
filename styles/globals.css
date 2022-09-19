@@ -254,7 +254,61 @@ a {
   line-height: 20px;
 }
 
+.custom-font {
+  font-family: "Rubik", sans-serif;
+  line-height: 180%;
+}
+
+.terma-box {
+  border-radius: 30px;
+}
+
+ul>li::marker {
+  font-size: 15px !important;
+  font-weight: 900 !important;
+}
+
+.terma-box ul li {
+  padding-left: 12px;
+  margin: 15px 0px;
+}
+
+.about-popup img {
+  width: 100%;
+}
+
+.about-popup {
+  padding: 0 30px;
+}
+
+.about-popup span {
+  padding: 70px 20px 20px;
+  background: #fff;
+  border-radius: 20px;
+  text-align: center;
+  float: left;
+  width: 100%;
+}
+
+.about-popup figure {
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  margin: 0px auto;
+  display: table;
+  margin-bottom: 50px;
+}
+
+.about-popup p {
+  margin-bottom: 0;
+}
+
 @media only screen and (max-width: 600px) {
+  .t_box {
+    padding: 18px !important;
+  }
+
+
   .custom-payment {
     padding: 0px !important;
   }

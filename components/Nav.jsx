@@ -57,7 +57,9 @@ const Nav = () => {
                 <div>
                     <div className="item_group flt_left">
                         <div className="logo_item flt_left">
-                            <img src="/icons/kiomoi.png" style={{ width: '30px' }} />
+                            <Link href={'/'}>
+                                <img src="/icons/kiomoi.png" style={{ width: '30px' }} />
+                            </Link>
                         </div>
                         <div className="item_group flt_right">
                             <div className="item flt_left">
