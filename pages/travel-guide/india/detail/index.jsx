@@ -249,7 +249,9 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna,type 
 
                                         <div className={tw`w-full lg:1/2`}>
                                             <div style={{ float: 'right' }}>
-                                                <Link href={`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/`}>
+                                                
+
+                                                <Link href={type=='CITY'?`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/`:`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/${data.gid}`}>
                                                     <a>
                                                         <button className="btn_listing_t _font_big">VIEW PACKAGES</button>
                                                     </a>
