@@ -20,17 +20,15 @@ const Nav = () => {
     const [stayover, setStayover] = useState(false);
     const [showSearch, SetshowSearch] = useState(false)
     const [loading, setLoading] = useState(false)
-    const [result, setResult] = useState({})
     const [searchkey, setSearchkey] = useState({})
     const [showLogin, setShowLogin] = useState(false);
+    const [result, setResult] = useState({})
 
     const Search = async () => {
         setLoading(true)
         const result = await axios.post(Constants.api + '/api/v1/home/search/', { av: '', id: '', pt: '', text: searchkey })
         setResult(result?.data?.output)
-        console.log(result?.data?.output)
         setLoading(false)
-        // Constants.api
     }
 
     useEffect(() => {
@@ -38,9 +36,7 @@ const Nav = () => {
     }, [])
 
     const HandleSearch = (s_key) => {
-        // Search()
         if (s_key.length >= 3) {
-            // console.log(s_key)
             setSearchkey(s_key)
             Search()
         }
@@ -132,44 +128,83 @@ const Nav = () => {
                             onClick={() => SetshowSearch(false)}
                             className="cr_icon"
                         />
-                        <input type="text" className="form-control s_form" onChange={() => HandleSearch(event.target.value)} placeholder="Search anything..." />
+                        <input type="text" className="form-control s_form" onChange={event => HandleSearch(event.target.value)} placeholder="Search anything..." />
                     </div>
                     <section className="drop_down" style={{ boxShadow: 'inset 0 -1px 0 0 rgba(0,0,0,.1)' }}>
                         <div>
-                            {
-                                result.st ?
-                                    result.st.map((e) => {
-                                        return <div className="drop_item" key={e.id}>
-                                            <div className="s_name d_content">Tours in {e.name}</div>
-                                        </div>
-                                    }) : ""
-                            }
-                            {
-                                result.packages ?
-                                    result.packages.map((e) => {
-                                        let aurl =
-                                            "/holidays/" +
-                                            e.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase() +
-                                            "-tour-package-" +
-                                            e.id + "/";
-
-                                        return <Link onClick={() => setSearchkey("")} href={aurl}>
-                                            <a onClick={() => setSearchkey("")} href={aurl}>
-                                                <div className={tw`hover:bg-[#fde2df] drop_item`} key={e.id}>
-                                                    <div className="d_content">
-                                                        <div className="flt_left">
-                                                            <span className="s_name">{e.name}</span>
-                                                        </div>
-                                                        <div className="flt_right">
-                                                            <FaRupeeSign className={tw`d_price inline`} />
-                                                            <span className="d_price">{e.price / 100}</span><BsDot className={`inline d_price`} /><span className="n_d">{e.nights}N & {e.nights + 1}D</span>
-                                                        </div>
-                                                    </div>
+                            {result?.packages?.map((e, index) => (
+                                <div key={index} onClick={() => setSearchkey("")}>
+                                    <Link href={`/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase().replace(/-tour-package/g, '').replace(/-tour/g, '').replace(/&/g, 'and')}-tour-packages/${e?.id}/`}>
+                                        <div className={tw`hover:bg-[#fde2df] drop_item`}>
+                                            <div className="d_content">
+                                                <div className="flt_left">
+                                                    <span className="s_name">{e.name}</span>
                                                 </div>
-                                            </a>
+                                                <div className="flt_right">
+                                                    <FaRupeeSign className={tw`d_price inline`} />
+                                                    <span className="d_price">{e.price / 100}</span><BsDot className={`inline d_price`} /><span className="n_d">{e.nights}N & {e.nights + 1}D</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </div>
+                            ))}
+                            {result?.st?.map((e, index) => (
+                                <div key={index} onClick={() => setSearchkey("")}>
+                                    <Link href={`/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}/`}>
+                                        <div className="drop_item">
+                                            <div className="s_name d_content">Tours in {e?.name}</div>
+                                        </div>
+                                    </Link>
+                                </div>
+                            ))}
+                            {result?.hotels?.map((e, index) => (
+                                <div key={index} onClick={() => setSearchkey("")}>
+                                    <Link href={`/hotel-${e?.name?.replace(/\s+/g, "-").toLowerCase()}-in-${e?.geotype?.replace(/\s+/g, "-").toLowerCase()}-${e?.id}/`}>
+                                        <div className="drop_item">
+                                            <div className="s_name d_content">{e?.name}</div>
+                                        </div>
+                                    </Link>
+                                </div>
+                            ))}
+                            {result?.articles?.map((e, index) => (
+                                <div key={index} onClick={() => setSearchkey("")}>
+                                    <Link href={`/travel-stories-${e.heading.replace(/\s+/g, "-").toLowerCase()}-${e?.geoName.replace(/\s+/g, "-").toLowerCase()}/${e?.id}/`}>
+                                        <div className="drop_item">
+                                            <div className="s_name d_content">{e?.name}</div>
+                                        </div>
+                                    </Link>
+                                </div>
+                            ))}
+                            {result?.tgs?.map((e, index) => {
+                                let url;
+                                if (e.geotype == "CITY") {
+                                    url = "/travel-guide/india/city-" + e.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e.id + "/"
+                                }
+                                else if (e.geotype == "STATE") {
+                                    url = "/travel-guide/india/state-" + e.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e.id + "/"
+                                }
+                                else {
+                                    url = "travel-guide/" + e.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e.id + "/"
+                                }
+                                let statebycity = "/holidays/" + e.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase() + "-tour-packages/";
+                                return (
+                                    <div key={index} onClick={() => setSearchkey("")}>
+                                        {e?.geotype === 'CITY' ? (
+                                            <Link href={statebycity}>
+                                                <div className="drop_item">
+                                                    <div className="s_name d_content">Tours in {e?.name}</div>
+                                                </div>
+                                            </Link>
+                                        ) : null}
+                                        <Link href={url}>
+                                            <div className="drop_item">
+                                                <div className="s_name d_content">{e?.name}</div>
+                                            </div>
                                         </Link>
-                                    }) : ""
-                            }
+                                    </div>
+                                )
+                            })}
                         </div>
                     </section>
                 </div>
@@ -177,7 +212,7 @@ const Nav = () => {
             }
 
 
-        </nav>
+        </nav >
     </>
 }
 
