@@ -138,11 +138,11 @@ const Nav = () => {
                                         <div className={tw`hover:bg-[#fde2df] drop_item`}>
                                             <div className="d_content">
                                                 <div className="flt_left">
-                                                    <span className="s_name">{e.name}</span>
+                                                    <span className="s_name">{e?.name}</span>
                                                 </div>
                                                 <div className="flt_right">
                                                     <FaRupeeSign className={tw`d_price inline`} />
-                                                    <span className="d_price">{e.price / 100}</span><BsDot className={`inline d_price`} /><span className="n_d">{e.nights}N & {e.nights + 1}D</span>
+                                                    <span className="d_price">{e?.price / 100}</span><BsDot className={`inline d_price`} /><span className="n_d">{e?.nights}N & {e?.nights + 1}D</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -169,7 +169,7 @@ const Nav = () => {
                             ))}
                             {result?.articles?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
-                                    <Link href={`/travel-stories-${e.heading.replace(/\s+/g, "-").toLowerCase()}-${e?.geoName.replace(/\s+/g, "-").toLowerCase()}/${e?.id}/`}>
+                                    <Link href={`/travel-stories-${e?.heading?.replace(/\s+/g, "-").toLowerCase()}-${e?.geoName?.replace(/\s+/g, "-").toLowerCase()}/${e?.id}/`}>
                                         <div className="drop_item">
                                             <div className="s_name d_content">{e?.name}</div>
                                         </div>
@@ -178,16 +178,16 @@ const Nav = () => {
                             ))}
                             {result?.tgs?.map((e, index) => {
                                 let url;
-                                if (e.geotype == "CITY") {
-                                    url = "/travel-guide/india/city-" + e.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e.id + "/"
+                                if (e?.geotype == "CITY") {
+                                    url = "/travel-guide/india/city-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
                                 }
-                                else if (e.geotype == "STATE") {
-                                    url = "/travel-guide/india/state-" + e.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e.id + "/"
+                                else if (e?.geotype == "STATE") {
+                                    url = "/travel-guide/india/state-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
                                 }
                                 else {
-                                    url = "travel-guide/" + e.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e.id + "/"
+                                    url = "travel-guide/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
                                 }
-                                let statebycity = "/holidays/" + e.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase() + "-tour-packages/";
+                                let statebycity = "/holidays/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase() + "-tour-packages/";
                                 return (
                                     <div key={index} onClick={() => setSearchkey("")}>
                                         {e?.geotype === 'CITY' ? (
