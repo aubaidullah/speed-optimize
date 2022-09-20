@@ -152,7 +152,7 @@ const Nav = () => {
                             {result?.st?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
                                     <Link href={`/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}/`}>
-                                        <div className="drop_item">
+                                        <div className={tw`hover:bg-[#fde2df] drop_item`}>
                                             <div className="s_name d_content">Tours in {e?.name}</div>
                                         </div>
                                     </Link>
@@ -161,7 +161,7 @@ const Nav = () => {
                             {result?.hotels?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
                                     <Link href={`/hotel-${e?.name?.replace(/\s+/g, "-").toLowerCase()}-in-${e?.geotype?.replace(/\s+/g, "-").toLowerCase()}-${e?.id}/`}>
-                                        <div className="drop_item">
+                                        <div className={tw`hover:bg-[#fde2df] drop_item`}>
                                             <div className="s_name d_content">{e?.name}</div>
                                         </div>
                                     </Link>
@@ -170,7 +170,7 @@ const Nav = () => {
                             {result?.articles?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
                                     <Link href={`/travel-stories-${e?.heading?.replace(/\s+/g, "-").toLowerCase()}-${e?.geoName?.replace(/\s+/g, "-").toLowerCase()}/${e?.id}/`}>
-                                        <div className="drop_item">
+                                        <div className={tw`hover:bg-[#fde2df] drop_item`}>
                                             <div className="s_name d_content">{e?.name}</div>
                                         </div>
                                     </Link>
@@ -192,13 +192,13 @@ const Nav = () => {
                                     <div key={index} onClick={() => setSearchkey("")}>
                                         {e?.geotype === 'CITY' ? (
                                             <Link href={statebycity}>
-                                                <div className="drop_item">
+                                                <div className={tw`hover:bg-[#fde2df] drop_item`}>
                                                     <div className="s_name d_content">Tours in {e?.name}</div>
                                                 </div>
                                             </Link>
                                         ) : null}
                                         <Link href={url}>
-                                            <div className="drop_item">
+                                            <div className={tw`hover:bg-[#fde2df] drop_item`}>
                                                 <div className="s_name d_content">{e?.name}</div>
                                             </div>
                                         </Link>

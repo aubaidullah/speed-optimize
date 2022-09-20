@@ -19,6 +19,10 @@ const nextConfig = {
         destination: '/travel-guide/india/detail'
       },
       {
+        source: '/travel-guide/india/state-:city/:id',
+        destination: '/travel-guide/india/detail'
+      },      
+      {
         source: '/travel-guide/india/attraction-:place/:id',
         destination: '/travel-guide/india/attractions'
       },

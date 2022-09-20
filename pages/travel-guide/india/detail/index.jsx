@@ -19,7 +19,7 @@ import Content from "../../../../components/trave-guide/content";
 
 
 
-const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna }) => {
+const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna,type }) => {
     // console.log(data)
     const [overviewlimit, setOverviewlimit] = useState(200)
     const [overview, setOverview] = useState()
@@ -81,7 +81,11 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna }) =>
         <Nav />
         <BreadCrumbs bread={bread} />
         <section className="container">
-            <h1 className={tw`text-2xl font-bold`}>{data.tg.cityName}</h1>
+            {
+                type=='CITY'?<h1 className={tw`text-2xl font-bold`}>{data.tg.cityName}</h1>:                
+                <h1 className={tw`text-2xl font-bold`}>Places To Visit in {data.tg.cityName}</h1>
+            }
+            {/* <h1 className={tw`text-2xl font-bold`}>{data.tg.cityName}</h1> */}
             <div className="detail_slide_nav _30px">
                 <ul>
                     <li>
@@ -140,7 +144,9 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna }) =>
                                         <BsDot className={tw`inline`} /> India
                                     </div>
                                     <div className="cir_bg">
-                                        {data.city.ratings}/5
+                                        {
+                                            type=='CITY'?data.city.ratings+'/5':data.state.ratings+'/5'
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -151,27 +157,60 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna }) =>
                                     <div className={tw`flex justify-between`}>
                                         <div className={tw`w-full lg:1/2`}>
                                             {
-                                                rightBlock({ icon: 'calender_multi_clr.png', heading: 'Best Session', desc: data.city.visitTime })
+                                                rightBlock({ icon: 'calender_multi_clr.png', heading: 'Best Session', desc: type=='CITY'?data.city.visitTime:data.state.visitTime })
                                             }
-
                                             {
-                                                rightBlock({ icon: 'language.png', heading: 'Ideal Duration', desc: data.city.idealTripDuration })
+                                                type=='CITY'?
+                                                rightBlock({ icon: 'language.png', heading: 'Ideal Duration', desc: type=='CITY'?data.city.idealTripDuration:data.state.idealTripDuration })
+                                                :rightBlock({ icon: 'new_delhi.png', heading: 'Capital', desc: type=='CITY'?data.city.nearbyAirport:data.state.capital })
+                                            }
+                                            {
+                                                type=='STATE'?
+                                                rightBlock({ icon: 'language.png', heading: 'Major Languages', desc:data.state.languages })
+                                                :""
                                             }
                                         </div>
 
                                         <div className={tw`w-full lg:1/2`}>
                                             {
-                                                rightBlock({ icon: 'train.png', heading: 'Station:', desc: data.city.nearbyRailway })
+                                                type=='CITY'?
+                                                rightBlock({ icon: 'train.png', heading: 'Station:', desc: data.city.nearbyRailway})
+                                                :rightBlock({ icon: 'plane_icon.png', heading: 'Major Airports', desc: data.state.airports})
+                                            }
+
+                                            {   type=='CITY'?
+                                                rightBlock({ icon: 'plane_icon.png', heading: 'Major Airports', desc: type=='CITY'?data.city.nearbyAirport:data.state.nearbyAirport }):
+                                                rightBlock({ icon: 'calender_multi_clr.png', heading: 'Ideal Duration', desc: data.state.idealTripDuration })
                                             }
 
                                             {
-                                                rightBlock({ icon: 'plane_icon.png', heading: 'Major Airports', desc: data.city.nearbyAirport })
-                                            }
+                                                type=='STATE'?
+                                                <div className={tw`flex`}>
+                                                    <div>
+                                                        <IoLocationSharp className={tw`inline`} style={{ height: '15.7px' }}/>
+                                                        {/* <img src={`/icons/${icon}`} alt="" className={tw`inline`} style={{ height: '15.7px' }} /> */}
+                                                    </div>
+                                                    <div className={tw`ml-2`}>
+                                                        <div className={tw`t_12px font-bold`}>Region</div>
+                                                        <div className="t_12px">{data.state.region}</div>
+                                                    </div>
+                                                </div>
+                                                
+                                                :""
+                                            }                                            
                                         </div>
 
                                     </div>
                                 </div>
+                                
 
+                                {
+
+                                }
+
+                            {
+                                type=='CITY'?
+                            
                                 <div className={tw`bg-white border-t-1 py-2`}>
                                     <div className={tw`flex justify-between`}>
                                         <div className={tw`w-full lg:1/2`}>
@@ -184,12 +223,15 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna }) =>
                                         <div className={tw`w-full lg:1/2`}>
 
                                             {
+                                                // type=='CITY'?
                                                 rightBlock({ icon: 'plane_icon.png', heading: 'Weather Type', desc: weather?.weather[0]?.main })
+                                                // :rightBlock({ icon: 'plane_icon.png', heading: 'Station', desc: weather?.weather[0]?.main })
                                             }
                                         </div>
-
                                     </div>
                                 </div>
+                                :""
+                            }
 
 
                                 <div className={tw`bg-white border-t-1 pt-2`}>
@@ -260,26 +302,37 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna }) =>
 
                     <div>
                         <div className={tw`flex justify-between`}>
-                            <h2 className={tw`text-xl font-bold`}>Attractions in {data.tg.cityName}</h2>
+                            {
+                                type=='CITY'?<h2 className={tw`text-xl font-bold`}>Attractions in {data.tg.cityName}</h2>
+                                :<h2 className={tw`text-xl font-bold`}>Top Cities in {data.tg.cityName}</h2>
+                            }
+                            
+                            
 
-                            <div>
-                                <Link href={'/travel-guide'}>
-                                    <a href={'/travel-guide/'}>
-                                        <div className='btn_view_more'>
-                                            View all
-                                        </div>
+                            {
+                                type=='CITY'?
+                                <div>
+                                    <Link href={'/travel-guide'}>
+                                        <a href={'/travel-guide/'}>
+                                            <div className='btn_view_more'>
+                                                View all
+                                            </div>
 
-                                    </a>
-                                </Link>
-                            </div>
+                                        </a>
+                                    </Link>
+                                </div>
+                                :""
+                            }
+                            
+
                         </div>
                         <div className={tw``}>
                             <div className="Shape_42">
 
                                 <div className={tw`flex flex-wrap`}>
                                     {
+                                        type=='CITY'?
                                         data.attn.slice(0, attlimit).map((item, i) => {
-
                                             let url = "/travel-guide/india/attraction" + "-" + item.name.trim().replace(/\s+/g, ' ').replace(/-/g, "").replace(/\s+/g, "-").toLowerCase() + "/" + item.id + "/"
                                             return (
                                                 <div className={tw`w-1/4 p-2`}>
@@ -297,13 +350,35 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna }) =>
                                                             </div>
                                                             <p>{item.name}</p>
                                                         </div>
-
-
                                                     </Link>
                                                 </div>
+                                            )
+                                        }):
+                                        data.ctg.slice(0, attlimit).map((item, i) => {
+                                            let url = `/travel-guide/india/city-${item.name.toLowerCase()}/${item.tgid}/`
+                                            // let url = "/travel-guide/india/attraction" + "-" + item.name.trim().replace(/\s+/g, ' ').replace(/-/g, "").replace(/\s+/g, "-").toLowerCase() + "/" + item.id + "/"
+                                            return (
+                                                <div className={tw`w-1/4 p-2`}>
+                                                    <Link href={url} key={i}>
+                                                        <div>
+                                                            <div className="image-squre__">
+                                                                <img
+                                                                    style={{ height: '100%', width: '100%' }}
+                                                                    src={
+                                                                        item.images.length > 0 ? item.images : "/icons/logo-icon.png"
+                                                                    }
+                                                                    alt=""
+                                                                />
 
+                                                            </div>
+                                                            <p>{item.name}</p>
+                                                        </div>
+                                                    </Link>
+                                                </div>
                                             )
                                         })
+
+
                                     }
                                 </div>
 
@@ -353,13 +428,23 @@ export async function getServerSideProps(context) {
     let _id = context.query.id
     const res = await client.query({ query: getTravelGuideDetail, variables: { input: { id: _id } } })
 
-    let lat = res.data.travelGuide.output.city.lat
-    let lng = res.data.travelGuide.output.city.lng
 
-    const resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=d6429646ecc55c8a9d2856f91d10ff4f&units=metric`)
-    // console.log(resp)
+    var resp = null
+    // console.log(res.data.travelGuide.output)
+    
+    var type = "STATE"
 
-    console.log(res.data.travelGuide.output.gid)
+    if (res.data.travelGuide.output.tp == 'CITY'){
+        type = "CITY"
+        let lat = res.data.travelGuide.output.city.lat
+        let lng = res.data.travelGuide.output.city.lng
+
+        resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=d6429646ecc55c8a9d2856f91d10ff4f&units=metric`)
+        // console.log(resp)
+
+        console.log(res.data.travelGuide.output.gid)
+    }
+
     let json_data = {
         'av': '',
         'geoid': res.data.travelGuide.output.gid,
@@ -369,7 +454,9 @@ export async function getServerSideProps(context) {
         'pt': 'Website',
         'size': 10,
         'type': 'CITY',
-    }
+    }    
+
+    console.log(json_data)
 
     const res1 = await client.query({ query: getTravelPackage, variables: { input: json_data } })
 
@@ -424,10 +511,10 @@ export async function getServerSideProps(context) {
     // console.log(qna)
 
 
+    console.log(type)
 
 
-
-    return { props: { data: res.data.travelGuide.output, weather: resp.data, packages, hotels, article, qna } }
+    return { props: { data: res.data.travelGuide.output, weather: resp?resp.data:{}, packages, hotels, article, qna,type } }
 }
 
 
