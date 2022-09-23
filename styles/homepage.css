@@ -54,3 +54,82 @@ margin: 0 0 2px;
     border-radius: 4px;
     background-image: linear-gradient(118deg,#f79421 17%,#f06726 54%,#dc2d4d 95%);
   }
+
+  ._clr_brand {
+    border-radius: 24px;
+    background-image: linear-gradient(144deg,#f79421 3%,#f06726 48%,#dc2d4d 99%);
+  }
+  .kiomoi_box h4 {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0;
+  }
+  .kiomoi_box {
+    padding: 30px;
+    color: #fff;
+  }
+  .kiomoi_box h5 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 20px 0;
+  }
+  .kiomoi_box p {
+    font-size: 14px;
+    margin: 0 0 15px;
+  }
+  .kiomoi_box a {
+    font-size: 14px;
+    color: #fff;
+    text-decoration: underline;
+    padding-top: 40px;
+    clear: both;
+    display: inline-block;
+  }
+
+  ._service_list {
+    width: calc(33.33333% - 4px);
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .ellipse_3 {
+    margin: 0 auto;
+    width: 135px;
+    height: 135px;
+    line-height: 135px;
+    border: 1px solid #f06726;
+    background-color: #fff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    text-align: center;
+    transition: -webkit-filter .2s;
+    transition: filter .2s;
+    transition: filter .2s,-webkit-filter .2s;
+  }
+  .ellipse_3 img {
+    height: 73px;
+  }
+  .btn, .search_icon, a, img {
+    max-width: 100%;
+    transition: .2s cubic-bezier(.43,0,.03,1);
+  }
+
+  ._text_- {
+    padding: 20px 0 60px;
+  }
+  ._text_- h4 {
+    margin-bottom: 5px;
+  }
+  ._text_- h4, .btn_circle {
+    font-size: 18px;
+    font-weight: 600;
+    color: #f06726;
+  }
+  ._text_- p {
+    font-size: 12px;
+    line-height: 24px;
+    color: #f06726;
+  }

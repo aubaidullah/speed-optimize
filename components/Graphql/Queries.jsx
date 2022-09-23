@@ -104,6 +104,27 @@ query allpackage($input:Payload!) {
 `;
 
 
+export const getThemeQuery = gql`
+  fragment Payload on REST {
+    av: String,
+    pt: String,
+    id: String,
+    name:String,
+    type: String
+
+  }
+query alltheme($input:Payload!) {
+    alltheme(input:$input) @rest(type: "theme",method:"POST", path: "/api/v1/package/themes") {
+      output
+    }
+  }
+`;
+
+
+
+
+
+
 
 // fragment Payload on REST {
 //   av: String,

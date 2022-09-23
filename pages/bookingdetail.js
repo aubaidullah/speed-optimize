@@ -70,13 +70,34 @@ const BookingDetail = () => {
         });
     }
 
-    const displayRazorpay = () => {
-        const res = loadScript("https://checkout.razorpay.com/v1/checkout.js");
+    const initializeRazorpay = () => {
+        return new Promise((resolve) => {
+          const script = document.createElement("script");
+          script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    
+          script.onload = () => {
+            resolve(true);
+          };
+          script.onerror = () => {
+            resolve(false);
+          };
+    
+          document.body.appendChild(script);
+        });
+      };
+
+
+
+
+    const displayRazorpay = async () => {
+        // const res = loadScript("https://checkout.razorpay.com/v1/checkout.js");
+        const res = await initializeRazorpay()
 
         if (!res) {
             alert("Razorpay SDK failed to load. Are you online?");
             return;
         }
+        console.log(paymentDetails)
 
         const options = {
             key: paymentDetails?.key,
@@ -275,7 +296,7 @@ const BookingDetail = () => {
                                         <div className="package-name _pn_package">
                                             <div className="_pn_">
                                                 <div className="_pn_left">
-                                                    <h3 className={tw`font-semibold`}>{bookingDetails?.lead?.pname}</h3>
+                                                    <h3 className={tw`font-semibold text-xl`}>{bookingDetails?.lead?.pname}</h3>
                                                 </div>
                                                 <div className="_pn_right">
                                                     <div className="row"></div>

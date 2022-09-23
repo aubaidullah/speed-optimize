@@ -11,6 +11,7 @@ import axios from "axios";
 import LeadGuest from './Leadguest'
 import swal from "sweetalert";
 import Cookie from 'js-cookie'
+import { tw } from "twind";
 
 
 const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>{
@@ -199,12 +200,17 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                 <div className="wrapper_login">
                   <div className="body_login">
                     <div className="login_header">
-                      <img
-                        src={"/icons/logo-icon.png"}
-                        height="50"
-                        alt=""
-                      />
-                      <h4>{packageName}</h4>
+                      <div className={tw`flex align-center`}>
+                        <img
+                            src={"/icons/logo-icon.png"}
+                            height="50"
+                            alt=""
+                            style={{margin:'0 auto'}}
+                        />
+
+                      </div>
+                      
+                      <h4 className={tw`text-xl`}>{packageName}</h4>
                     </div>
 
 

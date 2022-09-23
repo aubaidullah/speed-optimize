@@ -388,6 +388,7 @@ export async function getServerSideProps(context) {
             }
         }
     })
+    console.log(res.data.package.output)
 
     return {
         props: {
