@@ -222,3 +222,11 @@ del{
   }
 
 
+
+
+  .slider_banner__ .control-arrow{
+    display: none;
+  }
+  .slider_banner__ .slide{
+    height: auto;
+  }
