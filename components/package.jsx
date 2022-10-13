@@ -273,7 +273,7 @@ const Package = ({item}) =>{
                                                     </div>
                                                 </div>
 
-                                                <div className="pricing_info">
+                                                <div className={tw`pricing_info pt-2`}>
                                                     {/* <div className="flt_left">
                                                         <div className="checks">
                                                             <p>

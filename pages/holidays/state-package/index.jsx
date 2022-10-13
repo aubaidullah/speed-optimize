@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { getallpackages } from "../../../components/Graphql/Queries"
+import { getallpackages,getThemeQuery } from "../../../components/Graphql/Queries"
 import client from "../../../components/Graphql/service"
 // import Nav from "../../../components/Nav"
 import {useEffect,useState} from 'react'
@@ -22,7 +22,7 @@ const DeskList = dynamic(() => import('../../../components/list_page.mobile'), {
 
 
 
-const StatePackages = ({data,headers,region,places}) =>{
+const StatePackages = ({data,headers,region,places,theme}) =>{
     const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('android') || headers['user-agent'].includes('iphone'))
 
     useEffect(()=>{
@@ -37,10 +37,10 @@ const StatePackages = ({data,headers,region,places}) =>{
 
     if (isMobile==true){
         // return <ListPageMobile data = {data}/>
-        return <><Nav/> <MobileList data={data??[]} region = {region} places={places} isMobile={isMobile} /></>
+        return <><Nav/> <MobileList page_type={'STATE'} data={data??[]} region = {region} places={places} isMobile={isMobile} theme={theme}  /></>
     }
     else{
-        return <><Nav/><DeskList data = {data??[]} region = {region} places={places} isMobile={isMobile}/></>
+        return <><Nav/><DeskList page_type={'STATE'} data = {data??[]} region = {region} places={places} isMobile={isMobile} theme={theme}/></>
     }    
 
 
@@ -80,7 +80,11 @@ export async function getServerSideProps(context) {
 
     headers['user-agent'] = headers['user-agent'].toLocaleLowerCase()
 
-    return { props: { data,headers,region,places}}
+
+    const res_theme = await client.query({query:getThemeQuery,variables:{input:{'av':'','id':'','pt':''}}})
+
+
+    return { props: { data,headers,region,places,theme:res_theme.data.alltheme.output}}
 
 }
 

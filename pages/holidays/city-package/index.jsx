@@ -23,7 +23,8 @@ const DeskList = dynamic(() => import('../../../components/list_page.mobile'), {
 
 
 
-const CityPackages = ({data,headers,region,places}) =>{
+const CityPackages = ({data,headers,region,places,city}) =>{
+    console.log(city)
     const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('android') || headers['user-agent'].includes('iphone'))
 
     useEffect(()=>{
@@ -38,10 +39,10 @@ const CityPackages = ({data,headers,region,places}) =>{
 
     if (isMobile==true){
         // return <ListPageMobile data = {data}/>
-        return <><Nav/> <MobileList data={data??[]} region = {region} places={places} isMobile={isMobile} /></>
+        return <><Nav/> <MobileList page_type={'CITY'} data={data??[]} region = {region} places={places} isMobile={isMobile} city={city} /></>
     }
     else{
-        return <><Nav/><DeskList data = {data??[]} region = {region} places={places} isMobile={isMobile}/></>
+        return <><Nav/><DeskList page_type={'CITY'} data = {data??[]} region = {region} places={places} isMobile={isMobile} city={city}/></>
     }    
 
 
@@ -62,9 +63,9 @@ export async function getServerSideProps(context) {
     // console.log(context.query)
     const headers = context.req.headers
     // getStateByCityQuery
-    const rs = await client.query({query:getStateByCityQuery,variables:{input:{av:'1.3',id:'',pt:'WEBSITE',text:context.query.city}}})
+    // const rs = await client.query({query:getStateByCityQuery,variables:{input:{av:'1.3',id:'',pt:'WEBSITE',text:context.query.city}}})
 
-    console.log(rs.data.state.output)
+    // console.log(rs.data.state.output)
     // const r = await axios.post("",)
 
 
@@ -74,12 +75,19 @@ export async function getServerSideProps(context) {
 
 
 
+    // let payload = {
+    //     av:'1.3',
+    //     id:`${rs.data.state.output.id}`,
+    //     name:rs.data.state.output.name,
+    //     pt:'WEBSITE',
+    //     type:'State'
+    // }
     let payload = {
         av:'1.3',
-        id:`${rs.data.state.output.id}`,
-        name:rs.data.state.output.name,
+        id:``,
+        name:context.query.city,
         pt:'WEBSITE',
-        type:'State'
+        type:'CITY'
     }
     console.log(payload)
     const res = await client.query({query:getallpackages,variables:{input:payload}})
@@ -95,7 +103,7 @@ export async function getServerSideProps(context) {
     // region = []
     // places = []
     headers['user-agent'] = headers['user-agent'].toLocaleLowerCase()
-    return { props: { data,headers,region,places}}
+    return { props: { data,headers,region,places,city:context.query.city}}
 
 }
 

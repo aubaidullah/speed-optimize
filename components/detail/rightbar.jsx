@@ -6,6 +6,7 @@ import axios from 'axios'
 import moment from 'moment'
 import * as Constants from '../Constants'
 import LeadForm from '../leadform'
+import {FaRupeeSign} from 'react-icons/fa'
 import {tw} from 'twind'
 
 
@@ -57,6 +58,37 @@ const RightBar=({data})=>{
 
             {/* <div className="col-sm-4 col-xs-12"> */}
                 <div>
+                    <div className="bottom_bar">
+                        <div style={{ height: '100%' }}>
+                            <div style={{ display: 'flex', height: '100%', boxShadow: '3px 1px 4px' }}>
+                            <div style={{ width: '100%', borderRight: '1px solid rgba(0,0,0,0.2)' }}>
+                                <div className="bottom_bt">
+                                <div>
+                                    <FaRupeeSign className='inline' style={{fontSize:'14px',marginBottom:'4px'}} />
+                                    {parseFloat(data.package.price)}
+                                    <p style={{ fontSize: '12px', fontWeight: '300', margin: 0 }}>(Taxes extra) Per Person</p>
+                                </div>
+                                </div>
+
+                            </div>
+                            <div style={{ width: '100%' }} 
+                                onClick={() =>
+                                    _sendquery(
+                                    price,
+                                    data.package.id,
+                                    data.package.name,
+                                    data.package.source
+                                )
+                                }
+                                >
+                                <div className="bottom_bt" style={{ fontSize: '22px' }}>
+                                Send Query
+                                </div>
+
+                            </div>
+                            </div>
+                        </div>
+                    </div>                    
 
                     <div className='_b_right_list'>
                         <div style={{padding:'15px'}}>
@@ -251,6 +283,8 @@ const RightBar=({data})=>{
                             </a>
                             </div>
                         </div>
+
+
 
 
                         </div>

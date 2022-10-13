@@ -6,12 +6,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getPackages, setSearchFilter } from '../../redux_fx/actions';
 
-const FilterBy = ({filter,setKeyword,data}) =>{
+const FilterBy = ({page_type,filter,setKeyword,data,city,theme=undefined}) =>{
 
 
     // f.filter(package=>package.name.includes('Shimla'))
     // const filtering = useSelector(state=>state.package.package)
     const dispatch = useDispatch()
+
+    // useEffect(()=>{
+    //     setSearchFilter(city)
+    //     // if(city!=undefined){
+    //     //     setSearchFilter(city)
+    //     // }
+    // },[])
 
 
 
@@ -37,7 +44,6 @@ const FilterBy = ({filter,setKeyword,data}) =>{
 
 
     const placeRender = data.map(function (item, i) {
-        // let chec = filterplace.indexOf(item) !== -1 ? true : "";
         if (i < 100) {
           return (
             
@@ -56,7 +62,28 @@ const FilterBy = ({filter,setKeyword,data}) =>{
             
           );
         }
-      });    
+      });  
+      
+      const themeRender = theme?.map(function (item, i) {
+        if (i < 100) {
+          return (
+            
+              <div className="checkbox" key={i}>
+                <label>
+                  <input
+                    type="checkbox"
+                    // checked={chec}
+                    className={tw`mr-1`}
+                    name="place"
+                    // onClick={() => setPlace(item)}
+                  />
+                  {item.tag}
+                </label>
+              </div>
+            
+          );
+        }
+      });          
 
 
 
@@ -191,8 +218,10 @@ const FilterBy = ({filter,setKeyword,data}) =>{
 
                     </div>
                 </div>
-
-                <div className={tw`border-t border-red-200 py-4`}>
+                {
+                    page_type != 'CITY'?
+                
+                    <div className={tw`border-t border-red-200 py-4`}>
                     <div className={tw`flex items-center justify-between mb-4`}>
                         <h2 className={`Price_name`}>
                         Favourite Places
@@ -202,7 +231,24 @@ const FilterBy = ({filter,setKeyword,data}) =>{
                         {placeRender}
                     </div>                    
 
-                </div>
+                </div>:""
+                }
+                {
+                    page_type == 'STATE'?
+                
+                    <div className={tw`border-t border-red-200 py-4`}>
+                    <div className={tw`flex items-center justify-between mb-4`}>
+                        <h2 className={`Price_name`}>
+                        Themes of Trip
+                        </h2> 
+                    </div>
+                    <div style={{maxHeight:'300px',overflowY:'scroll'}}>
+                        {themeRender}
+                    </div>                    
+
+                </div>:""
+                }                
+
 {/* placeRender */}
 
             </div>

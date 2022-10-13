@@ -1036,3 +1036,31 @@ ul.breadcrumb {
 .title_kiomoi h3 {
   font-size: 16px;
 } */
+
+.bottom_bar{
+  display: none;
+}
+@media (max-width: 450px){
+.bottom_bar {
+  display: inline;
+  display: initial;
+  color: #fff;
+  background: linear-gradient(118deg,#f79421 17%,#f06726 54%,#dc2d4d 95%);
+  bottom: 0;
+  position: fixed;
+  width: 101%;
+  z-index: 1;
+  height: 60px;
+  margin-left: -15px;
+}
+.bottom_bt {
+  top: 50%;
+  position: absolute;
+  font-size: 18px;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 50%;
+  text-align: center;
+  font-weight: 700;
+}
+}

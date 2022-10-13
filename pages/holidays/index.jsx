@@ -51,10 +51,10 @@ const Home =({data,headers,region,places})=>{
 
     if (isMobile==true){
         // return <ListPageMobile data = {data}/>
-        return <><Nav/> <MobileList data={pdata??[]} region = {region} places={places} isMobile={isMobile} /></>
+        return <><Nav/> <MobileList page_type={'ALL'} data={pdata??[]} region = {region} places={places} isMobile={isMobile} /></>
     }
     else{
-        return <><Nav/><DeskList data = {pdata??[]} region = {region} places={places} isMobile={isMobile}/></>
+        return <><Nav/><DeskList page_type={'ALL'} data = {pdata??[]} region = {region} places={places} isMobile={isMobile}/></>
     }
 
 }

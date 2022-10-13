@@ -51,10 +51,10 @@ const ThemePackage =({data,headers,region,places})=>{
 
     if (isMobile==true){
         // return <ListPageMobile data = {data}/>
-        return <><Nav/> <MobileList data={pdata??[]} region = {region} places={places} isMobile={isMobile} /></>
+        return <><Nav/> <MobileList page_type={'THEME'} data={pdata??[]} region = {region} places={places} isMobile={isMobile} /></>
     }
     else{
-        return <><Nav/><DeskList data = {pdata??[]} region = {region} places={places} isMobile={isMobile}/></>
+        return <><Nav/><DeskList page_type={'THEME'} data = {pdata??[]} region = {region} places={places} isMobile={isMobile}/></>
     }
 
 }
@@ -63,8 +63,9 @@ export async function getServerSideProps(context) {
     // Fetch data from external API
     context.res.setHeader('Cache-Control', 's-maxage=10'); 
     const headers = context.req.headers
+    const theme_name = context.query.theme.replace(/-/g,' ')
 
-    const res = await client.query({query:getallpackages,variables:{input:{'av':'1.3','name':'','pt':'WEBSITE'}}})  
+    const res = await client.query({query:getallpackages,variables:{input:{'av':'1.3','name':theme_name,'pt':'WEBSITE','type':'THEME'}}})  
     // const data = res.data.allpackage.output.packages.slice(0, 10)
 
     const data = res.data.allpackage.output.packages

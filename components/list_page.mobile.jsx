@@ -17,9 +17,9 @@ import ReactHtmlParser from "react-html-parser";
 // const filtr = useSelector(state=>state.filter)
 // console.log(filtr)
 
-const ListPageMobile = ({data,region,places,isMobile}) =>{
+const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,theme=undefined}) =>{
     
-    const [filter,setFilter] = useState({keyword:""})
+    const [filter,setFilter] = useState({keyword:city??""})
     const [limit,setLimit] = useState(10)
     const [overviewlimit,setOverviewlimit] = useState(200)
     const [overview,setOverview] = useState()
@@ -28,6 +28,11 @@ const ListPageMobile = ({data,region,places,isMobile}) =>{
         // console.log(keyword)
         setFilter({keyword:keyword})
     }
+
+    useEffect(()=>{
+        setFilter({keyword:city??""})
+    },[])
+    console.log(filter)
     
     // console.log(filter)
     
@@ -48,7 +53,7 @@ const ListPageMobile = ({data,region,places,isMobile}) =>{
 
     useEffect(()=>{
         if (region !== null)
-        setOverview(d.substring(0, overviewlimit))  
+        setOverview(d.substring(0, overviewlimit))
     },[overviewlimit])
 
     return <article>
@@ -92,7 +97,7 @@ const ListPageMobile = ({data,region,places,isMobile}) =>{
                 <div className={tw`flex flex-wrap`}>
                     {!isMobile?
                     <div className={tw`w-full lg:w-1/4 pr-5`}>
-                        <FilterBy filter={filter} setKeyword={setFilter} data={places}/>
+                        <FilterBy page_type={page_type} filter={filter} city={city} setKeyword={setFilter} data={places} theme={theme}/>
                     </div>:""
                     }
 
