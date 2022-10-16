@@ -46,7 +46,7 @@ const Themes = ({data}) =>{
     return <>
     <div className={`container mt-16`}>
         <div className={tw`flex`}>
-            <div className={tw`w-full lg:w-1/3`}>
+            <div className={tw`hidden lg:w-1/3 lg:block`}>
                 <div className="kiomoi_box _clr_brand">
                     <h4>Kiomoi Holidays</h4>
                     <h5>Kiomoi Book Domestic and International Holidays</h5>

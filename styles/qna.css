@@ -61,6 +61,12 @@
     -ms-transition: .3s cubic-bezier(.43,0,.03,1);
     -o-transition: .3s cubic-bezier(.43,0,.03,1);
   }
+  .btn_view_more:hover{
+    background-color: #ff4e00;
+    border: 1px solid #ff4e00;
+    color: #fff;
+  }
+
   a.btn_view_more._logo_clr img {
     margin-right: 5px;
   }

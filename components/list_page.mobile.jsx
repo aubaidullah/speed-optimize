@@ -1,6 +1,7 @@
 import Package from "../components/package"
 import Link from 'next/link'
-import {TiChevronRight} from 'react-icons/ti'
+// import {TiChevronRight} from 'react-icons/ti'
+import {BsFilter} from 'react-icons/bs'
 import BreadCrumbs from "./breadcrumbs"
 import {tw} from 'twind'
 import dynamic from 'next/dynamic';
@@ -9,6 +10,8 @@ import { useState,useEffect } from "react"
 import FilterBy from "./list/filter"
 import { ScrollWrapper } from 'react-bottom-scroll';
 import ReactHtmlParser from "react-html-parser";
+import { Modal } from "react-bootstrap"
+import {BsXLg} from 'react-icons/bs'
 
 // const FilterBy = dynamic(() => import('./list/filter'), {
 //     ssr: true,
@@ -23,6 +26,7 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
     const [limit,setLimit] = useState(10)
     const [overviewlimit,setOverviewlimit] = useState(200)
     const [overview,setOverview] = useState()
+    const[isshow, setIsshow] = useState(false)
     
     const setFiltering = (keyword) =>{
         // console.log(keyword)
@@ -59,6 +63,33 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
     return <article>
 
         <BreadCrumbs bread={bread}/>
+        <Modal
+            show={isshow}
+            animation={false}
+            className="login_credential"
+            backdrop="static"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered        
+        
+        >
+            <Modal.Body>
+                <div style={{overflow:'auto'}}>
+                    <span style={{ float: "right", }} aria-hidden="true">
+                        <BsXLg 
+                        style={{cursor: "pointer" }}
+                        onClick={()=>setIsshow(false)}
+                        />
+                    </span>
+                </div>
+                <div>
+                    <FilterBy page_type={page_type} filter={filter} city={city} setKeyword={setFilter} data={places} theme={theme}/>
+                </div>
+            </Modal.Body>
+
+        </Modal>
+
+
+
             <section className="container">
                 {/* <div className="row" style={{marginBottom:'30px'}}>
                     <h2>Kiomoi packages</h2>
@@ -107,7 +138,10 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
                             <div className={tw`flex items-center justify-between mb-6 pb-2 border-b`}>
                                 <div>
                                     <h3 className={tw`text-base`}>
-                                        Showing
+                                        {
+                                            isMobile?"":"Showing"
+                                        }
+                                        
                                         <span className={tw`font-bold ml-2`}>
                                             {data.length} Packages
                                         </span>
@@ -115,7 +149,8 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
                                     </h3>
                                     
                                 </div>
-                                <div>
+                                {
+                                    isMobile==false?<div>
                                     <div className="flex flex-wrap">
                                         <div className={tw`p-2 text-sm text-bold text-gray-600`}>
                                             SORT BY : 
@@ -131,6 +166,15 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
                                         </div>                                                                                
                                     </div>
                                 </div>
+                                :
+                                <div>
+                                    <BsFilter size={'20px'}
+                                    onClick={()=>setIsshow(true)}
+                                    />
+                                    
+                                    </div>
+                                }
+                                
                             </div>
                         </div>
                         

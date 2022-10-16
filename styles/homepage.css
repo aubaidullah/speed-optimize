@@ -133,3 +133,11 @@ margin: 0 0 2px;
     line-height: 24px;
     color: #f06726;
   }
+
+  @media (max-width: 767px)
+  {
+    ._service_list {
+      width: calc(50% - 4px);
+  } 
+  }
+ 
