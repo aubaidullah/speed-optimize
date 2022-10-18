@@ -16,6 +16,7 @@ import Hotel from "../../../../components/home/hotel";
 import Articles from "../../../../components/home/articles";
 import QnaListing from "../../../../components/Qna";
 import Content from "../../../../components/trave-guide/content";
+import Leaform from '../../../../components/leadform'
 
 
 
@@ -24,6 +25,13 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna,type 
     const [overviewlimit, setOverviewlimit] = useState(200)
     const [overview, setOverview] = useState()
     const [attlimit, setAttlimit] = useState(4)
+    const [sendquery,setSendquery] = useState(false)
+    
+    
+    
+    const updateChangeForm=(val)=>{
+        setSendquery(val)
+      }    
 
     const bread = {
         disabled: {
@@ -262,7 +270,11 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna,type 
                                     </div>
                                 </div>
                                 <div className={tw`pt-2`}>
-                                    <div className="btn_listing _btn_clr" style={{ width: '100%', textAlign: 'center', padding: '8px 15px', fontSize: '12px' }}>KNOW MORE & GET CUSTOMIZE</div>
+                                    <div className="btn_listing _btn_clr" style={{cursor:'pointer', width: '100%', textAlign: 'center', padding: '8px 15px', fontSize: '12px' }}
+                                    
+                                    onClick={()=>setSendquery(true)}
+                                    
+                                    >KNOW MORE & GET CUSTOMIZE</div>
                                 </div>
 
 
@@ -418,7 +430,12 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna,type 
 
                 </a>
             </Link>
-
+            <Leaform 
+                isshow = {sendquery}
+                packageid={data.tg.id}
+                packageName={data.tg.cityName}
+                changeForm = {updateChangeForm}            
+            />
         </section>
 
     </>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState,useCallback } from "react"
 import { HiOutlineSearch } from 'react-icons/hi'
 import { AiOutlineLogout, AiOutlineSearch } from 'react-icons/ai';
 import { FaRegUser, FaSearch } from 'react-icons/fa';
@@ -10,6 +10,7 @@ import { FaRupeeSign } from 'react-icons/fa'
 import dynamic from "next/dynamic";
 import Link from 'next/link'
 import { tw } from 'twind'
+import {useRouter} from 'next/router'
 
 
 const Login = dynamic(() => import('../components/login'));
@@ -23,13 +24,17 @@ const Nav = () => {
     const [searchkey, setSearchkey] = useState({})
     const [showLogin, setShowLogin] = useState(false);
     const [result, setResult] = useState({})
+    const [addnavClass,setAddnavClass] = useState("")
+    const [cls,setCls] = useState('navbar navbar-default normal')
 
+    const router = useRouter()
     const Search = async () => {
         setLoading(true)
         const result = await axios.post(Constants.api + '/api/v1/home/search/', { av: '', id: '', pt: '', text: searchkey })
         setResult(result?.data?.output)
         setLoading(false)
     }
+    
 
     useEffect(() => {
         setResult({})
@@ -46,15 +51,54 @@ const Nav = () => {
 
     }
 
+    const listenScrollEvent = (e) => {
+        console.log(window.scrollY)
+        if (window.scrollY > 200) {
+            setAddnavClass('sticky shrink')
+        } else {
+          if (document.location.pathname === "/") {
+            setAddnavClass('')
+            setAddnavClass('sticky shrink')
+        }
+      };    
+    }
+
+    const onScroll = useCallback(event => {
+        const { pageYOffset, scrollY } = window;
+        console.log("yOffset", pageYOffset, "scrollY", scrollY);
+        // setScrollY(window.pageYOffset);
+    }, []);
+
+    // useEffect(()=>{
+    //     // console.log('kkks')
+    //     // document.querySelector("body").addEventListener("scroll", listenScrollEvent);
+    //     window.addEventListener("scroll", onScroll, { passive: true });
+    //     setCls(cls+' '+addnavClass)
+    // })
+
+    // useEffect(()=>{
+    //     const cl =
+    //     "navbar navbar-default " +
+    //     "normal" +
+    //     " " +{addnavClass};        
+    // })
+    // const cl =
+    // "navbar navbar-default " +
+    // "normal" +
+    // " " +{addnavClass}; 
+    // console.log(router.pathname)
+
     return <>
-        <nav className={tw`shadow-sm_`} style={{ overflow: 'auto', zIndex: 1 }}>
+    
+        <nav data-aos="fade-down" id="navbar" className={tw`shadow-sm_`} style={{ overflow: 'auto', zIndex: 1 }}>
             {showLogin ? <Login show={showLogin} setShowLogin={setShowLogin} /> : null}
             {!showSearch ?
                 <div className={tw`container`}>
                     <div className="item_group flt_left">
                         <div className="logo_item flt_left">
                             <Link href={'/'}>
-                                <img src="/icons/kiomoi.png" style={{ width: '30px' }} />
+
+                                <img src={`${router.pathname=='/'?'/icons/download.png':'icons/kiomoi.png'}`} style={{ height: '40px' }} />
                             </Link>
                         </div>
                         <div className={tw`item_group flt_right ml-6`}>
