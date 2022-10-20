@@ -74,7 +74,7 @@ const State = ({data}) =>{
     return <div className={tw`mt-16`}>
         
         <div className={`container`}>
-            <div className='row'>
+            <div className='row_'>
                 <div className='box_design_common'>
                     <div className={tw`title_kiomoi flex items-center justify-between mb-6`}>
                         <div>

@@ -35,6 +35,9 @@
 .services_listing .btn_view_more{
   color:#f06726;
 }
+.trvl_box{
+  height: 180px;
+}
 .services_listing .btn_view_more:hover {
   background-color: #f06726;
   color: white;

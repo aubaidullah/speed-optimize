@@ -197,7 +197,7 @@ const HomePackages = ({data}) =>{
 
       return     <section className={tw`TopRatedTours mt-16`}>
       <div className="container">
-          <div className="row">
+          <div className="row_">
               <div className="box_design_common_" style={{position:'relative'}}>
                   <div className={tw`title_kiomoi flex items-center justify-between mb-6`}>
                       

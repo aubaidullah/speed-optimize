@@ -54,7 +54,7 @@ const TravelGuide = ({data}) =>{
                                                         src={e.images}
                                                     />
                                                 </div>
-                                                <div className={tw`p-4`}>
+                                                <div className={tw`p-4 trvl_box`}>
                                                     <div className={tw`pt-4 text-gray-200`}>
                                                         {ReactHtmlParser(e.overviewDesc.substring(0, 150))}
                                                     </div>

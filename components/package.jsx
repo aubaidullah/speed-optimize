@@ -304,9 +304,12 @@ const Package = ({item}) =>{
 
                                                         <div className='text-right'>
                                                             <div>
+
+                                                            {item.percent?
                                                                 <span className="discount">
                                                                     {item.percent}% off
-                                                                </span>
+                                                                </span>:""
+                                                            }
                                                                 <del>
                                                                     <FaRupeeSign className='inline' style={{fontSize:'12px',marginBottom:'4px'}} />
                                                                     {item.price}/-
@@ -354,9 +357,11 @@ const Package = ({item}) =>{
                                 {/* </Link> */}
                                 <div className="buttons desk_display_none mt-2" style={{overflow:'auto'}}>
                                     <div className="flt_left">
+                                    <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true}>
                                         <button className="btn_listing">
                                             VIEW DETAILS
                                         </button>
+                                    </Link>
                                     </div>
                                     <div className="flt_right">
                                         <button className="btn_listing _btn_clr" onClick={()=>_sendquery(item.finalprice,item.id,item.name,item.city)}>

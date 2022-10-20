@@ -92,7 +92,7 @@ const Articles = ({data}) =>{
     return <>
         <section className={tw`Hotels mt-16 _latest_stories_`}>
             <div className="container">
-                <div className='row'>
+                <div className='row_'>
                     <div className="box_design_common bg_orange_">
                         <div className={tw`title_kiomoi flex items-center justify-between mb-6`}>
                             <div className={tw`2w-full`}>

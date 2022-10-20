@@ -97,10 +97,17 @@ nav{
     background: white;
     width: 100%;    
 }
+.brand-logo{
+    height: 40px;
+}
 
 @media (max-width:480px){
+    .brand-logo{
+        height: 26px;
+    }
     .item{
         padding:10px 10px 10px 10px;
+        /* padding: 20px 4px 10px 0px; */
     }
     .right-icons .item{
         padding:15px 20px 15px 20px !important;
@@ -109,6 +116,7 @@ nav{
         font-size:11px;
     }
     .logo_item{
-        padding:10px 15px 10px 15px;
+        /* padding:10px 15px 10px 15px; */
+        padding: 15px 4px 10px 0px;
     }
 }
