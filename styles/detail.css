@@ -42,7 +42,7 @@
 
   .slide {
     width: 100%;
-    height: 350px;
+    height: 350px !important;
     border-radius: 8px;
   }  
 
@@ -115,15 +115,40 @@
   
   .d_location{
     /* padding:5px; */
-    font-size: 15px;
+    font-size: 12px;
   }
 
   .d_ap_city span {
-    font-size: 15px;
-    font-weight: 700;
+    font-size: 11.5px;
+    /* font-weight: 700; */
+    color:rgb(95, 95, 94);
   }
   ._cities{
     margin-bottom: 30px;
+  }
+  .day_nights{
+    border:1px solid #84828a;
+    width:fit-content;
+    border-radius: 11px;
+  }
+  .days,.night{
+    padding: 4px;
+    font-size: 10px;
+  }
+  .check_availability{
+    margin: 0px;
+    text-align: center;
+    cursor: pointer;
+    color: rgb(232, 79, 52);
+    font-size: 1.1em;
+    font-weight: bold;    
+  }
+
+
+  .night{
+    background: #84828a;
+    border-radius: 10px 0px 0px 10px;
+    color: white;
   }
 
   .bestson_list {
@@ -184,10 +209,45 @@
     padding-top: 5px;
   }
   .price_tag_banner .__price {
-    font-size: 30.4px;
-    font-weight: 500;
+    font-size: 26.4px;
+    /* font-weight: 500; */
     line-height: 20px;
   }
+
+  ._circle_51 {
+    text-align: center;
+    line-height: 48px;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 1px solid #888;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px;
+  }
+  ._themes {
+    font-size: 16px;
+    font-weight: 500;
+    color: #383838;
+  }
+  ._circle_51 img {
+    height: 30px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    padding: 3px;
+  }  
+
+
+  ._circle_51:hover {
+    background-image: linear-gradient(144deg,#f79421 3%,#f06726 48%,#dc2d4d 99%);
+    cursor: pointer;
+    border: none;
+  }
+  ._circle_51:hover img {
+    -webkit-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+  } 
 
   ._person_{
     font-size: 10px;
@@ -817,6 +877,9 @@ ul.breadcrumb {
     max-width: 270px;
     margin: 0 auto;
     font-size: 9px;
+  }
+  .thms{
+    display: none;
   }
   .m_s_icon {
     top: 12px;

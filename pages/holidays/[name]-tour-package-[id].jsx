@@ -55,6 +55,10 @@ const DetailPage = ({ data, related, reviews }) => {
             {
                 item: "India",
                 href: "/holidays/"
+            },
+            {
+                item :`${data.package.region.split(",")[0]}`,
+                href:`/holidays/${data.package.region.split(",")[0].toLowerCase()}-tour-packages/${data.gid}/`
             }
         ]
     }
@@ -145,6 +149,28 @@ const DetailPage = ({ data, related, reviews }) => {
         );
     });
 
+    const themeRender = data.package.theme.split('#').map(function (item, i) {
+        // try {
+        //   const images = require.context("../assets/", true);
+        //   var img2 = "Ico_" + item.trim() + ".png";
+  
+        //   var img = images(`./${img2}`);
+        // } catch (err) {
+        //   var img = "";
+        // }
+        
+
+        if (i < 4) {
+          return (
+            <>
+                <div class="_circle_51" title={item}>
+                    <img style={{display:'initial'}} src={`/icons/Ico_${item.trim()}.png`} />
+                </div>
+            </>
+          );
+        }
+      });    
+
     // Handle Image Change
     const imageChange = e => {
         if (e?.target?.files && e?.target?.files?.length > 0) {
@@ -172,7 +198,14 @@ const DetailPage = ({ data, related, reviews }) => {
                         </div>
                     </div>
                 </div>
-                <div className='col-sm-4 col-xs-6'></div>
+                <div className='col-sm-4 col-xs-6'>
+                    <div className={tw`text-right thms`}>
+                        <span class="_themes">Themes</span>
+                            {themeRender}
+                    </div>
+
+
+                </div>
             </div>
             <div className='container'></div>
         </section>

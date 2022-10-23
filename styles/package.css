@@ -228,5 +228,5 @@ del{
     display: none;
   }
   .slider_banner__ .slide{
-    height: auto;
+    height: auto !important;
   }

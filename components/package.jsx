@@ -1,6 +1,6 @@
 // import {} from '@fortawesome/fontawesome-free'
-import {BsDot,BsStarFill,BsStarHalf} from 'react-icons/bs'
-import {IoLocationSharp} from 'react-icons/io5'
+import {BsDot,BsStarFill,BsStarHalf,BsFillMoonFill} from 'react-icons/bs'
+import {IoLocationSharp,IoSunny} from 'react-icons/io5'
 import {MdCheckCircle} from 'react-icons/md'
 import {FaRupeeSign} from 'react-icons/fa'
 import Link from 'next/link'
@@ -67,7 +67,24 @@ const Package = ({item}) =>{
                                                         <div>
                                                             <h2 className={tw`pack_title`}>{item.name}</h2>
                                                             <div className="days_night">
-                                                                {item.nights} Nights | {item.nights+1} Days
+                                                                {/* {item.nights} Nights | {item.nights+1} Days */}
+                                                                <div className={tw`flex justify-center day_nights`}>
+                                                                    <div className='night'>
+                                                                        <BsFillMoonFill className={tw`inline pr`}/>
+                                                                        <span className={tw`pl-1`}>
+                                                                            {item.nights} Nights
+                                                                        </span>
+                                                                        
+                                                                    </div>
+                                                                    <div className='days'>
+                                                                        <IoSunny className={tw`inline`} />
+                                                                        <span className={tw`pl-1`}>
+                                                                            {item.nights+1} Days
+                                                                        </span>
+                                                                        
+
+                                                                    </div>
+                                                                </div>                                                                
                                                             </div>
                                                         </div>
                                                         
@@ -120,8 +137,26 @@ const Package = ({item}) =>{
                                                         <div className="flt_left">
                                                             <div>
                                                                 <h2 className={tw`pack_title text-xl`}>{item.name}</h2>
-                                                                <div className="days_night">
-                                                                    {item.nights} Nights | {item.nights+1} Days
+                                                                <div className={tw`days_night_ mt-1`}>
+                                                                    {/* {item.nights} Nights | {item.nights+1} Days */}
+                                                                    <div className={tw`flex day_nights`}>
+                                                                        <div className='night'>
+                                                                            <BsFillMoonFill className={tw`inline pr`}/>
+                                                                            <span className={tw`pl-1`}>
+                                                                                {item.nights} Nights
+                                                                            </span>
+                                                                            
+                                                                        </div>
+                                                                        <div className='days'>
+                                                                            <IoSunny className={tw`inline`} />
+                                                                            <span className={tw`pl-1`}>
+                                                                                {item.nights+1} Days
+                                                                            </span>
+                                                                            
+
+                                                                        </div>
+                                                                    </div> 
+
                                                                 </div>
                                                             </div>
                                                             
@@ -168,7 +203,7 @@ const Package = ({item}) =>{
 
 
 
-                                                        <div className="_cities">
+                                                        <div className="_cities_">
                                                             <div className="_ap_city">
                                                                 <span>
                                                                 {

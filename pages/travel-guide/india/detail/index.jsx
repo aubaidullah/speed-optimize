@@ -417,19 +417,40 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna,type 
 
 
             </div>
-            <HomePackages data={packages} />
-            <Hotel data={hotels} />
-            <Articles data={article} />
+            {/* <HomePackages data={packages} /> */}
 
-            <QnaListing data={qna} travelGuide={true} />
-            <Link href={`/qna/${data.tg.cityName}-${data.tg.id}`}>
-                <a className="anchore_coment _w100 _m_" href={`/qna/${data.tg.cityName}-${data.tg.id}`}>
-                    <div>
-                        View All QNA
-                    </div>
+            {
+                packages.length!=0?<HomePackages data={packages} />:""
+            }            
 
-                </a>
-            </Link>
+            {
+                hotels.length!=0?<Hotel data={hotels} />:""
+            }
+            
+            {
+                article.length!=0?<Articles data={article} />:""
+            }
+            {
+                qna.length!=0?
+                <>
+                    <QnaListing data={qna} travelGuide={true} />
+                    <Link href={`/qna/${data.tg.cityName}-${data.tg.id}`}>
+                        <a className="anchore_coment _w100 _m_" href={`/qna/${data.tg.cityName}-${data.tg.id}`}>
+                            <div>
+                                View All QNA
+                            </div>
+
+                        </a>
+                    </Link>                
+                </>
+                
+                
+                :""
+            }            
+            {/* <Articles data={article} /> */}
+
+            {/* <QnaListing data={qna} travelGuide={true} /> */}
+
             <Leaform 
                 isshow = {sendquery}
                 packageid={data.tg.id}

@@ -1,6 +1,7 @@
-import {IoLocationSharp} from 'react-icons/io5'
+import {IoLocationSharp,IoSunny} from 'react-icons/io5'
 import {MdCheckCircle} from 'react-icons/md'
-import {BsDot,BsStarFill,BsStarHalf,BsChevronDown} from 'react-icons/bs'
+import {BsDot,BsStarFill,BsStarHalf,BsChevronDown,BsFillMoonFill} from 'react-icons/bs'
+// import {IoSunny} from 'react-icons/io'
 import {useState} from 'react'
 import axios from 'axios'
 import moment from 'moment'
@@ -95,10 +96,27 @@ const RightBar=({data})=>{
                             <div className='ov_auto'>
                                 <div className='d_location flt_left'>
                                     <IoLocationSharp className='inline'/>
-                                    <span>{data.package.source}</span>
+                                    <span style={{color:'rgb(6, 24, 141)'}}>{data.package.source}</span>
                                 </div>
                                 <div className='d_location days_night flt_right'>
-                                    {data.package.nights} Nights | {data.package.nights+1} Days
+                                    <div className={tw`flex justify-center day_nights`}>
+                                        <div className='night'>
+                                            <BsFillMoonFill className={tw`inline pr`}/>
+                                            <span className={tw`pl-1`}>
+                                                {data.package.nights} Nights
+                                            </span>
+                                            
+                                        </div>
+                                        <div className='days'>
+                                            <IoSunny className={tw`inline`} />
+                                            <span className={tw`pl-1`}>
+                                                {data.package.nights+1} Days
+                                            </span>
+                                            
+
+                                        </div>
+                                    </div>
+                                    {/* {data.package.nights} Nights | {data.package.nights+1} Days */}
                                 </div>
                             </div>
 
@@ -122,6 +140,7 @@ const RightBar=({data})=>{
 
                             <div className='bestson_list _border_right'>
                                 <div className="best_session">
+                                    <MdCheckCircle className='inline' style={{color:'#15be03'}}/>
                                     <span>Best Session : </span>
                                     <span> {
                                         data.package.season.split(",").length === 12? "round-the-year":
@@ -165,9 +184,9 @@ const RightBar=({data})=>{
 
                     </div>
                     <div className='_b_right_list'>
-                        <div style={{padding:'15px'}}>
+                        <div style={{padding:'10px'}}>
                             <div style={{textAlign:'center'}}>
-                                <span>Check Availability</span>
+                                <span className='check_availability'>Check Availability</span>
                             </div>
                             
                         </div>
@@ -184,11 +203,11 @@ const RightBar=({data})=>{
                                 onClick={()=>setShowpeopledropdown(!showpeopledropdown)}
                                 // onClick={() => this.changepeople()}
                             >
-                                <img src={"/icons/friends.svg"} alt="" />
+                                <img src={"/icons/friends.svg"} className={tw`inline`} alt="" />
                                 <span className="_2_two" style={{ cursor: "pointer" }}>
                                 {people} People{" "}
                                 {/* <i className="fa fa fa-angle-down"></i>{" "} */}
-                                <BsChevronDown/>
+                                <BsChevronDown className={tw`inline`}/>
                                 </span>
                                 {showpeopledropdown ? (
                                 <div className="dropdown-content">
@@ -247,6 +266,7 @@ const RightBar=({data})=>{
                             <div className="_price_line text-right">
                             <div className="price_tag_banner">
                                 <span className="__price">
+                                <FaRupeeSign className={tw`inline`}/>
                                 {parseInt(data.package.price) > 0 ? (
                                     <>
                                     <i className="fa fa-inr" style={{ backgroundColor: 'initial' }}></i>
