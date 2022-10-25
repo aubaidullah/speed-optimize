@@ -3,6 +3,7 @@ import axios from "axios";
 import * as Constants from "../components/Constants";
 import swalr from '@sweetalert/with-react'
 import { AiFillCheckCircle, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
+import {BsXLg} from 'react-icons/bs'
 import { tw } from "twind";
 import { useState, useRef, useEffect } from "react";
 import { Modal, Collapse } from "react-bootstrap";
@@ -814,7 +815,8 @@ const BookingDetail = () => {
                             style={{ float: "right", color: "black" }}
                             aria-hidden="true"
                         >
-                            <i className="fa fa-close"></i>
+                            <BsXLg />
+                            {/* <i className="fa fa-close"></i> */}
                         </span>
                     </a>
                     <form onSubmit={mybookingSubmit}>

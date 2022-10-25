@@ -486,9 +486,11 @@ const Package = ({item}) =>{
 
                         <div className="buttons" style={{overflow:'auto'}}>
                             <div className="flt_left">
+                            <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true}>
                                 <button className="btn_listing">
                                     VIEW DETAILS
                                 </button>
+                            </Link>
                             </div>
                             <div className="flt_right">
                                 <button className="btn_listing _btn_clr" onClick={()=>_sendquery(item.finalprice,item.id,item.name,item.city)}>
