@@ -90,7 +90,7 @@ const Nav = () => {
 
     return <>
     
-        <nav data-aos="fade-down" id="navbar" className={tw`shadow-sm_`} style={{ overflow: 'auto', zIndex: 1 }}>
+        <nav data-aos="fade-down" id="navbar" className={tw`shadow-sm_`} style={{ overflow: 'auto', zIndex: 2 }}>
             {showLogin ? <Login show={showLogin} setShowLogin={setShowLogin} /> : null}
             {!showSearch ?
                 <div className={tw`container`}>
@@ -141,11 +141,14 @@ const Nav = () => {
                     <div className="item_group flt_right right_icons">
                         <div className="item flt_left" onClick={() => SetshowSearch(true)}>
                             <HiOutlineSearch
+                                // color={"#a7a7a7"}
+                                className="c_it"
                                 size={"20px"}
                             />
                         </div>
                         <div className="item flt_left">
                             <FaRegUser
+                                className="c_it"
                                 onClick={() => setShowLogin(!showLogin)}
                                 size={"20px"}
                             />

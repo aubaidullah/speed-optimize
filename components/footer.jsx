@@ -31,7 +31,7 @@ const Footer = () => {
                 <div className='row'>
                     <div className={tw`payment_secure flex flex-col justify-center items-center px-4 md:px-0 col-12 col-md-4`}>
                         <div>
-                            <h4 className={tw`mb-3 md:text-start`}>Secure Payment</h4>
+                            <h4 className={tw`mb-3 text-center md:text-start`}>Secure Payment</h4>
                             <div className={tw`flex gap-3 mb-4 md:mb-0`}>
                                 <span>
                                     <img
