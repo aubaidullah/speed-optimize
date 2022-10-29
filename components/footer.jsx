@@ -9,19 +9,19 @@ const Footer = () => {
         <div className={tw`w-100 overflow-hidden mt-5`}>
             <div className={tw`flex justify-center py-3`} style={{ background: '#505050' }}>
                 <ul className={tw`flex gap-2 custom-footer`}>
-                    <li className={tw`cursor-pointer text-xs md:text-lg`}>
+                    <li className={tw`cursor-pointer text-sm md:text-sm`}>
                         <Link href="/aboutus/">About us </Link>
                         <span className={tw`fs-6 md:fs-4`}> | </span>
                     </li>
-                    <li className={tw`cursor-pointer text-xs md:text-lg`}>
+                    <li className={tw`cursor-pointer text-sm md:text-sm`}>
                         <Link href="/privacy/">Privacy </Link>
                         <span className={tw`fs-6 md:fs-4`}> | </span>
                     </li>
-                    <li className={tw`cursor-pointer text-xs md:text-lg`}>
+                    <li className={tw`cursor-pointer text-sm md:text-sm`}>
                         <Link href="/terms-and-conditions/">Term & Conditions </Link>
                         <span className={tw`fs-6 md:fs-4`}> | </span>
                     </li>
-                    <li className={tw`cursor-pointer text-xs md:text-lg`}>
+                    <li className={tw`cursor-pointer text-sm md:text-sm`}>
                         <Link href="/bookingdetail/">My Bookings </Link>
                         <span className={tw`fs-6 md:fs-4`}></span>
                     </li>
