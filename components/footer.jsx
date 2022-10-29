@@ -31,35 +31,35 @@ const Footer = () => {
                 <div className='row'>
                     <div className={tw`payment_secure flex flex-col justify-center items-center px-4 md:px-0 col-12 col-md-4`}>
                         <div>
-                            <h4 className={tw`font-semibold md:font-bold mb-3 text-center md:text-start text-base md:text-xl`}>Secure Payment</h4>
+                            <h4 className={tw`mb-3 md:text-start`}>Secure Payment</h4>
                             <div className={tw`flex gap-3 mb-4 md:mb-0`}>
                                 <span>
                                     <img
-                                        src={"icons/payment_icons/1.png"}
+                                        src={"/icons/payment_icons/1.png"}
                                         alt=""
                                     />
                                 </span>
                                 <span>
                                     <img
-                                        src={"icons/payment_icons/2.png"}
+                                        src={"/icons/payment_icons/2.png"}
                                         alt=""
                                     />
                                 </span>
                                 <span>
                                     <img
-                                        src={"icons/payment_icons/3.png"}
+                                        src={"/icons/payment_icons/3.png"}
                                         alt=""
                                     />
                                 </span>
                                 <span>
                                     <img
-                                        src={"icons/payment_icons/4.png"}
+                                        src={"/icons/payment_icons/4.png"}
                                         alt=""
                                     />
                                 </span>
                                 <span>
                                     <img
-                                        src={"icons/payment_icons/5.png"}
+                                        src={"/icons/payment_icons/5.png"}
                                         alt=""
                                     />
                                 </span>
@@ -68,7 +68,7 @@ const Footer = () => {
                     </div>
                     <hr className={tw`col-12 col-md-4 text-white w-80 m-auto mb-3 d-block d-md-none`} />
                     <div className={tw`payment_secure follow-links col-12 col-md-4`}>
-                        <h4 className={tw`font-semibold md:font-bold mb-3 px-3 md:px-0 text-center text-base md:text-xl`}>Follow us on</h4>
+                        <h4 className={tw`mb-3 px-3 md:px-0 text-center`}>FOLLOW US ON</h4>
                         <ul className={tw`flex justify-center px-3 md:px-0 gap-4 mb-3 md:mb-0`}>
                             <li className={tw`cursor-pointer`} style={{ fontSize: 33 }}>
                                 <a href="https://www.facebook.com/thekiomoi/" target="_blank">
@@ -106,7 +106,7 @@ const Footer = () => {
                             />
                             <div className="WhatsApp_">
                                 <h4 className={tw`text-md md:text-lg font-bold mb-2`}>WHATSAPP</h4>
-                                <a className={tw`text-md md:text-lg font-semibold md:font-bold text-white`} href="whatsapp://send?phone=+919650687940">
+                                <a className={tw`text-md md:text-lg text-white`} href="whatsapp://send?phone=+919650687940">
                                     +919650687940
                                 </a>
                             </div>
@@ -115,18 +115,18 @@ const Footer = () => {
                     <hr className={tw`col-12 col-md-4 text-white w-80 m-auto my-4 d-block d-md-none`} />
                     <div className={tw`container text_footer_bottom text-center mt-3`}>
                         <div>
-                            <p style={{ fontSize: "13px" }} className={tw`font-semibold`}>
+                            <p style={{ fontSize: "14px" }}>
                                 H-187, Lohia Road, Sector-63, Noida 201301 India
                             </p>
-                            <p style={{ fontSize: "13px" }} className={tw`font-semibold`}>
+                            <p style={{ fontSize: "14px" }}>
                                 Call: +91- 8448298660 / +91- 9650687940 | Email: info@kiomoi.com
                             </p>
                         </div>
-                        <p className={tw`font-semibold`}>
+                        <p>
                             Copyright 2022 © Kiomoi Rights Reserved.
                         </p>
                         <p>Kiomoi and the logos are registered trademarks of IHR Travel Services Pvt Ltd</p>
-                        <p className={tw`px-5 font-semibold`}>
+                        <p>
                             The content and images used on this site are copyright protected
                             and copyrights vests with the respective owners. The usage of
                             the content and images on this website is intended to promote

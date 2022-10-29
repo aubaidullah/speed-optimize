@@ -95,7 +95,7 @@ const RightBar=({data})=>{
                         <div style={{padding:'15px'}}>
                             <div className='ov_auto'>
                                 <div className='d_location flt_left'>
-                                    <IoLocationSharp className='inline'/>
+                                    <IoLocationSharp style={{color:'#999'}} className='inline' size={15}/>
                                     <span style={{color:'rgb(6, 24, 141)'}}>{data.package.source}</span>
                                 </div>
                                 <div className='d_location days_night flt_right'>
@@ -140,7 +140,7 @@ const RightBar=({data})=>{
 
                             <div className='bestson_list _border_right'>
                                 <div className="best_session">
-                                    <MdCheckCircle className='inline' style={{color:'#15be03'}}/>
+                                    <MdCheckCircle className='inline' size={13} style={{color:'#15be03'}}/>
                                     <span>Best Session : </span>
                                     <span> {
                                         data.package.season.split(",").length === 12? "round-the-year":
@@ -170,12 +170,12 @@ const RightBar=({data})=>{
                         <div style={{padding:'15px'}}>
                             <div className='ov_auto'>
                                 <div className='flt_left f_12px'>
-                                    <MdCheckCircle className='inline' style={{color:'#15be03'}}/>
+                                    <MdCheckCircle size={13} className='inline' style={{color:'#15be03'}}/>
                                     <span className='_inline__'>Part Payment Available</span>
                                 </div>
 
                                 <div className='flt_right f_12px'>
-                                    <MdCheckCircle className='inline' style={{color:'#15be03'}}/>
+                                    <MdCheckCircle size={13} className='inline' style={{color:'#15be03'}}/>
                                     <span className='_inline__'>Free Cancellation</span>
                                     
                                 </div>
@@ -186,7 +186,16 @@ const RightBar=({data})=>{
                     <div className='_b_right_list'>
                         <div style={{padding:'10px'}}>
                             <div style={{textAlign:'center'}}>
-                                <span className='check_availability'>Check Availability</span>
+                                <span className='check_availability'
+                                onClick={() =>
+                                    _sendquery(
+                                    price,
+                                    data.package.id,
+                                    data.package.name,
+                                    data.package.source
+                                )
+                                }
+                                >Check Availability</span>
                             </div>
                             
                         </div>

@@ -54,7 +54,7 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna,type 
     }
     const imagesRender = data.images.map((img, index) => {
         return <div key={index}>
-            <img src={img.i} className="img" />
+            <img src={img.i} className="img" style={{borderRadius:'8px'}}/>
         </div>
     })
 
@@ -75,7 +75,7 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna,type 
             <div>
                 <img src={`/icons/${icon}`} alt="" className={tw`inline`} style={{ height: '15.7px' }} />
             </div>
-            <div className={tw`ml-2`}>
+            <div className={tw`ml-4`}>
                 <div className={tw`t_12px font-bold`}>{heading}</div>
                 <div className="t_12px">{desc}</div>
             </div>
@@ -89,20 +89,22 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna,type 
         <Nav />
         <BreadCrumbs bread={bread} />
         <section className="container">
+            <div className="title_listing_">
             {
                 type=='CITY'?<h1 className={tw`text-2xl font-bold`}>{data.tg.cityName}</h1>:                
                 <h1 className={tw`text-2xl font-bold`}>Places To Visit in {data.tg.cityName}</h1>
             }
+            </div>
             {/* <h1 className={tw`text-2xl font-bold`}>{data.tg.cityName}</h1> */}
             <div className="detail_slide_nav _30px">
                 <ul>
-                    <li>
+                    {/* <li>
                         <a href="#photos" className="_c_default">
                             Photos
                         </a>
-                    </li>
+                    </li> */}
                     <li>
-                        <a href="#overview">Overview</a>
+                        <a className="_c_active" href="#overview">Overview</a>
                     </li>
                     <li>
                         <a href="#itinery">Fair, Festivals & Activities</a>
@@ -148,8 +150,10 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna,type 
                                 <div className={tw`flex justify-between`}>
                                     <div>
                                         <IoLocationSharp className='inline' />
-                                        {data.tg.cityName}
-                                        <BsDot className={tw`inline`} /> India
+                                        <span>
+                                            {data.tg.cityName}
+                                        </span>
+                                        <BsDot className={tw`inline`} /> <span>India</span>
                                     </div>
                                     <div className="cir_bg">
                                         {
@@ -232,7 +236,7 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna,type 
 
                                             {
                                                 // type=='CITY'?
-                                                rightBlock({ icon: 'plane_icon.png', heading: 'Weather Type', desc: weather?.weather[0]?.main })
+                                                rightBlock({ icon: 'whether_icon.png', heading: 'Weather Type', desc: weather?.weather[0]?.main })
                                                 // :rightBlock({ icon: 'plane_icon.png', heading: 'Station', desc: weather?.weather[0]?.main })
                                             }
                                         </div>
@@ -287,7 +291,7 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna,type 
 
             <div className={tw`mt-4 w-full lg:w-2/3`}>
                 <div>
-                    <h2 className={tw`text-xl font-bold`}>Overview</h2>
+                    <h2 className={'_titles_'}>Overview</h2>
                     <div className={tw``}>
                         <div className="Shape_42">
                             {ReactHtmlParser(overview)}
@@ -317,7 +321,7 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna,type 
                     <div>
                         <div className={tw`flex justify-between`}>
                             {
-                                type=='CITY'?<h2 className={tw`text-xl font-bold`}>Attractions in {data.tg.cityName}</h2>
+                                type=='CITY'?<h2 className={'_titles_'}>Attractions in {data.tg.cityName}</h2>
                                 :<h2 className={tw`text-xl font-bold`}>Top Cities in {data.tg.cityName}</h2>
                             }
                             

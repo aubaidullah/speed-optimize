@@ -40,17 +40,39 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
     
     // console.log(filter)
     
-    const bread = {
-        disabled:{
-            "item":"Holidays Bookings"
-        },
-        enabled :[
-            {
-                item:"Kiomoi",
-                href:"/"
-            },                    
-        ]
-    }
+        const state_bread = {
+            disabled:{
+                "item":`${region?.name}`
+            },
+            enabled :[
+                {
+                    item:"Kiomoi",
+                    href:"/"
+                },
+                {
+                    item:"Holidays Bookings",
+                    href:"/holidays"
+                },
+                {
+                    item:"India",
+                    href:"/holidays"
+                },                
+            ]
+        }    
+
+        const all_bread = {
+            disabled:{
+                "item":"Holidays Bookings"
+            },
+            enabled :[
+                {
+                    item:"Kiomoi",
+                    href:"/"
+                },                    
+            ]
+        }
+    
+    
 
     var d = region?.desc
     // console.log(d)
@@ -62,7 +84,11 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
 
     return <article>
 
-        <BreadCrumbs bread={bread}/>
+        <BreadCrumbs bread={
+            page_type=='STATE'?state_bread:all_bread
+            // bread
+        
+        }/>
         <Modal
             show={isshow}
             animation={false}
@@ -94,7 +120,7 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
                 {/* <div className="row" style={{marginBottom:'30px'}}>
                     <h2>Kiomoi packages</h2>
                 </div> */}
-                {region?
+                {/* {region?
                 <div className={tw`p-4 bg-white mb-4 _box_shadow_`}>
                 <h2 className={tw`text-2xl pb-2`}>{region?.name}</h2>
                 <div>
@@ -123,7 +149,7 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
                 
                 
                 :""
-                }
+                } */}
 
                 <div className={tw`flex flex-wrap`}>
                     {!isMobile?
@@ -143,7 +169,18 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
                                         }
                                         
                                         <span className={tw`font-bold ml-2`}>
-                                            {data.length} Packages
+                                            {data.length} Packages 
+                                        </span>
+                                        <span>
+                                        {page_type=='STATE'?
+                                        <span>
+                                            <span> for </span>
+                                            <span style={{color:'rgb(240, 103, 38)'}}>{region?.name}</span>
+                                        </span>
+                                        
+                                        :""
+                                            // ` for ${region?.name}`:""
+                                        }
                                         </span>
                                         
                                     </h3>
@@ -208,6 +245,39 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
                     
 
                 </div>
+
+                {region?
+                <div className={tw`p-4 bg-white_ mb-4 _box_shadow_ title_listing_`}>
+                <h1 className={tw`text-2xl pb-2`}>{region?.name}</h1>
+                <div>
+                    {ReactHtmlParser(overview)}
+                    {overviewlimit == 150 ||
+                        overviewlimit == 200 ? (
+                        <a
+                        onClick={() =>
+                            setOverviewlimit(10000)
+                        }
+                        className="_plus_more"
+                        >
+                        +more
+                        </a>
+                    ) : (
+                        <a
+                        onClick={()=>setOverviewlimit(200)}
+                        className="_plus_more"
+                        >
+                        -less
+                        </a>
+                    )}
+
+                </div>
+                </div>
+                
+                
+                :""
+                }
+
+
             </section>
         </article>
 }

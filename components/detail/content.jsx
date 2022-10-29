@@ -188,7 +188,7 @@ const Content = ({data}) =>{
             <div className='container'>
                 <div className='row'>
                     <div className='col-sm-12'>
-                        <h4 className='_titles'>Inclusions</h4>
+                        <h4 className="_titles_">Inclusions</h4>
                     </div>
                 
 
@@ -264,7 +264,7 @@ const Content = ({data}) =>{
                         </div>
 
                         <div className='_blank' id="overview">
-                            <h4>Overview</h4>
+                            <h4 className="_titles_">Overview</h4>
                             <div className="Shape_42">
                                 <p>{ReactHtmlParser(overview)}</p>    
                                 <div className="text-right">

@@ -482,7 +482,7 @@ const Package = ({item}) =>{
                             </div>
                         </div>
                     </div>
-                    <div className='flt_right col-sm-3 col-sx-12'>
+                    <div className='flt_right col-sm-4 col-sx-12'>
 
                         <div className="buttons" style={{overflow:'auto'}}>
                             <div className="flt_left">

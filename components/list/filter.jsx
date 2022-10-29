@@ -90,7 +90,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,city,theme=undefined}) =>{
 
     return <>
     {/* style={{position:'sticky',top:'101px'}} */}
-        <div className={tw`bg-white sticky`}>
+        <div className={tw`bg-white sticky`} style={{borderRadius:'8px'}}>
             <div className={tw`p-3`}>
                 <div className={tw`flex items-center justify-between mb-4`}>
                     <h2 className={tw`text-xl font-bold`}>

@@ -361,6 +361,39 @@ ul>li::marker {
   z-index: 1;
 }
 
+.payment_secure h4, .WhatsApp_ h4 {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.text_footer_bottom p {
+  opacity: .63;
+  font-size: 11px;
+  color: #999;
+  margin: 0;
+}
+
+
+.title_listing_ h1, .title_listing_ h4 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #f06726;
+}
+
+
+
+
+
+@media (min-width: 1280px)
+{
+  .container {
+    max-width: 1170px !important;
+  }
+}
+
+
+
 
 @media only screen and (max-width: 600px) {
   .t_box {

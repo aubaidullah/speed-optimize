@@ -21,6 +21,11 @@
     line-height: 1.6;    
 }
 
+._asia_india span {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #403f3f;
+}
 
 ._stories_services {
   padding-left: 0;
