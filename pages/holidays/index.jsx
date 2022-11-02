@@ -5,7 +5,7 @@ import Image from "next/image"
 // import ListPage from '../components/list_page.desktop'
 import {useEffect,useState} from 'react'
 import dynamic from 'next/dynamic';
-import {getallpackages} from '../../components/Graphql/Queries'
+import {getallpackages,getThemeQuery} from '../../components/Graphql/Queries'
 import client from '../../components/Graphql/service'
 import {getPackages} from '../../redux_fx/actions'
 import {useSelector,useDispatch} from 'react-redux'
@@ -23,7 +23,7 @@ const DeskList = dynamic(() => import('../../components/list_page.mobile'), {
 });
 
 
-const Home =({data,headers,region,places})=>{
+const Home =({data,headers,region,places,theme})=>{
     const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('android') || headers['user-agent'].includes('iphone'))
     
     const dispatch = useDispatch()
@@ -51,10 +51,10 @@ const Home =({data,headers,region,places})=>{
 
     if (isMobile==true){
         // return <ListPageMobile data = {data}/>
-        return <><Nav/> <MobileList page_type={'ALL'} data={pdata??[]} region = {region} places={places} isMobile={isMobile} /></>
+        return <><Nav/> <MobileList page_type={'ALL'} data={pdata??[]} region = {region} places={places} isMobile={isMobile} theme={theme} /></>
     }
     else{
-        return <><Nav/><DeskList page_type={'ALL'} data = {pdata??[]} region = {region} places={places} isMobile={isMobile}/></>
+        return <><Nav/><DeskList page_type={'ALL'} data = {pdata??[]} region = {region} places={places} isMobile={isMobile} theme={theme} /></>
     }
 
 }
@@ -73,8 +73,11 @@ export async function getServerSideProps(context) {
     const places = res.data.allpackage.output.fcities
     // console.log(places)
     headers['user-agent'] = headers['user-agent'].toLocaleLowerCase()
+    const res_theme = await client.query({query:getThemeQuery,variables:{input:{'av':'','id':'','pt':''}}})
 
-    return { props: { data,headers,region,places}}
+    console.log()
+
+    return { props: { data,headers,region,places,theme:res_theme.data.alltheme.output}}
   }
   
 

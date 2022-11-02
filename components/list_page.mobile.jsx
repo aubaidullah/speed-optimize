@@ -74,7 +74,7 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
     
     
 
-    var d = region?.desc
+    var d = region?.desc??""
     // console.log(d)
 
     useEffect(()=>{
@@ -189,16 +189,16 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
                                 {
                                     isMobile==false?<div>
                                     <div className="flex flex-wrap">
-                                        <div className={tw`p-2 text-sm text-bold text-gray-600`}>
+                                        <div className={tw`p-2 sort_w text-bold font-gray-400`}>
                                             SORT BY : 
                                         </div>
-                                        <div className={tw`p-2 text-sm text-gray-600 cursor-pointer`}>
+                                        <div className={tw`p-2 sort_w cursor-pointer`}>
                                             POPULAR
                                         </div>
-                                        <div className={tw`p-2 text-sm  text-gray-600 cursor-pointer`}>
+                                        <div className={tw`p-2  sort_w cursor-pointer`}>
                                             DURATION
                                         </div>
-                                        <div className={tw`p-2 text-sm text-gray-600 cursor-pointer`}>
+                                        <div className={tw`p-2 sort_w cursor-pointer`}>
                                             PRICE
                                         </div>                                                                                
                                     </div>

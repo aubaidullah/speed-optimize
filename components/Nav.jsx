@@ -90,7 +90,7 @@ const Nav = () => {
 
     return <>
     
-        <nav data-aos="fade-down" id="navbar" className={tw`shadow-sm_`} style={{ overflow: 'auto', zIndex: 2 }}>
+        <nav data-aos="fade-down" id="navbar" className={tw`shadow-sm_`} style={{ overflow: 'auto', zIndex: 3 }}>
             {showLogin ? <Login show={showLogin} setShowLogin={setShowLogin} /> : null}
             {!showSearch ?
                 <div className={tw`container`}>

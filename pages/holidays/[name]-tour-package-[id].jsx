@@ -360,7 +360,8 @@ const DetailPage = ({ data, related, reviews }) => {
                 {reviews.reviews.length > 0 ? reviewRender : "No Reviews yet"}
                 {reviews.reviews.length > 0 && maxReview == 5 ?
                     <div
-                        className={tw`w-full lg:w-2/3 flex flex-row-reverse text-lg font-bold cursor-pointer`}
+                        style={{color:'#999'}}
+                        className={tw`w-full hover:text-black lg:w-2/3 flex flex-row-reverse text-lg font-bold cursor-pointer`}
                         onClick={() => setMaxReview(reviews.count)}
                     >
                         View All

@@ -6,15 +6,15 @@ import Link from 'next/link'
 const TravelGuide = ({data}) =>{
 
 
-    const SampleNextArrow = ()=> {
-        // const { className, style, onClick } = props;
+    const SampleNextArrow = (props)=> {
+        const { className, style, onClick } = props;
         // {tw`hidden lg:carousel-button-group lg:block `}
-        return <div className={tw`hidden lg:block custom-btn right-custom-btn`} />;
+        return <div className={tw`hidden lg:block custom-btn right-custom-btn`} onClick={onClick}/>;
       }
   
-    const SamplePrevArrow = () => {
-        // const { className, style, onClick } = props;
-        return <div className={tw`hidden lg:block custom-btn left-custom-btn`} />;
+    const SamplePrevArrow = (props) => {
+        const { className, style, onClick } = props;
+        return <div className={tw`hidden lg:block custom-btn left-custom-btn`} onClick={onClick}/>;
       }
 
 

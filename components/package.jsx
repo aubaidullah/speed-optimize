@@ -106,7 +106,7 @@ const Package = ({item}) =>{
                                                     </div>                        
                                                 </div>
 
-                                                <div style={{marginTop:'5px'}}>
+                                                <div className={tw`mt-0 sm:mt-2`}>
                                                 <Carousel
                                                     showStatus={false}
                                                     showThumbs={false}
@@ -324,12 +324,12 @@ const Package = ({item}) =>{
                                                     <div className={tw`flex items-center justify-between`}>
                                                         
                                                         <div className='text-left'>
-                                                            <div className="checks">
+                                                            <div className={tw`flex checks`}>
                                                                 <p>
                                                                     <MdCheckCircle className='inline' style={{color:'#15be03'}} /> Free Cancellation
                                                                     {/* <br/><MdCheckCircle className='inline' style={{color:'#15be03'}} /> Part Payment */}
                                                                 </p>
-                                                                <p>
+                                                                <p className={tw`pl-2`}>
                                                                     <MdCheckCircle className='inline' style={{color:'#15be03'}} /> Part Payment
                                                                 </p>
 
@@ -341,14 +341,20 @@ const Package = ({item}) =>{
                                                             <div>
 
                                                             {item.percent?
-                                                                <span className="discount">
-                                                                    {item.percent}% off
-                                                                </span>:""
+                                                                <>
+                                                                    <span className="discount">
+                                                                        {item.percent}% off
+                                                                    </span>
+                                                                    
+                                                                    <del>
+                                                                        <FaRupeeSign className='inline' style={{fontSize:'12px',marginBottom:'4px'}} />
+                                                                        {item.price}/-
+                                                                    </del>
+                                                                </>                                                                
+                                                                
+                                                                :""
                                                             }
-                                                                <del>
-                                                                    <FaRupeeSign className='inline' style={{fontSize:'12px',marginBottom:'4px'}} />
-                                                                    {item.price}/-
-                                                                </del>
+
                                                             </div>
 
                                                             <div>
@@ -485,19 +491,20 @@ const Package = ({item}) =>{
                     <div className='flt_right col-sm-4 col-sx-12'>
 
                         <div className="buttons" style={{overflow:'auto'}}>
-                            <div className="flt_left">
-                            <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true}>
-                                <button className="btn_listing">
-                                    VIEW DETAILS
-                                </button>
-                            </Link>
-                            </div>
                             <div className="flt_right">
                                 <button className="btn_listing _btn_clr" onClick={()=>_sendquery(item.finalprice,item.id,item.name,item.city)}>
                                     SUBMIT QUERY
                                 </button>
 
+                            </div>                            
+                            <div className={tw`flt_right mr-4`}>
+                                <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true} scroll={false}>
+                                    <button className="btn_listing">
+                                        VIEW DETAILS
+                                    </button>
+                                </Link>
                             </div>
+
                         </div>
 
 

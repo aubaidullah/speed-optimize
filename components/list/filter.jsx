@@ -234,7 +234,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,city,theme=undefined}) =>{
                 </div>:""
                 }
                 {
-                    page_type == 'STATE'?
+                    page_type == 'STATE' || page_type == 'ALL'?
                 
                     <div className={tw`border-t border-red-200 py-4`}>
                     <div className={tw`flex items-center justify-between mb-4`}>

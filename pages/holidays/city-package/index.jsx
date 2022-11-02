@@ -92,9 +92,9 @@ export async function getServerSideProps(context) {
     console.log(payload)
     const res = await client.query({query:getallpackages,variables:{input:payload}})
     console.log(res.data)
-    const data = res.data.allpackage.output.packages
-    const region = res.data.allpackage.output.region??null
-    const places = res.data.allpackage.output.fcities
+    const data = res.data.allpackage.output?.packages??[]
+    const region = res.data.allpackage.output?.region??[]
+    const places = res.data.allpackage.output?.fcities??[]
 
 
 

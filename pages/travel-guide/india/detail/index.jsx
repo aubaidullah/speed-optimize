@@ -250,8 +250,17 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna,type 
                                     <div className={tw`flex justify-between`}>
                                         <div className={tw`w-full lg:1/2`}>
                                             <div className="price_inr">
-                                                <FaRupeeSign className='inline' style={{ color: "#f79421", fontSize: '15px', marginBottom: '4px' }} />
-                                                {data.mincost / 100}/-
+                                                {
+                                                    data.mincost<=100
+                                                    ?"Price On Request"
+                                                    :
+                                                    <>
+                                                    <FaRupeeSign className='inline' style={{ color: "#f79421", fontSize: '15px', marginBottom: '4px' }} />
+                                                    {data.mincost / 100}/-                                                    
+                                                    </>
+
+                                                }
+
                                             </div>
                                             <div className="price_inr" style={{ fontSize: '9px' }}>
                                                 onwards

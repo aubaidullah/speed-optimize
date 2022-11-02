@@ -70,6 +70,20 @@ const State = ({data}) =>{
           partialVisibilityGutter: 25
         },
       };
+      const ButtonGroup = ({ next, previous, ...rest }) => {
+        const {
+          carouselState: { currentSlide },
+        } = rest;
+        return (
+          <div className={tw`hidden lg:carousel-button-group lg:block `}>
+            <button
+              className={`${currentSlide === 0 ? "disable" : ""} left-custom-btn`}
+              onClick={() => previous()}
+            />
+            <button className="right-custom-btn" onClick={() => next()} />
+          </div>
+        );
+      };      
 
     return <div className={tw`mt-16`}>
         
@@ -103,7 +117,7 @@ const State = ({data}) =>{
                     className="toprated_slide"
                     loop
                     renderButtonGroupOutside={true}
-                    //   customButtonGroup={<ButtonGroup />}
+                    customButtonGroup={<ButtonGroup />}
                     arrows={false}
                     margin={5}
                     nav

@@ -15,6 +15,19 @@ input.rupees_ip {
 background-color: #f9f9f9;
 border: 1px solid #e3e3e3;
 }
+.sort_w{
+    /* display: inline-table; */
+    font-size: 11px;
+    /* line-height: .73; */
+    color: #999;
+    padding: 0 5px;
+    cursor: pointer;    
+}
+
+.sort_w:hover{
+    color:#f06726;
+}
+
 
 .range_st {
     padding: 13px;
@@ -50,6 +63,7 @@ color: #f05927;
 .pack_title{
     font-size: 15px;
     font-weight: 700;
+    color:#4a4a4a;
 }
 .ov_auto{
     overflow: auto;
