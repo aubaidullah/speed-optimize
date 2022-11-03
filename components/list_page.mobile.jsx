@@ -6,13 +6,14 @@ import BreadCrumbs from "./breadcrumbs"
 import {tw} from 'twind'
 import dynamic from 'next/dynamic';
 import { useState,useEffect } from "react"
-// import { useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import FilterBy from "./list/filter"
 import { ScrollWrapper } from 'react-bottom-scroll';
 import ReactHtmlParser from "react-html-parser";
 import { Modal } from "react-bootstrap"
 import {BsXLg} from 'react-icons/bs'
 
+// const filtering = useSelector(state=>state.package.package)
 // const FilterBy = dynamic(() => import('./list/filter'), {
 //     ssr: true,
 // });
@@ -22,21 +23,23 @@ import {BsXLg} from 'react-icons/bs'
 
 const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,theme=undefined}) =>{
     
-    const [filter,setFilter] = useState({keyword:city??""})
+    const [filter,setFilter] = useState({keyword:""})
     const [limit,setLimit] = useState(10)
     const [overviewlimit,setOverviewlimit] = useState(200)
     const [overview,setOverview] = useState()
     const[isshow, setIsshow] = useState(false)
+
+    const filtering = useSelector(state=>state.filter)
     
     const setFiltering = (keyword) =>{
         // console.log(keyword)
         setFilter({keyword:keyword})
     }
 
-    useEffect(()=>{
-        setFilter({keyword:city??""})
-    },[])
-    console.log(filter)
+    // useEffect(()=>{
+    //     setFilter({keyword:city??""})
+    // },[])
+    console.log(filtering)
     
     // console.log(filter)
     
@@ -81,7 +84,57 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
         if (region !== null)
         setOverview(d.substring(0, overviewlimit))
     },[overviewlimit])
+    // pcities.some((item) => array.includes(item))
+    
+    var pack = []
+    
+    data.map((
+        item=>   
+            item.pcities.split(",").map((e)=>{
+            
+            if(filtering.places.includes(e)){
+                pack.push(item)
+            }
+        })
+    
+    )
+    
+    )
 
+    data.map((item=> item.theme.split("#").map((e)=>{
+        
+        if(filtering.themes.includes(e)){
+            pack.push(item)
+        }
+    })
+    ))
+    
+    data.map((item=> {
+        
+        if (item.finalprice >=filtering.min && item.finalprice <= filtering.max){
+            pack.push(item)
+        }
+
+
+        if(item.nights>=filtering.minduration && item.nights<=filtering.maxduration)
+            {
+            pack.push(item)
+        }
+    }
+    ))    
+
+    // if(item.nights>=filtering.minduration && item.nights<=filtering.maxduration){
+
+    
+
+    // console.log(pack)
+    
+    // data = data.filter(arr=>
+    //     arr.pcities.split(",").filter((ar=>filtering.places.includes(ar)))
+    //     )
+
+
+    console.log(filtering)
     return <article>
 
         <BreadCrumbs bread={
@@ -108,7 +161,7 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
                     </span>
                 </div>
                 <div>
-                    <FilterBy page_type={page_type} filter={filter} city={city} setKeyword={setFilter} data={places} theme={theme}/>
+                    <FilterBy page_type={page_type} filter={filter} setKeyword={setFilter} data={places} theme={theme}/>
                 </div>
             </Modal.Body>
 
@@ -154,7 +207,7 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
                 <div className={tw`flex flex-wrap`}>
                     {!isMobile?
                     <div className={tw`w-full lg:w-1/4 pr-5`}>
-                        <FilterBy page_type={page_type} filter={filter} city={city} setKeyword={setFilter} data={places} theme={theme}/>
+                        <FilterBy page_type={page_type} filter={filter} setKeyword={setFilter} data={places} theme={theme}/>
                     </div>:""
                     }
 
@@ -167,9 +220,8 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
                                         {
                                             isMobile?"":"Showing"
                                         }
-                                        
                                         <span className={tw`font-bold ml-2`}>
-                                            {data.length} Packages 
+                                            {pack.length!=0?pack.length:data.length} Packages 
                                         </span>
                                         <span>
                                         {page_type=='STATE'?
@@ -227,10 +279,15 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
                                 <div className="row">
                                 
                                     {
+                                        pack.length?
+                                        pack.slice(0,limit).map((item,index)=>{
+                                            return  item.name.length>=2 &&(item.name.toLowerCase().includes(filter.keyword) || item.cities.toLowerCase().includes(filter.keyword) || item.theme.toLowerCase().includes(filter.keyword))?
+                                            <Package key={index} item={item} />:null
+                                        }):
                                         data.slice(0,limit).map((item,index)=>{
                                             return  item.name.length>=2 &&(item.name.toLowerCase().includes(filter.keyword) || item.cities.toLowerCase().includes(filter.keyword) || item.theme.toLowerCase().includes(filter.keyword))?
                                             <Package key={index} item={item} />:null
-                                        })
+                                        })                                        
                                     }
                                 </div>
                                 

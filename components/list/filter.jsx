@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { FaRupeeSign } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getPackages, setSearchFilter } from '../../redux_fx/actions';
+import { duration_filter, getPackages, places_filter, price_filter, setSearchFilter, theme_filter } from '../../redux_fx/actions';
 
-const FilterBy = ({page_type,filter,setKeyword,data,city,theme=undefined}) =>{
+const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
 
 
     // f.filter(package=>package.name.includes('Shimla'))
@@ -26,7 +26,11 @@ const FilterBy = ({page_type,filter,setKeyword,data,city,theme=undefined}) =>{
 
 
     const [search,setSearch] = useState("")
+    const [places,setPlaces] = useState([])
+    const [duration,setDuration] = useState([])
+    const [themef,setTheme] = useState([])
     const [maxprice,setMaxprice] = useState(5000)
+    const [minprice,setMinprice] = useState(3000)
     // console.log(data)
 
     // useEffect(()=>{
@@ -43,6 +47,42 @@ const FilterBy = ({page_type,filter,setKeyword,data,city,theme=undefined}) =>{
     // },[search])
 
 
+    const setDurationFilter=(f,l)=>{
+        dispatch(duration_filter(f,l))
+    }
+    const setPriceFilter=(min,max)=>{
+        setMaxprice(max)
+        dispatch(price_filter(min,max))
+    }
+
+
+    const setPlaceFilter=(n_item)=>{
+
+        if (places.includes(n_item) == true){
+            setPlaces(places.filter(item => item !== n_item))
+            
+        }
+        else{
+            console.log(n_item)
+            // setPlaces([...places,n_item])
+            setPlaces( arr => [...arr, n_item]);   
+        }
+        dispatch(places_filter(n_item))
+        console.log(places)
+    }
+    
+    const setThemeFilter=(n_item)=>{
+
+        if (themef.includes(n_item) == true){
+            setTheme(themef.filter(item => item !== n_item))
+        }
+        else{
+            console.log(n_item)
+            setTheme( arr => [...arr, n_item]);
+        }
+        dispatch(theme_filter(n_item))
+    }    
+
     const placeRender = data.map(function (item, i) {
         if (i < 100) {
           return (
@@ -54,6 +94,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,city,theme=undefined}) =>{
                     // checked={chec}
                     className={tw`mr-1`}
                     name="place"
+                    onChange={(e)=>setPlaceFilter(item)}
                     // onClick={() => setPlace(item)}
                   />
                   {item}
@@ -75,6 +116,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,city,theme=undefined}) =>{
                     // checked={chec}
                     className={tw`mr-1`}
                     name="place"
+                    onChange={(e)=>setThemeFilter(item.tag)}
                     // onClick={() => setPlace(item)}
                   />
                   {item.tag}
@@ -86,7 +128,8 @@ const FilterBy = ({page_type,filter,setKeyword,data,city,theme=undefined}) =>{
       });          
 
 
-
+    // console.log(places)
+    // console.log(themef)
 
     return <>
     {/* style={{position:'sticky',top:'101px'}} */}
@@ -119,26 +162,26 @@ const FilterBy = ({page_type,filter,setKeyword,data,city,theme=undefined}) =>{
                         <div className={tw`flex justify-between`}>
                             <div className={tw`range-select range_st mr-2`}>
                                 <span> &#8377; </span>
-                                <input type={"number"} onChange={(e)=>console.log(e.target.value)} className={tw`rupees_ip pl-1`} />
+                                <input type={"number"} onChange={(e)=>{setMinprice(e.target.value),setPriceFilter(minprice,maxprice)}} value={minprice} className={tw`rupees_ip pl-1`} />
                             </div>
                             <div className={tw`range-select range_st ml-2`}>
                                 <span> &#8377; </span>
-                                <input type={"number"} onChange={(e)=>console.log(e.target.value)} value={maxprice} className={tw`rupees_ip pl-1`} />
+                                <input type={"number"} onChange={(e)=>{setMaxprice(e.target.value),setPriceFilter(minprice,maxprice)}} value={maxprice} className={tw`rupees_ip pl-1`} />
                             </div>                            
                         </div>
                         <Slider 
                         value={maxprice}
-                        min={5000}
-                        max={500000}
+                        min={minprice}
+                        max={50000}
                         step={500}
                         orientation="horizontal"
-                        onChange={(value)=>setMaxprice(value)}    
+                        onChange={(value)=>setPriceFilter(minprice,value)}    
                         />
                     </div>
                     <div className={tw`flex items-center justify-between`}>
                         <div>
                             <FaRupeeSign className='inline' />
-                            0
+                            {minprice}
                         </div>
                         <div>
                             <FaRupeeSign className='inline' />
@@ -164,6 +207,8 @@ const FilterBy = ({page_type,filter,setKeyword,data,city,theme=undefined}) =>{
                                 type="checkbox"
                                 name="days"
                                 className={tw`mr-1`}
+                                onChange={()=>setDurationFilter(1,7)}
+
                                 // checked={checked1}
                                 // onClick={() =>
                                 // this.changefilterduration(1, 7)
@@ -178,6 +223,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,city,theme=undefined}) =>{
                                 type="checkbox"
                                 name="days"
                                 className={tw`mr-1`}
+                                onChange={()=>setDurationFilter(7,9)}
                                 // checked={checked7}
                                 // onClick={() =>
                                 // this.changefilterduration(7, 9)
@@ -192,6 +238,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,city,theme=undefined}) =>{
                                 type="checkbox"
                                 name="days"
                                 className={tw`mr-1`}
+                                onChange={()=>setDurationFilter(10,12)}
                                 // checked={checked10}
                                 // onClick={() =>
                                 // this.changefilterduration(10, 12)
@@ -206,6 +253,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,city,theme=undefined}) =>{
                                 type="checkbox"
                                 name="days"
                                 className={tw`mr-1`}
+                                onChange={()=>setDurationFilter(13,100)}
                                 // checked={checked13}
                                 // onClick={() =>
                                 // this.changefilterduration(13, 100)
