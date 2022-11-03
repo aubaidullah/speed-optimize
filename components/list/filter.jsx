@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { FaRupeeSign } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { duration_filter, getPackages, places_filter, price_filter, setSearchFilter, theme_filter } from '../../redux_fx/actions';
+import { clear_filter, duration_filter, getPackages, places_filter, price_filter, setSearchFilter, theme_filter } from '../../redux_fx/actions';
 
 const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
 
@@ -30,7 +30,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
     const [duration,setDuration] = useState([])
     const [themef,setTheme] = useState([])
     const [maxprice,setMaxprice] = useState(5000)
-    const [minprice,setMinprice] = useState(3000)
+    const [minprice,setMinprice] = useState(1000)
     // console.log(data)
 
     // useEffect(()=>{
@@ -139,7 +139,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
                     <h2 className={tw`text-xl font-bold`}>
                         Filter by
                     </h2> 
-                    <div className={tw`text-sm`} style={{color:'#f06726'}}>Clear all</div>
+                    <div className={tw`text-sm`} style={{color:'#f06726',cursor:'pointer'}} onClick={()=>dispatch(clear_filter())} >Clear all</div>
                 </div>
                 <div className={tw`pb-4`}>
                     <input

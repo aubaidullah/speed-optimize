@@ -26,10 +26,15 @@ export const FILTER_DURATION = "FILTER_DURATION"
 export const FILTER_PRICE = "FILTER_PRICE"
 export const FILTER_SEARCH = "FILTER_SEARCH"
 
+export const FILTER_CLEAR = "FILTER_CLEAR"
 
+
+export const clear_filter = () =>({
+    type:FILTER_CLEAR
+})
 
 export const theme_filter = (themes) =>({
-    type:FILTER_THEME,
+    type:FILTER_CLEAR,
     data:themes
 })
 

@@ -111,9 +111,9 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
     
     data.map((item=> {
         
-        if (item.finalprice >=filtering.min && item.finalprice <= filtering.max){
-            pack.push(item)
-        }
+        // if (item.finalprice >=filtering.min && item.finalprice <= filtering.max){
+        //     pack.push(item)
+        // }
 
 
         if(item.nights>=filtering.minduration && item.nights<=filtering.maxduration)

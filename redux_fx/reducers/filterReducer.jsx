@@ -1,4 +1,4 @@
-import {FILTER_PLACE, FILTER_SEARCH, FILTER_THEME,FILTER_DURATION, FILTER_PRICE} from '../actions'
+import {FILTER_PLACE, FILTER_SEARCH, FILTER_THEME,FILTER_DURATION, FILTER_PRICE, FILTER_CLEAR} from '../actions'
 
 const filterReducer = (state={places:[],themes:[],minduration:null,maxduration:null,min:3000,max:50000},action)=>{
 
@@ -17,6 +17,11 @@ const filterReducer = (state={places:[],themes:[],minduration:null,maxduration:n
                 state.places.push(action.data)
             }
             return {...state}
+
+        case FILTER_CLEAR:
+            state={places:[],themes:[],minduration:null,maxduration:null,min:1000,max:50000}
+            return {...state}
+
 
         case FILTER_PRICE:
             state.min = action.data[0]
