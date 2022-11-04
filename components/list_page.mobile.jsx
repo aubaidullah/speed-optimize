@@ -88,40 +88,52 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
     
     var pack = []
     
-    data.map((
-        item=>   
-            item.pcities.split(",").map((e)=>{
+    // data.map((
+    //     item=>   
+    //         item.pcities.split(",").map((e)=>{
             
-            if(filtering.places.includes(e)){
-                pack.push(item)
-            }
-        })
+    //         if(filtering.places.includes(e)){
+    //             pack.push(item)
+    //         }
+    //     })
     
-    )
+    // )
     
-    )
-
-    data.map((item=> item.theme.split("#").map((e)=>{
-        
-        if(filtering.themes.includes(e)){
-            pack.push(item)
-        }
-    })
-    ))
+    // )
     
-    data.map((item=> {
-        
-        // if (item.finalprice >=filtering.min && item.finalprice <= filtering.max){
-        //     pack.push(item)
-        // }
-
-
-        if(item.nights>=filtering.minduration && item.nights<=filtering.maxduration)
-            {
-            pack.push(item)
-        }
+    if(filtering.places.length){
+        data = data.filter(e=>e.pcities.split(',').some(x=>filtering.places.includes(x)))
     }
-    ))    
+
+    if(filtering.themes.length){
+        data = data.filter(e=>e.theme.split("#").some(x=>filtering.themes.includes(x.trim())))
+    }
+
+    // const durationCustom=(duration)=>{
+
+    // }
+
+    data = data.filter(e=>e.nights>=filtering.minduration && e.nights<=filtering.maxduration)
+    
+
+    // data.map((item=> item.theme.split("#").map((e)=>{
+        
+    //     if(filtering.themes.includes(e)){
+    //         pack.push(item)
+    //     }
+    // })
+    // ))
+    
+    // data.map((item=> {
+    //     if(item.nights>=filtering.minduration && item.nights<=filtering.maxduration)
+    //         {
+    //         pack.push(item)
+    //     }
+    // }
+    // ))
+
+
+
 
     // if(item.nights>=filtering.minduration && item.nights<=filtering.maxduration){
 
@@ -277,17 +289,11 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
                             // smoothBehavior={true}
                             >
                                 <div className="row">
-                                
                                     {
-                                        pack.length?
-                                        pack.slice(0,limit).map((item,index)=>{
-                                            return  item.name.length>=2 &&(item.name.toLowerCase().includes(filter.keyword) || item.cities.toLowerCase().includes(filter.keyword) || item.theme.toLowerCase().includes(filter.keyword))?
-                                            <Package key={index} item={item} />:null
-                                        }):
                                         data.slice(0,limit).map((item,index)=>{
                                             return  item.name.length>=2 &&(item.name.toLowerCase().includes(filter.keyword) || item.cities.toLowerCase().includes(filter.keyword) || item.theme.toLowerCase().includes(filter.keyword))?
                                             <Package key={index} item={item} />:null
-                                        })                                        
+                                        })
                                     }
                                 </div>
                                 

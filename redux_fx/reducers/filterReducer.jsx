@@ -1,6 +1,6 @@
 import {FILTER_PLACE, FILTER_SEARCH, FILTER_THEME,FILTER_DURATION, FILTER_PRICE, FILTER_CLEAR} from '../actions'
 
-const filterReducer = (state={places:[],themes:[],minduration:null,maxduration:null,min:3000,max:50000},action)=>{
+const filterReducer = (state={places:[],themes:[],minduration:1,maxduration:100,min:3000,max:50000},action)=>{
 
     switch(action.type){
         case FILTER_SEARCH:
@@ -19,7 +19,7 @@ const filterReducer = (state={places:[],themes:[],minduration:null,maxduration:n
             return {...state}
 
         case FILTER_CLEAR:
-            state={places:[],themes:[],minduration:null,maxduration:null,min:1000,max:50000}
+            state={places:[],themes:[],minduration:1,maxduration:100,min:3000,max:50000}
             return {...state}
 
 
@@ -33,18 +33,20 @@ const filterReducer = (state={places:[],themes:[],minduration:null,maxduration:n
         case FILTER_DURATION:
             console.log(action.data)
 
-            if (state.maxduration == action.data[1]){
-                state.minduration = null
-                state.maxduration = null
-            }
-            else if(state.minduration >= action.data[0]){
-                state.minduration = action.data[0]
-                console.log("nothing")
-            }
-            else{
-                state.minduration = action.data[0]
-                state.maxduration = action.data[1]
-            }
+            // if (state.maxduration == action.data[1]){
+            //     state.minduration = null
+            //     state.maxduration = null
+            // }
+            // else if(state.minduration >= action.data[0]){
+            //     state.minduration = action.data[0]
+            //     console.log("nothing")
+            // }
+            // else{
+            //     state.minduration = action.data[0]
+            //     state.maxduration = action.data[1]
+            // }
+            state.minduration = action.data[0]
+            state.maxduration = action.data[1]            
             return {...state}
 
 

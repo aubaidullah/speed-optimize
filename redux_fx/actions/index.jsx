@@ -34,7 +34,7 @@ export const clear_filter = () =>({
 })
 
 export const theme_filter = (themes) =>({
-    type:FILTER_CLEAR,
+    type:FILTER_THEME,
     data:themes
 })
 

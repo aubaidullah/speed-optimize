@@ -80,7 +80,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
             console.log(n_item)
             setTheme( arr => [...arr, n_item]);
         }
-        dispatch(theme_filter(n_item))
+        dispatch(theme_filter(n_item.trim()))
     }    
 
     const placeRender = data.map(function (item, i) {
@@ -204,7 +204,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
                         <div className="checkbox">
                             <label>
                             <input
-                                type="checkbox"
+                                type="radio"
                                 name="days"
                                 className={tw`mr-1`}
                                 onChange={()=>setDurationFilter(1,7)}
@@ -220,7 +220,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
                         <div className="checkbox">
                             <label>
                             <input
-                                type="checkbox"
+                                type="radio"
                                 name="days"
                                 className={tw`mr-1`}
                                 onChange={()=>setDurationFilter(7,9)}
@@ -235,7 +235,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
                         <div className="checkbox">
                             <label>
                             <input
-                                type="checkbox"
+                                type="radio"
                                 name="days"
                                 className={tw`mr-1`}
                                 onChange={()=>setDurationFilter(10,12)}
@@ -250,7 +250,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
                         <div className="checkbox">
                             <label>
                             <input
-                                type="checkbox"
+                                type="radio"
                                 name="days"
                                 className={tw`mr-1`}
                                 onChange={()=>setDurationFilter(13,100)}
