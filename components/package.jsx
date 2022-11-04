@@ -62,7 +62,7 @@ const Package = ({item}) =>{
                                 {/* <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true}> */}
                                     <div className='row'>
                                             <div className='col-sm-4 col-xs-12'>
-                                                <div className="_row ov_auto desk_display_none">
+                                                <div className={tw`_row ov_auto desk_display_none mb-2`}>
                                                     <div className="flt_left">
                                                         <div>
                                                             <h2 className={tw`pack_title`}>{item.name}</h2>
@@ -106,7 +106,7 @@ const Package = ({item}) =>{
                                                     </div>                        
                                                 </div>
 
-                                                <div className={tw`mt-0 sm:mt-2`}>
+                                                <div className={tw``}>
                                                 <Carousel
                                                     showStatus={false}
                                                     showThumbs={false}

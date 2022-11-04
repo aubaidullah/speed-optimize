@@ -27,6 +27,9 @@ export const FILTER_PRICE = "FILTER_PRICE"
 export const FILTER_SEARCH = "FILTER_SEARCH"
 
 export const FILTER_CLEAR = "FILTER_CLEAR"
+export const SORT_PRICE = "SORT_PRICE"
+export const SORTING = "SORTING"
+export const SORT_DURATION = "SORT_DURATION"
 
 
 export const clear_filter = () =>({
@@ -63,4 +66,9 @@ export const getPackages = (packages) =>({
 export const getFilterText = (search) =>({
     type:FILTER_SEARCH,
     data:search
+})
+
+export const setSort = (data) =>({
+    type:SORTING,
+    data:data
 })

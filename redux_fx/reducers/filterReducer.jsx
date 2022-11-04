@@ -1,6 +1,8 @@
-import {FILTER_PLACE, FILTER_SEARCH, FILTER_THEME,FILTER_DURATION, FILTER_PRICE, FILTER_CLEAR} from '../actions'
+import {FILTER_PLACE, FILTER_SEARCH, FILTER_THEME,FILTER_DURATION, FILTER_PRICE, FILTER_CLEAR,SORTING} from '../actions'
 
-const filterReducer = (state={places:[],themes:[],minduration:1,maxduration:100,min:3000,max:50000},action)=>{
+
+
+const filterReducer = (state={places:[],themes:[],minduration:1,maxduration:100,min:3000,max:50000,price:0,duration:0},action)=>{
 
     switch(action.type){
         case FILTER_SEARCH:
@@ -60,6 +62,14 @@ const filterReducer = (state={places:[],themes:[],minduration:1,maxduration:100,
                 state.themes.push(action.data)
             }
             return {...state}                     
+
+
+        case SORTING:
+            // if(action.data.key =='duration'){
+                state.duration = action.value
+            // }
+            return {...state}
+                
 
 
         default : return state

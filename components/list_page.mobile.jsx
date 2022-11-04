@@ -1,6 +1,6 @@
 import Package from "../components/package"
 import Link from 'next/link'
-// import {TiChevronRight} from 'react-icons/ti'
+import {AiOutlineArrowDown,AiOutlineArrowUp} from 'react-icons/ai'
 import {BsFilter} from 'react-icons/bs'
 import BreadCrumbs from "./breadcrumbs"
 import {tw} from 'twind'
@@ -11,7 +11,8 @@ import FilterBy from "./list/filter"
 import { ScrollWrapper } from 'react-bottom-scroll';
 import ReactHtmlParser from "react-html-parser";
 import { Modal } from "react-bootstrap"
-import {BsXLg} from 'react-icons/bs'
+import {BsXLg} from 'react-icons/bs';
+
 
 // const filtering = useSelector(state=>state.package.package)
 // const FilterBy = dynamic(() => import('./list/filter'), {
@@ -27,7 +28,9 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
     const [limit,setLimit] = useState(10)
     const [overviewlimit,setOverviewlimit] = useState(200)
     const [overview,setOverview] = useState()
-    const[isshow, setIsshow] = useState(false)
+    const [isshow, setIsshow] = useState(false)
+    const [pricefilter,setPricefilter] = useState(1)
+    const [durationfilter,setDurationfilter] = useState(1)
 
     const filtering = useSelector(state=>state.filter)
     
@@ -116,6 +119,41 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
     data = data.filter(e=>e.nights>=filtering.minduration && e.nights<=filtering.maxduration)
     
 
+    if(pricefilter){
+        data = data.sort((a,b)=>a.finalprice > b.finalprice) 
+    }
+    else{
+        data = data.sort((a,b)=>a.finalprice < b.finalprice)
+        // data = data.sort((a,b)=>a.finalprice < b.finalprice) 
+        
+    }
+    
+
+    
+    if(durationfilter){
+        if (pricefilter)
+            data = data.sort((a,b)=>a.nights > b.nights) 
+        // else{
+        //     data = data.sort((a,b)=>a.nights < b.nights) 
+        // }
+    }
+    else{
+        // setPricefilter(0)
+        if (!pricefilter){
+            data = data.sort((a,b)=>a.nights > b.nights)     
+        }
+        else{
+            data = data.sort((a,b)=>a.nights < b.nights) 
+        }
+        
+    }    
+        
+            
+    // },[pricefilter])
+
+    // data = data.sort((a,b)=>a.finalprice > b.finalprice)
+    
+
     // data.map((item=> item.theme.split("#").map((e)=>{
         
     //     if(filtering.themes.includes(e)){
@@ -147,6 +185,7 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
 
 
     console.log(filtering)
+    console.log(pricefilter)
     return <article>
 
         <BreadCrumbs bread={
@@ -259,11 +298,18 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
                                         <div className={tw`p-2 sort_w cursor-pointer`}>
                                             POPULAR
                                         </div>
-                                        <div className={tw`p-2  sort_w cursor-pointer`}>
+                                        <div className={tw`${!durationfilter?'_b_active':''} p-2  sort_w cursor-pointer`} onClick={()=>setDurationfilter(!durationfilter)}>
                                             DURATION
+                                            {
+                                                durationfilter?<AiOutlineArrowDown className={tw`inline`} />:<AiOutlineArrowUp className={tw`inline`} />
+                                            }
+                                            
                                         </div>
-                                        <div className={tw`p-2 sort_w cursor-pointer`}>
+                                        <div className={tw`${!pricefilter?'_b_active':''} p-2 sort_w cursor-pointer`} onClick={()=>setPricefilter(!pricefilter)}>
                                             PRICE
+                                            {
+                                                pricefilter?<AiOutlineArrowDown className={tw`inline`} />:<AiOutlineArrowUp className={tw`inline`} />
+                                            }                                            
                                         </div>                                                                                
                                     </div>
                                 </div>
