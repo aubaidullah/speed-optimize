@@ -142,7 +142,7 @@ const RelatedTour = ({data}) =>{
                         </span>
                         <div className="two_peoples">
                           <span className="frieds">
-                            <img src={"icons/friends.svg"} alt="" />
+                            <img src={"/icons/friends.svg"} alt="" />
                           </span>
                           <span className="days"> 2 People </span>
                         </div>

@@ -66,26 +66,43 @@ const Package = ({item}) =>{
                                                     <div className="flt_left">
                                                         <div>
                                                             <h2 className={tw`pack_title`}>{item.name}</h2>
-                                                            <div className="days_night">
-                                                                {/* {item.nights} Nights | {item.nights+1} Days */}
-                                                                <div className={tw`flex justify-center day_nights`}>
-                                                                    <div className='night'>
-                                                                        <BsFillMoonFill className={tw`inline pr`}/>
-                                                                        <span className={tw`pl-1`}>
-                                                                            {item.nights} Nights
-                                                                        </span>
-                                                                        
-                                                                    </div>
-                                                                    <div className='days'>
-                                                                        <IoSunny className={tw`inline`} />
-                                                                        <span className={tw`pl-1`}>
-                                                                            {item.nights+1} Days
-                                                                        </span>
-                                                                        
+                                                            <div className={tw`flex flex-wrap items-center mt-1`}>
+                                                                <div className="days_night">
+                                                                    {/* {item.nights} Nights | {item.nights+1} Days */}
+                                                                    <div className={tw`flex justify-center day_nights`}>
+                                                                        <div className='night'>
+                                                                            <BsFillMoonFill className={tw`inline pr`}/>
+                                                                            <span className={tw`pl-1`}>
+                                                                                {item.nights} Nights
+                                                                            </span>
+                                                                            
+                                                                        </div>
+                                                                        <div className='days'>
+                                                                            <IoSunny className={tw`inline`} />
+                                                                            <span className={tw`pl-1`}>
+                                                                                {item.nights+1} Days
+                                                                            </span>
+                                                                            
 
+                                                                        </div>
+                                                                    </div>                                                                
+                                                                </div>
+
+                                                                <div className={tw`ml-4 two_peoples`}>
+                                                                    <div className={tw`flex flex-wrap items-center`}>
+                                                                        <span className="frieds">                                                                            
+                                                                            <img src={"/icons/friends_.svg"} alt="" />
+                                                                        </span>
+                                                                        <span className='_2_two'>
+                                                                            2
+                                                                        </span>
+                                                                        
                                                                     </div>
-                                                                </div>                                                                
+                                                                </div>
+
+
                                                             </div>
+
                                                         </div>
                                                         
                                                     </div>
@@ -137,27 +154,44 @@ const Package = ({item}) =>{
                                                         <div className="flt_left">
                                                             <div>
                                                                 <h2 className={tw`pack_title text-xl`}>{item.name}</h2>
-                                                                <div className={tw`days_night_ mt-1`}>
-                                                                    {/* {item.nights} Nights | {item.nights+1} Days */}
-                                                                    <div className={tw`flex day_nights`}>
-                                                                        <div className='night'>
-                                                                            <BsFillMoonFill className={tw`inline pr`}/>
-                                                                            <span className={tw`pl-1`}>
-                                                                                {item.nights} Nights
+                                                                
+                                                                <div className={tw`flex flex-wrap items-center mt-1`}>
+                                                                    
+                                                                    <div className={tw`days_night_`}>
+                                                                        {/* {item.nights} Nights | {item.nights+1} Days */}
+                                                                        <div className={tw`flex day_nights`}>
+                                                                            <div className='night'>
+                                                                                <BsFillMoonFill className={tw`inline pr`}/>
+                                                                                <span className={tw`pl-1`}>
+                                                                                    {item.nights} Nights
+                                                                                </span>
+                                                                                
+                                                                            </div>
+                                                                            <div className='days'>
+                                                                                <IoSunny className={tw`inline`} />
+                                                                                <span className={tw`pl-1`}>
+                                                                                    {item.nights+1} Days
+                                                                                </span>
+                                                                                
+
+                                                                            </div>
+                                                                        </div> 
+
+                                                                    </div>
+
+                                                                    <div className={tw`ml-4 two_peoples`}>
+                                                                        <div className={tw`flex flex-wrap`}>
+                                                                            <span className="frieds">                                                                            
+                                                                                <img src={"/icons/friends_.svg"} alt="" />
+                                                                            </span>
+                                                                            <span className='_2_two'>
+                                                                                2
                                                                             </span>
                                                                             
                                                                         </div>
-                                                                        <div className='days'>
-                                                                            <IoSunny className={tw`inline`} />
-                                                                            <span className={tw`pl-1`}>
-                                                                                {item.nights+1} Days
-                                                                            </span>
-                                                                            
-
-                                                                        </div>
-                                                                    </div> 
-
+                                                                    </div>
                                                                 </div>
+
                                                             </div>
                                                             
                                                         </div>

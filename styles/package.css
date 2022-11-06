@@ -112,7 +112,12 @@ color: #f05927;
     font-weight: 700;
 }
 .contain_blk{
-    margin-top: 10px;
+    margin-top: 5px;
+}
+._2_two{
+    font-size: 11px;
+    font-weight: 500;
+    color: #4a4a4a;
 }
 .icons-meal-info{
     display: flex;
