@@ -31,6 +31,17 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
     const [isshow, setIsshow] = useState(false)
     const [pricefilter,setPricefilter] = useState(1)
     const [durationfilter,setDurationfilter] = useState(1)
+    const [_places,set_Places] = useState([])
+    const [_themes,set_Themes]  = useState([])
+    
+    const [_pricing,setPrice] = useState({min:0,max:50000})
+
+    const [_min,set_Min] = useState(1)
+    const [_max,set_Max]  = useState(100)
+    
+    
+
+
 
     const filtering = useSelector(state=>state.filter)
     
@@ -104,26 +115,26 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
     
     // )
     
-    if(filtering.places.length){
-        data = data.filter(e=>e.pcities.split(',').some(x=>filtering.places.includes(x)))
+    if(_places.length){
+        data = data.filter(e=>e.pcities.split(',').some(x=>_places.includes(x)))
     }
 
-    if(filtering.themes.length){
-        data = data.filter(e=>e.theme.split("#").some(x=>filtering.themes.includes(x.trim())))
+    if(_themes.length){
+        data = data.filter(e=>e.theme.split("#").some(x=>_themes.includes(x.trim())))
     }
 
     // const durationCustom=(duration)=>{
 
     // }
 
-    data = data.filter(e=>e.nights>=filtering.minduration && e.nights<=filtering.maxduration)
+    data = data.filter(e=>e.nights>=_min && e.nights<=_max && e.finalprice>=_pricing.min && e.finalprice<=_pricing.max)
     
 
     if(pricefilter){
-        data = data.sort((a,b)=>a.finalprice > b.finalprice) 
+        data = data.sort((a,b)=>a.finalprice - b.finalprice) 
     }
     else{
-        data = data.sort((a,b)=>a.finalprice < b.finalprice)
+        data = data.sort((a,b)=> b.finalprice - a.finalprice)
         // data = data.sort((a,b)=>a.finalprice < b.finalprice) 
         
     }
@@ -132,7 +143,7 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
     
     if(durationfilter){
         if (pricefilter)
-            data = data.sort((a,b)=>a.nights > b.nights) 
+            data = data.sort((a,b)=>a.nights - b.nights) 
         // else{
         //     data = data.sort((a,b)=>a.nights < b.nights) 
         // }
@@ -140,10 +151,10 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
     else{
         // setPricefilter(0)
         if (!pricefilter){
-            data = data.sort((a,b)=>a.nights > b.nights)     
+            data = data.sort((a,b)=>a.nights - b.nights)     
         }
         else{
-            data = data.sort((a,b)=>a.nights < b.nights) 
+            data = data.sort((a,b)=>b.nights - a.nights) 
         }
         
     }    
@@ -183,9 +194,12 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
     //     arr.pcities.split(",").filter((ar=>filtering.places.includes(ar)))
     //     )
 
-
-    console.log(filtering)
-    console.log(pricefilter)
+    console.log(_places)
+    console.log(_themes)
+    // console.log(_pricing)
+    // console.log(filtering)
+    // console.log(pricefilter)
+    // console.log(data)
     return <article>
 
         <BreadCrumbs bread={
@@ -212,10 +226,19 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
                     </span>
                 </div>
                 <div>
-                    <FilterBy page_type={page_type} filter={filter} setKeyword={setFilter} data={places} theme={theme}/>
+                    <FilterBy _pricing={_pricing} setPrice={setPrice} _min={_min} set_Min={set_Min} _max={_max} set_Max={set_Max} set_Places={set_Places} _places={_places} _themes={_themes} set_Themes={set_Themes} page_type={page_type} filter={filter} setKeyword={setFilter} data={places} theme={theme}/>
                 </div>
             </Modal.Body>
-
+            
+            
+            <div className='bottom_button_filter' onClick={()=>setIsshow(false)}>
+                <div className={tw`flex`} style={{height:'100%'}}>
+                    <div style={{width:'100%',height:'100%'}} className={tw`flex`}>
+                        <div style={{alignSelf:'center',width:'100%',textAlign:'center',fontSize:'20px'}}>Apply</div>
+                    </div>
+                </div>
+                
+            </div>
         </Modal>
 
 
@@ -258,7 +281,7 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
                 <div className={tw`flex flex-wrap`}>
                     {!isMobile?
                     <div className={tw`w-full lg:w-1/4 pr-5`}>
-                        <FilterBy page_type={page_type} filter={filter} setKeyword={setFilter} data={places} theme={theme}/>
+                        <FilterBy _pricing={_pricing} setPrice={setPrice} _min={_min} set_Min={set_Min} _max={_max} set_Max={set_Max} set_Places={set_Places} _places={_places} _themes={_themes} set_Themes={set_Themes} page_type={page_type} filter={filter} setKeyword={setFilter} data={places} theme={theme}/>
                     </div>:""
                     }
 
@@ -336,10 +359,17 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
                             >
                                 <div className="row">
                                     {
+                                        data.length?
                                         data.slice(0,limit).map((item,index)=>{
                                             return  item.name.length>=2 &&(item.name.toLowerCase().includes(filter.keyword) || item.cities.toLowerCase().includes(filter.keyword) || item.theme.toLowerCase().includes(filter.keyword))?
                                             <Package key={index} item={item} />:null
-                                        })
+                                        }):
+                                        <div className={tw`mt-16 mb-16 text-center`}>
+                                            <div className={tw`text-2xl font-bold`} style={{color:'#999'}}>
+                                                <p className={tw`"`}>No package found</p>
+                                                
+                                            </div>
+                                        </div>
                                     }
                                 </div>
                                 

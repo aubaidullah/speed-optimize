@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { clear_filter, duration_filter, getPackages, places_filter, price_filter, setSearchFilter, theme_filter } from '../../redux_fx/actions';
 
-const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
+const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Themes,_places,_themes,page_type,filter,setKeyword,data,theme=undefined}) =>{
 
 
     // f.filter(package=>package.name.includes('Shimla'))
@@ -48,39 +48,49 @@ const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
 
 
     const setDurationFilter=(f,l)=>{
-        dispatch(duration_filter(f,l))
+        set_Min(f)
+        set_Max(l)
+        // dispatch(duration_filter(f,l))
+
     }
     const setPriceFilter=(min,max)=>{
         setMaxprice(max)
-        dispatch(price_filter(min,max))
+        setMinprice(min)
+        setPrice({min:min,max:max})
+        // dispatch(price_filter(min,max))
     }
 
 
     const setPlaceFilter=(n_item)=>{
 
-        if (places.includes(n_item) == true){
-            setPlaces(places.filter(item => item !== n_item))
-            
+        if (_places.includes(n_item) == true){
+            set_Places(_places.filter(item => item !== n_item))
         }
         else{
             console.log(n_item)
             // setPlaces([...places,n_item])
-            setPlaces( arr => [...arr, n_item]);   
+            // set_Places(_places.filter(item => item !== n_item))
+            set_Places( arr => [...arr, n_item]);   
         }
         dispatch(places_filter(n_item))
-        console.log(places)
+        // set_Places()
+        // console.log(places)
     }
     
     const setThemeFilter=(n_item)=>{
-
-        if (themef.includes(n_item) == true){
-            setTheme(themef.filter(item => item !== n_item))
+        // console.log(_themes)
+        // console.log(n_item)
+        if (_themes.includes(n_item) == true){
+            console.log("existed")
+            set_Themes(_themes.filter(item => item !== n_item))
         }
         else{
-            console.log(n_item)
-            setTheme( arr => [...arr, n_item]);
+            console.log("not existed")
+            // console.log(n_item.trim())
+            set_Themes( arr => [...arr, n_item])
+            // setTheme( arr => [...arr, n_item]);
         }
-        dispatch(theme_filter(n_item.trim()))
+        dispatch(theme_filter(n_item))
     }    
 
     const placeRender = data.map(function (item, i) {
@@ -92,6 +102,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
                   <input
                     type="checkbox"
                     // checked={chec}
+                    checked={_places.includes(item)}
                     className={tw`mr-1`}
                     name="place"
                     onChange={(e)=>setPlaceFilter(item)}
@@ -115,8 +126,9 @@ const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
                     type="checkbox"
                     // checked={chec}
                     className={tw`mr-1`}
+                    checked={_themes.includes(item.tag.trim())}
                     name="place"
-                    onChange={(e)=>setThemeFilter(item.tag)}
+                    onChange={(e)=>setThemeFilter(item.tag.trim())}
                     // onClick={() => setPlace(item)}
                   />
                   {item.tag}
@@ -131,6 +143,17 @@ const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
     // console.log(places)
     // console.log(themef)
 
+    const clear_filter=()=>{
+        set_Max(100)
+        set_Min(1)
+        set_Places([])
+        set_Themes([])
+        setKeyword({keyword:''})
+
+        setPriceFilter(0,50000)
+
+    }
+
     return <>
     {/* style={{position:'sticky',top:'101px'}} */}
         <div className={tw`bg-white sticky`} style={{borderRadius:'8px'}}>
@@ -139,7 +162,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
                     <h2 className={tw`text-xl font-bold`}>
                         Filter by
                     </h2> 
-                    <div className={tw`text-sm`} style={{color:'#f06726',cursor:'pointer'}} onClick={()=>dispatch(clear_filter())} >Clear all</div>
+                    <div className={tw`text-sm`} style={{color:'#f06726',cursor:'pointer'}} onClick={()=>clear_filter()} >Clear all</div>
                 </div>
                 <div className={tw`pb-4`}>
                     <input
@@ -162,16 +185,16 @@ const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
                         <div className={tw`flex justify-between`}>
                             <div className={tw`range-select range_st mr-2`}>
                                 <span> &#8377; </span>
-                                <input type={"number"} onChange={(e)=>{setMinprice(e.target.value),setPriceFilter(minprice,maxprice)}} value={minprice} className={tw`rupees_ip pl-1`} />
+                                <input type={"number"} onChange={(e)=>{setMinprice(e.target.value)}} value={minprice} className={tw`rupees_ip pl-1`} />
                             </div>
                             <div className={tw`range-select range_st ml-2`}>
                                 <span> &#8377; </span>
-                                <input type={"number"} onChange={(e)=>{setMaxprice(e.target.value),setPriceFilter(minprice,maxprice)}} value={maxprice} className={tw`rupees_ip pl-1`} />
+                                <input type={"number"} onChange={(e)=>{setMaxprice(e.target.value)}} value={maxprice} className={tw`rupees_ip pl-1`} />
                             </div>                            
                         </div>
                         <Slider 
                         value={maxprice}
-                        min={minprice}
+                        min={0}
                         max={50000}
                         step={500}
                         orientation="horizontal"
@@ -208,6 +231,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
                                 name="days"
                                 className={tw`mr-1`}
                                 onChange={()=>setDurationFilter(1,7)}
+                                checked={_min==1&&_max==7}
 
                                 // checked={checked1}
                                 // onClick={() =>
@@ -224,6 +248,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
                                 name="days"
                                 className={tw`mr-1`}
                                 onChange={()=>setDurationFilter(7,9)}
+                                checked={_min==7&&_max==9}
                                 // checked={checked7}
                                 // onClick={() =>
                                 // this.changefilterduration(7, 9)
@@ -239,6 +264,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
                                 name="days"
                                 className={tw`mr-1`}
                                 onChange={()=>setDurationFilter(10,12)}
+                                checked={_min==10&&_max==12}
                                 // checked={checked10}
                                 // onClick={() =>
                                 // this.changefilterduration(10, 12)
@@ -254,6 +280,7 @@ const FilterBy = ({page_type,filter,setKeyword,data,theme=undefined}) =>{
                                 name="days"
                                 className={tw`mr-1`}
                                 onChange={()=>setDurationFilter(13,100)}
+                                checked={_min==13&&_max==100}
                                 // checked={checked13}
                                 // onClick={() =>
                                 // this.changefilterduration(13, 100)

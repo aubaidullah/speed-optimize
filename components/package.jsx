@@ -130,7 +130,7 @@ const Package = ({item}) =>{
 
                                             </div>
                                         {/* <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true}></Link> */}
-                                            <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true}>
+                                            <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} >
                                             <div className='col-sm-8 col-xs-12'>
                                                 <div className="contain_blk">
                                                     <div className="_row ov_auto mb_display_none">
@@ -398,7 +398,7 @@ const Package = ({item}) =>{
                                 {/* </Link> */}
                                 <div className="buttons desk_display_none mt-2" style={{overflow:'auto'}}>
                                     <div className="flt_left">
-                                    <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true}>
+                                    <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`}>
                                         <button className="btn_listing">
                                             VIEW DETAILS
                                         </button>
@@ -498,7 +498,7 @@ const Package = ({item}) =>{
 
                             </div>                            
                             <div className={tw`flt_right mr-4`}>
-                                <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true} scroll={false}>
+                                <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} scroll={false}>
                                     <button className="btn_listing">
                                         VIEW DETAILS
                                     </button>
