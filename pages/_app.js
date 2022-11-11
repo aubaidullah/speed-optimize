@@ -29,7 +29,7 @@ import twindConfig from '../twind.config'
 
 
 //react-multi-carousel
-NProgress.configure({ showSpinner: false, minimum: 0.3 })
+// NProgress.configure({ showSpinner: false, minimum: 0.3 })
 // NProgress.set(0.4);
 
 Router.events.on('routeChangeStart', () => NProgress.start());

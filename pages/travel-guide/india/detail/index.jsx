@@ -17,10 +17,11 @@ import Articles from "../../../../components/home/articles";
 import QnaListing from "../../../../components/Qna";
 import Content from "../../../../components/trave-guide/content";
 import Leaform from '../../../../components/leadform'
+import State_Attraction from "../../../../components/trave-guide/attractions";
 
 
 
-const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna,type }) => {
+const TravelGuideDetail = ({ packages_state,data, weather, packages, hotels, article, qna,type }) => {
     // console.log(data)
     const [overviewlimit, setOverviewlimit] = useState(200)
     const [overview, setOverview] = useState()
@@ -107,19 +108,31 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna,type 
                         <a className="_c_active" href="#overview">Overview</a>
                     </li>
                     <li>
-                        <a href="#itinery">Fair, Festivals & Activities</a>
+                        <a>{data.tg.howToReachwHeading}</a>
                     </li>
                     <li>
-                        <a href="#hotels">How to Reach</a>
+                        {/* <a href="#itinery">Fair, Festivals & Activities</a> */}
+                        {data.tg.eventsHeading}
                     </li>
                     <li>
-                        <a href="#inclusions">Weather & Useful Facts</a>
+                        {/* <a href="#hotels">How to Reach</a> */}
+                        {data.tg.factsHeading}
                     </li>
                     <li>
-                        <a href="#tnc">Food, Eat & Dine</a>
+                        {data.tgfoodHeading}
+                        {/* <a href="#inclusions">Weather & Useful Facts</a> */}
+                    </li>
+                        <li>
+                            {data.marketHeading}
+                        </li>
+                    {/* </li> */}
+                    <li>
+                        {/* <a href="#tnc">Food, Eat & Dine</a> */}
+                        <a>{data.tg.foodHeading}</a>
                     </li>
                     <li>
-                        <a href="#tnc">Shopping & Market</a>
+                        {/* <a href="#tnc">Shopping & Market</a> */}
+                        <a>{data.tg.marketHeading}</a>
                     </li>
                 </ul>
             </div>
@@ -432,16 +445,25 @@ const TravelGuideDetail = ({ data, weather, packages, hotels, article, qna,type 
             </div>
             {/* <HomePackages data={packages} /> */}
 
-            {
+            {/* {
                 packages.length!=0?<HomePackages data={packages} />:""
-            }            
+            }             */}
+            {
+                type=='STATE'
+                ?packages_state.length!=0?<HomePackages data={packages_state} />:""
+                :packages.length!=0?<HomePackages data={packages} />:""
+                
+            }
 
             {
                 hotels.length!=0?<Hotel data={hotels} />:""
             }
             
             {
+                type=='CITY'?
                 article.length!=0?<Articles data={article} />:""
+                // :data.attn
+                :<State_Attraction data={data.attn}/>
             }
             {
                 qna.length!=0?
@@ -494,26 +516,50 @@ export async function getServerSideProps(context) {
 
         resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=d6429646ecc55c8a9d2856f91d10ff4f&units=metric`)
         // console.log(resp)
-
-        console.log(res.data.travelGuide.output.gid)
     }
 
-    let json_data = {
-        'av': '',
-        'geoid': res.data.travelGuide.output.gid,
-        'id': '',
-        'pagenum': 1,
-        'pid': 0,
-        'pt': 'Website',
-        'size': 10,
-        'type': 'CITY',
-    }    
 
-    console.log(json_data)
 
-    const res1 = await client.query({ query: getTravelPackage, variables: { input: json_data } })
+        console.log(res.data.travelGuide.output.gid)
+        let json_data = {
+            'av': '',
+            'geoid': res.data.travelGuide.output.gid,
+            'id': '',
+            'pagenum': 1,
+            'pid': 0,
+            'pt': 'Website',
+            'size': 10,
+            'type': 'CITY',
+        }    
+    
+        // console.log(json_data)
+        const res1 = await client.query({ query: getTravelPackage, variables: { input: json_data } })
+        const packages = res1.data.package.output
+    
+        
+            console.log(res.data.travelGuide.output.gid)
+            let json_data_ = {
+                'av': '',
+                'geoid': res.data.travelGuide.output.gid,
+                'id': '',
+                'pagenum': 1,
+                'pid': 0,
+                'pt': 'Website',
+                'size': 10,
+                'type': 'STATE',
+            }    
+            console.log(json_data_)
+        
+            // console.log(json_data)
+            const res_ = await client.query({ query: getTravelPackage, variables: { input: json_data_ } })
+            
+            // console.log(res_)
+            const packages_state = res_.data.package.output
 
-    const packages = res1.data.package.output
+
+            console.log(packages_state)
+    
+
     // const res_travel = await client.query({query:getTravelGuideHome,variables:{input:{'av':'1.3','pt':'WEBSITE','geoid':0,'id':'0','pagenum':0,'pid':0,'type':0}}})
     // let data = res_travel.data.travelguide.output
     // console.log(res.data)
@@ -540,6 +586,7 @@ export async function getServerSideProps(context) {
         'size': 20,
         'type': 0,
     }
+    
 
     // getQnaQuery
 
@@ -547,7 +594,7 @@ export async function getServerSideProps(context) {
     const article_res = await client.query({ query: getarticleQuery, variables: { input: article_data } })
     const article = article_res.data.articles.output.articles
 
-
+    
 
     let qna_data = {
         'av': '',
@@ -567,7 +614,7 @@ export async function getServerSideProps(context) {
     console.log(type)
 
 
-    return { props: { data: res.data.travelGuide.output, weather: resp?resp.data:{}, packages, hotels, article, qna,type } }
+    return { props: { packages_state:packages_state,data: res.data.travelGuide.output, weather: resp?resp.data:{}, packages, hotels, article, qna,type } }
 }
 
 

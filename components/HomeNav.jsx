@@ -34,6 +34,8 @@ const Nav = () => {
         setResult(result?.data?.output)
         setLoading(false)
     }
+
+    const [scrollY, setScrollY] = useState(0);
     
 
     useEffect(() => {
@@ -54,27 +56,41 @@ const Nav = () => {
     const listenScrollEvent = (e) => {
         console.log(window.scrollY)
         if (window.scrollY > 200) {
-            setAddnavClass('sticky shrink')
+            console.log("shrink ")
+            // setAddnavClass('sticky shrink')
+            setAddnavClass('navbar-fixed')
+
         } else {
           if (document.location.pathname === "/") {
+            // setAddnavClass('sticky')
             setAddnavClass('')
-            setAddnavClass('sticky shrink')
+            // console.log("sticky ")
+            // setAddnavClass('sticky shrink')
         }
       };    
     }
 
-    const onScroll = useCallback(event => {
-        const { pageYOffset, scrollY } = window;
-        console.log("yOffset", pageYOffset, "scrollY", scrollY);
-        // setScrollY(window.pageYOffset);
-    }, []);
+    // const onScroll = useCallback(event => {
+    //     const { pageYOffset, scrollY } = window;
+    //     console.log("yOffset", pageYOffset, "scrollY", scrollY);
+    //     // setScrollY(window.pageYOffset);
+    // }, []);
 
-    // useEffect(()=>{
-    //     // console.log('kkks')
-    //     // document.querySelector("body").addEventListener("scroll", listenScrollEvent);
-    //     window.addEventListener("scroll", onScroll, { passive: true });
-    //     setCls(cls+' '+addnavClass)
-    // })
+    useEffect(()=>{
+        
+        // document.querySelector("body").addEventListener("scroll", listenScrollEvent);
+
+
+        // const handleScroll = () => {
+        //     setScrollY(window.scrollY);
+        //   };
+        //   handleScroll();
+        window.addEventListener("scroll", listenScrollEvent);
+        return () => {
+          window.removeEventListener("scroll", listenScrollEvent);
+        };
+
+    },[])
 
     // useEffect(()=>{
     //     const cl =
@@ -87,10 +103,11 @@ const Nav = () => {
     // "normal" +
     // " " +{addnavClass}; 
     // console.log(router.pathname)
-
+    // console.log(window.scrollY)
+    console.log(addnavClass)
     return <>
     
-        <nav data-aos="fade-down" id="navbar" className={tw`shadow-sm_ navbar-dflt`} style={{ overflow: 'auto', zIndex: 3 }}>
+        <nav data-aos="fade-down" id="navbar" className={tw`${addnavClass} shadow-sm_`} style={{ overflow: 'auto', zIndex: 3 }}>
             {showLogin ? <Login show={showLogin} setShowLogin={setShowLogin} /> : null}
             {!showSearch ?
                 <div className={tw`container`}>
@@ -108,7 +125,7 @@ const Nav = () => {
                                         onMouseOver={() => setTripover(true)}
                                         onMouseOut={() => setTripover(false)}
                                     >
-                                        <img src={tripover ? "/icons/icons/ICO-TRIPS-orange.png" : "/icons/icons/ICO TRIPS.png"} />
+                                        <img src={tripover ? "/icons/icons/ICO-TRIPS-orange.png" : `${addnavClass?"/icons/icons/ICO TRIPS.png":"/icons/icons/ICO-TRIPS-white.png"}`} />
                                         <span className="nav-text">Trips</span>
                                     </div>
                                 </Link>
@@ -120,7 +137,7 @@ const Nav = () => {
                                         onMouseOver={() => setExploreover(true)}
                                         onMouseOut={() => setExploreover(false)}
                                     >
-                                        <img src={exploreover ? "/icons/icons/ICO-EXPLORE-orange.png" : "/icons/icons/ICO EXPLORE.png"} />
+                                        <img src={exploreover ? "/icons/icons/ICO-EXPLORE-orange.png" : `${addnavClass?"/icons/icons/ICO EXPLORE.png":"/icons/icons/ICO-EXPLORE-white.png"}`} />
                                         <span className="nav-text">Explore</span>
                                     </div>
                                 </Link>
@@ -131,7 +148,7 @@ const Nav = () => {
                                     onMouseOver={() => setStayover(true)}
                                     onMouseOut={() => setStayover(false)}
                                 >
-                                    <img src={stayover ? "/icons/icons/ICO-STAYS-orange.png" : "/icons/icons/ICO STAYS.png"} />
+                                    <img src={stayover ? "/icons/icons/ICO-STAYS-orange.png" : `${addnavClass?"/icons/icons/ICO STAYS.png":"/icons/icons/ICO-STAYS-white.png"}`} />
                                     <span className="nav-text">Stays</span>
                                 </div>
 
@@ -139,13 +156,17 @@ const Nav = () => {
                         </div>
                     </div>
                     <div className="item_group flt_right right_icons">
-                        <div className="item flt_left" onClick={() => SetshowSearch(true)}>
+                        
+                        {addnavClass?
+                            <div className="item flt_left" onClick={() => SetshowSearch(true)}>
                             <HiOutlineSearch
                                 // color={"#a7a7a7"}
                                 className="c_it"
                                 size={"20px"}
                             />
-                        </div>
+                        </div>:""                        
+                        }
+                        
                         <div className="item flt_left">
                             <FaRegUser
                                 className="c_it"

@@ -128,7 +128,7 @@ const HomePackages = ({data}) =>{
                         </span>
                         <div className={tw`two_peoples flex items-center`}>
                           <span className={tw`frieds inline`}>
-                            <img src={"icons/friends.svg"} alt="" />
+                            <img src={"/icons/friends.svg"} alt="" />
                           </span>
                           <span className={tw`days inline`}> 2 People </span>
                         </div>

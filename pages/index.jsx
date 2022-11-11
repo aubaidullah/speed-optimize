@@ -4,7 +4,8 @@ import { getarticleQuery, getbanner, getHome,getreviewsQuery,getThemeQuery,getTr
 import client from "../components/Graphql/service";
 import Banner from "../components/home/banner"
 import State from "../components/home/state";
-import Nav from "../components/Nav"
+// import Nav from "../components/Nav"
+import Nav from '../components/HomeNav';
 import TravelGuide from "../components/home/travel_guide";
 import Hotel from "../components/home/hotel";
 import Reviews from "../components/home/reviews";
