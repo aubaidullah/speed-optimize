@@ -26,30 +26,41 @@ const TravelGuide = ({data}) =>{
   
         if (item.geoType == "CITY") {
    
-          aurl = "/travel-guide/india/city-" + item.cityName??item.name.replace(/\s+/g, "-").toLowerCase() + "/"+item.id+"/"
+          aurl = "/travel-guide/india/city-" + item.cityName.replace(/\s+/g, "-").toLowerCase() + "/"+item.id+"/"
           // aurl =
           //   "/city-travel-guide-" +
-          //   item.cityName??item.name.replace(/\s+/g, "-").toLowerCase() +
+          //   item.cityName.replace(/\s+/g, "-").toLowerCase() +
           //   "-india/" +
           //   item.id + "/";
         } else if (item.geoType == "COUNTRY") {
-  
-          aurl = "/travel-guide-" + item.cityName??item.name.replace(/\s+/g, "-").toLowerCase() + "/" + item.id;
+          console.log(item)
+          try{
+            aurl = "/travel-guide/" + item.cityName.replace(/\s+/g, "-").toLowerCase() + "/" + item.cityId;
+          }catch{
+            aurl = "/travel-guide/" + item.name.replace(/\s+/g, "-").toLowerCase() + "/" + item.cityId;
+          }
+            
+          //travel-guide/india/96
           // aurl =
           //   "/travel-guide-" +
-          //   item.cityName??item.name.replace(/\s+/g, "-").toLowerCase() +
+          //   item.cityName.replace(/\s+/g, "-").toLowerCase() +
           //   "/" +
           //   item.id + "/";
         } else {
-          aurl = "/travel-guide/india/state-" + item.cityName??item.name.replace(/\s+/g, "-").toLowerCase() + "/" +item.id +"/"
+          try{
+            aurl = `/travel-guide/india/state-` + item.cityName.replace(/\s+/g, "-").toLowerCase() + "/" +item.id +"/"
+          }catch{
+            aurl = `/travel-guide/india/state-` + item.name.replace(/\s+/g, "-").toLowerCase() + "/" +item.id +"/"
+          }
+          
           // aurl =
           //   "/travel-guide-india-" +
-          //   item.cityName??item.name.replace(/\s+/g, "-").toLowerCase() +
+          //   item.cityName +
           //   "/" +
           //   item.id + "/";
         }
-        console.log(item)
-        var d = ReactHtmlParser(item.overviewDesc??item.ds.substring(0, 100));
+        // console.log(item)
+        var d = ReactHtmlParser(item.overviewDesc?.substring(0, 100)??item.ds.substring(0, 100));
   
         return (
           <div key={i}>
