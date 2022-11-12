@@ -144,6 +144,7 @@ const Nav = () => {
 
                             </div>
                             <div className="item flt_left">
+                                <Link href="/hotels/">
                                 <div className="c_it"
                                     onMouseOver={() => setStayover(true)}
                                     onMouseOut={() => setStayover(false)}
@@ -151,6 +152,7 @@ const Nav = () => {
                                     <img src={stayover ? "/icons/icons/ICO-STAYS-orange.png" : `${addnavClass?"/icons/icons/ICO STAYS.png":"/icons/icons/ICO-STAYS-white.png"}`} />
                                     <span className="nav-text">Stays</span>
                                 </div>
+                                </Link>
 
                             </div>
                         </div>
