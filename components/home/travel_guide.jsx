@@ -26,29 +26,30 @@ const TravelGuide = ({data}) =>{
   
         if (item.geoType == "CITY") {
    
-          aurl = "/travel-guide/india/city-" + item.cityName.replace(/\s+/g, "-").toLowerCase() + "/"+item.id+"/"
+          aurl = "/travel-guide/india/city-" + item.cityName??item.name.replace(/\s+/g, "-").toLowerCase() + "/"+item.id+"/"
           // aurl =
           //   "/city-travel-guide-" +
-          //   item.cityName.replace(/\s+/g, "-").toLowerCase() +
+          //   item.cityName??item.name.replace(/\s+/g, "-").toLowerCase() +
           //   "-india/" +
           //   item.id + "/";
         } else if (item.geoType == "COUNTRY") {
   
-          aurl = "/travel-guide-" + item.cityName.replace(/\s+/g, "-").toLowerCase() + "/" + item.id;
+          aurl = "/travel-guide-" + item.cityName??item.name.replace(/\s+/g, "-").toLowerCase() + "/" + item.id;
           // aurl =
           //   "/travel-guide-" +
-          //   item.cityName.replace(/\s+/g, "-").toLowerCase() +
+          //   item.cityName??item.name.replace(/\s+/g, "-").toLowerCase() +
           //   "/" +
           //   item.id + "/";
         } else {
-          aurl = "/travel-guide/india/state-" + item.cityName.replace(/\s+/g, "-").toLowerCase() + "/" +item.id +"/"
+          aurl = "/travel-guide/india/state-" + item.cityName??item.name.replace(/\s+/g, "-").toLowerCase() + "/" +item.id +"/"
           // aurl =
           //   "/travel-guide-india-" +
-          //   item.cityName.replace(/\s+/g, "-").toLowerCase() +
+          //   item.cityName??item.name.replace(/\s+/g, "-").toLowerCase() +
           //   "/" +
           //   item.id + "/";
         }
-        var d = ReactHtmlParser(item.overviewDesc.substring(0, 100));
+        console.log(item)
+        var d = ReactHtmlParser(item.overviewDesc??item.ds.substring(0, 100));
   
         return (
           <div key={i}>
@@ -68,7 +69,7 @@ const TravelGuide = ({data}) =>{
                     </div>
                   </div>
                   <div className={tw`_inline col-sm-8 col-xs-7 pt-2 pb-2 pl-3 pr-3`}>
-                    <h4>{item.cityName}</h4>
+                    <h4>{item.cityName??item.name}</h4>
                     <div className='p'>{d}..</div>
                   </div>
                 </div>
@@ -140,9 +141,11 @@ const TravelGuide = ({data}) =>{
                                 <p></p>
                             </div>
                             <div className={tw`2w-full`}>
+                              <Link href="/travel-guide/">
                                 <a href="/travel-guide/">
                                     <div className="btn_view_more">View All</div>
                                 </a>
+                                </Link>
                             </div>
 
                         </div>

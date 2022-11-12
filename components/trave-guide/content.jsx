@@ -12,11 +12,10 @@ const Tabs=({title,desc})=>{
                 <div className="panel panel-default">
                     <div
                     className="panel-heading"
-                    id="howtoreach"
+                    // id="howtoreach"
+                    id={title}
                     role="tab"
                     >
-                        
-                        
                         <h4 className="panel-title">
                         <a
                             aria-controls="headingOne"

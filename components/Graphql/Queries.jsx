@@ -56,6 +56,21 @@ query package($input:Payload!) {
 `;
 
 
+
+export const getCountryContent = gql`
+fragment Payload on REST {
+    av: String,
+    id:String,
+    pt:String,
+  }
+query content($input:Payload!) {
+    content(input:$input) @rest(type: "content",method:"POST", path: "/api/v1/home/content") {
+      output
+    }
+  }
+`;
+
+
 export const getTravelHotel = gql`
 fragment Payload on REST {
     av: String,

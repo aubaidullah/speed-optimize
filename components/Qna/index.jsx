@@ -177,7 +177,7 @@ const QnaListing = ({ data, travelGuide }) => {
                                             <div>
                                                 <AiOutlinePlus style={{ cursor: "pointer", fontSize: "17px", color: 'grey' }} onClick={() => collapse === index ? setCollapse(null) : setCollapse(index)} />
                                             </div>
-                                            <p style={{ color: '#606060', fontSize: '15px', fontWeight: 'bold' }}>{ReactHtmlParser(e.question)}</p>
+                                            <p style={{ color: '#606060', fontSize: '15px', }}>{ReactHtmlParser(e.question)}</p>
                                         </div>
                                         <div>
                                             <button className="reply-btn" onClick={() => {

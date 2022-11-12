@@ -58,9 +58,6 @@ export async function getServerSideProps(context) {
     let _id = context.query.id
     const res = await client.query({ query: getArticle, variables: { input: { id: _id } } })
     console.log(res.data.travelArticle.output)
-    // getArticle
-
-
 
     let article_data = {
         'av': '1.3',

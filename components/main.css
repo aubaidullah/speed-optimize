@@ -15,8 +15,10 @@ a:focus, a:hover {
   }
 
 #nprogress .bar {
-    background: linear-gradient(to right,#00c4a7,#276cda,#00c4a7) !important;
+    /* background: linear-gradient(to right,#00c4a7,#276cda,#00c4a7) !important; */
     /* background:linear-gradient(to right,#f79421 11%,#f06726 51%,#dc2d4d); */
+    background:linear-gradient(to right,#dc2d4d 11%,grey 51%,#dc2d4d)
+    /* background: black; */
     /* height: 5px; */
     /* box-shadow: 0 0 10px #29d, 0 0 5px #29d; */
     /* box-shadow: 0 0 10px #f79421, 0 0 5px #f79421; */

@@ -1,38 +1,30 @@
-import Nav from "../../../../components/Nav"
+// import Nav from "../Nav"
+import Nav from '../Nav'
 import { IoLocationSharp } from 'react-icons/io5'
-import client from "../../../../components/Graphql/service";
-import { getTravelGuideDetail, getTravelPackage, getTravelHotel, getarticleQuery, getQnaQuery } from "../../../../components/Graphql/Queries";
+import client from "../Graphql/service";
+import { getTravelGuideDetail, getTravelPackage, getTravelHotel, getarticleQuery, getQnaQuery } from "../Graphql/Queries";
 import { tw } from 'twind'
 import { useState, useEffect } from "react";
-import BreadCrumbs from "../../../../components/breadcrumbs";
+import BreadCrumbs from "../breadcrumbs";
 import { Carousel } from "react-responsive-carousel";
 import { BsDot } from 'react-icons/bs'
 import axios from "axios";
 import { FaRupeeSign } from 'react-icons/fa'
 import Link from 'next/link'
 import ReactHtmlParser from "react-html-parser";
-import HomePackages from "../../../../components/home/packages";
-import Hotel from "../../../../components/home/hotel";
-import Articles from "../../../../components/home/articles";
-import QnaListing from "../../../../components/Qna";
-import Content from "../../../../components/trave-guide/content";
-import Leaform from '../../../../components/leadform'
-import State_Attraction from "../../../../components/trave-guide/attractions";
+import HomePackages from "../home/packages";
+import Hotel from "../home/hotel";
+import Articles from "../home/articles";
+import QnaListing from "../Qna";
+import Content from "../trave-guide/content";
+import Leaform from '../leadform'
+import State_Attraction from "../trave-guide/attractions";
 import Image from 'next/image'
-import Router from "next/router";
-// import TravelGuide from "../../../../components/home/travel_guide";
-import TravelGuideDetailComp from '../../../../components/trave-guide/details'
+import TravelGuide from '../home/travel_guide';
 
-const TravelGuideDetail = ({ packages_state,data, weather, packages, hotels, article, qna,type }) => {
-    // console.log(article)
-    return <TravelGuideDetailComp packages_state={packages_state} data={data} weather={weather} packages={packages} hotels={hotels} article={article} qna={qna} type={type}/>
-    // return <TravelGuide packages_state={packages_state} data={data} weather={weather} packages={packages} hotels={hotels} article={article} qna={qna} type={type} />
-    // console.log(data)
-    // return <Nav />
-}
 
-const TravelGuideDetail1 = ({ packages_state,data, weather, packages, hotels, article, qna,type }) => {
-    // console.log(data)
+const TravelGuideDetailComp = ({ packages_state,data, weather, packages, hotels, article, qna,type ,state_t=undefined}) => {
+    console.log(data)
     const [overviewlimit, setOverviewlimit] = useState(200)
     const [overview, setOverview] = useState()
     const [attlimit, setAttlimit] = useState(4)
@@ -183,7 +175,7 @@ const TravelGuideDetail1 = ({ packages_state,data, weather, packages, hotels, ar
                                     </div>
                                     <div className="cir_bg">
                                         {
-                                            type=='CITY'?data.city.ratings+'/5':data.state.ratings+'/5'
+                                            type=='CITY'?data.city.ratings+'/5':type=='STATE'?data.state.ratings+'/5':data.country.ratings+'/5'
                                         }
                                     </div>
                                 </div>
@@ -193,50 +185,71 @@ const TravelGuideDetail1 = ({ packages_state,data, weather, packages, hotels, ar
                             <div className={tw`p-2`}>
                                 <div className={tw`bg-white`}>
                                     <div className={tw`flex justify-between`}>
-                                        <div className={tw`w-full lg:1/2`}>
-                                            {
-                                                rightBlock({ icon: 'calender_multi_clr.png', heading: 'Best Session', desc: type=='CITY'?data.city.visitTime:data.state.visitTime })
-                                            }
-                                            {
-                                                type=='CITY'?
-                                                rightBlock({ icon: 'language.png', heading: 'Ideal Duration', desc: type=='CITY'?data.city.idealTripDuration:data.state.idealTripDuration })
-                                                :rightBlock({ icon: 'new_delhi.png', heading: 'Capital', desc: type=='CITY'?data.city.nearbyAirport:data.state.capital })
-                                            }
-                                            {
-                                                type=='STATE'?
-                                                rightBlock({ icon: 'language.png', heading: 'Major Languages', desc:data.state.languages })
-                                                :""
-                                            }
-                                        </div>
-
-                                        <div className={tw`w-full lg:1/2`}>
-                                            {
-                                                type=='CITY'?
-                                                rightBlock({ icon: 'train.png', heading: 'Station:', desc: data.city.nearbyRailway})
-                                                :rightBlock({ icon: 'plane_icon.png', heading: 'Major Airports', desc: data.state.airports})
-                                            }
-
-                                            {   type=='CITY'?
-                                                rightBlock({ icon: 'plane_icon.png', heading: 'Major Airports', desc: type=='CITY'?data.city.nearbyAirport:data.state.nearbyAirport }):
-                                                rightBlock({ icon: 'calender_multi_clr.png', heading: 'Ideal Duration', desc: data.state.idealTripDuration })
-                                            }
-
-                                            {
-                                                type=='STATE'?
-                                                <div className={tw`flex`}>
-                                                    <div>
-                                                        <IoLocationSharp className={tw`inline`} style={{ height: '15.7px' }}/>
-                                                        {/* <img src={`/icons/${icon}`} alt="" className={tw`inline`} style={{ height: '15.7px' }} /> */}
-                                                    </div>
-                                                    <div className={tw`ml-2`}>
-                                                        <div className={tw`t_12px font-bold`}>Region</div>
-                                                        <div className="t_12px">{data.state.region}</div>
-                                                    </div>
+                                        {
+                                            type=='COUNTRY'
+                                            ?<>
+                                                <div className={tw`w-full lg:1/2`}>
+                                                    {rightBlock({icon:'new_delhi.png',heading:'Capital',desc:data.country.capital})}
+                                                    {rightBlock({icon:'new_delhi.png',heading:'Continent',desc:data.country.continent})}
+                                                    {rightBlock({icon:'language.png',heading:'Major Languages',desc:data.country.languages})}
                                                 </div>
-                                                
-                                                :""
-                                            }                                            
-                                        </div>
+
+                                                <div className={tw`w-full lg:1/2`}>
+                                                    {rightBlock({ icon: 'region.png', heading: 'Currency', desc: data.country.currency})   }
+                                                    {rightBlock({ icon: 'plane_icon.png', heading: 'Major Airports', desc: 'Delhi, Mumbai, Chennai, Kolkata'})}
+                                                    {rightBlock({ icon: 'language.png', heading: 'Ideal Duration', desc:data.country.idealTripDuration})}
+                                                </div>                                                
+                                            </>
+                                            
+                                            :<>
+                                                <div className={tw`w-full lg:1/2`}>
+                                                    {
+                                                        rightBlock({ icon: 'calender_multi_clr.png', heading: 'Best Session', desc: type=='CITY'?data.city.visitTime:data.state.visitTime })
+                                                    }
+                                                    {
+                                                        type=='CITY'?
+                                                        rightBlock({ icon: 'language.png', heading: 'Ideal Duration', desc: type=='CITY'?data.city.idealTripDuration:data.state.idealTripDuration })
+                                                        :rightBlock({ icon: 'new_delhi.png', heading: 'Capital', desc: type=='CITY'?data.city.nearbyAirport:data.state.capital })
+                                                    }
+                                                    {
+                                                        type=='STATE'?
+                                                        rightBlock({ icon: 'language.png', heading: 'Major Languages', desc:data.state.languages })
+                                                        :""
+                                                    }
+                                                </div>
+
+                                                <div className={tw`w-full lg:1/2`}>
+                                                    {
+                                                        type=='CITY'?
+                                                        rightBlock({ icon: 'train.png', heading: 'Station:', desc: data.city.nearbyRailway})
+                                                        :rightBlock({ icon: 'plane_icon.png', heading: 'Major Airports', desc: data.state.airports})
+                                                    }
+
+                                                    {   type=='CITY'?
+                                                        rightBlock({ icon: 'plane_icon.png', heading: 'Major Airports', desc: type=='CITY'?data.city.nearbyAirport:data.state.nearbyAirport }):
+                                                        rightBlock({ icon: 'calender_multi_clr.png', heading: 'Ideal Duration', desc: data.state.idealTripDuration })
+                                                    }
+
+                                                    {
+                                                        type=='STATE'?
+                                                        <div className={tw`flex`}>
+                                                            <div>
+                                                                <IoLocationSharp className={tw`inline`} style={{ height: '15.7px' }}/>
+                                                                {/* <img src={`/icons/${icon}`} alt="" className={tw`inline`} style={{ height: '15.7px' }} /> */}
+                                                            </div>
+                                                            <div className={tw`ml-2`}>
+                                                                <div className={tw`t_12px font-bold`}>Region</div>
+                                                                <div className="t_12px">{data.state.region}</div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        :""
+                                                    }                                            
+                                                </div>
+                                        
+                                        </>
+                                        }
+                                        
 
                                     </div>
                                 </div>
@@ -466,6 +479,15 @@ const TravelGuideDetail1 = ({ packages_state,data, weather, packages, hotels, ar
                 :packages.packages.length!=0?<HomePackages data={packages} />:""
             }
 
+
+            {
+                type=='COUNTRY'?
+                <TravelGuide data={data.stg}/>
+                :""
+            }
+
+
+
             {
                 hotels.length!=0?<Hotel data={hotels} />:""
             }
@@ -508,128 +530,4 @@ const TravelGuideDetail1 = ({ packages_state,data, weather, packages, hotels, ar
     </>
 }
 
-export async function getServerSideProps(context) {
-    context.res.setHeader('Cache-Control', 's-maxage=10');
-    // console.log(context.query)
-    let _id = context.query.id
-    const res = await client.query({ query: getTravelGuideDetail, variables: { input: { id: _id } } })
-
-    // Router.pathname
-
-
-    var resp = null
-    // console.log(res.data.travelGuide.output)
-    
-    var type = "STATE"
-
-    if (res.data.travelGuide.output.tp == 'CITY'){
-        type = "CITY"
-        let lat = res.data.travelGuide.output.city.lat
-        let lng = res.data.travelGuide.output.city.lng
-
-        resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=d6429646ecc55c8a9d2856f91d10ff4f&units=metric`)
-        // console.log(resp)
-    }
-
-
-
-        // console.log(res.data.travelGuide.output.gid)
-        let json_data = {
-            'av': '',
-            'geoid': res.data.travelGuide.output.gid,
-            'id': '',
-            'pagenum': 1,
-            'pid': 0,
-            'pt': 'Website',
-            'size': 10,
-            'type': 'CITY',
-        }    
-    
-        // console.log(json_data)
-        const res1 = await client.query({ query: getTravelPackage, variables: { input: json_data } })
-        const packages = res1.data.package.output
-    
-        
-            // console.log(res.data.travelGuide.output.gid)
-            let json_data_ = {
-                'av': '',
-                'geoid': res.data.travelGuide.output.gid,
-                'id': '',
-                'pagenum': 1,
-                'pid': 0,
-                'pt': 'Website',
-                'size': 10,
-                'type': 'STATE',
-            }    
-            // console.log(json_data_)
-        
-            // console.log(json_data)
-            const res_ = await client.query({ query: getTravelPackage, variables: { input: json_data_ } })
-            
-            // console.log(res_)
-            const packages_state = res_.data.package.output
-
-
-            // console.log(packages_state)
-    
-
-    // const res_travel = await client.query({query:getTravelGuideHome,variables:{input:{'av':'1.3','pt':'WEBSITE','geoid':0,'id':'0','pagenum':0,'pid':0,'type':0}}})
-    // let data = res_travel.data.travelguide.output
-    // console.log(res.data)
-
-    let hotel_data = {
-        'av': '1.3',
-        'name': '',
-        'id': res.data.travelGuide.output.gid,
-        'pt': 'Website',
-        'type': 'City',
-    }
-
-    const hotel_res = await client.query({ query: getTravelHotel, variables: { input: hotel_data } })
-    const hotels = hotel_res.data.hotels.output?.hotels ??[]
-
-
-    let article_data = {
-        'av': '1.3',
-        'pt': 'WEBSITE',
-        'geoid': 0,
-        'id': 'string',
-        'pagenum': 1,
-        'pid': 0,
-        'size': 20,
-        'type': 0,
-    }
-    
-
-    // getQnaQuery
-
-
-    const article_res = await client.query({ query: getarticleQuery, variables: { input: article_data } })
-    const article = article_res.data.articles.output.articles
-
-    
-
-    let qna_data = {
-        'av': '',
-        'tgid': `${_id}`,
-        'did': '',
-        'pagenum': 1,
-        'pt': '',
-        'size': 17,
-    }
-
-    const qna_res = await client.query({ query: getQnaQuery, variables: { input: qna_data } })
-    const qna = qna_res.data.qna.output.qna
-
-    // console.log(qna)
-
-
-    // console.log(type)
-    // console.log(packages)
-
-
-    return { props: { packages_state:packages_state,data: res.data.travelGuide.output, weather: resp?resp.data:{}, packages, hotels, article, qna,type } }
-}
-
-
-export default TravelGuideDetail
+export default TravelGuideDetailComp
