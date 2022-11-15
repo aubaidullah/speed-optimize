@@ -154,9 +154,10 @@ const TravelGuideDetail1 = ({ packages_state,data, weather, packages, hotels, ar
                 <div className={tw`w-full lg:w-2/3`}>
                     <div className="slider_details">
                         <Carousel
-                            showArrows={true}
                             showStatus={false}
                             showThumbs={false}
+                            showArrows={true}
+                            showIndicators={false}
                             infinite={true}
                             autoPlay={true}
                             className="slider_banner slider_overlay"

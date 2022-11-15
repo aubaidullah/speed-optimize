@@ -25,6 +25,18 @@ query travelGuide($input:Payload!) {
 `;
 
 
+export const getHotelDetail = gql`
+fragment Payload on REST {
+    id: Int
+  }
+query hotelDetail($input:Payload!) {
+    hotelDetail(input:$input) @rest(type: "hotelDetail",method:"POST", path: "/api/v1/hotel/{args.input.id}/") {
+      output
+    }
+  }
+`;
+
+
 export const getrelatedpackage = gql`
 fragment Payload on REST {
     id: Int

@@ -13,6 +13,7 @@ import '../styles/nav.css'
 import '../styles/detail.css'
 import '../styles/qna.css'
 import '../styles/homepage.css'
+import '../styles/hotel.css'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import 'react-rangeslider/lib/index.css'
 // import "react-multi-carousel/"
