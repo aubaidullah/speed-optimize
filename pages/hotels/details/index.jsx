@@ -89,7 +89,7 @@ const HotelDetail = ({hotel}) =>{
                             <div>
                                 <h2 className="_titles_">About the place</h2>
                                 <div className="Shape_42">
-                                    {hotel.hotel.description}
+                                    {hotel.hotel.amenities}
                                 </div>
                             </div>
                         </div>
@@ -105,7 +105,7 @@ const HotelDetail = ({hotel}) =>{
                         <div className={tw`w-full lg:w-2/3`}>
                             <div>
                                 <h2 className="_titles_">Select Rooms</h2>
-                                    <Rooms />
+                                    <Rooms rooms={hotel.rooms}/>
                             </div>
                         </div>
                         <div className={tw`w-full lg:w-1/3`}>

@@ -3,3 +3,53 @@
     font-size: 15px;
     color:rgb(104, 104, 104)
 }
+
+.des_img_hotel, .recent_img {
+    position: relative;
+    margin: 0 0 30px;
+    overflow: hidden;
+  }
+  .des_img_hotel {
+    height: 100px;
+    border-radius: 0;
+    transition: box-shadow .2s;
+  }
+  .des_img_hotel img{
+    border-radius: 10px;
+  }
+
+  .des_img_ex_::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background-image: linear-gradient(180deg,hsla(0,0%,100%,0) -8%,#000 115%);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 8px;
+  }
+
+  .des_img_ex {
+    height: 150px;
+    border-radius: 0;
+    transition: box-shadow .2s;
+  }
+
+  .des_img_ex, .img {
+    position: relative;
+    /* margin: 0 0 30px; */
+    overflow: hidden;
+  }
+
+  .hotel_img{
+    border-radius: 8px;
+    height: 140px;
+    width: 100%;
+  }
+  .bwhite{
+    background-color: white;
+  }
+  .f12{
+    font-size: 12px;
+  }
