@@ -7,16 +7,27 @@ const Rooms = ({rooms}) =>{
     return <div>
     {rooms.map((e,index)=>{
         return <div className={tw`mt-2`}>
-            <div className={tw`flex flex-wrap p-2 bwhite mb-4`}>
+            <div className={tw`flex flex-wrap p-3 bwhite mb-4`} style={{borderRadius:'8px'}}>
                 <div className={tw`w-full lg:w-1/4`}>
                     {/* {e.name} */}
                     <img className="hotel_img" src={e.images}/>
                 </div>
                 <div className={tw`w-full lg:w-3/4`}>
-                    <div className={tw`pl-4`}>
+                    <div className={tw`pl-0 lg:pl-4`}>
                         <div className={tw`flex justify-between`}>
-                            <div>
+                            <div className={tw``}>
                                 <h2 className={tw`font-bold text-base`}>{e.name}</h2>
+                                <div className={tw`mt-2`}>
+                                    <div className={tw`flex flex-wrap`}>
+                                        <span className="frieds">                                                                            
+                                            <img src={"/icons/friends_.svg"} alt="" />
+                                        </span>
+                                        <span className='_2_two'>
+                                            2
+                                        </span>
+                                        
+                                    </div>
+                                </div>                                
                             </div>
                             <div>
                                 <div className="price_inr text-right">
@@ -31,17 +42,7 @@ const Rooms = ({rooms}) =>{
                         </div>
                         
                         
-                        <div>
-                            <div className={tw`flex flex-wrap`}>
-                                <span className="frieds">                                                                            
-                                    <img src={"/icons/friends_.svg"} alt="" />
-                                </span>
-                                <span className='_2_two'>
-                                    2
-                                </span>
-                                
-                            </div>
-                        </div>
+
 
                         <div>
                             {e.amenities.split(',').map((am,index)=>{
