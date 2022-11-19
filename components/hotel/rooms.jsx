@@ -32,9 +32,13 @@ const Rooms = ({rooms}) =>{
                             <div>
                                 <div className="price_inr text-right">
                                     <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
-                                    {e.price}/-
+                                    {e.price==0
+                                    ?<span>Price On Request</span>
+                                    :<span>{e.price}/-</span>
+                                    }
+                                    
                                 </div>
-                                <div>
+                                <div className="text-right">
                                     <p style={{fontSize:'8.8px',color:'#999'}}>Per person on twin sharing</p>
                                 </div>
                             </div>

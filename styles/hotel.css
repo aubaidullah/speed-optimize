@@ -53,3 +53,7 @@
   .f12{
     font-size: 12px;
   }
+
+  .ht_img,.pswp__img{
+    object-fit: cover;
+  }

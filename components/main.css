@@ -102,7 +102,7 @@ a:focus, a:hover {
 .bread_icon{
   color: #ccc;
   font-size: 12px;
-  margin:8px;
+  margin:0 8px;
 }
 .desk_display_none{
   display: none;
