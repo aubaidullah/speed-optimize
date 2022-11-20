@@ -3,7 +3,25 @@ import { tw } from "twind"
 import {BsCheckCircle} from 'react-icons/bs'
 import {FaRupeeSign} from 'react-icons/fa'
 import {MdCheckCircle} from 'react-icons/md'
+import { useState } from "react"
+import LeadForm from "../leadform"
 const Rooms = ({rooms}) =>{
+
+    const [sendquery,setSendquery] = useState(false)
+    // const [modalcity,setModalcity] = useState()
+    const [modalinfo,setModalinfo] = useState({})
+    
+    const updateChangeForm=(val)=>{
+        setSendquery(val)
+      }
+
+      const _sendquery = (price, id, name, city) => {
+        setModalinfo({
+            id,name,city,price
+        })
+        setSendquery(true)
+      };      
+
     return <div>
     {rooms.map((e,index)=>{
         return <div className={tw`mt-2`}>
@@ -75,7 +93,7 @@ const Rooms = ({rooms}) =>{
                                     </p>
 
                                 </div>
-                                <button className="btn_listing">SEND QUERY</button>
+                                <button className="btn_listing" onClick={()=>_sendquery(e.price,e.id,e.name,e.hid)}>SEND QUERY</button>
                             </div>
                         </div>
 
@@ -85,6 +103,13 @@ const Rooms = ({rooms}) =>{
             </div>
         </div>
     })}
+
+    <LeadForm key={1}
+        isshow = {sendquery}
+        packageid={modalinfo.id}
+        packageName={modalinfo.name}
+        changeForm = {updateChangeForm}
+        />    
     </div>
 }
 

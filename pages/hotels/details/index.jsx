@@ -6,15 +6,28 @@ import { getHotelDetail } from "../../../components/Graphql/Queries";
 import { BsDot, BsStarFill, BsStarHalf, BsStar, BsFillCheckCircleFill, BsPlusLg } from 'react-icons/bs'
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
+import {FaRupeeSign} from 'react-icons/fa'
 import Rooms from "../../../components/hotel/rooms";
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
-import { useEffect } from "react";
+import DatePicker from '@amir04lm26/react-modern-calendar-date-picker';
+import 'react-modern-calendar-datepicker/lib/DatePicker.css';
+import { useEffect,useState } from "react";
 // import PhotoSwipe from 'photoswipe';
 
 
 
 const HotelDetail = ({hotel}) =>{
+
+
+    const [checkindate,setCheckindate] = useState("")
+    const [checkoutdate,setCheckoutdate] = useState("")
+
+
+
+
+
+
     var userRating = []
     var i = 0
     for (i; i < Math.floor(parseFloat(hotel.hotel.ratings)); i++) {
@@ -53,6 +66,18 @@ const HotelDetail = ({hotel}) =>{
     
     console.log(hotel)
     
+
+    var dt = new Date()
+    const x = dt.toJSON().split("T")[0].split("-")
+
+    const minDate = {
+        "year":x[0],
+        "month":x[1],
+        "day":x[2]
+      }
+
+
+
     return <>
         
         <Nav />
@@ -194,12 +219,70 @@ const HotelDetail = ({hotel}) =>{
                             <div>
                                 <h2 className="_titles_">About the place</h2>
                                 <div className="Shape_42">
-                                    {hotel.hotel.amenities}
+                                    <div style={{lineHeight:'25px',textAlign:'justify'}}>
+                                        {hotel.hotel.amenities}
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
                         <div className={tw`w-full lg:w-1/3`}>
+                            <div className={tw`ml-5`}>
+                                <div className="Shape_42">
+                                    <div className={tw`flex items-center`}>
+                                        {hotel.hotel.price
+                                        ?<>
+                                            <div className="price_inr">
+                                            <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
+                                                <span>{hotel.hotel.price}/-</span>
+                                            </div>
+                                            <div className={tw`ml-3 f_12 c_gray`}>
+                                                per night
+                                            </div>
+                                        </>:<div className="price_inr">Price on Request</div>}
+                                    </div>
 
+                                    <div className={tw`flex mt-3`}>
+                                        <div style={{position:'relative'}}>
+                                            <div className="ht_label">
+                                                Check-in
+                                            </div>
+                                            <DatePicker
+                                                inputPlaceholder="Check-in"
+                                                inputClassName="form-control-hotel rd_left"
+                                                // format="dd-MM-y"
+                                                value = {checkindate}
+                                                minimumDate={minDate}
+                                                onChange={(date) => setCheckindate(date)}
+                                                required
+                                                />
+                                        </div>
+                                        <div style={{position:'relative'}}>
+                                            <div className="ht_label">
+                                                Check-out
+                                            </div>
+                                            <DatePicker
+                                                inputPlaceholder="Check-out"
+                                                inputClassName="form-control-hotel rd_right"
+                                                // format="dd-MM-y"
+                                                value = {checkoutdate}
+                                                minimumDate={checkindate}
+                                                onChange={(date) => setCheckoutdate(date)}
+                                                required
+                                                />                                            
+                                        </div>                                      
+                                    </div>
+
+                                    <div className={tw`mt-3`}>
+                                        <button className="btn_listing _btn_clr" style={{width:'100%'}}>
+                                            Book
+                                        </button>
+                                    </div>
+
+
+                                    
+                                </div>
+                            </div>
                         </div>                        
                     </div>
                 </div>
@@ -231,6 +314,9 @@ const HotelDetail = ({hotel}) =>{
                                 </div>
                                 <div className={tw`mb-2`}>
                                     <span className={tw`font-bold`}>No refund of amount paid </span> if cancel at least {hotel.policy[0]?.dayFrom2} days before check-in
+                                </div>
+                                <div className={tw`mb-2`}>
+                                    <span>Free cancellation deadlines are in the property's timezone.</span>
                                 </div>
                             </div>
                         </div>
