@@ -164,3 +164,11 @@
   position: sticky;
   top:70px;
 }
+
+.h50{
+  height: 50px;
+}
+.ht_select{
+  padding-left: 25px;
+  color:#757677;
+}
