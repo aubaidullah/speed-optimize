@@ -3,7 +3,8 @@ import { tw } from "twind";
 import BreadCrumbs from "../../../components/breadcrumbs";
 import client from "../../../components/Graphql/service";
 import { getHotelDetail } from "../../../components/Graphql/Queries";
-import { BsDot, BsStarFill, BsStarHalf, BsStar, BsFillCheckCircleFill, BsPlusLg } from 'react-icons/bs'
+import { BsDot, BsStarFill, BsStarHalf } from 'react-icons/bs'
+import {FaRegUser} from 'react-icons/fa'
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
 import {FaRupeeSign} from 'react-icons/fa'
@@ -13,15 +14,147 @@ import 'photoswipe/style.css';
 import DatePicker from '@amir04lm26/react-modern-calendar-date-picker';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { useEffect,useState } from "react";
+
 // import PhotoSwipe from 'photoswipe';
+
+
+
+const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutdate,setCheckoutdate,updateHotel}) =>{
+    // console.log(hotel)
+    var yourDate = new Date()
+    const offset = yourDate.getTimezoneOffset()
+    yourDate = new Date(yourDate.getTime() - (offset*60*1000))
+    let x = yourDate.toISOString().split('T')[0].split("-")
+
+    const minDate = {
+        "year":parseInt(x[0]),
+        "month":parseInt(x[1]),
+        "day":parseInt(x[2])
+      }
+
+    useEffect(()=>{
+        setCheckoutdate(checkindate)
+    },[checkindate])
+    
+    
+    return  <>
+    <div className={tw`ml-5`}>
+        <div className="Shape_42">
+            <div className={tw`flex items-center`}>
+                {hotel.hotel.price
+                ?<>
+                    <div className="price_inr">
+                    <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
+                        <span>{selectedHotel?.price}/-</span>
+                    </div>
+                    {/* <div className={tw`ml-3 f_12 c_gray`}>
+                        per night
+                    </div> */}
+                </>:<div className="price_inr">Price on Request</div>}
+            </div>
+
+            <div className={tw`flex mt-3`}>
+                <div style={{position:'relative',zIndex:999}}>
+                {/* calender_multi_clr */}
+                    <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
+                    <div className="ht_label">
+                        Check-in
+                    </div>
+                    <DatePicker
+                        inputPlaceholder="Check-in"
+                        inputClassName="form-control-hotel rd_left"
+                        // format="dd-MM-y"
+                        value = {checkindate}
+                        minimumDate={minDate}
+                        onChange={(date) => {console.log(date),setCheckindate(date)}}
+                        required
+                        />
+                </div>
+                <div style={{position:'relative',zIndex:999}}>
+                <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
+                    <div className="ht_label">
+                        Check-out
+                    </div>
+                    <DatePicker
+                        inputPlaceholder="Check-out"
+                        inputClassName="form-control-hotel rd_right"
+                        // format="dd-MM-y"
+                        value = {checkoutdate}
+                        minimumDate={checkindate}
+                        onChange={(date) => setCheckoutdate(date)}
+                        required
+                        />                                            
+                </div>                                      
+            </div>
+            <div className={tw`mt-3`}>
+                <div style={{position:'relative'}}>
+                <FaRegUser
+                    className="ht_cal_icon"
+                    // onClick={() => setShowLogin(!showLogin)}
+                    size={"20px"}
+                />
+                {/* <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} /> */}
+                    <div className="ht_label">
+                        Guest
+                    </div>                                        
+                {/* <input type={'text'} className="form-control-hotel" /> */}
+                <select className="form-control-hotel">
+                    <option value="" onClick={()=>updateHotel({travellers:2,room:1})}>2 Travellers, 1 Room</option>
+                    <option value="" onClick={()=>updateHotel({travellers:3,room:1})}>3 Travellers, 1 Room</option>
+                    <option value="" onClick={()=>updateHotel({travellers:4,room:2})}>4 Travellers, 2 Rooms</option>
+                    <option value="" onClick={()=>updateHotel({travellers:5,room:2})}>5 Travellers, 2 Rooms</option>
+                    <option value="" onClick={()=>updateHotel({travellers:6,room:3})}>6 Travellers, 3 Rooms</option>
+                    <option value="" onClick={()=>updateHotel({travellers:7,room:3})}>7 Travellers, 3 Rooms</option>
+                    {/* <option value="" onClick={()=>updateHotel({travellers:7,room:4})}>7 Travellers, 4 Rooms</option> */}
+                    <option value="" onClick={()=>updateHotel({travellers:8,room:4})}>8 Travellers, 4 Rooms</option>
+                    <option value="" onClick={()=>updateHotel({travellers:9,room:4})}>9 Travellers, 4 Rooms</option>
+                    {/* <option value="" onClick={()=>updateHotel({travellers:9,room:5})}>9 Travellers, 5 Rooms</option> */}
+                    <option value="" onClick={()=>updateHotel({travellers:10,room:5})}>10 Travellers, 5 Rooms</option>                                                                                        
+
+                </select>
+                </div>
+            </div>
+
+
+            <div className={tw`mt-3`}>
+                <button className="btn_listing _btn_clr" style={{width:'100%'}}>
+                    Book
+                </button>
+            </div>
+
+
+            
+        </div>
+    </div>
+</>
+}
+
+
 
 
 
 const HotelDetail = ({hotel}) =>{
 
 
-    const [checkindate,setCheckindate] = useState("")
-    const [checkoutdate,setCheckoutdate] = useState("")
+    var yourDate = new Date()
+    const offset = yourDate.getTimezoneOffset()
+    yourDate = new Date(yourDate.getTime() - (offset*60*1000))
+    let x = yourDate.toISOString().split('T')[0].split("-")
+
+    // const x = dt.toJSON().split("T")[0].split("-")
+
+    const minDate = {
+        "year":parseInt(x[0]),
+        "month":parseInt(x[1]),
+        "day":parseInt(x[2])
+      }
+
+
+
+    const [checkindate,setCheckindate] = useState(minDate)
+    const [checkoutdate,setCheckoutdate] = useState(minDate)
+    const [selectedRoom,setSelectedRoom] = useState({})
+    const [selectedHotel,setSelectedHotel] = useState({'travellers':2,'room':1,'price':0,'id':null})
 
 
 
@@ -64,18 +197,48 @@ const HotelDetail = ({hotel}) =>{
     })
    
     
-    console.log(hotel)
+    // console.log(hotel)
     
 
-    var dt = new Date()
-    const x = dt.toJSON().split("T")[0].split("-")
 
-    const minDate = {
-        "year":x[0],
-        "month":x[1],
-        "day":x[2]
-      }
 
+
+    // console.log(hotel.hotel.images.split(',').length)
+    // console.log(Math.min(...hotel.rooms.map(item => item.price)))
+    useEffect(()=>{
+        let nm = hotel.rooms.reduce(function(prev, curr) {
+            return prev.price < curr.price ? prev : curr;
+        });
+        // console.log(nm)
+        setSelectedRoom(nm)
+        setSelectedHotel({...selectedHotel,id:nm.id,price:nm.price})
+    },[])
+
+    // console.log(selectedHotel)
+
+    const updateHotel = (info) => {
+        console.log(info)
+        let price = 0
+        if(info.travellers == 2 && info.room==1){
+            price = selectedRoom.price
+        }
+        else{
+            price = selectedRoom.price * info.room
+            if(info.travellers%2){
+                price = price + selectedRoom.singlePrice 
+            }
+        }
+        setSelectedHotel({...selectedHotel,id:selectedRoom.id,price:price,travellers:info.travellers,room:info.room})
+    }
+
+    const selectRoom=(room)=>{
+        setSelectedRoom(room)
+    }
+    useEffect(()=>{
+        updateHotel({room:selectedHotel.room,travellers:selectedHotel.travellers})
+    },[selectedRoom])
+
+    console.log(selectedRoom)
 
 
     return <>
@@ -105,7 +268,12 @@ const HotelDetail = ({hotel}) =>{
                                     <div className="carousel carousel-slider">
                                         <div className="slider-wrapper axis-horizontal">
                                             <li className="slide">
-                                                <Image className='img ht_img' src={hotel.hotel.images.split(',')[0]} layout="fill" />
+                                                {
+                                                    hotel.hotel.images
+                                                    ?<Image className='img ht_img' src={hotel.hotel.images.split(',')[0]} layout="fill" />:
+                                                    ""
+                                                }
+                                                
 
                                             </li>
 
@@ -148,7 +316,11 @@ const HotelDetail = ({hotel}) =>{
                                                     data-pswp-height="2000" 
                                                     target="_blank"
                                                     >
+                                                    {
+                                                        hotel.hotel.images?
+                                                    
                                                     <div>
+
                                                         <Image className='ht_img' src={
                                                             // e
                                                             hotel.hotel.images.split(',')[index+1]
@@ -165,7 +337,7 @@ const HotelDetail = ({hotel}) =>{
                                                         </div>:""
                                                         }
                                                         
-                                                    </div>
+                                                    </div>:""}
                                                     
                                                     
                                                     </a>
@@ -213,37 +385,201 @@ const HotelDetail = ({hotel}) =>{
                     </div>
                 </div>
 
-                <div>
-                    <div className={tw`flex flex-wrap mt-8`}>
-                        <div className={tw`w-full lg:w-2/3`}>
-                            <div>
-                                <h2 className="_titles_">About the place</h2>
-                                <div className="Shape_42">
-                                    <div style={{lineHeight:'25px',textAlign:'justify'}}>
-                                        {hotel.hotel.amenities}
+                <div className={tw`flex flex-wrap mt-8`}>
+                    <div className={tw`w-full lg:w-2/3`}>
+
+                        <div>
+                            <div className={tw`flex flex-wrap`}>
+                                <div className={tw`w-full`}>
+                                    <div>
+                                        <h2 className="_titles_">About the place</h2>
+                                        <div className="Shape_42">
+                                            <div style={{lineHeight:'25px',textAlign:'justify'}}>
+                                                {hotel.hotel.description}
+                                            </div>
+                                            
+                                        </div>
                                     </div>
-                                    
                                 </div>
+                                <div className={tw`w-full lg:w-1/3`} style={{display:'none'}}>
+                                    <div className={tw`ml-5`}>
+                                        <div className="Shape_42">
+                                            <div className={tw`flex items-center`}>
+                                                {hotel.hotel.price
+                                                ?<>
+                                                    <div className="price_inr">
+                                                    <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
+                                                        <span>{selectedHotel?.price}/-</span>
+                                                    </div>
+                                                    {/* <div className={tw`ml-3 f_12 c_gray`}>
+                                                        per night
+                                                    </div> */}
+                                                </>:<div className="price_inr">Price on Request</div>}
+                                            </div>
+
+                                            <div className={tw`flex mt-3`}>
+                                                <div style={{position:'relative',zIndex:999}}>
+                                                {/* calender_multi_clr */}
+                                                    <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
+                                                    <div className="ht_label">
+                                                        Check-in
+                                                    </div>
+                                                    <DatePicker
+                                                        inputPlaceholder="Check-in"
+                                                        inputClassName="form-control-hotel rd_left"
+                                                        // format="dd-MM-y"
+                                                        value = {checkindate}
+                                                        minimumDate={minDate}
+                                                        onChange={(date) => setCheckindate(date)}
+                                                        required
+                                                        />
+                                                </div>
+                                                <div style={{position:'relative',zIndex:999}}>
+                                                <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
+                                                    <div className="ht_label">
+                                                        Check-out
+                                                    </div>
+                                                    <DatePicker
+                                                        inputPlaceholder="Check-out"
+                                                        inputClassName="form-control-hotel rd_right"
+                                                        // format="dd-MM-y"
+                                                        value = {checkoutdate}
+                                                        minimumDate={checkindate}
+                                                        onChange={(date) => setCheckoutdate(date)}
+                                                        required
+                                                        />                                            
+                                                </div>                                      
+                                            </div>
+                                            <div className={tw`mt-3`}>
+                                                <div style={{position:'relative'}}>
+                                                <FaRegUser
+                                                    className="ht_cal_icon"
+                                                    // onClick={() => setShowLogin(!showLogin)}
+                                                    size={"20px"}
+                                                />
+                                                {/* <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} /> */}
+                                                    <div className="ht_label">
+                                                        Guest
+                                                    </div>                                        
+                                                {/* <input type={'text'} className="form-control-hotel" /> */}
+                                                <select className="form-control-hotel">
+                                                    <option value="" onClick={()=>updateHotel({travellers:2,room:1})}>2 Travellers, 1 Room</option>
+                                                    <option value="" onClick={()=>updateHotel({travellers:3,room:1})}>3 Travellers, 1 Room</option>
+                                                    <option value="" onClick={()=>updateHotel({travellers:4,room:2})}>4 Travellers, 2 Rooms</option>
+                                                    <option value="" onClick={()=>updateHotel({travellers:5,room:2})}>5 Travellers, 2 Rooms</option>
+                                                    <option value="" onClick={()=>updateHotel({travellers:6,room:3})}>6 Travellers, 3 Rooms</option>
+                                                    <option value="" onClick={()=>updateHotel({travellers:7,room:3})}>7 Travellers, 3 Rooms</option>
+                                                    {/* <option value="" onClick={()=>updateHotel({travellers:7,room:4})}>7 Travellers, 4 Rooms</option> */}
+                                                    <option value="" onClick={()=>updateHotel({travellers:8,room:4})}>8 Travellers, 4 Rooms</option>
+                                                    <option value="" onClick={()=>updateHotel({travellers:9,room:4})}>9 Travellers, 4 Rooms</option>
+                                                    {/* <option value="" onClick={()=>updateHotel({travellers:9,room:5})}>9 Travellers, 5 Rooms</option> */}
+                                                    <option value="" onClick={()=>updateHotel({travellers:10,room:5})}>10 Travellers, 5 Rooms</option>                                                                                        
+
+                                                </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div className={tw`mt-3`}>
+                                                <button className="btn_listing _btn_clr" style={{width:'100%'}}>
+                                                    Book
+                                                </button>
+                                            </div>
+
+
+                                            
+                                        </div>
+                                    </div>
+                                </div>                        
                             </div>
                         </div>
-                        <div className={tw`w-full lg:w-1/3`}>
-                            <div className={tw`ml-5`}>
+
+
+                        <div>
+                            <div className={tw`flex flex-wrap mt-8`}>
+                                <div className={tw`w-full`}>
+                                    <div>
+                                        <h2 className="_titles_">Select Rooms</h2>
+                                            <Rooms rooms={hotel.rooms} selectedRoom={selectedRoom} selectRoom={selectRoom}/>
+                                    </div>
+                                </div>
+                                <div className={tw`w-full lg:w-1/3`}>
+
+                                </div>                        
+                            </div>
+                            {hotel.policy?
+                            <div className={tw`flex flex-wrap mt-8`}>
+                            <div className={tw`w-full`}>
+                                <div>
+                                    <h2 className="_titles_">Cancellation Policy</h2>
+                                    <div className="Shape_42">
+                                            <div className={tw`mb-2`}>
+                                            <span className={tw`font-bold`}>100% refund of amount paid </span> if cancel at least 7 days before check-in
+                                        </div>
+                                        <div className={tw`mb-2`}>
+                                            <span className={tw`font-bold`}>{100-hotel.policy[0]?.amt1}% refund of amount paid </span> if cancel at least {hotel.policy[0]?.dayTo1} days before check-in
+                                        </div>
+                                        <div className={tw`mb-2`}>
+                                            <span className={tw`font-bold`}>No refund of amount paid </span> if cancel at least {hotel.policy[0]?.dayFrom2} days before check-in
+                                        </div>
+                                        <div className={tw`mb-2`}>
+                                            <span>Free cancellation deadlines are in the property's timezone.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={tw`w-full lg:w-1/3`}>
+
+                            </div>                        
+                        </div>:""                    
+                            }
+
+                        </div>
+
+                        <div>
+                            <div className={tw`flex flex-wrap mt-8`}>
+                                <div className={tw`w-full`}>
+                                    <div>
+                                        <h2 className="_titles_">Term & Conditions</h2>
+                                        <div className="Shape_42">
+                                            <ul className={tw`list-disc ml-4 hotel_tnc`}>
+                                                {hotel.hotel.tnc.split(',').map((e,index)=>{
+                                                    return <li key={index}>{e}</li>
+                                                })}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div className={tw`w-full lg:w-1/3`} >
+                        <div className={tw`w-full h_sticky`}>
+                        <RightContent hotel={hotel} selectedHotel={selectedHotel} checkindate={checkindate} setCheckindate={setCheckindate} checkoutdate={checkoutdate} setCheckoutdate={setCheckoutdate} updateHotel={updateHotel}/>
+                        <>
+                            <div className={tw`ml-5`} style={{display:'none'}}>
                                 <div className="Shape_42">
                                     <div className={tw`flex items-center`}>
                                         {hotel.hotel.price
                                         ?<>
                                             <div className="price_inr">
                                             <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
-                                                <span>{hotel.hotel.price}/-</span>
+                                                <span>{selectedHotel?.price}/-</span>
                                             </div>
-                                            <div className={tw`ml-3 f_12 c_gray`}>
+                                            {/* <div className={tw`ml-3 f_12 c_gray`}>
                                                 per night
-                                            </div>
+                                            </div> */}
                                         </>:<div className="price_inr">Price on Request</div>}
                                     </div>
 
                                     <div className={tw`flex mt-3`}>
-                                        <div style={{position:'relative'}}>
+                                        <div style={{position:'relative',zIndex:999}}>
+                                        {/* calender_multi_clr */}
+                                            <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
                                             <div className="ht_label">
                                                 Check-in
                                             </div>
@@ -257,7 +593,8 @@ const HotelDetail = ({hotel}) =>{
                                                 required
                                                 />
                                         </div>
-                                        <div style={{position:'relative'}}>
+                                        <div style={{position:'relative',zIndex:999}}>
+                                        <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
                                             <div className="ht_label">
                                                 Check-out
                                             </div>
@@ -272,6 +609,35 @@ const HotelDetail = ({hotel}) =>{
                                                 />                                            
                                         </div>                                      
                                     </div>
+                                    <div className={tw`mt-3`}>
+                                        <div style={{position:'relative'}}>
+                                        <FaRegUser
+                                            className="ht_cal_icon"
+                                            // onClick={() => setShowLogin(!showLogin)}
+                                            size={"20px"}
+                                        />
+                                        {/* <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} /> */}
+                                            <div className="ht_label">
+                                                Guest
+                                            </div>                                        
+                                        {/* <input type={'text'} className="form-control-hotel" /> */}
+                                        <select className="form-control-hotel">
+                                            <option value="" onClick={()=>updateHotel({travellers:2,room:1})}>2 Travellers, 1 Room</option>
+                                            <option value="" onClick={()=>updateHotel({travellers:3,room:1})}>3 Travellers, 1 Room</option>
+                                            <option value="" onClick={()=>updateHotel({travellers:4,room:2})}>4 Travellers, 2 Rooms</option>
+                                            <option value="" onClick={()=>updateHotel({travellers:5,room:2})}>5 Travellers, 2 Rooms</option>
+                                            <option value="" onClick={()=>updateHotel({travellers:6,room:3})}>6 Travellers, 3 Rooms</option>
+                                            <option value="" onClick={()=>updateHotel({travellers:7,room:3})}>7 Travellers, 3 Rooms</option>
+                                            {/* <option value="" onClick={()=>updateHotel({travellers:7,room:4})}>7 Travellers, 4 Rooms</option> */}
+                                            <option value="" onClick={()=>updateHotel({travellers:8,room:4})}>8 Travellers, 4 Rooms</option>
+                                            <option value="" onClick={()=>updateHotel({travellers:9,room:4})}>9 Travellers, 4 Rooms</option>
+                                            {/* <option value="" onClick={()=>updateHotel({travellers:9,room:5})}>9 Travellers, 5 Rooms</option> */}
+                                            <option value="" onClick={()=>updateHotel({travellers:10,room:5})}>10 Travellers, 5 Rooms</option>                                                                                        
+
+                                        </select>
+                                        </div>
+                                    </div>
+
 
                                     <div className={tw`mt-3`}>
                                         <button className="btn_listing _btn_clr" style={{width:'100%'}}>
@@ -283,50 +649,10 @@ const HotelDetail = ({hotel}) =>{
                                     
                                 </div>
                             </div>
-                        </div>                        
+                        </>
+                    </div>   
+
                     </div>
-                </div>
-
-
-                <div>
-                    <div className={tw`flex flex-wrap mt-8`}>
-                        <div className={tw`w-full lg:w-2/3`}>
-                            <div>
-                                <h2 className="_titles_">Select Rooms</h2>
-                                    <Rooms rooms={hotel.rooms}/>
-                            </div>
-                        </div>
-                        <div className={tw`w-full lg:w-1/3`}>
-
-                        </div>                        
-                    </div>
-                    {hotel.policy?
-                    <div className={tw`flex flex-wrap mt-8`}>
-                    <div className={tw`w-full lg:w-2/3`}>
-                        <div>
-                            <h2 className="_titles_">Cancellation Policy</h2>
-                            <div className="Shape_42">
-                                    <div className={tw`mb-2`}>
-                                    <span className={tw`font-bold`}>100% refund of amount paid </span> if cancel at least 7 days before check-in
-                                </div>
-                                <div className={tw`mb-2`}>
-                                    <span className={tw`font-bold`}>{100-hotel.policy[0]?.amt1}% refund of amount paid </span> if cancel at least {hotel.policy[0]?.dayTo1} days before check-in
-                                </div>
-                                <div className={tw`mb-2`}>
-                                    <span className={tw`font-bold`}>No refund of amount paid </span> if cancel at least {hotel.policy[0]?.dayFrom2} days before check-in
-                                </div>
-                                <div className={tw`mb-2`}>
-                                    <span>Free cancellation deadlines are in the property's timezone.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={tw`w-full lg:w-1/3`}>
-
-                    </div>                        
-                </div>:""                    
-                    }
-
                 </div>
 
 

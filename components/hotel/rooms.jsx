@@ -5,7 +5,7 @@ import {FaRupeeSign} from 'react-icons/fa'
 import {MdCheckCircle} from 'react-icons/md'
 import { useState } from "react"
 import LeadForm from "../leadform"
-const Rooms = ({rooms}) =>{
+const Rooms = ({rooms,selectedRoom,selectRoom}) =>{
 
     const [sendquery,setSendquery] = useState(false)
     // const [modalcity,setModalcity] = useState()
@@ -81,6 +81,16 @@ const Rooms = ({rooms}) =>{
                                     </li>
                             })}
                         </div>
+                        <div className={tw`flex flex-wrap items-center pt-2`}>
+                            <div className={tw`font-bold f12`} >Meal : </div>
+                            <div className={tw`f12 pl-1`}>
+                                {e.meals == 'CP'?'CP - Room with Breakfast'
+                                :e.meals == 'MAP'?'MAP - Room with Breakfast, Dinner'
+                                :e.meals == 'AP'?'AP - Room with Breakfast, Lunch and Dinner':''
+                                }
+                                
+                                </div>
+                        </div>
                         <div>
                             <div className={tw`flex justify-between`}>
                                 <div className={tw`flex checks mt-4`}>
@@ -93,7 +103,13 @@ const Rooms = ({rooms}) =>{
                                     </p>
 
                                 </div>
-                                <button className="btn_listing" onClick={()=>_sendquery(e.price,e.id,e.name,e.hid)}>SEND QUERY</button>
+                                <button className={tw`btn_listing ${selectedRoom.id == e.id && selectedRoom.meals == e.meals ?'selected':''}`} 
+                                onClick={()=>selectRoom(e)}
+                                // onClick={()=>_sendquery(e.price,e.id,e.name,e.hid)}
+                                >
+                                {selectedRoom.id == e.id && selectedRoom.meals == e.meals?'Selected':'Select and Book'}
+                                    
+                                </button>
                             </div>
                         </div>
 
