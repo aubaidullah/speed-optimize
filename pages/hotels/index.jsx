@@ -2,7 +2,7 @@ import Nav from "../../components/Nav"
 import { tw } from "twind"
 import { useState,useEffect } from "react";
 import client from "../../components/Graphql/service";
-import { getHotelList } from "../../components/Graphql/Queries";
+import { getHotelList,getCitiesQuery } from "../../components/Graphql/Queries";
 // import {BsDot,BsStarFill,BsStarHalf,BsFillMoonFill} from 'react-icons/bs'
 import MultiCarousel2 from "react-multi-carousel";
 import Image from "next/image";
@@ -13,13 +13,17 @@ import Link from "next/link";
 import DatePicker from '@amir04lm26/react-modern-calendar-date-picker';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import {FaRegUser} from 'react-icons/fa'
+import axios from 'axios'
+import * as Constants from '../../components/Constants'
 
 
 const Hotels = ({data}) =>{
-
+    const [result, setResult] = useState({})
+    const [loading, setLoading] = useState(false)
     const [responsive,Setresponsive] = useState({})
     const [checkindate,setCheckindate] = useState("")
     const [checkoutdate,setCheckoutdate] = useState("")
+    const [searchkey,setSearchkey] = useState("")
 
 
     useEffect(()=>{
@@ -184,7 +188,27 @@ const Hotels = ({data}) =>{
       }
 
 
+      const Search = async () => {
+        setLoading(true)
+        const result = await axios.post(Constants.api + '/api/v1/geo/cities/', { av: '', id: '', pt: '', text: searchkey })
+        setResult(result?.data?.output)
+        setLoading(false)
+    }
 
+
+
+      const HandleSearch = (s_key) =>{
+        if (s_key.length >= 3) {
+          setSearchkey(s_key)
+          Search()
+        }
+        else {
+            setSearchkey(s_key)
+            setResult({})
+      }          
+      }
+
+      console.log(result)
     return <>
      <Nav />
      
@@ -193,10 +217,42 @@ const Hotels = ({data}) =>{
         <div className={tw`mt-4`}>
           <div>
             <div className={tw`flex_`}>
-              <h2>Search Home Stay For Your Date</h2>
+              <h2 className={tw`_titles_`}>Search Home Stay For Your Date</h2>
               <div className={tw`flex Shape_42`}>
                 <div className={tw`w-full lg:w-1/4 px-2`}>
-                  <input type={"text"} className="form-control h50" placeholder="Search for a destination" />
+                  <div style={{position:'relative'}}>
+                    <input 
+                    type={"text"} 
+                    value={searchkey}
+                    // value={searchkey}
+                    className="form-control h50"  
+                    placeholder="Search for a destination" 
+                    onChange={event => HandleSearch(event.target.value)}
+
+                    />
+                  <section className={tw`drop_down container`} style={{ boxShadow: 'inset 0 -1px 0 0 rgba(0,0,0,.1)',left:'0',right:'0',borderColor:'transparent',position:'absolute',zIndex:1,border:'1px solid rgba(0,0,0,0.1)' }}>
+                    <div>
+                    {result?.cities?.map((e, index) => (
+                        <div key={index}>
+                            <div href="#" onClick={()=>{setSearchkey(e.name),setResult({})}}>
+                                <div className={tw`hover:bg-[#fde2df] drop_item`}>
+                                    <div className="d_content">
+                                        <div className="flt_left">
+                                            <span className="s_name">{e?.name}</span>
+                                        </div>
+                                        {/* <div className="flt_right">
+                                            <FaRupeeSign className={tw`d_price inline`} />
+                                            <span className="d_price">{e?.price / 100}</span><BsDot className={`inline d_price`} /><span className="n_d">{e?.nights}N & {e?.nights + 1}D</span>
+                                        </div> */}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            ))}                      
+                    </div>
+                  </section>
+                  </div>
+
                 </div>
 
                 <div className={tw`w-full lg:w-3/4`}>

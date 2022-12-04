@@ -241,6 +241,23 @@ query qna($input:Payload!) {
 `;
 
 
+export const getCitiesQuery = gql`
+fragment Payload on REST {
+  av: String,
+  id: String,
+  pt: String,
+  text: String
+
+}
+query cities($input:Payload!) {
+  cities(input:$input) @rest(type: "cities",method:"POST", path: "/api/v1/geo/cities") {
+      output
+    }
+  }
+`;
+
+
+
 // export const getallpackages = gql`
 // fragment Payload on REST {
 //     id: Int
