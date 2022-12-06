@@ -69,6 +69,17 @@ const Hotels = ({data}) =>{
         );
       };    
 
+      const SampleNextArrow = (props)=> {
+        const { className, style, onClick } = props;
+        // {tw`hidden lg:carousel-button-group lg:block `}
+        return <div className={tw`hidden lg:block custom-btn right-custom-btn`} onClick={onClick}/>;
+      }
+  
+    const SamplePrevArrow = (props) => {
+        const { className, style, onClick } = props;
+        return <div className={tw`hidden lg:block custom-btn left-custom-btn`} onClick={onClick}/>;
+      }      
+
     const hotelRender = data.cities.map((item, i)=>{
         return <div>
                     <div className={tw`pr-8`}>
@@ -96,8 +107,8 @@ const Hotels = ({data}) =>{
         variableWidth: true,
         speed: 500,
         rows: 3,
-        // nextArrow: <SampleNextArrow />,
-        // prevArrow: <SamplePrevArrow />,
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />,
         responsive: [
           {
             breakpoint: 1024,
@@ -128,6 +139,7 @@ const Hotels = ({data}) =>{
           },
         ],
       };
+
 
 
     const exploreRender = data.hotels.map((item,i)=>{

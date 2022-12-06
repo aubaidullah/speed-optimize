@@ -40,17 +40,34 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
     return  <>
     <div className={tw`ml-5`}>
         <div className="Shape_42">
-            <div className={tw`flex items-center`}>
-                {hotel.hotel.price
-                ?<>
-                    <div className="price_inr">
-                    <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
-                        <span>{selectedHotel?.price}/-</span>
-                    </div>
-                    {/* <div className={tw`ml-3 f_12 c_gray`}>
-                        per night
-                    </div> */}
-                </>:<div className="price_inr">Price on Request</div>}
+
+            <div className={tw``}>
+                <div style={{position:'relative'}}>
+                <FaRegUser
+                    className="ht_cal_icon"
+                    // onClick={() => setShowLogin(!showLogin)}
+                    size={"20px"}
+                />
+                {/* <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} /> */}
+                    <div className="ht_label">
+                        Guest
+                    </div>                                        
+                {/* <input type={'text'} className="form-control-hotel" /> */}
+                <select className="form-control-hotel">
+                    <option value="" onClick={()=>updateHotel({travellers:2,room:1})}>2 Travellers, 1 Room</option>
+                    <option value="" onClick={()=>updateHotel({travellers:3,room:1})}>3 Travellers, 1 Room</option>
+                    <option value="" onClick={()=>updateHotel({travellers:4,room:2})}>4 Travellers, 2 Rooms</option>
+                    <option value="" onClick={()=>updateHotel({travellers:5,room:2})}>5 Travellers, 2 Rooms</option>
+                    <option value="" onClick={()=>updateHotel({travellers:6,room:3})}>6 Travellers, 3 Rooms</option>
+                    <option value="" onClick={()=>updateHotel({travellers:7,room:3})}>7 Travellers, 3 Rooms</option>
+                    {/* <option value="" onClick={()=>updateHotel({travellers:7,room:4})}>7 Travellers, 4 Rooms</option> */}
+                    <option value="" onClick={()=>updateHotel({travellers:8,room:4})}>8 Travellers, 4 Rooms</option>
+                    <option value="" onClick={()=>updateHotel({travellers:9,room:4})}>9 Travellers, 4 Rooms</option>
+                    {/* <option value="" onClick={()=>updateHotel({travellers:9,room:5})}>9 Travellers, 5 Rooms</option> */}
+                    <option value="" onClick={()=>updateHotel({travellers:10,room:5})}>10 Travellers, 5 Rooms</option>                                                                                        
+
+                </select>
+                </div>
             </div>
 
             <div className={tw`flex mt-3`}>
@@ -86,35 +103,19 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
                         />                                            
                 </div>                                      
             </div>
-            <div className={tw`mt-3`}>
-                <div style={{position:'relative'}}>
-                <FaRegUser
-                    className="ht_cal_icon"
-                    // onClick={() => setShowLogin(!showLogin)}
-                    size={"20px"}
-                />
-                {/* <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} /> */}
-                    <div className="ht_label">
-                        Guest
-                    </div>                                        
-                {/* <input type={'text'} className="form-control-hotel" /> */}
-                <select className="form-control-hotel">
-                    <option value="" onClick={()=>updateHotel({travellers:2,room:1})}>2 Travellers, 1 Room</option>
-                    <option value="" onClick={()=>updateHotel({travellers:3,room:1})}>3 Travellers, 1 Room</option>
-                    <option value="" onClick={()=>updateHotel({travellers:4,room:2})}>4 Travellers, 2 Rooms</option>
-                    <option value="" onClick={()=>updateHotel({travellers:5,room:2})}>5 Travellers, 2 Rooms</option>
-                    <option value="" onClick={()=>updateHotel({travellers:6,room:3})}>6 Travellers, 3 Rooms</option>
-                    <option value="" onClick={()=>updateHotel({travellers:7,room:3})}>7 Travellers, 3 Rooms</option>
-                    {/* <option value="" onClick={()=>updateHotel({travellers:7,room:4})}>7 Travellers, 4 Rooms</option> */}
-                    <option value="" onClick={()=>updateHotel({travellers:8,room:4})}>8 Travellers, 4 Rooms</option>
-                    <option value="" onClick={()=>updateHotel({travellers:9,room:4})}>9 Travellers, 4 Rooms</option>
-                    {/* <option value="" onClick={()=>updateHotel({travellers:9,room:5})}>9 Travellers, 5 Rooms</option> */}
-                    <option value="" onClick={()=>updateHotel({travellers:10,room:5})}>10 Travellers, 5 Rooms</option>                                                                                        
 
-                </select>
-                </div>
+            <div className={tw`flex items-center mt-3`}>
+                {hotel.hotel.price
+                ?<>
+                    <div className="price_inr">
+                    <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
+                        <span>{selectedHotel?.price}/-</span>
+                    </div>
+                    {/* <div className={tw`ml-3 f_12 c_gray`}>
+                        per night
+                    </div> */}
+                </>:<div className="price_inr">Price on Request</div>}
             </div>
-
 
             <div className={tw`mt-3`}>
                 <button className="btn_listing _btn_clr" style={{width:'100%'}}>
@@ -206,12 +207,15 @@ const HotelDetail = ({hotel}) =>{
     // console.log(hotel.hotel.images.split(',').length)
     // console.log(Math.min(...hotel.rooms.map(item => item.price)))
     useEffect(()=>{
-        let nm = hotel.rooms.reduce(function(prev, curr) {
-            return prev.price < curr.price ? prev : curr;
-        });
-        // console.log(nm)
-        setSelectedRoom(nm)
-        setSelectedHotel({...selectedHotel,id:nm.id,price:nm.price})
+        if (hotel.rooms.length!=0){
+            let nm = hotel.rooms.reduce(function(prev, curr) {
+                return prev.price < curr.price ? prev : curr;
+            });
+            // console.log(nm)
+            setSelectedRoom(nm)
+            setSelectedHotel({...selectedHotel,id:nm.id,price:nm.price})
+        }
+
     },[])
 
     // console.log(selectedHotel)
@@ -400,96 +404,6 @@ const HotelDetail = ({hotel}) =>{
                                             
                                         </div>
                                     </div>
-                                </div>
-                                <div className={tw`w-full lg:w-1/3`} style={{display:'none'}}>
-                                    <div className={tw`ml-5`}>
-                                        <div className="Shape_42">
-                                            <div className={tw`flex items-center`}>
-                                                {hotel.hotel.price
-                                                ?<>
-                                                    <div className="price_inr">
-                                                    <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
-                                                        <span>{selectedHotel?.price}/-</span>
-                                                    </div>
-                                                    {/* <div className={tw`ml-3 f_12 c_gray`}>
-                                                        per night
-                                                    </div> */}
-                                                </>:<div className="price_inr">Price on Request</div>}
-                                            </div>
-
-                                            <div className={tw`flex mt-3`}>
-                                                <div style={{position:'relative',zIndex:999}}>
-                                                {/* calender_multi_clr */}
-                                                    <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
-                                                    <div className="ht_label">
-                                                        Check-in
-                                                    </div>
-                                                    <DatePicker
-                                                        inputPlaceholder="Check-in"
-                                                        inputClassName="form-control-hotel rd_left"
-                                                        // format="dd-MM-y"
-                                                        value = {checkindate}
-                                                        minimumDate={minDate}
-                                                        onChange={(date) => setCheckindate(date)}
-                                                        required
-                                                        />
-                                                </div>
-                                                <div style={{position:'relative',zIndex:999}}>
-                                                <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
-                                                    <div className="ht_label">
-                                                        Check-out
-                                                    </div>
-                                                    <DatePicker
-                                                        inputPlaceholder="Check-out"
-                                                        inputClassName="form-control-hotel rd_right"
-                                                        // format="dd-MM-y"
-                                                        value = {checkoutdate}
-                                                        minimumDate={checkindate}
-                                                        onChange={(date) => setCheckoutdate(date)}
-                                                        required
-                                                        />                                            
-                                                </div>                                      
-                                            </div>
-                                            <div className={tw`mt-3`}>
-                                                <div style={{position:'relative'}}>
-                                                <FaRegUser
-                                                    className="ht_cal_icon"
-                                                    // onClick={() => setShowLogin(!showLogin)}
-                                                    size={"20px"}
-                                                />
-                                                {/* <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} /> */}
-                                                    <div className="ht_label">
-                                                        Guest
-                                                    </div>                                        
-                                                {/* <input type={'text'} className="form-control-hotel" /> */}
-                                                <select className="form-control-hotel">
-                                                    <option value="" onClick={()=>updateHotel({travellers:2,room:1})}>2 Travellers, 1 Room</option>
-                                                    <option value="" onClick={()=>updateHotel({travellers:3,room:1})}>3 Travellers, 1 Room</option>
-                                                    <option value="" onClick={()=>updateHotel({travellers:4,room:2})}>4 Travellers, 2 Rooms</option>
-                                                    <option value="" onClick={()=>updateHotel({travellers:5,room:2})}>5 Travellers, 2 Rooms</option>
-                                                    <option value="" onClick={()=>updateHotel({travellers:6,room:3})}>6 Travellers, 3 Rooms</option>
-                                                    <option value="" onClick={()=>updateHotel({travellers:7,room:3})}>7 Travellers, 3 Rooms</option>
-                                                    {/* <option value="" onClick={()=>updateHotel({travellers:7,room:4})}>7 Travellers, 4 Rooms</option> */}
-                                                    <option value="" onClick={()=>updateHotel({travellers:8,room:4})}>8 Travellers, 4 Rooms</option>
-                                                    <option value="" onClick={()=>updateHotel({travellers:9,room:4})}>9 Travellers, 4 Rooms</option>
-                                                    {/* <option value="" onClick={()=>updateHotel({travellers:9,room:5})}>9 Travellers, 5 Rooms</option> */}
-                                                    <option value="" onClick={()=>updateHotel({travellers:10,room:5})}>10 Travellers, 5 Rooms</option>                                                                                        
-
-                                                </select>
-                                                </div>
-                                            </div>
-
-
-                                            <div className={tw`mt-3`}>
-                                                <button className="btn_listing _btn_clr" style={{width:'100%'}}>
-                                                    Book
-                                                </button>
-                                            </div>
-
-
-                                            
-                                        </div>
-                                    </div>
                                 </div>                        
                             </div>
                         </div>
@@ -507,6 +421,36 @@ const HotelDetail = ({hotel}) =>{
 
                                 </div>                        
                             </div>
+                            
+                            <div className={tw`flex mt-8`}>
+                                <div>
+                                    <h2 className="_titles_">
+                                        Amenities
+                                    </h2>
+                                    <div className="Shape_42">
+                                        <div className={tw`flex flex-wrap`}>
+                                            {hotel.hotel.amenities.split(',').map((e,index)=>{
+                                                return <div className={tw`w-1/2 lg:w-1/4 mb-3`}>
+                                                    <div className={tw`flex`}>
+                                                        <div>
+                                                            <img src={"/icons/amenities-icons/1.png"} style={{width:'25px'}} className={tw`inline`} alt="" />
+                                                        </div>
+                                                        <div className={tw`pl-2`}>
+                                                            <span className={tw`text-gray-600 f12`}>{e}</span>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    
+                                                </div>
+                                            })}
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
                             {hotel.policy?
                             <div className={tw`flex flex-wrap mt-8`}>
                             <div className={tw`w-full`}>
@@ -560,96 +504,6 @@ const HotelDetail = ({hotel}) =>{
                     <div className={tw`w-full lg:w-1/3`} >
                         <div className={tw`w-full h_sticky`}>
                         <RightContent hotel={hotel} selectedHotel={selectedHotel} checkindate={checkindate} setCheckindate={setCheckindate} checkoutdate={checkoutdate} setCheckoutdate={setCheckoutdate} updateHotel={updateHotel}/>
-                        <>
-                            <div className={tw`ml-5`} style={{display:'none'}}>
-                                <div className="Shape_42">
-                                    <div className={tw`flex items-center`}>
-                                        {hotel.hotel.price
-                                        ?<>
-                                            <div className="price_inr">
-                                            <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
-                                                <span>{selectedHotel?.price}/-</span>
-                                            </div>
-                                            {/* <div className={tw`ml-3 f_12 c_gray`}>
-                                                per night
-                                            </div> */}
-                                        </>:<div className="price_inr">Price on Request</div>}
-                                    </div>
-
-                                    <div className={tw`flex mt-3`}>
-                                        <div style={{position:'relative',zIndex:999}}>
-                                        {/* calender_multi_clr */}
-                                            <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
-                                            <div className="ht_label">
-                                                Check-in
-                                            </div>
-                                            <DatePicker
-                                                inputPlaceholder="Check-in"
-                                                inputClassName="form-control-hotel rd_left"
-                                                // format="dd-MM-y"
-                                                value = {checkindate}
-                                                minimumDate={minDate}
-                                                onChange={(date) => setCheckindate(date)}
-                                                required
-                                                />
-                                        </div>
-                                        <div style={{position:'relative',zIndex:999}}>
-                                        <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
-                                            <div className="ht_label">
-                                                Check-out
-                                            </div>
-                                            <DatePicker
-                                                inputPlaceholder="Check-out"
-                                                inputClassName="form-control-hotel rd_right"
-                                                // format="dd-MM-y"
-                                                value = {checkoutdate}
-                                                minimumDate={checkindate}
-                                                onChange={(date) => setCheckoutdate(date)}
-                                                required
-                                                />                                            
-                                        </div>                                      
-                                    </div>
-                                    <div className={tw`mt-3`}>
-                                        <div style={{position:'relative'}}>
-                                        <FaRegUser
-                                            className="ht_cal_icon"
-                                            // onClick={() => setShowLogin(!showLogin)}
-                                            size={"20px"}
-                                        />
-                                        {/* <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} /> */}
-                                            <div className="ht_label">
-                                                Guest
-                                            </div>                                        
-                                        {/* <input type={'text'} className="form-control-hotel" /> */}
-                                        <select className="form-control-hotel">
-                                            <option value="" onClick={()=>updateHotel({travellers:2,room:1})}>2 Travellers, 1 Room</option>
-                                            <option value="" onClick={()=>updateHotel({travellers:3,room:1})}>3 Travellers, 1 Room</option>
-                                            <option value="" onClick={()=>updateHotel({travellers:4,room:2})}>4 Travellers, 2 Rooms</option>
-                                            <option value="" onClick={()=>updateHotel({travellers:5,room:2})}>5 Travellers, 2 Rooms</option>
-                                            <option value="" onClick={()=>updateHotel({travellers:6,room:3})}>6 Travellers, 3 Rooms</option>
-                                            <option value="" onClick={()=>updateHotel({travellers:7,room:3})}>7 Travellers, 3 Rooms</option>
-                                            {/* <option value="" onClick={()=>updateHotel({travellers:7,room:4})}>7 Travellers, 4 Rooms</option> */}
-                                            <option value="" onClick={()=>updateHotel({travellers:8,room:4})}>8 Travellers, 4 Rooms</option>
-                                            <option value="" onClick={()=>updateHotel({travellers:9,room:4})}>9 Travellers, 4 Rooms</option>
-                                            {/* <option value="" onClick={()=>updateHotel({travellers:9,room:5})}>9 Travellers, 5 Rooms</option> */}
-                                            <option value="" onClick={()=>updateHotel({travellers:10,room:5})}>10 Travellers, 5 Rooms</option>                                                                                        
-
-                                        </select>
-                                        </div>
-                                    </div>
-
-
-                                    <div className={tw`mt-3`}>
-                                        <button className="btn_listing _btn_clr" style={{width:'100%'}}>
-                                            Book
-                                        </button>
-                                    </div>
-
-
-                                    
-                                </div>
-                            </div>
-                        </>
                     </div>   
 
                     </div>

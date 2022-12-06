@@ -42,11 +42,16 @@
     overflow: hidden;
   }
 
-  .hotel_img{
+  /* .hotel_img{
     border-radius: 8px;
     height: 140px;
     width: 100%;
-  }
+  } */
+  .hotel_img{
+    /* border-radius: 8px; */
+    height: 100px;
+    width: 100%;
+  }  
   .bwhite{
     background-color: white;
   }
