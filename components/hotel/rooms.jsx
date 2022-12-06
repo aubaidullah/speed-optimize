@@ -107,7 +107,7 @@ const Rooms1 = ({rooms,selectedRoom,selectRoom}) =>{
                                     </p>
 
                                 </div>
-                                <button className={tw`btn_listing ${selectedRoom.id == e.id && selectedRoom.meals == e.meals ?'selected':''}`} 
+                                <button className={tw`btn_listing ${selectedRoom.id == e.id && selectedRoom.meals == e.meals ?'_selected':''}`} 
                                 onClick={()=>selectRoom(e)}
                                 // onClick={()=>_sendquery(e.price,e.id,e.name,e.hid)}
                                 >

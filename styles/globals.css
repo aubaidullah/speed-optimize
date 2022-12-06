@@ -48,7 +48,7 @@ a {
   transform: scaleX(1.5);
   object-fit: contain;
   border: 0;
-  max-height: 500px;
+  max-height: 450px;
   border-radius: 0 0 50% 50% !important
 }
 

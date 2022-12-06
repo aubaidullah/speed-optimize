@@ -158,7 +158,7 @@
   color: white;
   border: transparent;
 }
-.selected{
+._selected{
   cursor:not-allowed !important;
   background-image: linear-gradient( 118deg, #f79421 17%, #f06726 54%, #dc2d4d 95% );
   color: white;
