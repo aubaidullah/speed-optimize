@@ -37,7 +37,7 @@ const Banner = ({ data }) => {
             autoPlay={true}
             interval={3000}
             infiniteLoop={true}
-            className={"slider_banner slider_overlay"}
+            className={"slider_banner slider_banner_ slider_overlay"}
         >
             {data.map((e, index) => {
                 return <img src={e?.i} key={index} className="img-responsive" />

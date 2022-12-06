@@ -240,7 +240,20 @@ const Rooms = ({rooms,selectedRoom,selectRoom}) =>{
                                         :<span>{e.price}/-</span>
                                         }
                                         
-                                    </div>                                
+                                    </div>  
+                                    <div>
+                                        <div className={tw`flex flex-wrap items-center pt-2`}>
+                                            <div className={tw`font-bold f12`} >Meal : </div>
+                                            <div className={tw`f12 pl-1`}>
+                                                {e.meals == 'CP'?'CP - Room with Breakfast'
+                                                :e.meals == 'MAP'?'MAP - Room with Breakfast, Dinner'
+                                                :e.meals == 'AP'?'AP - Room with Breakfast, Lunch and Dinner':''
+                                                }
+                                                
+                                                </div>
+                                        </div>                                    
+                                    
+                                    </div>                              
                                 </div>
 
                             </div>
