@@ -231,7 +231,7 @@ const Rooms = ({rooms,selectedRoom,selectRoom}) =>{
                                     </div>
                                 </div>
 
-                                <div>
+                                <div className={tw`text-right`}>
                                     <div className={tw`text-gray-500`}>1 Room Per Night</div>
                                     <div className="price_inr">
                                         <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
