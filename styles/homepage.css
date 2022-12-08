@@ -141,6 +141,10 @@ margin: 0 0 2px;
   {
     ._service_list {
       width: calc(50% - 4px);
-  } 
+    }
+
+    .slider_banner_ .slider-wrapper{
+      height: auto;
+    }    
   }
  

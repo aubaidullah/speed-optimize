@@ -266,7 +266,6 @@ const Rooms = ({rooms,selectedRoom,selectRoom}) =>{
                             <div className={tw`pt-3`}>
                                 {e.amenities.split(',').map((am,index)=>{
                                     return <li className={tw`inline`}>
-                                            
                                             <div className={tw``}>
                                                 <BsCheckCircle color="#44c554" className={tw`inline`}/>
                                                 <div className={tw`pl-1 f12 inline text-gray-500`}>
