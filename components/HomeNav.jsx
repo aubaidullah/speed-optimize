@@ -118,7 +118,7 @@ const Nav = () => {
                                 <img className="brand-logo" src={`${router.pathname=='/'?'/icons/download.png':'/icons/kiomoi.png'}`}/>
                             </Link>
                         </div>
-                        <div className={tw`item_group flt_right ml-6`}>
+                        <div className={tw`item_group flt_right ml-2 lg:ml-6`}>
                             <div className="item flt_left">
                                 <Link href={"/holidays/"}>
                                     <div className="c_it"

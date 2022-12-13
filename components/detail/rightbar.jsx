@@ -261,7 +261,8 @@ const RightBar=({data})=>{
                                     {data.package.percent}% Off
                                     </span>
                                     <del>
-                                    <i className="fa fa-inr"></i>
+                                    {/* <i className="fa fa-inr"></i> */}
+                                    <FaRupeeSign className='inline' style={{color:"#999",fontSize:'12px',marginBottom:'4px'}} />
                                     {parseFloat(data.package.price) +
                                         parseFloat(data.package.discount)}
                                     /-
@@ -278,7 +279,8 @@ const RightBar=({data})=>{
                                 <FaRupeeSign className={tw`inline`}/>
                                 {parseInt(data.package.price) > 0 ? (
                                     <>
-                                    <i className="fa fa-inr" style={{ backgroundColor: 'initial' }}></i>
+                                    {/* <i className="fa fa-inr" style={{ backgroundColor: 'initial' }}></i> */}
+                                    <FaRupeeSign className='inline' style={{color:"#999",backgroundColor:'initial',fontSize:'12px',marginBottom:'4px'}} />
                                     {price}/-
                                     </>
                                 ) : (

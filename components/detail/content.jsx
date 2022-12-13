@@ -47,7 +47,7 @@ const Content = ({data}) =>{
               <p style={{ padding: '10px', marginBottom: '10px' }}>{item.desc}</p>
               <div className="Shape_53" style={{ padding: '10px', position: 'relative' }}>
                 <span className="_location_">
-                  <i className="fa fa-binoculars" aria-hidden="true"></i>{" "}
+                  {/* <i className="fa fa-binoculars" aria-hidden="true"></i>{" "} */}
                   {item.attractions.replace(/#/g, " - ").replace(/\//g, " ")}{" "}
                   {item.otherAttractions != undefined
                     ? item.otherAttractions

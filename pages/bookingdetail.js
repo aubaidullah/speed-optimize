@@ -312,7 +312,7 @@ const BookingDetail = () => {
                                                 </span>
                                             </div>
                                             <div className="location package-location">
-                                                <i className="fa fa-map-marker"></i>
+                                                {/* <i className="fa fa-map-marker"></i> */}
                                                 <span> {bookingDetails?.lead?.ocity}</span>
                                             </div>
                                             <div className="_cities">
