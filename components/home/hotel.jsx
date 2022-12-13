@@ -83,7 +83,7 @@ const Hotel = ({data}) =>{
                   <div className="content_">
                     <div className="person_">
                       <div className="item_list">
-                        <i className="fa fa-user-o"></i>
+                        {/* <i className="fa fa-user-o"></i> */}
                         <span>1 Person</span>
                       </div>
                       <div className="item_list text-right">
@@ -108,7 +108,7 @@ const Hotel = ({data}) =>{
                     {item.price > 0 ? (
                       <>
                         <span className="price_inr price_royal">
-                          <i className="fa fa-inr"></i>
+                          {/* <i className="fa fa-inr"></i> */}
                           {item.price}
                         </span>
                       </>
