@@ -87,7 +87,7 @@ const TravelGuideDetailComp = ({ packages_state,data, weather, packages, hotels,
 
 
 
-    console.log(packages)
+    // console.log(packages)
     // console.log(packages_state)
     return <>
         <Nav />
@@ -129,11 +129,11 @@ const TravelGuideDetailComp = ({ packages_state,data, weather, packages, hotels,
                         <a href={`#${data.marketHeading}</}`}>{data.marketHeading}</a>
                     </li>
                     :""}
-                    {data.tg.foodHeading
+                    {/* {data.tg.foodHeading
                     ?<li>
                         <a href={`#${data.tg.foodHeading}`}>{data.tg.foodHeading}</a>
                     </li>
-                    :""}
+                    :""} */}
                     {data.tg.marketHeading
                     ?<li>
                         <a href={`#${data.tg.marketHeading}`}>{data.tg.marketHeading}</a>
@@ -368,7 +368,7 @@ const TravelGuideDetailComp = ({ packages_state,data, weather, packages, hotels,
                     <div>
                         <div className={tw`flex justify-between`}>
                             {
-                                type=='CITY'?<h2 className={'_titles_'}>Attractions in {data.tg.cityName}</h2>
+                                type=='CITY'?data.attn.length>0?<h2 className={'_titles_'}>Attractions in {data.tg.cityName}</h2>:""
                                 :<h2 className={tw`text-xl font-bold`}>Top Cities in {data.tg.cityName}</h2>
                             }
                             
@@ -376,24 +376,26 @@ const TravelGuideDetailComp = ({ packages_state,data, weather, packages, hotels,
 
                             {
                                 type=='CITY'?
-                                <div>
-                                    <Link href={'/travel-guide'}>
-                                        <a href={'/travel-guide/'}>
-                                            <div className='btn_view_more'>
-                                                View all
-                                            </div>
+                                    data.attn.length>0?
+                                        <div>
+                                            <Link href={'/travel-guide'}>
+                                                <a href={'/travel-guide/'}>
+                                                    <div className='btn_view_more'>
+                                                        View all
+                                                    </div>
 
-                                        </a>
-                                    </Link>
-                                </div>
+                                                </a>
+                                            </Link>
+                                        </div>:""
                                 :""
                             }
                             
 
                         </div>
+                        {data?.attn?.length>0 ||data?.ctg?.length>0?
                         <div className={tw``}>
-                            <div className="Shape_42">
 
+                            <div className="Shape_42">
                                 <div className={tw`flex flex-wrap`}>
                                     {
                                         type=='CITY'?
@@ -446,7 +448,7 @@ const TravelGuideDetailComp = ({ packages_state,data, weather, packages, hotels,
 
                                     }
                                 </div>
-
+                                {data?.attn?.length>0 ||data?.ctg?.length>0?
                                 <div>
                                     <a onClick={() => attlimit == 4 ? setAttlimit(100) : setAttlimit(4)}>
                                         <div className='btn_view_more'>
@@ -457,10 +459,10 @@ const TravelGuideDetailComp = ({ packages_state,data, weather, packages, hotels,
                                             Tourist place in {data.tg.cityName}
                                         </div>
                                     </a>
-                                </div>
+                                </div>:""}
 
                             </div>
-                        </div>
+                        </div>:""}
 
                     </div>
                     <Content data={data} />
