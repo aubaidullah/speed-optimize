@@ -10,6 +10,7 @@ const Privacy = () => {
     const [first, setFirst] = useState(false);
     const [second, setSecond] = useState(false);
     const [third, setThird] = useState(false);
+    
 
     return <>
         <Nav />
