@@ -32,7 +32,7 @@ const Meta = ({meta}) =>{
         <meta property="fb:admins" content="263867260781770"/>
         <meta property="og:description" content={meta.longDesc}/>
         <meta property="og:type" content="website"/>
-        <meta property="og:image" content="__IMAGE__"/>
+        <meta property="og:image" content={meta.image}/>
 
         <meta name="twitter:card" content="summary"/>
         <meta name="twitter:title" content={meta.title}/>
@@ -44,7 +44,7 @@ const Meta = ({meta}) =>{
         <meta name="robots" content="index" />
         
 
-        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
+        <link rel="apple-touch-icon" href="/icons/logo.png" />
 
         <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     </Head>
