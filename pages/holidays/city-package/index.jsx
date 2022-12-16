@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { getallpackages, getStateByCityQuery } from "../../../components/Graphql/Queries"
+import { getallpackages, getStateByCityQuery,getMetaQuery } from "../../../components/Graphql/Queries"
 import client from "../../../components/Graphql/service"
 // import Nav from "../../../components/Nav"
 import {useEffect,useState} from 'react'
@@ -23,7 +23,7 @@ const DeskList = dynamic(() => import('../../../components/list_page.mobile'), {
 
 
 
-const CityPackages = ({data,headers,region,places,city}) =>{
+const CityPackages = ({data,headers,region,places,city,meta}) =>{
     console.log(city)
     const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('android') || headers['user-agent'].includes('iphone'))
 
@@ -39,10 +39,10 @@ const CityPackages = ({data,headers,region,places,city}) =>{
 
     if (isMobile==true){
         // return <ListPageMobile data = {data}/>
-        return <><Nav/> <MobileList page_type={'CITY'} data={data??[]} region = {region} places={places} isMobile={isMobile} city={city} /></>
+        return <><Nav/> <MobileList meta={meta} page_type={'CITY'} data={data??[]} region = {region} places={places} isMobile={isMobile} city={city} /></>
     }
     else{
-        return <><Nav/><DeskList page_type={'CITY'} data = {data??[]} region = {region} places={places} isMobile={isMobile} city={city}/></>
+        return <><Nav/><DeskList meta={meta} page_type={'CITY'} data = {data??[]} region = {region} places={places} isMobile={isMobile} city={city}/></>
     }    
 
 
@@ -97,13 +97,23 @@ export async function getServerSideProps(context) {
     const places = res.data.allpackage.output?.fcities??[]
 
 
+    const meta = await client.query({query:getMetaQuery,variables:{input:{av:"",id:0,key:'CITY_HOLIDAYS',name:"",pt:'WEBSITE',type:"CITY"}}})
+    let {finalprice,images} = meta.data.meta.output.package
+    finalprice = `₹${finalprice} `
+    const metas ={
+        title:meta.data.meta.output.tags.title.replace(/<CITY>/g,context.query.city).replace(/<PRICE>/g,finalprice),
+        longDesc:meta.data.meta.output.tags.longDesc.replace(/<CITY>/g,context.query.city),
+        keywords:meta.data.meta.output.tags.longDesc.replace(/<CITY>/g,context.query.city),
+        image:images
+    }
+
 
     // data = []
     // // headers = []
     // region = []
     // places = []
     headers['user-agent'] = headers['user-agent'].toLocaleLowerCase()
-    return { props: { data,headers,region,places,city:context.query.city}}
+    return { props: { data,headers,region,places,city:context.query.city,meta:metas}}
 
 }
 

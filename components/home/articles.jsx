@@ -70,7 +70,7 @@ const Articles = ({data}) =>{
                   <Link href={aurl}>
                   <a href={aurl} className="anchor_link _50">
                     Read Full Story{"  "}
-                    <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
+                    {/* <i className="fa fa-long-arrow-right" aria-hidden="true"></i> */}
                   </a>
                   </Link>
                 </div>

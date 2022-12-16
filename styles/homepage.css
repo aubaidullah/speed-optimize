@@ -1,3 +1,14 @@
+
+.slider_banner_::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 177px;
+  background-image: linear-gradient(180deg,rgba(0,0,0,.5),hsla(0,0%,100%,0));
+  top: 0;
+  z-index: 2;
+}
+
 .box_1 p {
     font-size: 10px;
     color: #999;
@@ -137,8 +148,29 @@ margin: 0 0 2px;
     height: 450px;
   }
 
+
+ 
+
+  .img-responsive_banner{
+    width: 100%;
+    vertical-align: top;
+    -webkit-transform: scaleX(1.5);
+    transform: scaleX(1.5);
+    object-fit: contain;
+    border: 0;
+    max-height: 500px;
+    height: 500px;
+    border-radius: 0 0 50% 50% !important;
+    /* transform: scaleX(1.5); */
+  }
+
   @media (max-width: 767px)
   {
+    .img-responsive_banner{
+      object-fit: unset;
+      height: 300px;
+    }
+
     ._service_list {
       width: calc(50% - 4px);
     }
@@ -147,4 +179,3 @@ margin: 0 0 2px;
       height: auto;
     }    
   }
- 

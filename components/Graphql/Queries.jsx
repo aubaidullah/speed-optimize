@@ -257,6 +257,24 @@ query cities($input:Payload!) {
 `;
 
 
+export const getMetaQuery = gql`
+fragment Payload on REST {
+  av: String,
+  id: Int,
+  key: String,
+  name: String,
+  pt: String,
+  type: String
+
+}
+query meta($input:Payload!) {
+  meta(input:$input) @rest(type: "meta",method:"POST", path: "/api/v1/common/tag") {
+      output
+    }
+  }
+`;
+
+
 
 // export const getallpackages = gql`
 // fragment Payload on REST {

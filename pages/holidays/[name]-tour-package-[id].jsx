@@ -1,5 +1,5 @@
 import { BsDot, BsStarFill, BsStarHalf, BsStar, BsFillCheckCircleFill, BsPlusLg } from 'react-icons/bs'
-import { getpackage, getrelatedpackage, getreviewsQuery } from '../../components/Graphql/Queries'
+import { getpackage, getrelatedpackage, getreviewsQuery,getMetaQuery } from '../../components/Graphql/Queries'
 import { tw } from 'twind'
 import { Carousel } from "react-responsive-carousel";
 import { useState } from 'react';
@@ -16,9 +16,10 @@ import axios from 'axios';
 import Nav from '../../components/Nav'
 import * as Constants from '../../components/Constants'
 import BreadCrumbs from '../../components/breadcrumbs';
+import Meta from '../../components/meta';
 
 
-const DetailPage = ({ data, related, reviews }) => {
+const DetailPage = ({ data, related, reviews,meta }) => {
 
     const [rating, setRating] = useState(null);
 
@@ -32,16 +33,16 @@ const DetailPage = ({ data, related, reviews }) => {
 
     var userRating = []
     var i = 0
-    for (i; i < Math.floor(parseFloat(data.package.sratings)); i++) {
+    for (i; i < Math.floor(parseFloat(data?.package.sratings)); i++) {
         userRating.push(<BsStarFill key={i} className={tw`d_icon_size inline`} />)
     }
-    if (data.package.sratings.length != 1) {
+    if (data?.package.sratings.length != 1) {
         userRating.push(<BsStarHalf key={i} className={tw`d_icon_size inline`} />)
     }
 
     const bread = {
         disabled: {
-            item: `${data.package.name} Tour package ${data.package.id}`
+            item: `${data?.package.name} Tour package ${data?.package.id}`
         },
         enabled: [
             {
@@ -57,8 +58,8 @@ const DetailPage = ({ data, related, reviews }) => {
                 href: "/holidays/"
             },
             {
-                item :`${data.package.region.split(",")[0]}`,
-                href:`/holidays/${data.package.region.split(",")[0].toLowerCase()}-tour-packages/${data.gid}/`
+                item :`${data?.package.region.split(",")[0]}`,
+                href:`/holidays/${data?.package.region.split(",")[0].toLowerCase()}-tour-packages/${data?.gid}/`
             }
         ]
     }
@@ -75,8 +76,8 @@ const DetailPage = ({ data, related, reviews }) => {
 
             images.forEach(image => leaddata.append("files", image))
 
-            leaddata.append("pid", data.package.id);
-            leaddata.append("pname", data.package.name);
+            leaddata.append("pid", data?.package.id);
+            leaddata.append("pname", data?.package.name);
             leaddata.append("mobile", localStorage.getItem("userphone"));
             leaddata.append("userid", localStorage.getItem("userid"));
             leaddata.append("name", localStorage.getItem("username"));
@@ -98,7 +99,7 @@ const DetailPage = ({ data, related, reviews }) => {
         } else { setShow(!show) }
     }
 
-    const reviewRender = reviews.reviews.slice(0, maxReview).map(function (item, index) {
+    const reviewRender = reviews?.reviews.slice(0, maxReview).map(function (item, index) {
         return (
             <div className={tw`my-5`}>
                 <div className={tw`w-full lg:w-2/3 flex flex-col md:flex-row justify-between items-start md:items-center`}>
@@ -149,7 +150,7 @@ const DetailPage = ({ data, related, reviews }) => {
         );
     });
 
-    const themeRender = data.package.theme.split('#').map(function (item, i) {
+    const themeRender = data?.package.theme.split('#').map(function (item, i) {
         // try {
         //   const images = require.context("../assets/", true);
         //   var img2 = "Ico_" + item.trim() + ".png";
@@ -180,6 +181,7 @@ const DetailPage = ({ data, related, reviews }) => {
 
     return <>
         {show ? <Guest show={show} setShow={() => setShow(!show)} /> : null}
+        <Meta meta={meta} />
 
         <Nav />
 
@@ -188,7 +190,7 @@ const DetailPage = ({ data, related, reviews }) => {
         <section className='container'>
             <div className='row'>
                 <div className='col-sm-8 col-xs-6'>
-                    <h1 className='h1_title'>{data.package.name}</h1>
+                    <h1 className='h1_title'>{data?.package.name}</h1>
                     <div>
                         <div className='_inline__'>
                             {userRating}
@@ -249,8 +251,8 @@ const DetailPage = ({ data, related, reviews }) => {
                             autoPlay={true}
                             className="slider_banner slider_overlay"
                         >
-                            {data.package.images.split(',').map((e, index) => {
-                                return <Image className='img' src={e} layout="fill" key={index} />
+                            {data?.package.images.split(',').map((e, index) => {
+                                return e?<Image className='img' src={e} layout="fill" key={index} />:""
                             })}
                         </Carousel>
                     </div>
@@ -357,8 +359,8 @@ const DetailPage = ({ data, related, reviews }) => {
                     <hr className={tw`w-full lg:w-2/3 mt-3`} />
                 </div>
                 <div className="_line_review"></div>
-                {reviews.reviews.length > 0 ? reviewRender : "No Reviews yet"}
-                {reviews.reviews.length > 0 && maxReview == 5 ?
+                {reviews?.reviews.length > 0 ? reviewRender : "No Reviews yet"}
+                {reviews?.reviews.length > 0 && maxReview == 5 ?
                     <div
                         style={{color:'#999'}}
                         className={tw`w-full hover:text-black lg:w-2/3 flex flex-row-reverse text-lg font-bold cursor-pointer`}
@@ -395,7 +397,7 @@ export async function getServerSideProps(context) {
     let postD = {
         "av": "1.3",
         "id": 0,
-        "name": res.data.package.output.package.region.split(",")[0],
+        "name": res.data?.package.output?.package.region.split(",")[0],
         "pt": "WEBSITE",
         "type": "STATE"
     }
@@ -422,13 +424,26 @@ export async function getServerSideProps(context) {
             }
         }
     })
-    console.log(res.data.package.output)
+    // console.log(res.data?.package.output)
+
+
+    const meta = await client.query({query:getMetaQuery,variables:{input:{av:"",id:_id,key:'PACKAGE',name:"",pt:'WEBSITE',type:"PACKAGE"}}})
+    let {cities,name:pname,finalprice,images} = meta.data.meta.output.package
+    
+    finalprice = `₹${finalprice} `
+    const metas ={
+        title:meta.data.meta.output.tags.title.replace(/<PNAME>/g,pname).replace(/<CITIES>/g,cities),
+        longDesc:meta.data.meta.output.tags.longDesc.replace(/<PNAME>/g,name).replace(/<CITIES>/g,cities).replace(/<PRICE>/g,finalprice),
+        keywords:meta.data.meta.output.tags.keywords.replace(/<CITIES>/g,cities),
+        image:images
+    }    
 
     return {
         props: {
-            data: res.data.package.output,
-            related: relatedpack.data.package.output,
-            reviews: reviews.data.reviews.output
+            data: res.data?.package.output,
+            related: relatedpack.data?.package.output,
+            reviews: reviews.data?.reviews.output,
+            meta:metas
         }
     }
 }

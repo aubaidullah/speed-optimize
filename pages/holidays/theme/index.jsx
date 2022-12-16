@@ -5,7 +5,7 @@ import Image from "next/image"
 // import ListPage from '../components/list_page.desktop'
 import {useEffect,useState} from 'react'
 import dynamic from 'next/dynamic';
-import {getallpackages} from '../../../components/Graphql/Queries'
+import {getallpackages,getMetaQuery} from '../../../components/Graphql/Queries'
 import client from '../../../components/Graphql/service'
 import {getPackages} from '../../../redux_fx/actions'
 import {useSelector,useDispatch} from 'react-redux'
@@ -23,7 +23,7 @@ const DeskList = dynamic(() => import('../../../components/list_page.mobile'), {
 });
 
 
-const ThemePackage =({data,headers,region,places})=>{
+const ThemePackage =({data,headers,region,places,meta})=>{
     const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('android') || headers['user-agent'].includes('iphone'))
     
     const dispatch = useDispatch()
@@ -51,10 +51,10 @@ const ThemePackage =({data,headers,region,places})=>{
 
     if (isMobile==true){
         // return <ListPageMobile data = {data}/>
-        return <><Nav/> <MobileList page_type={'THEME'} data={pdata??[]} region = {region} places={places} isMobile={isMobile} /></>
+        return <><Nav/> <MobileList meta={meta} page_type={'THEME'} data={pdata??[]} region = {region} places={places} isMobile={isMobile} /></>
     }
     else{
-        return <><Nav/><DeskList page_type={'THEME'} data = {pdata??[]} region = {region} places={places} isMobile={isMobile}/></>
+        return <><Nav/><DeskList meta={meta} page_type={'THEME'} data = {pdata??[]} region = {region} places={places} isMobile={isMobile}/></>
     }
 
 }
@@ -72,10 +72,13 @@ export async function getServerSideProps(context) {
 
     const region = res.data.allpackage.output.region??null
     const places = res.data.allpackage.output.fcities
+
+
+    const meta = await client.query({query:getMetaQuery,variables:{input:{av: "1.3",id: 0,key: "HOLIDAYS",name: "",pt: "WEBSITE",type: ""}}})
     // console.log(places)
     headers['user-agent'] = headers['user-agent'].toLocaleLowerCase()
 
-    return { props: { data,headers,region,places}}
+    return { props: { data,headers,region,places,meta:meta.data.meta.output.tags}}
   }
   
 

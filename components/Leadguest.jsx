@@ -168,7 +168,7 @@ const LeadGuest = (props) => {
                         }}
                         onClick={() => setOtpModal(!otpModal)}
                         aria-hidden="true">
-                        <i className="fa fa-close"></i>
+                        {/* <i className="fa fa-close"></i> */}
                     </span>
 
                     

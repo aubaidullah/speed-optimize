@@ -145,6 +145,10 @@ nav{
 
 
 @media (max-width:480px){
+    .right_icons .item {
+        padding: 15px 10px 15px 15px;
+      }
+
     .brand-logo{
         height: 26px;
     }

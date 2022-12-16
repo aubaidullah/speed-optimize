@@ -16,8 +16,8 @@ const RightBar=({data})=>{
     const [showpeopledropdown,setShowpeopledropdown] = useState(false)
     const [people,setPeople] = useState(2)
     const [checkindate,setCheckindate] = useState(moment(new Date()).format("YYYY-MM-DD"))
-    const [packageid,setPackageid] = useState(data.package.id)
-    const [price,setPrice] = useState(data.package.finalprice)
+    const [packageid,setPackageid] = useState(data?.package.id)
+    const [price,setPrice] = useState(data?.package.finalprice)
     const [modalinfo,setModalinfo] = useState({})
     
 
@@ -44,10 +44,10 @@ const RightBar=({data})=>{
           pid: packageid,
         })
         .then((resp) => {
-          if (resp.data.result == "success") {
-            setPrice(resp.data.output.pricing)
+          if (resp.data?.result == "success") {
+            setPrice(resp.data?.output.pricing)
             console.log(resp)
-            // this.setState({ price: resp.data.output.pricing });
+            // this.setState({ price: resp.data?.output.pricing });
           }else setPrice(0)
         });        
     }
@@ -66,7 +66,7 @@ const RightBar=({data})=>{
                                 <div className="bottom_bt">
                                 <div>
                                     <FaRupeeSign className='inline' style={{fontSize:'14px',marginBottom:'4px'}} />
-                                    {parseFloat(data.package.price)}
+                                    {parseFloat(data?.package.price)}
                                     <p style={{ fontSize: '12px', fontWeight: '300', margin: 0 }}>(Taxes extra) Per Person</p>
                                 </div>
                                 </div>
@@ -76,9 +76,9 @@ const RightBar=({data})=>{
                                 onClick={() =>
                                     _sendquery(
                                     price,
-                                    data.package.id,
-                                    data.package.name,
-                                    data.package.source
+                                    data?.package.id,
+                                    data?.package.name,
+                                    data?.package.source
                                 )
                                 }
                                 >
@@ -96,27 +96,27 @@ const RightBar=({data})=>{
                             <div className='ov_auto'>
                                 <div className='d_location flt_left'>
                                     <IoLocationSharp style={{color:'#999'}} className='inline' size={15}/>
-                                    <span style={{color:'rgb(6, 24, 141)'}}>{data.package.source}</span>
+                                    <span style={{color:'rgb(6, 24, 141)'}}>{data?.package.source}</span>
                                 </div>
                                 <div className='d_location days_night flt_right'>
                                     <div className={tw`flex justify-center day_nights`}>
                                         <div className='night'>
                                             <BsFillMoonFill className={tw`inline pr`}/>
                                             <span className={tw`pl-1`}>
-                                                {data.package.nights} Nights
+                                                {data?.package.nights} Nights
                                             </span>
                                             
                                         </div>
                                         <div className='days'>
                                             <IoSunny className={tw`inline`} />
                                             <span className={tw`pl-1`}>
-                                                {data.package.nights+1} Days
+                                                {data?.package.nights+1} Days
                                             </span>
                                             
 
                                         </div>
                                     </div>
-                                    {/* {data.package.nights} Nights | {data.package.nights+1} Days */}
+                                    {/* {data?.package.nights} Nights | {data?.package.nights+1} Days */}
                                 </div>
                             </div>
 
@@ -124,10 +124,10 @@ const RightBar=({data})=>{
                                 <div className="d_ap_city">
                                     <span>
                                     {
-                                        data.package.cities.split(",").map((e,index)=>{
+                                        data?.package.cities.split(",").map((e,index)=>{
                                         return <span key={index}>
                                                 
-                                            {data.package.cities.split(",")[0] != e?"→ ":""}
+                                            {data?.package.cities.split(",")[0] != e?"→ ":""}
                                             
                                             {e}
                                                                                                 
@@ -143,14 +143,14 @@ const RightBar=({data})=>{
                                     <MdCheckCircle className='inline' size={13} style={{color:'#15be03'}}/>
                                     <span>Best Session : </span>
                                     <span> {
-                                        data.package.season.split(",").length === 12? "round-the-year":
-                                        // data.package.season
+                                        data?.package.season.split(",").length === 12? "round-the-year":
+                                        // data?.package.season
                                         <p className='f_12px' style={{display:'inline'}}>{
-                                        data.package.season.split(",").map((e,index)=>{
+                                        data?.package.season.split(",").map((e,index)=>{
                                             return <span key={index}>
                                             {/* <span> */}
                                                 {e}
-                                                {data.package.season.split(",")[data.package.season.split(",").length-1] != e?", ":""}
+                                                {data?.package.season.split(",")[data?.package.season.split(",").length-1] != e?", ":""}
                                             {/* </span> */}
                                             </span>
                                         })
@@ -190,9 +190,9 @@ const RightBar=({data})=>{
                                 onClick={() =>
                                     _sendquery(
                                     price,
-                                    data.package.id,
-                                    data.package.name,
-                                    data.package.source
+                                    data?.package.id,
+                                    data?.package.name,
+                                    data?.package.source
                                 )
                                 }
                                 >Check Availability</span>
@@ -255,15 +255,16 @@ const RightBar=({data})=>{
                                 )}
                             </div>
                             <div className="cut_price price-cut">
-                                {data.package.discount > 0 ? (
+                                {data?.package.discount > 0 ? (
                                 <>
                                     <span className="_list_p">
-                                    {data.package.percent}% Off
+                                    {data?.package.percent}% Off
                                     </span>
                                     <del>
-                                    <i className="fa fa-inr"></i>
-                                    {parseFloat(data.package.price) +
-                                        parseFloat(data.package.discount)}
+                                    {/* <i className="fa fa-inr"></i> */}
+                                    <FaRupeeSign className='inline' style={{color:"#999",fontSize:'12px',marginBottom:'4px'}} />
+                                    {parseFloat(data?.package.price) +
+                                        parseFloat(data?.package.discount)}
                                     /-
                                     </del>
                                 </>
@@ -276,9 +277,10 @@ const RightBar=({data})=>{
                             <div className="price_tag_banner">
                                 <span className="__price">
                                 <FaRupeeSign className={tw`inline`}/>
-                                {parseInt(data.package.price) > 0 ? (
+                                {parseInt(data?.package.price) > 0 ? (
                                     <>
-                                    <i className="fa fa-inr" style={{ backgroundColor: 'initial' }}></i>
+                                    {/* <i className="fa fa-inr" style={{ backgroundColor: 'initial' }}></i> */}
+                                    <FaRupeeSign className='inline' style={{color:"#999",backgroundColor:'initial',fontSize:'12px',marginBottom:'4px'}} />
                                     {price}/-
                                     </>
                                 ) : (
@@ -287,7 +289,7 @@ const RightBar=({data})=>{
                                 </span>
                             </div>
                             <div className="_person_">
-                                {parseInt(data.package.price) > 0 ? "(Taxes extra)" : ""}{" "}
+                                {parseInt(data?.package.price) > 0 ? "(Taxes extra)" : ""}{" "}
                                 Per Person{" "}
                             </div>
                             </div>
@@ -302,9 +304,9 @@ const RightBar=({data})=>{
                                 onClick={() =>
                                     _sendquery(
                                     price,
-                                    data.package.id,
-                                    data.package.name,
-                                    data.package.source
+                                    data?.package.id,
+                                    data?.package.name,
+                                    data?.package.source
                                 )
                                 }
                             >

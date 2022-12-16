@@ -2,7 +2,7 @@ import Nav from "../../../components/Nav"
 import { tw } from "twind";
 import BreadCrumbs from "../../../components/breadcrumbs";
 import client from "../../../components/Graphql/service";
-import { getHotelDetail } from "../../../components/Graphql/Queries";
+import { getHotelDetail,getMetaQuery } from "../../../components/Graphql/Queries";
 import { BsDot, BsStarFill, BsStarHalf } from 'react-icons/bs'
 import {FaRegUser} from 'react-icons/fa'
 import { Carousel } from "react-responsive-carousel";
@@ -14,6 +14,7 @@ import 'photoswipe/style.css';
 import DatePicker from '@amir04lm26/react-modern-calendar-date-picker';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { useEffect,useState } from "react";
+import Meta from "../../../components/meta";
 
 // import PhotoSwipe from 'photoswipe';
 
@@ -134,7 +135,7 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
 
 
 
-const HotelDetail = ({hotel}) =>{
+const HotelDetail = ({hotel,meta}) =>{
 
 
     var yourDate = new Date()
@@ -246,6 +247,7 @@ const HotelDetail = ({hotel}) =>{
 
 
     return <>
+        <Meta meta={meta} />
         
         <Nav />
         <BreadCrumbs bread={bread}/>
@@ -524,7 +526,20 @@ export async function getServerSideProps(context) {
     console.log(res.data.hotelDetail.output)
     const hotel = res.data.hotelDetail.output
 
-    return {props:{hotel}}
+    const meta = await client.query({query:getMetaQuery,variables:{input:{av:"",id:_id,key:'HOTEL',name:"",pt:'WEBSITE',type:"HOTEL"}}})
+    let {name:hotelname,price,cityname} = meta.data.meta.output.hotel
+
+    // let {finalprice,images} = meta.data.meta.output.package
+    price = `₹${price} `
+    
+    const metas ={
+        title:meta.data.meta.output.tags.title.replace(/<HOTEL>/g,hotelname).replace(/<CITY>/g,cityname).replace(/<PRICE>/g,price),
+        longDesc:meta.data.meta.output.tags.longDesc.replace(/<HOTEL>/g,hotelname).replace(/<CITY>/g,cityname),
+        keywords:meta.data.meta.output.tags.keywords.replace(/<HOTEL>/g,hotelname).replace(/<CITY>/g,cityname)
+    }
+
+
+    return {props:{hotel,meta:metas}}
 }
 
 

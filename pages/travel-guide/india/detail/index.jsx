@@ -1,7 +1,7 @@
 import Nav from "../../../../components/Nav"
 import { IoLocationSharp } from 'react-icons/io5'
 import client from "../../../../components/Graphql/service";
-import { getTravelGuideDetail, getTravelPackage, getTravelHotel, getarticleQuery, getQnaQuery } from "../../../../components/Graphql/Queries";
+import { getTravelGuideDetail, getTravelPackage, getTravelHotel, getarticleQuery, getQnaQuery,getMetaQuery } from "../../../../components/Graphql/Queries";
 import { tw } from 'twind'
 import { useState, useEffect } from "react";
 import BreadCrumbs from "../../../../components/breadcrumbs";
@@ -23,9 +23,9 @@ import Router from "next/router";
 // import TravelGuide from "../../../../components/home/travel_guide";
 import TravelGuideDetailComp from '../../../../components/trave-guide/details'
 
-const TravelGuideDetail = ({ packages_state,data, weather, packages, hotels, article, qna,type }) => {
+const TravelGuideDetail = ({ meta,packages_state,data, weather, packages, hotels, article, qna,type }) => {
     // console.log(article)
-    return <TravelGuideDetailComp packages_state={packages_state} data={data} weather={weather} packages={packages} hotels={hotels} article={article} qna={qna} type={type}/>
+    return <TravelGuideDetailComp meta={meta} packages_state={packages_state} data={data} weather={weather} packages={packages} hotels={hotels} article={article} qna={qna} type={type}/>
     // return <TravelGuide packages_state={packages_state} data={data} weather={weather} packages={packages} hotels={hotels} article={article} qna={qna} type={type} />
     // console.log(data)
     // return <Nav />
@@ -622,6 +622,17 @@ export async function getServerSideProps(context) {
     const qna_res = await client.query({ query: getQnaQuery, variables: { input: qna_data } })
     const qna = qna_res.data.qna.output.qna
 
+
+    const meta = await client.query({query:getMetaQuery,variables:{input:{av:"",id:0,key:'CITY_TRAVELGUIDE',name:"",pt:'WEBSITE',type:"CITY_TRAVELGUIDE"}}})
+    // let {finalprice,images} = meta.data.meta.output.package
+    // finalprice = `₹${finalprice} `
+    
+    const metas ={
+        title:meta.data.meta.output.tags.title.replace(/<CITY>/g,context.query.city),
+        longDesc:meta.data.meta.output.tags.longDesc.replace(/<CITY>/g,context.query.city),
+        keywords:meta.data.meta.output.tags.keywords.replace(/<CITY>/g,context.query.city)
+    }
+
     // console.log(qna)
 
 
@@ -629,7 +640,7 @@ export async function getServerSideProps(context) {
     // console.log(packages)
 
 
-    return { props: { packages_state:packages_state,data: res.data.travelGuide.output, weather: resp?resp.data:{}, packages, hotels, article, qna,type } }
+    return { props: { packages_state:packages_state,data: res.data.travelGuide.output, weather: resp?resp.data:{}, packages, hotels, article, qna,type,meta:metas } }
 }
 
 

@@ -12,24 +12,24 @@ const Content = ({data}) =>{
     const [tnc,setTnc] = useState()
 
     
-    var d = data.package.description;
+    var d = data?.package.description;
     // console.log(d)
 
     useEffect(()=>{
-        if (data.package.description !== undefined)
+        if (data?.package.description !== undefined)
         setOverview(d.substring(0, overviewlimit))  
     },[overviewlimit])
 
 
     useEffect(()=>{
-        if (data.package.tnc !== undefined)
-        setTnc(data.package.tnc.substring(0, tnclimit))  
+        if (data?.package.tnc !== undefined)
+        setTnc(data?.package.tnc.substring(0, tnclimit))  
     },[tnclimit])
 
 
 
 
-    const itnRender = data.itn.map(function (item, i) {
+    const itnRender = data?.itn.map(function (item, i) {
         let c = i + 1;
         let t = "D" + c;
         return (
@@ -47,7 +47,7 @@ const Content = ({data}) =>{
               <p style={{ padding: '10px', marginBottom: '10px' }}>{item.desc}</p>
               <div className="Shape_53" style={{ padding: '10px', position: 'relative' }}>
                 <span className="_location_">
-                  <i className="fa fa-binoculars" aria-hidden="true"></i>{" "}
+                  {/* <i className="fa fa-binoculars" aria-hidden="true"></i>{" "} */}
                   {item.attractions.replace(/#/g, " - ").replace(/\//g, " ")}{" "}
                   {item.otherAttractions != undefined
                     ? item.otherAttractions
@@ -63,7 +63,7 @@ const Content = ({data}) =>{
 
 
 
-      const hotelRender = data.hotels.map(function (item, i) {
+      const hotelRender = data?.hotels.map(function (item, i) {
         let hotelname = item.hotelInfo.split("|");
         let hn = hotelname[1];
         return (
@@ -101,7 +101,7 @@ const Content = ({data}) =>{
       });    
       
       
-      const paymentpolicyrender = data.policy.map(function (
+      const paymentpolicyrender = data?.policy.map(function (
         item,
         i
       ) {
@@ -140,7 +140,7 @@ const Content = ({data}) =>{
       });
 
 
-      const cancellationpolicyrender = data.policy.map(function (
+      const cancellationpolicyrender = data?.policy.map(function (
         item,
             i
         ) {
@@ -201,7 +201,7 @@ const Content = ({data}) =>{
                                 <div className="_div">
                                     <div>
                                     <img
-                                        src={`/icons/${data.package.inclusions.toLowerCase().includes("flight")!=false?'ico_Flight_default.png':'ico_Flight_disabled.png'}`}
+                                        src={`/icons/${data?.package.inclusions.toLowerCase().includes("flight")!=false?'ico_Flight_default.png':'ico_Flight_disabled.png'}`}
                                         alt=""
                                         height="20px"
                                         className={tw`h-6`}
@@ -213,7 +213,7 @@ const Content = ({data}) =>{
                                 <div className="_div">
                                     <div>
                                     <img
-                                        src={`/icons/${data.package.inclusions.toLowerCase().includes("transfer")!=false?'ico_Transfer_default.png':'ico_Transfer_disabled.png'}`}
+                                        src={`/icons/${data?.package.inclusions.toLowerCase().includes("transfer")!=false?'ico_Transfer_default.png':'ico_Transfer_disabled.png'}`}
                                         alt=""
                                         height="20px"
                                         className={tw`h-6`}
@@ -225,7 +225,7 @@ const Content = ({data}) =>{
                                 <div className="_div">
                                     <div>
                                     <img
-                                        src={`/icons/${data.package.inclusions.toLowerCase().includes("breakfast")!=false?'ico_meals_default.png':'ico_meals_disabled.png'}`}
+                                        src={`/icons/${data?.package.inclusions.toLowerCase().includes("breakfast")!=false?'ico_meals_default.png':'ico_meals_disabled.png'}`}
                                         alt=""
                                         height="20px"
                                         className={tw`h-6`}
@@ -237,7 +237,7 @@ const Content = ({data}) =>{
                                 <div className="_div">
                                     <div>
                                     <img
-                                        src={`/icons/${data.package.inclusions.toLowerCase().includes("stay")!=false?'ico_homestay_default.png':'ico_homestay_disabled.png'}`}
+                                        src={`/icons/${data?.package.inclusions.toLowerCase().includes("stay")!=false?'ico_homestay_default.png':'ico_homestay_disabled.png'}`}
                                         alt=""
                                         height="20px"
                                         className={tw`h-6`}
@@ -249,7 +249,7 @@ const Content = ({data}) =>{
                                 <div className="_div">
                                     <div>
                                     <img
-                                        src={`/icons/${data.package.inclusions.toLowerCase().includes("sightseeing")!=false?'ico_sightseeing_default.png':'ico_sightseeing_default.png'}`}
+                                        src={`/icons/${data?.package.inclusions.toLowerCase().includes("sightseeing")!=false?'ico_sightseeing_default.png':'ico_sightseeing_default.png'}`}
                                         alt=""
                                         height="20px"
                                         className={tw`h-6`}
@@ -299,7 +299,7 @@ const Content = ({data}) =>{
                             <h4 className="_titles_">Itinerary</h4>
                             <div
                                 className={
-                                data.itn.length > 5
+                                data?.itn.length > 5
                                     ? "line_design_increaseheight"
                                     : "line_design"
                                 }
@@ -339,7 +339,7 @@ const Content = ({data}) =>{
                             <div className="_list_accomodation">
                                 <h4 className="_titles_">Inclusions</h4>
                                 <ul className="bullet_points">
-                                    {data.package.inclusions.split("#").map((item,i)=>{
+                                    {data?.package.inclusions.split("#").map((item,i)=>{
                                         return <li key={i}><MdCheckCircle className="inline" style={{color:'#15be03',}}/> <span>{item}</span></li>
                                     })}
                                     
@@ -352,7 +352,7 @@ const Content = ({data}) =>{
                             <div className="_list_accomodation">
                                 <h4 className="_titles_">Exclusions</h4>
                                 <ul className="bullet_points">
-                                    {data.package.exclusions.split("#").map((item,i)=>{
+                                    {data?.package.exclusions.split("#").map((item,i)=>{
                                         return <li key={i}><MdCancel className="inline" style={{color:'#fb050b',}}/> <span>{item}</span></li>
                                     })}
                                     

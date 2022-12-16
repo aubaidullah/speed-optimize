@@ -30,7 +30,14 @@ const Banner = ({ data }) => {
         else setResult({})
     }
     return <>
-        <Carousel
+    <div className="slider_banner slider_banner_ slider_overlay" style={{overflow:"hidden"}}>
+        <div>
+            {/* scaleX(1.5) */}
+                <img src={data[0]?.i} className="img-responsive_banner" />
+        </div>
+        
+    </div>
+        {/* <Carousel
             showArrows={true}
             showStatus={false}
             showThumbs={false}
@@ -44,7 +51,7 @@ const Banner = ({ data }) => {
             })}
 
 
-        </Carousel>
+        </Carousel> */}
 
 
         <div className="container">

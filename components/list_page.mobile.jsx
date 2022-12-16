@@ -12,6 +12,7 @@ import { ScrollWrapper } from 'react-bottom-scroll';
 import ReactHtmlParser from "react-html-parser";
 import { Modal } from "react-bootstrap"
 import {BsXLg} from 'react-icons/bs';
+import Meta from "./meta"
 
 
 // const filtering = useSelector(state=>state.package.package)
@@ -22,7 +23,7 @@ import {BsXLg} from 'react-icons/bs';
 // const filtr = useSelector(state=>state.filter)
 // console.log(filtr)
 
-const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,theme=undefined}) =>{
+const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefined,theme=undefined}) =>{
     
     const [filter,setFilter] = useState({keyword:""})
     const [limit,setLimit] = useState(10)
@@ -200,7 +201,11 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
     // console.log(filtering)
     // console.log(pricefilter)
     // console.log(data)
-    return <article>
+    return <>
+    <Meta meta={meta} />
+    
+    <article>
+        {/* <Meta meta={meta} /> */}
 
         <BreadCrumbs bread={
             page_type=='STATE'?state_bread:all_bread
@@ -418,6 +423,10 @@ const ListPageMobile = ({page_type,data,region,places,isMobile,city=undefined,th
 
 
             </section>
-        </article>
+        </article>    
+    </>
+    
+    
+
 }
 export default ListPageMobile

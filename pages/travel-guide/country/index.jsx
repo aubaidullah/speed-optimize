@@ -1,10 +1,10 @@
 import client from "../../../components/Graphql/service";
-import { getTravelGuideDetail, getTravelPackage, getTravelHotel, getarticleQuery, getQnaQuery,getCountryContent } from "../../../components/Graphql/Queries"
+import { getTravelGuideDetail, getTravelPackage, getTravelHotel, getarticleQuery, getQnaQuery,getCountryContent,getMetaQuery } from "../../../components/Graphql/Queries"
 import TravelGuideDetailComp from "../../../components/trave-guide/details";
 
 
-const CountryTravelGuideDetail = ({ packages_state,data, weather, packages, hotels, article, qna,type,state_t }) =>{
-    return <TravelGuideDetailComp packages_state={packages_state} data={data} weather={weather} packages={packages} hotels={hotels} article={article} qna={qna} type={type} state_t={state_t}/>
+const CountryTravelGuideDetail = ({ packages_state,data, weather, packages, hotels, article, qna,type,state_t,meta }) =>{
+    return <TravelGuideDetailComp meta={meta} packages_state={packages_state} data={data} weather={weather} packages={packages} hotels={hotels} article={article} qna={qna} type={type} state_t={state_t}/>
 }
 
 
@@ -57,14 +57,22 @@ export async function getServerSideProps(context) {
     const article = []
     const qna = []
 
+    const meta = await client.query({query:getMetaQuery,variables:{input:{av:"",id:0,key:'COUNTRY_TRAVELGUIDE',name:"",pt:'WEBSITE',type:""}}})
+    // let {finalprice,images} = meta.data.meta.output.package
+    // finalprice = `₹${finalprice} `
     
+    const metas ={
+        title:meta.data.meta.output.tags.title.replace(/<COUNTRY>/g,context.query.city),
+        longDesc:meta.data.meta.output.tags.longDesc.replace(/<COUNTRY>/g,context.query.city),
+        keywords:meta.data.meta.output.tags.keywords.replace(/<COUNTRY>/g,context.query.city)
+    }    
 
 
     // console.log(type)
     // console.log(packages)
 
 
-    return { props: { packages_state:[],data: res.data.travelGuide.output, weather: {}, packages, hotels, article, qna,type,state_t:states } }
+    return { props: { packages_state:[],data: res.data.travelGuide.output, weather: {}, packages, hotels, article, qna,type,state_t:states,meta:metas } }
 }
 
 
