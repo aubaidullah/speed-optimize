@@ -2,7 +2,7 @@ import Nav from "../../components/Nav"
 import { tw } from "twind"
 import { useState,useEffect } from "react";
 import client from "../../components/Graphql/service";
-import { getHotelList,getCitiesQuery } from "../../components/Graphql/Queries";
+import { getHotelList,getCitiesQuery,getMetaQuery } from "../../components/Graphql/Queries";
 // import {BsDot,BsStarFill,BsStarHalf,BsFillMoonFill} from 'react-icons/bs'
 import MultiCarousel2 from "react-multi-carousel";
 import Image from "next/image";
@@ -15,9 +15,10 @@ import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import {FaRegUser} from 'react-icons/fa'
 import axios from 'axios'
 import * as Constants from '../../components/Constants'
+import Meta from "../../components/meta";
 
 
-const Hotels = ({data}) =>{
+const Hotels = ({data,meta}) =>{
     const [result, setResult] = useState({})
     const [loading, setLoading] = useState(false)
     const [responsive,Setresponsive] = useState({})
@@ -222,6 +223,7 @@ const Hotels = ({data}) =>{
 
       console.log(result)
     return <>
+      <Meta meta={meta} />
      <Nav />
      
      <section className="container">
@@ -410,8 +412,9 @@ export async function getServerSideProps(context) {
         "type": ""
       }
     const res = await client.query({query:getHotelList,variables:{input:payloads}})
+    const meta = await client.query({query:getMetaQuery,variables:{input:{av: "1.3",id: 0,key: "HOTELS",name: "",pt: "WEBSITE",type: ""}}})
     // console.log(res.data.hotels.output)
-    return {props:{data:res.data.hotels.output}}
+    return {props:{data:res.data.hotels.output,meta:meta.data.meta.output.tags}}
 }
 
 export default Hotels

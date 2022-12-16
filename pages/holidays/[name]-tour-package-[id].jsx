@@ -1,5 +1,5 @@
 import { BsDot, BsStarFill, BsStarHalf, BsStar, BsFillCheckCircleFill, BsPlusLg } from 'react-icons/bs'
-import { getpackage, getrelatedpackage, getreviewsQuery } from '../../components/Graphql/Queries'
+import { getpackage, getrelatedpackage, getreviewsQuery,getMetaQuery } from '../../components/Graphql/Queries'
 import { tw } from 'twind'
 import { Carousel } from "react-responsive-carousel";
 import { useState } from 'react';
@@ -16,9 +16,10 @@ import axios from 'axios';
 import Nav from '../../components/Nav'
 import * as Constants from '../../components/Constants'
 import BreadCrumbs from '../../components/breadcrumbs';
+import Meta from '../../components/meta';
 
 
-const DetailPage = ({ data, related, reviews }) => {
+const DetailPage = ({ data, related, reviews,meta }) => {
 
     const [rating, setRating] = useState(null);
 
@@ -180,6 +181,7 @@ const DetailPage = ({ data, related, reviews }) => {
 
     return <>
         {show ? <Guest show={show} setShow={() => setShow(!show)} /> : null}
+        <Meta meta={meta} />
 
         <Nav />
 
@@ -422,13 +424,26 @@ export async function getServerSideProps(context) {
             }
         }
     })
-    console.log(res.data?.package.output)
+    // console.log(res.data?.package.output)
+
+
+    const meta = await client.query({query:getMetaQuery,variables:{input:{av:"",id:_id,key:'PACKAGE',name:"",pt:'WEBSITE',type:"PACKAGE"}}})
+    let {cities,name:pname,finalprice,images} = meta.data.meta.output.package
+    
+    finalprice = `₹${finalprice} `
+    const metas ={
+        title:meta.data.meta.output.tags.title.replace(/<PNAME>/g,pname).replace(/<CITIES>/g,cities),
+        longDesc:meta.data.meta.output.tags.longDesc.replace(/<PNAME>/g,name).replace(/<CITIES>/g,cities).replace(/<PRICE>/g,finalprice),
+        keywords:meta.data.meta.output.tags.keywords.replace(/<CITIES>/g,cities),
+        image:images
+    }    
 
     return {
         props: {
             data: res.data?.package.output,
             related: relatedpack.data?.package.output,
-            reviews: reviews.data?.reviews.output
+            reviews: reviews.data?.reviews.output,
+            meta:metas
         }
     }
 }

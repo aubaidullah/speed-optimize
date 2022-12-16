@@ -1,12 +1,14 @@
 import Nav from "../../../components/Nav"
 import client from "../../../components/Graphql/service"
-import { getArticle, getarticleQuery } from "../../../components/Graphql/Queries"
+import { getArticle, getarticleQuery,getMetaQuery } from "../../../components/Graphql/Queries"
 import BreadCrumbs from "../../../components/breadcrumbs"
 import {tw} from 'twind'
 import ReactHtmlParser from "react-html-parser";
 import Articles from "../../../components/home/articles"
+import { toTitleCase } from "../../../components/fun"
+import Meta from "../../../components/meta"
 
-const TravelArticle = ({data,article}) =>{
+const TravelArticle = ({data,article,meta}) =>{
     
     const bread = {
         disabled: {
@@ -26,6 +28,7 @@ const TravelArticle = ({data,article}) =>{
     
     
     return <>
+        <Meta meta={meta} />
         <Nav />
         <BreadCrumbs bread={bread} />
         <section className="container">
@@ -77,9 +80,21 @@ export async function getServerSideProps(context) {
     const article = article_res.data.articles.output.articles
 
 
+    const meta = await client.query({query:getMetaQuery,variables:{input:{av:"",id:0,key:'ARTICLE',name:"",pt:'WEBSITE',type:"CITY_TRAVELGUIDE"}}})
+    // let {finalprice,images} = meta.data.meta.output.package
+    let name = toTitleCase(context.query.slug)
+    // finalprice = `₹${finalprice} `
+    
+    const metas ={
+        title:meta.data.meta.output.tags.title.replace(/<ARTICLE>/g,name),
+        longDesc:meta.data.meta.output.tags.longDesc.replace(/<ARTICLE>/g,name),
+        keywords:meta.data.meta.output.tags.keywords.replace(/<ARTICLE>/g,name)
+    }
 
 
-    return {props:{data:res.data.travelArticle.output,article}}
+
+
+    return {props:{data:res.data.travelArticle.output,article,meta:metas}}
 
 }
 

@@ -2,12 +2,13 @@ import BreadCrumbs from "../../components/breadcrumbs"
 import Nav from "../../components/Nav"
 import {tw} from 'twind'
 import client from "../../components/Graphql/service"
-import {getTravelGuideHome} from '../../components/Graphql/Queries'
+import {getTravelGuideHome,getMetaQuery} from '../../components/Graphql/Queries'
 import Image from "next/image"
 import ReactHtmlParser from "react-html-parser";
 import Link from 'next/link'
+import Meta from "../../components/meta"
 
-const TravelGuide = ({data}) =>{
+const TravelGuide = ({data,meta}) =>{
 
     const bread = {
         disabled:{
@@ -23,6 +24,7 @@ const TravelGuide = ({data}) =>{
 
 
     return <>
+            <Meta meta={meta} />
             <Nav />
             <BreadCrumbs bread={bread}/>
             <section className='container'>
@@ -81,8 +83,21 @@ export async function getServerSideProps(context) {
 
     const res_travel = await client.query({query:getTravelGuideHome,variables:{input:{'av':'1.3','pt':'WEBSITE','geoid':0,'id':'0','pagenum':0,'pid':0,'type':0}}})
     let data = res_travel.data.travelguide.output
+
+
+    const meta = await client.query({query:getMetaQuery,variables:{input:{av:"",id:0,key:'TRAVELGUIDES',name:"",pt:'WEBSITE',type:""}}})
+    // let {finalprice,images} = meta.data.meta.output.package
+    // finalprice = `₹${finalprice} `
+    // const metas ={
+    //     title:meta.data.meta.output.tags.title.replace(/<CITY>/g,context.query.city).replace(/<PRICE>/g,finalprice),
+    //     longDesc:meta.data.meta.output.tags.longDesc.replace(/<CITY>/g,context.query.city),
+    //     keywords:meta.data.meta.output.tags.longDesc.replace(/<CITY>/g,context.query.city),
+    //     image:images
+    // }
+
+
     // console.log(data)
-    return {props:{data}}
+    return {props:{data,meta:meta.data.meta.output.tags}}
   }
 
 

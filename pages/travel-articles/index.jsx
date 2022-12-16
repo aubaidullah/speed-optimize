@@ -2,11 +2,12 @@ import { tw } from "twind"
 import BreadCrumbs from "../../components/breadcrumbs"
 import Nav from "../../components/Nav"
 import client from "../../components/Graphql/service"
-import { getarticleQuery } from "../../components/Graphql/Queries"
+import { getarticleQuery,getMetaQuery } from "../../components/Graphql/Queries"
 import ReactHtmlParser from "react-html-parser";
 import Link from "next/link"
+import Meta from "../../components/meta"
 
-const TravelArticles = ({article}) =>{
+const TravelArticles = ({article,meta}) =>{
     const bread = {
         disabled: {
             item: `Travel Stories`
@@ -20,6 +21,7 @@ const TravelArticles = ({article}) =>{
     }
     
     return <>
+        <Meta meta={meta} />
         <Nav/>
         <BreadCrumbs bread={bread} />
         <div className={"container"}>
@@ -76,10 +78,12 @@ export async function getServerSideProps(context) {
     const article_res = await client.query({ query: getarticleQuery, variables: { input: article_data } })
     const article = article_res.data.articles.output.articles
 
+    const meta = await client.query({query:getMetaQuery,variables:{input:{av:"",id:0,key:'ARTICLES',name:"",pt:'WEBSITE',type:""}}})
 
 
 
-    return {props:{article}}
+
+    return {props:{article,meta:meta.data.meta.output.tags}}
 
 }
 

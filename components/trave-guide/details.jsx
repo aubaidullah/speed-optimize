@@ -21,9 +21,10 @@ import Leaform from '../leadform'
 import State_Attraction from "../trave-guide/attractions";
 import Image from 'next/image'
 import TravelGuide from '../home/travel_guide';
+import Meta from '../meta';
 
 
-const TravelGuideDetailComp = ({ packages_state,data, weather, packages, hotels, article, qna,type ,state_t=undefined}) => {
+const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, hotels, article, qna,type ,state_t=undefined}) => {
     console.log(data)
     const [overviewlimit, setOverviewlimit] = useState(200)
     const [overview, setOverview] = useState()
@@ -90,6 +91,7 @@ const TravelGuideDetailComp = ({ packages_state,data, weather, packages, hotels,
     // console.log(packages)
     // console.log(packages_state)
     return <>
+        <Meta meta={meta} />
         <Nav />
         <BreadCrumbs bread={bread} />
         <section className="container">

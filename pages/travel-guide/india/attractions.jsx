@@ -9,11 +9,14 @@ import { BsDot } from 'react-icons/bs';
 import { Carousel } from "react-responsive-carousel";
 import ReactHtmlParser from "react-html-parser";
 import axios from "axios";
+import { getMetaQuery } from '../../../components/Graphql/Queries';
+import client from '../../../components/Graphql/service';
 import Nav from "../../../components/Nav";
 import * as Constant from '../../../components/Constants'
 import BreadCrumbs from "../../../components/breadcrumbs";
+import Meta from '../../../components/meta';
 
-const Attraction = ({ data }) => {
+const Attraction = ({ data,meta }) => {
 
     const [overview, setOverview] = useState(null);
 
@@ -138,6 +141,7 @@ const Attraction = ({ data }) => {
     }, [limit])
 
     return <>
+        <Meta meta={meta} />
         <Nav />
 
         <BreadCrumbs bread={bread} />
@@ -367,9 +371,22 @@ export async function getServerSideProps(context) {
             id: _id,
         })
 
+
+        const meta = await client.query({query:getMetaQuery,variables:{input:{av:"",id:0,key:'CITY_ATTRACTIONS',name:"",pt:'WEBSITE',type:""}}})
+        // let {finalprice,images} = meta.data.meta.output.package
+        // finalprice = `₹${finalprice} `
+        
+        const metas ={
+            title:meta.data.meta.output.tags.title.replace(/<COUNTRY>/g,context.query.place),
+            longDesc:meta.data.meta.output.tags.longDesc.replace(/<COUNTRY>/g,context.query.place),
+            keywords:meta.data.meta.output.tags.keywords.replace(/<COUNTRY>/g,context.query.place)
+        }
+
+
     return {
         props: {
-            data: resp.data.output
+            data: resp.data.output,
+            meta:metas
         }
     }
 }
