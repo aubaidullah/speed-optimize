@@ -10,7 +10,7 @@ const Meta = ({meta}) =>{
     <Head>
         <meta charset="utf-8" />
         <link rel="icon" href="/icons/logo.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
         <meta
         http-equiv="Content-Security-Policy"
         content="upgrade-insecure-requests"
