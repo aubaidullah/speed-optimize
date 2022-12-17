@@ -47,7 +47,7 @@ const Hotels = ({data,meta}) =>{
             },
             mobile: {
               breakpoint: { max: 464, min: 0 },
-              items: 3,
+              items: 2,
               partialVisibilityGutter: 40,
             },
           };  
@@ -232,8 +232,8 @@ const Hotels = ({data,meta}) =>{
           <div>
             <div className={tw`flex_`}>
               <h2 className={tw`_titles_`}>Search Home Stay For Your Date</h2>
-              <div className={tw`flex Shape_42`}>
-                <div className={tw`w-full lg:w-1/4 px-2`}>
+              <div className={tw`flex Shape_42 flex-wrap`}>
+                <div className={tw`w-full lg:w-1/4 px-2 mb-2`}>
                   <div style={{position:'relative'}}>
                     <input 
                     type={"text"} 
@@ -244,24 +244,28 @@ const Hotels = ({data,meta}) =>{
                     onChange={event => HandleSearch(event.target.value)}
 
                     />
-                  <section className={tw`drop_down container`} style={{ boxShadow: 'inset 0 -1px 0 0 rgba(0,0,0,.1)',left:'0',right:'0',borderColor:'transparent',position:'absolute',zIndex:1,border:'1px solid rgba(0,0,0,0.1)' }}>
+                  <section className={tw`drop_down container`} style={{ boxShadow: 'inset 0 -1px 0 0 rgba(0,0,0,.1)',left:'0',right:'0',borderColor:'transparent',position:'absolute',zIndex:1,border:'1px solid rgba(0,0,0,0.1)',zIndex:3}}>
                     <div>
                     {result?.cities?.map((e, index) => (
-                        <div key={index}>
-                            <div href="#" onClick={()=>{setSearchkey(e.name),setResult({})}}>
-                                <div className={tw`hover:bg-[#fde2df] drop_item`}>
-                                    <div className="d_content">
-                                        <div className="flt_left">
-                                            <span className="s_name">{e?.name}</span>
-                                        </div>
-                                        {/* <div className="flt_right">
-                                            <FaRupeeSign className={tw`d_price inline`} />
-                                            <span className="d_price">{e?.price / 100}</span><BsDot className={`inline d_price`} /><span className="n_d">{e?.nights}N & {e?.nights + 1}D</span>
-                                        </div> */}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
+                          index<10?
+                          <div key={index}>
+                          <div href="#" onClick={()=>{setSearchkey(e.name),setResult({})}}>
+                              <div className={tw`hover:bg-[#fde2df] drop_item`}>
+                                  <div className="d_content">
+                                      <div className="flt_left">
+                                          <span className="s_name">{e?.name}</span>
+                                      </div>
+                                      {/* <div className="flt_right">
+                                          <FaRupeeSign className={tw`d_price inline`} />
+                                          <span className="d_price">{e?.price / 100}</span><BsDot className={`inline d_price`} /><span className="n_d">{e?.nights}N & {e?.nights + 1}D</span>
+                                      </div> */}
+                                  </div>
+                              </div>
+                          </div>
+                      </div>:""
+                        
+
                             ))}                      
                     </div>
                   </section>
@@ -271,8 +275,8 @@ const Hotels = ({data,meta}) =>{
 
                 <div className={tw`w-full lg:w-3/4`}>
 
-                <div className={tw`flex items-center`}>
-                  <div className={tw`w-full lg:w-1/3 px-2`}>
+                <div className={tw`flex flex-wrap items-center`}>
+                  <div className={tw`w-full lg:w-1/3 px-2 mb-2`}>
                     <div className={tw`flex`}>
                         <div style={{position:'relative',zIndex:2}}>
                         {/* calender_multi_clr */}
@@ -307,7 +311,7 @@ const Hotels = ({data,meta}) =>{
                         </div>                                      
                     </div>
                   </div>
-                  <div className={tw`w-full lg:w-1/3 px-2`}>
+                  <div className={tw`w-full lg:w-1/3 px-2 mb-2`}>
 
                     <div className={tw``}>
                       <div style={{position:'relative'}}>
@@ -342,7 +346,7 @@ const Hotels = ({data,meta}) =>{
 
 
                   </div>
-                  <div className={tw`w-full lg:w-1/3 px-2`}>
+                  <div className={tw`w-full lg:w-1/3 px-2 mb-2`}>
                     <button className="btn_listing _btn_clr h50" style={{width:'100%'}}> 
                           Search
                     </button>
