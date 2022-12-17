@@ -24,6 +24,7 @@ const Hotels = ({data,meta}) =>{
     const [responsive,Setresponsive] = useState({})
     const [checkindate,setCheckindate] = useState("")
     const [checkoutdate,setCheckoutdate] = useState("")
+    const [mincheckoutdate,setminCheckoutdate] = useState("")
     const [searchkey,setSearchkey] = useState("")
 
 
@@ -199,7 +200,18 @@ const Hotels = ({data,meta}) =>{
         "month":x[1],
         "day":x[2]
       }
+    
+    useEffect(()=>{
+      let today = new Date(`${minDate['year']}-${minDate['month']}-${minDate['day']}`)
+      setCheckindate({"day":parseInt(minDate['day']),"month":parseInt(minDate['month']),"year":parseInt(minDate['year'])})
 
+      let tomorrow = new Date(`${minDate['year']}-${minDate['month']}-${minDate['day']}`);
+      tomorrow.setDate(today.getDate()+2);
+      let c = tomorrow.toLocaleDateString().split("/")
+
+      setminCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
+      setCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
+    },[])
 
       const Search = async () => {
         setLoading(true)
@@ -221,7 +233,18 @@ const Hotels = ({data,meta}) =>{
       }          
       }
 
-      console.log(result)
+      // console.log(result)
+      const setCheckIn = (date) =>{
+        let today = new Date(`${date['year']}-${date['month']}-${date['day']}`)
+        let tomorrow = new Date(`${date['year']}-${date['month']}-${date['day']}`);
+        tomorrow.setDate(today.getDate()+2);
+        let c = tomorrow.toLocaleDateString().split("/")  
+        setCheckindate(date)
+        setminCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})      
+        setCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
+        // setCheckoutdate(date)
+      }
+
     return <>
       <Meta meta={meta} />
      <Nav />
@@ -290,7 +313,9 @@ const Hotels = ({data,meta}) =>{
                                 // format="dd-MM-y"
                                 value = {checkindate}
                                 minimumDate={minDate}
-                                onChange={(date) => setCheckindate(date)}
+                                // onChange={(date) => setCheckindate(date)}
+                                onChange={(date)=>setCheckIn(date)}
+
                                 required
                                 />
                         </div>
@@ -304,8 +329,9 @@ const Hotels = ({data,meta}) =>{
                                 inputClassName="form-control-hotel rd_right"
                                 // format="dd-MM-y"
                                 value = {checkoutdate}
-                                minimumDate={checkindate}
+                                minimumDate={mincheckoutdate}
                                 onChange={(date) => setCheckoutdate(date)}
+                                // onChange={(date)=>setCheckout(date)}
                                 required
                                 />                                            
                         </div>                                      

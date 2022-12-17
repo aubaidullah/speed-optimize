@@ -33,9 +33,35 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
         "day":parseInt(x[2])
       }
 
+    const [mincheckoutdate,setminCheckoutdate] = useState("") 
+
     useEffect(()=>{
-        setCheckoutdate(checkindate)
-    },[checkindate])
+        let today = new Date(`${minDate['year']}-${minDate['month']}-${minDate['day']}`)
+        setCheckindate({"day":parseInt(minDate['day']),"month":parseInt(minDate['month']),"year":parseInt(minDate['year'])})
+  
+        let tomorrow = new Date(`${minDate['year']}-${minDate['month']}-${minDate['day']}`);
+        tomorrow.setDate(today.getDate()+2);
+        let c = tomorrow.toLocaleDateString().split("/")
+  
+        setminCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
+        setCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
+      },[])
+
+
+    const setCheckIn = (date) =>{
+        let today = new Date(`${date['year']}-${date['month']}-${date['day']}`)
+        let tomorrow = new Date(`${date['year']}-${date['month']}-${date['day']}`);
+        tomorrow.setDate(today.getDate()+2);
+        let c = tomorrow.toLocaleDateString().split("/")  
+        setCheckindate(date)
+        setminCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})      
+        setCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
+        // setCheckoutdate(date)
+    }       
+
+    // useEffect(()=>{
+    //     setCheckoutdate(checkindate)
+    // },[checkindate])
     
     
     return  <>
@@ -84,7 +110,7 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
                         // format="dd-MM-y"
                         value = {checkindate}
                         minimumDate={minDate}
-                        onChange={(date) => {console.log(date),setCheckindate(date)}}
+                        onChange={(date)=>setCheckIn(date)}
                         required
                         />
                 </div>
@@ -98,7 +124,7 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
                         inputClassName="form-control-hotel rd_right"
                         // format="dd-MM-y"
                         value = {checkoutdate}
-                        minimumDate={checkindate}
+                        minimumDate={mincheckoutdate}
                         onChange={(date) => setCheckoutdate(date)}
                         required
                         />                                            
@@ -158,9 +184,7 @@ const HotelDetail = ({hotel,meta}) =>{
     const [selectedRoom,setSelectedRoom] = useState({})
     const [selectedHotel,setSelectedHotel] = useState({'travellers':2,'room':1,'price':0,'id':null})
 
-
-
-
+   
 
 
     var userRating = []
