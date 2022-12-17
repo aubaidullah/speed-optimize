@@ -233,7 +233,7 @@ const Hotels = ({data,meta}) =>{
             <div className={tw`flex_`}>
               <h2 className={tw`_titles_`}>Search Home Stay For Your Date</h2>
               <div className={tw`flex Shape_42 flex-wrap`}>
-                <div className={tw`w-full lg:w-1/4 px-2 mb-2`}>
+                <div className={tw`w-full lg:w-1/4 lg:px-2 mb-2`}>
                   <div style={{position:'relative'}}>
                     <input 
                     type={"text"} 
@@ -276,7 +276,7 @@ const Hotels = ({data,meta}) =>{
                 <div className={tw`w-full lg:w-3/4`}>
 
                 <div className={tw`flex flex-wrap items-center`}>
-                  <div className={tw`w-full lg:w-1/3 px-2 mb-2`}>
+                  <div className={tw`w-full lg:w-1/3 lg:px-2 mb-2`}>
                     <div className={tw`flex`}>
                         <div style={{position:'relative',zIndex:2}}>
                         {/* calender_multi_clr */}
@@ -311,7 +311,7 @@ const Hotels = ({data,meta}) =>{
                         </div>                                      
                     </div>
                   </div>
-                  <div className={tw`w-full lg:w-1/3 px-2 mb-2`}>
+                  <div className={tw`w-full lg:w-1/3 px-0 lg:px-2 mb-2`}>
 
                     <div className={tw``}>
                       <div style={{position:'relative'}}>
@@ -346,7 +346,7 @@ const Hotels = ({data,meta}) =>{
 
 
                   </div>
-                  <div className={tw`w-full lg:w-1/3 px-2 mb-2`}>
+                  <div className={tw`w-full lg:w-1/3 lg:px-2 mb-2`}>
                     <button className="btn_listing _btn_clr h50" style={{width:'100%'}}> 
                           Search
                     </button>
