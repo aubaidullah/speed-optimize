@@ -16,6 +16,7 @@ import {FaRegUser} from 'react-icons/fa'
 import axios from 'axios'
 import * as Constants from '../../components/Constants'
 import Meta from "../../components/meta";
+import HotelList from "../../components/hotel/hotel-list";
 
 
 const Hotels = ({data,meta}) =>{
@@ -143,52 +144,6 @@ const Hotels = ({data,meta}) =>{
       };
 
 
-
-    const exploreRender = data.hotels.map((item,i)=>{
-        return <div key={i} className={tw`mb-4`}>
-            <Link href={`/hotel/hotel-in-${item.cityname.toLocaleLowerCase()}-${item.id}`}>
-              <div className={tw`px-2`}>
-                  <div className="des_img t_rd" style={{margin:0}}>
-                      <img src={item.images} />
-                  </div>
-                  <div className={tw`p-2 h_bottom_content`}>
-                      <h2 className={tw`font-bold`}>{item.name}</h2>
-                      <div className={tw`flex flex-wrap items-center mb-6`}>
-                          <IoLocationSharp/>
-                          {item.cityname}
-                      </div>
-                      <div className={tw`flex flex-wrap items-center`}>
-                          <BsStarHalf className="icon_size_h"/>
-                          <div className={tw`pl-1`}>{item.ratings}</div>
-                          
-                          <BsDot className={tw`inline`}/>
-                          12 Reviews
-                      </div>
-                      <div className={tw`border-t-1`}>
-                      <div className={tw`flex flex-wrap items-center`}>
-                          {
-                            
-                            item.price==0?<div className="price_inr">Price on Request</div>
-                            :<><div className={tw`font-bold price_inr`}>
-                              {item.price}/-
-                            </div>
-                            <div className={tw`pl-2`}>
-                              night
-                            </div></>
-                          
-                          }
-                          
-
-
-                      </div>
-                      </div>
-                  </div>
-                  
-              </div>
-            </Link>
-            
-        </div>
-    })
 
     
 
@@ -418,12 +373,10 @@ const Hotels = ({data,meta}) =>{
 
         <div className={tw`mt-4`} style={{display:'unset'}}>
             <h2 className={tw`_titles_ mb-4`}>Explore</h2>
-            <div className="Shape_42">
-              <div className="clearfix"></div>
-                <Slider {...settings}>
+              <HotelList hotels={data.hotels} />
+                {/* <Slider {...settings}>
                     {exploreRender}
-                </Slider>
-            </div>
+                </Slider> */}
 
 
         </div>

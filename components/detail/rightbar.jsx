@@ -195,7 +195,7 @@ const RightBar=({data})=>{
                                     data?.package.source
                                 )
                                 }
-                                >Check Availability</span>
+                                >CHECK AVAILABILITY</span>
                             </div>
                             
                         </div>
