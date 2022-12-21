@@ -45,7 +45,7 @@ const Content = ({data}) =>{
                 Day {c}: {item.heading}
               </h4>
               <p style={{ padding: '10px', marginBottom: '10px' }}>{item.desc}</p>
-              <div className="Shape_53" style={{ padding: '10px', position: 'relative' }}>
+              <div className={tw`Shape_53 text-sm`} style={{ padding: '10px', position: 'relative' }}>
                 <span className="_location_">
                   {/* <i className="fa fa-binoculars" aria-hidden="true"></i>{" "} */}
                   {item.attractions.replace(/#/g, " - ").replace(/\//g, " ")}{" "}
@@ -383,7 +383,7 @@ const Content = ({data}) =>{
                         <div className="hotel_accomodation" id="tnc">
                             <div className="_list_accomodation">
                                 <h4 className="_titles_">Terms & Conditions</h4>
-                                <ul className="tnc_d" style={{ margin: '30px 0 0' }}>
+                                <ul className={tw`tnc_d text-sm text-gray-400`} style={{ margin: '30px 0 0' }}>
                                 {ReactHtmlParser(tnc)}
 
                                 <div className="text-right">

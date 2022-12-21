@@ -882,16 +882,19 @@ ul.breadcrumb {
     height: 40px;
     padding: 0 10px;
     line-height: 40px;
-    max-width: 270px;
+    max-width: 300px;
     margin: 0 auto;
     font-size: 9px;
+  }
+  .search_input{
+    transform: translateY(-130px);
   }
   .thms{
     display: none;
   }
   .m_s_icon {
     top: 12px;
-    right: 55px;
+    right: 30px;
     font-size: 18px;
   }
 
@@ -921,7 +924,7 @@ ul.breadcrumb {
     background-color: grey;
   }
   ._titles_, ._titles {
-    font-size: 16px;
+    font-size: 18px;
   }
   ._titles_, ._titles {
     height: auto;

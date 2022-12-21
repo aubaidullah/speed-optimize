@@ -16,6 +16,7 @@ import {FaRegUser} from 'react-icons/fa'
 import axios from 'axios'
 import * as Constants from '../../components/Constants'
 import Meta from "../../components/meta";
+import HotelList from "../../components/hotel/hotel-list";
 
 
 const Hotels = ({data,meta}) =>{
@@ -24,6 +25,7 @@ const Hotels = ({data,meta}) =>{
     const [responsive,Setresponsive] = useState({})
     const [checkindate,setCheckindate] = useState("")
     const [checkoutdate,setCheckoutdate] = useState("")
+    const [mincheckoutdate,setminCheckoutdate] = useState("")
     const [searchkey,setSearchkey] = useState("")
 
 
@@ -47,7 +49,7 @@ const Hotels = ({data,meta}) =>{
             },
             mobile: {
               breakpoint: { max: 464, min: 0 },
-              items: 3,
+              items: 2,
               partialVisibilityGutter: 40,
             },
           };  
@@ -143,52 +145,6 @@ const Hotels = ({data,meta}) =>{
 
 
 
-    const exploreRender = data.hotels.map((item,i)=>{
-        return <div key={i} className={tw`mb-4`}>
-            <Link href={`/hotel/hotel-in-${item.cityname.toLocaleLowerCase()}-${item.id}`}>
-              <div className={tw`px-2`}>
-                  <div className="des_img t_rd" style={{margin:0}}>
-                      <img src={item.images} />
-                  </div>
-                  <div className={tw`p-2 h_bottom_content`}>
-                      <h2 className={tw`font-bold`}>{item.name}</h2>
-                      <div className={tw`flex flex-wrap items-center mb-6`}>
-                          <IoLocationSharp/>
-                          {item.cityname}
-                      </div>
-                      <div className={tw`flex flex-wrap items-center`}>
-                          <BsStarHalf className="icon_size_h"/>
-                          <div className={tw`pl-1`}>{item.ratings}</div>
-                          
-                          <BsDot className={tw`inline`}/>
-                          12 Reviews
-                      </div>
-                      <div className={tw`border-t-1`}>
-                      <div className={tw`flex flex-wrap items-center`}>
-                          {
-                            
-                            item.price==0?<div className="price_inr">Price on Request</div>
-                            :<><div className={tw`font-bold price_inr`}>
-                              {item.price}/-
-                            </div>
-                            <div className={tw`pl-2`}>
-                              night
-                            </div></>
-                          
-                          }
-                          
-
-
-                      </div>
-                      </div>
-                  </div>
-                  
-              </div>
-            </Link>
-            
-        </div>
-    })
-
     
 
     var dt = new Date()
@@ -199,7 +155,18 @@ const Hotels = ({data,meta}) =>{
         "month":x[1],
         "day":x[2]
       }
+    
+    useEffect(()=>{
+      let today = new Date(`${minDate['year']}-${minDate['month']}-${minDate['day']}`)
+      setCheckindate({"day":parseInt(minDate['day']),"month":parseInt(minDate['month']),"year":parseInt(minDate['year'])})
 
+      let tomorrow = new Date(`${minDate['year']}-${minDate['month']}-${minDate['day']}`);
+      tomorrow.setDate(today.getDate()+2);
+      let c = tomorrow.toLocaleDateString().split("/")
+
+      setminCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
+      setCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
+    },[])
 
       const Search = async () => {
         setLoading(true)
@@ -221,7 +188,18 @@ const Hotels = ({data,meta}) =>{
       }          
       }
 
-      console.log(result)
+      // console.log(result)
+      const setCheckIn = (date) =>{
+        let today = new Date(`${date['year']}-${date['month']}-${date['day']}`)
+        let tomorrow = new Date(`${date['year']}-${date['month']}-${date['day']}`);
+        tomorrow.setDate(today.getDate()+2);
+        let c = tomorrow.toLocaleDateString().split("/")  
+        setCheckindate(date)
+        setminCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})      
+        setCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
+        // setCheckoutdate(date)
+      }
+
     return <>
       <Meta meta={meta} />
      <Nav />
@@ -232,8 +210,8 @@ const Hotels = ({data,meta}) =>{
           <div>
             <div className={tw`flex_`}>
               <h2 className={tw`_titles_`}>Search Home Stay For Your Date</h2>
-              <div className={tw`flex Shape_42`}>
-                <div className={tw`w-full lg:w-1/4 px-2`}>
+              <div className={tw`flex Shape_42 flex-wrap`}>
+                <div className={tw`w-full lg:w-1/4 lg:px-2 mb-2`}>
                   <div style={{position:'relative'}}>
                     <input 
                     type={"text"} 
@@ -244,24 +222,28 @@ const Hotels = ({data,meta}) =>{
                     onChange={event => HandleSearch(event.target.value)}
 
                     />
-                  <section className={tw`drop_down container`} style={{ boxShadow: 'inset 0 -1px 0 0 rgba(0,0,0,.1)',left:'0',right:'0',borderColor:'transparent',position:'absolute',zIndex:1,border:'1px solid rgba(0,0,0,0.1)' }}>
+                  <section className={tw`drop_down container`} style={{ boxShadow: 'inset 0 -1px 0 0 rgba(0,0,0,.1)',left:'0',right:'0',borderColor:'transparent',position:'absolute',zIndex:1,border:'1px solid rgba(0,0,0,0.1)',zIndex:3}}>
                     <div>
                     {result?.cities?.map((e, index) => (
-                        <div key={index}>
-                            <div href="#" onClick={()=>{setSearchkey(e.name),setResult({})}}>
-                                <div className={tw`hover:bg-[#fde2df] drop_item`}>
-                                    <div className="d_content">
-                                        <div className="flt_left">
-                                            <span className="s_name">{e?.name}</span>
-                                        </div>
-                                        {/* <div className="flt_right">
-                                            <FaRupeeSign className={tw`d_price inline`} />
-                                            <span className="d_price">{e?.price / 100}</span><BsDot className={`inline d_price`} /><span className="n_d">{e?.nights}N & {e?.nights + 1}D</span>
-                                        </div> */}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
+                          index<10?
+                          <div key={index}>
+                          <div href="#" onClick={()=>{setSearchkey(e.name),setResult({})}}>
+                              <div className={tw`hover:bg-[#fde2df] drop_item`}>
+                                  <div className="d_content">
+                                      <div className="flt_left">
+                                          <span className="s_name">{e?.name}</span>
+                                      </div>
+                                      {/* <div className="flt_right">
+                                          <FaRupeeSign className={tw`d_price inline`} />
+                                          <span className="d_price">{e?.price / 100}</span><BsDot className={`inline d_price`} /><span className="n_d">{e?.nights}N & {e?.nights + 1}D</span>
+                                      </div> */}
+                                  </div>
+                              </div>
+                          </div>
+                      </div>:""
+                        
+
                             ))}                      
                     </div>
                   </section>
@@ -271,8 +253,8 @@ const Hotels = ({data,meta}) =>{
 
                 <div className={tw`w-full lg:w-3/4`}>
 
-                <div className={tw`flex items-center`}>
-                  <div className={tw`w-full lg:w-1/3 px-2`}>
+                <div className={tw`flex flex-wrap items-center`}>
+                  <div className={tw`w-full lg:w-1/3 lg:px-2 mb-2`}>
                     <div className={tw`flex`}>
                         <div style={{position:'relative',zIndex:2}}>
                         {/* calender_multi_clr */}
@@ -286,7 +268,9 @@ const Hotels = ({data,meta}) =>{
                                 // format="dd-MM-y"
                                 value = {checkindate}
                                 minimumDate={minDate}
-                                onChange={(date) => setCheckindate(date)}
+                                // onChange={(date) => setCheckindate(date)}
+                                onChange={(date)=>setCheckIn(date)}
+
                                 required
                                 />
                         </div>
@@ -300,14 +284,15 @@ const Hotels = ({data,meta}) =>{
                                 inputClassName="form-control-hotel rd_right"
                                 // format="dd-MM-y"
                                 value = {checkoutdate}
-                                minimumDate={checkindate}
+                                minimumDate={mincheckoutdate}
                                 onChange={(date) => setCheckoutdate(date)}
+                                // onChange={(date)=>setCheckout(date)}
                                 required
                                 />                                            
                         </div>                                      
                     </div>
                   </div>
-                  <div className={tw`w-full lg:w-1/3 px-2`}>
+                  <div className={tw`w-full lg:w-1/3 px-0 lg:px-2 mb-2`}>
 
                     <div className={tw``}>
                       <div style={{position:'relative'}}>
@@ -342,7 +327,7 @@ const Hotels = ({data,meta}) =>{
 
 
                   </div>
-                  <div className={tw`w-full lg:w-1/3 px-2`}>
+                  <div className={tw`w-full lg:w-1/3 lg:px-2 mb-2`}>
                     <button className="btn_listing _btn_clr h50" style={{width:'100%'}}> 
                           Search
                     </button>
@@ -388,12 +373,10 @@ const Hotels = ({data,meta}) =>{
 
         <div className={tw`mt-4`} style={{display:'unset'}}>
             <h2 className={tw`_titles_ mb-4`}>Explore</h2>
-            <div className="Shape_42">
-              <div className="clearfix"></div>
-                <Slider {...settings}>
+              <HotelList hotels={data.hotels} />
+                {/* <Slider {...settings}>
                     {exploreRender}
-                </Slider>
-            </div>
+                </Slider> */}
 
 
         </div>

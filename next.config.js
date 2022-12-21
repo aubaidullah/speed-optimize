@@ -44,14 +44,14 @@ const nextConfig = {
         source: '/qna/:city-:id',
         destination: '/qna'
       },
-
-
       {
         source: '/hotel/:name-in-:city-:id',
         destination: '/hotels/details'
       },
-
-
+      {
+        source: '/hotels/:city-:id',
+        destination: '/hotels/list'
+      },
     ]
   }
 }
