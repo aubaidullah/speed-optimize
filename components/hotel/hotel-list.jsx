@@ -15,6 +15,7 @@ const HotelList = ({hotels}) =>{
   
     const SamplePrevArrow = (props) => {
         const { className, style, onClick } = props;
+        
         return <div className={tw`hidden lg:block custom-btn left-custom-btn`} onClick={onClick}/>;
       }      
 
