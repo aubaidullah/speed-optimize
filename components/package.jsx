@@ -433,9 +433,11 @@ const Package = ({item}) =>{
                                 <div className="buttons desk_display_none mt-2" style={{overflow:'auto'}}>
                                     <div className="flt_left">
                                     <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`}>
-                                        <button className="btn_listing">
-                                            VIEW DETAILS
-                                        </button>
+                                        <a href={`/holidays/[name]-tour-package-[id]/`}>
+                                            <button className="btn_listing">
+                                                VIEW DETAILS
+                                            </button>
+                                        </a>
                                     </Link>
                                     </div>
                                     <div className="flt_right">
@@ -532,10 +534,12 @@ const Package = ({item}) =>{
 
                             </div>                            
                             <div className={tw`flt_right mr-4`}>
-                                <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} scroll={false}>
-                                    <button className="btn_listing">
-                                        VIEW DETAILS
-                                    </button>
+                                <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`}>
+                                    <a href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`}>
+                                        <button className="btn_listing">
+                                            VIEW DETAILS
+                                        </button>
+                                    </a>
                                 </Link>
                             </div>
 
