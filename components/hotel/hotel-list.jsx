@@ -17,10 +17,10 @@ const HotelList = ({hotels}) =>{
         const { className, style, onClick } = props;
         
         return <div className={tw`hidden lg:block custom-btn left-custom-btn`} onClick={onClick}/>;
-      }      
+      }
 
 
-    const settings = {
+    const _settings = {
         infinite: true,
         centerPadding: "60px",
         slidesToShow: 4,
@@ -54,16 +54,24 @@ const HotelList = ({hotels}) =>{
             breakpoint: 480,
             // partialVisibilityGutter: 25,
             settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
+              slidesToShow: 3,
+              slidesToScroll: 3,
             },
           },
         ],
       };
+      const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        rows: 3,
+        slidesToShow: 3,
+        slidesToScroll: 1
+      };      
     
     
       const exploreRender = hotels.map((item,i)=>{
-        return        <div key={i} className={tw`mb-4`}>
+        return        <div key={i} className={tw`w-full lg:w-1/4 mb-4`}>
             <Link href={`/hotel/hotel-in-${item.cityname.toLocaleLowerCase()}-${item.id}`}>
               <div className={tw`px-2`}>
                   <div className="des_img t_rd" style={{margin:0}}>
@@ -106,15 +114,19 @@ const HotelList = ({hotels}) =>{
             </Link>
             
         </div>
-    })    
+    })
 
 
     return    <div className="Shape_42">
-        <div className="clearfix"></div>
-        <Slider {...settings}>
-            {exploreRender}
-        </Slider>
-    </div>
+                <div className={tw`flex flex-wrap`}>
+                  {exploreRender}
+                </div>
+                
+                  {/* <div className="clearfix"></div> */}
+                  {/* <Slider {...settings}>
+                      {exploreRender}
+                  </Slider> */}
+              </div>
 }
 
 export default HotelList

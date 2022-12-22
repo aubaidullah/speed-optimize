@@ -3,23 +3,32 @@ import { getHotelList } from "../../../components/Graphql/Queries"
 import Nav from "../../../components/Nav"
 import HotelList from "../../../components/hotel/hotel-list"
 import { tw } from "twind"
+import * as Constants from '../../../components/Constants'
+import SearchBar from "../../../components/hotel/searchBar"
 
 
 const SearchHotel =({hotels})=>{
 
     return <>
         <Nav />
+        
 
         <section className="container">
             <div className={tw`mt-4`}>
+                <SearchBar />
+
+            </div>
+            <div className={tw`mt-4`}>
                 <h2 className={tw`_titles_ mb-4`}>Explore</h2>
+                <HotelList hotels={hotels} />
                 
-                <div className={tw`flex flex-wrap`}>
+                
+                {/* <div className={tw`flex flex-wrap`}>
                     <div className={tw`w-full`}>
                         <HotelList hotels={hotels} />
                     </div>
                     
-                </div>    
+                </div>     */}
 
             </div>
         </section>
