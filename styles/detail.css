@@ -592,7 +592,12 @@ ul.bullet_points span{
   border-radius: 0;
   transition: box-shadow .2s;
 }
-.des_img, .recent_img {
+._des_img{
+  height: 200px;
+  border-radius: 0;
+  transition: box-shadow .2s;
+}
+.des_img, .recent_img,._des_img {
   position: relative;
   margin: 0 0 30px;
   overflow: hidden;
@@ -617,7 +622,7 @@ ul.bullet_points span{
   border-bottom-right-radius: 0;
 }
 
-.des_img img {
+.des_img img,._des_img img {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -882,9 +887,9 @@ ul.breadcrumb {
     height: 40px;
     padding: 0 10px;
     line-height: 40px;
-    max-width: 300px;
+    /* max-width: 300px; */
     margin: 0 auto;
-    font-size: 9px;
+    font-size: 12px;
   }
   .search_input{
     transform: translateY(-130px);
@@ -894,7 +899,7 @@ ul.breadcrumb {
   }
   .m_s_icon {
     top: 12px;
-    right: 30px;
+    /* right: 30px; */
     font-size: 18px;
   }
 
