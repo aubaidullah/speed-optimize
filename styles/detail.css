@@ -593,7 +593,7 @@ ul.bullet_points span{
   transition: box-shadow .2s;
 }
 ._des_img{
-  height: 200px;
+  height: 268px;
   border-radius: 0;
   transition: box-shadow .2s;
 }
@@ -877,6 +877,9 @@ ul.breadcrumb {
 
 @media (max-width: 464px){
   .slide{
+    height: 200px;
+  }
+  ._des_img{
     height: 200px;
   }
   ul.breadcrumb li {
