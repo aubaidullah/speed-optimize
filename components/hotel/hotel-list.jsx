@@ -3,6 +3,7 @@ import { tw } from "twind";
 import Slider from 'react-slick'
 import {IoLocationSharp,IoSunny} from 'react-icons/io5'
 import { BsDot,BsStarHalf } from "react-icons/bs";
+import { strToUrl } from "../fun";
 
 const HotelList = ({hotels}) =>{
 
@@ -72,7 +73,7 @@ const HotelList = ({hotels}) =>{
     
       const exploreRender = hotels.map((item,i)=>{
         return        <div key={i} className={tw`w-full lg:w-1/4 mb-4`}>
-            <Link href={`/hotel/hotel-in-${item.cityname.toLocaleLowerCase()}-${item.id}`}>
+            <Link href={`/hotel-${strToUrl(item.name)}-in-${item.cityname.toLocaleLowerCase()}-${item.id}`}>
               <div className={tw`px-2`}>
                   <div className="des_img t_rd" style={{margin:0}}>
                       <img src={item.images} />

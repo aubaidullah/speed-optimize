@@ -292,7 +292,7 @@ const HotelDetail = ({hotel,meta}) =>{
                 </div>
                 <div className={``}>
                     <div className={tw`flex flex-wrap`}>
-                        <div className={tw`-full lg:w-2/3`}>
+                        <div className={tw`w-full lg:w-2/3`}>
                             <div className="slider_details" id="gallery">
                                 <div className="carousel-root slider_banner slider_overlay">
                                     <div className="carousel carousel-slider">
@@ -351,7 +351,7 @@ const HotelDetail = ({hotel,meta}) =>{
                                                     
                                                     <div>
 
-                                                        <Image className='ht_img' src={
+                                                        <Image className={tw`ht_img`} src={
                                                             // e
                                                             hotel.hotel.images.split(',')[index+1]
                                                         
@@ -359,7 +359,7 @@ const HotelDetail = ({hotel,meta}) =>{
                                                             
                                                             layout="fill" style={{borderRadius:'8px'}} />
                                                         {index==1
-                                                        ?<div style={{position:'absolute',color:'white',bottom:10,right:10}}>
+                                                        ?<div style={{position:'absolute',color:'white',right:10}} className={tw`bottom-6 lg:bottom-2`}>
                                                             <button className="btn_listing" style={{background:'white',textTransform:'unset'}}>
                                                                 Show all {hotel.hotel.images.split(',').length} Photos
                                                             </button>

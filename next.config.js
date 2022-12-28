@@ -45,11 +45,11 @@ const nextConfig = {
         destination: '/qna'
       },
       {
-        source: '/hotel/:name-in-:city-:id',
+        source: '/hotel-:name-in-:city-:id',
         destination: '/hotels/details'
       },
       {
-        source: '/hotels/:city-:id',
+        source: '/hotels/hotel-in-:city-:id',
         destination: '/hotels/list'
       },
     ]

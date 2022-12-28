@@ -197,7 +197,7 @@ const SearchBar = () =>{
 
                     </div>
                     <div className={tw`w-full lg:w-1/3 lg:px-2 mb-2`}>
-                        <Link href={`/hotels/${searchkey?.toLowerCase()}-${id}`}>
+                        <Link href={`/hotels/hotel-in-${searchkey?.toLowerCase()}-${id}`}>
                             <button className="btn_listing _btn_clr h50" style={{width:'100%'}}> 
                                 Search
                             </button>
