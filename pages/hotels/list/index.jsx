@@ -5,10 +5,13 @@ import HotelList from "../../../components/hotel/hotel-list"
 import { tw } from "twind"
 import * as Constants from '../../../components/Constants'
 import SearchBar from "../../../components/hotel/searchBar"
+import { useRouter } from "next/router"
+import { toTitleCase } from "../../../components/fun"
 
 
 const SearchHotel =({hotels})=>{
-
+    const router = useRouter()
+    console.log(router.query.city)
     return <>
         <Nav />
         
@@ -19,7 +22,7 @@ const SearchHotel =({hotels})=>{
 
             </div>
             <div className={tw`mt-4`}>
-                <h2 className={tw`_titles_ mb-4`}>Explore</h2>
+                <h2 className={tw`_titles_ mb-4`}>Results in <span className={tw`primary-color`}>{toTitleCase(router.query.city)}</span></h2>
                 <HotelList hotels={hotels} />
                 
                 
