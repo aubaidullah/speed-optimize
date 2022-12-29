@@ -7,16 +7,33 @@ import * as Constants from '../../../components/Constants'
 import SearchBar from "../../../components/hotel/searchBar"
 import { useRouter } from "next/router"
 import { toTitleCase } from "../../../components/fun"
+import BreadCrumbs from "../../../components/breadcrumbs"
 
 
 const SearchHotel =({hotels})=>{
     const router = useRouter()
     console.log(router.query.city)
+    const bread = {
+        disabled: {
+            item: `${router.query.city}`
+        },
+        enabled: [
+            {
+                item: "Kiomoi",
+                href: "/"
+            },
+            {
+                item: "Hotels",
+                href: "/hotels"
+            }            
+        ]
+    }    
     return <>
         <Nav />
         
 
         <section className="container">
+            <BreadCrumbs  bread={bread}/>
             <div className={tw`mt-4`}>
                 <SearchBar />
 

@@ -15,6 +15,8 @@ import DatePicker from '@amir04lm26/react-modern-calendar-date-picker';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { useEffect,useState } from "react";
 import Meta from "../../../components/meta";
+import { strToUrl } from "../../../components/fun";
+import {BsCheckCircle} from 'react-icons/bs'
 
 // import PhotoSwipe from 'photoswipe';
 
@@ -207,9 +209,14 @@ const HotelDetail = ({hotel,meta}) =>{
                 href: "/"
             },
             {
-                item: "Hotel Booking",
-                href: "/"
-            },            
+                item: "Hotels",
+                href: "/hotels"
+            },
+            {
+                item: `${hotel.hotel.locality}`,
+                href: `/hotels/hotel-in-${strToUrl(hotel.hotel.locality)}-${hotel.hotel.cid}`
+                
+            }
         ]
     }    
     
@@ -459,7 +466,9 @@ const HotelDetail = ({hotel,meta}) =>{
                                                 return <div className={tw`w-1/2 lg:w-1/4 mb-3`}>
                                                     <div className={tw`flex`}>
                                                         <div>
-                                                            <img src={"/icons/amenities-icons/1.png"} style={{width:'25px'}} className={tw`inline`} alt="" />
+                                                        <BsCheckCircle color="#44c554" className={tw`inline`}/>
+
+                                                            {/* <img src={"/icons/amenities-icons/1.png"} style={{width:'25px'}} className={tw`inline`} alt="" /> */}
                                                         </div>
                                                         <div className={tw`pl-2`}>
                                                             <span className={tw`text-gray-600 f12`}>{e}</span>

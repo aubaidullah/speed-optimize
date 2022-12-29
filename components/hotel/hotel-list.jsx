@@ -4,6 +4,7 @@ import Slider from 'react-slick'
 import {IoLocationSharp,IoSunny} from 'react-icons/io5'
 import { BsDot,BsStarHalf } from "react-icons/bs";
 import { strToUrl } from "../fun";
+import {FaRupeeSign} from 'react-icons/fa'
 
 const HotelList = ({hotels}) =>{
 
@@ -70,8 +71,62 @@ const HotelList = ({hotels}) =>{
         slidesToScroll: 1
       };      
     
-    
-      const exploreRender = hotels.map(function (item, i) {
+      
+      const exploreRender = hotels.map((item,i)=>{
+        var hurl =
+          "/hotel-" +
+          item.name.replace(/\s+/g, "-").toLowerCase() +
+          "-in-" +
+          item.cityname.replace(/\s+/g, "-").toLowerCase() +
+          "-" +
+          item.id;
+
+          return <div key={i} className={tw`w-full lg:w-1/4 mb-4`}>
+            <div>
+              <Link href={hurl}>
+                <a href={hurl}>
+                  <div className={tw`px-2`}>
+                    <div style={{height:'200px'}}>
+                      <img style={{objectFit:'cover',height:'200px',width:'100%',borderRadius:'8px' ,border:'1px solid #e3e3e3'}}
+                      className="img-responsive"
+                      src={item.images.length > 0 ? item.images : "/logo-icon.png"}
+                      alt=""
+                    />
+                    </div>
+                    <div className={tw`mt-2`}>
+                      <div className={tw`flex items-center justify-between`}>
+                        <h2 className={tw`font-bold-`}>{item.name}</h2>
+                        {/* <span>{item.ratings}</span> */}
+                      </div>
+                      <div className={tw`text-sm`}>
+                        <div className={tw`c_gray`}>
+                          {item.cityname}
+                        </div>
+                        <div>
+                          {item.price === 0?<span className={tw`price_inr text-sm`}>Price on Request</span>:
+                          <span className={tw`price_inr text-sm`}>
+                            <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'12px',marginBottom:'4px'}} />
+                            
+                            {item.price} /-
+                          </span>
+                          
+                          
+                          }
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </a>
+              </Link>
+            </div>
+          </div>
+      })
+
+
+
+      const exploreRender_ = hotels.map(function (item, i) {
         var tmp = [];
         var hurl =
           "/hotel-" +
@@ -97,6 +152,8 @@ const HotelList = ({hotels}) =>{
   
         return (
           <div key={i} className={tw`w-full lg:w-1/3 mb-4`}>
+            
+            
             <div className={tw`col-sm-12 col-xs-12 _cr_mb px-4`} key={i}>
               <div className="top_rated_box _box_shadow _bottom _hotel_shadow">
                 <div className="des_img">
@@ -135,7 +192,6 @@ const HotelList = ({hotels}) =>{
                     {item.price > 0 ? (
                       <>
                         <span className="price_inr price_royal">
-                          {/* <i className="fa fa-inr"></i> */}
                           {item.price}
                         </span>
                       </>

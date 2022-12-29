@@ -18,6 +18,7 @@ import * as Constants from '../../components/Constants'
 import Meta from "../../components/meta";
 import HotelList from "../../components/hotel/hotel-list";
 import SearchBar from "../../components/hotel/searchBar";
+import BreadCrumbs from "../../components/breadcrumbs";
 
 
 const Hotels = ({data,meta}) =>{
@@ -56,6 +57,23 @@ const Hotels = ({data,meta}) =>{
           };  
           Setresponsive(res)      
     },[])    
+
+
+
+
+    const bread = {
+      disabled: {
+          item: `Hotels`
+      },
+      enabled: [
+          {
+              item: "Kiomoi",
+              href: "/"
+          }
+      ]
+  }
+
+
     
     // console.log(data)
     const ButtonGroup = ({ next, previous, ...rest }) => {
@@ -85,18 +103,21 @@ const Hotels = ({data,meta}) =>{
       }      
 
     const hotelRender = data.cities.map((item, i)=>{
+       const hurl = `/hotels/hotel-in-${item.cname?.toLowerCase()}-${item.cid}`
         return <div>
                     <div className={tw`pr-8`}>
-                        <a href="#">
-                            <h4 className={tw`text-center pb-2 font-bold`}>{item.cname}</h4>
-                            <div className="des_img_hotel">
-                                
-                                {item.iurl
-                                ?<Image src={item.iurl} className={tw``} style={{height:'100%',width:'100px'}} layout="fill" />
-                                :<img src={item.iurl} />
-                                }
-                            </div>
-                        </a>
+                        <Link href={hurl}>
+                          <a href={hurl}>
+                              <h4 className={tw`text-center pb-2 font-bold`}>{item.cname}</h4>
+                              <div className="des_img_hotel">
+                                  
+                                  {item.iurl
+                                  ?<Image src={item.iurl} className={tw``} style={{height:'100%',width:'100px'}} layout="fill" />
+                                  :<img src={item.iurl} />
+                                  }
+                              </div>
+                          </a>
+                        </Link>
                         
                     </div>
                 </div>
@@ -206,6 +227,7 @@ const Hotels = ({data,meta}) =>{
      <Nav />
      
      <section className="container">
+      <BreadCrumbs bread={bread} />
 
         <div className={tw`mt-4`}>
           <SearchBar />
