@@ -36,7 +36,7 @@ const SearchBar = () =>{
       setCheckindate({"day":parseInt(minDate['day']),"month":parseInt(minDate['month']),"year":parseInt(minDate['year'])})
 
       let tomorrow = new Date(`${minDate['year']}-${minDate['month']}-${minDate['day']}`);
-      tomorrow.setDate(today.getDate()+2);
+      tomorrow.setDate(today.getDate()+1);
       let c = tomorrow.toLocaleDateString().split("/")
 
       setminCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
@@ -52,7 +52,7 @@ const SearchBar = () =>{
     const setCheckIn = (date) =>{
         let today = new Date(`${date['year']}-${date['month']}-${date['day']}`)
         let tomorrow = new Date(`${date['year']}-${date['month']}-${date['day']}`);
-        tomorrow.setDate(today.getDate()+2);
+        tomorrow.setDate(today.getDate()+1);
         let c = tomorrow.toLocaleDateString().split("/")  
         setCheckindate(date)
         setminCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})      

@@ -42,7 +42,7 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
         setCheckindate({"day":parseInt(minDate['day']),"month":parseInt(minDate['month']),"year":parseInt(minDate['year'])})
   
         let tomorrow = new Date(`${minDate['year']}-${minDate['month']}-${minDate['day']}`);
-        tomorrow.setDate(today.getDate()+2);
+        tomorrow.setDate(today.getDate()+1);
         let c = tomorrow.toLocaleDateString().split("/")
   
         setminCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
@@ -53,7 +53,7 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
     const setCheckIn = (date) =>{
         let today = new Date(`${date['year']}-${date['month']}-${date['day']}`)
         let tomorrow = new Date(`${date['year']}-${date['month']}-${date['day']}`);
-        tomorrow.setDate(today.getDate()+2);
+        tomorrow.setDate(today.getDate()+1);
         let c = tomorrow.toLocaleDateString().split("/")  
         setCheckindate(date)
         setminCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})      
@@ -184,6 +184,7 @@ const HotelDetail = ({hotel,meta}) =>{
     const [checkindate,setCheckindate] = useState(minDate)
     const [checkoutdate,setCheckoutdate] = useState(minDate)
     const [selectedRoom,setSelectedRoom] = useState({})
+    const [amlimit,setAmlimit] = useState(8)
     const [selectedHotel,setSelectedHotel] = useState({'travellers':2,'room':1,'price':0,'id':null})
 
    
@@ -463,7 +464,8 @@ const HotelDetail = ({hotel,meta}) =>{
                                     <div className="Shape_42">
                                         <div className={tw`flex flex-wrap`}>
                                             {hotel.hotel.amenities.split(',').map((e,index)=>{
-                                                return <div className={tw`w-1/2 lg:w-1/4 mb-3`}>
+                                                if(amlimit>index){
+                                                    return <div className={tw`w-1/2 lg:w-1/4 mb-3`}>
                                                     <div className={tw`flex`}>
                                                         <div>
                                                         <BsCheckCircle color="#44c554" className={tw`inline`}/>
@@ -477,7 +479,16 @@ const HotelDetail = ({hotel,meta}) =>{
                                                     </div>
                                                     
                                                 </div>
+                                                }
+
                                             })}
+                                            {amlimit==8?
+                                            <div className={tw`w-full text-right`}>
+                                                <span className={tw`_plus_more`} onClick={()=>setAmlimit(1000)}>load more</span>
+                                            </div>
+                                                :""
+                                            }
+                                            
 
                                         </div>
                                     </div>

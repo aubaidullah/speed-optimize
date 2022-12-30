@@ -5,6 +5,7 @@ import {IoLocationSharp,IoSunny} from 'react-icons/io5'
 import { BsDot,BsStarHalf } from "react-icons/bs";
 import { strToUrl } from "../fun";
 import {FaRupeeSign} from 'react-icons/fa'
+import HotelDesign from "./hotel";
 
 const HotelList = ({hotels}) =>{
 
@@ -37,8 +38,8 @@ const HotelList = ({hotels}) =>{
             breakpoint: 1024,
             // partialVisibilityGutter: 40,
             settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
+              slidesToShow: 4,
+              slidesToScroll: 4,
               infinite: true,
               dots: true,
             },
@@ -56,8 +57,8 @@ const HotelList = ({hotels}) =>{
             breakpoint: 480,
             // partialVisibilityGutter: 25,
             settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
+              slidesToShow: 4,
+              slidesToScroll: 4,
             },
           },
         ],
@@ -69,58 +70,24 @@ const HotelList = ({hotels}) =>{
         rows: 3,
         slidesToShow: 3,
         slidesToScroll: 1
-      };      
+      };    
+      // console.log(hotels)
+      var _hotels = [...hotels]
+
+      _hotels = _hotels.sort((a,b)=>b.images.length - a.images.length)
     
       
-      const exploreRender = hotels.map((item,i)=>{
-        var hurl =
-          "/hotel-" +
-          item.name.replace(/\s+/g, "-").toLowerCase() +
-          "-in-" +
-          item.cityname.replace(/\s+/g, "-").toLowerCase() +
-          "-" +
-          item.id;
+      const exploreRender = _hotels.map((item,i)=>{
+        // var hurl =
+        //   "/hotel-" +
+        //   item.name.replace(/\s+/g, "-").toLowerCase() +
+        //   "-in-" +
+        //   item.cityname.replace(/\s+/g, "-").toLowerCase() +
+        //   "-" +
+        //   item.id;
 
           return <div key={i} className={tw`w-full lg:w-1/4 mb-4`}>
-            <div>
-              <Link href={hurl}>
-                <a href={hurl}>
-                  <div className={tw`px-2`}>
-                    <div style={{height:'200px'}}>
-                      <img style={{objectFit:'cover',height:'200px',width:'100%',borderRadius:'8px' ,border:'1px solid #e3e3e3'}}
-                      className="img-responsive"
-                      src={item.images.length > 0 ? item.images : "/logo-icon.png"}
-                      alt=""
-                    />
-                    </div>
-                    <div className={tw`mt-2`}>
-                      <div className={tw`flex items-center justify-between`}>
-                        <h2 className={tw`font-bold-`}>{item.name}</h2>
-                        {/* <span>{item.ratings}</span> */}
-                      </div>
-                      <div className={tw`text-sm`}>
-                        <div className={tw`c_gray`}>
-                          {item.cityname}
-                        </div>
-                        <div>
-                          {item.price === 0?<span className={tw`price_inr text-sm`}>Price on Request</span>:
-                          <span className={tw`price_inr text-sm`}>
-                            <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'12px',marginBottom:'4px'}} />
-                            
-                            {item.price} /-
-                          </span>
-                          
-                          
-                          }
-                        </div>
-
-                      </div>
-
-                    </div>
-                  </div>
-                </a>
-              </Link>
-            </div>
+            <HotelDesign item={item} />
           </div>
       })
 
@@ -259,7 +226,7 @@ const HotelList = ({hotels}) =>{
 
 
 
-    return    <div className="Shape_42">
+    return    <div className={tw`Shape_42 p-3`}>
                 <div className={tw`flex flex-wrap`}>
                   {exploreRender}
                 </div>

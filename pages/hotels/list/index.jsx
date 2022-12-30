@@ -28,12 +28,13 @@ const SearchHotel =({hotels})=>{
             }            
         ]
     }    
+    // const _hotels = hotels.sort((a,b)=>b.images.length - a.images.length)
     return <>
         <Nav />
         
-
+        <BreadCrumbs  bread={bread}/>
         <section className="container">
-            <BreadCrumbs  bread={bread}/>
+            
             <div className={tw`mt-4`}>
                 <SearchBar />
 

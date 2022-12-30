@@ -225,9 +225,9 @@ const Hotels = ({data,meta}) =>{
     return <>
       <Meta meta={meta} />
      <Nav />
-     
+     <BreadCrumbs bread={bread} />
      <section className="container">
-      <BreadCrumbs bread={bread} />
+      
 
         <div className={tw`mt-4`}>
           <SearchBar />
