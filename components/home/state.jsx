@@ -20,7 +20,7 @@ const State = ({data}) =>{
             <a href={aurl}>
               {" "}
               <div className="px-2 _cr_mb">
-                <div className="des_img">
+                <div className="_des_img">
                   <img
                     className="img-responsive"
                     style={{borderRadius:'8px'}}
@@ -97,7 +97,7 @@ const State = ({data}) =>{
                             </h4>
                         </div>
                         <div>
-                            <Link href={'/holidays'}>
+                            <Link href={'/holidays/'}>
                                 <a href={'/holidays/'}>
                                     <div className='btn_view_more'>
                                         View all

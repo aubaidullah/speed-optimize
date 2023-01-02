@@ -35,9 +35,9 @@ const TravelGuide = ({data}) =>{
         } else if (item.geoType == "COUNTRY") {
           console.log(item)
           try{
-            aurl = "/travel-guide/" + item.cityName.replace(/\s+/g, "-").toLowerCase() + "/" + item.cityId;
+            aurl = "/travel-guide/" + item.cityName.replace(/\s+/g, "-").toLowerCase() + "/" + item.cityId + '/';
           }catch{
-            aurl = "/travel-guide/" + item.name.replace(/\s+/g, "-").toLowerCase() + "/" + item.cityId;
+            aurl = "/travel-guide/" + item.name.replace(/\s+/g, "-").toLowerCase() + "/" + item.cityId + '/';
           }
             
           //travel-guide/india/96

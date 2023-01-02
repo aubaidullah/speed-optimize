@@ -1,6 +1,7 @@
 import {tw} from 'twind'
 import MultiCarousel from "react-multi-carousel";
 import Link from 'next/link'
+import Hotel_Design from '../hotel/hotel';
 
 const Hotel = ({data}) =>{
     const responsive = {
@@ -12,7 +13,7 @@ const Hotel = ({data}) =>{
         },
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
-          items: 3,
+          items: 4,
           // partialVisibilityGutter: 40
         },
         tablet: {
@@ -72,55 +73,9 @@ const Hotel = ({data}) =>{
   
         return (
           <div key={i}>
-            <div className="col-sm-12 col-xs-12 _cr_mb px-4" key={i}>
-              <div className="top_rated_box _box_shadow _bottom _hotel_shadow">
-                <div className="des_img">
-                  <img
-                    className="img-responsive"
-                    src={item.images.length > 0 ? item.images : "/logo-icon.png"}
-                    alt=""
-                  />
-                  <div className="content_">
-                    <div className="person_">
-                      <div className="item_list">
-                        {/* <i className="fa fa-user-o"></i> */}
-                        <span>1 Person</span>
-                      </div>
-                      <div className="item_list text-right">
-                        <span>{item.name} </span>
-                        <span>{item.locality} </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="royal-details">
-                  <h4>{item.name}</h4>
-                  <p>{item.locality}</p>
-                </div>
-                <div className="price_List royal_list">
-                  <div className="cut_price price-cut text-right">
-                    <del></del>
-                  </div>
-                  <div className={tw`price_tag flex items-cetner justify-bewteen`}>
-                    <a href={hurl} className="btn_anchor">
-                      View Details
-                    </a>
-                    {item.price > 0 ? (
-                      <>
-                        <span className="price_inr price_royal">
-                          {/* <i className="fa fa-inr"></i> */}
-                          {item.price}
-                        </span>
-                      </>
-                    ) : (
-                      <span className="price_inr price_royal royal-text">
-                        Price on Request
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
+
+            <Hotel_Design item={item} />
+
           </div>
         );
       });
@@ -142,8 +97,8 @@ const Hotel = ({data}) =>{
                                 <p>Discover Incredible Hotels</p>
                             </div>
                             <div className={tw`2w-full`}>
-                                <Link href="/travel-guide/">
-                                    <a href="/travel-guide/">
+                                <Link href="/hotels/">
+                                    <a href="/hotels/">
                                         <div className="btn_view_more">View All</div>
                                     </a>
                                 </Link>

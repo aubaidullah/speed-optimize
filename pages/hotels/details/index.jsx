@@ -15,6 +15,8 @@ import DatePicker from '@amir04lm26/react-modern-calendar-date-picker';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { useEffect,useState } from "react";
 import Meta from "../../../components/meta";
+import { strToUrl } from "../../../components/fun";
+import {BsCheckCircle} from 'react-icons/bs'
 
 // import PhotoSwipe from 'photoswipe';
 
@@ -40,7 +42,7 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
         setCheckindate({"day":parseInt(minDate['day']),"month":parseInt(minDate['month']),"year":parseInt(minDate['year'])})
   
         let tomorrow = new Date(`${minDate['year']}-${minDate['month']}-${minDate['day']}`);
-        tomorrow.setDate(today.getDate()+2);
+        tomorrow.setDate(today.getDate()+1);
         let c = tomorrow.toLocaleDateString().split("/")
   
         setminCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
@@ -51,7 +53,7 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
     const setCheckIn = (date) =>{
         let today = new Date(`${date['year']}-${date['month']}-${date['day']}`)
         let tomorrow = new Date(`${date['year']}-${date['month']}-${date['day']}`);
-        tomorrow.setDate(today.getDate()+2);
+        tomorrow.setDate(today.getDate()+1);
         let c = tomorrow.toLocaleDateString().split("/")  
         setCheckindate(date)
         setminCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})      
@@ -182,6 +184,7 @@ const HotelDetail = ({hotel,meta}) =>{
     const [checkindate,setCheckindate] = useState(minDate)
     const [checkoutdate,setCheckoutdate] = useState(minDate)
     const [selectedRoom,setSelectedRoom] = useState({})
+    const [amlimit,setAmlimit] = useState(8)
     const [selectedHotel,setSelectedHotel] = useState({'travellers':2,'room':1,'price':0,'id':null})
 
    
@@ -207,9 +210,14 @@ const HotelDetail = ({hotel,meta}) =>{
                 href: "/"
             },
             {
-                item: "Hotel Booking",
-                href: "/"
-            },            
+                item: "Hotels",
+                href: "/hotels"
+            },
+            {
+                item: `${hotel.hotel.locality}`,
+                href: `/hotels/hotel-in-${strToUrl(hotel.hotel.locality)}-${hotel.hotel.cid}`
+                
+            }
         ]
     }    
     
@@ -292,7 +300,7 @@ const HotelDetail = ({hotel,meta}) =>{
                 </div>
                 <div className={``}>
                     <div className={tw`flex flex-wrap`}>
-                        <div className={tw`-full lg:w-2/3`}>
+                        <div className={tw`w-full lg:w-2/3`}>
                             <div className="slider_details" id="gallery">
                                 <div className="carousel-root slider_banner slider_overlay">
                                     <div className="carousel carousel-slider">
@@ -351,7 +359,7 @@ const HotelDetail = ({hotel,meta}) =>{
                                                     
                                                     <div>
 
-                                                        <Image className='ht_img' src={
+                                                        <Image className={tw`ht_img`} src={
                                                             // e
                                                             hotel.hotel.images.split(',')[index+1]
                                                         
@@ -359,7 +367,7 @@ const HotelDetail = ({hotel,meta}) =>{
                                                             
                                                             layout="fill" style={{borderRadius:'8px'}} />
                                                         {index==1
-                                                        ?<div style={{position:'absolute',color:'white',bottom:10,right:10}}>
+                                                        ?<div style={{position:'absolute',color:'white',right:10}} className={tw`bottom-6 lg:bottom-2`}>
                                                             <button className="btn_listing" style={{background:'white',textTransform:'unset'}}>
                                                                 Show all {hotel.hotel.images.split(',').length} Photos
                                                             </button>
@@ -456,10 +464,13 @@ const HotelDetail = ({hotel,meta}) =>{
                                     <div className="Shape_42">
                                         <div className={tw`flex flex-wrap`}>
                                             {hotel.hotel.amenities.split(',').map((e,index)=>{
-                                                return <div className={tw`w-1/2 lg:w-1/4 mb-3`}>
+                                                if(amlimit>index){
+                                                    return <div className={tw`w-1/2 lg:w-1/4 mb-3`}>
                                                     <div className={tw`flex`}>
                                                         <div>
-                                                            <img src={"/icons/amenities-icons/1.png"} style={{width:'25px'}} className={tw`inline`} alt="" />
+                                                        <BsCheckCircle color="#44c554" className={tw`inline`}/>
+
+                                                            {/* <img src={"/icons/amenities-icons/1.png"} style={{width:'25px'}} className={tw`inline`} alt="" /> */}
                                                         </div>
                                                         <div className={tw`pl-2`}>
                                                             <span className={tw`text-gray-600 f12`}>{e}</span>
@@ -468,7 +479,16 @@ const HotelDetail = ({hotel,meta}) =>{
                                                     </div>
                                                     
                                                 </div>
+                                                }
+
                                             })}
+                                            {amlimit==8?
+                                            <div className={tw`w-full text-right`}>
+                                                <span className={tw`_plus_more`} onClick={()=>setAmlimit(1000)}>load more</span>
+                                            </div>
+                                                :""
+                                            }
+                                            
 
                                         </div>
                                     </div>

@@ -285,6 +285,9 @@ ul>li::marker {
 .c_gray{
   color: #999;
 }
+.bt-0{
+  bottom:0;
+}
 
 
 .about-popup img {

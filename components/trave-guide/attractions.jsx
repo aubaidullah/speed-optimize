@@ -14,7 +14,7 @@ const State_Attraction = ({data}) =>{
         //   "-tour-packages/" +
         //   item.id + "/";
 
-        var aurl = `/travel-guide/india/attraction-${item.name.replace(/\s+/g, "-").toLowerCase()}/${item.id}`
+        var aurl = `/travel-guide/india/attraction-${item.name.replace(/\s+/g, "-").toLowerCase()}/${item.id}/`
   
         return (
           <div key={i}>

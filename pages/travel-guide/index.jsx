@@ -57,7 +57,7 @@ const TravelGuide = ({data,meta}) =>{
                                                     />
                                                 </div>
                                                 <div className={tw`p-4 trvl_box`}>
-                                                    <div className={tw`pt-4 text-gray-200`}>
+                                                    <div className={tw`pt-4 text-sm text-gray-200`}>
                                                         {ReactHtmlParser(e.overviewDesc.substring(0, 150))}
                                                     </div>
                                                     <div className={tw`mt-2`}>

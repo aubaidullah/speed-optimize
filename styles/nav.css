@@ -93,6 +93,7 @@ nav{
 .s_form{
     padding:0px 40px 1px 40px;
     height: 62px;
+    border-color: transparent !important;
 }
 .s_form:hover,.s_form:active,.s_form:focus{
     border-color: transparent;
