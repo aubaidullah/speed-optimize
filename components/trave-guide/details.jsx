@@ -315,7 +315,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                     <div style={{ float: 'right' }}>
                                         
 
-                                        <Link href={type=='CITY'?`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/`:`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/${data.gid}`}>
+                                        <Link href={type=='CITY'?`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/`:`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/${data.gid}/`}>
                                             <a>
                                                 <button className="btn_listing_t _font_big">VIEW PACKAGES</button>
                                             </a>
@@ -380,7 +380,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                 type=='CITY'?
                                     data.attn.length>0?
                                         <div>
-                                            <Link href={'/travel-guide'}>
+                                            <Link href={'/travel-guide/'}>
                                                 <a href={'/travel-guide/'}>
                                                     <div className='btn_view_more'>
                                                         View all
@@ -506,8 +506,8 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                 qna.length!=0?
                 <>
                     <QnaListing data={qna} travelGuide={true} />
-                    <Link href={`/qna/${data.tg.cityName}-${data.tg.id}`}>
-                        <a className="anchore_coment _w100 _m_" href={`/qna/${data.tg.cityName}-${data.tg.id}`}>
+                    <Link href={`/qna/${data.tg.cityName}-${data.tg.id}/`}>
+                        <a className="anchore_coment _w100 _m_" href={`/qna/${data.tg.cityName}-${data.tg.id}/`}>
                             <div>
                                 View All QNA
                             </div>

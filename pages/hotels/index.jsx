@@ -1,4 +1,4 @@
-import Nav from "../../components/Nav"
+import Nav from "../../components/HomeNav"
 import { tw } from "twind"
 import { useState,useEffect } from "react";
 import client from "../../components/Graphql/service";
@@ -103,7 +103,7 @@ const Hotels = ({data,meta}) =>{
       }      
 
     const hotelRender = data.cities.map((item, i)=>{
-       const hurl = `/hotels/hotel-in-${item.cname?.toLowerCase()}-${item.cid}`
+       const hurl = `/hotels/hotel-in-${item.cname?.toLowerCase()}-${item.cid}/`
         return <div>
                     <div className={tw`pr-8`}>
                         <Link href={hurl}>
@@ -221,16 +221,18 @@ const Hotels = ({data,meta}) =>{
         setCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
         // setCheckoutdate(date)
       }
-
+    const bimg = "https://testkiomoi.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fkmadmin%2Fimage%2Fupload%2Fv1552993397%2Fkiomoi%2FPelling%2FPelling-2.jpg&w=1920&q=75"
     return <>
-      <Meta meta={meta} />
+     <Meta meta={meta} />
      <Nav />
+
+     <SearchBar img={bimg}/>
      <BreadCrumbs bread={bread} />
      <section className="container">
       
 
         <div className={tw`mt-4`}>
-          <SearchBar />
+          
         </div>
 
 

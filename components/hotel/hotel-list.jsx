@@ -101,7 +101,7 @@ const HotelList = ({hotels}) =>{
           "-in-" +
           item.cityname.replace(/\s+/g, "-").toLowerCase() +
           "-" +
-          item.id;
+          item.id + '/';
         for (var i = 0; i < item.ratings; i++) {
           tmp.push(i);
         }

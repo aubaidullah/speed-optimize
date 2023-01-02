@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 
 
 
-const SearchBar = () =>{
+const _SearchBar = ({img}) =>{
     const router = useRouter()
     const [result, setResult] = useState({})
     const [id,setId] = useState({})
@@ -78,8 +78,8 @@ const SearchBar = () =>{
         <div className={tw`mt-4`}>
             <div>
                 <div className={tw`flex_`}>
-                <h2 className={tw`_titles_`}>Search Home Stay For Your Date</h2>
-                <div className={tw`flex Shape_42 flex-wrap`}>
+                <h2 className={tw`_titles_ text-white`}>Search Home Stay For Your Date</h2>
+                <div className={tw`flex Shape_42 flex-wrap`} style={{background:'rgba(251, 250, 250, .3)',border:'none'}}>
                     <div className={tw`w-full lg:w-1/4 lg:px-2 mb-2`}>
                     <div style={{position:'relative'}}>
                         <input 
@@ -197,7 +197,7 @@ const SearchBar = () =>{
 
                     </div>
                     <div className={tw`w-full lg:w-1/3 lg:px-2 mb-2`}>
-                        <Link href={`/hotels/hotel-in-${searchkey?.toLowerCase()}-${id}`}>
+                        <Link href={`/hotels/hotel-in-${searchkey?.toLowerCase()}-${id}/`}>
                             <button className="btn_listing _btn_clr h50" style={{width:'100%'}}> 
                                 Search
                             </button>
@@ -217,6 +217,23 @@ const SearchBar = () =>{
             </div>    
     
     </>
+}
+
+
+
+const SearchBar = ({img}) =>{
+    return <div style={{position:'relative'}}>
+        <img style={{width:'100%',objectFit:'cover',height:'400px',filter:'brightness(75%)'}} src={img}/>
+        <div className="_container">
+            <div className={tw`mt-4 bt-0 lg:bottom-20`} style={{position:'absolute',left:0,right:0}}>
+                <div className="container">
+                    <_SearchBar img={img}/>
+                </div>
+                
+
+            </div>
+        </div>
+    </div>        
 }
 
 

@@ -97,7 +97,7 @@ const State = ({data}) =>{
                             </h4>
                         </div>
                         <div>
-                            <Link href={'/holidays'}>
+                            <Link href={'/holidays/'}>
                                 <a href={'/holidays/'}>
                                     <div className='btn_view_more'>
                                         View all

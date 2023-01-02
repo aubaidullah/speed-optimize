@@ -61,12 +61,12 @@ const Nav = () => {
             setAddnavClass('navbar-fixed')
 
         } else {
-          if (document.location.pathname === "/") {
-            // setAddnavClass('sticky')
+        //   if (document.location.pathname === "/") {
+        //     setAddnavClass('')
+        // }
+        // if (document.location.pathname === "/") {
             setAddnavClass('')
-            // console.log("sticky ")
-            // setAddnavClass('sticky shrink')
-        }
+        // }
       };    
     }
 

@@ -59,7 +59,7 @@ const DetailPage = ({ data, related, reviews,meta }) => {
             },
             {
                 item :`${data?.package.region.split(",")[0]}`,
-                href:`/holidays/${data?.package.region.split(",")[0].toLowerCase()}-tour-packages/${data?.gid}/`
+                href:`/holidays/${data?.package.region.split(",")[0].toLowerCase().replace(/ /g,'-')}-tour-packages/${data?.gid}/`
             }
         ]
     }

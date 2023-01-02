@@ -65,8 +65,8 @@ const Themes = ({data}) =>{
                         packages to its customers, while providing localised
                         services.
                     </p>
-                    <Link href="/holidays">
-                        <a href="/holidays">Read More</a>
+                    <Link href="/holidays/">
+                        <a href="/holidays/">Read More</a>
                     </Link>
                                         
                 </div>

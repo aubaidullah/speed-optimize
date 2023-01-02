@@ -8,7 +8,7 @@ const Hotel_Design = ({item}) =>{
           "-in-" +
           item.cityname.replace(/\s+/g, "-").toLowerCase() +
           "-" +
-          item.id;
+          item.id + '/';
 
     return <div>
             <Link href={hurl}>
@@ -23,7 +23,7 @@ const Hotel_Design = ({item}) =>{
                 </div>
                 <div className={tw`mt-2`}>
                     <div className={tw`flex items-center justify-between`}>
-                    <h2 className={tw`font-bold-`}>{item.name}</h2>
+                    <h2 className={tw`font-medium`}>{item.name}</h2>
                     {/* <span>{item.ratings}</span> */}
                     </div>
                     <div className={tw`text-sm`}>
