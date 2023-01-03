@@ -260,9 +260,9 @@ const RightBar=({data})=>{
                                     <span className="_list_p">
                                     {data?.package.percent}% Off
                                     </span>
-                                    <del>
+                                    <del className={tw`flex justify-between items-center`}>
                                     {/* <i className="fa fa-inr"></i> */}
-                                    <FaRupeeSign className='inline' style={{color:"#999",fontSize:'12px',marginBottom:'4px'}} />
+                                    <FaRupeeSign className='inline' style={{fontSize:'12px',}} />
                                     {parseFloat(data?.package.price) +
                                         parseFloat(data?.package.discount)}
                                     /-
@@ -280,7 +280,7 @@ const RightBar=({data})=>{
                                 {parseInt(data?.package.price) > 0 ? (
                                     <>
                                     {/* <i className="fa fa-inr" style={{ backgroundColor: 'initial' }}></i> */}
-                                    <FaRupeeSign className='inline' style={{color:"#999",backgroundColor:'initial',fontSize:'12px',marginBottom:'4px'}} />
+                                    {/* <FaRupeeSign className='inline' style={{color:"#999",backgroundColor:'initial',fontSize:'12px',marginBottom:'4px'}} /> */}
                                     {price}/-
                                     </>
                                 ) : (

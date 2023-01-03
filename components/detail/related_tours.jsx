@@ -192,7 +192,7 @@ const RelatedTour = ({data}) =>{
                         <div className="m-bot20"></div>
                       </>
                     )}
-                    <div className="price_tag">
+                    <div className={tw`price_tag flex justify-between items-center`} >
                       <span className="start_from">Started from</span>
                       <span className="price_inr" style={{ position: "unset" }}>
                         <i className="fa fa-inr"></i>

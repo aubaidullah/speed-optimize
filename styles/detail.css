@@ -185,7 +185,7 @@
   }
   .price-cut {
     font-weight: 400;
-    color: #999;
+    /* color: #999; */
     clear: both;
     align-items: center;
   }

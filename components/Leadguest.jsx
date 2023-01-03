@@ -6,6 +6,7 @@ import axios from 'axios';
 import * as Constants from "./Constants";
 import SimpleReactValidator from "simple-react-validator";
 import Cookie from 'js-cookie'
+import {BsXLg} from 'react-icons/bs'
 
 const LeadGuest = (props) => {
     // Inital Guest States
@@ -169,6 +170,10 @@ const LeadGuest = (props) => {
                         onClick={() => setOtpModal(!otpModal)}
                         aria-hidden="true">
                         {/* <i className="fa fa-close"></i> */}
+                        <BsXLg 
+                            style={{cursor: "pointer" }}
+                            // onClick={()=>changeForm(false)}
+                            />                        
                     </span>
 
                     
@@ -179,47 +184,47 @@ const LeadGuest = (props) => {
                             <p style={{textAlign:'center'}}>please wait...</p>
                         </div>
                         :
-                    <div>
-                        <div className="login_header">
-                            <p className="text_color">
-                                We sent an sms with confirmation code to your mobile number
-                            </p>
-                        </div>
-                        <form onSubmit={handleOTPSubmit}>
-                            <div className="form-group">
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    name="otp"
-                                    onChange={e => setGuestOTP(e.target.value)}
-                                    value={guestOTP}
-                                    placeholder="Enter your OTP"
-                                    minLength="6"
-                                    maxLength="6"
-                                />
-                                <div className="Invalid_num">
-                                    {registervalidator.current.message(
-                                    "otp",
-                                    guestOTP,
-                                    "required"
-                                    )}
+                        <div>
+                            <div className="login_header" style={{width:'90%'}}>
+                                <p className="text_color">
+                                    We sent an sms with confirmation code to your mobile number
+                                </p>
+                            </div>
+                            <form onSubmit={handleOTPSubmit}>
+                                <div className="form-group">
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        name="otp"
+                                        onChange={e => setGuestOTP(e.target.value)}
+                                        value={guestOTP}
+                                        placeholder="Enter your OTP"
+                                        minLength="6"
+                                        maxLength="6"
+                                    />
+                                    <div className="Invalid_num">
+                                        {registervalidator.current.message(
+                                        "otp",
+                                        guestOTP,
+                                        "required"
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
+                                <div className="form-group">
+                                    <button className="btn btn_facebook" type="submit">
+                                        Submit OTP
+                                    </button>
+                                </div>
+                            </form>
                             <div className="form-group">
-                                <button className="btn btn_facebook" type="submit">
-                                    Submit OTP
-                                </button>
+                                <p className="proceed_clr">
+                                    BY proceeding, you agree to the{" "}
+                                    <a href="/terms-and-conditions/" target='_blank' className="tnc_color">
+                                        Terms & Conditions
+                                    </a>
+                                </p>
                             </div>
-                        </form>
-                        <div className="form-group">
-                            <p className="proceed_clr">
-                                BY proceeding, you agree to the{" "}
-                                <a href="/terms-and-conditions/" target='_blank' className="tnc_color">
-                                    Terms & Conditions
-                                </a>
-                            </p>
                         </div>
-                    </div>
                     }
 
                 </Modal.Body>
