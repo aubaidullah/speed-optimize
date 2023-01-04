@@ -54,7 +54,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
 
     const handleQuerysubmit = async () => {
     
-        var tDate = `${traveldate['year']}-${traveldate['month']}-${traveldate['day']}`
+        var tDate = `${traveldate['year'].toString()}-${traveldate['month'].toString().padStart(2,0)}-${traveldate['day'].toString().padStart(2,0)}`
         var dd = new Date(tDate)
         var newdate = new Date(tDate);
         console.log("checkindate...")
@@ -62,7 +62,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
         newdate.setDate(dd.getDate()+parseInt(duration))
         newdate = newdate.toLocaleDateString().split("/")
 
-        const checkoutdate = newdate[2]+"-"+newdate[1]+"-"+newdate[0]
+        const checkoutdate = newdate[2]+"-"+newdate[1].padStart(2,0)+"-"+newdate[0].padStart(2,0)
 
         console.log(traveldate)
         
