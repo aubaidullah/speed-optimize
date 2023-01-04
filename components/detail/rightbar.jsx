@@ -92,7 +92,7 @@ const RightBar=({data})=>{
                     </div>                    
 
                     <div className='_b_right_list'>
-                        <div style={{padding:'15px'}}>
+                        <div style={{padding:'10px'}}>
                             <div className='ov_auto'>
                                 <div className='d_location flt_left'>
                                     <IoLocationSharp style={{color:'#999'}} className='inline' size={15}/>
@@ -167,7 +167,7 @@ const RightBar=({data})=>{
                     </div>
 
                     <div className='_b_right_list'>
-                        <div style={{padding:'15px'}}>
+                        <div style={{padding:'10px'}}>
                             <div className='ov_auto'>
                                 <div className='flt_left f_12px'>
                                     <MdCheckCircle size={13} className='inline' style={{color:'#15be03'}}/>
@@ -184,7 +184,7 @@ const RightBar=({data})=>{
 
                     </div>
                     <div className='_b_right_list'>
-                        <div style={{padding:'10px'}}>
+                        <div style={{padding:'12px'}}>
                             <div style={{textAlign:'center'}}>
                                 <span className='check_availability'
                                 onClick={() =>
@@ -202,7 +202,7 @@ const RightBar=({data})=>{
                     </div>
 
                     <div className='_b_right_list __btn_clr price_banner'>
-                        <div style={{padding:'15px'}}>
+                        <div style={{padding:'10px'}}>
 
 
                         <div>

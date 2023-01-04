@@ -1,4 +1,5 @@
 import Link from "next/link"
+import {IoLocationSharp} from 'react-icons/io5'
 import {FaRupeeSign} from 'react-icons/fa'
 import { tw } from "twind";
 const Hotel_Design = ({item}) =>{
@@ -26,10 +27,16 @@ const Hotel_Design = ({item}) =>{
                     <h2 className={tw`font-medium`}>{item.name}</h2>
                     {/* <span>{item.ratings}</span> */}
                     </div>
-                    <div className={tw`text-sm`}>
-                    <div className={tw`c_gray`}>
-                        {item.cityname}
+                    <div className={tw`text-sm pt-1`}>
+                    <div className={tw`flex items-center c_gray`}>
+                        <IoLocationSharp />
+                        <div className={tw`c_gray pl-1 c_gray`} 
+                        // style={{color:'rgb(6, 24, 141)'}}
+                        >
+                            {item.cityname}
+                        </div>                        
                     </div>
+
                     <div>
                         {item.price === 0?<span className={tw`price_inr text-sm`}>Price on Request</span>:
                         <span className={tw`price_inr text-sm`}>

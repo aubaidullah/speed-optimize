@@ -147,7 +147,7 @@ const Package = ({item}) =>{
 
                                             </div>
                                         {/* <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true}></Link> */}
-                                            <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} >
+                                            <Link href={`${url}`} as={`${url}`} >
                                             <div className='col-sm-8 col-xs-12'>
                                                 <div className="contain_blk">
                                                     <div className="_row ov_auto mb_display_none">
@@ -432,8 +432,8 @@ const Package = ({item}) =>{
                                 {/* </Link> */}
                                 <div className="buttons desk_display_none mt-2" style={{overflow:'auto'}}>
                                     <div className="flt_left">
-                                    <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`}>
-                                        <a href={`/holidays/[name]-tour-package-[id]/`}>
+                                    <Link href={`${url}`} as={`${url}`}>
+                                        <a href={`${url}`}>
                                             <button className="btn_listing">
                                                 VIEW DETAILS
                                             </button>
@@ -534,8 +534,8 @@ const Package = ({item}) =>{
 
                             </div>                            
                             <div className={tw`flt_right mr-4`}>
-                                <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`}>
-                                    <a href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`}>
+                                <Link href={`${url}`} as={`${url}`}>
+                                    <a href={`${url}`} as={`${url}`}>
                                         <button className="btn_listing">
                                             VIEW DETAILS
                                         </button>

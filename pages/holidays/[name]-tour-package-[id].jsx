@@ -17,6 +17,7 @@ import Nav from '../../components/Nav'
 import * as Constants from '../../components/Constants'
 import BreadCrumbs from '../../components/breadcrumbs';
 import Meta from '../../components/meta';
+import { createDetailUrl } from '../../components/fun';
 
 
 const DetailPage = ({ data, related, reviews,meta }) => {
@@ -382,6 +383,7 @@ export async function getServerSideProps(context) {
     context.res.setHeader('Cache-Control', 's-maxage=10');
     let query = context.params['name]-tour-package-[id'];
 
+
     let name = query.split('-tour-package-')[0];
     let _id = query.split('-tour-package-')[1];
 
@@ -393,6 +395,21 @@ export async function getServerSideProps(context) {
             }
         }
     })
+    console.log(query)
+    const nurl = createDetailUrl({name:res.data?.package.output.package.name,id:_id})
+    console.log(query)
+
+    if (`/holidays/${query}/` != nurl){
+        return {
+            redirect: {
+              permanent: false,
+              destination: nurl,
+            },
+            props:{},
+          };
+    }
+    // console.log(createDetailUrl({name,id:_id}))
+    // if res.data?.package.output.package.name
 
     let postD = {
         "av": "1.3",

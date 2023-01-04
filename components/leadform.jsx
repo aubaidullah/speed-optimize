@@ -120,7 +120,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                                     </>,
                                     {
                                     buttons:false,
-                                    // timer: 3000,
+                                    timer: 4000,
                                     }
                                 );
                                 return true
