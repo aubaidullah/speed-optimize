@@ -168,13 +168,13 @@ const RightBar=({data})=>{
 
                     <div className='_b_right_list'>
                         <div style={{padding:'10px'}}>
-                            <div className='ov_auto'>
-                                <div className='flt_left f_12px'>
+                            <div className='ov_auto best_session'>
+                                <div className='flt_left'>
                                     <MdCheckCircle size={13} className='inline' style={{color:'#15be03'}}/>
                                     <span className='_inline__'>Part Payment Available</span>
                                 </div>
 
-                                <div className='flt_right f_12px'>
+                                <div className='flt_right'>
                                     <MdCheckCircle size={13} className='inline' style={{color:'#15be03'}}/>
                                     <span className='_inline__'>Free Cancellation</span>
                                     
@@ -184,7 +184,7 @@ const RightBar=({data})=>{
 
                     </div>
                     <div className='_b_right_list'>
-                        <div style={{padding:'12px'}}>
+                        <div style={{padding:'5px'}}>
                             <div style={{textAlign:'center'}}>
                                 <span className='check_availability'
                                 onClick={() =>
