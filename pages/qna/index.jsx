@@ -3,6 +3,7 @@ import { getQnaQuery } from "../../components/Graphql/Queries";
 import QnaListing from "../../components/Qna";
 
 
+
 const Qna=({qna})=>{
     return <QnaListing data={qna} travelGuide={false}/>
 }
