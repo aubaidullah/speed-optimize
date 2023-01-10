@@ -397,6 +397,13 @@ ul>li::marker {
 }
 
 
+.modal-open .modal{
+  background:rgba(0,0,0,.5215686274509804)
+}
+.modal-backdrop {
+  background-color: rgba(0,0,0,.06666666666666667);
+}
+
 
 
 

@@ -54,7 +54,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
 
     const handleQuerysubmit = async () => {
     
-        var tDate = `${traveldate['year']}-${traveldate['month']}-${traveldate['day']}`
+        var tDate = `${traveldate['year'].toString()}-${traveldate['month'].toString().padStart(2,0)}-${traveldate['day'].toString().padStart(2,0)}`
         var dd = new Date(tDate)
         var newdate = new Date(tDate);
         console.log("checkindate...")
@@ -62,7 +62,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
         newdate.setDate(dd.getDate()+parseInt(duration))
         newdate = newdate.toLocaleDateString().split("/")
 
-        const checkoutdate = newdate[2]+"-"+newdate[0]+"-"+newdate[1]
+        const checkoutdate = newdate[2]+"-"+newdate[1].padStart(2,0)+"-"+newdate[0].padStart(2,0)
 
         console.log(traveldate)
         
@@ -113,14 +113,14 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                                 // "",
                                     <>
                                     <div style={{textAlign:'center',marginBottom:'15px'}}>
-                                    <img src={"/icons/download.png"} />
+                                    <img src={"/icons/download.png"} style={{margin:'0px auto'}} className={tw`inline`} />
                                     <p style={{paddingTop:"10px",textAlign:"center",fontSize:"15px"}}>Thanks for query with Kiomoi, your reference number is <b>{res.data.output}</b></p>
                                     <p style={{textAlign:'center',fontSize:"10px"}}>We assure you within 24 hours response. Feel free to call us on <span style={{color:'#f16625'}}>+919650687940</span> or drop a mail on <a href={`mailto:info@kiomoi.com?Subject=Query regarding reference number "+${res.data.output} +"`} target='_top'><span style={{color:'#f16625'}}>info@kiomoi.com</span></a> for a sooner response</p>
                                     </div>
                                     </>,
                                     {
                                     buttons:false,
-                                    timer: 3000,
+                                    timer: 4000,
                                     }
                                 );
                                 return true
@@ -183,8 +183,8 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
             animation={false}
             className="login_credential"
             backdrop="static"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
+            // aria-labelledby="contained-modal-title-vcenter"
+            // centered
             // size="sm"
         >
         <Modal.Body>
@@ -710,7 +710,8 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
             </form>
           </div>
         </Modal.Body>
-      </Modal>
+        </Modal>
+        
       </>
     )
 }

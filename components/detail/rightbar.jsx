@@ -92,7 +92,7 @@ const RightBar=({data})=>{
                     </div>                    
 
                     <div className='_b_right_list'>
-                        <div style={{padding:'15px'}}>
+                        <div style={{padding:'10px'}}>
                             <div className='ov_auto'>
                                 <div className='d_location flt_left'>
                                     <IoLocationSharp style={{color:'#999'}} className='inline' size={15}/>
@@ -167,14 +167,14 @@ const RightBar=({data})=>{
                     </div>
 
                     <div className='_b_right_list'>
-                        <div style={{padding:'15px'}}>
-                            <div className='ov_auto'>
-                                <div className='flt_left f_12px'>
+                        <div style={{padding:'10px'}}>
+                            <div className='ov_auto best_session'>
+                                <div className='flt_left'>
                                     <MdCheckCircle size={13} className='inline' style={{color:'#15be03'}}/>
                                     <span className='_inline__'>Part Payment Available</span>
                                 </div>
 
-                                <div className='flt_right f_12px'>
+                                <div className='flt_right'>
                                     <MdCheckCircle size={13} className='inline' style={{color:'#15be03'}}/>
                                     <span className='_inline__'>Free Cancellation</span>
                                     
@@ -184,7 +184,7 @@ const RightBar=({data})=>{
 
                     </div>
                     <div className='_b_right_list'>
-                        <div style={{padding:'10px'}}>
+                        <div style={{padding:'5px'}}>
                             <div style={{textAlign:'center'}}>
                                 <span className='check_availability'
                                 onClick={() =>
@@ -202,7 +202,7 @@ const RightBar=({data})=>{
                     </div>
 
                     <div className='_b_right_list __btn_clr price_banner'>
-                        <div style={{padding:'15px'}}>
+                        <div style={{padding:'10px'}}>
 
 
                         <div>
@@ -260,9 +260,9 @@ const RightBar=({data})=>{
                                     <span className="_list_p">
                                     {data?.package.percent}% Off
                                     </span>
-                                    <del>
+                                    <del className={tw`flex justify-between items-center`}>
                                     {/* <i className="fa fa-inr"></i> */}
-                                    <FaRupeeSign className='inline' style={{color:"#999",fontSize:'12px',marginBottom:'4px'}} />
+                                    <FaRupeeSign className='inline' style={{fontSize:'12px',}} />
                                     {parseFloat(data?.package.price) +
                                         parseFloat(data?.package.discount)}
                                     /-
@@ -280,7 +280,7 @@ const RightBar=({data})=>{
                                 {parseInt(data?.package.price) > 0 ? (
                                     <>
                                     {/* <i className="fa fa-inr" style={{ backgroundColor: 'initial' }}></i> */}
-                                    <FaRupeeSign className='inline' style={{color:"#999",backgroundColor:'initial',fontSize:'12px',marginBottom:'4px'}} />
+                                    {/* <FaRupeeSign className='inline' style={{color:"#999",backgroundColor:'initial',fontSize:'12px',marginBottom:'4px'}} /> */}
                                     {price}/-
                                     </>
                                 ) : (
