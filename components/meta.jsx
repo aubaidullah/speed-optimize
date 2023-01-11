@@ -5,8 +5,6 @@ const Meta = ({meta}) =>{
     const { asPath, pathname } = useRouter();
     console.log(asPath);
     return <>
-    
-
     <Head>
         <meta charset="utf-8" />
         <link rel="icon" href="/icons/logo.png" />
