@@ -119,7 +119,7 @@ const Footer = () => {
                                 H-187, Lohia Road, Sector-63, Noida 201301 India
                             </p>
                             <p style={{ fontSize: "14px" }}>
-                                Call: +91- 8448298660 / +91- 9650687940 | Email: info@kiomoi.com
+                                Call: +91- 8448298660 / +91- 9650687940 | Email: <a href='mailto:info@kiomoi.com'>info@kiomoi.com</a>
                             </p>
                         </div>
                         <p>
