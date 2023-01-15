@@ -9,8 +9,8 @@ const Meta = ({meta}) =>{
         <meta charset="utf-8" />
         <link rel="icon" href="/icons/logo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <meta
-        http-equiv="Content-Security-Policy"
+        <meta 
+        httpEquiv="Content-Security-Policy"
         content="upgrade-insecure-requests"
         />
         <meta name="google-site-verification" content="9Sb4VP2cYN-uOYsvXZPSvdYFSlJ-8gg-K92mfDmIf6Q" />
