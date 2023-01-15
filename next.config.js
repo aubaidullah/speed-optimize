@@ -53,10 +53,10 @@ const nextConfig = {
         source: '/hotels/hotel-in-:city-:id/',
         destination: '/hotels/list'
       },
-      // {
-      //   source :'/mkt/',
-      //   destination : '/mkt/index.html'
-      // }
+      {
+        source :'/mkt/india-holidays/south-india-tour-packages/',
+        destination : '/mkt/india-holidays/south-india-tour-packages/index.html'
+      }
     ]
   }
 }
