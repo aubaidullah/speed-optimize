@@ -6,6 +6,7 @@ import {FaRupeeSign} from 'react-icons/fa'
 import Link from 'next/link'
 import LeadForm from './leadform'
 import { useState } from 'react'
+import Image from 'next/image'
 import {tw} from 'twind'
 import { Carousel } from "react-responsive-carousel";
 
@@ -135,8 +136,13 @@ const Package = ({item}) =>{
                                                 >
                                                     {item.images.split("~").map((e, index) => {
                                                         // return <Image className='img' src={e} layout="fill" key={index} />
-                                                        return <div className="bk_img" style={{backgroundImage:`url("${e.replace(/w_400/,'w_200')}")`,backgroundPosition:'cover'}}>
+                                                        // return <div className="bk_img" style={{backgroundImage:`url("${e.replace(/w_400/,'w_300')}")`,backgroundPosition:'cover'}}>
+                                                        // </div>
+                                                        return <div className='bk_img'>
+                                                        <Image style={{borderRadius:'10px'}} layout="fill" objectFit="fill" src={`${e.replace(/w_400/,'w_300')}`} />
                                                         </div>
+
+
                                                     })}
                                                 </Carousel>
                                                     {/* <div className="bk_img" style={{backgroundImage:`url("${item.images.split("~")[0].replace(/w_400/,'w_200')}")`,backgroundPosition:'cover'}}>

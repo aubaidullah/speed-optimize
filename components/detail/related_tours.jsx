@@ -171,7 +171,9 @@ const RelatedTour = ({data}) =>{
                       </div>
                       <div className="user_rating">
                         {item.sratings}{" "}
-                        <i className="fa fa-circle" aria-hidden="true"></i>
+
+                        {/* <i className="fa fa-circle" aria-hidden="true"></i> */}
+                        <BsDot className={tw`inline`} />
                         {item.susers} User Rating
                       </div>
                     </div>
