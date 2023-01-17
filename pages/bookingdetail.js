@@ -7,9 +7,13 @@ import {BsXLg} from 'react-icons/bs'
 import { tw } from "twind";
 import { useState, useRef, useEffect } from "react";
 import { Modal, Collapse } from "react-bootstrap";
+import { useRouter } from "next/router";
+import {FaRupeeSign} from 'react-icons/fa'
 
 
 const BookingDetail = () => {
+    const router = useRouter()
+    
 
     const [showModal, setShowModal] = useState(false)
 
@@ -38,6 +42,14 @@ const BookingDetail = () => {
             key: "",
         }
     )
+    const pymt = useRef({
+        bookingid: "",
+        orderid: "",
+        callbackurl: "",
+        amount: "",
+        currency: "",
+        key: "",
+    })
 
     const [collapse, setCollapse] = useState(null);
 
@@ -90,7 +102,7 @@ const BookingDetail = () => {
 
 
 
-    const displayRazorpay = async () => {
+    const displayRazorpay = async (paymentDetails1) => {
         // const res = loadScript("https://checkout.razorpay.com/v1/checkout.js");
         const res = await initializeRazorpay()
 
@@ -98,16 +110,16 @@ const BookingDetail = () => {
             alert("Razorpay SDK failed to load. Are you online?");
             return;
         }
-        console.log(paymentDetails)
+        console.log(paymentDetails1)
 
         const options = {
-            key: paymentDetails?.key,
-            amount: paymentDetails?.amount,
-            currency: paymentDetails?.currency,
+            key: paymentDetails1?.key,
+            amount: paymentDetails1?.amount,
+            currency: paymentDetails1?.currency,
             name: bookingDetails?.lead?.name,
             description: bookingDetails?.lead?.pname,
             image: "icons/logo.png",
-            order_id: paymentDetails?.orderid,
+            order_id: paymentDetails1?.orderid,
             prefill: {
                 name: bookingDetails?.nm,
                 email: bookingDetails?.email,
@@ -217,15 +229,29 @@ const BookingDetail = () => {
                 })
                 .then((res) => {
                     if (res.data.result == "success") {
-                        setPaymentDetails({
+                        let myDataNew = {...paymentDetails, 
                             bookingid: res.data.output.bookingid,
                             orderid: res.data.output.orderid,
                             callbackurl: res.data.output.callbackurl,
                             amount: res.data.output.amount,
                             currency: res.data.output.currency,
-                            key: res.data.output.key,
-                        });
-                        displayRazorpay();
+                            key: res.data.output.key,                        
+                        };
+                        
+                        // setPaymentDetails(prev => ({...prev, ...myDataNew}))
+                        pymt.current = myDataNew
+                        setPaymentDetails(pymt.current)
+                        // setPaymentDetails(myDataNew)
+                        console.log(paymentDetails)
+                        // setPaymentDetails({
+                        //     bookingid: res.data.output.bookingid,
+                        //     orderid: res.data.output.orderid,
+                        //     callbackurl: res.data.output.callbackurl,
+                        //     amount: res.data.output.amount,
+                        //     currency: res.data.output.currency,
+                        //     key: res.data.output.key,
+                        // });
+                        displayRazorpay(myDataNew);
                         setPaynowclick(true)
                     } else {
                         swal("", res.data.msg, "info");
@@ -238,10 +264,11 @@ const BookingDetail = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            if (new URLSearchParams(window.location.search).get("bookingid")) {
+            if (router.query.bookingid) {
                 const response = await axios.post(Constants.api + "/api/v1/lead/get/" + paymentDetails.bookingid, {
-                    id: paymentDetails.bookingid,
+                    id: router.query.bookingid,
                 })
+                // console.log(response)
                 if (response?.data?.result == "success") {
                     setShowModal(false)
                     setBookingDetails({
@@ -258,7 +285,12 @@ const BookingDetail = () => {
             }
         }
         fetchData()
-    }, [])
+        console.log(bookingDetails)
+    }, [router.query.bookingid])
+
+    console.log(router.query)
+    // console.log(new URLSearchParams(window.location.search))
+
 
     return (
         <>
@@ -488,36 +520,42 @@ const BookingDetail = () => {
                                                     <p className="py-2 text-right">&#8377; {bookingDetails?.output?.payamt}/-</p>
                                                 </div>
                                             </div>
-                                            <div className="row total-final">
+                                            <div className="_border_right hr-line"></div>
+                                            <div className="row total-final flex justify-between my-2 px-3">
                                                 {bookingDetails?.output?.payamt > 0 ? (
                                                     <>
                                                         <div className="col-xs-6 cost-left total-pay"></div>
-                                                        <div className="col-xs-6 cost-right total-value" style={{ padding: "0px", marginLeft: '-25px' }}>
+                                                        <div className={tw`text-right _price_clip total-value-cost`}>₹ {bookingDetails?.output?.payamt} /-</div>
+                                                        {/* <div className="col-xs-6 cost-right total-value" style={{ padding: "0px", marginLeft: '-25px' }}>
 
                                                             <span className="_price_clip total-value-cost">
                                                                 &#8377;&nbsp;{bookingDetails?.output?.payamt}/-
                                                             </span>
-                                                        </div>
-                                                        <div className="row">
-                                                            <div className="mx-2 pay-now-btn">
-                                                                <div className="text-center">
-                                                                    {bookingDetails?.output?.payamt > 0 ? (
-                                                                        <button
-                                                                            className="anchore_coment _w_100 btn_anchor pay-btn"
-                                                                            onClick={paymentSubmit}
-                                                                        >
-                                                                            Pay Now
-                                                                        </button>
-                                                                    ) : (
-                                                                        ""
-                                                                    )}
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        </div> */}
+
+
                                                     </>
                                                 ) : (
                                                     ""
                                                 )}
+                                            </div>
+                                            <div>
+                                                <div className="row_">
+                                                    <div className="_mx-2 pay-now-btn">
+                                                        <div className="text-center">
+                                                            {bookingDetails?.output?.payamt > 0 ? (
+                                                                <button style={{width:'100%'}}
+                                                                    className="anchore_coment _w_100 btn_anchor pay-btn"
+                                                                    onClick={paymentSubmit}
+                                                                >
+                                                                    Pay Now
+                                                                </button>
+                                                            ) : (
+                                                                ""
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
