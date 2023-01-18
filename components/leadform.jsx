@@ -94,6 +94,8 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                         console.log(res)
                         if (res?.data?.result == "success") {
                             changeForm(false)
+
+                            gtag('event', 'conversion', {'send_to': 'AW-852061552/PkRJCKD_yJMBEPDapZYD'});
                                 // <swal
                                 //   showCloseButton
                                 //   confirmBtnBsStyle="primary"
