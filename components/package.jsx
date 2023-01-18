@@ -129,21 +129,29 @@ const Package = ({item}) =>{
                                                     showStatus={false}
                                                     showThumbs={false}
                                                     // showArrows={true}
+                                                    showIndicators = {false}
                                                     // showIndicators={false}
                                                     infinite={true}
                                                     autoPlay={true}
                                                     className="slider_banner__"
                                                 >
-                                                    {item.images.split("~").map((e, index) => {
-                                                        // return <Image className='img' src={e} layout="fill" key={index} />
-                                                        // return <div className="bk_img" style={{backgroundImage:`url("${e.replace(/w_400/,'w_300')}")`,backgroundPosition:'cover'}}>
-                                                        // </div>
-                                                        return <div className='bk_img'>
-                                                        <Image style={{borderRadius:'10px'}} layout="fill" objectFit="fill" src={`${e.replace(/w_400/,'w_300')}`} />
+                                                    {/* {item.images.split("~").map((e, index) => { */}
+                                                        {/* // return <Image className='img' src={e} layout="fill" key={index} /> */}
+                                                        
+                                                        {/* <div className="bk_img" style={{backgroundImage:`url("${item.images.split('~')[0].replace(/w_400/,'w_300')}")`,backgroundPosition:'cover'}}>
+                                                        </div> */}
+                                                        <div className='bk_img'>
+                                                            <Image style={{borderRadius:'10px'}} layout="fill" objectFit="fill" src={`${item.images.split('~')[0].replace(/w_400/,'w_300')}`} />
                                                         </div>
+                                                        
 
 
-                                                    })}
+                                                        {/* // return <div className='bk_img'>
+                                                        // <Image style={{borderRadius:'10px'}} layout="fill" objectFit="fill" src={`${e.replace(/w_400/,'w_300')}`} />
+                                                        // </div>  */}
+
+
+                                                    {/* })} */}
                                                 </Carousel>
                                                     {/* <div className="bk_img" style={{backgroundImage:`url("${item.images.split("~")[0].replace(/w_400/,'w_200')}")`,backgroundPosition:'cover'}}>
 
