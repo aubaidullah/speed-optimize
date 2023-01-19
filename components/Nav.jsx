@@ -87,6 +87,7 @@ const Nav = () => {
     // "normal" +
     // " " +{addnavClass}; 
     // console.log(router.pathname)
+    
 
     return <>
     
