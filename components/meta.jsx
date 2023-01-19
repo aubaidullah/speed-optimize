@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router';
-
+import Script from 'next/script';
 const Meta = ({meta}) =>{
     const { asPath, pathname } = useRouter();
     console.log(asPath);
+    const GA_TRACKING_ID = "GTM-MT2JH48"
     return <>
     <Head>
         <meta charset="utf-8" />
@@ -16,6 +17,50 @@ const Meta = ({meta}) =>{
         <meta name="google-site-verification" content="9Sb4VP2cYN-uOYsvXZPSvdYFSlJ-8gg-K92mfDmIf6Q" />
         <meta name="theme-color" content="#000000" />
         
+
+        <script 
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} 
+        // strategy="afterInteractive"
+        />
+
+
+        {/* <Script>
+
+            {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '${GA_TRACKING_ID}');
+            `}
+            </Script> */}
+        <script
+            dangerouslySetInnerHTML={{
+                __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_TRACKING_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `,
+            }}
+        />
+
+        {/* </script> */}
+             {/* dangerouslySetInnerHTML = {{
+                   __html: `
+             window.dataLayer = window.dataLayer || [];
+             function gtag(){dataLayer.push(arguments);}
+             gtag('js', new Date());
+             gtag('config', '${GA_TRACKING_ID}', {
+               page_path: window.location.pathname,
+             });
+           `,
+         }}
+         /> */}
+
         
         
         <title>{meta.title}</title>

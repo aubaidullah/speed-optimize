@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import MultiCarousel2 from "react-multi-carousel";
 import {BsDot,BsStarFill,BsStarHalf,BsChevronDown} from 'react-icons/bs'
 import Link from 'next/link'
+import {FaRupeeSign} from 'react-icons/fa'
 import Image from 'next/image'
 import {tw} from 'twind'
 
@@ -183,8 +184,12 @@ const RelatedTour = ({data}) =>{
                         <span className="_list_p">{item.percent}% Off</span>
                         <div className="cut_price price-cut text-right">
                           <del>
-                            <i className="fa fa-inr"></i>
-                            {item.price}/-
+                            {/* <i className="fa fa-inr"></i> */}
+                            <div className={tw`flex items-center`}>
+                              <FaRupeeSign className='inline' style={{fontSize:'12px',marginBottom:'4px'}} />
+                              {item.price}/-
+                            </div>
+
                           </del>
                         </div>
                       </>
@@ -197,7 +202,8 @@ const RelatedTour = ({data}) =>{
                     <div className={tw`price_tag flex justify-between items-center`} >
                       <span className="start_from">Started from</span>
                       <span className="price_inr" style={{ position: "unset" }}>
-                        <i className="fa fa-inr"></i>
+                        {/* <i className="fa fa-inr"></i> */}
+                        <FaRupeeSign className='inline' color="#f79421" style={{fontSize:'15px',marginBottom:'4px'}} />
                         {item.finalprice}/-
                       </span>
                     </div>
