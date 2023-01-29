@@ -60,15 +60,15 @@ const nextConfig = {
     ]
   },
 
-  async redirects(){
-    return [
-      {
-        source: 'idl_*',
-        // destination:'',
-        statusCode:410
-      }
-    ]
-  }
+  // async redirects(){
+  //   return [
+  //     {
+  //       source: 'idl_*',
+  //       // destination:'',
+  //       statusCode:410
+  //     }
+  //   ]
+  // }
 }
 
 module.exports = nextConfig
