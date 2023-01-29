@@ -58,6 +58,16 @@ const nextConfig = {
         destination : '/mkt/india-holidays/south-india-tour-packages/index.html'
       }
     ]
+  },
+
+  async redirects(){
+    return [
+      {
+        source: 'idl_*',
+        // destination:'',
+        statusCode:410
+      }
+    ]
   }
 }
 
