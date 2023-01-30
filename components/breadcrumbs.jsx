@@ -27,14 +27,15 @@ const BreadCrumbs = ({bread}) =>{
     {/* style={{position:'sticky',top:'60px'}} */}
     <section className='container'>
             <div className='row'>
-                <ul className='breadcrumb'>
+                <ul className='breadcrumb' itemscope itemtype="https://schema.org/BreadcrumbList">
                     
                     {bread.enabled.map((e,index)=>{
-                        return <li key={index}>
+                        return <li key={index} itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                                 <>
                                     <Link href={e.href}>
-                                        <a href={e.href} className="_b_active">
-                                            {e.item}
+                                        <a href={e.href} className="_b_active" itemprop="item">
+                                            <span itemprop="name">{e.item}</span>
+                                            <meta itemprop="position" content={index+1} />
                                         </a>
                                     </Link>
                                     <TiChevronRight className={tw`bread_icon inline`} />
