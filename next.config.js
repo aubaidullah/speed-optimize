@@ -60,8 +60,11 @@ const nextConfig = {
       {
         source :'/idl:slug',
         destination : '/410'
-
-      }
+      },
+      {
+        source :'/:city-qna-:slug',
+        destination : '/410'
+      }      
     ]
   },
 
