@@ -15,7 +15,7 @@ const Meta = ({meta}) =>{
         content="upgrade-insecure-requests"
         />
         <meta name="google-site-verification" content="9Sb4VP2cYN-uOYsvXZPSvdYFSlJ-8gg-K92mfDmIf6Q" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#f06726" />
         
 
         <script 
