@@ -56,6 +56,11 @@ const nextConfig = {
       {
         source :'/mkt/india-holidays/south-india-tour-packages/',
         destination : '/mkt/india-holidays/south-india-tour-packages/index.html'
+      },
+      {
+        source :'/idl:slug',
+        destination : '/410'
+
       }
     ]
   },
