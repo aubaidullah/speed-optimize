@@ -64,7 +64,45 @@ const nextConfig = {
       {
         source :'/:city-qna-:slug',
         destination : '/410'
-      }      
+      },
+      {
+        source :'/book-online-:slug',
+        destination : '/410'
+      },
+      {
+        source :'/holidays-india/:slug/:id/',
+        destination : '/410'
+      },
+      {
+        source :'/travel-guide/:city/:slug.htm',
+        destination : '/410'
+      },
+      {
+        source :'/tour-packages-:country/:slug.htm',
+        destination : '/410'
+      },
+      {
+        source :'/tours-in-:city.htm',
+        destination : '/410'
+      },
+      {
+        source :'/ask_:slug',
+        destination : '/410'
+      },
+      {
+        source :'/travel/:cat/:slug.htm',
+        destination : '/410'
+      },
+      {
+        source :'/tour-:slug.htm',
+        destination : '/410'
+      },
+      {
+        source :'/travel-articles/:id',
+        destination : '/410'
+      }
+
+      // /travel-articles/300420/
     ]
   },
 
