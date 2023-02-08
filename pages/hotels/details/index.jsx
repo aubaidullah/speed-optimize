@@ -275,7 +275,7 @@ const HotelDetail = ({hotel,meta}) =>{
         updateHotel({room:selectedHotel.room,travellers:selectedHotel.travellers})
     },[selectedRoom])
 
-    console.log(selectedRoom)
+    // console.log(hotel)
 
 
     return <>
