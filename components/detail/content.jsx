@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react"
 import ReactHtmlParser from 'react-html-parser'
 import {MdCheckCircle,MdCancel} from 'react-icons/md'
+import {FaBinoculars} from 'react-icons/fa'
 import {tw} from 'twind'
 
 const Content = ({data}) =>{
@@ -46,15 +47,23 @@ const Content = ({data}) =>{
               </h4>
               <p style={{ padding: '10px', marginBottom: '10px' }}>{item.desc}</p>
               <div className={tw`Shape_53 text-sm`} style={{ padding: '10px', position: 'relative' }}>
-                <span className="_location_">
+                <div className={tw`flex`}>
+                  
+                  <div className={tw`_location_`} style={{display: 'flex', gap: 10}}>
+                  <FaBinoculars style={{fontSize:'17px'}}/>
                   {/* <i className="fa fa-binoculars" aria-hidden="true"></i>{" "} */}
-                  {item.attractions.replace(/#/g, " - ").replace(/\//g, " ")}{" "}
-                  {item.otherAttractions != undefined
-                    ? item.otherAttractions
-                      .replace(/,/g, " - ")
-                      .replace(/\//g, " ")
-                    : ""}
-                </span>
+                  <p>
+                    {item.attractions.replace(/#/g, " - ").replace(/\//g, " ")}{" "}
+                    {item.otherAttractions != undefined
+                      ? item.otherAttractions
+                        .replace(/,/g, " - ")
+                        .replace(/\//g, " ")
+                      : ""}
+                  </p>
+
+                </div>
+                </div>
+
               </div>
             </div>
           </div>
