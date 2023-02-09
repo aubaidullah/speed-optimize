@@ -70,6 +70,10 @@ const nextConfig = {
         destination : '/410'
       },
       {
+        source :'/book-online-:slug/:cat/:name.htm',
+        destination : '/410'
+      },
+      {
         source :'/holidays-india/:slug/:id/',
         destination : '/410'
       },
@@ -100,9 +104,22 @@ const nextConfig = {
       {
         source :'/travel-articles/:id',
         destination : '/410'
+      },
+      {
+        source :'/destination_:city.htm',
+        destination : '/410'
+      },
+      {
+        source :'/review_:slug.htm',
+        destination : '/410'
+      },
+      {
+        source :'/hotel_:slug.htm',
+        destination : '/410'
       }
+      // hotel_shreyas1_mahabaleshwar_reviews.htm
 
-      // /travel-articles/300420/
+      // destination_karde.htm
     ]
   },
 
