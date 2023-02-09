@@ -116,8 +116,16 @@ const nextConfig = {
       {
         source :'/hotel_:slug.htm',
         destination : '/410'
+      },
+      {
+        source :'/city-travel-guide-:slug/:id',
+        destination : '/410'
+      },
+      {
+        source :'/travel-guide-:slug/',
+        destination : '/410'
       }
-      // hotel_shreyas1_mahabaleshwar_reviews.htm
+      // https://www.kiomoi.com/city-travel-guide-pelling-india/109
 
       // destination_karde.htm
     ]
