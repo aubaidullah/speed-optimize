@@ -214,8 +214,8 @@ const HotelDetail = ({hotel,meta}) =>{
                 href: "/hotels"
             },
             {
-                item: `${hotel.hotel.locality}`,
-                href: `/hotels/hotel-in-${strToUrl(hotel.hotel.locality)}-${hotel.hotel.cid}`
+                item: `${hotel.hotel.cityname}`,
+                href: `/hotels/hotel-in-${strToUrl(hotel.hotel.cityname)}-${hotel.hotel.cid}`
                 
             }
         ]
@@ -293,8 +293,8 @@ const HotelDetail = ({hotel,meta}) =>{
                         <div className='_inline__'>
                             {userRating}
                         </div>
-                        <div className='_inline__'>
-                            <span className='inline'>4.5 <BsDot className='inline' /> 26 Rating</span>
+                        <div className={tw`pl-1 _inline__`}>
+                            <span className={tw`text-sm inline`}>4.5 <BsDot className='inline' /> 26 Rating</span>
                         </div>
                         
                 </div>
