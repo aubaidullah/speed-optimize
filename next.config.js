@@ -130,6 +130,7 @@ const nextConfig = {
       // destination_karde.htm
     ]
   },
+  
   // webpack: (config, { dev, isServer }) => {
   //   if (!dev && !isServer) {
   //     Object.assign(config.resolve.alias, {
