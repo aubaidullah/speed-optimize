@@ -125,7 +125,7 @@ const Footer = () => {
                         <p>
                             Copyright 2022 © Kiomoi Rights Reserved.
                         </p>
-                        <p>Kiomoi and the logos are registered trademarks of IHR Travel Services Pvt Ltd</p>
+                        <p>Kiomoi Travel Services Pvt. Ltd.</p>
                         <p>
                             The content and images used on this site are copyright protected
                             and copyrights vests with the respective owners. The usage of
