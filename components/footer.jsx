@@ -121,11 +121,12 @@ const Footer = () => {
                             <p style={{ fontSize: "14px" }}>
                                 Call: +91- 8448298660 / +91- 9650687940 | Email: <a href='mailto:info@kiomoi.com'>info@kiomoi.com</a>
                             </p>
+                            
                         </div>
                         <p>
                             Copyright 2022 © Kiomoi Rights Reserved.
                         </p>
-                        <p>Kiomoi and the logos are registered trademarks of IHR Travel Services Pvt Ltd</p>
+                        <p>Kiomoi Travel Services Pvt. Ltd.</p>
                         <p>
                             The content and images used on this site are copyright protected
                             and copyrights vests with the respective owners. The usage of
