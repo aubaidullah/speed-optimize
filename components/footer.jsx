@@ -121,6 +121,7 @@ const Footer = () => {
                             <p style={{ fontSize: "14px" }}>
                                 Call: +91- 8448298660 / +91- 9650687940 | Email: <a href='mailto:info@kiomoi.com'>info@kiomoi.com</a>
                             </p>
+                            
                         </div>
                         <p>
                             Copyright 2022 © Kiomoi Rights Reserved.
