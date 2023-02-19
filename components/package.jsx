@@ -1,7 +1,10 @@
 // import {} from '@fortawesome/fontawesome-free'
 import {BsDot,BsStarFill,BsStarHalf,BsFillMoonFill} from 'react-icons/bs'
-import {IoLocationSharp,IoSunny} from 'react-icons/io5'
-import {MdCheckCircle} from 'react-icons/md'
+import {GiBinoculars} from 'react-icons/gi'
+import {IoLocationSharp,IoSunny, IoCarSportOutline, IoFastFoodOutline} from 'react-icons/io5'
+import {RiHotelLine} from 'react-icons/ri'
+
+import {MdCheckCircle, MdOutlineFlight} from 'react-icons/md'
 import {FaRupeeSign} from 'react-icons/fa'
 import Link from 'next/link'
 import LeadForm from './leadform'
@@ -294,60 +297,51 @@ const Package = ({item}) =>{
                                                         <div className="icons-meal-info">
                                                             <div className="_div">
                                                                 <div>
-                                                                <img
-                                                                    src={`/icons/${item.inclusions.toLowerCase().includes("flight")!=false?'ico_Flight_default.png':'ico_Flight_disabled.png'}`}
-                                                                    alt=""
-                                                                    height="20px"
-                                                                    className='h-6'
-                                                                />
-                                                                <p>Flight</p>
+                                                                    <div className={tw`flex text-center`}>
+                                                                        <MdOutlineFlight className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto',color:'#c6c5c5'}} /> 
+
+                                                                    </div>
+                                                                    <p>Flight</p>
                                                                 </div>
                                                             </div>
                                                             
                                                             <div className="_div">
                                                                 <div>
-                                                                <img
-                                                                    src={`/icons/${item.inclusions.toLowerCase().includes("transfer")!=false?'ico_Transfer_default.png':'ico_Transfer_disabled.png'}`}
-                                                                    alt=""
-                                                                    height="20px"
-                                                                    className='h-6'
-                                                                />
+                                                                    <div className={tw`flex text-center`}>
+                                                                        <IoCarSportOutline className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+
+                                                                    </div>
                                                                 <p>Trasnfer</p>
                                                                 </div>
                                                             </div>
 
                                                             <div className="_div">
                                                                 <div>
-                                                                <img
-                                                                    src={`/icons/${item.inclusions.toLowerCase().includes("breakfast")!=false?'ico_meals_default.png':'ico_meals_disabled.png'}`}
-                                                                    alt=""
-                                                                    height="20px"
-                                                                    className='h-6'
-                                                                />
+                                                                    <div className={tw`flex text-center`}>
+                                                                        <IoFastFoodOutline className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+
+                                                                    </div>
                                                                 <p>Breakfast</p>
                                                                 </div>
                                                             </div>
 
                                                             <div className="_div">
                                                                 <div>
-                                                                <img
-                                                                    src={`/icons/${item.inclusions.toLowerCase().includes("stay")!=false?'ico_homestay_default.png':'ico_homestay_disabled.png'}`}
-                                                                    alt=""
-                                                                    height="20px"
-                                                                    className='h-6'
-                                                                />
+                                                                    <div className={tw`flex text-center`}>
+                                                                        <RiHotelLine className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+
+                                                                    </div>
                                                                 <p>Hotel</p>
                                                                 </div>
                                                             </div>  
 
                                                             <div className="_div">
                                                                 <div>
-                                                                <img
-                                                                    src={`/icons/${item.inclusions.toLowerCase().includes("sightseeing")!=false?'ico_sightseeing_default.png':'ico_sightseeing_default.png'}`}
-                                                                    alt=""
-                                                                    height="20px"
-                                                                    className='h-6'
-                                                                />
+                                                                    {/* GiBinoculars */}
+                                                                    <div className={tw`flex text-center`}>
+                                                                        <GiBinoculars className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+
+                                                                    </div>
                                                                 <p>SightSeeing</p>
                                                                 </div>
                                                             </div>                                                                                                            
@@ -477,60 +471,51 @@ const Package = ({item}) =>{
                             <div className="icons-meal-info">
                                 <div className="_div">
                                     <div>
-                                    <img
-                                        src={`/icons/${item.inclusions.toLowerCase().includes("flight")!=false?'ico_Flight_default.png':'ico_Flight_disabled.png'}`}
-                                        alt=""
-                                        height="20px"
-                                        className={tw`h-6`}
-                                    />
-                                    <p>Flight</p>
+                                        <div className={tw`flex text-center`}>
+                                            <MdOutlineFlight className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto',color:'#c6c5c5'}} /> 
+
+                                        </div>
+                                        <p>Flight</p>
                                     </div>
                                 </div>
                                 
                                 <div className="_div">
                                     <div>
-                                    <img
-                                        src={`/icons/${item.inclusions.toLowerCase().includes("transfer")!=false?'ico_Transfer_default.png':'ico_Transfer_disabled.png'}`}
-                                        alt=""
-                                        height="20px"
-                                        className={tw`h-6`}
-                                    />
+                                        <div className={tw`flex text-center`}>
+                                            <IoCarSportOutline className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+
+                                        </div>
                                     <p>Trasnfer</p>
                                     </div>
                                 </div>
 
                                 <div className="_div">
                                     <div>
-                                    <img
-                                        src={`/icons/${item.inclusions.toLowerCase().includes("breakfast")!=false?'ico_meals_default.png':'ico_meals_disabled.png'}`}
-                                        alt=""
-                                        height="20px"
-                                        className={tw`h-6`}
-                                    />
+                                        <div className={tw`flex text-center`}>
+                                            <IoFastFoodOutline className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+
+                                        </div>
                                     <p>Breakfast</p>
                                     </div>
                                 </div>
 
                                 <div className="_div">
                                     <div>
-                                    <img
-                                        src={`/icons/${item.inclusions.toLowerCase().includes("stay")!=false?'ico_homestay_default.png':'ico_homestay_disabled.png'}`}
-                                        alt=""
-                                        height="20px"
-                                        className={tw`h-6`}
-                                    />
+                                        <div className={tw`flex text-center`}>
+                                            <RiHotelLine className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+
+                                        </div>
                                     <p>Hotel</p>
                                     </div>
                                 </div>  
 
                                 <div className="_div">
                                     <div>
-                                    <img
-                                        src={`/icons/${item.inclusions.toLowerCase().includes("sightseeing")!=false?'ico_sightseeing_default.png':'ico_sightseeing_default.png'}`}
-                                        alt=""
-                                        height="20px"
-                                        className={tw`h-6`}
-                                    />
+                                        {/* GiBinoculars */}
+                                        <div className={tw`flex text-center`}>
+                                            <GiBinoculars className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+
+                                        </div>
                                     <p>SightSeeing</p>
                                     </div>
                                 </div>                                                                                                            

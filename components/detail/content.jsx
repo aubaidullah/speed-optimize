@@ -1,8 +1,11 @@
 import { useState,useEffect } from "react"
 import ReactHtmlParser from 'react-html-parser'
-import {MdCheckCircle,MdCancel} from 'react-icons/md'
+import {MdCheckCircle,MdCancel,MdOutlineFlight} from 'react-icons/md'
 import {FaBinoculars} from 'react-icons/fa'
 import {tw} from 'twind'
+import {GiBinoculars} from 'react-icons/gi'
+import {IoLocationSharp,IoSunny, IoCarSportOutline, IoFastFoodOutline} from 'react-icons/io5'
+import {RiHotelLine} from 'react-icons/ri'
 
 const Content = ({data}) =>{
     
@@ -203,71 +206,62 @@ const Content = ({data}) =>{
 
                 <div className='col-sm-8 col-xs-12'>
                     <div className='inclusion'>
-                        <div className='Shape_42' style={{paddingTop:"15px",paddingBottom:'0px'}}>
+                        <div className='Shape_42' style={{paddingTop:"10px",paddingBottom:'10px'}}>
 
 
                             <div className="icons-meal-info d_icons-meal-info">
-                                <div className="_div">
-                                    <div>
-                                    <img
-                                        src={`/icons/${data?.package.inclusions.toLowerCase().includes("flight")!=false?'ico_Flight_default.png':'ico_Flight_disabled.png'}`}
-                                        alt=""
-                                        height="20px"
-                                        className={tw`h-6`}
-                                    />
+                              <div className="_div">
+                                <div>
+                                    <div className={tw`flex text-center`}>
+                                        <MdOutlineFlight className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto',color:'#c6c5c5'}} /> 
+
+                                    </div>
                                     <p>Flight</p>
-                                    </div>
                                 </div>
-                                
-                                <div className="_div">
-                                    <div>
-                                    <img
-                                        src={`/icons/${data?.package.inclusions.toLowerCase().includes("transfer")!=false?'ico_Transfer_default.png':'ico_Transfer_disabled.png'}`}
-                                        alt=""
-                                        height="20px"
-                                        className={tw`h-6`}
-                                    />
-                                    <p>Trasnfer</p>
-                                    </div>
-                                </div>
-
-                                <div className="_div">
-                                    <div>
-                                    <img
-                                        src={`/icons/${data?.package.inclusions.toLowerCase().includes("breakfast")!=false?'ico_meals_default.png':'ico_meals_disabled.png'}`}
-                                        alt=""
-                                        height="20px"
-                                        className={tw`h-6`}
-                                    />
-                                    <p>Breakfast</p>
-                                    </div>
-                                </div>
-
-                                <div className="_div">
-                                    <div>
-                                    <img
-                                        src={`/icons/${data?.package.inclusions.toLowerCase().includes("stay")!=false?'ico_homestay_default.png':'ico_homestay_disabled.png'}`}
-                                        alt=""
-                                        height="20px"
-                                        className={tw`h-6`}
-                                    />
-                                    <p>Hotel</p>
-                                    </div>
-                                </div>  
-
-                                <div className="_div">
-                                    <div>
-                                    <img
-                                        src={`/icons/${data?.package.inclusions.toLowerCase().includes("sightseeing")!=false?'ico_sightseeing_default.png':'ico_sightseeing_default.png'}`}
-                                        alt=""
-                                        height="20px"
-                                        className={tw`h-6`}
-                                    />
-                                    <p>SightSeeing</p>
-                                    </div>
-                                </div>                                                                                                            
-
                             </div>
+                            
+                            <div className="_div">
+                                <div>
+                                    <div className={tw`flex text-center`}>
+                                        <IoCarSportOutline className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+
+                                    </div>
+                                <p>Trasnfer</p>
+                                </div>
+                            </div>
+
+                            <div className="_div">
+                                <div>
+                                    <div className={tw`flex text-center`}>
+                                        <IoFastFoodOutline className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+
+                                    </div>
+                                <p>Breakfast</p>
+                                </div>
+                            </div>
+
+                            <div className="_div">
+                                <div>
+                                    <div className={tw`flex text-center`}>
+                                        <RiHotelLine className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+
+                                    </div>
+                                <p>Hotel</p>
+                                </div>
+                            </div>  
+
+                            <div className="_div">
+                                <div>
+                                    {/* GiBinoculars */}
+                                    <div className={tw`flex text-center`}>
+                                        <GiBinoculars className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+
+                                    </div>
+                                <p>SightSeeing</p>
+                                </div>
+                            </div>                                                                                                            
+
+                          </div>
 
 
                         </div>
