@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  trailingSlash: true,
+  // trailingSlash: true,
   reactStrictMode: true,
   images: {
     domains: ['res.cloudinary.com', 'img.kiomoi.com']
