@@ -124,6 +124,14 @@ const nextConfig = {
       {
         source :'/travel-guide-:slug/',
         destination : '/410'
+      },
+      {
+        source :'/explore-:slug-travel-guide.htm',
+        destination : '/410'
+      },
+      {
+        source :'/state-:slug.htm',
+        destination : '/410'
       }
       // https://www.kiomoi.com/city-travel-guide-pelling-india/109
 
