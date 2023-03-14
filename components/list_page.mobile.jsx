@@ -93,7 +93,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     
 
     // var d = region?.desc??""
-    var d = region?.longDesc.length>20?region?.longDesc:region?.desc??""
+    var d = region?.longDesc?.length>20?region?.longDesc:region?.desc??""
     // console.log(d)
 
     useEffect(()=>{

@@ -8,53 +8,53 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/holidays/:package-tour-packages/:id/',
+        source: '/holidays/:package-tour-packages/:id',
         destination: '/holidays/state-package'
       },
       {
-        source: '/holidays/:city-tour-packages/',
+        source: '/holidays/:city-tour-packages',
         destination: '/holidays/city-package'
       },
       {
-        source: '/travel-guide/india/city-:city/:id/',
+        source: '/travel-guide/india/city-:city/:id',
         destination: '/travel-guide/india/detail'
       },
       {
-        source: '/travel-guide/:country/:id/',
+        source: '/travel-guide/:country/:id',
         destination: '/travel-guide/country'
       },      
       {
-        source: '/travel-guide/india/state-:city/:id/',
+        source: '/travel-guide/india/state-:city/:id',
         destination: '/travel-guide/india/detail'
       },
       {
-        source: '/holidays/theme-:theme/',
+        source: '/holidays/theme-:theme',
         destination: '/holidays/theme'
       },      
       
       {
-        source: '/travel-guide/india/attraction-:place/:id/',
+        source: '/travel-guide/india/attraction-:place/:id',
         destination: '/travel-guide/india/attractions'
       },
       {
-        source: '/travel-articles/:slug/:id/',
+        source: '/travel-articles/:slug/:id',
         destination: '/travel-articles/detail'
       },
 
       {
-        source: '/qna/:city-:id/',
+        source: '/qna/:city-:id',
         destination: '/qna'
       },
       {
-        source: '/hotel-:name-in-:city-:id/',
+        source: '/hotel-:name-in-:city-:id',
         destination: '/hotels/details'
       },
       {
-        source: '/hotels/hotel-in-:city-:id/',
+        source: '/hotels/hotel-in-:city-:id',
         destination: '/hotels/list'
       },
       {
-        source :'/mkt/india-holidays/south-india-tour-packages/',
+        source :'/mkt/india-holidays/south-india-tour-packages',
         destination : '/mkt/india-holidays/south-india-tour-packages/index.html'
       },
       {
@@ -74,7 +74,7 @@ const nextConfig = {
         destination : '/410'
       },
       {
-        source :'/holidays-india/:slug/:id/',
+        source :'/holidays-india/:slug/:id',
         destination : '/410'
       },
       {
@@ -122,7 +122,7 @@ const nextConfig = {
         destination : '/410'
       },
       {
-        source :'/travel-guide-:slug/',
+        source :'/travel-guide-:slug',
         destination : '/410'
       },
       {
@@ -137,26 +137,26 @@ const nextConfig = {
         source :'/tours-category-:slug.htm',
         destination : '/410'
       },
-      {
-        source :'/travel-guide-:slug/:id',
-        destination : '/410'
-      },
-      {
-        source :'/visit-:slug.htm',
-        destination : '/410'
-      },
-      {
-        source :'/city-travel-guide-:slug/:id',
-        destination : '/410'
-      },
-      {
-        source :'/destination_:slug.htm/',
-        destination : '/410'
-      },
-      {
-        source :'/besthoteldeals-:slug.htm',
-        destination : '/410'
-      },
+      // {
+      //   source :'/travel-guide-:slug/:id',
+      //   destination : '/410'
+      // },
+      // {
+      //   source :'/visit-:slug.htm',
+      //   destination : '/410'
+      // },
+      // {
+      //   source :'/city-travel-guide-:slug/:id',
+      //   destination : '/410'
+      // },
+      // {
+      //   source :'/destination_:slug.htm/',
+      //   destination : '/410'
+      // },
+      // {
+      //   source :'/besthoteldeals-:slug.htm',
+      //   destination : '/410'
+      // },
       // https://www.kiomoi.com/city-travel-guide-pelling-india/109
 
       // destination_karde.htm
