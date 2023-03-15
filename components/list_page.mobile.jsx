@@ -27,7 +27,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     
     const [filter,setFilter] = useState({keyword:""})
     const [limit,setLimit] = useState(10)
-    const [overviewlimit,setOverviewlimit] = useState(200)
+    const [overviewlimit,setOverviewlimit] = useState(1000)
     const [overview,setOverview] = useState()
     const [isshow, setIsshow] = useState(false)
     const [pricefilter,setPricefilter] = useState(1)
@@ -293,6 +293,41 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
 
 
                     <div className={tw`w-full lg:w-3/4 `}>
+                        
+
+                        {region?
+                        <div className={tw`p-4 bg-white mb-4 _box_shadow_ title_listing_`}>
+                        <h1 className={tw`text-2xl pb-2`}>{region?.name}</h1>
+                        <div>
+                            {ReactHtmlParser(overview)}
+                            {overviewlimit == 250 ||
+                                overviewlimit == 1000 ? (
+                                <a
+                                onClick={() =>
+                                    setOverviewlimit(50000)
+                                }
+                                className="_plus_more"
+                                >
+                                +more
+                                </a>
+                            ) : (
+                                <a
+                                onClick={()=>setOverviewlimit(1000)}
+                                className="_plus_more"
+                                >
+                                -less
+                                </a>
+                            )}
+
+                        </div>
+                        </div>
+                        
+                        
+                        :""
+                        }
+
+                        
+                        
                         <div className={tw``}>
                             <div className={tw`flex items-center justify-between mb-6 pb-2 border-b`}>
                                 <div>
@@ -391,7 +426,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
 
                 </div>
 
-                {region?
+                {/* {region?
                 <div className={tw`p-4 bg-white_ mb-4 _box_shadow_ title_listing_`}>
                 <h1 className={tw`text-2xl pb-2`}>{region?.name}</h1>
                 <div>
@@ -400,7 +435,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                         overviewlimit == 200 ? (
                         <a
                         onClick={() =>
-                            setOverviewlimit(10000)
+                            setOverviewlimit(50000)
                         }
                         className="_plus_more"
                         >
@@ -420,7 +455,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                 
                 
                 :""
-                }
+                } */}
 
 
             </section>
