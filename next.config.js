@@ -137,26 +137,39 @@ const nextConfig = {
         source :'/tours-category-:slug.htm',
         destination : '/410'
       },
+      {
+        source :'/travel-guide-:slug/:id',
+        destination : '/410'
+      },
+      {
+        source :'/visit-:slug.htm',
+        destination : '/410'
+      },
+      {
+        source :'/city-travel-guide-:slug/:id',
+        destination : '/410'
+      },
+      {
+        source :'/destination_:slug.htm/',
+        destination : '/410'
+      },
+      {
+        source :'/besthoteldeals-:slug.htm',
+        destination : '/410'
+      },
+
+      {
+        source :'/tours-category-:slug/:nm.htm',
+        destination : '/410'
+      },
+      {
+        source :'/travel-guide-india-:slug/:id',
+        destination : '/410'
+      },
       // {
-      //   source :'/travel-guide-:slug/:id',
+      //   source :'/travel-guide-india-:slug/:id',
       //   destination : '/410'
-      // },
-      // {
-      //   source :'/visit-:slug.htm',
-      //   destination : '/410'
-      // },
-      // {
-      //   source :'/city-travel-guide-:slug/:id',
-      //   destination : '/410'
-      // },
-      // {
-      //   source :'/destination_:slug.htm/',
-      //   destination : '/410'
-      // },
-      // {
-      //   source :'/besthoteldeals-:slug.htm',
-      //   destination : '/410'
-      // },
+      // },      
       // https://www.kiomoi.com/city-travel-guide-pelling-india/109
 
       // destination_karde.htm
