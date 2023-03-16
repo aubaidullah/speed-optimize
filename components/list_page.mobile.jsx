@@ -98,7 +98,16 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
 
     useEffect(()=>{
         if (region !== null)
-        setOverview(d.substring(0, overviewlimit))
+        {
+            if(overviewlimit==1000){
+                setOverview(d.substring(0, overviewlimit))
+            }
+            else{
+                setOverview(d)
+            }
+                
+        }
+        
     },[overviewlimit])
     // pcities.some((item) => array.includes(item))
     
