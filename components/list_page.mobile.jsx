@@ -285,18 +285,8 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                 } */}
 
                 <div className={tw`flex flex-wrap`}>
-                    {!isMobile?
-                    <div className={tw`w-full lg:w-1/4 pr-5`}>
-                        <FilterBy _pricing={_pricing} setPrice={setPrice} _min={_min} set_Min={set_Min} _max={_max} set_Max={set_Max} set_Places={set_Places} _places={_places} _themes={_themes} set_Themes={set_Themes} page_type={page_type} filter={filter} setKeyword={setFilter} data={places} theme={theme}/>
-                    </div>:""
-                    }
-
-
-                    <div className={tw`w-full lg:w-3/4 `}>
-                        
-
-                        {region?
-                        <div className={tw`p-4 bg-white mb-4 _box_shadow_ title_listing_`}>
+                    {region?
+                        <div className={tw`w-full p-4 bg-white mb-4 _box_shadow_ title_listing_ rounded-md`}>
                         <h1 className={tw`text-2xl pb-2`}>{region?.name}</h1>
                         <div>
                             {ReactHtmlParser(overview)}
@@ -324,7 +314,17 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                         
                         
                         :""
-                        }
+                        }                    
+                    {!isMobile?
+                    <div className={tw`w-full lg:w-1/4 pr-5`}>
+                        <FilterBy _pricing={_pricing} setPrice={setPrice} _min={_min} set_Min={set_Min} _max={_max} set_Max={set_Max} set_Places={set_Places} _places={_places} _themes={_themes} set_Themes={set_Themes} page_type={page_type} filter={filter} setKeyword={setFilter} data={places} theme={theme}/>
+                    </div>:""
+                    }
+
+
+                    <div className={tw`w-full lg:w-3/4 `}>
+                        
+
 
                         
                         
