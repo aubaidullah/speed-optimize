@@ -2,7 +2,7 @@
 const nextConfig = {
   // trailingSlash: true,
   reactStrictMode: true,
-  // assetPrefix : 'http://localhost:3001',
+  assetPrefix : 'https://assets.kiomoi.com',
   images: {
     domains: ['res.cloudinary.com', 'img.kiomoi.com']
   },
