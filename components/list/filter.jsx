@@ -150,7 +150,7 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
         set_Themes([])
         setKeyword({keyword:''})
 
-        setPriceFilter(0,50000)
+        setPriceFilter(0,1000000)
 
     }
 

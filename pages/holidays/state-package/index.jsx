@@ -113,6 +113,8 @@ export async function getServerSideProps(context) {
         keywords:meta.data.meta.output.tags.longDesc.replace(/<STATE>/g,context.query.package.replace(/-/g,' ')),
         image:images
     }
+
+    
     // finalprice = `₹${finalprice}`
 
     // meta.data.meta.output.tags.title = meta.data.meta.output.tags.title.replace(/<STATE>/g,context.query.package.replace(/-/g,' ')).replace(/<PRICE>/g,finalprice).replace(/\[State\ Name\]/g,context.query.package.replace(/-/g,' '))

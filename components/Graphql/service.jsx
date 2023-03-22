@@ -10,8 +10,14 @@ const restLink = new RestLink({ uri: Constant.api });
 const client = new ApolloClient({
 
   cache: new InMemoryCache(),
+  // cache:null,
 
-  link: restLink
+  link: restLink,
+  defaultOptions:{
+    watchQuery:{
+      fetchPolicy:'network-only'
+    }
+  }
 
 });
 

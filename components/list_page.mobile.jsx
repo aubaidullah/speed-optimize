@@ -35,7 +35,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     const [_places,set_Places] = useState([])
     const [_themes,set_Themes]  = useState([])
     
-    const [_pricing,setPrice] = useState({min:0,max:50000})
+    const [_pricing,setPrice] = useState({min:0,max:1000000})
 
     const [_min,set_Min] = useState(1)
     const [_max,set_Max]  = useState(100)
@@ -54,7 +54,6 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     // useEffect(()=>{
     //     setFilter({keyword:city??""})
     // },[])
-    console.log(filtering)
     
     // console.log(filter)
     
@@ -133,13 +132,14 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     if(_themes.length){
         data = data.filter(e=>e.theme.split("#").some(x=>_themes.includes(x.trim())))
     }
+    
 
     // const durationCustom=(duration)=>{
 
     // }
 
     data = data.filter(e=>e.nights>=_min && e.nights<=_max && e.finalprice>=_pricing.min && e.finalprice<=_pricing.max)
-    
+    console.log(data.length)
 
     if(pricefilter){
         data = data.sort((a,b)=>a.finalprice - b.finalprice) 
@@ -210,7 +210,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     // console.log(_pricing)
     // console.log(filtering)
     // console.log(pricefilter)
-    // console.log(data)
+    console.log(data.length)
     return <>
     <Meta meta={meta} />
     

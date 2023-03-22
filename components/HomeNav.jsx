@@ -120,7 +120,7 @@ const Nav = () => {
                         </div>
                         <div className={tw`item_group flt_right ml-2 lg:ml-6`}>
                             <div className="item flt_left">
-                                <Link href={"/holidays/"}>
+                                <Link href={"/holidays"}>
                                     <div className="c_it"
                                         onMouseOver={() => setTripover(true)}
                                         onMouseOut={() => setTripover(false)}
@@ -132,7 +132,7 @@ const Nav = () => {
 
                             </div>
                             <div className="item flt_left">
-                                <Link href={"/travel-guide/"}>
+                                <Link href={"/travel-guide"}>
                                     <div className="c_it"
                                         onMouseOver={() => setExploreover(true)}
                                         onMouseOut={() => setExploreover(false)}
@@ -144,7 +144,7 @@ const Nav = () => {
 
                             </div>
                             <div className="item flt_left">
-                                <Link href="/hotels/">
+                                <Link href="/hotels">
                                 <div className="c_it"
                                     onMouseOver={() => setStayover(true)}
                                     onMouseOut={() => setStayover(false)}
@@ -204,7 +204,7 @@ const Nav = () => {
                         <div>
                             {result?.packages?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
-                                    <Link href={`/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase().replace(/-tour-package/g, '').replace(/-tour/g, '').replace(/&/g, 'and')}-tour-package-${e?.id}/`}>
+                                    <Link href={`/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase().replace(/-tour-package/g, '').replace(/-tour/g, '').replace(/&/g, 'and')}-tour-package-${e?.id}`}>
                                         <div className={tw`hover:bg-[#fde2df] drop_item`}>
                                             <div className="d_content">
                                                 <div className="flt_left">
@@ -221,7 +221,7 @@ const Nav = () => {
                             ))}
                             {result?.st?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
-                                    <Link href={`/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}/`}>
+                                    <Link href={`/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`}>
                                         <div className={tw`hover:bg-[#fde2df] drop_item`}>
                                             <div className="s_name d_content">Tours in {e?.name}</div>
                                         </div>
@@ -230,7 +230,7 @@ const Nav = () => {
                             ))}
                             {result?.hotels?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
-                                    <Link href={`/hotel-${e?.name?.replace(/\s+/g, "-").toLowerCase()}-in-${e?.geotype?.replace(/\s+/g, "-").toLowerCase()}-${e?.id}/`}>
+                                    <Link href={`/hotel-${e?.name?.replace(/\s+/g, "-").toLowerCase()}-in-${e?.geotype?.replace(/\s+/g, "-").toLowerCase()}-${e?.id}`}>
                                         <div className={tw`hover:bg-[#fde2df] drop_item`}>
                                             <div className="s_name d_content">{e?.name}</div>
                                         </div>
@@ -239,7 +239,7 @@ const Nav = () => {
                             ))}
                             {result?.articles?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
-                                    <Link href={`/travel-stories-${e?.heading?.replace(/\s+/g, "-").toLowerCase()}-${e?.geoName?.replace(/\s+/g, "-").toLowerCase()}/${e?.id}/`}>
+                                    <Link href={`/travel-stories-${e?.heading?.replace(/\s+/g, "-").toLowerCase()}-${e?.geoName?.replace(/\s+/g, "-").toLowerCase()}/${e?.id}`}>
                                         <div className={tw`hover:bg-[#fde2df] drop_item`}>
                                             <div className="s_name d_content">{e?.name}</div>
                                         </div>
@@ -249,15 +249,15 @@ const Nav = () => {
                             {result?.tgs?.map((e, index) => {
                                 let url;
                                 if (e?.geotype == "CITY") {
-                                    url = "/travel-guide/india/city-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
+                                    url = "/travel-guide/india/city-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + ""
                                 }
                                 else if (e?.geotype == "STATE") {
-                                    url = "/travel-guide/india/state-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
+                                    url = "/travel-guide/india/state-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + ""
                                 }
                                 else {
-                                    url = "travel-guide/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
+                                    url = "travel-guide/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + ""
                                 }
-                                let statebycity = "/holidays/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase() + "-tour-packages/";
+                                let statebycity = "/holidays/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase() + "-tour-packages";
                                 return (
                                     <div key={index} onClick={() => setSearchkey("")}>
                                         {e?.geotype === 'CITY' ? (

@@ -45,7 +45,7 @@ const DetailPage = ({ data, related, reviews,meta }) => {
         disabled: {
             item: `${data?.package.name} Tour package ${data?.package.id}`
         },
-        enabled: [
+        enabled: data?.package?.scope === 'DOMESTIC'?[
             {
                 item: "Kiomoi",
                 href: "/"
@@ -62,7 +62,25 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                 item :`${data?.package.region.split(",")[0]}`,
                 href:`/holidays/${data?.package.region.split(",")[0].toLowerCase().replace(/ /g,'-')}-tour-packages/${data?.gid}/`
             }
-        ]
+        ]:
+        [
+            {
+                item: "Kiomoi",
+                href: "/"
+            },
+            {
+                item: "Holidays Booking",
+                href: "/holidays/"
+            },
+            // {
+            //     item: data?.package?.scope === 'INTERNATIONAL'?data?.package?.region:"India",
+            //     href: "/holidays/"
+            // },
+            {
+                item :`${data?.package.region.split(",")[0]}`,
+                href:`/holidays/${data?.package.region.split(",")[0].toLowerCase().replace(/ /g,'-')}-tour-packages/${data?.gid}/`
+            }
+        ]        
     }
 
     const reviewSubmit = async e => {
