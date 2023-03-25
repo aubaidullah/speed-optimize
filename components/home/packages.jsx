@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {FaRupeeSign} from 'react-icons/fa'
 import {tw} from 'twind'
-
+import * as Constants from '../Constants'
 const HomePackages = ({data}) =>{
   
     const [responsive,Setresponsive] = useState({})
@@ -116,7 +116,7 @@ const HomePackages = ({data}) =>{
                       src={
                         item.images.split("~")[0]
                           ? item.images.split("~")[0]
-                          : "/logo-icon.png"
+                          : `${Constants.assets_api}/public/icons/logo-icon.png`
                       }
                       alt=""
                     />

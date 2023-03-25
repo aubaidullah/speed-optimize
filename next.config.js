@@ -2,9 +2,15 @@
 const nextConfig = {
   // trailingSlash: true,
   reactStrictMode: true,
-  assetPrefix : 'https://devassets.kiomoi.com',
+  // assetPrefix : 'https://devassets.kiomoi.com',
   images: {
     domains: ['res.cloudinary.com', 'img.kiomoi.com']
+    // remotePatterns: [
+    //   {
+    //     protocol: 'https',
+    //     hostname: '**.res.cloudinary.com',
+    //   },
+    // ],
   },
   async rewrites() {
     return [

@@ -2,7 +2,7 @@ import { tw } from 'twind'
 import MultiCarousel from "react-multi-carousel";
 import { BsStarFill, BsStarHalf } from 'react-icons/bs'
 import { ImQuotesRight } from 'react-icons/im'
-
+import * as Constants from '../Constants'
 const Reviews = ({ data }) => {
   const responsive = {
     superLargeDesktop: {
@@ -77,7 +77,7 @@ const Reviews = ({ data }) => {
 
               <div className="user_verify text-center">
                 <div className="user_img_round">
-                  <img src={`/icons/user_photo.png`} alt="" />
+                  <img src={`${Constants.assets_api}/public/icons/user_photo.png`} alt="" />
                 </div>
                 <div className="user_title">{item.cName}</div>
                 <div className="divider_line"></div>

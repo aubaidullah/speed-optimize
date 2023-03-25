@@ -3,6 +3,7 @@ import { AiFillTwitterCircle, AiFillInstagram } from 'react-icons/ai';
 import { TiSocialYoutubeCircular, TiSocialLinkedinCircular } from 'react-icons/ti';
 import { FaFacebook } from 'react-icons/fa';
 import Link from 'next/link';
+import * as Constants from './Constants'
 
 const Footer = () => {
     return (
@@ -35,31 +36,31 @@ const Footer = () => {
                             <div className={tw`flex gap-3 mb-4 md:mb-0`}>
                                 <span>
                                     <img
-                                        src={"/icons/payment_icons/1.png"}
+                                        src={`${Constants.assets_api}/public/icons/payment_icons/1.png`}
                                         alt=""
                                     />
                                 </span>
                                 <span>
                                     <img
-                                        src={"/icons/payment_icons/2.png"}
+                                        src={`${Constants.assets_api}/public/icons/payment_icons/2.png`}
                                         alt=""
                                     />
                                 </span>
                                 <span>
                                     <img
-                                        src={"/icons/payment_icons/3.png"}
+                                        src={`${Constants.assets_api}/public/icons/payment_icons/3.png`}
                                         alt=""
                                     />
                                 </span>
                                 <span>
                                     <img
-                                        src={"/icons/payment_icons/4.png"}
+                                        src={`${Constants.assets_api}/public/icons/payment_icons/4.png`}
                                         alt=""
                                     />
                                 </span>
                                 <span>
                                     <img
-                                        src={"/icons/payment_icons/5.png"}
+                                        src={`${Constants.assets_api}/public/icons/payment_icons/5.png`}
                                         alt=""
                                     />
                                 </span>
@@ -101,7 +102,7 @@ const Footer = () => {
                     <div className={tw`col-12 col-md-4 flex justify-center items-center px-4 md:px-0`}>
                         <div className={tw`whatsapp-footer flex gap-4`}>
                             <img
-                                src={"/icons/whatsapp.png"}
+                                src={`${Constants.assets_api}/public/icons/whatsapp.png`}
                                 alt=""
                             />
                             <div className="WhatsApp_">

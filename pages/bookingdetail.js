@@ -118,7 +118,7 @@ const BookingDetail = () => {
             currency: paymentDetails1?.currency,
             name: bookingDetails?.lead?.name,
             description: bookingDetails?.lead?.pname,
-            image: "icons/logo.png",
+            image: `${Constants.assets_api}/public/icons/logo.png`,
             order_id: paymentDetails1?.orderid,
             prefill: {
                 name: bookingDetails?.nm,
@@ -318,7 +318,7 @@ const BookingDetail = () => {
                                                     src={
                                                         bookingDetails?.lead?.i && bookingDetails?.lead?.i.length > 0
                                                             ? bookingDetails?.lead?.i
-                                                            : "icons/logo-icon.png"
+                                                            : `${Constants.assets_api}/public/icons/logo-icon.png`
                                                     }
                                                     alt=""
                                                 />
@@ -863,7 +863,7 @@ const BookingDetail = () => {
                                 <div className="body_login">
                                     <div className={tw`login_header flex justify-center`}>
                                         <img
-                                            src={"icons/logo-icon.png"}
+                                            src={`${Constants.assets_api}/public/icons/logo-icon.png`}
                                             height="50"
                                             alt=""
                                         />

@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router';
 import Script from 'next/script';
+import * as Constants from "./Constants"
 const Meta = ({meta}) =>{
     const { asPath, pathname } = useRouter();
     console.log(asPath);
@@ -8,7 +9,7 @@ const Meta = ({meta}) =>{
     return <>
     <Head>
         <meta charset="utf-8" />
-        <link rel="icon" href="/icons/logo.png" />
+        <link rel="icon" href={`${Constants.assets_api}/public/icons/logo.png`} />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
         <meta 
         httpEquiv="Content-Security-Policy"
@@ -83,13 +84,13 @@ const Meta = ({meta}) =>{
         <meta name="twitter:url" content={`https://www.kiomoi.com${asPath}`} />
         <meta name="twitter:creator" content="@ki_omoi" />
         <meta name="twitter:site" content="@ki_omoi" />
-        <meta name="twitter:image" content="https://www.kiomoi.com/logo.png"/>
+        <meta name="twitter:image" content={`${Constants.assets_api}/public/logo.png`}/>
         <meta name="robots" content="index" />
         
 
-        <link rel="apple-touch-icon" href="/icons/logo.png" />
+        <link rel="apple-touch-icon" href={`${Constants.assets_api}/public/icons/logo.png`} />
 
-        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <link rel="manifest" href={`${Constants.assets_api}/public/manifest.json`} />
     </Head>
 
     </>

@@ -1,14 +1,14 @@
 // import Nav from "../Nav"
 import Nav from '../Nav'
 import { IoLocationSharp } from 'react-icons/io5'
-import client from "../Graphql/service";
-import { getTravelGuideDetail, getTravelPackage, getTravelHotel, getarticleQuery, getQnaQuery } from "../Graphql/Queries";
+// import client from "../Graphql/service";
+// import { getTravelGuideDetail, getTravelPackage, getTravelHotel, getarticleQuery, getQnaQuery } from "../Graphql/Queries";
 import { tw } from 'twind'
 import { useState, useEffect } from "react";
 import BreadCrumbs from "../breadcrumbs";
 import { Carousel } from "react-responsive-carousel";
 import { BsDot } from 'react-icons/bs'
-import axios from "axios";
+// import axios from "axios";
 import { FaRupeeSign } from 'react-icons/fa'
 import Link from 'next/link'
 import ReactHtmlParser from "react-html-parser";
@@ -22,7 +22,7 @@ import State_Attraction from "../trave-guide/attractions";
 import Image from 'next/image'
 import TravelGuide from '../home/travel_guide';
 import Meta from '../meta';
-
+import * as Constants from '../Constants'
 
 const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, hotels, article, qna,type ,state_t=undefined}) => {
     console.log(data)
@@ -77,7 +77,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
     const rightBlock = ({ icon, heading, desc }) => {
         return <div className={tw`flex pb-2`}>
             <div>
-                <img src={`/icons/${icon}`} alt="" className={tw`inline`} style={{ height: '15.7px' }} />
+                <img src={`${Constants.assets_api}/public/icons/${icon}`} alt="" className={tw`inline`} style={{ height: '15.7px' }} />
             </div>
             <div className={tw`ml-4`}>
                 <div className={tw`t_12px font-bold`}>{heading}</div>
@@ -158,7 +158,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                             {imagesRender.length > 0 ? (
                                 imagesRender
                             ) : (
-                                <img src="/logo-icon.png" />
+                                <img src={`${Constants.assets_api}/public/icons/logo-icon.png`} />
                             )}
                         </Carousel>
                     </div>
@@ -411,7 +411,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                                                 <img
                                                                     style={{ height: '100%', width: '100%' }}
                                                                     src={
-                                                                        item.images.length > 0 ? item.images : "/icons/logo-icon.png"
+                                                                        item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`
                                                                     }
                                                                     alt=""
                                                                 />
@@ -434,7 +434,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                                                 <img
                                                                     style={{ height: '100%', width: '100%' }}
                                                                     src={
-                                                                        item.images.length > 0 ? item.images : "/icons/logo-icon.png"
+                                                                        item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`
                                                                     }
                                                                     alt=""
                                                                 />

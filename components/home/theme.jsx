@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { tw } from "twind"
+import * as Constants from "../Constants"
 
 const Themes = ({data}) =>{
     console.log(data)
@@ -15,7 +16,7 @@ const Themes = ({data}) =>{
                     <a href={`/holidays/theme-${item.tag.trim().toLowerCase().replace(/\s+/g,"-")}/`}>
                         {" "}
                         <div className="icon_display">
-                        <img style={{display:'initial'}} src={`/icons/Ico_${item.tag.trim()}.png`} />
+                        <img style={{display:'initial'}} src={`${Constants.assets_api}/public/icons/Ico_${item.tag.trim()}.png`} />
                         </div>
                     </a>
                   </Link>

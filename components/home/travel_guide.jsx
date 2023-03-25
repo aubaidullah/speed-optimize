@@ -2,6 +2,7 @@ import {tw} from 'twind'
 import Slider from 'react-slick'
 import ReactHtmlParser from "react-html-parser";
 import Link from 'next/link'
+import * as Constants from '../Constants'
 
 const TravelGuide = ({data}) =>{
 
@@ -73,7 +74,7 @@ const TravelGuide = ({data}) =>{
                       <img
                         className="img-responsive"
                         src={
-                          item.images.length > 0 ? item.images : "logo-icon.png"
+                          item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`
                         }
                         alt=""
                       />

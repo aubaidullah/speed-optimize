@@ -5,7 +5,7 @@ import Link from 'next/link'
 import {FaRupeeSign} from 'react-icons/fa'
 import Image from 'next/image'
 import {tw} from 'twind'
-
+import * as Constants from '../Constants'
 
 const RelatedTour = ({data}) =>{
 
@@ -131,7 +131,7 @@ const RelatedTour = ({data}) =>{
                       src={
                         item.images.split("~")[0]
                           ? item.images.split("~")[0]
-                          : "/logo-icon.png"
+                          : `${Constants.assets_api}/public/icons/logo-icon.png`
                       }
                       alt=""
                     />

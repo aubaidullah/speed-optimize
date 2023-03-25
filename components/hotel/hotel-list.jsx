@@ -6,6 +6,7 @@ import { BsDot,BsStarHalf } from "react-icons/bs";
 import { strToUrl } from "../fun";
 import {FaRupeeSign} from 'react-icons/fa'
 import HotelDesign from "./hotel";
+import * as Constants from '../Constants'
 
 const HotelList = ({hotels}) =>{
 
@@ -126,7 +127,7 @@ const HotelList = ({hotels}) =>{
                 <div className="des_img">
                   <img
                     className="img-responsive"
-                    src={item.images.length > 0 ? item.images : "/logo-icon.png"}
+                    src={item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`}
                     alt=""
                   />
                   <div className="content_">

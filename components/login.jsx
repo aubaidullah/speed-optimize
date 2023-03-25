@@ -189,7 +189,7 @@ const Login = (props) => {
                                     <div className={tw`login_header`}>
                                         <img
                                             className={tw`m-auto`}
-                                            src={"/icons/logo-icon.png"}
+                                            src={`${Constants.assets_api}/public/icons/logo-icon.png`}
                                             alt=""
                                             style={{ width: '40px' }}
                                         />
@@ -435,7 +435,7 @@ const Login = (props) => {
                                 <div className={tw`login_header`}>
                                     <img
                                         className={tw`m-auto`}
-                                        src={"/icons/logo-icon.png"}
+                                        src={`${Constants.assets_api}/public/icons/logo-icon.png`}
                                         alt=""
                                         style={{ width: '40px' }}
                                     />

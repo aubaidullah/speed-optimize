@@ -20,6 +20,7 @@ import Leaform from '../../../../components/leadform'
 import State_Attraction from "../../../../components/trave-guide/attractions";
 import Image from 'next/image'
 import Router from "next/router";
+import * as Constants from '../../../../components/Constants'
 // import TravelGuide from "../../../../components/home/travel_guide";
 import TravelGuideDetailComp from '../../../../components/trave-guide/details'
 
@@ -84,7 +85,7 @@ const TravelGuideDetail1 = ({ packages_state,data, weather, packages, hotels, ar
     const rightBlock = ({ icon, heading, desc }) => {
         return <div className={tw`flex pb-2`}>
             <div>
-                <img src={`/icons/${icon}`} alt="" className={tw`inline`} style={{ height: '15.7px' }} />
+                <img src={`${Constants.assets_api}/public/icons/${icon}`} alt="" className={tw`inline`} style={{ height: '15.7px' }} />
             </div>
             <div className={tw`ml-4`}>
                 <div className={tw`t_12px font-bold`}>{heading}</div>
@@ -165,7 +166,7 @@ const TravelGuideDetail1 = ({ packages_state,data, weather, packages, hotels, ar
                             {imagesRender.length > 0 ? (
                                 imagesRender
                             ) : (
-                                <img src="/logo-icon.png" />
+                                <img src={`${Constants.assets_api}/public/icons/logo-icon.png`} />
                             )}
                         </Carousel>
                     </div>
@@ -395,7 +396,7 @@ const TravelGuideDetail1 = ({ packages_state,data, weather, packages, hotels, ar
                                                                 <img
                                                                     style={{ height: '100%', width: '100%' }}
                                                                     src={
-                                                                        item.images.length > 0 ? item.images : "/icons/logo-icon.png"
+                                                                        item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`
                                                                     }
                                                                     alt=""
                                                                 />
@@ -418,7 +419,7 @@ const TravelGuideDetail1 = ({ packages_state,data, weather, packages, hotels, ar
                                                                 <img
                                                                     style={{ height: '100%', width: '100%' }}
                                                                     src={
-                                                                        item.images.length > 0 ? item.images : "/icons/logo-icon.png"
+                                                                        item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`
                                                                     }
                                                                     alt=""
                                                                 />

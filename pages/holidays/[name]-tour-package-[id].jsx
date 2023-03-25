@@ -124,7 +124,7 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                 <div className={tw`w-full lg:w-2/3 flex flex-col md:flex-row justify-between items-start md:items-center`}>
                     <div className={tw`flex justify-between items-center gap-3 ms-2`}>
                         <div className="coment_photo">
-                            <img src={`/icons/user_photo.png`} className={tw`rounded-full`} alt="" />
+                            <img src={`${Constants.assets_api}/public/icons/user_photo.png`} className={tw`rounded-full`} alt="" />
                         </div>
                         <div className="coment_title-">
                             <h3 className={tw`h1_title fs-6`}>{item.cName}</h3>
@@ -184,7 +184,7 @@ const DetailPage = ({ data, related, reviews,meta }) => {
           return (
             <>
                 <div class="_circle_51" title={item}>
-                    <img style={{display:'initial'}} src={`/icons/Ico_${item.trim()}.png`} />
+                    <img style={{display:'initial'}} src={`${Constants.assets_api}/public/icons/Ico_${item.trim()}.png`} />
                 </div>
             </>
           );
