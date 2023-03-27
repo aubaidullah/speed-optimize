@@ -220,12 +220,12 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     //     arr.pcities.split(",").filter((ar=>filtering.places.includes(ar)))
     //     )
 
-    console.log(_places)
-    console.log(_themes)
+    // console.log(_places)
+    // console.log(_themes)
     // console.log(_pricing)
     // console.log(filtering)
     // console.log(pricefilter)
-    console.log(data.length)
+    // console.log(data.length)
     return <>
     <Meta meta={meta} />
     
@@ -363,7 +363,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                                             {pack.length!=0?pack.length:data.length} Packages 
                                         </span>
                                         <span>
-                                        {page_type=='STATE'?
+                                        {page_type=='STATE' || page_type=='COUNTRY'?
                                         <span>
                                             <span> for </span>
                                             <span style={{color:'rgb(240, 103, 38)'}}>{region?.name}</span>
