@@ -208,7 +208,7 @@ const Nav = () => {
                                 else{
                                     url = `/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
                                 }
-                                console.log(url)
+                                // console.log(url)
 
                                 return <div key={index} onClick={() => setSearchkey("")}>
                                         <Link href={url}>

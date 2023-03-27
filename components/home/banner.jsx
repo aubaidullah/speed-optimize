@@ -80,15 +80,25 @@ const Banner = ({ data }) => {
                                     </Link>
                                 </div>
                             ))}
-                            {result?.st?.map((e, index) => (
-                                <div key={index} onClick={() => setSearchkey("")}>
-                                    <Link href={`/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}/`}>
-                                        <div className="drop_item">
-                                            <div className="s_name d_content">Tours in {e?.name}</div>
-                                        </div>
-                                    </Link>
-                                </div>
-                            ))}
+                            {result?.st?.map((e, index) => {
+                                let url
+                                if (e?.type == 'COUNTRY')
+                                {
+                                    url = `/holidays/international/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
+                                }
+                                else{
+                                    url = `/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
+                                }
+                                // console.log(url)
+
+                                return <div key={index} onClick={() => setSearchkey("")}>
+                                        <Link href={url}>
+                                            <div className={tw`hover:bg-[#fde2df] drop_item`}>
+                                                <div className="s_name d_content">Tours in {e?.name}</div>
+                                            </div>
+                                        </Link>
+                                    </div>  
+                            })}
                             {result?.hotels?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
                                     <Link href={`/hotel-${e?.name?.replace(/\s+/g, "-").toLowerCase()}-in-${e?.geotype?.replace(/\s+/g, "-").toLowerCase()}-${e?.id}/`}>
