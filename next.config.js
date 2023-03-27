@@ -19,6 +19,10 @@ const nextConfig = {
         destination: '/holidays/state-package'
       },
       {
+        source: '/holidays/international/:package-tour-packages/:id',
+        destination: '/holidays/international-package'
+      },      
+      {
         source: '/holidays/:city-tour-packages',
         destination: '/holidays/city-package'
       },

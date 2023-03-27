@@ -75,7 +75,22 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                     href:"/holidays"
                 },                
             ]
-        }    
+        }
+        const country_bread = {
+            disabled:{
+                "item":`${region?.name}`
+            },
+            enabled :[
+                {
+                    item:"Kiomoi",
+                    href:"/"
+                },
+                {
+                    item:"Holidays Bookings",
+                    href:"/holidays"
+                },
+            ]
+        }        
 
         const all_bread = {
             disabled:{
@@ -218,7 +233,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
         {/* <Meta meta={meta} /> */}
 
         <BreadCrumbs bread={
-            page_type=='STATE'?state_bread:all_bread
+            page_type=='STATE'?state_bread:page_type=='COUNTRY'?country_bread:all_bread
             // bread
         
         }/>
