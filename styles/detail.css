@@ -480,7 +480,7 @@ ul.bullet_points span{
 
 ._best_price_list h4:before {
   position: absolute;
-  content: url("/icons/why-kiomoi/savings.png");
+  content: url("/public/icons/why-kiomoi/savings.png");
   width: 23px;
   height: 23px;
   left: -45px;
@@ -489,7 +489,7 @@ ul.bullet_points span{
 
 .tour_planner h4:before {
   position: absolute;
-  content: url("/icons/why-kiomoi/planning.png");
+  content: url("/public/icons/why-kiomoi/planning.png");
   width: 23px;
   height: 23px;
   left: -45px;
@@ -497,7 +497,7 @@ ul.bullet_points span{
 
 .customize h4:before {
   position: absolute;
-  content: url("/icons/why-kiomoi/customer.png");
+  content: url("/public/icons/why-kiomoi/customer.png");
   width: 23px;
   height: 23px;
   left: -45px;
@@ -505,7 +505,7 @@ ul.bullet_points span{
 
 .assistance h4:before {
   position: absolute;
-  content: url("/icons/why-kiomoi/headphones.png");
+  content: url("/public/icons/why-kiomoi/headphones.png");
   width: 23px;
   height: 23px;
   left: -45px;
@@ -513,7 +513,7 @@ ul.bullet_points span{
 
 .customer h4:before {
   position: absolute;
-  content: url("/icons/why-kiomoi/smile.png");
+  content: url("/public/icons/why-kiomoi/smile.png");
   width: 23px;
   height: 23px;
   left: -45px;
