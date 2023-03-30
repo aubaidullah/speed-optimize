@@ -56,6 +56,23 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
             }
         ]
     }
+
+    const con_bread = {
+        disabled: {
+            item: `${data.tg.cityName}`
+        },
+        enabled: [
+            {
+                item: "Kiomoi",
+                href: "/"
+            },
+            {
+                item: "Travel Guide",
+                href: "/travel-guide/"
+            },
+        ]
+    }
+
     const imagesRender = data.images.map((img, index) => {
         return <div key={index}>
             <Image src={img.i} className="img" layout="fill" style={{borderRadius:'8px'}}/>
@@ -93,7 +110,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
     return <>
         <Meta meta={meta} />
         <Nav />
-        <BreadCrumbs bread={bread} />
+        <BreadCrumbs bread={data.tg.geoType == 'COUNTRY'?con_bread:bread} />
         <section className="container">
             <div className="title_listing_">
             {
@@ -371,7 +388,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                         <div className={tw`flex justify-between`}>
                             {
                                 type=='CITY'?data.attn.length>0?<h2 className={'_titles_'}>Attractions in {data.tg.cityName}</h2>:""
-                                :<h2 className={tw`text-xl font-bold`}>Top Cities in {data.tg.cityName}</h2>
+                                :data.attn.length>0?<h2 className={tw`text-xl font-bold`}>Top Cities in {data.tg.cityName}</h2>:""
                             }
                             
                             
@@ -485,7 +502,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
 
 
             {
-                type=='COUNTRY'?
+                type=='COUNTRY' && data.stg ?
                 <TravelGuide data={data.stg}/>
                 :""
             }
@@ -500,7 +517,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                 type=='CITY'?
                 article.length!=0?<Articles data={article} />:""
                 // :data.attn
-                :<State_Attraction data={data.attn}/>
+                :data.attn.length?<State_Attraction data={data.attn}/>:""
             }
             {
                 qna.length!=0?

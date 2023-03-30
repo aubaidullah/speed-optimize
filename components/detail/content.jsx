@@ -266,6 +266,7 @@ const Content = ({data}) =>{
 
                         </div>
 
+                        {overview.length>0?
                         <div className='_blank' id="overview">
                             <h4 className="_titles_">Overview</h4>
                             <div className="Shape_42">
@@ -295,7 +296,7 @@ const Content = ({data}) =>{
                             </div>
                             
 
-                        </div>
+                        </div>:""}
 
 
                         <div className="_blank" id="itinery">
