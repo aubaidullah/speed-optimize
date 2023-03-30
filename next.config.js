@@ -15,13 +15,13 @@ const nextConfig = {
   async rewrites() {
     return [
       {
+        source: '/holidays/international-:package-tour-packages/:id',
+        destination: '/holidays/international-package'
+      }, 
+      {
         source: '/holidays/:package-tour-packages/:id',
         destination: '/holidays/state-package'
-      },
-      {
-        source: '/holidays/international/:package-tour-packages/:id',
-        destination: '/holidays/international-package'
-      },      
+      },     
       {
         source: '/holidays/:city-tour-packages',
         destination: '/holidays/city-package'
