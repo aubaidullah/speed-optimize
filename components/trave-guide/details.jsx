@@ -421,7 +421,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                         data.attn.slice(0, attlimit).map((item, i) => {
                                             let url = "/travel-guide/india/attraction" + "-" + item.name.trim().replace(/\s+/g, ' ').replace(/-/g, "").replace(/\s+/g, "-").toLowerCase() + "/" + item.id + "/"
                                             return (
-                                                <div className={tw`w-1/4 p-2`}>
+                                                <div className={tw`w-1/2 lg:w-1/4 p-2`}>
                                                     <Link href={url} key={i}>
                                                         <div>
                                                             <div className="image-squre__">

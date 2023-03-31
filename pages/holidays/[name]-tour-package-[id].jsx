@@ -78,7 +78,7 @@ const DetailPage = ({ data, related, reviews,meta }) => {
             // },
             {
                 item :`${data?.package.region.split(",")[0]}`,
-                href:`/holidays/international/${data?.package.region.split(",")[0].toLowerCase().replace(/ /g,'-')}-tour-packages/${data?.gid}/`
+                href:`/holidays/international-${data?.package.region.split(",")[0].toLowerCase().replace(/ /g,'-')}-tour-packages/${data?.gid}/`
             }
         ]        
     }
