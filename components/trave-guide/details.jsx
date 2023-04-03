@@ -331,12 +331,14 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                 <div className={tw`w-full lg:1/2`}>
                                     <div style={{ float: 'right' }}>
                                         
-
+                                        {data.mincost>=100?
                                         <Link href={type=='CITY'?`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/`:type=='COUNTRY'?`/holidays/international-${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/${data?.gid}`: `/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/${data.gid}/`}>
                                             <a>
                                                 <button className="btn_listing_t _font_big">VIEW PACKAGES</button>
                                             </a>
-                                        </Link>
+                                        </Link>:""                                        
+                                        }
+
                                     </div>
                                 </div>
 
