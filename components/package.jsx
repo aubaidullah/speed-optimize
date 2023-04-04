@@ -52,7 +52,8 @@ const Package = ({item}) =>{
     let url = "/holidays/" +
         item.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase().replace(/-tour-package/g,'').replace(/-tour/g,'').replace(/&/g,'and') +
         "-tour-package-" +
-        item.id + "/";
+        // item.id + "/";
+        item.id;
     
     return <>
         {/* <Link href={"/holidays/detail"}> */}

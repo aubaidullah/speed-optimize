@@ -1,14 +1,14 @@
 // import Nav from "../Nav"
 import Nav from '../Nav'
 import { IoLocationSharp } from 'react-icons/io5'
-import client from "../Graphql/service";
-import { getTravelGuideDetail, getTravelPackage, getTravelHotel, getarticleQuery, getQnaQuery } from "../Graphql/Queries";
+// import client from "../Graphql/service";
+// import { getTravelGuideDetail, getTravelPackage, getTravelHotel, getarticleQuery, getQnaQuery } from "../Graphql/Queries";
 import { tw } from 'twind'
 import { useState, useEffect } from "react";
 import BreadCrumbs from "../breadcrumbs";
 import { Carousel } from "react-responsive-carousel";
 import { BsDot } from 'react-icons/bs'
-import axios from "axios";
+// import axios from "axios";
 import { FaRupeeSign } from 'react-icons/fa'
 import Link from 'next/link'
 import ReactHtmlParser from "react-html-parser";
@@ -22,7 +22,7 @@ import State_Attraction from "../trave-guide/attractions";
 import Image from 'next/image'
 import TravelGuide from '../home/travel_guide';
 import Meta from '../meta';
-
+import * as Constants from '../Constants'
 
 const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, hotels, article, qna,type ,state_t=undefined}) => {
     console.log(data)
@@ -56,6 +56,23 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
             }
         ]
     }
+
+    const con_bread = {
+        disabled: {
+            item: `${data.tg.cityName}`
+        },
+        enabled: [
+            {
+                item: "Kiomoi",
+                href: "/"
+            },
+            {
+                item: "Travel Guide",
+                href: "/travel-guide/"
+            },
+        ]
+    }
+
     const imagesRender = data.images.map((img, index) => {
         return <div key={index}>
             <Image src={img.i} className="img" layout="fill" style={{borderRadius:'8px'}}/>
@@ -77,7 +94,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
     const rightBlock = ({ icon, heading, desc }) => {
         return <div className={tw`flex pb-2`}>
             <div>
-                <img src={`/icons/${icon}`} alt="" className={tw`inline`} style={{ height: '15.7px' }} />
+                <img src={`${Constants.assets_api}/public/icons/${icon}`} alt="" className={tw`inline`} style={{ height: '15.7px' }} />
             </div>
             <div className={tw`ml-4`}>
                 <div className={tw`t_12px font-bold`}>{heading}</div>
@@ -93,7 +110,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
     return <>
         <Meta meta={meta} />
         <Nav />
-        <BreadCrumbs bread={bread} />
+        <BreadCrumbs bread={data.tg.geoType == 'COUNTRY'?con_bread:bread} />
         <section className="container">
             <div className="title_listing_">
             {
@@ -158,7 +175,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                             {imagesRender.length > 0 ? (
                                 imagesRender
                             ) : (
-                                <img src="/logo-icon.png" />
+                                <img src={`${Constants.assets_api}/public/icons/logo-icon.png`} />
                             )}
                         </Carousel>
                     </div>
@@ -314,12 +331,14 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                 <div className={tw`w-full lg:1/2`}>
                                     <div style={{ float: 'right' }}>
                                         
-
-                                        <Link href={type=='CITY'?`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/`:`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/${data.gid}/`}>
+                                        {data.mincost>=100?
+                                        <Link href={type=='CITY'?`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/`:type=='COUNTRY'?`/holidays/international-${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/${data?.gid}`: `/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/${data.gid}/`}>
                                             <a>
                                                 <button className="btn_listing_t _font_big">VIEW PACKAGES</button>
                                             </a>
-                                        </Link>
+                                        </Link>:""                                        
+                                        }
+
                                     </div>
                                 </div>
 
@@ -371,7 +390,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                         <div className={tw`flex justify-between`}>
                             {
                                 type=='CITY'?data.attn.length>0?<h2 className={'_titles_'}>Attractions in {data.tg.cityName}</h2>:""
-                                :<h2 className={tw`text-xl font-bold`}>Top Cities in {data.tg.cityName}</h2>
+                                :data.attn.length>0?<h2 className={tw`text-xl font-bold`}>Top Cities in {data.tg.cityName}</h2>:""
                             }
                             
                             
@@ -404,14 +423,14 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                         data.attn.slice(0, attlimit).map((item, i) => {
                                             let url = "/travel-guide/india/attraction" + "-" + item.name.trim().replace(/\s+/g, ' ').replace(/-/g, "").replace(/\s+/g, "-").toLowerCase() + "/" + item.id + "/"
                                             return (
-                                                <div className={tw`w-1/4 p-2`}>
+                                                <div className={tw`w-1/2 lg:w-1/4 p-2`}>
                                                     <Link href={url} key={i}>
                                                         <div>
                                                             <div className="image-squre__">
                                                                 <img
                                                                     style={{ height: '100%', width: '100%' }}
                                                                     src={
-                                                                        item.images.length > 0 ? item.images : "/icons/logo-icon.png"
+                                                                        item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`
                                                                     }
                                                                     alt=""
                                                                 />
@@ -434,7 +453,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                                                 <img
                                                                     style={{ height: '100%', width: '100%' }}
                                                                     src={
-                                                                        item.images.length > 0 ? item.images : "/icons/logo-icon.png"
+                                                                        item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`
                                                                     }
                                                                     alt=""
                                                                 />
@@ -485,7 +504,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
 
 
             {
-                type=='COUNTRY'?
+                type=='COUNTRY' && data.stg ?
                 <TravelGuide data={data.stg}/>
                 :""
             }
@@ -500,7 +519,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                 type=='CITY'?
                 article.length!=0?<Articles data={article} />:""
                 // :data.attn
-                :<State_Attraction data={data.attn}/>
+                :data.attn.length?<State_Attraction data={data.attn}/>:""
             }
             {
                 qna.length!=0?

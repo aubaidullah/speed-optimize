@@ -22,7 +22,7 @@ const DeskList = dynamic(() => import('../../../components/list_page.mobile'), {
 
 
 
-const StatePackages = ({data,headers,region,places,theme,meta}) =>{
+const InternationalPackages = ({data,headers,region,places,theme,meta}) =>{
     const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('android') || headers['user-agent'].includes('iphone'))
 
 
@@ -58,10 +58,10 @@ const StatePackages = ({data,headers,region,places,theme,meta}) =>{
 
     if (isMobile==true){
         // return <ListPageMobile data = {data}/>
-        return <><Nav/> <MobileList meta={meta} page_type={'STATE'} data={data??[]} region = {region} places={places} isMobile={isMobile} theme={theme}  /></>
+        return <><Nav/> <MobileList meta={meta} page_type={'COUNTRY'} data={data??[]} region = {region} places={places} isMobile={isMobile} theme={theme}  /></>
     }
     else{
-        return <><Nav/><DeskList meta={meta} page_type={'STATE'} data = {data??[]} region = {region} places={places} isMobile={isMobile} theme={theme}/></>
+        return <><Nav/><DeskList meta={meta} page_type={'COUNTRY'} data = {data??[]} region = {region} places={places} isMobile={isMobile} theme={theme}/></>
     }    
 
 
@@ -88,7 +88,7 @@ export async function getServerSideProps(context) {
         name:context.query.package.replace(/-/g,' '),
         // name:'west bengal',
         pt:'WEBSITE',
-        type:'State'
+        type:'COUNTRY'
     }
     // console.log(payload)
     const res = await client.query({query:getallpackages,variables:{input:payload}})
@@ -129,6 +129,6 @@ export async function getServerSideProps(context) {
 
 
 
-export default StatePackages
+export default InternationalPackages
 
 

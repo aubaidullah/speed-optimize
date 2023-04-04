@@ -2,16 +2,26 @@
 const nextConfig = {
   // trailingSlash: true,
   reactStrictMode: true,
-  assetPrefix : 'https://assets.kiomoi.com',
+  assetPrefix : 'https://devassets.kiomoi.com',
   images: {
     domains: ['res.cloudinary.com', 'img.kiomoi.com']
+    // remotePatterns: [
+    //   {
+    //     protocol: 'https',
+    //     hostname: '**.res.cloudinary.com',
+    //   },
+    // ],
   },
   async rewrites() {
     return [
       {
+        source: '/holidays/international-:package-tour-packages/:id',
+        destination: '/holidays/international-package'
+      }, 
+      {
         source: '/holidays/:package-tour-packages/:id',
         destination: '/holidays/state-package'
-      },
+      },     
       {
         source: '/holidays/:city-tour-packages',
         destination: '/holidays/city-package'

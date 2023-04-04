@@ -1,6 +1,7 @@
 import {tw} from 'twind'
 import MultiCarousel2 from "react-multi-carousel";
 import Link from 'next/link'
+import * as Constants from '../Constants'
 
 
 const State_Attraction = ({data}) =>{
@@ -29,7 +30,7 @@ const State_Attraction = ({data}) =>{
                     src={
                       item.images
                         ? item.images
-                        : "logo-icon.png"
+                        : `${Constants.assets_api}/public/icons/logo-icon.png`
                     }
                     alt=""
                   />

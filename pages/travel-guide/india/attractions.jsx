@@ -127,7 +127,7 @@ const Attraction = ({ data,meta }) => {
     const rightBlock = ({ icon, heading, desc }) => (
         <div className={tw`flex`}>
             <div>
-                <img src={`/icons/${icon}`} alt="" className={tw`inline`} style={{ height: '15.7px' }} />
+                <img src={`${Constant.assets_api}/public/icons/${icon}`} alt="" className={tw`inline`} style={{ height: '15.7px' }} />
             </div>
             <div className={tw`ml-2`}>
                 <div className={tw`t_12px font-bold`}>{heading}</div>
@@ -164,7 +164,7 @@ const Attraction = ({ data,meta }) => {
                             {imagesRender.length > 0 ? (
                                 imagesRender
                             ) : (
-                                <img src="/logo-icon.png" />
+                                <img src={`${Constant.assets_api}/public/icons/logo-icon.png`} />
                             )}
                         </Carousel>
                     </div>
@@ -190,7 +190,7 @@ const Attraction = ({ data,meta }) => {
                                         <div className={tw`w-full lg:1/2`}>
                                             {rightBlock(
                                                 {
-                                                    icon: 'plane_icon.png',
+                                                    icon: `plane_icon.png`,
                                                     heading: 'NearBy Airport',
                                                     desc: data.city.nearbyAirport
                                                 }

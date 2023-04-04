@@ -17,6 +17,7 @@ import { useEffect,useState } from "react";
 import Meta from "../../../components/meta";
 import { strToUrl } from "../../../components/fun";
 import {BsCheckCircle} from 'react-icons/bs'
+import * as Constants from '../../../components/Constants'
 
 // import PhotoSwipe from 'photoswipe';
 
@@ -102,7 +103,7 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
             <div className={tw`flex mt-3`}>
                 <div style={{position:'relative',zIndex:999}}>
                 {/* calender_multi_clr */}
-                    <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
+                    <img src={`${Constants}/public/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
                     <div className="ht_label">
                         Check-in
                     </div>
@@ -117,7 +118,7 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
                         />
                 </div>
                 <div style={{position:'relative',zIndex:999}}>
-                <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
+                <img src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
                     <div className="ht_label">
                         Check-out
                     </div>

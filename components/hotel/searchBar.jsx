@@ -127,7 +127,7 @@ const _SearchBar = ({img}) =>{
                         <div className={tw`flex`}>
                             <div style={{position:'relative',zIndex:2}}>
                             {/* calender_multi_clr */}
-                                <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
+                                <img src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
                                 <div className="ht_label">
                                     Check-in
                                 </div>
@@ -144,7 +144,7 @@ const _SearchBar = ({img}) =>{
                                     />
                             </div>
                             <div style={{position:'relative',zIndex:2}}>
-                            <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
+                            <img src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
                                 <div className="ht_label">
                                     Check-out
                                 </div>

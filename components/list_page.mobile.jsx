@@ -35,7 +35,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     const [_places,set_Places] = useState([])
     const [_themes,set_Themes]  = useState([])
     
-    const [_pricing,setPrice] = useState({min:0,max:50000})
+    const [_pricing,setPrice] = useState({min:0,max:1000000})
 
     const [_min,set_Min] = useState(1)
     const [_max,set_Max]  = useState(100)
@@ -54,7 +54,6 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     // useEffect(()=>{
     //     setFilter({keyword:city??""})
     // },[])
-    console.log(filtering)
     
     // console.log(filter)
     
@@ -76,7 +75,22 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                     href:"/holidays"
                 },                
             ]
-        }    
+        }
+        const country_bread = {
+            disabled:{
+                "item":`${region?.name}`
+            },
+            enabled :[
+                {
+                    item:"Kiomoi",
+                    href:"/"
+                },
+                {
+                    item:"Holidays Bookings",
+                    href:"/holidays"
+                },
+            ]
+        }        
 
         const all_bread = {
             disabled:{
@@ -133,13 +147,14 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     if(_themes.length){
         data = data.filter(e=>e.theme.split("#").some(x=>_themes.includes(x.trim())))
     }
+    
 
     // const durationCustom=(duration)=>{
 
     // }
 
     data = data.filter(e=>e.nights>=_min && e.nights<=_max && e.finalprice>=_pricing.min && e.finalprice<=_pricing.max)
-    
+    console.log(data.length)
 
     if(pricefilter){
         data = data.sort((a,b)=>a.finalprice - b.finalprice) 
@@ -205,12 +220,12 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     //     arr.pcities.split(",").filter((ar=>filtering.places.includes(ar)))
     //     )
 
-    console.log(_places)
-    console.log(_themes)
+    // console.log(_places)
+    // console.log(_themes)
     // console.log(_pricing)
     // console.log(filtering)
     // console.log(pricefilter)
-    // console.log(data)
+    // console.log(data.length)
     return <>
     <Meta meta={meta} />
     
@@ -218,7 +233,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
         {/* <Meta meta={meta} /> */}
 
         <BreadCrumbs bread={
-            page_type=='STATE'?state_bread:all_bread
+            page_type=='STATE'?state_bread:page_type=='COUNTRY'?country_bread:all_bread
             // bread
         
         }/>
@@ -348,7 +363,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                                             {pack.length!=0?pack.length:data.length} Packages 
                                         </span>
                                         <span>
-                                        {page_type=='STATE'?
+                                        {page_type=='STATE' || page_type=='COUNTRY'?
                                         <span>
                                             <span> for </span>
                                             <span style={{color:'rgb(240, 103, 38)'}}>{region?.name}</span>

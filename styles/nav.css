@@ -15,7 +15,7 @@
 .logo_item{
     cursor:pointer;
     /* padding:15px 30px 15px 0px; */
-    padding:10px 15px 10px 0;
+    /* padding:10px 15px 10px 0; */
 }
 nav{
     font-size:auto;
@@ -151,7 +151,7 @@ nav{
       }
 
     .brand-logo{
-        height: 26px;
+        height: 35px;
     }
     .item{
         padding:10px 10px 10px 10px;
@@ -163,8 +163,7 @@ nav{
     .nav-text{
         font-size:11px;
     }
-    .logo_item{
-        /* padding:10px 15px 10px 15px; */
+    /* .logo_item{
         padding: 15px 4px 10px 0px;
-    }
+    } */
 }

@@ -1,6 +1,7 @@
 import {tw} from 'twind'
 import MultiCarousel2 from "react-multi-carousel";
 import Link from 'next/link'
+import * as Constants from '../Constants'
 
 
 const State = ({data}) =>{
@@ -27,7 +28,7 @@ const State = ({data}) =>{
                     src={
                       item.im.split("~")[0]
                         ? item.im.split("~")[0]
-                        : "logo-icon.png"
+                        : `${Constants.assets_api}/public/icons/logo-icon.png`
                     }
                     alt=""
                   />

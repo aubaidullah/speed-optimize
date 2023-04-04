@@ -2,6 +2,7 @@ import Link from "next/link"
 import {IoLocationSharp} from 'react-icons/io5'
 import {FaRupeeSign} from 'react-icons/fa'
 import { tw } from "twind";
+import * as Constants from '../Constants'
 const Hotel_Design = ({item}) =>{
     const hurl =
           "/hotel-" +
@@ -18,7 +19,7 @@ const Hotel_Design = ({item}) =>{
                 <div style={{height:'200px'}}>
                     <img style={{objectFit:'cover',height:'200px',width:'100%',borderRadius:'8px' ,border:'1px solid #e3e3e3'}}
                     className="img-responsive"
-                    src={item.images.length > 0 ? item.images : "/logo-icon.png"}
+                    src={item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`}
                     alt=""
                 />
                 </div>

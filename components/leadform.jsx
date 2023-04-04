@@ -115,7 +115,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                                 // "",
                                     <>
                                     <div style={{textAlign:'center',marginBottom:'15px'}}>
-                                    <img src={"/icons/download.png"} style={{margin:'0px auto'}} className={tw`inline`} />
+                                    <img src={`${Constants.assets_api}/public/icons/download.png`} style={{margin:'0px auto'}} className={tw`inline`} />
                                     <p style={{paddingTop:"10px",textAlign:"center",fontSize:"15px"}}>Thanks for query with Kiomoi, your reference number is <b>{res.data.output}</b></p>
                                     <p style={{textAlign:'center',fontSize:"10px"}}>We assure you within 24 hours response. Feel free to call us on <span style={{color:'#f16625'}}>+919650687940</span> or drop a mail on <a href={`mailto:info@kiomoi.com?Subject=Query regarding reference number "+${res.data.output} +"`} target='_top'><span style={{color:'#f16625'}}>info@kiomoi.com</span></a> for a sooner response</p>
                                     </div>
@@ -204,7 +204,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                     <div className="login_header">
                       <div className={tw`flex align-center`}>
                         <img
-                            src={"/icons/logo-icon.png"}
+                            src={`${Constants.assets_api}/public/icons/logo-icon.png`}
                             height="50"
                             alt=""
                             style={{margin:'0 auto'}}

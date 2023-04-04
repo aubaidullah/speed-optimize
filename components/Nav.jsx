@@ -95,45 +95,46 @@ const Nav = () => {
             {showLogin ? <Login show={showLogin} setShowLogin={setShowLogin} /> : null}
             {!showSearch ?
                 <div className={tw`container`}>
-                    <div className="item_group flt_left">
-                        <div className="logo_item flt_left">
+                    <div className={tw`flex item_group flt_left`}>
+                        <div className={tw`logo_item flt_left flex items-center`}>
                             <Link href={'/'}>
 
-                                <img className="brand-logo" src={`${router.pathname=='/'?'/icons/download.png':'/icons/kiomoi.png'}`}/>
+                                {/* <img className="brand-logo" src={`${router.pathname=='/'? `${Constants.assets_api}/public/icons/download.png`:`${Constants.assets_api}/public/icons/kiomoi.png`}`}/> */}
+                                <img className="brand-logo" src="/icons/kiomoi logo.svg"/>
                             </Link>
                         </div>
                         <div className={tw`item_group flt_right ml-6`}>
                             <div className="item flt_left">
-                                <Link href={"/holidays/"}>
+                                <Link href={"/holidays"}>
                                     <div className="c_it"
                                         onMouseOver={() => setTripover(true)}
                                         onMouseOut={() => setTripover(false)}
                                     >
-                                        <img src={tripover ? "/icons/icons/ICO-TRIPS-orange.png" : "/icons/icons/ICO TRIPS.png"} />
+                                        <img src={tripover ? `${Constants.assets_api}/public/icons/icons/ICO-TRIPS-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO TRIPS.png`} />
                                         <span className="nav-text">Trips</span>
                                     </div>
                                 </Link>
 
                             </div>
                             <div className="item flt_left">
-                                <Link href={"/travel-guide/"}>
+                                <Link href={"/travel-guide"}>
                                     <div className="c_it"
                                         onMouseOver={() => setExploreover(true)}
                                         onMouseOut={() => setExploreover(false)}
                                     >
-                                        <img src={exploreover ? "/icons/icons/ICO-EXPLORE-orange.png" : "/icons/icons/ICO EXPLORE.png"} />
+                                        <img src={exploreover ? `${Constants.assets_api}/public/icons/icons/ICO-EXPLORE-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO EXPLORE.png`} />
                                         <span className="nav-text">Explore</span>
                                     </div>
                                 </Link>
 
                             </div>
                             <div className="item flt_left">
-                            <Link href={"/hotels/"}>
+                            <Link href={"/hotels"}>
                                 <div className="c_it"
                                     onMouseOver={() => setStayover(true)}
                                     onMouseOut={() => setStayover(false)}
                                 >
-                                    <img src={stayover ? "/icons/icons/ICO-STAYS-orange.png" : "/icons/icons/ICO STAYS.png"} />
+                                    <img src={stayover ? `${Constants.assets_api}/public/icons/icons/ICO-STAYS-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO STAYS.png`} />
                                     <span className="nav-text">Stays</span>
                                 </div>
                             </Link>
@@ -183,7 +184,7 @@ const Nav = () => {
                         <div>
                             {result?.packages?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
-                                    <Link href={`/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase().replace(/-tour-package/g, '').replace(/-tour/g, '').replace(/&/g, 'and')}-tour-package-${e?.id}/`}>
+                                    <Link href={`/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase().replace(/-tour-package/g, '').replace(/-tour/g, '').replace(/&/g, 'and')}-tour-package-${e?.id}`}>
                                         <div className={tw`hover:bg-[#fde2df] drop_item`}>
                                             <div className="d_content">
                                                 <div className="flt_left">
@@ -198,18 +199,28 @@ const Nav = () => {
                                     </Link>
                                 </div>
                             ))}
-                            {result?.st?.map((e, index) => (
-                                <div key={index} onClick={() => setSearchkey("")}>
-                                    <Link href={`/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}/`}>
-                                        <div className={tw`hover:bg-[#fde2df] drop_item`}>
-                                            <div className="s_name d_content">Tours in {e?.name}</div>
-                                        </div>
-                                    </Link>
-                                </div>
-                            ))}
+                            {result?.st?.map((e, index) => {
+                                let url
+                                if (e?.type == 'COUNTRY')
+                                {
+                                    url = `/holidays/international-${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
+                                }
+                                else{
+                                    url = `/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
+                                }
+                                // console.log(url)
+
+                                return <div key={index} onClick={() => setSearchkey("")}>
+                                        <Link href={url}>
+                                            <div className={tw`hover:bg-[#fde2df] drop_item`}>
+                                                <div className="s_name d_content">Tours in {e?.name}</div>
+                                            </div>
+                                        </Link>
+                                    </div>  
+                            })}
                             {result?.hotels?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
-                                    <Link href={`/hotel-${e?.name?.replace(/\s+/g, "-").toLowerCase()}-in-${e?.geotype?.replace(/\s+/g, "-").toLowerCase()}-${e?.id}/`}>
+                                    <Link href={`/hotel-${e?.name?.replace(/\s+/g, "-").toLowerCase()}-in-${e?.geotype?.replace(/\s+/g, "-").toLowerCase()}-${e?.id}`}>
                                         <div className={tw`hover:bg-[#fde2df] drop_item`}>
                                             <div className="s_name d_content">{e?.name}</div>
                                         </div>
@@ -218,7 +229,7 @@ const Nav = () => {
                             ))}
                             {result?.articles?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
-                                    <Link href={`/travel-stories-${e?.heading?.replace(/\s+/g, "-").toLowerCase()}-${e?.geoName?.replace(/\s+/g, "-").toLowerCase()}/${e?.id}/`}>
+                                    <Link href={`/travel-stories-${e?.heading?.replace(/\s+/g, "-").toLowerCase()}-${e?.geoName?.replace(/\s+/g, "-").toLowerCase()}/${e?.id}`}>
                                         <div className={tw`hover:bg-[#fde2df] drop_item`}>
                                             <div className="s_name d_content">{e?.name}</div>
                                         </div>
@@ -228,15 +239,15 @@ const Nav = () => {
                             {result?.tgs?.map((e, index) => {
                                 let url;
                                 if (e?.geotype == "CITY") {
-                                    url = "/travel-guide/india/city-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
+                                    url = "/travel-guide/india/city-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + ""
                                 }
                                 else if (e?.geotype == "STATE") {
-                                    url = "/travel-guide/india/state-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
+                                    url = "/travel-guide/india/state-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + ""
                                 }
                                 else {
-                                    url = "travel-guide/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
+                                    url = "/travel-guide/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + ""
                                 }
-                                let statebycity = "/holidays/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase() + "-tour-packages/";
+                                let statebycity = "/holidays/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase() + "-tour-packages";
                                 return (
                                     <div key={index} onClick={() => setSearchkey("")}>
                                         {e?.geotype === 'CITY' ? (

@@ -4,7 +4,7 @@ import { GrClose } from 'react-icons/gr';
 import { Modal } from 'react-bootstrap';
 import { useState } from 'react';
 import { tw } from 'twind'
-
+import * as Constants from '../components/Constants'
 const Privacy = () => {
 
     const [first, setFirst] = useState(false);
@@ -17,7 +17,7 @@ const Privacy = () => {
         <section className={tw`md:px-14 custom-font t_box`}>
             <div>
                 <div className="terms-inner-section">
-                    <center className="mt-4"><img src={"icons/kiomoi_logo_abstract.png"} className="mx-auto d-block" /></center>
+                    <center className="mt-4"><img src={`${Constants.assets_api}/public/icons/kiomoi_logo_abstract.png`} className="mx-auto d-block" /></center>
                     <h4 className="text-center color mt-3 text-orange fs-5">A New Sky, A New Life. </h4>
 
                     <div className="row gy-4 mt-3 mb-5">
@@ -25,7 +25,7 @@ const Privacy = () => {
                             <div className={tw`about-popup cursor-pointer`}>
                                 <span onClick={() => setFirst(!first)} className="_box_shadow">
                                     <figure>
-                                        <img src={"icons/ico_payment.png"} />
+                                        <img src={`${Constants.assets_api}/public/icons/ico_payment.png`} />
                                     </figure>
                                     <p>Secure Payment</p>
                                 </span>
@@ -35,7 +35,7 @@ const Privacy = () => {
                             <div className={tw`about-popup cursor-pointer`}>
                                 <span onClick={() => setSecond(!second)} className="_box_shadow">
                                     <figure>
-                                        <img src={"icons/ico_career.png"} />
+                                        <img src={`${Constants.assets_api}/public/icons/ico_career.png`} />
                                     </figure>
                                     <p>Career</p>
                                 </span>
@@ -45,7 +45,7 @@ const Privacy = () => {
                             <div className={tw`about-popup cursor-pointer`}>
                                 <span onClick={() => setThird(!third)} className="_box_shadow">
                                     <figure>
-                                        <img src={"icons/ico_contactph.png"} />{" "}
+                                        <img src={`${Constants.assets_api}/public/icons/ico_contactph.png`} />{" "}
                                     </figure>
                                     <p>Contact us</p>
                                 </span>
@@ -166,7 +166,7 @@ const Privacy = () => {
                 <center>
                     {" "}
                     <img
-                        src={"icons/kiomoi_logo_abstract.png"}
+                        src={`${Constants.assets_api}/public/icons/kiomoi_logo_abstract.png`}
                         className="mx-auto d-block"
                     />
                 </center>
@@ -175,31 +175,31 @@ const Privacy = () => {
                     <li>
                         {" "}
                         <a href="#">
-                            <img src={"icons/versign.png"} />{" "}
+                            <img src={`${Constants.assets_api}/public/icons/versign.png`} />{" "}
                         </a>
                     </li>
                     <li>
                         {" "}
                         <a href="#">
-                            <img src={"icons/mastercard.png"} />{" "}
+                            <img src={`${Constants.assets_api}/public/icons/mastercard.png`} />{" "}
                         </a>
                     </li>
                     <li>
                         {" "}
                         <a href="#">
-                            <img src={"icons/rozorpay.png"} />{" "}
+                            <img src={`${Constants.assets_api}/public/icons/rozorpay.png`} />{" "}
                         </a>
                     </li>
                     <li>
                         {" "}
                         <a href="#">
-                            <img src={"icons/visa.png"} />{" "}
+                            <img src={`${Constants.assets_api}/public/icons/visa.png`} />{" "}
                         </a>
                     </li>
                     <li>
                         {" "}
                         <a href="#">
-                            <img src={"icons/upi.png"} />{" "}
+                            <img src={`${Constants.assets_api}/public/icons/upi.png`} />{" "}
                         </a>
                     </li>
                 </ul>
@@ -222,7 +222,7 @@ const Privacy = () => {
                 <center>
                     {" "}
                     <img
-                        src={"icons/kiomoi_logo_abstract.png"}
+                        src={`${Constants.assets_api}/public/icons/kiomoi_logo_abstract.png`}
                         className="mx-auto d-block"
                     />
                 </center>
@@ -230,7 +230,7 @@ const Privacy = () => {
                 <center>
                     {" "}
                     <img
-                        src={"icons/file.png"}
+                        src={`${Constants.assets_api}/public/icons/file.png`}
                         className="mx-auto d-block"
                     />
                 </center>
@@ -254,7 +254,7 @@ const Privacy = () => {
                 <center>
                     {" "}
                     <img
-                        src={"icons/kiomoi_logo_abstract.png"}
+                        src={`${Constants.assets_api}/public/icons/kiomoi_logo_abstract.png`}
                         className="mx-auto d-block"
                     />
                 </center>
@@ -262,7 +262,7 @@ const Privacy = () => {
                 <center>
                     {" "}
                     <img
-                        src={"icons/file.png"}
+                        src={`${Constants.assets_api}/public/icons/file.png`}
                         className="mx-auto d-block"
                     />
                 </center>
