@@ -224,7 +224,7 @@ const Nav = () => {
                                 let url
                                 if (e?.type == 'COUNTRY')
                                 {
-                                    url = `/holidays/international-${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
+                                    url = `/holidays-international/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
                                 }
                                 else{
                                     url = `/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`

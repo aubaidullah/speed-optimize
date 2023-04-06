@@ -2,7 +2,8 @@
 const nextConfig = {
   // trailingSlash: true,
   reactStrictMode: true,
-  assetPrefix : 'https://assets.kiomoi.com',
+  assetPrefix : 'https://devassets.kiomoi.com',
+  // assetsPrefix:window.location.origin.toString() === "http://localhost:3000"||"https://kiomoitest.kiomoi.com" ?"https://devassets.kiomoi.com":"https://assets.kiomoi.com",
   images: {
     domains: ['res.cloudinary.com', 'img.kiomoi.com']
     // remotePatterns: [
@@ -14,10 +15,14 @@ const nextConfig = {
   },
   async rewrites() {
     return [
+      // {
+      //   source: '/holidays/international-:package-tour-packages/:id',
+      //   destination: '/holidays/international-package'
+      // }, 
       {
-        source: '/holidays/international-:package-tour-packages/:id',
+        source: '/holidays-international/:package-tour-packages/:id',
         destination: '/holidays/international-package'
-      }, 
+      },       
       {
         source: '/holidays/:package-tour-packages/:id',
         destination: '/holidays/state-package'
