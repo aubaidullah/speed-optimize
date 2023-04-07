@@ -41,7 +41,7 @@ const Nav = () => {
     }, [])
 
     const HandleSearch = (s_key) => {
-        if (s_key.length >= 3) {
+        if (s_key.length >= 2) {
             setSearchkey(s_key)
             Search()
         }
@@ -200,23 +200,28 @@ const Nav = () => {
                                 </div>
                             ))}
                             {result?.st?.map((e, index) => {
-                                let url
+                                let url = ""
                                 if (e?.type == 'COUNTRY')
                                 {
                                     url = `/holidays-international/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
                                 }
-                                else{
+                                else  if(e?.type == 'STATE'){
                                     url = `/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
+                                }
+                                else{
+                                    url = ""
                                 }
                                 // console.log(url)
 
-                                return <div key={index} onClick={() => setSearchkey("")}>
-                                        <Link href={url}>
-                                            <div className={tw`hover:bg-[#fde2df] drop_item`}>
-                                                <div className="s_name d_content">Tours in {e?.name}</div>
-                                            </div>
-                                        </Link>
-                                    </div>  
+                                if (url.length>0){
+                                    return <div key={index} onClick={() => setSearchkey("")}>
+                                    <Link href={url}>
+                                        <div className={tw`hover:bg-[#fde2df] drop_item`}>
+                                            <div className="s_name d_content">Tours in {e?.name}</div>
+                                        </div>
+                                    </Link>
+                                </div>  
+                                }
                             })}
                             {result?.hotels?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>

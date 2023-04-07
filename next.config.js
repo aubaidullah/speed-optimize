@@ -182,6 +182,10 @@ const nextConfig = {
         source :'/travel-guide-india-:slug/:id',
         destination : '/410'
       },
+      {
+        source : '/holidays/:city-tour-packages/',
+        destination : '/410'
+      }
       // {
       //   source :'/travel-guide-india-:slug/:id',
       //   destination : '/410'
