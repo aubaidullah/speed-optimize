@@ -215,7 +215,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
 
                                                 <div className={tw`w-full lg:1/2`}>
                                                     {rightBlock({ icon: 'region.png', heading: 'Currency', desc: data.country.currency})   }
-                                                    {rightBlock({ icon: 'plane_icon.png', heading: 'Major Airports', desc: 'Delhi, Mumbai, Chennai, Kolkata'})}
+                                                    {rightBlock({ icon: 'plane_icon.png', heading: 'Major Airports', desc: type!='COUNTRY'?'Delhi, Mumbai, Chennai, Kolkata':""})}
                                                     {rightBlock({ icon: 'language.png', heading: 'Ideal Duration', desc:data.country.idealTripDuration})}
                                                 </div>                                                
                                             </>

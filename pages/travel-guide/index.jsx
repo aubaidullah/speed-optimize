@@ -37,8 +37,10 @@ const TravelGuide = ({data,meta}) =>{
                             
                             if(e.geoType=='CITY'){
                                 var url = `/travel-guide/india/city-${e.cityName.replace(/\s+/g, "-").toLowerCase()}/${e.id}`
-                            }else{
+                            }else if(e.geoType == 'STATE'){
                                 var url = `/travel-guide/india/state-${e.cityName.replace(/\s+/g, "-").toLowerCase()}/${e.id}`
+                            }else{
+                                var url = `/${e.cityName.replace(/\s+/g, "-").toLowerCase()}/${e.id}`
                             }
 
 
