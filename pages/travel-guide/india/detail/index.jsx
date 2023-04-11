@@ -23,6 +23,7 @@ import Router from "next/router";
 import * as Constants from '../../../../components/Constants'
 // import TravelGuide from "../../../../components/home/travel_guide";
 import TravelGuideDetailComp from '../../../../components/trave-guide/details'
+import { createCityListURL, createStateListURL } from "../../../../components/fun";
 
 const TravelGuideDetail = ({ meta,packages_state,data, weather, packages, hotels, article, qna,type }) => {
     // console.log(article)
@@ -302,7 +303,12 @@ const TravelGuideDetail1 = ({ packages_state,data, weather, packages, hotels, ar
                                     <div style={{ float: 'right' }}>
                                         
 
-                                        <Link href={type=='CITY'?`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/`:`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/${data.gid}`}>
+                                        <Link href={
+                                            type == 'CITY'?createCityListURL({cityname:data.tg.cityName,id:data.gid}):
+                                            // type=='CITY'?`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/`:
+                                            createStateListURL({statename:data.tg.cityName,id:data.gid})
+                                            // `/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/${data.gid}`}
+                                        }>
                                             <a>
                                                 <button className="btn_listing_t _font_big">VIEW PACKAGES</button>
                                             </a>

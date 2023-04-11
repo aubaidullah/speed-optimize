@@ -6,6 +6,7 @@ import {FaRupeeSign} from 'react-icons/fa'
 import Image from 'next/image'
 import {tw} from 'twind'
 import * as Constants from '../Constants'
+import { createDetailUrl } from "../fun";
 
 const RelatedTour = ({data}) =>{
 
@@ -86,12 +87,12 @@ const RelatedTour = ({data}) =>{
             userRating.push(<BsStarHalf key={i} className="d_icon_size inline"/>)
         }
         // return userRating
-
-        let aurl =
-        "/holidays/" +
-        item.name.trim().replace(/\s+/g,' ').replace(/\s+/g, "-").toLowerCase() + 
-        "-tour-package-" +
-        item.id + "/";
+        let aurl = createDetailUrl({name:item.name,id:item.id})
+        // let aurl =
+        // "/holidays/" +
+        // item.name.trim().replace(/\s+/g,' ').replace(/\s+/g, "-").toLowerCase() + 
+        // "-tour-package-" +
+        // item.id + "/";
   
   
         var tmp = [];

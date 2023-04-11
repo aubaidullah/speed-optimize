@@ -7,6 +7,7 @@ import { tw } from 'twind';
 import Link from 'next/link';
 import * as Constants from '../Constants';
 import axios from 'axios';
+import { createCityListURL,createDetailUrl,createStateListURL } from "../fun";
 
 const Banner = ({ data }) => {
 
@@ -65,7 +66,7 @@ const Banner = ({ data }) => {
                         <div>
                             {result?.packages?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
-                                    <Link href={`/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase().replace(/-tour-package/g, '').replace(/-tour/g, '').replace(/&/g, 'and')}-tour-package-${e?.id}/`}>
+                                    <Link href={createDetailUrl({name:e?.name,id:e?.id})}>
                                         <div className={tw`hover:bg-[#fde2df] drop_item`}>
                                             <div className="d_content">
                                                 <div className="flt_left">
@@ -87,10 +88,11 @@ const Banner = ({ data }) => {
                                     url = `/holidays-international/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
                                 }
                                 else  if(e?.type == 'STATE'){
-                                    url = `/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
+                                    url = createStateListURL({statename:e?.name,id:e.id})
+                                    // url = `/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
                                 }
                                 else{
-                                    url = ""
+                                    url = createCityListURL({cityname:e?.name,id:e?.id})
                                 }
                                 // console.log(url)
 
@@ -103,7 +105,6 @@ const Banner = ({ data }) => {
                                     </Link>
                                 </div>  
                                 }
-                                
                             })}
                             {result?.hotels?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
@@ -134,16 +135,16 @@ const Banner = ({ data }) => {
                                 else {
                                     url = "/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
                                 }
-                                let statebycity = "/holidays/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase() + "-tour-packages/";
+                                // let statebycity = "/holidays/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase() + "-tour-packages/";
                                 return (
                                     <div key={index} onClick={() => setSearchkey("")}>
-                                        {e?.geotype === 'CITY' ? (
+                                        {/* {e?.geotype === 'CITY' ? (
                                             <Link href={statebycity}>
                                                 <div className="drop_item">
                                                     <div className="s_name d_content">Tours in {e?.name}</div>
                                                 </div>
                                             </Link>
-                                        ) : null}
+                                        ) : null} */}
                                         <Link href={url}>
                                             <div className="drop_item">
                                                 <div className="s_name d_content">{e?.name}</div>

@@ -14,10 +14,21 @@ export const strToUrl = (phrase) =>{
 
 
 export const createDetailUrl = ({name,id})=>{
-    const x = "/holidays/" +
-    name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase().replace(/-tour-package/g,'').replace(/-tour/g,'').replace(/&/g,'and') +
-    "-tour-package-" +
-    id + "/";
+    // const x = "/holidays/" +
+    // name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase().replace(/-tour-package/g,'').replace(/-tour/g,'').replace(/&/g,'and') +
+    // "-tour-package-" +
+    // id + "/";
+    // return x
 
-    return x
+    const y = `/holiday-${name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase().replace(/-tour-package/g,'').replace(/-tour/g,'').replace(/&/g,'and')}-tour-package-${id}`
+    return y
+    
+}
+
+export const createCityListURL = ({cityname,id}) =>{
+    return `/holidays/${cityname.replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages-${id}1`
+}
+
+export const createStateListURL = ({statename,id}) =>{
+    return `/holidays/${statename.replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages-${id}2`
 }

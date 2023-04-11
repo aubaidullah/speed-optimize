@@ -12,6 +12,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import {tw} from 'twind'
 import { Carousel } from "react-responsive-carousel";
+import { createDetailUrl } from './fun'
 
 
 const Package = ({item}) =>{
@@ -48,12 +49,12 @@ const Package = ({item}) =>{
     if (item.sratings.length!=1){
         userRating.push(<BsStarHalf key={i} className="icon_size inline"/>)
     }
-
-    let url = "/holidays/" +
-        item.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase().replace(/-tour-package/g,'').replace(/-tour/g,'').replace(/&/g,'and') +
-        "-tour-package-" +
-        // item.id + "/";
-        item.id;
+    let url = createDetailUrl({name:item.name,id:item.id})
+    // let url = "/holidays/" +
+    //     item.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase().replace(/-tour-package/g,'').replace(/-tour/g,'').replace(/&/g,'and') +
+    //     "-tour-package-" +
+    //     // item.id + "/";
+    //     item.id;
     
     return <>
         {/* <Link href={"/holidays/detail"}> */}

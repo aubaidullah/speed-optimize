@@ -2,18 +2,20 @@ import {tw} from 'twind'
 import MultiCarousel2 from "react-multi-carousel";
 import Link from 'next/link'
 import * as Constants from '../Constants'
+import { createStateListURL } from '../fun';
 
 
 const State = ({data}) =>{
 
 
     const statePackagesRender = data.map(function (item, i) {
-        var aurl =
-          "/holidays/" +
-          // item.nm.replace(/\s+/g, "-").toLowerCase() +
-          item.nm.trim().replace(/\s+/g,' ').replace(/\s+/g, "-").toLowerCase().replace(/-tour/g,'').replace(/&/g,'and') +
-          "-tour-packages/" +
-          item.id + "/";
+      var aurl = createStateListURL({statename:item.nm,id:item.id})  
+      // var aurl =
+        //   "/holidays/" +
+        //   // item.nm.replace(/\s+/g, "-").toLowerCase() +
+        //   item.nm.trim().replace(/\s+/g,' ').replace(/\s+/g, "-").toLowerCase().replace(/-tour/g,'').replace(/&/g,'and') +
+        //   "-tour-packages/" +
+        //   item.id + "/";
   
         return (
           <div key={i}>
