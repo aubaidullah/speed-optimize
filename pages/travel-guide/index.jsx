@@ -7,6 +7,8 @@ import Image from "next/image"
 import ReactHtmlParser from "react-html-parser";
 import Link from 'next/link'
 import Meta from "../../components/meta"
+import { createTGCityURL, createTGCountryURL, createTGStateURL } from "../../components/fun"
+import { country } from "../../components/Constants"
 
 const TravelGuide = ({data,meta}) =>{
 
@@ -36,11 +38,15 @@ const TravelGuide = ({data,meta}) =>{
                         {data.map((e,index)=>{
                             
                             if(e.geoType=='CITY'){
-                                var url = `/travel-guide/india/city-${e.cityName.replace(/\s+/g, "-").toLowerCase()}/${e.id}`
+                                var url = createTGCityURL({city:e.cityName,id:e.id})
+                                // var url = `/travel-guide/india/city-${e.cityName.replace(/\s+/g, "-").toLowerCase()}/${e.id}`
+                            
                             }else if(e.geoType == 'STATE'){
-                                var url = `/travel-guide/india/state-${e.cityName.replace(/\s+/g, "-").toLowerCase()}/${e.id}`
+                                var url = createTGStateURL({city:e.cityName,id:e.id})
+                                // var url = `/travel-guide/india/state-${e.cityName.replace(/\s+/g, "-").toLowerCase()}/${e.id}`
                             }else{
-                                var url = `/${e.cityName.replace(/\s+/g, "-").toLowerCase()}/${e.id}`
+                                var url = createTGCountryURL({country:e.cityName,id:e.id})
+                                // var url = `/${e.cityName.replace(/\s+/g, "-").toLowerCase()}/${e.id}`
                             }
 
 

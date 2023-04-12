@@ -11,7 +11,7 @@ import dynamic from "next/dynamic";
 import Link from 'next/link'
 import { tw } from 'twind'
 import {useRouter} from 'next/router'
-import { createCityListURL, createStateListURL,createDetailUrl } from "./fun";
+import { createCityListURL, createStateListURL,createDetailUrl, createTGCityURL, createTGStateURL, createTGCountryURL } from "./fun";
 
 
 const Login = dynamic(() => import('../components/login'));
@@ -246,13 +246,17 @@ const Nav = () => {
                             {result?.tgs?.map((e, index) => {
                                 let url;
                                 if (e?.geotype == "CITY") {
-                                    url = "/travel-guide/india/city-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + ""
+                                    url = createTGCityURL({city:e?.name,id:e?.id})
+                                    // url = "/travel-guide/india/city-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + ""
                                 }
                                 else if (e?.geotype == "STATE") {
-                                    url = "/travel-guide/india/state-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + ""
+                                    url = createTGStateURL({city:e?.name,id:e?.id})
+
+                                    // url = "/travel-guide/india/state-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + ""
                                 }
                                 else {
-                                    url = "/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + ""
+                                    url = createTGCountryURL({country:e?.name,id:e?.id})
+                                    // url = "/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + ""
                                 }
                                 // let statebycity = "/holidays/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase() + "-tour-packages";
                                 return (

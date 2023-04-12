@@ -13,6 +13,9 @@ const nextConfig = {
     //   },
     // ],
   },
+//   Kiomoi.com/countries/india
+// Kiomoi.com/states/sikkim
+// Kiomoi.com/cities/gangtok
   async rewrites() {
     return [
       // {
@@ -36,18 +39,26 @@ const nextConfig = {
         source: '/holidays/:city-tour-packages-:id:pre([1]{1})',
         destination: '/holidays/city-package'
       },
+      // {
+      //   source: '/travel-guide/india/city-:city/:id',
+      //   destination: '/travel-guide/india/detail'
+      // },
       {
-        source: '/travel-guide/india/city-:city/:id',
+        source: '/travel-guide/cities/:city-:id(\\d+)',
         destination: '/travel-guide/india/detail'
-      },
-      {
-        source: '/:country/:id',
-        destination: '/travel-guide/country'
       },      
       {
-        source: '/travel-guide/india/state-:city/:id',
+        source: '/travel-guide/countries/:country-:id(\\d+)',
+        destination: '/travel-guide/country'
+      },      
+      // {
+      //   source: '/travel-guide/india/state-:city/:id',
+      //   destination: '/travel-guide/india/detail'
+      // },
+      {
+        source: '/travel-guide/states/:city-:id(\\d+)',
         destination: '/travel-guide/india/detail'
-      },
+      },      
       {
         source: '/holidays/theme-:theme',
         destination: '/holidays/theme'

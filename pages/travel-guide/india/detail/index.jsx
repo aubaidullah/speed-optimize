@@ -518,7 +518,7 @@ const TravelGuideDetail1 = ({ packages_state,data, weather, packages, hotels, ar
 
 export async function getServerSideProps(context) {
     context.res.setHeader('Cache-Control', 's-maxage=10');
-    // console.log(context.query)
+    console.log(context.query)
     let _id = context.query.id
     const res = await client.query({ query: getTravelGuideDetail, variables: { input: { id: _id } } })
 

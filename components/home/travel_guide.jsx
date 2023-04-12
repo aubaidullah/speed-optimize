@@ -3,6 +3,7 @@ import Slider from 'react-slick'
 import ReactHtmlParser from "react-html-parser";
 import Link from 'next/link'
 import * as Constants from '../Constants'
+import { createTGCityURL, createTGCountryURL, createTGStateURL } from '../fun';
 
 const TravelGuide = ({data}) =>{
 
@@ -26,19 +27,21 @@ const TravelGuide = ({data}) =>{
         let aurl = "#";
   
         if (item.geoType == "CITY") {
-   
-          aurl = "/travel-guide/india/city-" + item.cityName.replace(/\s+/g, "-").toLowerCase() + "/"+item.id+"/"
+            aurl = createTGCityURL({city:item.cityName,id:item.id})
+          // aurl = "/travel-guide/india/city-" + item.cityName.replace(/\s+/g, "-").toLowerCase() + "/"+item.id+"/"
           // aurl =
           //   "/city-travel-guide-" +
           //   item.cityName.replace(/\s+/g, "-").toLowerCase() +
           //   "-india/" +
           //   item.id + "/";
         } else if (item.geoType == "COUNTRY") {
-          console.log(item)
+          // console.log(item)
           try{
-            aurl = "/travel-guide/" + item.cityName.replace(/\s+/g, "-").toLowerCase() + "/" + item.cityId + '/';
+            aurl = createTGCountryURL({country:item.cityName,id:item.id})
+            // aurl = "/travel-guide/" + item.cityName.replace(/\s+/g, "-").toLowerCase() + "/" + item.cityId + '/';
           }catch{
-            aurl = "/travel-guide/" + item.name.replace(/\s+/g, "-").toLowerCase() + "/" + item.cityId + '/';
+            aurl = createTGCountryURL({country:item.name,id:item.id})
+            // aurl = "/travel-guide/" + item.name.replace(/\s+/g, "-").toLowerCase() + "/" + item.cityId + '/';
           }
             
           //travel-guide/india/96
@@ -49,9 +52,11 @@ const TravelGuide = ({data}) =>{
           //   item.id + "/";
         } else {
           try{
-            aurl = `/travel-guide/india/state-` + item.cityName.replace(/\s+/g, "-").toLowerCase() + "/" +item.id +"/"
+            aurl = createTGStateURL({city:item.cityName,id:item.id})
+            // aurl = `/travel-guide/india/state-` + item.cityName.replace(/\s+/g, "-").toLowerCase() + "/" +item.id +"/"
           }catch{
-            aurl = `/travel-guide/india/state-` + item.name.replace(/\s+/g, "-").toLowerCase() + "/" +item.id +"/"
+            aurl = createTGStateURL({city:item.name,id:item.id})
+            // aurl = `/travel-guide/india/state-` + item.name.replace(/\s+/g, "-").toLowerCase() + "/" +item.id +"/"
           }
           
           // aurl =

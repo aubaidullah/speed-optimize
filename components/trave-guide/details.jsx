@@ -23,7 +23,7 @@ import Image from 'next/image'
 import TravelGuide from '../home/travel_guide';
 import Meta from '../meta';
 import * as Constants from '../Constants'
-import { createCityListURL,createStateListURL } from '../fun';
+import { createCityListURL,createStateListURL, createTGCityURL } from '../fun';
 
 const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, hotels, article, qna,type ,state_t=undefined}) => {
     console.log(data)
@@ -452,11 +452,14 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                             )
                                         }):
                                         data.ctg.slice(0, attlimit).map((item, i) => {
-                                            let url = `/travel-guide/india/city-${item.name.toLowerCase()}/${item.tgid}/`
+                                            let url = createTGCityURL({city:item.name,id:item.tgid})
+                                            // let url = `/travel-guide/india/city-${item.name.toLowerCase()}/${item.tgid}/`
                                             // let url = "/travel-guide/india/attraction" + "-" + item.name.trim().replace(/\s+/g, ' ').replace(/-/g, "").replace(/\s+/g, "-").toLowerCase() + "/" + item.id + "/"
                                             return (
                                                 <div className={tw`w-1/4 p-2`}>
+                                                    
                                                     <Link href={url} key={i}>
+                                                        <a>
                                                         <div>
                                                             <div className="image-squre__">
                                                                 <img
@@ -470,7 +473,9 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                                             </div>
                                                             <p>{item.name}</p>
                                                         </div>
+                                                        </a>
                                                     </Link>
+                                                    
                                                 </div>
                                             )
                                         })
