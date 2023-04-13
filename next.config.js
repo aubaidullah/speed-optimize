@@ -39,10 +39,18 @@ const nextConfig = {
         source: '/holidays/:city-tour-packages-:id:pre([1]{1})',
         destination: '/holidays/city-package'
       },
-      // {
-      //   source: '/travel-guide/india/city-:city/:id',
-      //   destination: '/travel-guide/india/detail'
-      // },
+      {
+        source: '/travel-guide/india/city-:city/:id',
+        destination: '/410'
+      },
+      {
+        source: '/travel-guide/india/:id',
+        destination: '/410'
+      },
+      {
+        source: '/holidays/:slug/:id',
+        destination: '/410'
+      },      
       {
         source: '/travel-guide/cities/:city-:id(\\d+)',
         destination: '/travel-guide/india/detail'
@@ -51,10 +59,10 @@ const nextConfig = {
         source: '/travel-guide/countries/:country-:id(\\d+)',
         destination: '/travel-guide/country'
       },      
-      // {
-      //   source: '/travel-guide/india/state-:city/:id',
-      //   destination: '/travel-guide/india/detail'
-      // },
+      {
+        source: '/travel-guide/india/state-:city/:id',
+        destination: '/410'
+      },
       {
         source: '/travel-guide/states/:city-:id(\\d+)',
         destination: '/travel-guide/india/detail'
