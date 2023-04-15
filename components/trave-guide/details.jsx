@@ -54,9 +54,32 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
             {
                 item: "India",
                 href: "/travel-guide/"
-            }
+            },
         ]
     }
+    const city_bread = {
+        disabled: {
+            item: `${data.tg.cityName}`
+        },
+        enabled: [
+            {
+                item: "Kiomoi",
+                href: "/"
+            },
+            {
+                item: "Travel Guide",
+                href: "/travel-guide/"
+            },
+            {
+                item: "India",
+                href: "/travel-guide/"
+            },
+            {
+                item: `${data?.city?.sname}`,
+                href: `/travel-guide/states/${data?.city?.sname.toLowerCase()}-${data?.city?.sid}`
+            },            
+        ]
+    }    
 
     const con_bread = {
         disabled: {

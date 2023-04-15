@@ -14,6 +14,7 @@ import { Modal } from "react-bootstrap"
 import {BsXLg} from 'react-icons/bs';
 import Meta from "./meta"
 import { useRouter } from 'next/router'
+import { createStateListURL } from "./fun"
 
 // const filtering = useSelector(state=>state.package.package)
 // const FilterBy = dynamic(() => import('./list/filter'), {
@@ -106,6 +107,15 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                     item:"Holidays Bookings",
                     href:"/holidays"
                 },
+                {
+                    item:"India",
+                    href:"/holidays"
+                },                
+                {
+                    item:`${region?.sname}`,
+                    // href:'/holidays'
+                    href:createStateListURL({statename:page_type=='STATE'?"":region?.sname,id:region?.sid}),
+                },                
             ]            
         }    
 
