@@ -24,7 +24,7 @@ const DeskList = dynamic(() => import('../../../components/list_page.mobile'), {
 
 
 const CityPackages = ({data,headers,region,places,city,meta}) =>{
-    console.log(city)
+    console.log(region)
     const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('android') || headers['user-agent'].includes('iphone'))
 
     useEffect(()=>{
@@ -84,11 +84,12 @@ export async function getServerSideProps(context) {
     // }
     let payload = {
         av:'1.3',
-        id:``,
+        id:context.query.id,
         name:context.query.city,
         pt:'WEBSITE',
         type:'CITY'
     }
+    console.log(context.query)
     console.log(payload)
     const res = await client.query({query:getallpackages,variables:{input:payload}})
     console.log(res.data)
@@ -97,7 +98,7 @@ export async function getServerSideProps(context) {
     const places = res.data.allpackage.output?.fcities??[]
 
 
-    const meta = await client.query({query:getMetaQuery,variables:{input:{av:"",id:0,key:'CITY_HOLIDAYS',name:"",pt:'WEBSITE',type:"CITY"}}})
+    const meta = await client.query({query:getMetaQuery,variables:{input:{av:"",id:context.query.id,key:'CITY_HOLIDAYS',name:"",pt:'WEBSITE',type:"CITY"}}})
     let {finalprice,images} = meta.data.meta.output.package
     finalprice = `₹${finalprice} `
     const metas ={

@@ -6,6 +6,7 @@ import Image from 'next/image'
 import {FaRupeeSign} from 'react-icons/fa'
 import {tw} from 'twind'
 import * as Constants from '../Constants'
+import { createDetailUrl } from '../fun';
 const HomePackages = ({data}) =>{
   
     const [responsive,Setresponsive] = useState({})
@@ -68,11 +69,7 @@ const HomePackages = ({data}) =>{
         }
         // return userRating
 
-        let aurl =
-        "/holidays/" +
-        item.name.trim().replace(/\s+/g,' ').replace(/\s+/g, "-").toLowerCase() + 
-        "-tour-package-" +
-        item.id + "/";
+        let aurl = createDetailUrl({name:item.name,id:item.id})
   
   
         var tmp = [];

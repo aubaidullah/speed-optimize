@@ -23,6 +23,7 @@ import Image from 'next/image'
 import TravelGuide from '../home/travel_guide';
 import Meta from '../meta';
 import * as Constants from '../Constants'
+import { createCityListURL,createStateListURL, createTGCityURL } from '../fun';
 
 const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, hotels, article, qna,type ,state_t=undefined}) => {
     console.log(data)
@@ -53,9 +54,32 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
             {
                 item: "India",
                 href: "/travel-guide/"
-            }
+            },
         ]
     }
+    const city_bread = {
+        disabled: {
+            item: `${data.tg.cityName}`
+        },
+        enabled: [
+            {
+                item: "Kiomoi",
+                href: "/"
+            },
+            {
+                item: "Travel Guide",
+                href: "/travel-guide/"
+            },
+            {
+                item: "India",
+                href: "/travel-guide/"
+            },
+            {
+                item: `${data?.city?.sname}`,
+                href: `/travel-guide/states/${data?.city?.sname.toLowerCase()}-${data?.city?.sid}`
+            },            
+        ]
+    }    
 
     const con_bread = {
         disabled: {
@@ -215,7 +239,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
 
                                                 <div className={tw`w-full lg:1/2`}>
                                                     {rightBlock({ icon: 'region.png', heading: 'Currency', desc: data.country.currency})   }
-                                                    {rightBlock({ icon: 'plane_icon.png', heading: 'Major Airports', desc: 'Delhi, Mumbai, Chennai, Kolkata'})}
+                                                    {rightBlock({ icon: 'plane_icon.png', heading: 'Major Airports', desc: type!='COUNTRY'?'Delhi, Mumbai, Chennai, Kolkata':""})}
                                                     {rightBlock({ icon: 'language.png', heading: 'Ideal Duration', desc:data.country.idealTripDuration})}
                                                 </div>                                                
                                             </>
@@ -332,11 +356,19 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                     <div style={{ float: 'right' }}>
                                         
                                         {data.mincost>=100?
-                                        <Link href={type=='CITY'?`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/`:type=='COUNTRY'?`/holidays/international-${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/${data?.gid}`: `/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/${data.gid}/`}>
+                                        
+                                        <Link href={
+                                            type == 'CITY'?createCityListURL({cityname:data.tg.cityName,id:data.gid}):
+                                            // type=='CITY'?`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/`:
+                                            createStateListURL({statename:data.tg.cityName,id:data.gid})
+                                            // `/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/${data.gid}`}
+                                        }>
                                             <a>
                                                 <button className="btn_listing_t _font_big">VIEW PACKAGES</button>
                                             </a>
-                                        </Link>:""                                        
+                                        </Link>
+                                        
+                                        :""                                        
                                         }
 
                                     </div>
@@ -443,11 +475,14 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                             )
                                         }):
                                         data.ctg.slice(0, attlimit).map((item, i) => {
-                                            let url = `/travel-guide/india/city-${item.name.toLowerCase()}/${item.tgid}/`
+                                            let url = createTGCityURL({city:item.name,id:item.tgid})
+                                            // let url = `/travel-guide/india/city-${item.name.toLowerCase()}/${item.tgid}/`
                                             // let url = "/travel-guide/india/attraction" + "-" + item.name.trim().replace(/\s+/g, ' ').replace(/-/g, "").replace(/\s+/g, "-").toLowerCase() + "/" + item.id + "/"
                                             return (
                                                 <div className={tw`w-1/4 p-2`}>
+                                                    
                                                     <Link href={url} key={i}>
+                                                        <a>
                                                         <div>
                                                             <div className="image-squre__">
                                                                 <img
@@ -461,7 +496,9 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                                             </div>
                                                             <p>{item.name}</p>
                                                         </div>
+                                                        </a>
                                                     </Link>
+                                                    
                                                 </div>
                                             )
                                         })

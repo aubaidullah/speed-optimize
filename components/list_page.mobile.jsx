@@ -13,7 +13,8 @@ import ReactHtmlParser from "react-html-parser";
 import { Modal } from "react-bootstrap"
 import {BsXLg} from 'react-icons/bs';
 import Meta from "./meta"
-
+import { useRouter } from 'next/router'
+import { createStateListURL } from "./fun"
 
 // const filtering = useSelector(state=>state.package.package)
 // const FilterBy = dynamic(() => import('./list/filter'), {
@@ -39,6 +40,8 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
 
     const [_min,set_Min] = useState(1)
     const [_max,set_Max]  = useState(100)
+    const router = useRouter()
+    // console.log(router)
     
     
 
@@ -90,7 +93,31 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                     href:"/holidays"
                 },
             ]
-        }        
+        }    
+        const city_bread = {
+            disabled:{
+                "item":`${router.query.city}`
+            },
+            enabled :[
+                {
+                    item:"Kiomoi",
+                    href:"/"
+                },
+                {
+                    item:"Holidays Bookings",
+                    href:"/holidays"
+                },
+                {
+                    item:"India",
+                    href:"/holidays"
+                },                
+                {
+                    item:`${region?.sname}`,
+                    // href:'/holidays'
+                    href:createStateListURL({statename:page_type=='STATE'?"":region?.sname,id:region?.sid}),
+                },                
+            ]            
+        }    
 
         const all_bread = {
             disabled:{
@@ -233,7 +260,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
         {/* <Meta meta={meta} /> */}
 
         <BreadCrumbs bread={
-            page_type=='STATE'?state_bread:page_type=='COUNTRY'?country_bread:all_bread
+            page_type=='STATE'?state_bread:page_type=='COUNTRY'?country_bread:page_type=='CITY'?city_bread:all_bread
             // bread
         
         }/>
@@ -360,7 +387,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                                             isMobile?"":"Showing"
                                         }
                                         <span className={tw`font-bold ml-2`}>
-                                            {pack.length!=0?pack.length:data.length} Packages 
+                                            {pack.length!=0?pack.length:data.length} Tour Packages 
                                         </span>
                                         <span>
                                         {page_type=='STATE' || page_type=='COUNTRY'?

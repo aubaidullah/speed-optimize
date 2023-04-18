@@ -3,6 +3,7 @@ const nextConfig = {
   // trailingSlash: true,
   reactStrictMode: true,
   assetPrefix : 'https://assets.kiomoi.com',
+  // assetsPrefix:window.location.origin.toString() === "http://localhost:3000"||"https://kiomoitest.kiomoi.com" ?"https://devassets.kiomoi.com":"https://assets.kiomoi.com",
   images: {
     domains: ['res.cloudinary.com', 'img.kiomoi.com']
     // remotePatterns: [
@@ -12,32 +13,60 @@ const nextConfig = {
     //   },
     // ],
   },
+//   Kiomoi.com/countries/india
+// Kiomoi.com/states/sikkim
+// Kiomoi.com/cities/gangtok
   async rewrites() {
     return [
+      // {
+      //   source: '/holidays/international-:package-tour-packages/:id',
+      //   destination: '/holidays/international-package'
+      // }, 
       {
-        source: '/holidays/international-:package-tour-packages/:id',
+        source:'/holiday-:slug-tour-package-:id',
+        destination:'/holidays/detail'
+      },
+      
+      {
+        source: '/holidays-international/:package-tour-packages/:id',
         destination: '/holidays/international-package'
-      }, 
+      },       
       {
-        source: '/holidays/:package-tour-packages/:id',
+        source: '/holidays/:package-tour-packages-:id:pre([2]{1})',
         destination: '/holidays/state-package'
       },     
       {
-        source: '/holidays/:city-tour-packages',
+        source: '/holidays/:city-tour-packages-:id:pre([1]{1})',
         destination: '/holidays/city-package'
       },
       {
         source: '/travel-guide/india/city-:city/:id',
-        destination: '/travel-guide/india/detail'
+        destination: '/410'
       },
       {
-        source: '/travel-guide/:country/:id',
+        source: '/travel-guide/india/:id',
+        destination: '/410'
+      },
+      {
+        source: '/holidays/:slug/:id',
+        destination: '/410'
+      },      
+      {
+        source: '/travel-guide/cities/:city-:id(\\d+)',
+        destination: '/travel-guide/india/detail'
+      },      
+      {
+        source: '/travel-guide/countries/:country-:id(\\d+)',
         destination: '/travel-guide/country'
       },      
       {
         source: '/travel-guide/india/state-:city/:id',
-        destination: '/travel-guide/india/detail'
+        destination: '/410'
       },
+      {
+        source: '/travel-guide/states/:city-:id(\\d+)',
+        destination: '/travel-guide/india/detail'
+      },      
       {
         source: '/holidays/theme-:theme',
         destination: '/holidays/theme'
@@ -177,6 +206,10 @@ const nextConfig = {
         source :'/travel-guide-india-:slug/:id',
         destination : '/410'
       },
+      {
+        source : '/holidays/:city-tour-packages/',
+        destination : '/410'
+      }
       // {
       //   source :'/travel-guide-india-:slug/:id',
       //   destination : '/410'
@@ -209,3 +242,4 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+// 😘

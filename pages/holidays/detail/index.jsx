@@ -1,24 +1,30 @@
+import client from "../../../components/Graphql/service"
+import { createDetailUrl, createStateListURL } from '../../../components/fun';
 import { BsDot, BsStarFill, BsStarHalf, BsStar, BsFillCheckCircleFill, BsPlusLg } from 'react-icons/bs'
-import { getpackage, getrelatedpackage, getreviewsQuery,getMetaQuery } from '../../components/Graphql/Queries'
+
+
 import { tw } from 'twind'
 import { Carousel } from "react-responsive-carousel";
 import { useState } from 'react';
 import ReactStars from "react-rating-stars-component";
 import Image from 'next/image'
 import swal from "sweetalert";
-import RightBar from '../../components/detail/rightbar';
-import Content from '../../components/detail/content';
-import RelatedTour from '../../components/detail/related_tours'
-import client from '../../components/Graphql/service'
-import Guest from '../../components/guest';
+import RightBar from '../../../components/detail/rightbar';
+import Content from '../../../components/detail/content';
+import RelatedTour from '../../../components/detail/related_tours'
+// import client from '../../../components/Graphql/service'
+import Guest from '../../../components/guest';
 import moment from "moment";
 import axios from 'axios';
-import Nav from '../../components/Nav'
-import * as Constants from '../../components/Constants'
-import BreadCrumbs from '../../components/breadcrumbs';
-import Meta from '../../components/meta';
-import { createDetailUrl } from '../../components/fun';
+import Nav from '../../../components/Nav'
+import * as Constants from '../../../components/Constants'
+import BreadCrumbs from '../../../components/breadcrumbs';
+import Meta from '../../../components/meta';
+// import { createDetailUrl } from '../../components/fun';
 
+
+
+import { getpackage, getrelatedpackage, getreviewsQuery,getMetaQuery } from '../../../components/Graphql/Queries'
 
 const DetailPage = ({ data, related, reviews,meta }) => {
 
@@ -60,7 +66,8 @@ const DetailPage = ({ data, related, reviews,meta }) => {
             },
             {
                 item :`${data?.package.region.split(",")[0]}`,
-                href:`/holidays/${data?.package.region.split(",")[0].toLowerCase().replace(/ /g,'-')}-tour-packages/${data?.gid}/`
+                href : `${createStateListURL({statename:data?.package.region.split(",")[0].toLowerCase(),id:data?.gid})}`
+                // href:`/holidays/${data?.package.region.split(",")[0].toLowerCase().replace(/ /g,'-')}-tour-packages/${data?.gid}/`
             }
         ]:
         [
@@ -398,13 +405,11 @@ const DetailPage = ({ data, related, reviews,meta }) => {
 
 export async function getServerSideProps(context) {
 
-    context.res.setHeader('Cache-Control', 's-maxage=10');
-    let query = context.params['name]-tour-package-[id'];
-
-
-    let name = query.split('-tour-package-')[0];
-    let _id = query.split('-tour-package-')[1];
-
+    // let query = context.query
+    let _id = context.query.id
+    let name = context.query.slug
+    
+    
     const res = await client.query({
         query: getpackage,
         variables: {
@@ -413,19 +418,19 @@ export async function getServerSideProps(context) {
             }
         }
     })
-    console.log(query)
+    // console.log(query)
     const nurl = createDetailUrl({name:res.data?.package.output.package.name,id:_id})
-    console.log(query)
+    // console.log(query)
 
-    if (`/holidays/${query}/` != nurl){
-        return {
-            redirect: {
-              permanent: false,
-              destination: nurl,
-            },
-            props:{},
-          };
-    }
+    // if (`/holidays/${query}/` != nurl){
+    //     return {
+    //         redirect: {
+    //           permanent: false,
+    //           destination: nurl,
+    //         },
+    //         props:{},
+    //       };
+    // }
     // console.log(createDetailUrl({name,id:_id}))
     // if res.data?.package.output.package.name
 
@@ -471,8 +476,8 @@ export async function getServerSideProps(context) {
         longDesc:meta.data.meta.output.tags.longDesc.replace(/<PNAME>/g,name).replace(/<CITIES>/g,cities).replace(/<PRICE>/g,finalprice),
         keywords:meta.data.meta.output.tags.keywords.replace(/<CITIES>/g,cities),
         image:images
-    }    
-
+    }        
+    
     return {
         props: {
             data: res.data?.package.output,
@@ -480,9 +485,9 @@ export async function getServerSideProps(context) {
             reviews: reviews.data?.reviews.output,
             meta:metas
         }
-    }
+    }    
+    
+    // return {props:{}}
 }
-
-
 
 export default DetailPage

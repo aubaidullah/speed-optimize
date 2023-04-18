@@ -7,6 +7,7 @@ import { tw } from 'twind';
 import Link from 'next/link';
 import * as Constants from '../Constants';
 import axios from 'axios';
+import { createCityListURL,createDetailUrl,createStateListURL, createTGCityURL, createTGCountryURL, createTGStateURL } from "../fun";
 
 const Banner = ({ data }) => {
 
@@ -23,7 +24,7 @@ const Banner = ({ data }) => {
     }, [])
 
     const HandleSearch = (s_key) => {
-        if (s_key.length >= 3) {
+        if (s_key.length >= 2) {
             setSearchkey(s_key)
             Search()
         }
@@ -60,12 +61,12 @@ const Banner = ({ data }) => {
                     className="m_s_icon"
                 />
                 <input style={{ zIndex: 999 }} type="text" className="form-control" onChange={event => HandleSearch(event.target.value)} placeholder="Search Any Destination, Travel Guide, Trip or Stays" />
-                {searchkey.length > 3 ? (
+                {searchkey.length >= 2 ? (
                     <section className="dropdown-content-home">
                         <div>
                             {result?.packages?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
-                                    <Link href={`/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase().replace(/-tour-package/g, '').replace(/-tour/g, '').replace(/&/g, 'and')}-tour-package-${e?.id}/`}>
+                                    <Link href={createDetailUrl({name:e?.name,id:e?.id})}>
                                         <div className={tw`hover:bg-[#fde2df] drop_item`}>
                                             <div className="d_content">
                                                 <div className="flt_left">
@@ -81,23 +82,29 @@ const Banner = ({ data }) => {
                                 </div>
                             ))}
                             {result?.st?.map((e, index) => {
-                                let url
+                                let url = ""
                                 if (e?.type == 'COUNTRY')
                                 {
-                                    url = `/holidays/international-${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
+                                    url = `/holidays-international/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
+                                }
+                                else  if(e?.type == 'STATE'){
+                                    url = createStateListURL({statename:e?.name,id:e.id})
+                                    // url = `/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
                                 }
                                 else{
-                                    url = `/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
+                                    url = createCityListURL({cityname:e?.name,id:e?.id})
                                 }
                                 // console.log(url)
 
-                                return <div key={index} onClick={() => setSearchkey("")}>
-                                        <Link href={url}>
-                                            <div className={tw`hover:bg-[#fde2df] drop_item`}>
-                                                <div className="s_name d_content">Tours in {e?.name}</div>
-                                            </div>
-                                        </Link>
-                                    </div>  
+                                if (url.length>0){
+                                    return <div key={index} onClick={() => setSearchkey("")}>
+                                    <Link href={url}>
+                                        <div className={tw`hover:bg-[#fde2df] drop_item`}>
+                                            <div className="s_name d_content">Tours in {e?.name}</div>
+                                        </div>
+                                    </Link>
+                                </div>  
+                                }
                             })}
                             {result?.hotels?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
@@ -120,24 +127,27 @@ const Banner = ({ data }) => {
                             {result?.tgs?.map((e, index) => {
                                 let url;
                                 if (e?.geotype == "CITY") {
-                                    url = "/travel-guide/india/city-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
+                                    url = createTGCityURL({city:e?.name,id:e?.id})
+                                    // url = "/travel-guide/india/city-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
                                 }
                                 else if (e?.geotype == "STATE") {
-                                    url = "/travel-guide/india/state-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
+                                    url = createTGStateURL({city:e?.name,id:e?.id})
+                                    // url = "/travel-guide/india/state-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
                                 }
                                 else {
-                                    url = "/travel-guide/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
+                                    url = createTGCountryURL({city:e?.name,id:e?.id})
+                                    // url = "/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
                                 }
-                                let statebycity = "/holidays/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase() + "-tour-packages/";
+                                // let statebycity = "/holidays/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase() + "-tour-packages/";
                                 return (
                                     <div key={index} onClick={() => setSearchkey("")}>
-                                        {e?.geotype === 'CITY' ? (
+                                        {/* {e?.geotype === 'CITY' ? (
                                             <Link href={statebycity}>
                                                 <div className="drop_item">
                                                     <div className="s_name d_content">Tours in {e?.name}</div>
                                                 </div>
                                             </Link>
-                                        ) : null}
+                                        ) : null} */}
                                         <Link href={url}>
                                             <div className="drop_item">
                                                 <div className="s_name d_content">{e?.name}</div>
