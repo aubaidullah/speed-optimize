@@ -26,19 +26,19 @@ export const createDetailUrl = ({name,id})=>{
 }
 
 export const createCityListURL = ({cityname,id}) =>{
-    return `/holidays/${cityname.replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages-${id}1`
+    return `/holidays/${cityname?.replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages-${id}1`
 }
 
 export const createStateListURL = ({statename,id}) =>{
-    return `/holidays/${statename.replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages-${id}2`
+    return `/holidays/${statename?.replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages-${id}2`
 }
 
 export const createTGCityURL = ({city,id}) =>{
-    return `/travel-guide/cities/${city.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase()}-${id}`
+    return `/travel-guide/cities/${city?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase()}-${id}`
 }
 export const createTGStateURL = ({city,id}) =>{
-    return `/travel-guide/states/${city.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase()}-${id}`
+    return `/travel-guide/states/${city?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase()}-${id}`
 }
 export const createTGCountryURL = ({country,id}) =>{
-    return `/travel-guide/countries/${country.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase()}-${id}`
+    return `/travel-guide/countries/${country?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase()}-${id}`
 }
