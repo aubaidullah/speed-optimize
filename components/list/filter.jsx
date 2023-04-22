@@ -155,14 +155,13 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
     }
 
     return <>
-    {/* style={{position:'sticky',top:'101px'}} */}
-        <div className={tw`bg-white sticky`} style={{borderRadius:'8px'}}>
+        <div className={tw`bg-white sticky rounded-lg`}>
             <div className={tw`p-3`}>
                 <div className={tw`flex items-center justify-between mb-4`}>
                     <h2 className={tw`text-xl font-bold`}>
                         Filter by
                     </h2> 
-                    <div className={tw`text-sm`} style={{color:'#f06726',cursor:'pointer'}} onClick={()=>clear_filter()} >Clear all</div>
+                    <div className={tw`text-sm cursor-pointer text-[#f06726]`} onClick={()=>clear_filter()} >Clear all</div>
                 </div>
                 <div className={tw`pb-4`}>
                     <input
@@ -302,7 +301,7 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
                         Favourite Places
                         </h2> 
                     </div>
-                    <div style={{maxHeight:'300px',overflowY:'scroll'}}>
+                    <div className={tw`max-h-[300px] overflow-y-scroll`}>
                         {placeRender}
                     </div>                    
 
@@ -317,7 +316,7 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
                         Themes of Trip
                         </h2> 
                     </div>
-                    <div style={{maxHeight:'300px',overflowY:'scroll'}}>
+                    <div className={tw`max-h-[300px] overflow-y-scroll`}>
                         {themeRender}
                     </div>                    
 

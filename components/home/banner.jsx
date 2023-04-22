@@ -31,7 +31,7 @@ const Banner = ({ data }) => {
         else setResult({})
     }
     return <>
-    <div className="slider_banner slider_banner_ slider_overlay" style={{overflow:"hidden"}}>
+    <div className={tw`overflow-hidden slider_banner slider_banner_ slider_overlay`}>
         <div>
             {/* scaleX(1.5) */}
                 <img src={data[0]?.i} className="img-responsive_banner" />
@@ -60,7 +60,7 @@ const Banner = ({ data }) => {
                 <HiOutlineSearch
                     className="m_s_icon"
                 />
-                <input style={{ zIndex: 999 }} type="text" className="form-control" onChange={event => HandleSearch(event.target.value)} placeholder="Search Any Destination, Travel Guide, Trip or Stays" />
+                <input type="text" className={tw`form-control z-[999]`} onChange={event => HandleSearch(event.target.value)} placeholder="Search Any Destination, Travel Guide, Trip or Stays" />
                 {searchkey.length >= 2 ? (
                     <section className="dropdown-content-home">
                         <div>

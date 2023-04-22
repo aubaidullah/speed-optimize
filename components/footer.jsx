@@ -8,7 +8,7 @@ import * as Constants from './Constants'
 const Footer = () => {
     return (
         <div className={tw`w-100 overflow-hidden mt-5`}>
-            <div className={tw`flex justify-center py-3`} style={{ background: '#505050' }}>
+            <div className={tw`flex justify-center py-3 bg-[#505050]`}>
                 <ul className={tw`flex gap-2 custom-footer`}>
                     <li className={tw`cursor-pointer text-sm md:text-sm`}>
                         <Link href="/aboutus/">About us </Link>
@@ -28,7 +28,7 @@ const Footer = () => {
                     </li>
                 </ul>
             </div>
-            <div className={tw`flex pb-3 pt-4`} style={{ background: '#373739' }}>
+            <div className={tw`flex pb-3 pt-4 bg-[#373739]`}>
                 <div className='row'>
                     <div className={tw`payment_secure flex flex-col justify-center items-center px-4 md:px-0 col-12 col-md-4`}>
                         <div>
@@ -71,7 +71,7 @@ const Footer = () => {
                     <div className={tw`payment_secure follow-links col-12 col-md-4`}>
                         <h4 className={tw`mb-3 px-3 md:px-0 text-center`}>FOLLOW US ON</h4>
                         <ul className={tw`flex justify-center px-3 md:px-0 gap-4 mb-3 md:mb-0`}>
-                            <li className={tw`cursor-pointer`} style={{ fontSize: 33 }}>
+                            <li className={tw`cursor-pointer text-4xl`}>
                                 <a href="https://www.facebook.com/thekiomoi/" target="_blank">
                                     <FaFacebook />
                                 </a>
@@ -116,10 +116,10 @@ const Footer = () => {
                     <hr className={tw`col-12 col-md-4 text-white w-80 m-auto my-4 d-block d-md-none`} />
                     <div className={tw`container text_footer_bottom text-center mt-3`}>
                         <div>
-                            <p style={{ fontSize: "14px" }}>
+                            <p>
                                 H-187, Lohia Road, Sector-63, Noida 201301 India
                             </p>
-                            <p style={{ fontSize: "14px" }}>
+                            <p>
                                 Call: +91- 8448298660 / +91- 9650687940 | Email: <a href='mailto:info@kiomoi.com'>info@kiomoi.com</a>
                             </p>
                             

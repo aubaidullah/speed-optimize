@@ -92,7 +92,7 @@ const Nav = () => {
 
     return <>
     
-        <nav data-aos="fade-down" id="navbar" className={tw`shadow-sm_ navbar-dflt`} style={{ overflow: 'auto', zIndex: 3 }}>
+        <nav data-aos="fade-down" id="navbar" className={tw`shadow-sm_ navbar-dflt`}>
             {showLogin ? <Login show={showLogin} setShowLogin={setShowLogin} /> : null}
             {!showSearch ?
                 <div className={tw`container`}>
@@ -161,15 +161,14 @@ const Nav = () => {
                 </div>
                 :
                 <div>
-                    <div className={tw`container`} style={{position:'relative'}}>
+                    <div className={tw`container relative`}>
                         {!loading ?
                             <HiOutlineSearch
                                 className="s_icon"
-                                // style={{position:'absolute',top:'10px',color:'grey'}}
                                 size={"20px"}
                             />
 
-                            : <Spinner className="s_icon" animation="border" style={{ color: "#f06726", width: "20px", height: "20px" }} role="status">
+                            : <Spinner className="s_icon s_load" animation="border" role="status">
                                 <span className="visually-hidden">Loading...</span>
                             </Spinner>
                         }
@@ -179,9 +178,9 @@ const Nav = () => {
                             onClick={() => SetshowSearch(false)}
                             className="cr_icon"
                         />
-                        <input style={{padding:'15px 0 15px 40px'}} type="text" className="form-control s_form" onChange={event => HandleSearch(event.target.value)} placeholder="Search anything..." />
+                        <input type="text" className="form-control s_form nv_search" onChange={event => HandleSearch(event.target.value)} placeholder="Search anything..." />
                     </div>
-                    <section className={tw`drop_down container`} style={{ boxShadow: 'inset 0 -1px 0 0 rgba(0,0,0,.1)',left:'0',right:'0',borderColor:'transparent' }}>
+                    <section className={tw`drop_down container`}>
                         <div>
                             {result?.packages?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>

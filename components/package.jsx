@@ -146,7 +146,7 @@ const Package = ({item}) =>{
                                                         {/* <div className="bk_img" style={{backgroundImage:`url("${item.images.split('~')[0].replace(/w_400/,'w_300')}")`,backgroundPosition:'cover'}}>
                                                         </div> */}
                                                         <div className='bk_img'>
-                                                            <Image style={{borderRadius:'10px'}} layout="fill" objectFit="fill" src={`${item.images.split('~')[0].replace(/w_400/,'w_300')}`} />
+                                                            <Image layout="fill" className={tw`rounded-[10px]`} objectFit="fill" src={`${item.images.split('~')[0].replace(/w_400/,'w_300')}`} />
                                                         </div>
                                                         
 
@@ -241,7 +241,7 @@ const Package = ({item}) =>{
                                                             <span> {
                                                                 item.season.split(",").length === 12? "round-the-year":
                                                                 // item.season
-                                                                <p style={{display:'inline',fontSize:'11px'}}>{
+                                                                <p className={tw`inline text-[11px]`}>{
                                                                 item.season.split(",").map((e)=>{
                                                                     return <span key={e}>
                                                                     {/* <span> */}
