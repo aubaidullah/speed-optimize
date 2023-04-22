@@ -274,10 +274,10 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
         
         >
             <Modal.Body>
-                <div style={{overflow:'auto'}}>
-                    <span style={{ float: "right", }} aria-hidden="true">
-                        <BsXLg 
-                        style={{cursor: "pointer" }}
+                <div className={tw`overflow-auto`}>
+                    <span className={tw`float-right`}aria-hidden="true">
+                        <BsXLg className={tw`cursor-pointer`} 
+                        // style={{cursor: "pointer" }}
                         onClick={()=>setIsshow(false)}
                         />
                     </span>
@@ -289,9 +289,11 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
             
             
             <div className='bottom_button_filter' onClick={()=>setIsshow(false)}>
-                <div className={tw`flex`} style={{height:'100%'}}>
-                    <div style={{width:'100%',height:'100%'}} className={tw`flex`}>
-                        <div style={{alignSelf:'center',width:'100%',textAlign:'center',fontSize:'20px'}}>Apply</div>
+                <div className={tw`flex h-full`}>
+                    <div className={tw`flex h-full w-full`}>
+                        <div className={tw`self-center w-full text-center text-[20px]`} 
+                        // style={{alignSelf:'center',width:'100%',textAlign:'center',fontSize:'20px'}}
+                        >Apply</div>
                     </div>
                 </div>
                 
@@ -393,7 +395,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                                         {page_type=='STATE' || page_type=='COUNTRY'?
                                         <span>
                                             <span> for </span>
-                                            <span style={{color:'rgb(240, 103, 38)'}}>{region?.name}</span>
+                                            <span className={tw`text-[#F06726]`}>{region?.name}</span>
                                         </span>
                                         
                                         :""
@@ -457,7 +459,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                                             <Package key={index} item={item} />:null
                                         }):
                                         <div className={tw`mt-16 mb-16 text-center`}>
-                                            <div className={tw`text-2xl font-bold`} style={{color:'#999'}}>
+                                            <div className={tw`text-2xl font-bold text-[#999]`}>
                                                 <p className={tw`"`}>No package found</p>
                                                 
                                             </div>

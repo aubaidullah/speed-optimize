@@ -167,7 +167,8 @@ const Package = ({item}) =>{
                                             </div>
                                         {/* <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true}></Link> */}
                                             <Link href={`${url}`} as={`${url}`} >
-                                            <div className='col-sm-8 col-xs-12'>
+                                            {/* <a href={`${url}`}> */}
+                                            <a href={`${url}`} className='col-sm-8 col-xs-12'>
                                                 <div className="contain_blk">
                                                     <div className="_row ov_auto mb_display_none">
                                                         <div className="flt_left">
@@ -300,7 +301,7 @@ const Package = ({item}) =>{
                                                             <div className="_div">
                                                                 <div>
                                                                     <div className={tw`flex text-center`}>
-                                                                        <MdOutlineFlight className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto',color:'#c6c5c5'}} /> 
+                                                                        <MdOutlineFlight className={tw`h-6 lst_aty text-[#c6c5c5]`} size={20}/> 
 
                                                                     </div>
                                                                     <p>Flight</p>
@@ -310,7 +311,7 @@ const Package = ({item}) =>{
                                                             <div className="_div">
                                                                 <div>
                                                                     <div className={tw`flex text-center`}>
-                                                                        <IoCarSportOutline className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+                                                                        <IoCarSportOutline className='h-6 lst_aty' size={20} /> 
 
                                                                     </div>
                                                                 <p>Trasnfer</p>
@@ -320,7 +321,7 @@ const Package = ({item}) =>{
                                                             <div className="_div">
                                                                 <div>
                                                                     <div className={tw`flex text-center`}>
-                                                                        <IoFastFoodOutline className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+                                                                        <IoFastFoodOutline className='h-6 lst_aty' size={20} /> 
 
                                                                     </div>
                                                                 <p>Breakfast</p>
@@ -330,7 +331,7 @@ const Package = ({item}) =>{
                                                             <div className="_div">
                                                                 <div>
                                                                     <div className={tw`flex text-center`}>
-                                                                        <RiHotelLine className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+                                                                        <RiHotelLine className='h-6 lst_aty' size={20} /> 
 
                                                                     </div>
                                                                 <p>Hotel</p>
@@ -341,7 +342,7 @@ const Package = ({item}) =>{
                                                                 <div>
                                                                     {/* GiBinoculars */}
                                                                     <div className={tw`flex text-center`}>
-                                                                        <GiBinoculars className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+                                                                        <GiBinoculars className='h-6 lst_aty' size={20} /> 
 
                                                                     </div>
                                                                 <p>SightSeeing</p>
@@ -370,11 +371,11 @@ const Package = ({item}) =>{
                                                         <div className='text-left'>
                                                             <div className={tw`flex checks`}>
                                                                 <p>
-                                                                    <MdCheckCircle className='inline' style={{color:'#15be03'}} /> Free Cancellation
+                                                                    <MdCheckCircle className={tw`inline text-[#15be03]`} /> Free Cancellation
                                                                     {/* <br/><MdCheckCircle className='inline' style={{color:'#15be03'}} /> Part Payment */}
                                                                 </p>
                                                                 <p className={tw`pl-2`}>
-                                                                    <MdCheckCircle className='inline' style={{color:'#15be03'}} /> Part Payment
+                                                                    <MdCheckCircle className={tw`inline text-[#15be03]`} /> Part Payment
                                                                 </p>
 
                                                             </div>
@@ -391,7 +392,7 @@ const Package = ({item}) =>{
                                                                     </span>
                                                                     
                                                                     <del>
-                                                                        <FaRupeeSign className='inline' style={{fontSize:'12px',marginBottom:'4px'}} />
+                                                                        <FaRupeeSign className={tw`inline text=[12px] mb-[4px]`} />
                                                                         {item.price}/-
                                                                     </del>
                                                                 </>                                                                
@@ -403,11 +404,11 @@ const Package = ({item}) =>{
 
                                                             <div>
                                                                 <div className="price_inr">
-                                                                    <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
+                                                                    <FaRupeeSign className={tw`inline text-[#f79421] text-[12px] mb-[4px]`} />
                                                                     {item.finalprice}/-
                                                                 </div>
                                                                 <div>
-                                                                    <p style={{fontSize:'8.8px',color:'#999'}}>Per person on twin sharing</p>
+                                                                    <p className={tw`text-[8.8px] text-[#999]`}>Per person on twin sharing</p>
                                                                 </div>
                                                                 
                                                             </div>
@@ -434,13 +435,14 @@ const Package = ({item}) =>{
                                                         
                                                     </div> */}
                                                 </div>
-                                            </div>
+                                            </a>
+                                            {/* </a> */}
                                             </Link>
                                         
                                     </div>
                                     
                                 {/* </Link> */}
-                                <div className="buttons desk_display_none mt-2" style={{overflow:'auto'}}>
+                                <div className={tw`buttons desk_display_none mt-2 overflow-auto`}>
                                     <div className="flt_left">
                                     <Link href={`${url}`} as={`${url}`}>
                                         <a href={`${url}`}>
@@ -474,7 +476,7 @@ const Package = ({item}) =>{
                                 <div className="_div">
                                     <div>
                                         <div className={tw`flex text-center`}>
-                                            <MdOutlineFlight className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto',color:'#c6c5c5'}} /> 
+                                            <MdOutlineFlight className={tw`h-6 lst_aty text=[#c6c5c5]`} size={20} /> 
 
                                         </div>
                                         <p>Flight</p>
@@ -484,7 +486,7 @@ const Package = ({item}) =>{
                                 <div className="_div">
                                     <div>
                                         <div className={tw`flex text-center`}>
-                                            <IoCarSportOutline className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+                                            <IoCarSportOutline className='h-6 lst_aty' size={20} /> 
 
                                         </div>
                                     <p>Trasnfer</p>
@@ -494,7 +496,7 @@ const Package = ({item}) =>{
                                 <div className="_div">
                                     <div>
                                         <div className={tw`flex text-center`}>
-                                            <IoFastFoodOutline className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+                                            <IoFastFoodOutline className='h-6 lst_aty' size={20} /> 
 
                                         </div>
                                     <p>Breakfast</p>
@@ -504,7 +506,7 @@ const Package = ({item}) =>{
                                 <div className="_div">
                                     <div>
                                         <div className={tw`flex text-center`}>
-                                            <RiHotelLine className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+                                            <RiHotelLine className='h-6 lst_aty' size={20} /> 
 
                                         </div>
                                     <p>Hotel</p>
@@ -515,7 +517,7 @@ const Package = ({item}) =>{
                                     <div>
                                         {/* GiBinoculars */}
                                         <div className={tw`flex text-center`}>
-                                            <GiBinoculars className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+                                            <GiBinoculars className='h-6 lst_aty' size={20} /> 
 
                                         </div>
                                     <p>SightSeeing</p>
@@ -527,7 +529,7 @@ const Package = ({item}) =>{
                     </div>
                     <div className='flt_right col-sm-4 col-sx-12'>
 
-                        <div className="buttons" style={{overflow:'auto'}}>
+                        <div className={tw`buttons overflow-auto`}>
                             <div className="flt_right">
                                 <button className="btn_listing _btn_clr" onClick={()=>_sendquery(item.finalprice,item.id,item.name,item.city)}>
                                     SUBMIT QUERY
