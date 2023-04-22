@@ -16,7 +16,7 @@ const TNC = () => {
                         </p>
 
                         <h4 className="text-center text-uppercase my-4 fw-bold fs-6">User Agreement</h4>
-                        <ul className={tw`list-disc terms_condition px-3`} style={{ fontSize: 14 }}>
+                        <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
                             <li>The User certifies that he/she is at least 18 (eighteen) years of age or has the consent of a parent or legal guardian.</li>
                             <li>These terms and conditions supersede all previous representations, understandings, or agreements and shall prevail notwithstanding any variance with any other terms of any order submitted. By using the services of KTSPL you agree to be bound by the Terms and Conditions.</li>
                             <li>All prices, unless indicated otherwise are in Indian Rupees.</li>
@@ -41,7 +41,7 @@ const TNC = () => {
                         </ul>
 
                         <h4 className="text-center text-uppercase my-4 fw-bold fs-6">Terms of Service</h4>
-                        <ul className={tw`list-disc terms_condition px-3`} style={{ fontSize: 14 }}>
+                        <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
                             <li>The User certifies that he/she is at least 18 (eighteen) years of age or has the consent of a parent or legal guardian.</li>
                             <li>These terms and conditions supersede all previous representations, understandings, or agreements and shall prevail notwithstanding any variance with any other terms of any order submitted. By using the services of KTSPL you agree to be bound by the Terms and Conditions.
                             </li>
@@ -54,7 +54,7 @@ const TNC = () => {
 
 
                         <h4 className="text-uppercase my-4 fw-bold fs-6">Hotel Booking Terms &amp; Conditions</h4>
-                        <ul className={tw`list-disc terms_condition px-3`} style={{ fontSize: 14 }}>
+                        <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
                             <li>All bookings are subjected to 2.5% bank transaction charges on credit card/net banking/debit card refunds.</li>
                             <li>Cancellation made within 7 days of the check in date is subjected to full retention of booking amount.</li>
                             <li>Cancellation made within 15 days of check in date and more than 7 days of check in date will incur minimum 50% cancellation charges although KIOMOI / Hotel reserves the right to retain 100% of the booking amount subjected to peak season.</li>
@@ -76,7 +76,7 @@ const TNC = () => {
                             <li>All other extra / incidental charges are to be settled directly by the customer with the Hotel.</li>
                         </ul>
                         <h4 className="text-uppercase my-4 fw-bold fs-6">Tour Booking Terms &amp; Conditions</h4>
-                        <ul className={tw`list-disc terms_condition px-3`} style={{ fontSize: 14 }}>
+                        <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
                             <li>The Standard Hotel check-in 1400 Hrs &amp; Check-out time is 1100 Hrs. However, these timings may vary from hotel to hotel and city to city.</li>
                             <li>Early check-in or late check-out is strictly subjected to availability and may be chargeable by the hotel..</li>
                             <li>As per Government regulations, it is mandatory for all guests above 18 Years of age to show a valid photo identity card (PAN Not valid) and address proof at the time to check-in.</li>
@@ -103,20 +103,20 @@ const TNC = () => {
                             <li>The refund shall be processed immediately post-cancellation as your payment source. However, your bank may take some time as per its processing policy.( 07-15 Days).</li>
                         </ul>
                         <h4 className="text-uppercase my-4 fw-bold fs-6">Visa &amp; Insurance Terms &amp; Conditions</h4>
-                        <ul className={tw`list-disc terms_condition px-3`} style={{ fontSize: 14 }}>
+                        <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
                             <li>Kiomoi acts as a facilitator for processing Visa applications. We will guide customers on Visa formalities &amp; Visa documentation for specific destinations. The discretion to grant/reject Visa rests solely with the concerned embassy and Kiomoi will not be responsible for rejection of any applications. The visa fee is non-refundable in case of rejected visa applications.</li>
                             <li>While we strive to provide a seamless Visa experience to the customers, Kiomoi will not be held responsible for unforeseen changes to Visa formalities levied by the embassy during the document submission and processing phase.</li>
                             <li>Insurance once applied is subject to 100% cancellation fee and is non-refundable.</li>
                         </ul>
 
                         <h4 className="text-uppercase my-4 fw-bold fs-6">Online Card Payments Policy</h4>
-                        <ul className={tw`list-disc terms_condition px-3`} style={{ fontSize: 14 }}>
+                        <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
                             <li>Visa/ Master /Amex /Dinner/Rupay Card payments are processed through an online payment gateway system. You need not worry about your credit card information falling into the wrong hands because your bank will authorise the credit card transaction directly without any information passing through us. In approximately 25-30 seconds (depending on your internet connection) your bank will issue, using the online payment gateway, an authorisation code and confirmation of completion of transaction(s).</li>
                             <li>Kiomoi.com, uses the payment gateway who are Verisign Certified Sites, who uses the latest 128 bit encryption technology and other sophisticated methods to protect your credit card information. You can book your product using SSL encryption (the internet standard for secure transactions). In fact, transacting online with a credit card at the Website is even safer than using a credit card at a restaurant because we do not retain your credit card information. You can be assured that Kiomoi.com offers you the highest standards of security currently available on the internet so as to ensure that your shopping experience is private, safe and secure.</li>
                             <li>If the payment on the credit card is declined for some reason, alternate payment instructions must be received by Kiomoi.com before 72 hours prior to the time of departure; else, the order is liable to be cancelled.</li>
                         </ul>
                         <h4 className="text-uppercase my-4 fw-bold fs-6">Delivery of Services How do I get a refund after cancellation my booking?</h4>
-                        <ul className={tw`list-disc terms_condition px-3`} style={{ fontSize: 14 }}>
+                        <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
                             <li>After cancellation your booking, we will send you an email at your email id stating the refund amount.</li>
                             <li>The refund shall be processed within 30 working days from the date of the e-mail. If we have received the payment through a valid credit card, then the same will be refunded to your credit card only. Payments made using any other mode of payment will be refunded by cash deposit at your account within a maximum of 30 working days from the date of the cancellation e-mail received.</li>
                             <li>In some of the cases where refund is not possible by Cash deposit &amp; Credit Card, Kiomoi.com issue a credit note for the same amount and it can be utilize for the future booking.</li>
@@ -128,7 +128,7 @@ const TNC = () => {
                         <h4 className="text-uppercase mt-4 mb-2 fw-bold fs-6">Promotion &amp; Promo Codes</h4>
                         Kiomoi.com generates promotion codes from time to time which may be availed on the site as a discount coupon.
                         <h4 className="my-4 fw-bold fs-6">Car Cancellation Terms &amp; Conditions:</h4>
-                        <ul className={tw`list-disc terms_condition px-3`} style={{ fontSize: 14 }}>
+                        <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
                             <li>Between 24 hours to 3 days before journey the cancellation charge is 100%. Between 3 days to 1 week before journey the cancellation charge is 10%.</li>
                             <li>A modification fee of minimum INR 250 per request will apply if you wish to change or cancel any part of your booking plus a difference in rates will be charged for changes to be made to the reservation subject to availability.</li>
                             <li>In case the cab operator changes the type of vehicle due to some reason, KIOMOI will refund the differential amount to the customer upon being intimated by the customers in 24 hours of the journey.</li>
@@ -136,7 +136,7 @@ const TNC = () => {
                             <li>Please note that the cancellation fee and cancellation period may differ from one cab operator to another. Please contact any of our support executives for complete details or send us an e-mail at info@kiomoi.com</li>
                         </ul>
                         <h4 className="text-centertext-uppercase my-4 fw-bold fs-6">Instant Booking (Book Now Option)</h4>
-                        <ul className={tw`list-disc terms_condition px-3`} style={{ fontSize: 14 }}>
+                        <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
                             <li>You must have completed 18 years of age to check in this hotel.</li>
                             <li>We are not holding any hotel/package booking; this booking is reconfirmed within 24 working hours.</li>
                             <li>Rates are valid for Indian Resident and non-Indian residents having work permit in India. (Non Indian Resident has to pay the additional or the same amount as per the hotel Policy)</li>

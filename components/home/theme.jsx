@@ -16,7 +16,7 @@ const Themes = ({data}) =>{
                     <a href={`/holidays/theme-${item.tag.trim().toLowerCase().replace(/\s+/g,"-")}/`}>
                         {" "}
                         <div className="icon_display">
-                        <img style={{display:'initial'}} src={`${Constants.assets_api}/public/icons/Ico_${item.tag.trim()}.png`} />
+                        <img className={tw`initial`} src={`${Constants.assets_api}/public/icons/Ico_${item.tag.trim()}.png`} />
                         </div>
                     </a>
                   </Link>

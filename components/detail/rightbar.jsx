@@ -60,19 +60,19 @@ const RightBar=({data})=>{
             {/* <div className="col-sm-4 col-xs-12"> */}
                 <div>
                     <div className="bottom_bar">
-                        <div style={{ height: '100%' }}>
-                            <div style={{ display: 'flex', height: '100%', boxShadow: '3px 1px 4px' }}>
-                            <div style={{ width: '100%', borderRight: '1px solid rgba(0,0,0,0.2)' }}>
+                        <div className={tw`h-full`}>
+                            <div className={tw`flex h-full shadow-[3px 1px 4px]`}>
+                            <div className={tw`w-full border-r-1 border-x-slate-950/20`}>
                                 <div className="bottom_bt">
                                 <div>
-                                    <FaRupeeSign className='inline' style={{fontSize:'14px',marginBottom:'4px'}} />
+                                    <FaRupeeSign className='inline text-[14px] mb-[4px]' />
                                     {parseFloat(data?.package.price)}
-                                    <p style={{ fontSize: '12px', fontWeight: '300', margin: 0 }}>(Taxes extra) Per Person</p>
+                                    <p className={tw`text-[12px] font-light m-0`}>(Taxes extra) Per Person</p>
                                 </div>
                                 </div>
 
                             </div>
-                            <div style={{ width: '100%' }} 
+                            <div className={tw`f-full`}
                                 onClick={() =>
                                     _sendquery(
                                     price,
@@ -82,7 +82,7 @@ const RightBar=({data})=>{
                                 )
                                 }
                                 >
-                                <div className="bottom_bt" style={{ fontSize: '22px' }}>
+                                <div className="bottom_bt text-[22px]">
                                 Send Query
                                 </div>
 
@@ -92,11 +92,11 @@ const RightBar=({data})=>{
                     </div>                    
 
                     <div className='_b_right_list'>
-                        <div style={{padding:'10px'}}>
+                        <div className='p-[10px]'>
                             <div className='ov_auto'>
                                 <div className='d_location flt_left'>
-                                    <IoLocationSharp style={{color:'#999'}} className='inline' size={15}/>
-                                    <span style={{color:'rgb(6, 24, 141)'}}>{data?.package.source}</span>
+                                    <IoLocationSharp className='inline text-[#999]' size={15}/>
+                                    <span className='text-[#06188D]'>{data?.package.source}</span>
                                 </div>
                                 <div className='d_location days_night flt_right'>
                                     <div className={tw`flex justify-center day_nights`}>
@@ -140,12 +140,12 @@ const RightBar=({data})=>{
 
                             <div className='bestson_list _border_right'>
                                 <div className="best_session">
-                                    <MdCheckCircle className='inline' size={13} style={{color:'#15be03'}}/>
+                                    <MdCheckCircle className='inline text-[#06188D]' size={13}/>
                                     <span>Best Session : </span>
                                     <span> {
                                         data?.package.season.split(",").length === 12? "round-the-year":
                                         // data?.package.season
-                                        <p className='f_12px' style={{display:'inline'}}>{
+                                        <p className='f_12px inline'>{
                                         data?.package.season.split(",").map((e,index)=>{
                                             return <span key={index}>
                                             {/* <span> */}
@@ -167,15 +167,15 @@ const RightBar=({data})=>{
                     </div>
 
                     <div className='_b_right_list'>
-                        <div style={{padding:'10px'}}>
+                        <div className='p-[10px]'>
                             <div className='ov_auto best_session'>
                                 <div className='flt_left'>
-                                    <MdCheckCircle size={13} className='inline' style={{color:'#15be03'}}/>
+                                    <MdCheckCircle size={13} className='inline text-[#06188D]'/>
                                     <span className='_inline__'>Part Payment Available</span>
                                 </div>
 
                                 <div className='flt_right'>
-                                    <MdCheckCircle size={13} className='inline' style={{color:'#15be03'}}/>
+                                    <MdCheckCircle size={13} className='inline text-[#06188D]'/>
                                     <span className='_inline__'>Free Cancellation</span>
                                     
                                 </div>
@@ -184,8 +184,8 @@ const RightBar=({data})=>{
 
                     </div>
                     <div className='_b_right_list'>
-                        <div style={{padding:'5px'}}>
-                            <div style={{textAlign:'center'}}>
+                        <div className='p-[5px]'>
+                            <div className='text-center'>
                                 <span className='check_availability'
                                 onClick={() =>
                                     _sendquery(
@@ -202,7 +202,7 @@ const RightBar=({data})=>{
                     </div>
 
                     <div className='_b_right_list __btn_clr price_banner'>
-                        <div style={{padding:'10px'}}>
+                        <div className='p-[10px]'>
 
 
                         <div>
@@ -213,7 +213,7 @@ const RightBar=({data})=>{
                                 // onClick={() => this.changepeople()}
                             >
                                 <img src={"/icons/friends.svg"} className={tw`inline`} alt="" />
-                                <span className="_2_two" style={{ cursor: "pointer" }}>
+                                <span className="_2_two cursor-pointer">
                                 {people} People{" "}
                                 {/* <i className="fa fa fa-angle-down"></i>{" "} */}
                                 <BsChevronDown className={tw`inline`}/>
@@ -221,21 +221,21 @@ const RightBar=({data})=>{
                                 {showpeopledropdown ? (
                                 <div className="dropdown-content">
                                     <a
-                                    style={{ cursor: "pointer" }}
+                                    className="cursor-pointer"
                                     onClick={()=>peopleChange(2)}
                                     // onClick={()=>{()=>peopleChange()}
                                     >
                                     2 people
                                     </a>
                                     <a
-                                    style={{ cursor: "pointer" }}
+                                    className="cursor-pointer"
                                     onClick={()=>peopleChange(3)}
                                     // onClick={() => this.peoplechange(3)}
                                     >
                                     3 people
                                     </a>
                                     <a
-                                    style={{ cursor: "pointer" }}
+                                    className="cursor-pointer"
                                     onClick={()=>peopleChange(4)}
                                     // onClick={() => this.peoplechange(4)}
                                     >
@@ -243,7 +243,7 @@ const RightBar=({data})=>{
                                     </a>
                                     <a
                                     onClick={()=>peopleChange(5)}
-                                    style={{ cursor: "pointer" }}
+                                    className="cursor-pointer"
 
                                     // onClick={() => this.peoplechange(5)}
                                     >
@@ -262,7 +262,7 @@ const RightBar=({data})=>{
                                     </span>
                                     <del className={tw`flex justify-between items-center`}>
                                     {/* <i className="fa fa-inr"></i> */}
-                                    <FaRupeeSign className='inline' style={{fontSize:'12px',}} />
+                                    <FaRupeeSign className='inline text-[12px]'/>
                                     {parseFloat(data?.package.price) +
                                         parseFloat(data?.package.discount)}
                                     /-
@@ -294,13 +294,13 @@ const RightBar=({data})=>{
                             </div>
                             </div>
                             <div className="button_details_page">
-                            <a href="tel:+919650687940" className="button_detail" style={{ fontWeight: 'bold' }}>
+                            <a href="tel:+919650687940" className="button_detail font-bold">
                                 CALL NOW
                             </a>
                             <a
                                 href="javascript:void(0)"
-                                style={{ fontWeight: 'bold' }}
-                                className="_22m button_detail btn_white"
+                                
+                                className="_22m button_detail btn_white font-bold"
                                 onClick={() =>
                                     _sendquery(
                                     price,

@@ -87,13 +87,14 @@ const Guest = (props) => {
                 backdrop="static">
                 <Modal.Body>
                     <span
-                        style={{
-                            float: "right",
-                            color: "black"
-                        }}
+                    className={tw`float-right text-black`}
+                        // style={{
+                        //     float: "right",
+                        //     color: "black"
+                        // }}
                         onClick={() => setShow(!show)}
                         aria-hidden="true">
-                        <GrClose style={{ cursor: 'pointer' }} />
+                        <GrClose className={tw`cursor-pointer`} />
                     </span>
                     <div>
                         <form onSubmit={handleGuestSubmit}>
@@ -191,14 +192,14 @@ const Guest = (props) => {
                 animation={false}
                 backdrop="static">
                 <Modal.Body>
-                    <span
-                        style={{
-                            float: "right",
-                            color: "black"
-                        }}
+                    <span className={tw`float-right text-black`}
+                        // style={{
+                        //     float: "right",
+                        //     color: "black"
+                        // }}
                         onClick={() => setOtpModal(!otpModal)}
                         aria-hidden="true">
-                        <GrClose style={{ cursor: 'pointer' }} />
+                        <GrClose className={tw`cursor-pointer`} />
                     </span>
 
                     <div>

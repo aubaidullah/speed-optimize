@@ -173,7 +173,7 @@ const Package = ({item}) =>{
                                                     <div className="_row ov_auto mb_display_none">
                                                         <div className="flt_left">
                                                             <div>
-                                                                <h2 className={tw`pack_title text-xl`}>{item.name}</h2>
+                                                                <h2 className={tw`pack_title text-xl text-gray-500`}>{item.name}</h2>
                                                                 
                                                                 <div className={tw`flex flex-wrap items-center mt-1`}>
                                                                     

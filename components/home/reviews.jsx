@@ -69,7 +69,7 @@ const Reviews = ({ data }) => {
           <div className={tw`col-sm-12 col-xs-12 _cr_mb px-4`} key={i}>
             <div className="comment_box _box_shadow">
               <div className="qoute_ text-center">
-                <ImQuotesRight className={tw`icon_size inline`} style={{ fontSize: '30px' }} />
+                <ImQuotesRight className={tw`icon_size inline text-[30px]`} />
               </div>
               <div className="text-comment">
                 <p>{review.substring(0, 150)}...</p>

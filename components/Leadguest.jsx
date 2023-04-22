@@ -6,6 +6,7 @@ import axios from 'axios';
 import * as Constants from "./Constants";
 import SimpleReactValidator from "simple-react-validator";
 import Cookie from 'js-cookie'
+import { tw } from 'twind';
 import {BsXLg} from 'react-icons/bs'
 
 const LeadGuest = (props) => {
@@ -163,15 +164,17 @@ const LeadGuest = (props) => {
                 backdrop="static">
                 <Modal.Body>
                     <span
-                        style={{
-                            float: "right",
-                            color: "black"
-                        }}
+                        className={tw`float-right text-black`}
+                        // style={{
+                        //     float: "right",
+                        //     color: "black"
+                        // }}
                         onClick={() => setOtpModal(!otpModal)}
                         aria-hidden="true">
                         {/* <i className="fa fa-close"></i> */}
                         <BsXLg 
-                            style={{cursor: "pointer" }}
+                        className={tw`cursor-pointer`}
+                            // style={{cursor: "pointer" }}
                             // onClick={()=>changeForm(false)}
                             />                        
                     </span>
@@ -180,12 +183,12 @@ const LeadGuest = (props) => {
                     {
                         opengest==true?
                         <div>
-                            <h4 style={{textAlign:'center'}}>Sending OTP to {guest.mobile}</h4>
-                            <p style={{textAlign:'center'}}>please wait...</p>
+                            <h4 className={tw`text-center`}>Sending OTP to {guest.mobile}</h4>
+                            <p className={tw`text-center`}>please wait...</p>
                         </div>
                         :
                         <div>
-                            <div className="login_header" style={{width:'90%'}}>
+                            <div className={tw`login_header w-[90%]`}>
                                 <p className="text_color">
                                     We sent an sms with confirmation code to your mobile number
                                 </p>

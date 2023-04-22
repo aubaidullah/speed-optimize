@@ -25,8 +25,7 @@ const State_Attraction = ({data}) =>{
               <div className="px-2 _cr_mb">
                 <div className="des_img">
                   <img
-                    className="img-responsive"
-                    style={{borderRadius:'8px'}}
+                    className={tw`img-responsive rounded-[8px]`}
                     src={
                       item.images
                         ? item.images

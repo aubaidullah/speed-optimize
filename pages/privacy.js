@@ -15,14 +15,14 @@ const Privacy = () => {
                     <div className={tw`terma-box _box_shadow bg-white p-5`}>
                         <p>Your privacy is very important to Kiomoi.com. That's why we've provided this Privacy Policy, which gives you an insight into our policies regarding the collection, use and protection of the personal information of those using Kiomoi.com. Personal information means information that can be linked to a specific individual, including name, postal address, telephone number, e-mail id, and credit card number. We would like to assure you that we follow appropriate standards when it comes to protecting your privacy on our web site. In general, you can visit Kiomoi website without revealing any personal information about yourself. We track the Internet address of the domains from which people visit us and analyze this data for trends and statistics, but the individual user remains anonymous.</p>
                         <h4 className="my-4 fw-bold fs-6">We use Personal Information in order to provide and enhance the Products or Services offered on our Site</h4>
-                        <ul className={tw`list-disc terms_condition px-3`} style={{ fontSize: 14 }}>
+                        <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
                             <li>To issue invoices, administer accounts, collect and process payments.</li>
                             <li>To process and track your transactions and to send you information about our and our affiliatesâ„¢ and Ëœbusiness partnersâ„¢ products and services and other information and materials that may be of interest to you.</li>
                             <li>As permitted by, and to comply with, any legal or regulatory requirements or provisions; or for any other purpose to which you consent.</li>
                         </ul>
 
                         <h4 className="my-4 fw-bold fs-6">From time to time, we may disclose your Personal Information as follows:</h4>
-                        <ul className={tw`list-disc terms_condition px-3`} style={{ fontSize: 14 }}>
+                        <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
                             <li>
                                 To those travel service providers with which you make arrangements through our Site, for example, airlines, car rental, hotel, ground transportation, attraction, or travel insurance. We provide them with the Personal Information needed to make and complete the purchase, booking, or reservation.</li>
                             <li>

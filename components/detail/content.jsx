@@ -39,21 +39,20 @@ const Content = ({data}) =>{
         return (
           <div key={i}>
             <div
-              className="Shape_42 _details_ _50m _hover _box_shadow"
-              style={{ padding: "0px" }}
+              className={tw`Shape_42 _details_ _50m _hover _box_shadow p-0`}
               data-toggle="tooltip"
               data-placement="left"
               title={t}
             >
-              <h4 style={{ padding: '10px 10px 0px 10px', marginBottom: "0px" }}>
+              <h4 className={tw`pt-[10px] pr-[10px] pb-0 pl-[10px] mb-0`}>
                 Day {c}: {item.heading}
               </h4>
-              <p style={{ padding: '10px', marginBottom: '10px' }}>{item.desc}</p>
-              <div className={tw`Shape_53 text-sm`} style={{ padding: '10px', position: 'relative' }}>
+              <p className={tw`p-[10px] mb-[10px]`}>{item.desc}</p>
+              <div className={tw`Shape_53 text-sm p-[10px] relative`}>
                 <div className={tw`flex`}>
                   
-                  <div className={tw`_location_`} style={{display: 'flex', gap: 10}}>
-                  <FaBinoculars style={{fontSize:'17px'}}/>
+                  <div className={tw`_location_ flex gap-[10px]`}>
+                  <FaBinoculars className={tw`text-[17px]`}/>
                   {/* <i className="fa fa-binoculars" aria-hidden="true"></i>{" "} */}
                   <p>
                     {item.attractions.replace(/#/g, " - ").replace(/\//g, " ")}{" "}
@@ -104,8 +103,8 @@ const Content = ({data}) =>{
   
               <td>
                 <div className="">
-                  <div className="_city_name_" style={{ display: "inline" }}>{hn}</div>
-                  <div style={{ fontSize: '0.8em', display: 'inline' }}>/similar</div>
+                  <div className="_city_name_ inline">{hn}</div>
+                  <div className={tw`text-[0.8em] inline`}>/similar</div>
                 </div>
               </td>
             </tr>
@@ -206,14 +205,12 @@ const Content = ({data}) =>{
 
                 <div className='col-sm-8 col-xs-12'>
                     <div className='inclusion'>
-                        <div className='Shape_42' style={{paddingTop:"10px",paddingBottom:'10px'}}>
-
-
+                        <div className={tw`Shape_42 pt-[10px] pb-[10px]`}>
                             <div className="icons-meal-info d_icons-meal-info">
                               <div className="_div">
                                 <div>
                                     <div className={tw`flex text-center`}>
-                                        <MdOutlineFlight className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto',color:'#c6c5c5'}} /> 
+                                        <MdOutlineFlight className={tw`h-6 ml-auto mr-auto text-[#c6c5c5]`} size={20}/> 
 
                                     </div>
                                     <p>Flight</p>
@@ -223,7 +220,7 @@ const Content = ({data}) =>{
                             <div className="_div">
                                 <div>
                                     <div className={tw`flex text-center`}>
-                                        <IoCarSportOutline className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+                                        <IoCarSportOutline className={tw`h-6 ml-auto mr-auto`} size={20}/> 
 
                                     </div>
                                 <p>Trasnfer</p>
@@ -233,7 +230,7 @@ const Content = ({data}) =>{
                             <div className="_div">
                                 <div>
                                     <div className={tw`flex text-center`}>
-                                        <IoFastFoodOutline className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+                                        <IoFastFoodOutline className={tw`h-6 ml-auto mr-auto`} size={20}/> 
 
                                     </div>
                                 <p>Breakfast</p>
@@ -243,7 +240,7 @@ const Content = ({data}) =>{
                             <div className="_div">
                                 <div>
                                     <div className={tw`flex text-center`}>
-                                        <RiHotelLine className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+                                        <RiHotelLine className={tw`h-6 ml-auto mr-auto`} size={20}/> 
 
                                     </div>
                                 <p>Hotel</p>
@@ -254,7 +251,7 @@ const Content = ({data}) =>{
                                 <div>
                                     {/* GiBinoculars */}
                                     <div className={tw`flex text-center`}>
-                                        <GiBinoculars className='h-6' size={20} style={{marginLeft:'auto',marginRight:'auto'}} /> 
+                                        <GiBinoculars className={tw`h-6 ml-auto mr-auto`} size={20}/> 
 
                                     </div>
                                 <p>SightSeeing</p>
@@ -318,13 +315,13 @@ const Content = ({data}) =>{
                                 <table className="table table-hover">
                                 <thead>
                                     <tr>
-                                    <th style={{ verticalAlign: 'middle' }}>
+                                    <th className={tw`algin-middle`}>
                                         City
                                     </th>
-                                    <th style={{ verticalAlign: 'middle' }}>
+                                    <th className={tw`algin-middle`}>
                                         No. Of Nights
                                     </th>
-                                    <th style={{ verticalAlign: 'middle' }}>
+                                    <th className={tw`algin-middle`}>
                                         Hotel
                                     </th>
                                     </tr>
@@ -344,7 +341,7 @@ const Content = ({data}) =>{
                                 <h4 className="_titles_">Inclusions</h4>
                                 <ul className="bullet_points">
                                     {data?.package.inclusions.split("#").map((item,i)=>{
-                                        return <li key={i}><MdCheckCircle className="inline" style={{color:'#15be03',}}/> <span>{item}</span></li>
+                                        return <li key={i}><MdCheckCircle className={tw`inline text-[#15be03]`}/> <span>{item}</span></li>
                                     })}
                                     
                                     </ul>
@@ -357,7 +354,7 @@ const Content = ({data}) =>{
                                 <h4 className="_titles_">Exclusions</h4>
                                 <ul className="bullet_points">
                                     {data?.package.exclusions.split("#").map((item,i)=>{
-                                        return <li key={i}><MdCancel className="inline" style={{color:'#fb050b',}}/> <span>{item}</span></li>
+                                        return <li key={i}><MdCancel className={tw`inline text-[#fb050b]`}/> <span>{item}</span></li>
                                     })}
                                     
                                     </ul>
@@ -374,7 +371,7 @@ const Content = ({data}) =>{
                             <div className="_pay_policy">
                                 <h4 className="_titles_">
                                 Cancellation Policy
-                                <span style={{ fontSize: '12px', fontWeight: '300' }}>(Apply on total Package cost)</span>
+                                <span className={tw`text-[12px] font-light`}>(Apply on total Package cost)</span>
                                 </h4>
                                 {/* <p>(Apply on total Package cost)</p> */}
 
@@ -387,7 +384,7 @@ const Content = ({data}) =>{
                         <div className="hotel_accomodation" id="tnc">
                             <div className="_list_accomodation">
                                 <h4 className="_titles_">Terms & Conditions</h4>
-                                <ul className={tw`tnc_d text-sm text-gray-400`} style={{ margin: '30px 0 0' }}>
+                                <ul className={tw`tnc_d text-sm mt-[30px] mr-0 mb-0`}>
                                 {ReactHtmlParser(tnc)}
 
                                 <div className="text-right">
