@@ -11,7 +11,7 @@ export async function getServerSideProps({ res }) {
     <Nav />
     <title>410 | Gone</title>
     <div className={tw`h-screen`}>
-        <div className={tw`flex items-center`} style={{height:'100%'}}>
+        <div className={tw`flex items-center h-full`}>
             <h1 className={tw`text-3xl text-center w-full c_gray`}>Gone | 410</h1>
         </div>
     </div>

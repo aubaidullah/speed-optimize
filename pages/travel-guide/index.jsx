@@ -60,16 +60,16 @@ const TravelGuide = ({data,meta}) =>{
                                         <a href={url}>
                                             <div className={tw`bg-white rounded-2xl _box_shadow`}>
                                                 <div className={tw`h-56`}>
-                                                    <img className={tw`rounded-t-2xl`} style={{height:'100%',width:'100%'}}
+                                                    <img className={tw`rounded-t-2xl h-full w-full`}
                                                         src={e.images}
                                                     />
                                                 </div>
                                                 <div className={tw`p-4 trvl_box`}>
-                                                    <div className={tw`pt-4 text-sm text-gray-200`}>
+                                                    <div className={tw`pt-4 text-sm text-gray-600`}>
                                                         {ReactHtmlParser(e.overviewDesc.substring(0, 150))}
                                                     </div>
                                                     <div className={tw`mt-2`}>
-                                                        <div className="btn_listing _btn_clr" style={{width:'100%',textAlign:'center',padding:'8px 15px',fontSize:'12px'}}>KNOW MORE & GET CUSTOMIZE</div>
+                                                        <div className="_btn_clr w-full text-center text-[12px] pt-[8px] pb-[8px] pl-[15px] pr-[15px] btn_listing">KNOW MORE & GET CUSTOMIZE</div>
                                                     </div>
                                                 </div>
 

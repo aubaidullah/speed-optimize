@@ -148,23 +148,23 @@ const BookingDetail = () => {
                         resp.data.output.bt;
                     swalr(
                         <>
-                            <div style={{ textAlign: 'center', marginBottom: '15px' }}>
-                                <p style={{ paddingTop: "10px", textAlign: "center", fontSize: "17px" }}>Thank you for the payment. Your payment summary as below: </p>
+                            <div className="text-center mb-[15px]">
+                                <p className="pt-[10px] text-center text-[17px]">Thank you for the payment. Your payment summary as below: </p>
                                 <div>
                                     <div>
-                                        <span style={{ fontWeight: "bold" }}>Booking ID : </span>
+                                        <span className="font-bold">Booking ID : </span>
                                         <span>{resp.data.output.bid}</span>
                                     </div>
                                     <div>
-                                        <span style={{ fontWeight: "bold" }}>Trasection ID : </span>
+                                        <span className="font-bold">Trasection ID : </span>
                                         <span>{resp.data.output.pid}</span>
                                     </div>
                                     <div>
-                                        <span style={{ fontWeight: "bold" }}>Trasection Date : </span>
+                                        <span className="font-bold">Trasection Date : </span>
                                         <span>{resp.data.output.bt} </span>
                                     </div>
                                     <div>
-                                        <span style={{ fontWeight: "bold" }}>Amount : </span>
+                                        <span className="font-bold">Amount : </span>
                                         <span>&#8377;&nbsp;{resp.data.output.amount}/-</span>
                                     </div>
                                 </div>
@@ -295,7 +295,7 @@ const BookingDetail = () => {
     return (
         <>
             <Nav />
-            <section className={tw`booking-detail`} style={{ filter: showModal == true ? 'blur(5px)' : 'blur(0px)' }}>
+            <section className={tw`booking-detail ${showModal == true ? 'blur-[5px]':'blur-[0px]'}`}>
                 <section className="about_place">
                     <div className="container">
                         <div className="row">
@@ -336,7 +336,7 @@ const BookingDetail = () => {
                                                     <div className="row"></div>
                                                 </div>
                                             </div>
-                                            <div className={tw`location package-location`} style={{ fontSize: 12.5 }}>
+                                            <div className={tw`location package-location text-[12.5px]`}>
                                                 <span>
                                                     {" "}
                                                     {bookingDetails?.lead?.nights + 1} Days /{" "}
@@ -353,7 +353,7 @@ const BookingDetail = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className={tw`row info-booking py-3 px-2 Shape_42 m-0 border`} style={{ background: '#f5f4f4' }}>
+                                        <div className={tw`row info-booking py-3 px-2 Shape_42 m-0 border bg-[#f5f4f4]`}>
                                             <div className={tw`col-4 info-booking-details flex justify-center items-center`}>
                                                 <div>
                                                     <p className={tw`text-xs`}>Trip Start</p>
@@ -403,10 +403,10 @@ const BookingDetail = () => {
                                         <div className="package-cancellation">
                                             <div className={tw`row gy-1 Shape_42 border mt-3 md:p-4`}>
                                                 <div className="col-sm-8 cancel-left mb-2">
-                                                    <p style={{ 'fontWeight': 'bold', fontSize: 13 }}>Cancellation charges</p>
+                                                    <p className="font-bold text-[13px]">Cancellation charges</p>
                                                 </div>
                                                 <div className="col-sm-4 cancel-right">
-                                                    <p style={{ 'fontWeight': 'bold', fontSize: 13 }}>*Same Day cancellation No refund</p>
+                                                    <p className="font-bold text-[13px]">*Same Day cancellation No refund</p>
                                                 </div>
                                                 <div className={tw`col-sm-8 cancel-left flex items-center gap-2`}>
                                                     <AiFillCheckCircle color="green" size={15} />
@@ -449,7 +449,7 @@ const BookingDetail = () => {
                                                     )}
                                                 </div>
                                                 <div className="col-sm-4 cancel-right text-right">
-                                                    <a href="/terms-and-conditions" target="_blank" style={{ color: '#0072ff' }}>
+                                                    <a href="/terms-and-conditions" className="text-[#0072ff]" target="_blank">
                                                         Term & Condition
                                                         <br />
                                                     </a>
@@ -464,11 +464,11 @@ const BookingDetail = () => {
                                 <div className="b_right">
                                     <div className="_b_right_list_1">
                                         <div className="payment-summary">
-                                            <div className="flex justify-between payment-heading p-3" style={{ background: '#e4e4e4', paddingLeft: 10, paddingRight: 10 }}>
+                                            <div className="flex justify-between payment-heading p-3 bg-[#e4e4e4] pl-[10px] pr-[10px]">
                                                 <div className="col-sm-8 payment-head">
                                                     <h4>Payment Summary</h4>
                                                 </div>
-                                                <div style={{ color: '#0072f' }}>Full Breakup</div>
+                                                <div className="text-[#0072f]">Full Breakup</div>
                                             </div>
                                             <div className="row total-amt">
                                                 <div className={tw`flex justify-between my-2 px-4`}>
@@ -544,8 +544,8 @@ const BookingDetail = () => {
                                                     <div className="_mx-2 pay-now-btn">
                                                         <div className="text-center">
                                                             {bookingDetails?.output?.payamt > 0 ? (
-                                                                <button style={{width:'100%'}}
-                                                                    className="anchore_coment _w_100 btn_anchor pay-btn"
+                                                                <button 
+                                                                    className="w-full anchore_coment _w_100 btn_anchor pay-btn"
                                                                     onClick={paymentSubmit}
                                                                 >
                                                                     Pay Now
@@ -560,7 +560,7 @@ const BookingDetail = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="b_right" style={{ display: "none" }}>
+                                <div className="b_right hidden" >
                                     <div className="_b_right_list_1">
                                         <div className="row">
                                             <div className="col-xs-8 offers-box cost-left">
@@ -786,7 +786,7 @@ const BookingDetail = () => {
                                 </div>
 
                                 {/* NOT ACTIVATED */}
-                                <div className="panel panel-default" style={{ display: 'none' }}>
+                                <div className="panel panel-default hidden">
                                     <div className="panel-heading" id="headingc" role="tab">
                                         <h4 className="panel-title">
                                             <a
@@ -850,7 +850,8 @@ const BookingDetail = () => {
                     <a href="/">
                         {" "}
                         <span
-                            style={{ float: "right", color: "black" }}
+                            className="float-right text-black"
+                            
                             aria-hidden="true"
                         >
                             <BsXLg />

@@ -140,11 +140,8 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                             <div>
                                 <BsFillCheckCircleFill
                                     size={10}
+                                    className='inline mr-[3px]'
                                     color='gray'
-                                    style={{
-                                        display: 'inline',
-                                        marginRight: 3
-                                    }}
                                 />
                                 <span className={tw`text-xs`}>Verfied Review</span>
                                 <span className={tw`mx-1`}> | </span>
@@ -157,7 +154,7 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                 </div>
                 <div className={tw`ms-2 mt-2 w-full lg:w-2/3`}>
                     <details>
-                        <summary className={tw`text-xs font-semibold`} style={{ color: '#f06726' }}>
+                        <summary className={tw`text-xs font-semibold text-[#f06726]`}>
                             <span>
                                 Read
                             </span>
@@ -184,7 +181,7 @@ const DetailPage = ({ data, related, reviews,meta }) => {
           return (
             <>
                 <div class="_circle_51" title={item}>
-                    <img style={{display:'initial'}} src={`${Constants.assets_api}/public/icons/Ico_${item.trim()}.png`} />
+                    <img className='inline' src={`${Constants.assets_api}/public/icons/Ico_${item.trim()}.png`} />
                 </div>
             </>
           );
@@ -312,11 +309,10 @@ const DetailPage = ({ data, related, reviews,meta }) => {
 
                         <div className="form-group style_form mt-2">
                             <textarea
-                                className={tw`form-control`}
+                                className={tw`form-control h-[130px]`}
                                 name="review"
                                 required
                                 value={reviewText}
-                                style={{ height: '130px' }}
                                 onChange={e => setReviewText(e.target.value)}
                                 placeholder="Please write at least 100 characters about your experience at this destination."
                             />
@@ -324,13 +320,6 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                         <div className={tw`flex justify-between`}>
                             <div className={tw`flex items-center text-xs md:text-lg font-semibold md:font-normal`}>
                                 <div>
-                                    <input
-                                        type="file"
-                                        accept="image/*"
-                                        onChange={imageChange}
-                                        style={{ display: 'none' }}
-                                        id="contained-button-file"
-                                    />
                                     Upload Photos
                                 </div>
                                 <label htmlFor="contained-button-file">
@@ -356,12 +345,10 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                                         <div key={i} className="col-6 col-md-4">
                                             <div>
                                                 <img
+                                                    className='w-full max-h-[300px]'
                                                     src={URL.createObjectURL(image)}
                                                     alt="Image"
-                                                    style={{
-                                                        width: '100%',
-                                                        maxHeight: 300
-                                                    }}
+
                                                 />
                                             </div>
                                         </div>
@@ -381,8 +368,8 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                 {reviews?.reviews.length > 0 ? reviewRender : "No Reviews yet"}
                 {reviews?.reviews.length > 0 && maxReview == 5 ?
                     <div
-                        style={{color:'#999'}}
-                        className={tw`w-full hover:text-black lg:w-2/3 flex flex-row-reverse text-lg font-bold cursor-pointer`}
+                        
+                        className={tw`text-[#999] w-full hover:text-black lg:w-2/3 flex flex-row-reverse text-lg font-bold cursor-pointer`}
                         onClick={() => setMaxReview(reviews.count)}
                     >
                         View All

@@ -37,7 +37,7 @@ const TravelArticle = ({data,article,meta}) =>{
                 <div className={tw`mt-6`}>
                     <div className={tw`flex flex-wrap services_listing`}>
                         {data.article.tags.split(',').map((item,index)=>{
-                            return <div className="btn_view_more" style={{marginRight:'10px'}}>{item}</div>
+                            return <div className="btn_view_more mr-[10px]">{item}</div>
                         })}
                     </div>
                 </div>

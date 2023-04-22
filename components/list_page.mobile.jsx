@@ -250,7 +250,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     // console.log(_places)
     // console.log(_themes)
     // console.log(_pricing)
-    // console.log(filtering)
+    // console.log(page_type)
     // console.log(pricefilter)
     // console.log(data.length)
     return <>
