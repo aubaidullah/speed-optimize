@@ -77,7 +77,7 @@ const Reviews = ({ data }) => {
 
               <div className="user_verify text-center">
                 <div className="user_img_round">
-                  <img src={`${Constants.assets_api}/public/icons/user_photo.png`} alt="" />
+                  <img src={`${Constants.assets_api}/public/icons/user_photo.png`} alt="user" />
                 </div>
                 <div className="user_title">{item.cName}</div>
                 <div className="divider_line"></div>

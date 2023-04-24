@@ -191,7 +191,7 @@ const Login = (props) => {
                                         <img
                                             className={tw`m-auto w-[40px]`}
                                             src={`${Constants.assets_api}/public/icons/logo-icon.png`}
-                                            alt=""
+                                            alt="kiomoi"
                                             // style={{ width: '40px' }}
                                         />
                                         <h4 className={tw`text-lg font-semibold text-orange`}>Login or Sign up</h4>
@@ -440,7 +440,7 @@ const Login = (props) => {
                                     <img
                                         className={tw`m-auto w-[40px]`}
                                         src={`${Constants.assets_api}/public/icons/logo-icon.png`}
-                                        alt=""
+                                        alt="kiomoi"
                                         // style={{ width: '40px' }}
                                     />
                                     <h4 className={tw`font-semibold text-orange`}>Enter OTP and New Password</h4>

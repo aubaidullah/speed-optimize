@@ -20,7 +20,7 @@ const Hotel_Design = ({item}) =>{
                     <img 
                     className={tw`img-responsive object-cover h-[200px] w-full rounded-[8px] border-1 border-[#e3e3e3]`}
                     src={item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`}
-                    alt=""
+                    alt="kiomoi logo"
                 />
                 </div>
                 <div className={tw`mt-2`}>

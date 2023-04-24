@@ -103,7 +103,7 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
             <div className={tw`flex mt-3`}>
                 <div className="relative z-999">
                 {/* calender_multi_clr */}
-                    <img src={`${Constants}/public/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
+                    <img src={`${Constants}/public/icons/calender_multi_clr.png`} alt="calendar icon" className={tw`inline ht_cal_icon`} />
                     <div className="ht_label">
                         Check-in
                     </div>
@@ -118,7 +118,7 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
                         />
                 </div>
                 <div className="relative z-999">
-                <img src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
+                <img src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`} alt="calendar icon" className={tw`inline ht_cal_icon`} />
                     <div className="ht_label">
                         Check-out
                     </div>
@@ -309,7 +309,7 @@ const HotelDetail = ({hotel,meta}) =>{
                                             <li className="slide">
                                                 {
                                                     hotel.hotel.images
-                                                    ?<Image className='img ht_img' src={hotel.hotel.images.split(',')[0]} layout="fill" />:
+                                                    ?<Image className='img ht_img' alt={hotel.hotel.name} src={hotel.hotel.images.split(',')[0]} layout="fill" />:
                                                     ""
                                                 }
                                                 
@@ -365,6 +365,7 @@ const HotelDetail = ({hotel,meta}) =>{
                                                             hotel.hotel.images.split(',')[index+1]
                                                         
                                                         }   
+                                                        alt={hotel?.hotel?.name}
                                                             layout="fill"  />
                                                         {index==1
                                                         ?<div className={tw`absolute text-white right-[10px] bottom-6 lg:bottom-2`}>

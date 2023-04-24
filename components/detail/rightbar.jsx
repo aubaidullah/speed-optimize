@@ -212,7 +212,7 @@ const RightBar=({data})=>{
                                 onClick={()=>setShowpeopledropdown(!showpeopledropdown)}
                                 // onClick={() => this.changepeople()}
                             >
-                                <img src={"/icons/friends.svg"} className={tw`inline`} alt="" />
+                                <img src={"/icons/friends.svg"} className={tw`inline`} alt="peoples" />
                                 <span className="_2_two cursor-pointer">
                                 {people} People{" "}
                                 {/* <i className="fa fa fa-angle-down"></i>{" "} */}

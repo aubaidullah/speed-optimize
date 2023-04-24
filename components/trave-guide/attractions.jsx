@@ -31,7 +31,7 @@ const State_Attraction = ({data}) =>{
                         ? item.images
                         : `${Constants.assets_api}/public/icons/logo-icon.png`
                     }
-                    alt=""
+                    alt="kiomoi logo"
                   />
                   <div className="des_cont">
                     <div className="des_location">{item.name}</div>

@@ -101,7 +101,7 @@ const Nav = () => {
                             <Link href={'/'}>
 
                                 {/* <img className="brand-logo" src={`${router.pathname=='/'? `${Constants.assets_api}/public/icons/download.png`:`${Constants.assets_api}/public/icons/kiomoi.png`}`}/> */}
-                                <img className="brand-logo" src="/icons/kiomoi logo.svg"/>
+                                <img className="brand-logo" alt="kiomoi" src="/icons/kiomoi logo.svg"/>
                             </Link>
                         </div>
                         <div className={tw`item_group flt_right ml-6`}>
@@ -111,7 +111,7 @@ const Nav = () => {
                                         onMouseOver={() => setTripover(true)}
                                         onMouseOut={() => setTripover(false)}
                                     >
-                                        <img src={tripover ? `${Constants.assets_api}/public/icons/icons/ICO-TRIPS-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO TRIPS.png`} />
+                                        <img alt="trips" src={tripover ? `${Constants.assets_api}/public/icons/icons/ICO-TRIPS-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO TRIPS.png`} />
                                         <span className="nav-text">Trips</span>
                                     </div>
                                 </Link>
@@ -123,7 +123,7 @@ const Nav = () => {
                                         onMouseOver={() => setExploreover(true)}
                                         onMouseOut={() => setExploreover(false)}
                                     >
-                                        <img src={exploreover ? `${Constants.assets_api}/public/icons/icons/ICO-EXPLORE-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO EXPLORE.png`} />
+                                        <img alt="explore" src={exploreover ? `${Constants.assets_api}/public/icons/icons/ICO-EXPLORE-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO EXPLORE.png`} />
                                         <span className="nav-text">Explore</span>
                                     </div>
                                 </Link>
@@ -135,7 +135,7 @@ const Nav = () => {
                                     onMouseOver={() => setStayover(true)}
                                     onMouseOut={() => setStayover(false)}
                                 >
-                                    <img src={stayover ? `${Constants.assets_api}/public/icons/icons/ICO-STAYS-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO STAYS.png`} />
+                                    <img alt="stays" src={stayover ? `${Constants.assets_api}/public/icons/icons/ICO-STAYS-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO STAYS.png`} />
                                     <span className="nav-text">Stays</span>
                                 </div>
                             </Link>

@@ -320,7 +320,7 @@ const BookingDetail = () => {
                                                             ? bookingDetails?.lead?.i
                                                             : `${Constants.assets_api}/public/icons/logo-icon.png`
                                                     }
-                                                    alt=""
+                                                    alt="kiomoi logo"
                                                 />
                                             </div>
                                         </div>
@@ -866,7 +866,7 @@ const BookingDetail = () => {
                                         <img
                                             src={`${Constants.assets_api}/public/icons/logo-icon.png`}
                                             height="50"
-                                            alt=""
+                                            alt="kiomoi logo"
                                         />
                                     </div>
                                     <h4 className={tw`my-2 mb-4`}>My Bookings</h4>

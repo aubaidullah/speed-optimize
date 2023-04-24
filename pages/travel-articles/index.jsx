@@ -34,7 +34,7 @@ const TravelArticles = ({article,meta}) =>{
                             
                             <div className={tw`w-full lg:w-1/3`}>
                                 <div>
-                                    <img src={item.images} />
+                                    <img src={item.images} alt={item.heading}/>
                                 </div>
                                 
                             </div>

@@ -62,6 +62,7 @@ const TravelGuide = ({data,meta}) =>{
                                                 <div className={tw`h-56`}>
                                                     <img className={tw`rounded-t-2xl h-full w-full`}
                                                         src={e.images}
+                                                        alt={`${e.cityName} travel guide`}
                                                     />
                                                 </div>
                                                 <div className={tw`p-4 trvl_box`}>

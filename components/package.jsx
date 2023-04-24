@@ -97,7 +97,7 @@ const Package = ({item}) =>{
                                                                 <div className={tw`ml-4 two_peoples`}>
                                                                     <div className={tw`flex flex-wrap items-center`}>
                                                                         <span className="frieds">                                                                            
-                                                                            <img src={"/icons/friends_.svg"} alt="" />
+                                                                            <img alt="2 people" src={"/icons/friends_.svg"}/>
                                                                         </span>
                                                                         <span className='_2_two'>
                                                                             2
@@ -146,7 +146,7 @@ const Package = ({item}) =>{
                                                         {/* <div className="bk_img" style={{backgroundImage:`url("${item.images.split('~')[0].replace(/w_400/,'w_300')}")`,backgroundPosition:'cover'}}>
                                                         </div> */}
                                                         <div className='bk_img'>
-                                                            <Image layout="fill" className={tw`rounded-[10px]`} objectFit="fill" src={`${item.images.split('~')[0].replace(/w_400/,'w_300')}`} />
+                                                            <Image layout="fill" alt={item.name} className={tw`rounded-[10px]`} objectFit="fill" src={`${item.images.split('~')[0].replace(/w_400/,'w_300')}`} />
                                                         </div>
                                                         
 
@@ -202,7 +202,7 @@ const Package = ({item}) =>{
                                                                     <div className={tw`ml-4 two_peoples`}>
                                                                         <div className={tw`flex flex-wrap`}>
                                                                             <span className="frieds">                                                                            
-                                                                                <img src={"/icons/friends_.svg"} alt="" />
+                                                                                <img alt="2 peoples" src={"/icons/friends_.svg"} />
                                                                             </span>
                                                                             <span className='_2_two'>
                                                                                 2

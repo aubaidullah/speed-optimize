@@ -31,7 +31,7 @@ const State = ({data}) =>{
                         ? item.im.split("~")[0]
                         : `${Constants.assets_api}/public/icons/logo-icon.png`
                     }
-                    alt=""
+                    alt="kiomoi"
                   />
                   <div className="des_cont">
                     <div className="des_location">{item.nm}</div>

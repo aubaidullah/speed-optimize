@@ -34,7 +34,7 @@ const Banner = ({ data }) => {
     <div className={tw`overflow-hidden slider_banner slider_banner_ slider_overlay`}>
         <div>
             {/* scaleX(1.5) */}
-                <img src={data[0]?.i} className="img-responsive_banner" />
+                <img src={data[0]?.i} className="img-responsive_banner" alt="banner img"/>
         </div>
         
     </div>

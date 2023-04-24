@@ -129,7 +129,7 @@ const Login = (props) => {
                                         <img
                                             className={tw`m-auto w-[40px]`}
                                             src={`${Constants.assets_api}/public/icons/logo-icon.png`}
-                                            alt=""
+                                            alt="kiomoi"
                                             
                                             // style={{ width: '40px' }}
                                         />

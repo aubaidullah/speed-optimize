@@ -8,7 +8,7 @@ const Privacy = () => {
         <section className={tw`md:px-14 custom-font t_box`}>
             <div>
                 <div className="terms-inner-section">
-                    <center className="mt-4"><img src={`${Constants.assets_api}/public/icons/kiomoi_logo_abstract.png`} className="mx-auto d-block" /></center>
+                    <center className="mt-4"><img alt="kiomoi logo" src={`${Constants.assets_api}/public/icons/kiomoi_logo_abstract.png`} className="mx-auto d-block" /></center>
                     <h4 className="text-center color mt-3 text-orange fs-5">A New Sky, A New Life. </h4>
                     <center className="text-center mt-3 mb-4 fs-2">Privacy</center>
 

@@ -119,7 +119,7 @@ const Attraction = ({ data,meta }) => {
 
     const imagesRender = data.images.map((img, index) => (
         <div key={index}>
-            <img src={img.i} className="img" />
+            <img src={img.i} className="img" alt="images"/>
         </div>
     ))
 
@@ -127,7 +127,7 @@ const Attraction = ({ data,meta }) => {
     const rightBlock = ({ icon, heading, desc }) => (
         <div className={tw`flex`}>
             <div>
-                <img src={`${Constant.assets_api}/public/icons/${icon}`} alt="" className={tw`inline`} style={{ height: '15.7px' }} />
+                <img src={`${Constant.assets_api}/public/icons/${icon}`} alt="icons" className={tw`inline h-[15.7px]`} />
             </div>
             <div className={tw`ml-2`}>
                 <div className={tw`t_12px font-bold`}>{heading}</div>
@@ -164,7 +164,7 @@ const Attraction = ({ data,meta }) => {
                             {imagesRender.length > 0 ? (
                                 imagesRender
                             ) : (
-                                <img src={`${Constant.assets_api}/public/icons/logo-icon.png`} />
+                                <img alt="kiomoi logo" src={`${Constant.assets_api}/public/icons/logo-icon.png`} />
                             )}
                         </Carousel>
                     </div>
@@ -216,11 +216,7 @@ const Attraction = ({ data,meta }) => {
                                         <div className={tw`w-full lg:1/2`}>
                                             <p>
                                                 <MdCheckCircle
-                                                    className='inline'
-                                                    style={{
-                                                        color: '#15be03',
-                                                        marginRight: 5
-                                                    }}
+                                                    className='inline text-[#15be03] mr-[5px]'
                                                 />
                                                 <span className="t_12px">
                                                     Part Payment Available
@@ -230,11 +226,7 @@ const Attraction = ({ data,meta }) => {
                                         <div className={tw`w-full lg:1/2`}>
                                             <p>
                                                 <MdCheckCircle
-                                                    className='inline'
-                                                    style={{
-                                                        color: '#15be03',
-                                                        marginRight: 5
-                                                    }}
+                                                    className='inline text-[#15be03] mr-[5px]'
                                                 />
                                                 <span className="t_12px">
                                                     100% Satisfaction Guaranteed
@@ -340,15 +332,15 @@ const Attraction = ({ data,meta }) => {
                         </div>
                     </div>
                     {facility?.map(({ icon, color, text, available }, index) => (
-                        <div key={index} className={tw`Shape_42 p-3 my-3`} style={{ border: '1px solid #c7c0c0' }}>
+                        <div key={index} className={tw`Shape_42 p-3 my-3 border-1 border-gray-400/25`}>
                             <div className={tw`flex justify-between`}>
                                 <div className={tw`flex gap-4 font-semibold text-lg items-center`}>
-                                    <div className={tw`text-3xl ms-3`} style={{ color: color }}>
+                                    <div className={tw`text-3xl ms-3 text-[${color}]`} >
                                         {icon === 'check' ? <CgCheckO /> : icon === 'cross' ? <AiOutlineCloseCircle /> : <IoInformationCircle />}
                                     </div>
                                     {text}
                                 </div>
-                                <div className={tw`text-lg`} style={{ color: color }}>
+                                <div className={tw`text-lg text-[${color}]`}>
                                     {available}
                                 </div>
                             </div>

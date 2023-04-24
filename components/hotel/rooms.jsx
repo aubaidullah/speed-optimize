@@ -32,7 +32,7 @@ const Rooms1 = ({rooms,selectedRoom,selectRoom}) =>{
             <div className={tw`flex flex-wrap p-3 bwhite mb-4 rounded-[8px]`}>
                 <div className={tw`w-full lg:w-1/4`}>
                     {/* {e.name} */}
-                    <img className="hotel_img" src={e.images}/>
+                    <img className="hotel_img" src={e.images} alt={e.name}/>
                 </div>
                 <div className={tw`w-full lg:w-3/4`}>
                     <div className={tw`pl-0 lg:pl-4`}>
@@ -42,7 +42,7 @@ const Rooms1 = ({rooms,selectedRoom,selectRoom}) =>{
                                 <div className={tw`mt-2`}>
                                     <div className={tw`flex flex-wrap`}>
                                         <span className="frieds">                                                                            
-                                            <img src={"/icons/friends_.svg"} alt="" />
+                                            <img src={"/icons/friends_.svg"} alt="2 people" />
                                         </span>
                                         <span className='_2_two'>
                                             2
@@ -183,7 +183,7 @@ const Rooms = ({rooms,selectedRoom,selectRoom}) =>{
                         <div className={tw`flex justify-between`}>
                             <div className={tw`flex flex-wrap`}>
                                 <span className="frieds">                                                                            
-                                    <img src={"/icons/friends_.svg"} alt="" />
+                                    <img src={"/icons/friends_.svg"} alt="2 peoples" />
                                 </span>
                                 <span className='_2_two'>
                                     2
@@ -210,7 +210,7 @@ const Rooms = ({rooms,selectedRoom,selectRoom}) =>{
                     <div className={tw`w-full p-4`}>
                         <div className={tw`flex flex-wrap`}>
                             <div className={tw`w-full lg:w-1/4`}>
-                                <img className="hotel_img" src={e.images}/>
+                                <img className="hotel_img" src={e.images} alt="hotel images"/>
                             </div>
                             <div className={tw`w-full lg:w-3/4`}>
                             <div className={tw`flex justify-between pl-4`}>
@@ -218,7 +218,7 @@ const Rooms = ({rooms,selectedRoom,selectRoom}) =>{
                                     <div className={tw`flex flex-wrap`}>
 
                                         <span className="frieds">                                                                            
-                                            <img src={"/icons/friends_.svg"} alt="" />
+                                            <img src={"/icons/friends_.svg"} alt="2 people" />
                                         </span>
                                         <span className='_2_two'>
                                             2

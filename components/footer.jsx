@@ -37,31 +37,31 @@ const Footer = () => {
                                 <span>
                                     <img
                                         src={`${Constants.assets_api}/public/icons/payment_icons/1.png`}
-                                        alt=""
+                                        alt="payment_icon"
                                     />
                                 </span>
                                 <span>
                                     <img
                                         src={`${Constants.assets_api}/public/icons/payment_icons/2.png`}
-                                        alt=""
+                                        alt="payment_icon"
                                     />
                                 </span>
                                 <span>
                                     <img
                                         src={`${Constants.assets_api}/public/icons/payment_icons/3.png`}
-                                        alt=""
+                                        alt="payment_icon"
                                     />
                                 </span>
                                 <span>
                                     <img
                                         src={`${Constants.assets_api}/public/icons/payment_icons/4.png`}
-                                        alt=""
+                                        alt="payment_icon"
                                     />
                                 </span>
                                 <span>
                                     <img
                                         src={`${Constants.assets_api}/public/icons/payment_icons/5.png`}
-                                        alt=""
+                                        alt="payment_icon"
                                     />
                                 </span>
                             </div>
@@ -103,7 +103,7 @@ const Footer = () => {
                         <div className={tw`whatsapp-footer flex gap-4`}>
                             <img
                                 src={`${Constants.assets_api}/public/icons/whatsapp.png`}
-                                alt=""
+                                alt="whatsapp"
                             />
                             <div className="WhatsApp_">
                                 <h4 className={tw`text-md md:text-lg font-bold mb-2`}>WHATSAPP</h4>

@@ -99,7 +99,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
 
     const imagesRender = data.images.map((img, index) => {
         return <div key={index}>
-            <Image src={img.i} className={tw`img rounded-[8px]`} layout="fill"/>
+            <Image src={img.i} alt="images" className={tw`img rounded-[8px]`} layout="fill"/>
         </div>
     })
 
@@ -118,7 +118,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
     const rightBlock = ({ icon, heading, desc }) => {
         return <div className={tw`flex pb-2`}>
             <div>
-                <img src={`${Constants.assets_api}/public/icons/${icon}`} alt="" className={tw`inline h-[15.7px]`} />
+                <img src={`${Constants.assets_api}/public/icons/${icon}`} alt="icon" className={tw`inline h-[15.7px]`} />
             </div>
             <div className={tw`ml-4`}>
                 <div className={tw`t_12px font-bold`}>{heading}</div>
@@ -199,7 +199,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                             {imagesRender.length > 0 ? (
                                 imagesRender
                             ) : (
-                                <img src={`${Constants.assets_api}/public/icons/logo-icon.png`} />
+                                <img src={`${Constants.assets_api}/public/icons/logo-icon.png`} alt="kiomoi logo" />
                             )}
                         </Carousel>
                     </div>
@@ -465,7 +465,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                                                     src={
                                                                         item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`
                                                                     }
-                                                                    alt=""
+                                                                    alt="kiomoi logo"
                                                                 />
 
                                                             </div>
@@ -491,7 +491,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                                                     src={
                                                                         item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`
                                                                     }
-                                                                    alt=""
+                                                                    alt="kiomoi logo"
                                                                 />
 
                                                             </div>

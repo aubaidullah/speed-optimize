@@ -115,7 +115,7 @@ const HomePackages = ({data}) =>{
                           ? item.images.split("~")[0]
                           : `${Constants.assets_api}/public/icons/logo-icon.png`
                       }
-                      alt=""
+                      alt={item.name}
                     />
                     <div className="content_rated">
                       <div className="nature_text_">
@@ -125,7 +125,7 @@ const HomePackages = ({data}) =>{
                         </span>
                         <div className={tw`two_peoples flex items-center`}>
                           <span className={tw`frieds inline`}>
-                            <img src={"/icons/friends.svg"} alt="" />
+                            <img src={"/icons/friends.svg"} alt="2 peoples" />
                           </span>
                           <span className={tw`days inline`}> 2 People </span>
                         </div>
