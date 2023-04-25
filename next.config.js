@@ -1,20 +1,20 @@
 /** @type {import('next').NextConfig} */
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: process.env.ANALYZE === 'true',
+// })
 
 const nextConfig = {
   // trailingSlash: true,
   reactStrictMode: true,
-  // assetPrefix : 'https://assets.kiomoi.com',
+  assetPrefix : 'https://assets.kiomoi.com',
   // assetsPrefix:window.location.origin.toString() === "http://localhost:3000"||"https://kiomoitest.kiomoi.com" ?"https://devassets.kiomoi.com":"https://assets.kiomoi.com",
   images: {
     domains: ['res.cloudinary.com', 'img.kiomoi.com']
     // remotePatterns: [
     //   {
     //     protocol: 'https',
-    //     hostname: '**.res.cloudinary.com',
+    //     hostname: 'res.cloudinary.com',
     //   },
     // ],
   },
@@ -246,5 +246,5 @@ const nextConfig = {
   // }
 }
 
-module.exports = withBundleAnalyzer({nextConfig})
+module.exports = nextConfig
 // 😘

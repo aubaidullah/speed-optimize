@@ -79,6 +79,26 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                 },                
             ]
         }
+        const country_st_bread = {
+            disabled:{
+                "item":`${region?.name}`
+            },
+            enabled :[
+                {
+                    item:"Kiomoi",
+                    href:"/"
+                },
+                {
+                    item:"Holidays Bookings",
+                    href:"/holidays"
+                },
+                {
+                    item:`${region?.sname}`,
+                    href: `/holidays-international/${region?.sname}-tour-packages/${region?.cid}`
+                    // href:`/holidays-international/nepal-tour-packages/153`
+                }
+            ]
+        }        
         const country_bread = {
             disabled:{
                 "item":`${region?.name}`
@@ -92,6 +112,11 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                     item:"Holidays Bookings",
                     href:"/holidays"
                 },
+                // {
+                //     item:`${region?.sname}`,
+                //     href: `/holidays-international/${region?.sname}-tour-packages/${region?.cid}`
+                //     // href:`/holidays-international/nepal-tour-packages/153`
+                // }
             ]
         }    
         const city_bread = {
@@ -260,7 +285,10 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
         {/* <Meta meta={meta} /> */}
 
         <BreadCrumbs bread={
-            page_type=='STATE'?state_bread:page_type=='COUNTRY'?country_bread:page_type=='CITY'?city_bread:all_bread
+            // page_type=='STATE'?state_bread:region?.sname == region?.cname?country_bread:page_type=='CITY'?city_bread:all_bread
+
+
+            page_type=='STATE'?state_bread:page_type=='COUNTRY'?country_bread:page_type=='CITY' && region?.sname == region?.cname?country_st_bread:page_type == 'CITY'?city_bread:all_bread
             // bread
         
         }/>
