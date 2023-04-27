@@ -11,7 +11,7 @@ import dynamic from "next/dynamic";
 import Link from 'next/link'
 import { tw } from 'twind'
 import {useRouter} from 'next/router'
-import { createCityListURL, createStateListURL,createDetailUrl, createTGCityURL, createTGStateURL, createTGCountryURL } from "./fun";
+import { createCityListURL, createStateListURL,createDetailUrl, createTGCityURL, createTGStateURL, createTGCountryURL, createCountryListURL } from "./fun";
 
 
 const Login = dynamic(() => import('../components/login'));
@@ -203,11 +203,10 @@ const Nav = () => {
                                 let url = ""
                                 if (e?.type == 'COUNTRY')
                                 {
-                                    url = `/holidays-international/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
+                                    url = createCountryListURL({cityname:e?.name,id:e?.id})
                                 }
                                 else  if(e?.type == 'STATE'){
                                     url = createStateListURL({statename:e?.name,id:e.id})
-                                    // url = `/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
                                 }
                                 else{
                                     url = createCityListURL({cityname:e?.name,id:e?.id})

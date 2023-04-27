@@ -24,7 +24,7 @@ import Footer from '../components/footer'
 import { ApolloProvider } from "@apollo/client";
 import client from '../components/Graphql/service'
 import { wrapper } from '../redux_fx/store'
-
+import { useEffect } from 'react'
 import withTwindApp from '@twind/next/app'
 import twindConfig from '../twind.config'
 
@@ -40,6 +40,18 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    import("react-facebook-pixel")
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.init('630837885046995');
+        ReactPixel.pageView();
+
+        Router.events.on("routeChangeComplete", () => {
+          ReactPixel.pageView();
+        });
+      });
+  });
   return (
     <>
       <style jsx>{`

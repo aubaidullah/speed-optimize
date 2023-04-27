@@ -38,6 +38,7 @@
     "react-bootstrap": "^2.4.0",
     "react-bottom-scroll": "^1.1.2",
     "react-dom": "18.2.0",
+    "react-facebook-pixel": "^1.0.4",
     "react-html-parser": "^2.0.2",
     "react-icons": "^4.4.0",
     "react-modern-calendar-datepicker": "^3.1.6",

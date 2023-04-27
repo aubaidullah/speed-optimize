@@ -23,7 +23,7 @@ import Image from 'next/image'
 import TravelGuide from '../home/travel_guide';
 import Meta from '../meta';
 import * as Constants from '../Constants'
-import { createCityListURL,createStateListURL, createTGCityURL } from '../fun';
+import { createCityListURL,createCountryListURL,createStateListURL, createTGCityURL } from '../fun';
 
 const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, hotels, article, qna,type ,state_t=undefined}) => {
     console.log(data)
@@ -360,7 +360,9 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                         <Link href={
                                             type == 'CITY'?createCityListURL({cityname:data.tg.cityName,id:data.gid}):
                                             // type=='CITY'?`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/`:
-                                            createStateListURL({statename:data.tg.cityName,id:data.gid})
+                                            
+                                            type == 'STATE'?
+                                            createStateListURL({statename:data.tg.cityName,id:data.gid}):createCountryListURL({cityname:data.tg.cityName,id:data.gid})
                                             // `/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/${data.gid}`}
                                         }>
                                             <a>

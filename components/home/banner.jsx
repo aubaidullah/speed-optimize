@@ -7,7 +7,7 @@ import { tw } from 'twind';
 import Link from 'next/link';
 import * as Constants from '../Constants';
 import axios from 'axios';
-import { createCityListURL,createDetailUrl,createStateListURL, createTGCityURL, createTGCountryURL, createTGStateURL } from "../fun";
+import { createCityListURL,createCountryListURL,createDetailUrl,createStateListURL, createTGCityURL, createTGCountryURL, createTGStateURL } from "../fun";
 
 const Banner = ({ data }) => {
 
@@ -85,7 +85,7 @@ const Banner = ({ data }) => {
                                 let url = ""
                                 if (e?.type == 'COUNTRY')
                                 {
-                                    url = `/holidays-international/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
+                                    url = createCountryListURL({cityname:e?.name,id:e.id})
                                 }
                                 else  if(e?.type == 'STATE'){
                                     url = createStateListURL({statename:e?.name,id:e.id})
