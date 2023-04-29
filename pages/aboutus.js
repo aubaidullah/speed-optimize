@@ -17,7 +17,7 @@ const Privacy = () => {
         <section className={tw`md:px-14 custom-font t_box`}>
             <div>
                 <div className="terms-inner-section">
-                    <center className="mt-4"><img src={`${Constants.assets_api}/public/icons/kiomoi_logo_abstract.png`} className="mx-auto d-block" /></center>
+                    <center className="mt-4"><img src={`${Constants.assets_api}/public/icons/kiomoi_logo_abstract.png`} alt='kiomoi logo' className="mx-auto d-block" /></center>
                     <h4 className="text-center color mt-3 text-orange fs-5">A New Sky, A New Life. </h4>
 
                     <div className="row gy-4 mt-3 mb-5">
@@ -25,7 +25,7 @@ const Privacy = () => {
                             <div className={tw`about-popup cursor-pointer`}>
                                 <span onClick={() => setFirst(!first)} className="_box_shadow">
                                     <figure>
-                                        <img src={`${Constants.assets_api}/public/icons/ico_payment.png`} />
+                                        <img alt="payment icon" src={`${Constants.assets_api}/public/icons/ico_payment.png`} />
                                     </figure>
                                     <p>Secure Payment</p>
                                 </span>
@@ -35,7 +35,7 @@ const Privacy = () => {
                             <div className={tw`about-popup cursor-pointer`}>
                                 <span onClick={() => setSecond(!second)} className="_box_shadow">
                                     <figure>
-                                        <img src={`${Constants.assets_api}/public/icons/ico_career.png`} />
+                                        <img alt="career icon" src={`${Constants.assets_api}/public/icons/ico_career.png`} />
                                     </figure>
                                     <p>Career</p>
                                 </span>
@@ -45,7 +45,7 @@ const Privacy = () => {
                             <div className={tw`about-popup cursor-pointer`}>
                                 <span onClick={() => setThird(!third)} className="_box_shadow">
                                     <figure>
-                                        <img src={`${Constants.assets_api}/public/icons/ico_contactph.png`} />{" "}
+                                        <img alt="contact icon" src={`${Constants.assets_api}/public/icons/ico_contactph.png`} />{" "}
                                     </figure>
                                     <p>Contact us</p>
                                 </span>
@@ -166,6 +166,7 @@ const Privacy = () => {
                 <center>
                     {" "}
                     <img
+                        alt="kiomoi logo"
                         src={`${Constants.assets_api}/public/icons/kiomoi_logo_abstract.png`}
                         className="mx-auto d-block"
                     />
@@ -175,31 +176,31 @@ const Privacy = () => {
                     <li>
                         {" "}
                         <a href="#">
-                            <img src={`${Constants.assets_api}/public/icons/versign.png`} />{" "}
+                            <img alt="verify icon" src={`${Constants.assets_api}/public/icons/versign.png`} />{" "}
                         </a>
                     </li>
                     <li>
                         {" "}
                         <a href="#">
-                            <img src={`${Constants.assets_api}/public/icons/mastercard.png`} />{" "}
+                            <img alt="mastercard icon" src={`${Constants.assets_api}/public/icons/mastercard.png`} />{" "}
                         </a>
                     </li>
                     <li>
                         {" "}
                         <a href="#">
-                            <img src={`${Constants.assets_api}/public/icons/rozorpay.png`} />{" "}
+                            <img alt="razorpay icon" src={`${Constants.assets_api}/public/icons/rozorpay.png`} />{" "}
                         </a>
                     </li>
                     <li>
                         {" "}
                         <a href="#">
-                            <img src={`${Constants.assets_api}/public/icons/visa.png`} />{" "}
+                            <img alt="visacard icon" src={`${Constants.assets_api}/public/icons/visa.png`} />{" "}
                         </a>
                     </li>
                     <li>
                         {" "}
                         <a href="#">
-                            <img src={`${Constants.assets_api}/public/icons/upi.png`} />{" "}
+                            <img alt="upi icon"  src={`${Constants.assets_api}/public/icons/upi.png`} />{" "}
                         </a>
                     </li>
                 </ul>
@@ -224,6 +225,7 @@ const Privacy = () => {
                     <img
                         src={`${Constants.assets_api}/public/icons/kiomoi_logo_abstract.png`}
                         className="mx-auto d-block"
+                        alt="kiomoi icon"
                     />
                 </center>
                 <h4 className="text-center color my-3 text-orange font-bold">Career</h4>
@@ -232,6 +234,7 @@ const Privacy = () => {
                     <img
                         src={`${Constants.assets_api}/public/icons/file.png`}
                         className="mx-auto d-block"
+                        alt="career icon"
                     />
                 </center>
                 <p className="text-center mt-3 mb-2">Please Send your Latest CV to </p>
@@ -256,6 +259,7 @@ const Privacy = () => {
                     <img
                         src={`${Constants.assets_api}/public/icons/kiomoi_logo_abstract.png`}
                         className="mx-auto d-block"
+                        alt="kiomoi logo"
                     />
                 </center>
                 <h4 className="text-center color my-3 text-orange font-bold">Contact Us</h4>
@@ -264,6 +268,7 @@ const Privacy = () => {
                     <img
                         src={`${Constants.assets_api}/public/icons/file.png`}
                         className="mx-auto d-block"
+                        alt="icon"
                     />
                 </center>
                 <p className="text-center mt-3 mb-2">

@@ -72,7 +72,7 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
         <div className="Shape_42">
 
             <div className={tw``}>
-                <div style={{position:'relative'}}>
+                <div className="relative">
                 <FaRegUser
                     className="ht_cal_icon"
                     // onClick={() => setShowLogin(!showLogin)}
@@ -101,9 +101,9 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
             </div>
 
             <div className={tw`flex mt-3`}>
-                <div style={{position:'relative',zIndex:999}}>
+                <div className="relative z-999">
                 {/* calender_multi_clr */}
-                    <img src={`${Constants}/public/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
+                    <img src={`${Constants}/public/icons/calender_multi_clr.png`} alt="calendar icon" className={tw`inline ht_cal_icon`} />
                     <div className="ht_label">
                         Check-in
                     </div>
@@ -117,8 +117,8 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
                         required
                         />
                 </div>
-                <div style={{position:'relative',zIndex:999}}>
-                <img src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
+                <div className="relative z-999">
+                <img src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`} alt="calendar icon" className={tw`inline ht_cal_icon`} />
                     <div className="ht_label">
                         Check-out
                     </div>
@@ -138,7 +138,7 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
                 {hotel.hotel.price
                 ?<>
                     <div className="price_inr">
-                    <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
+                    <FaRupeeSign className='inline text-[#f79421] text-[15px] mb-[4px]'/>
                         <span>{selectedHotel?.price}/-</span>
                     </div>
                     {/* <div className={tw`ml-3 f_12 c_gray`}>
@@ -148,7 +148,7 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
             </div>
 
             <div className={tw`mt-3`}>
-                <button className="btn_listing _btn_clr" style={{width:'100%'}}>
+                <button className="w-full btn_listing _btn_clr">
                     Book
                 </button>
             </div>
@@ -309,7 +309,7 @@ const HotelDetail = ({hotel,meta}) =>{
                                             <li className="slide">
                                                 {
                                                     hotel.hotel.images
-                                                    ?<Image className='img ht_img' src={hotel.hotel.images.split(',')[0]} layout="fill" />:
+                                                    ?<Image className='img ht_img' alt={hotel.hotel.name} src={hotel.hotel.images.split(',')[0]} layout="fill" />:
                                                     ""
                                                 }
                                                 
@@ -338,15 +338,15 @@ const HotelDetail = ({hotel,meta}) =>{
                             </div>
                         </div>
                         <div className={tw`w-full lg:w-1/3`}>
-                            <div className={tw`flex-col ml-5`} style={{height:'100%'}} id="right-gallery">
+                            <div className={tw`flex-col ml-5 h-full`}id="right-gallery">
                                 
                                 {
                                     hotel.hotel.images.split(',').map((e,index)=>{
                                         
                                         return hotel.hotel.images.split(',')[index+1]!=undefined && hotel.hotel.images.split(',')[index+1].length>5 
 
-                                        ?<div style={{height:'50%',display:index>1?'none':'block'}} className={tw`${index==1?'pt-2':'pb-2'}`}>
-                                                <div style={{height:'100%',width:'100%',position:'relative'}}>
+                                        ?<div className={tw`h-[50%] ${index>1?'hidden':'block'} ${index==1?'pt-2':'pb-2'}`}>
+                                                <div className="h-full w-full relative">
                                                     <a data-pswp-src={
                                                         // e
                                                         hotel.hotel.images.split(',')[index+1]
@@ -360,16 +360,16 @@ const HotelDetail = ({hotel,meta}) =>{
                                                     
                                                     <div>
 
-                                                        <Image className={tw`ht_img`} src={
+                                                        <Image className={tw`ht_img rounded-[8px]`} src={
                                                             // e
                                                             hotel.hotel.images.split(',')[index+1]
                                                         
-                                                        } 
-                                                            
-                                                            layout="fill" style={{borderRadius:'8px'}} />
+                                                        }   
+                                                        alt={hotel?.hotel?.name}
+                                                            layout="fill"  />
                                                         {index==1
-                                                        ?<div style={{position:'absolute',color:'white',right:10}} className={tw`bottom-6 lg:bottom-2`}>
-                                                            <button className="btn_listing" style={{background:'white',textTransform:'unset'}}>
+                                                        ?<div className={tw`absolute text-white right-[10px] bottom-6 lg:bottom-2`}>
+                                                            <button className="btn_listing bg-white normal-case" >
                                                                 Show all {hotel.hotel.images.split(',').length} Photos
                                                             </button>
                                                                 
@@ -433,7 +433,7 @@ const HotelDetail = ({hotel,meta}) =>{
                                     <div>
                                         <h2 className="_titles_">About the place</h2>
                                         <div className="Shape_42">
-                                            <div style={{lineHeight:'25px',textAlign:'justify'}}>
+                                            <div className="leading-[25px] text-justify">
                                                 {hotel.hotel.description}
                                             </div>
                                             

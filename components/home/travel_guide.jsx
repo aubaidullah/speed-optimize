@@ -81,7 +81,7 @@ const TravelGuide = ({data}) =>{
                         src={
                           item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`
                         }
-                        alt=""
+                        alt="kiomoi"
                       />
                     </div>
                   </div>

@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
+
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: process.env.ANALYZE === 'true',
+// })
+
 const nextConfig = {
   // trailingSlash: true,
   reactStrictMode: true,
@@ -9,7 +14,7 @@ const nextConfig = {
     // remotePatterns: [
     //   {
     //     protocol: 'https',
-    //     hostname: '**.res.cloudinary.com',
+    //     hostname: 'res.cloudinary.com',
     //   },
     // ],
   },
@@ -28,7 +33,7 @@ const nextConfig = {
       },
       
       {
-        source: '/holidays-international/:package-tour-packages/:id',
+        source: '/holidays-international/:package-tour-packages-:id',
         destination: '/holidays/international-package'
       },       
       {

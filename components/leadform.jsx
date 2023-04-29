@@ -114,10 +114,10 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                                 swalr(
                                 // "",
                                     <>
-                                    <div style={{textAlign:'center',marginBottom:'15px'}}>
-                                    <img src={`${Constants.assets_api}/public/icons/download.png`} style={{margin:'0px auto'}} className={tw`inline`} />
-                                    <p style={{paddingTop:"10px",textAlign:"center",fontSize:"15px"}}>Thanks for query with Kiomoi, your reference number is <b>{res.data.output}</b></p>
-                                    <p style={{textAlign:'center',fontSize:"10px"}}>We assure you within 24 hours response. Feel free to call us on <span style={{color:'#f16625'}}>+919650687940</span> or drop a mail on <a href={`mailto:info@kiomoi.com?Subject=Query regarding reference number "+${res.data.output} +"`} target='_top'><span style={{color:'#f16625'}}>info@kiomoi.com</span></a> for a sooner response</p>
+                                    <div className={tw`text-center mb-[15px]`}>
+                                    <img alt="kiomoi" src={`${Constants.assets_api}/public/icons/download.png`} className={tw`inline m-auto`} />
+                                    <p className={tw`pt-[10px] text-center text-[15px]`}>Thanks for query with Kiomoi, your reference number is <b>{res.data.output}</b></p>
+                                    <p className={tw`text-center text-[10px]`}>We assure you within 24 hours response. Feel free to call us on <span className={tw`text-[#f16625]`}>+919650687940</span> or drop a mail on <a href={`mailto:info@kiomoi.com?Subject=Query regarding reference number "+${res.data.output} +"`} target='_top'><span className={tw`text-[#f16625]`} >info@kiomoi.com</span></a> for a sooner response</p>
                                     </div>
                                     </>,
                                     {
@@ -163,7 +163,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
         if (!result) {
             setOpen(!open)
             setShow(!show)
-            console.log("lskdjflksdjlkfjds")
+            // console.log("lskdjflksdjlkfjds")
         }        
     }
 
@@ -190,9 +190,10 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
             // size="sm"
         >
         <Modal.Body>
-          <span style={{ float: "right", color: "black" }} aria-hidden="true">
+          <span className={tw`float-right text-black`} aria-hidden="true">
             <BsXLg 
-              style={{cursor: "pointer" }}
+            className={tw`cursor-pointer`}
+            //   style={{cursor: "pointer" }}
               onClick={()=>changeForm(false)}
             />
           </span>
@@ -206,8 +207,9 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                         <img
                             src={`${Constants.assets_api}/public/icons/logo-icon.png`}
                             height="50"
-                            alt=""
-                            style={{margin:'0 auto'}}
+                            alt="kiomoi"
+                            className={tw`m-auto`}
+                            // style={{margin:'0 auto'}}
                         />
 
                       </div>
@@ -314,7 +316,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                         <option value="Kolkatta">Kolkatta</option>
                         <option value="Mumbai">Mumbai</option>
                         <option value="Pune">Pune</option>
-                        <option disabled style={{color:"gray"}}>---------------------------</option>
+                        <option className={tw`text-gray-500`} disabled>---------------------------</option>
                         <option value="Agartala">Agartala</option>
                         <option value="Agra">Agra</option>
                         <option value="Ahmedabad">Ahmedabad</option>
@@ -513,19 +515,19 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                         )}
                     </div>
                     </div>
-                <div style={{display:'none'}}>
+                {/* <div>
                     <div style={{width:'50%',fontWeight:'bold'}}>
                         Departure Date
                     </div>
                     <div style={{width:'50%',fontWeight:'bold'}}>
                         Duration
                     </div>
-                </div>
+                </div> */}
 
 
-                <div className="form-group" style={{display:'flex'}}>
+                <div className={tw`form-group flex`}>
                     
-                    <div style={{width:'100%'}}>
+                    <div className={tw`w-full`}>
 
                     {/* <input 
                     type="text"
@@ -569,7 +571,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                     {/* <DatePicker
                     
                     /> */}
-                    <div style={{marginLeft:'20px',width:'100%'}}>
+                    <div className={tw`ml-[20px] w-full`}>
                     <input
                         pattern="[0-9.]+"
                         type="number"
@@ -634,8 +636,8 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                         placeholder="Any Special Request"
                     />
                     </div> */}
-                    <div className="form-group" style={{display:'flex'}}>
-                    <div style={{width:'100%'}}>
+                    <div className={tw`form-group flex`}>
+                    <div className={tw`w-full`}>
                         <input
                         pattern="[0-9.]+"
                         type="text"
@@ -646,13 +648,13 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                         }}
 
                         // type="adults"
-                        className="form-control"
+                        className={tw`form-control mr-[10px] mt-[0]`}
                         name="adults"
                         onChange={(e)=>setAdult(e.target.value)}
                         value={adult}
                         placeholder="Adults"
                         min = "1"
-                        style={{marginRight:'10px',marginTop:'0px'}}
+                        // style={{marginRight:'10px',marginTop:'0px'}}
                         maxLength={2}
                         required
                         />
@@ -667,7 +669,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                     </div>
 
 
-                    <div style={{marginLeft:'20px',width:'100%'}}>
+                    <div className={tw`ml-[20px] w-full`}>
                         <input
                         pattern="[0-9.]+"
                         type="text"
@@ -677,7 +679,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                             }
                         }}
                         // type="children"
-                        className="form-control"
+                        className={tw`form-control mt-0`}
                         name="children"
                         onChange={(e)=>setChildren(e.target.value)}
                         value={children}
@@ -686,7 +688,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                         // max={2}
                         maxLength={2}
                         placeholder="Children(5-12 yrs)"
-                        style={{marginTop:'0px'}}
+                        // style={{marginTop:'0px'}}
                         
                         />
                     </div>

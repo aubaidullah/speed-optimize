@@ -249,3 +249,8 @@ del{
   .slider_banner__ .slide{
     height: auto !important;
   }
+
+  .lst_aty{
+    margin-left:auto;
+    margin-right:auto
+  }

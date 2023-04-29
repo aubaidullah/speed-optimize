@@ -46,7 +46,6 @@ const Tabs=({title,desc})=>{
                     <Collapse in={collapse}>
                     <div
                         className="panel-collapse"
-                        // style={{ height: "0px" }}
                         >
                         <div className="panel-body">
                             <div>

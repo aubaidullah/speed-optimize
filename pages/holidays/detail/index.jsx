@@ -131,7 +131,7 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                 <div className={tw`w-full lg:w-2/3 flex flex-col md:flex-row justify-between items-start md:items-center`}>
                     <div className={tw`flex justify-between items-center gap-3 ms-2`}>
                         <div className="coment_photo">
-                            <img src={`${Constants.assets_api}/public/icons/user_photo.png`} className={tw`rounded-full`} alt="" />
+                            <img src={`${Constants.assets_api}/public/icons/user_photo.png`} className={tw`rounded-full`} alt="user icon" />
                         </div>
                         <div className="coment_title-">
                             <h3 className={tw`h1_title fs-6`}>{item.cName}</h3>
@@ -147,11 +147,8 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                             <div>
                                 <BsFillCheckCircleFill
                                     size={10}
+                                    className={tw`inline mr-[3px]`}
                                     color='gray'
-                                    style={{
-                                        display: 'inline',
-                                        marginRight: 3
-                                    }}
                                 />
                                 <span className={tw`text-xs`}>Verfied Review</span>
                                 <span className={tw`mx-1`}> | </span>
@@ -164,7 +161,7 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                 </div>
                 <div className={tw`ms-2 mt-2 w-full lg:w-2/3`}>
                     <details>
-                        <summary className={tw`text-xs font-semibold`} style={{ color: '#f06726' }}>
+                        <summary className={tw`text-xs font-semibold text-[#f06726]`}>
                             <span>
                                 Read
                             </span>
@@ -191,7 +188,7 @@ const DetailPage = ({ data, related, reviews,meta }) => {
           return (
             <>
                 <div class="_circle_51" title={item}>
-                    <img style={{display:'initial'}} src={`${Constants.assets_api}/public/icons/Ico_${item.trim()}.png`} />
+                    <img alt="icon" className="inline" src={`${Constants.assets_api}/public/icons/Ico_${item.trim()}.png`} />
                 </div>
             </>
           );
@@ -278,7 +275,7 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                             className="slider_banner slider_overlay"
                         >
                             {data?.package.images.split(',').map((e, index) => {
-                                return e?<Image className='img' src={e} layout="fill" key={index} />:""
+                                return e?<Image className='img' src={e} layout="fill" key={index} alt={data?.package?.name} />:""
                             })}
                         </Carousel>
                     </div>
@@ -317,13 +314,12 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                             </div>
                         </div>
 
-                        <div className="form-group style_form mt-2">
+                        <div className="form-group style_form mt-2 h-[130px]">
                             <textarea
                                 className={tw`form-control`}
                                 name="review"
                                 required
                                 value={reviewText}
-                                style={{ height: '130px' }}
                                 onChange={e => setReviewText(e.target.value)}
                                 placeholder="Please write at least 100 characters about your experience at this destination."
                             />
@@ -331,13 +327,6 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                         <div className={tw`flex justify-between`}>
                             <div className={tw`flex items-center text-xs md:text-lg font-semibold md:font-normal`}>
                                 <div>
-                                    <input
-                                        type="file"
-                                        accept="image/*"
-                                        onChange={imageChange}
-                                        style={{ display: 'none' }}
-                                        id="contained-button-file"
-                                    />
                                     Upload Photos
                                 </div>
                                 <label htmlFor="contained-button-file">
@@ -363,12 +352,9 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                                         <div key={i} className="col-6 col-md-4">
                                             <div>
                                                 <img
+                                                    className="w-full max-h-[300px]"
                                                     src={URL.createObjectURL(image)}
                                                     alt="Image"
-                                                    style={{
-                                                        width: '100%',
-                                                        maxHeight: 300
-                                                    }}
                                                 />
                                             </div>
                                         </div>
@@ -388,8 +374,7 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                 {reviews?.reviews.length > 0 ? reviewRender : "No Reviews yet"}
                 {reviews?.reviews.length > 0 && maxReview == 5 ?
                     <div
-                        style={{color:'#999'}}
-                        className={tw`w-full hover:text-black lg:w-2/3 flex flex-row-reverse text-lg font-bold cursor-pointer`}
+                        className={tw`text-[#999] w-full hover:text-black lg:w-2/3 flex flex-row-reverse text-lg font-bold cursor-pointer`}
                         onClick={() => setMaxReview(reviews.count)}
                     >
                         View All

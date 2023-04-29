@@ -29,10 +29,10 @@ const Rooms1 = ({rooms,selectedRoom,selectRoom}) =>{
     return <div>
     {rooms.map((e,index)=>{
         return <div className={tw`mt-2`}>
-            <div className={tw`flex flex-wrap p-3 bwhite mb-4`} style={{borderRadius:'8px'}}>
+            <div className={tw`flex flex-wrap p-3 bwhite mb-4 rounded-[8px]`}>
                 <div className={tw`w-full lg:w-1/4`}>
                     {/* {e.name} */}
-                    <img className="hotel_img" src={e.images}/>
+                    <img className="hotel_img" src={e.images} alt={e.name}/>
                 </div>
                 <div className={tw`w-full lg:w-3/4`}>
                     <div className={tw`pl-0 lg:pl-4`}>
@@ -42,7 +42,7 @@ const Rooms1 = ({rooms,selectedRoom,selectRoom}) =>{
                                 <div className={tw`mt-2`}>
                                     <div className={tw`flex flex-wrap`}>
                                         <span className="frieds">                                                                            
-                                            <img src={"/icons/friends_.svg"} alt="" />
+                                            <img src={"/icons/friends_.svg"} alt="2 people" />
                                         </span>
                                         <span className='_2_two'>
                                             2
@@ -53,7 +53,7 @@ const Rooms1 = ({rooms,selectedRoom,selectRoom}) =>{
                             </div>
                             <div>
                                 <div className="price_inr text-right">
-                                    <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
+                                    <FaRupeeSign className={tw`inline text-[#f79421] text-[15px] mb-[4px]`} />
                                     {e.price==0
                                     ?<span>Price On Request</span>
                                     :<span>{e.price}/-</span>
@@ -61,7 +61,7 @@ const Rooms1 = ({rooms,selectedRoom,selectRoom}) =>{
                                     
                                 </div>
                                 <div className="text-right">
-                                    <p style={{fontSize:'8.8px',color:'#999'}}>Per person on twin sharing</p>
+                                    <p className={tw`text-[8.8px] text-[#999]`}>Per person on twin sharing</p>
                                 </div>
                             </div>
                                                         
@@ -99,11 +99,11 @@ const Rooms1 = ({rooms,selectedRoom,selectRoom}) =>{
                             <div className={tw`flex justify-between`}>
                                 <div className={tw`flex checks mt-4`}>
                                     <p>
-                                        <MdCheckCircle className='inline' style={{color:'#15be03'}} /> Free Cancellation
+                                        <MdCheckCircle className={tw`inline text-[#15be03]`} /> Free Cancellation
                                         {/* <br/><MdCheckCircle className='inline' style={{color:'#15be03'}} /> Part Payment */}
                                     </p>
                                     <p className={tw`pl-2`}>
-                                        <MdCheckCircle className='inline' style={{color:'#15be03'}} /> Part Payment
+                                        <MdCheckCircle className={tw`inline text-[#15be03]`} /> Part Payment
                                     </p>
 
                                 </div>
@@ -153,9 +153,9 @@ const Rooms = ({rooms,selectedRoom,selectRoom}) =>{
 
       {rooms.map((e,index)=>{
           return <div className={tw`mt-2`}>
-              <div className={tw`flex flex-wrap bwhite mb-4`} style={{borderRadius:'8px',border:'1px solid rgba(0,0,0,0.1)'}}>
-                <div className={tw`p-2 bg-gray-300 w-full`} style={{background:'#F8F8F8',borderRadius:'8px 8px 0 0',border:'1px solid rgba(0,0,0,0.1)'}}>
-                    <div className={tw`flex justify-between cursor-pointer`} style={{color:'rgb(67, 147, 249)'}} onClick={() => collapse === index ? setCollapse(null) : setCollapse(index)}>
+              <div className={tw`flex flex-wrap bwhite mb-4 rounded-[8px] border-1 border-slate-300`}>
+                <div className={tw`p-2 bg-[#F8F8F8] w-full rounded-[8px] border-1 border-slate-300`} >
+                    <div className={tw`flex justify-between cursor-pointer text-[#4393F9]`} onClick={() => collapse === index ? setCollapse(null) : setCollapse(index)}>
                         <div className={tw`flex items-center`} >
                             {collapse===index?
                                 <IoMdArrowDropdown className={tw`font-bold text-xl`}/>
@@ -167,7 +167,7 @@ const Rooms = ({rooms,selectedRoom,selectRoom}) =>{
                         {collapse != index?
                         <div>
                             <div className="price_inr">
-                                <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
+                                <FaRupeeSign className={tw`inline text-[#f79421] text-[15px] mb-[4px]`}/>
                                 {e.price==0
                                 ?<span>Price On Request</span>
                                 :<span>{e.price}/-</span>
@@ -183,7 +183,7 @@ const Rooms = ({rooms,selectedRoom,selectRoom}) =>{
                         <div className={tw`flex justify-between`}>
                             <div className={tw`flex flex-wrap`}>
                                 <span className="frieds">                                                                            
-                                    <img src={"/icons/friends_.svg"} alt="" />
+                                    <img src={"/icons/friends_.svg"} alt="2 peoples" />
                                 </span>
                                 <span className='_2_two'>
                                     2
@@ -196,7 +196,7 @@ const Rooms = ({rooms,selectedRoom,selectRoom}) =>{
                                 <span className={tw`font-bold text-gray-500`}>Living Room:</span>
                             </div>                            
                             <div>
-                                <span className={tw`cursor-pointer`} style={{color:'rgb(67, 147, 249)'}} onClick={() => collapse === index ? setCollapse(index) : setCollapse(index)}>Full Details</span>
+                                <span className={tw`cursor-pointer text-[#f79421]`} onClick={() => collapse === index ? setCollapse(index) : setCollapse(index)}>Full Details</span>
                             </div>
 
                         </div>
@@ -210,7 +210,7 @@ const Rooms = ({rooms,selectedRoom,selectRoom}) =>{
                     <div className={tw`w-full p-4`}>
                         <div className={tw`flex flex-wrap`}>
                             <div className={tw`w-full lg:w-1/4`}>
-                                <img className="hotel_img" src={e.images}/>
+                                <img className="hotel_img" src={e.images} alt="hotel images"/>
                             </div>
                             <div className={tw`w-full lg:w-3/4`}>
                             <div className={tw`flex justify-between pl-4`}>
@@ -218,7 +218,7 @@ const Rooms = ({rooms,selectedRoom,selectRoom}) =>{
                                     <div className={tw`flex flex-wrap`}>
 
                                         <span className="frieds">                                                                            
-                                            <img src={"/icons/friends_.svg"} alt="" />
+                                            <img src={"/icons/friends_.svg"} alt="2 people" />
                                         </span>
                                         <span className='_2_two'>
                                             2
@@ -234,7 +234,7 @@ const Rooms = ({rooms,selectedRoom,selectRoom}) =>{
                                 <div className={tw`text-right`}>
                                     <div className={tw`text-gray-500`}>1 Room Per Night</div>
                                     <div className="price_inr">
-                                        <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
+                                        <FaRupeeSign className={tw`inline text-[#f79421] text-[15px] mb-[4px]`} />
                                         {e.price==0
                                         ?<span>Price On Request</span>
                                         :<span>{e.price}/-</span>

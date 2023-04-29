@@ -28,6 +28,9 @@ export const createDetailUrl = ({name,id})=>{
 export const createCityListURL = ({cityname,id}) =>{
     return `/holidays/${cityname?.replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages-${id}1`
 }
+export const createCountryListURL = ({cityname,id}) =>{
+    return `/holidays-international/${cityname?.replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages-${id}`
+}
 
 export const createStateListURL = ({statename,id}) =>{
     return `/holidays/${statename?.replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages-${id}2`

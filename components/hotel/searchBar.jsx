@@ -79,19 +79,23 @@ const _SearchBar = ({img}) =>{
             <div>
                 <div className={tw`flex_`}>
                 <h2 className={tw`_titles_ text-white`}>Search Home Stay For Your Date</h2>
-                <div className={tw`flex Shape_42 flex-wrap`} style={{background:'rgba(251, 250, 250, .3)',border:'none'}}>
+                <div className={tw`flex flex-wrap bg-slate-100/40 Shape_42 border-0`}
+                // style={{
+                // // background:'rgba(251, 250, 250, .3)',
+                // border:'none'}}
+                >
                     <div className={tw`w-full lg:w-1/4 lg:px-2 mb-2`}>
-                    <div style={{position:'relative'}}>
+                    <div>
                         <input 
                         type={"text"}
                         value={searchkey}
                         // value={searchkey}
-                        className={tw`form-control h50 text-capitalize`}
+                        className={tw`form-control h50 text-capitalize relative`}
                         placeholder="Search for a destination" 
                         onChange={event => HandleSearch(event.target.value)}
 
                         />
-                    <section className={tw`drop_down container`} style={{ boxShadow: 'inset 0 -1px 0 0 rgba(0,0,0,.1)',left:'0',right:'0',borderColor:'transparent',position:'absolute',zIndex:1,border:'1px solid rgba(0,0,0,0.1)',zIndex:3}}>
+                    <section className={tw`drop_down container d_htl`}>
                         <div>
                         {result?.cities?.map((e, index) => (
                             
@@ -125,9 +129,9 @@ const _SearchBar = ({img}) =>{
                     <div className={tw`flex flex-wrap items-center`}>
                     <div className={tw`w-full lg:w-1/3 lg:px-2 mb-2`}>
                         <div className={tw`flex`}>
-                            <div style={{position:'relative',zIndex:2}}>
+                            <div className={tw`relative z-[2]`}>
                             {/* calender_multi_clr */}
-                                <img src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
+                                <img src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`} alt="calendar" className={tw`inline ht_cal_icon`} />
                                 <div className="ht_label">
                                     Check-in
                                 </div>
@@ -143,8 +147,8 @@ const _SearchBar = ({img}) =>{
                                     required
                                     />
                             </div>
-                            <div style={{position:'relative',zIndex:2}}>
-                            <img src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} />
+                            <div className={tw`relative z-[2]`}>
+                            <img src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`} alt="calendar" className={tw`inline ht_cal_icon`} />
                                 <div className="ht_label">
                                     Check-out
                                 </div>
@@ -164,7 +168,7 @@ const _SearchBar = ({img}) =>{
                     <div className={tw`w-full lg:w-1/3 px-0 lg:px-2 mb-2`}>
 
                         <div className={tw``}>
-                        <div style={{position:'relative'}}>
+                        <div className={tw`relative`}>
                         <FaRegUser
                             className="ht_cal_icon"
                             // onClick={() => setShowLogin(!showLogin)}
@@ -198,7 +202,7 @@ const _SearchBar = ({img}) =>{
                     </div>
                     <div className={tw`w-full lg:w-1/3 lg:px-2 mb-2`}>
                         <Link href={`/hotels/hotel-in-${searchkey?.toLowerCase()}-${id}/`}>
-                            <button className="btn_listing _btn_clr h50" style={{width:'100%'}}> 
+                            <button className={tw`btn_listing _btn_clr h50 w-full`}> 
                                 Search
                             </button>
                         </Link>
@@ -222,10 +226,10 @@ const _SearchBar = ({img}) =>{
 
 
 const SearchBar = ({img}) =>{
-    return <div style={{position:'relative'}}>
-        <img style={{width:'100%',objectFit:'cover',height:'400px',filter:'brightness(75%)'}} src={img}/>
+    return <div className={tw`relative`}>
+        <img className={tw`w-full object-cover h-[400px] brightness-[75%]`} alt="banner" src={img}/>
         <div className="_container">
-            <div className={tw`mt-4 bt-0 lg:bottom-20`} style={{position:'absolute',left:0,right:0}}>
+            <div className={tw`mt-4 bt-0 lg:bottom-20 absolute left-0 right-0`}>
                 <div className="container">
                     <_SearchBar img={img}/>
                 </div>

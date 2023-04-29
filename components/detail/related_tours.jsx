@@ -123,7 +123,7 @@ const RelatedTour = ({data}) =>{
         return (
           <Link href={aurl}>
             <a>
-              <div className="col-sm-12 col-xs-12" style={{paddingLeft:'15px',paddingRight:'15px'}}>
+              <div className="col-sm-12 col-xs-12 pl-[15px] pr-[15px]">
                 <div className="top_rated_box _st_box _tr_box">
                   <div className="des_img">
                     <Image
@@ -134,7 +134,7 @@ const RelatedTour = ({data}) =>{
                           ? item.images.split("~")[0]
                           : `${Constants.assets_api}/public/icons/logo-icon.png`
                       }
-                      alt=""
+                      alt={item.name}
                     />
                     <div className="content_rated">
                       <div className="nature_text_">
@@ -144,7 +144,7 @@ const RelatedTour = ({data}) =>{
                         </span>
                         <div className="two_peoples">
                           <span className="frieds">
-                            <img src={"/icons/friends.svg"} alt="" />
+                            <img src={"/icons/friends.svg"} alt="2 peoples" />
                           </span>
                           <span className="days"> 2 People </span>
                         </div>
@@ -187,7 +187,7 @@ const RelatedTour = ({data}) =>{
                           <del>
                             {/* <i className="fa fa-inr"></i> */}
                             <div className={tw`flex items-center`}>
-                              <FaRupeeSign className='inline' style={{fontSize:'12px',marginBottom:'4px'}} />
+                              <FaRupeeSign className='inline text-[12px] mb-[4px]'/>
                               {item.price}/-
                             </div>
 
@@ -202,9 +202,9 @@ const RelatedTour = ({data}) =>{
                     )}
                     <div className={tw`price_tag flex justify-between items-center`} >
                       <span className="start_from">Started from</span>
-                      <span className="price_inr" style={{ position: "unset" }}>
+                      <span className="price_inr in">
                         {/* <i className="fa fa-inr"></i> */}
-                        <FaRupeeSign className='inline' color="#f79421" style={{fontSize:'15px',marginBottom:'4px'}} />
+                        <FaRupeeSign className='inline text-[15px] mb-[4px]' color="#f79421"/>
                         {item.finalprice}/-
                       </span>
                     </div>

@@ -25,14 +25,13 @@ const State_Attraction = ({data}) =>{
               <div className="px-2 _cr_mb">
                 <div className="des_img">
                   <img
-                    className="img-responsive"
-                    style={{borderRadius:'8px'}}
+                    className={tw`img-responsive rounded-[8px]`}
                     src={
                       item.images
                         ? item.images
                         : `${Constants.assets_api}/public/icons/logo-icon.png`
                     }
-                    alt=""
+                    alt="kiomoi logo"
                   />
                   <div className="des_cont">
                     <div className="des_location">{item.name}</div>

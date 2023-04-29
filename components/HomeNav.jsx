@@ -11,7 +11,7 @@ import dynamic from "next/dynamic";
 import Link from 'next/link'
 import { tw } from 'twind'
 import {useRouter} from 'next/router'
-import { createStateListURL, createCityListURL,createDetailUrl, createTGCityURL, createTGCountryURL, createTGStateURL } from "./fun";
+import { createStateListURL, createCityListURL,createDetailUrl, createTGCityURL, createTGCountryURL, createTGStateURL, createCountryListURL } from "./fun";
 
 
 const Login = dynamic(() => import('../components/login'));
@@ -108,7 +108,7 @@ const Nav = () => {
     console.log(addnavClass)
     return <>
     
-        <nav data-aos="fade-down" id="navbar" className={tw`${addnavClass} shadow-sm_`} style={{ overflow: 'auto', zIndex: 3 }}>
+        <nav data-aos="fade-down" id="navbar" className={tw`${addnavClass} shadow-sm_`}>
             {showLogin ? <Login show={showLogin} setShowLogin={setShowLogin} /> : null}
             {!showSearch ?
                 <div className={tw`container`}>
@@ -117,7 +117,7 @@ const Nav = () => {
                             <Link href={'/'}>
 
                                 {/* <img className="brand-logo" src={`${router.pathname=='/'?`${Constants.assets_api}/public/icons/download.png`:`${Constants.assets_api}/public/icons/kiomoi.png`}`}/> */}
-                                <img className="brand-logo" src="/icons/kiomoi logo.svg"/>
+                                <img className="brand-logo" src="/icons/kiomoi logo.svg" alt="kiomoi"/>
                             </Link>
                         </div>
                         <div className={tw`item_group flt_right ml-2 lg:ml-6`}>
@@ -127,7 +127,7 @@ const Nav = () => {
                                         onMouseOver={() => setTripover(true)}
                                         onMouseOut={() => setTripover(false)}
                                     >
-                                        <img src={tripover ? `${Constants.assets_api}/public/icons/icons/ICO-TRIPS-orange.png` : `${addnavClass?`${Constants.assets_api}/public/icons/icons/ICO TRIPS.png`:`${Constants.assets_api}/public/icons/icons/ICO-TRIPS-white.png`}`} />
+                                        <img alt="trips" src={tripover ? `${Constants.assets_api}/public/icons/icons/ICO-TRIPS-orange.png` : `${addnavClass?`${Constants.assets_api}/public/icons/icons/ICO TRIPS.png`:`${Constants.assets_api}/public/icons/icons/ICO-TRIPS-white.png`}`} />
                                         <span className="nav-text">Trips</span>
                                     </div>
                                 </Link>
@@ -139,7 +139,7 @@ const Nav = () => {
                                         onMouseOver={() => setExploreover(true)}
                                         onMouseOut={() => setExploreover(false)}
                                     >
-                                        <img src={exploreover ? `${Constants.assets_api}/public/icons/icons/ICO-EXPLORE-orange.png` : `${addnavClass?`${Constants.assets_api}/public/icons/icons/ICO EXPLORE.png`:`${Constants.assets_api}/public/icons/icons/ICO-EXPLORE-white.png`}`} />
+                                        <img alt="explore" src={exploreover ? `${Constants.assets_api}/public/icons/icons/ICO-EXPLORE-orange.png` : `${addnavClass?`${Constants.assets_api}/public/icons/icons/ICO EXPLORE.png`:`${Constants.assets_api}/public/icons/icons/ICO-EXPLORE-white.png`}`} />
                                         <span className="nav-text">Explore</span>
                                     </div>
                                 </Link>
@@ -151,7 +151,7 @@ const Nav = () => {
                                     onMouseOver={() => setStayover(true)}
                                     onMouseOut={() => setStayover(false)}
                                 >
-                                    <img src={stayover ? `${Constants.assets_api}/public/icons/icons/ICO-STAYS-orange.png` : `${addnavClass?`${Constants.assets_api}/public/icons/icons/ICO STAYS.png`:`${Constants.assets_api}/public/icons/icons/ICO-STAYS-white.png`}`} />
+                                    <img alt="stays" src={stayover ? `${Constants.assets_api}/public/icons/icons/ICO-STAYS-orange.png` : `${addnavClass?`${Constants.assets_api}/public/icons/icons/ICO STAYS.png`:`${Constants.assets_api}/public/icons/icons/ICO-STAYS-white.png`}`} />
                                     <span className="nav-text">Stays</span>
                                 </div>
                                 </Link>
@@ -182,15 +182,14 @@ const Nav = () => {
                 </div>
                 :
                 <div>
-                    <div className={tw`container`} style={{position:'relative'}}>
+                    <div className={tw`container relative`}>
                         {!loading ?
                             <HiOutlineSearch
                                 className="s_icon"
-                                // style={{position:'absolute',top:'10px',color:'grey'}}
                                 size={"20px"}
                             />
 
-                            : <Spinner className="s_icon" animation="border" style={{ color: "#f06726", width: "20px", height: "20px" }} role="status">
+                            : <Spinner className="s_icon s_load" animation="border" role="status">
                                 <span className="visually-hidden">Loading...</span>
                             </Spinner>
                         }
@@ -200,9 +199,9 @@ const Nav = () => {
                             onClick={() => SetshowSearch(false)}
                             className="cr_icon"
                         />
-                        <input style={{padding:'15px 0 15px 40px'}} type="text" className="form-control s_form" onChange={event => HandleSearch(event.target.value)} placeholder="Search anything..." />
+                        <input type="text" className="form-control s_form nv_search" onChange={event => HandleSearch(event.target.value)} placeholder="Search anything..." />
                     </div>
-                    <section className={tw`drop_down container`} style={{ boxShadow: 'inset 0 -1px 0 0 rgba(0,0,0,.1)',left:'0',right:'0',borderColor:'transparent' }}>
+                    <section className={tw`drop_down container`}>
                         <div>
                             {result?.packages?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
@@ -225,7 +224,8 @@ const Nav = () => {
                                 let url = ""
                                 if (e?.type == 'COUNTRY')
                                 {
-                                    url = `/holidays-international/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
+                                    url = createCountryListURL({cityname:e?.name,id:e.id})
+                                    // url = `/holidays-international/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
                                 }
                                 else  if(e?.type == 'STATE'){
                                     url = createStateListURL({statename:e?.name,id:e.id})

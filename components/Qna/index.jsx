@@ -134,7 +134,7 @@ const QnaListing = ({ data, travelGuide }) => {
                 travelGuide == false ?
                     <BreadCrumbs bread={bread} /> : ""
             }
-            <div className="container" style={{ textAlign: 'left' }}>
+            <div className={tw`container text-left`}>
 
                 {/* <div className='qna-box'>
                     <div>
@@ -153,11 +153,11 @@ const QnaListing = ({ data, travelGuide }) => {
                     <div className={tw`flex justify-between`}>
                         <div>
                             <h4 className={tw`text-xl font-bold`}>{data[0]?.geoname} QnA</h4>
-                            <p style={{ fontSize: '12px', color: '#999' }}>YOUR QUERIES AND ANSWERS</p>
+                            <p className={tw`text-[12px] text-[#999]`}>YOUR QUERIES AND ANSWERS</p>
                         </div>
                         <div>
                             <a className={tw`btn_view_more _logo_clr flex flex-wrap items-center`} onClick={() => setOpen(!open)}>
-                                <FaRegQuestionCircle style={{ fontSize: '13px' }} />
+                                <FaRegQuestionCircle className={tw`text-[13px]`}/>
                                 <div className={tw`ml-2`}> Ask a Question</div>
                             </a>
                         </div>
@@ -173,11 +173,11 @@ const QnaListing = ({ data, travelGuide }) => {
                             <div className="qna-collpase">
                                 <div>
                                     <div className='question'>
-                                        <div style={{ display: 'flex', gap: 10 }}>
+                                        <div className={tw`flex gap-10`}>
                                             <div>
-                                                <AiOutlinePlus style={{ cursor: "pointer", fontSize: "17px", color: 'grey' }} onClick={() => collapse === index ? setCollapse(null) : setCollapse(index)} />
+                                                <AiOutlinePlus className={tw`cursor-pointer text-[17px] text-grey-500`} onClick={() => collapse === index ? setCollapse(null) : setCollapse(index)} />
                                             </div>
-                                            <p style={{ color: '#606060', fontSize: '15px', }}>{ReactHtmlParser(e.question)}</p>
+                                            <p className={tw`text-[#606060] text-[15px]`} >{ReactHtmlParser(e.question)}</p>
                                         </div>
                                         <div>
                                             <button className="reply-btn" onClick={() => {
@@ -190,58 +190,64 @@ const QnaListing = ({ data, travelGuide }) => {
                                         </div>
                                     </div>
                                     <Collapse in={collapse === index ? true : false}>
-                                        <div style={{ marginLeft: '40px' }}>
-                                            <div style={{ marginTop: '25px' }}>
-                                                <div style={{ display: 'flex' }}>
+                                        <div className={tw`ml-[40px]`}>
+                                            <div className={tw`mt-[25px]`}>
+                                                <div className={tw`flex`}>
                                                     <div className="coment_photo">
-                                                        <div style={{ height: '50px', width: '50px', borderRadius: '50px', background: `#${Math.floor(Math.random() * 16777215).toString(16)}`, display: 'flex' }}>
-                                                            <span style={{ display: 'block', textAlign: 'center', alignSelf: 'center', fontSize: '30px', color: 'white', marginLeft: '15px' }}>
+                                                        <div className={tw`h-[50px] w-[50px] rounded-[50px] flex bg-[#${Math.floor(Math.random()*16777215).toString(16)}]`} 
+                                                            // style={{ height: '50px', width: '50px', borderRadius: '50px', background: `#${Math.floor(Math.random() * 16777215).toString(16)}`, display: 'flex' }}
+                                                        
+                                                        >
+                                                            <span 
+                                                            className={tw`block text-center text-[30px] text-white ml-[15px] self-center`}
+                                                            // style={{ display: 'block', textAlign: 'center', alignSelf: 'center', fontSize: '30px', color: 'white', marginLeft: '15px' }}
+                                                            >
                                                                 {e.username[0].toUpperCase()}
                                                             </span>
                                                         </div>
                                                         {/* <img src={require("../assets/coment_photo.png")} alt="" /> */}
                                                     </div>
-                                                    <div style={{ marginLeft: '10px', alignSelf: 'center' }}>
-                                                        <div style={{ color: 'grey', fontSize: '13px', fontWeight: 'bold', textTransform: 'uppercase' }}>{e.username}</div>
-                                                        <div style={{ fontSize: '11px', color: '#606060' }}>Asked on {e.createdDate}</div>
+                                                    <div className={tw`ml-10px self-center`}>
+                                                        <div className={tw`text-grey-500 text-[13px] font-bold uppercase`}>{e.username}</div>
+                                                        <div className={tw`text-[11px] text-[#606060]`} >Asked on {e.createdDate}</div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style={{ marginLeft: '25px', marginTop: '50px' }}>
+                                            <div className={tw`ml-[25px] mt-[50px]`}>
                                                 <div>
-                                                    <div style={{ overflow: 'auto' }}>
-                                                        <div style={{ float: 'left' }}>
-                                                            <span style={{ fontSize: '13px', color: '#606060' }}>Reply</span>
+                                                    <div className={tw`overflow-auto`}>
+                                                        <div className={tw`float-left`} >
+                                                            <span className={tw`text-[13px] text-[#606060]`} >Reply</span>
                                                         </div>
-                                                        <div style={{ float: 'left', marginTop: '7px', marginLeft: '5px' }}>
+                                                        <div className={tw`float-left mt-[7px] mr-[5px]`} >
                                                             <span><FiCornerRightDown /></span>
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <div style={{ color: '#606060' }}>
+                                                        <div className={tw`text-[#606060]`}>
                                                             {e?.replies?.map((rp) => {
                                                                 return <>
-                                                                    <div style={{ marginBottom: '30px' }}>
-                                                                        <div style={{ border: '1px solid #eaeaea', background: 'white', padding: '10px', borderRadius: '5px', textAlign: 'left' }}>
+                                                                    <div className={tw`mb-[30px]`}>
+                                                                        <div className={tw`bg-white p-[10px] rounded-[5px] text-left border-1 border-solid border-[#eaeaea]`}>
                                                                             {ReactHtmlParser(rp.replyText)}
                                                                         </div>
                                                                         <div>
-                                                                            <div style={{ marginTop: '10px' }}>
-                                                                                <div style={{ display: 'flex' }}>
+                                                                            <div className={tw`mt-10px`}>
+                                                                                <div className='flex'>
                                                                                     {/* <div className="coment_photo">
                                                                                         <img src={require("../assets/coment_photo.png")} alt="" />
                                                                                     </div> */}
 
-                                                                                    <div style={{ height: '50px', width: '50px', borderRadius: '50px', background: `#${Math.floor(Math.random() * 16777215).toString(16)}`, display: 'flex' }}>
-                                                                                        <span style={{ display: 'block', textAlign: 'center', alignSelf: 'center', fontSize: '30px', color: 'white', marginLeft: '15px' }}>
+                                                                                    <div className={tw`flex h-[50px] w-[50px] rounded-[50px] bg-[#${Math.floor(Math.random() * 16777215).toString(16)}]`}>
+                                                                                        <span className={tw`block text-center self-center text-[30px] text-white ml-[15px]`}>
                                                                                             {rp.username[0].toUpperCase()}
                                                                                         </span>
                                                                                     </div>
 
 
-                                                                                    <div style={{ marginLeft: '10px', alignSelf: 'center' }}>
-                                                                                        <div style={{ color: 'grey', fontWeight: 'bold', fontSize: '13px', textTransform: 'uppercase' }}>{rp?.username}</div>
-                                                                                        <div style={{ fontSize: '11px', color: '#606060' }}>Replied on {e.createdDate}</div>
+                                                                                    <div className={tw`ml-[10px] self-center`}>
+                                                                                        <div className={tw`text-gray-500 font-bold text-[13px] uppercase`}>{rp?.username}</div>
+                                                                                        <div className={tw`text-[11px] text-[#606060]`}>Replied on {e.createdDate}</div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -269,11 +275,12 @@ const QnaListing = ({ data, travelGuide }) => {
             backdrop="static">
             <Modal.Body>
                 <span
-                    style={{ float: "right", color: "black" }}
+                className={tw`float-right text-black`}
+                    // style={{ float: "right", color: "black" }}
                     onClick={() => setOpen(!open)}
                     aria-hidden="true"
                 >
-                    <GrClose style={{ cursor: 'pointer' }} />
+                    <GrClose className={tw`cursor-pointer`} />
                 </span>
                 <div>
                     <form onSubmit={handleQuestionSubmit}>
@@ -292,8 +299,7 @@ const QnaListing = ({ data, travelGuide }) => {
                                 <div className="form-group">
                                     <textarea
                                         name="question"
-                                        className="form-control"
-                                        style={{ height: '200px' }}
+                                        className={tw`form-control h-[200px]`}
                                         required
                                         value={question ? question : ''}
                                         onChange={e => setQuestion(e.target.value)}
@@ -320,11 +326,12 @@ const QnaListing = ({ data, travelGuide }) => {
             backdrop="static">
             <Modal.Body>
                 <span
-                    style={{ float: "right", color: "black" }}
+                    className={'float-right text-black'}
+                    // style={{ float: "right", color: "black" }}
                     onClick={() => setReplyModal(!replyModal)}
                     aria-hidden="true"
                 >
-                    <GrClose style={{ cursor: 'pointer' }} />
+                    <GrClose className='cursor-pointer' />
                 </span>
                 <div>
                     <form onSubmit={handleReplySubmit}>
@@ -342,9 +349,9 @@ const QnaListing = ({ data, travelGuide }) => {
                                 </div>
                                 <div className="form-group">
                                     <textarea
-                                        style={{ height: '200px' }}
+                                        // style={{ height: '200px' }}
                                         name="question"
-                                        className="form-control"
+                                        className="form-control h-[200px]"
                                         required
                                         value={reply?.question !== '' ? reply.question : ''}
                                         onChange={e => setReply({ ...reply, [e.target.name]: e.target.value })}

@@ -168,14 +168,15 @@ const Login = (props) => {
         >
             <Modal.Body>
                 <span
-                    style={{
-                        float: "right",
-                        color: "black",
-                        cursor: 'pointer',
-                        position: 'relative',
-                        top: 10,
-                        right: 15
-                    }}
+                    className={tw`float-right text-black cursor-pointer relative top-[10px] right-[15px]`}
+                    // style={{
+                    //     float: "right",
+                    //     color: "black",
+                    //     cursor: 'pointer',
+                    //     position: 'relative',
+                    //     top: 10,
+                    //     right: 15
+                    // }}
                     onClick={handleClose}
                     aria-hidden="true"
                 >
@@ -188,10 +189,10 @@ const Login = (props) => {
                                 <div className="body_login">
                                     <div className={tw`login_header`}>
                                         <img
-                                            className={tw`m-auto`}
+                                            className={tw`m-auto w-[40px]`}
                                             src={`${Constants.assets_api}/public/icons/logo-icon.png`}
-                                            alt=""
-                                            style={{ width: '40px' }}
+                                            alt="kiomoi"
+                                            // style={{ width: '40px' }}
                                         />
                                         <h4 className={tw`text-lg font-semibold text-orange`}>Login or Sign up</h4>
                                     </div>
@@ -294,14 +295,15 @@ const Login = (props) => {
         >
             <Modal.Body>
                 <span
-                    style={{
-                        float: "right",
-                        color: "black",
-                        cursor: 'pointer',
-                        position: 'relative',
-                        top: 10,
-                        right: 15
-                    }}
+                    className={tw`float-right text-black cursor-pointer relative top-[10px] right-[15px]`}
+                    // style={{
+                    //     float: "right",
+                    //     color: "black",
+                    //     cursor: 'pointer',
+                    //     position: 'relative',
+                    //     top: 10,
+                    //     right: 15
+                    // }}
                     onClick={() => setShowForgotPass(!showForgotPass)}
                     aria-hidden="true"
                 >
@@ -352,14 +354,15 @@ const Login = (props) => {
             backdrop="static">
             <Modal.Body>
                 <span
-                    style={{
-                        float: "right",
-                        color: "black",
-                        cursor: 'pointer',
-                        position: 'relative',
-                        top: 10,
-                        right: 15
-                    }}
+                className={tw`float-right text-black cursor-pointer relative top-[10px] right-[15px]`}
+                    // style={{
+                    //     float: "right",
+                    //     color: "black",
+                    //     cursor: 'pointer',
+                    //     position: 'relative',
+                    //     top: 10,
+                    //     right: 15
+                    // }}
                     onClick={() => setShowOTP(!showOTP)}
                     aria-hidden="true"
                 >
@@ -415,14 +418,15 @@ const Login = (props) => {
         >
             <Modal.Body>
                 <span
-                    style={{
-                        float: "right",
-                        color: "black",
-                        cursor: 'pointer',
-                        position: 'relative',
-                        top: 10,
-                        right: 15
-                    }}
+                className={tw`float-right text-black cursor-pointer relative top-[10px] right-[15px]`}
+                    // style={{
+                    //     float: "right",
+                    //     color: "black",
+                    //     cursor: 'pointer',
+                    //     position: 'relative',
+                    //     top: 10,
+                    //     right: 15
+                    // }}
                     onClick={() => setShowResetPass(!showResetPass)}
                     aria-hidden="true"
                 >
@@ -434,10 +438,10 @@ const Login = (props) => {
                             <div className="body_login">
                                 <div className={tw`login_header`}>
                                     <img
-                                        className={tw`m-auto`}
+                                        className={tw`m-auto w-[40px]`}
                                         src={`${Constants.assets_api}/public/icons/logo-icon.png`}
-                                        alt=""
-                                        style={{ width: '40px' }}
+                                        alt="kiomoi"
+                                        // style={{ width: '40px' }}
                                     />
                                     <h4 className={tw`font-semibold text-orange`}>Enter OTP and New Password</h4>
                                 </div>

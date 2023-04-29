@@ -69,7 +69,7 @@ const Reviews = ({ data }) => {
           <div className={tw`col-sm-12 col-xs-12 _cr_mb px-4`} key={i}>
             <div className="comment_box _box_shadow">
               <div className="qoute_ text-center">
-                <ImQuotesRight className={tw`icon_size inline`} style={{ fontSize: '30px' }} />
+                <ImQuotesRight className={tw`icon_size inline text-[30px]`} />
               </div>
               <div className="text-comment">
                 <p>{review.substring(0, 150)}...</p>
@@ -77,7 +77,7 @@ const Reviews = ({ data }) => {
 
               <div className="user_verify text-center">
                 <div className="user_img_round">
-                  <img src={`${Constants.assets_api}/public/icons/user_photo.png`} alt="" />
+                  <img src={`${Constants.assets_api}/public/icons/user_photo.png`} alt="user" />
                 </div>
                 <div className="user_title">{item.cName}</div>
                 <div className="divider_line"></div>

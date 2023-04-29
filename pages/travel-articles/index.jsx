@@ -34,7 +34,7 @@ const TravelArticles = ({article,meta}) =>{
                             
                             <div className={tw`w-full lg:w-1/3`}>
                                 <div>
-                                    <img src={item.images} />
+                                    <img src={item.images} alt={item.heading}/>
                                 </div>
                                 
                             </div>
@@ -44,7 +44,7 @@ const TravelArticles = ({article,meta}) =>{
                                     <h2 className={tw`text-xl font-bold`}>{item.heading}</h2>
                                     {ReactHtmlParser(item.description.substring(0, 450))}
                                     <Link href={aurl}>
-                                    <a href={aurl} style={{color:'#f06726'}}>
+                                    <a href={aurl} className="text-[#f06726]">
                                         Read full story
                                     </a>
                                     </Link>

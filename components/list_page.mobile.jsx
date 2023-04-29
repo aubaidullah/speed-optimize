@@ -14,7 +14,7 @@ import { Modal } from "react-bootstrap"
 import {BsXLg} from 'react-icons/bs';
 import Meta from "./meta"
 import { useRouter } from 'next/router'
-import { createStateListURL } from "./fun"
+import { createCountryListURL, createStateListURL } from "./fun"
 
 // const filtering = useSelector(state=>state.package.package)
 // const FilterBy = dynamic(() => import('./list/filter'), {
@@ -79,6 +79,27 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                 },                
             ]
         }
+        const country_st_bread = {
+            disabled:{
+                "item":`${region?.name}`
+            },
+            enabled :[
+                {
+                    item:"Kiomoi",
+                    href:"/"
+                },
+                {
+                    item:"Holidays Bookings",
+                    href:"/holidays"
+                },
+                {
+                    item:`${region?.sname}`,
+                    href : createCountryListURL({cityname:region?.sname,id:region?.cid})
+                    // href: `/holidays-international/${region?.sname}-tour-packages/${region?.cid}`
+                    // href:`/holidays-international/nepal-tour-packages/153`
+                }
+            ]
+        }        
         const country_bread = {
             disabled:{
                 "item":`${region?.name}`
@@ -92,6 +113,11 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                     item:"Holidays Bookings",
                     href:"/holidays"
                 },
+                // {
+                //     item:`${region?.sname}`,
+                //     href: `/holidays-international/${region?.sname}-tour-packages/${region?.cid}`
+                //     // href:`/holidays-international/nepal-tour-packages/153`
+                // }
             ]
         }    
         const city_bread = {
@@ -250,7 +276,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     // console.log(_places)
     // console.log(_themes)
     // console.log(_pricing)
-    // console.log(filtering)
+    // console.log(page_type)
     // console.log(pricefilter)
     // console.log(data.length)
     return <>
@@ -260,7 +286,10 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
         {/* <Meta meta={meta} /> */}
 
         <BreadCrumbs bread={
-            page_type=='STATE'?state_bread:page_type=='COUNTRY'?country_bread:page_type=='CITY'?city_bread:all_bread
+            // page_type=='STATE'?state_bread:region?.sname == region?.cname?country_bread:page_type=='CITY'?city_bread:all_bread
+
+
+            page_type=='STATE'?state_bread:page_type=='COUNTRY'?country_bread:page_type=='CITY' && region?.sname == region?.cname?country_st_bread:page_type == 'CITY'?city_bread:all_bread
             // bread
         
         }/>
@@ -274,10 +303,10 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
         
         >
             <Modal.Body>
-                <div style={{overflow:'auto'}}>
-                    <span style={{ float: "right", }} aria-hidden="true">
-                        <BsXLg 
-                        style={{cursor: "pointer" }}
+                <div className={tw`overflow-auto`}>
+                    <span className={tw`float-right`}aria-hidden="true">
+                        <BsXLg className={tw`cursor-pointer`} 
+                        // style={{cursor: "pointer" }}
                         onClick={()=>setIsshow(false)}
                         />
                     </span>
@@ -289,9 +318,11 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
             
             
             <div className='bottom_button_filter' onClick={()=>setIsshow(false)}>
-                <div className={tw`flex`} style={{height:'100%'}}>
-                    <div style={{width:'100%',height:'100%'}} className={tw`flex`}>
-                        <div style={{alignSelf:'center',width:'100%',textAlign:'center',fontSize:'20px'}}>Apply</div>
+                <div className={tw`flex h-full`}>
+                    <div className={tw`flex h-full w-full`}>
+                        <div className={tw`self-center w-full text-center text-[20px]`} 
+                        // style={{alignSelf:'center',width:'100%',textAlign:'center',fontSize:'20px'}}
+                        >Apply</div>
                     </div>
                 </div>
                 
@@ -393,7 +424,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                                         {page_type=='STATE' || page_type=='COUNTRY'?
                                         <span>
                                             <span> for </span>
-                                            <span style={{color:'rgb(240, 103, 38)'}}>{region?.name}</span>
+                                            <span className={tw`text-[#F06726]`}>{region?.name}</span>
                                         </span>
                                         
                                         :""
@@ -457,7 +488,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                                             <Package key={index} item={item} />:null
                                         }):
                                         <div className={tw`mt-16 mb-16 text-center`}>
-                                            <div className={tw`text-2xl font-bold`} style={{color:'#999'}}>
+                                            <div className={tw`text-2xl font-bold text-[#999]`}>
                                                 <p className={tw`"`}>No package found</p>
                                                 
                                             </div>

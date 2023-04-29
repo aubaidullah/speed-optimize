@@ -23,7 +23,7 @@ import Image from 'next/image'
 import TravelGuide from '../home/travel_guide';
 import Meta from '../meta';
 import * as Constants from '../Constants'
-import { createCityListURL,createStateListURL, createTGCityURL } from '../fun';
+import { createCityListURL,createCountryListURL,createStateListURL, createTGCityURL } from '../fun';
 
 const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, hotels, article, qna,type ,state_t=undefined}) => {
     console.log(data)
@@ -99,7 +99,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
 
     const imagesRender = data.images.map((img, index) => {
         return <div key={index}>
-            <Image src={img.i} className="img" layout="fill" style={{borderRadius:'8px'}}/>
+            <Image src={img.i} alt="images" className={tw`img rounded-[8px]`} layout="fill"/>
         </div>
     })
 
@@ -118,7 +118,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
     const rightBlock = ({ icon, heading, desc }) => {
         return <div className={tw`flex pb-2`}>
             <div>
-                <img src={`${Constants.assets_api}/public/icons/${icon}`} alt="" className={tw`inline`} style={{ height: '15.7px' }} />
+                <img src={`${Constants.assets_api}/public/icons/${icon}`} alt="icon" className={tw`inline h-[15.7px]`} />
             </div>
             <div className={tw`ml-4`}>
                 <div className={tw`t_12px font-bold`}>{heading}</div>
@@ -199,7 +199,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                             {imagesRender.length > 0 ? (
                                 imagesRender
                             ) : (
-                                <img src={`${Constants.assets_api}/public/icons/logo-icon.png`} />
+                                <img src={`${Constants.assets_api}/public/icons/logo-icon.png`} alt="kiomoi logo" />
                             )}
                         </Carousel>
                     </div>
@@ -277,7 +277,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                                         type=='STATE'?
                                                         <div className={tw`flex`}>
                                                             <div>
-                                                                <IoLocationSharp className={tw`inline`} style={{ height: '15.7px' }}/>
+                                                                <IoLocationSharp className={tw`inline h-[15.7px]`}/>
                                                                 {/* <img src={`/icons/${icon}`} alt="" className={tw`inline`} style={{ height: '15.7px' }} /> */}
                                                             </div>
                                                             <div className={tw`ml-2`}>
@@ -339,28 +339,30 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                             ?"Price On Request"
                                             :
                                             <>
-                                            <FaRupeeSign className='inline' style={{ color: "#f79421", fontSize: '15px', marginBottom: '4px' }} />
+                                            <FaRupeeSign className={tw`inline text-[#f79421] text-[15px] mb-[4px]`} />
                                             {data.mincost / 100}/-                                                    
                                             </>
 
                                         }
 
                                     </div>
-                                    <div className="price_inr" style={{ fontSize: '9px' }}>
+                                    <div className={tw`price_inr text-[9px]`}>
                                         onwards
                                     </div>
 
                                 </div>
 
                                 <div className={tw`w-full lg:1/2`}>
-                                    <div style={{ float: 'right' }}>
+                                    <div className={tw`float-right`}>
                                         
                                         {data.mincost>=100?
                                         
                                         <Link href={
                                             type == 'CITY'?createCityListURL({cityname:data.tg.cityName,id:data.gid}):
                                             // type=='CITY'?`/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/`:
-                                            createStateListURL({statename:data.tg.cityName,id:data.gid})
+                                            
+                                            type == 'STATE'?
+                                            createStateListURL({statename:data.tg.cityName,id:data.gid}):createCountryListURL({cityname:data.tg.cityName,id:data.gid})
                                             // `/holidays/${data.tg.cityName.replace(/\s+/g, "-").toLowerCase()}-tour-packages/${data.gid}`}
                                         }>
                                             <a>
@@ -377,7 +379,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                             </div>
                         </div>
                         <div className={tw`pt-2`}>
-                            <div className="btn_listing _btn_clr" style={{cursor:'pointer', width: '100%', textAlign: 'center', padding: '8px 15px', fontSize: '12px' }}
+                            <div className={tw`btn_listing _btn_clr cursor-pointer w-full text-center text-[12px]`} 
                             
                             onClick={()=>setSendquery(true)}
                             
@@ -460,11 +462,12 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                                         <div>
                                                             <div className="image-squre__">
                                                                 <img
-                                                                    style={{ height: '100%', width: '100%' }}
+                                                                    className={tw`w-full h-full`}
+                                                                    
                                                                     src={
                                                                         item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`
                                                                     }
-                                                                    alt=""
+                                                                    alt="kiomoi logo"
                                                                 />
 
                                                             </div>
@@ -486,11 +489,11 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                                         <div>
                                                             <div className="image-squre__">
                                                                 <img
-                                                                    style={{ height: '100%', width: '100%' }}
+                                                                    className={tw`w-full h-full`}
                                                                     src={
                                                                         item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`
                                                                     }
-                                                                    alt=""
+                                                                    alt="kiomoi logo"
                                                                 />
 
                                                             </div>

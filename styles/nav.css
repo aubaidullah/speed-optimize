@@ -31,6 +31,10 @@ nav{
 .shadow-sm_ .nav-text, .shadow-sm_ .c_it{
     color: white;
 }
+.shadow-sm_{
+    overflow: auto;
+    z-index: 3
+}
 .navbar-dflt{
     box-shadow: inset 0 -1px 0 0 rgba(0,0,0,.1);
     position: sticky;
@@ -124,9 +128,13 @@ nav{
     color:#f06726;
 }
 .drop_down{
-    box-shadow: rgba(0, 0, 0, 0.1) 0px -1px 0px 0px inset;
+    /* box-shadow: rgba(0, 0, 0, 0.1) 0px -1px 0px 0px inset; */
+    box-shadow: inset 0 -1px 0 0 rgba(0,0,0,.1);
     position: fixed;
+    border-color: transparent;
     background: white;
+    left: 0;
+    right: 0;
     width: 100%;    
 }
 .brand-logo{
@@ -142,6 +150,15 @@ nav{
     box-shadow:inset 0 -1px 0 0 rgba(0,0,0,.1)
 }
 
+.nv_search{
+    padding:15px 0 15px 40px;
+}
+
+.s_load{
+    color: #f06726;
+    width: 20px;
+    height: 20px
+}
 
 
 

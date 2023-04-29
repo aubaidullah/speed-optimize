@@ -16,11 +16,11 @@ const Hotel_Design = ({item}) =>{
             <Link href={hurl}>
             <a href={hurl}>
                 <div className={tw`pl-0 lg:px-2`}>
-                <div style={{height:'200px'}}>
-                    <img style={{objectFit:'cover',height:'200px',width:'100%',borderRadius:'8px' ,border:'1px solid #e3e3e3'}}
-                    className="img-responsive"
+                <div className={tw`h-[200px]`}>
+                    <img 
+                    className={tw`img-responsive object-cover h-[200px] w-full rounded-[8px] border-1 border-[#e3e3e3]`}
                     src={item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`}
-                    alt=""
+                    alt="kiomoi logo"
                 />
                 </div>
                 <div className={tw`mt-2`}>
@@ -41,7 +41,7 @@ const Hotel_Design = ({item}) =>{
                     <div>
                         {item.price === 0?<span className={tw`price_inr text-sm`}>Price on Request</span>:
                         <span className={tw`price_inr text-sm`}>
-                        <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'12px',marginBottom:'4px'}} />
+                        <FaRupeeSign className={tw`inline text-[#f79421] text-[12px] mb-[4px]`} />
                         
                         {item.price} /-
                         </span>

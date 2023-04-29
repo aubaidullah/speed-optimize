@@ -25,14 +25,13 @@ const State = ({data}) =>{
               <div className="px-2 _cr_mb">
                 <div className="_des_img">
                   <img
-                    className="img-responsive"
-                    style={{borderRadius:'8px'}}
+                    className={tw`img-responsive rounded-[8px]`}
                     src={
                       item.im.split("~")[0]
                         ? item.im.split("~")[0]
                         : `${Constants.assets_api}/public/icons/logo-icon.png`
                     }
-                    alt=""
+                    alt="kiomoi"
                   />
                   <div className="des_cont">
                     <div className="des_location">{item.nm}</div>

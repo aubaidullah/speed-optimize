@@ -128,7 +128,7 @@ const HotelList = ({hotels}) =>{
                   <img
                     className="img-responsive"
                     src={item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`}
-                    alt=""
+                    alt="kiomoi logo"
                   />
                   <div className="content_">
                     <div className="person_">

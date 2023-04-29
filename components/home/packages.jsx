@@ -104,7 +104,7 @@ const HomePackages = ({data}) =>{
         return (
           <Link href={aurl} key={i}>
             <a href={aurl}>
-              <div className="col-sm-12 col-xs-12" style={{paddingLeft:'15px',paddingRight:'15px'}}>
+              <div className={tw`col-sm-12 col-xs-12 pl-[15px] pr-[15px]`}>
                 <div className={tw`top_rated_box _st_box _tr_box bg-white`}>
                   <div className="des_img">
                     <Image
@@ -115,7 +115,7 @@ const HomePackages = ({data}) =>{
                           ? item.images.split("~")[0]
                           : `${Constants.assets_api}/public/icons/logo-icon.png`
                       }
-                      alt=""
+                      alt={item.name}
                     />
                     <div className="content_rated">
                       <div className="nature_text_">
@@ -125,7 +125,7 @@ const HomePackages = ({data}) =>{
                         </span>
                         <div className={tw`two_peoples flex items-center`}>
                           <span className={tw`frieds inline`}>
-                            <img src={"/icons/friends.svg"} alt="" />
+                            <img src={"/icons/friends.svg"} alt="2 peoples" />
                           </span>
                           <span className={tw`days inline`}> 2 People </span>
                         </div>
@@ -161,9 +161,9 @@ const HomePackages = ({data}) =>{
   
                     {item.discount > 0 ? (
                       <>
-                        <span className="_list_p" style={{display:'none'}}>{item.percent}% Off</span>
+                        {/* <span className="_list_p" style={{display:'none'}}>{item.percent}% Off</span> */}
                         <div className={tw`text-right`}>
-                        <FaRupeeSign className='inline' style={{color:"#999",fontSize:'12px',marginBottom:'4px'}} />
+                        <FaRupeeSign className={tw`inline text-[#999] text-[12px] mb-[4px]`}/>
                           <del>
                             {/* <i className="fa fa-inr"></i> */}
                             {item.price}/-
@@ -178,8 +178,8 @@ const HomePackages = ({data}) =>{
                     )}
                     <div className={tw`price_tag flex items-center justify-between`}>
                       <span className="start_from">Started from</span>
-                      <span className="price_inr" style={{ position: "unset" }}>
-                      <FaRupeeSign className='inline' style={{color:"#f79421",fontSize:'15px',marginBottom:'4px'}} />
+                      <span className={tw`price_inr position`}>
+                      <FaRupeeSign className={tw`inline text-[#f79421] text-[15px] mb-[4px]`} />
                         {item.finalprice}/-
                       </span>
                     </div>
@@ -195,7 +195,7 @@ const HomePackages = ({data}) =>{
       return     <section className={tw`TopRatedTours mt-16`}>
       <div className="container">
           <div className="row_">
-              <div className="box_design_common_" style={{position:'relative'}}>
+              <div className={tw`box_design_common_ relative`}>
                   <div className={tw`title_kiomoi flex items-center justify-between mb-6`}>
                       
                       <div className={tw`2w-full`}>

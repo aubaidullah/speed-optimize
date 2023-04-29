@@ -112,8 +112,8 @@ const Hotels = ({data,meta}) =>{
                               <div className="des_img_hotel">
                                   
                                   {item.iurl
-                                  ?<Image src={item.iurl} className={tw``} style={{height:'100%',width:'100px'}} layout="fill" />
-                                  :<img src={item.iurl} />
+                                  ?<Image src={item.iurl} className={tw`h-full w-[100px]`} alt={item.cname} layout="fill" />
+                                  :<img src={item.iurl} alt={item.cname}/>
                                   }
                               </div>
                           </a>
@@ -241,7 +241,7 @@ const Hotels = ({data,meta}) =>{
         
         <div className={tw`mt-4`}>
             <h2 className={tw`_titles_ mb-4`}>Browse by Destination</h2>
-            <div className="Shape_42" style={{position:"relative"}}>
+            <div className="Shape_42 relative">
             <div className="clearfix"></div>
                 <MultiCarousel2
                       partialVisible={true}
@@ -262,7 +262,7 @@ const Hotels = ({data,meta}) =>{
             </div>
         </div>
 
-        <div className={tw`mt-4`} style={{display:'unset'}}>
+        <div className={tw`mt-4 inline`}>
             <h2 className={tw`_titles_ mb-4`}>Explore</h2>
               <HotelList hotels={data.hotels} />
                 {/* <Slider {...settings}>

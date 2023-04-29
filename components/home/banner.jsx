@@ -7,7 +7,7 @@ import { tw } from 'twind';
 import Link from 'next/link';
 import * as Constants from '../Constants';
 import axios from 'axios';
-import { createCityListURL,createDetailUrl,createStateListURL, createTGCityURL, createTGCountryURL, createTGStateURL } from "../fun";
+import { createCityListURL,createCountryListURL,createDetailUrl,createStateListURL, createTGCityURL, createTGCountryURL, createTGStateURL } from "../fun";
 
 const Banner = ({ data }) => {
 
@@ -31,10 +31,10 @@ const Banner = ({ data }) => {
         else setResult({})
     }
     return <>
-    <div className="slider_banner slider_banner_ slider_overlay" style={{overflow:"hidden"}}>
+    <div className={tw`overflow-hidden slider_banner slider_banner_ slider_overlay`}>
         <div>
             {/* scaleX(1.5) */}
-                <img src={data[0]?.i} className="img-responsive_banner" />
+                <img src={data[0]?.i} className="img-responsive_banner" alt="banner img"/>
         </div>
         
     </div>
@@ -60,7 +60,7 @@ const Banner = ({ data }) => {
                 <HiOutlineSearch
                     className="m_s_icon"
                 />
-                <input style={{ zIndex: 999 }} type="text" className="form-control" onChange={event => HandleSearch(event.target.value)} placeholder="Search Any Destination, Travel Guide, Trip or Stays" />
+                <input type="text" className={tw`form-control z-[999]`} onChange={event => HandleSearch(event.target.value)} placeholder="Search Any Destination, Travel Guide, Trip or Stays" />
                 {searchkey.length >= 2 ? (
                     <section className="dropdown-content-home">
                         <div>
@@ -85,7 +85,7 @@ const Banner = ({ data }) => {
                                 let url = ""
                                 if (e?.type == 'COUNTRY')
                                 {
-                                    url = `/holidays-international/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
+                                    url = createCountryListURL({cityname:e?.name,id:e.id})
                                 }
                                 else  if(e?.type == 'STATE'){
                                     url = createStateListURL({statename:e?.name,id:e.id})
@@ -135,7 +135,7 @@ const Banner = ({ data }) => {
                                     // url = "/travel-guide/india/state-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
                                 }
                                 else {
-                                    url = createTGCountryURL({city:e?.name,id:e?.id})
+                                    url = createTGCountryURL({country:e?.name,id:e?.id})
                                     // url = "/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
                                 }
                                 // let statebycity = "/holidays/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase() + "-tour-packages/";
