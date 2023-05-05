@@ -1,5 +1,5 @@
 import client from "../../../components/Graphql/service"
-import { createDetailUrl, createStateListURL } from '../../../components/fun';
+import { createDetailUrl, createStateListURL, jpgToWebp } from '../../../components/fun';
 import { BsDot, BsStarFill, BsStarHalf, BsStar, BsFillCheckCircleFill, BsPlusLg } from 'react-icons/bs'
 
 
@@ -275,7 +275,7 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                             className="slider_banner slider_overlay"
                         >
                             {data?.package.images.split(',').map((e, index) => {
-                                return e?<Image className='img' src={e} layout="fill" key={index} alt={data?.package?.name} />:""
+                                return e?<Image className='img' src={jpgToWebp({uri:e})} layout="fill" key={index} alt={data?.package?.name} />:""
                             })}
                         </Carousel>
                     </div>

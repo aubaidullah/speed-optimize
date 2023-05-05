@@ -17,7 +17,7 @@ import Nav from '../../components/Nav'
 import * as Constants from '../../components/Constants'
 import BreadCrumbs from '../../components/breadcrumbs';
 import Meta from '../../components/meta';
-import { createDetailUrl } from '../../components/fun';
+import { createDetailUrl, jpgToWebp } from '../../components/fun';
 
 
 const DetailPage = ({ data, related, reviews,meta }) => {
@@ -268,7 +268,7 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                             className="slider_banner slider_overlay"
                         >
                             {data?.package.images.split(',').map((e, index) => {
-                                return e?<Image className='img' src={e} layout="fill" key={index} />:""
+                                return e?<Image className='img' src={jpgToWebp({uri:e})} layout="fill" key={index} />:""
                             })}
                         </Carousel>
                     </div>
