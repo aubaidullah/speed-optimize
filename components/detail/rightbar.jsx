@@ -72,7 +72,7 @@ const RightBar=({data})=>{
                                 </div>
 
                             </div>
-                            <div className={tw`f-full`}
+                            <div className={tw`w-full`}
                                 onClick={() =>
                                     _sendquery(
                                     price,
@@ -140,7 +140,7 @@ const RightBar=({data})=>{
 
                             <div className='bestson_list _border_right'>
                                 <div className="best_session">
-                                    <MdCheckCircle className='inline text-[#06188D]' size={13}/>
+                                    <MdCheckCircle className='inline text-[#0d8d06]' size={13}/>
                                     <span>Best Session : </span>
                                     <span> {
                                         data?.package.season.split(",").length === 12? "round-the-year":
@@ -170,12 +170,12 @@ const RightBar=({data})=>{
                         <div className='p-[10px]'>
                             <div className='ov_auto best_session'>
                                 <div className='flt_left'>
-                                    <MdCheckCircle size={13} className='inline text-[#06188D]'/>
+                                    <MdCheckCircle size={13} className='inline text-[#0d8d06]'/>
                                     <span className='_inline__'>Part Payment Available</span>
                                 </div>
 
                                 <div className='flt_right'>
-                                    <MdCheckCircle size={13} className='inline text-[#06188D]'/>
+                                    <MdCheckCircle size={13} className='inline text-[#0d8d06]'/>
                                     <span className='_inline__'>Free Cancellation</span>
                                     
                                 </div>

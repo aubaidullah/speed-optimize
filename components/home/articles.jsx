@@ -3,6 +3,7 @@ import MultiCarousel from "react-multi-carousel";
 import Link from 'next/link'
 import ReactHtmlParser from "react-html-parser";
 import * as Constants from '../Constants'
+import { jpgToWebp } from '../fun';
 
 const Articles = ({data}) =>{
     const responsive = {
@@ -59,7 +60,7 @@ const Articles = ({data}) =>{
                 <div className="recent_img">
                   <img
                     className="img-responsive"
-                    src={item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`}
+                    src={item.images.length > 0 ? jpgToWebp({uri:item.images}) : `${Constants.assets_api}/public/icons/logo-icon.png`}
                     alt="kiomoi"
                   />
                 </div>
