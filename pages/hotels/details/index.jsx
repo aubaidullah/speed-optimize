@@ -15,7 +15,7 @@ import DatePicker from '@amir04lm26/react-modern-calendar-date-picker';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { useEffect,useState } from "react";
 import Meta from "../../../components/meta";
-import { strToUrl } from "../../../components/fun";
+import { jpgToWebp, strToUrl } from "../../../components/fun";
 import {BsCheckCircle} from 'react-icons/bs'
 import * as Constants from '../../../components/Constants'
 
@@ -309,7 +309,7 @@ const HotelDetail = ({hotel,meta}) =>{
                                             <li className="slide">
                                                 {
                                                     hotel.hotel.images
-                                                    ?<Image className='img ht_img' alt={hotel.hotel.name} src={hotel.hotel.images.split(',')[0]} layout="fill" />:
+                                                    ?<Image className='img ht_img' alt={hotel.hotel.name} src={jpgToWebp({uri:hotel.hotel.images.split(',')[0]})} layout="fill" />:
                                                     ""
                                                 }
                                                 
@@ -362,8 +362,8 @@ const HotelDetail = ({hotel,meta}) =>{
 
                                                         <Image className={tw`ht_img rounded-[8px]`} src={
                                                             // e
-                                                            hotel.hotel.images.split(',')[index+1]
-                                                        
+                                                            jpgToWebp({uri:hotel.hotel.images.split(',')[index+1]})
+                                                            
                                                         }   
                                                         alt={hotel?.hotel?.name}
                                                             layout="fill"  />

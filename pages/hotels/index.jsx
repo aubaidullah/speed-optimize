@@ -19,6 +19,7 @@ import Meta from "../../components/meta";
 import HotelList from "../../components/hotel/hotel-list";
 import SearchBar from "../../components/hotel/searchBar";
 import BreadCrumbs from "../../components/breadcrumbs";
+import { jpgToWebp } from "../../components/fun";
 
 
 const Hotels = ({data,meta}) =>{
@@ -112,7 +113,7 @@ const Hotels = ({data,meta}) =>{
                               <div className="des_img_hotel">
                                   
                                   {item.iurl
-                                  ?<Image src={item.iurl} className={tw`h-full w-[100px]`} alt={item.cname} layout="fill" />
+                                  ?<Image src={jpgToWebp({uri:item.iurl})} className={tw`h-full w-[100px]`} alt={item.cname} layout="fill" />
                                   :<img src={item.iurl} alt={item.cname}/>
                                   }
                               </div>

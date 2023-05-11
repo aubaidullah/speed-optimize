@@ -12,7 +12,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import {tw} from 'twind'
 import { Carousel } from "react-responsive-carousel";
-import { createDetailUrl } from './fun'
+import { createDetailUrl, jpgToWebp } from './fun'
 
 
 const Package = ({item}) =>{
@@ -28,7 +28,7 @@ const Package = ({item}) =>{
       }
 
     const _sendquery = (price, id, name, city) => {
-        console.log("sldkf")
+        // console.log("sldkf")
         setModalinfo({
             id,name,city,price
         })
@@ -146,7 +146,11 @@ const Package = ({item}) =>{
                                                         {/* <div className="bk_img" style={{backgroundImage:`url("${item.images.split('~')[0].replace(/w_400/,'w_300')}")`,backgroundPosition:'cover'}}>
                                                         </div> */}
                                                         <div className='bk_img'>
-                                                            <Image layout="fill" alt={item.name} className={tw`rounded-[10px]`} objectFit="fill" src={`${item.images.split('~')[0].replace(/w_400/,'w_300')}`} />
+                                                            <Image layout="fill" alt={item.name} className={tw`rounded-[10px]`} objectFit="fill" 
+                                                            src={
+                                                                jpgToWebp({uri:`${item.images.split('~')[0].replace(/w_400/,'w_300')}`})
+                                                            } 
+                                                            />
                                                         </div>
                                                         
 

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router';
-import Script from 'next/script';
+// import Script from 'next/script';
 import * as Constants from "./Constants"
 const Meta = ({meta}) =>{
     const { asPath, pathname } = useRouter();
@@ -17,6 +17,7 @@ const Meta = ({meta}) =>{
         />
         <meta name="google-site-verification" content="9Sb4VP2cYN-uOYsvXZPSvdYFSlJ-8gg-K92mfDmIf6Q" />
         <meta name="theme-color" content="#f06726" />
+        <meta name="facebook-domain-verification" content="lmf2rs35govemhvoa9eitvy3mwv2b2" />
         
 
         <script 

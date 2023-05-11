@@ -7,7 +7,7 @@ import { tw } from 'twind';
 import Link from 'next/link';
 import * as Constants from '../Constants';
 import axios from 'axios';
-import { createCityListURL,createCountryListURL,createDetailUrl,createStateListURL, createTGCityURL, createTGCountryURL, createTGStateURL } from "../fun";
+import { createCityListURL,createCountryListURL,createDetailUrl,createStateListURL, createTGCityURL, createTGCountryURL, createTGStateURL, jpgToWebp } from "../fun";
 
 const Banner = ({ data }) => {
 
@@ -34,7 +34,7 @@ const Banner = ({ data }) => {
     <div className={tw`overflow-hidden slider_banner slider_banner_ slider_overlay`}>
         <div>
             {/* scaleX(1.5) */}
-                <img src={data[0]?.i} className="img-responsive_banner" alt="banner img"/>
+                <img src={jpgToWebp({uri:data[0]?.i})} className="img-responsive_banner" alt="banner img"/>
         </div>
         
     </div>
