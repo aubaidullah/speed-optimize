@@ -85,7 +85,7 @@ export async function getServerSideProps(context) {
     let payload = {
         av:'1.3',
         id:context.query.id,
-        name:context.query.city,
+        name:context.query.city.replace(/-/g,' '),
         pt:'WEBSITE',
         type:'CITY'
     }
