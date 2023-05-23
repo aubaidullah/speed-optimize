@@ -61,10 +61,14 @@ export async function getServerSideProps(context) {
     // let {finalprice,images} = meta.data.meta.output.package
     // finalprice = `₹${finalprice} `
     
+    const title = res.data.travelGuide.output.country.metaTitle
+    const desc = res.data.travelGuide.output.country.metaDesc
+    const keyword = res.data.travelGuide.output.country.metaKeywords
+
     const metas ={
-        title:meta.data.meta.output.tags.title.replace(/<COUNTRY>/g,context.query.city),
-        longDesc:meta.data.meta.output.tags.longDesc.replace(/<COUNTRY>/g,context.query.city),
-        keywords:meta.data.meta.output.tags.keywords.replace(/<COUNTRY>/g,context.query.city)
+        title:title??meta.data.meta.output.tags.title.replace(/<COUNTRY>/g,context.query.city),
+        longDesc:desc??meta.data.meta.output.tags.longDesc.replace(/<COUNTRY>/g,context.query.city),
+        keywords:keyword??meta.data.meta.output.tags.keywords.replace(/<COUNTRY>/g,context.query.city)
     }    
 
 

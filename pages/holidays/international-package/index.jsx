@@ -108,11 +108,14 @@ export async function getServerSideProps(context) {
     let {finalprice,images} = meta.data.meta.output.package
     finalprice = `₹${finalprice} `
     const metas ={
-        title:meta.data.meta.output.tags.title.replace(/<STATE>/g,context.query.package.replace(/-/g,' ')).replace(/<PRICE>/g,finalprice).replace(/\[State\ Name\]/g,context.query.package.replace(/-/g,' ')),
-        longDesc:meta.data.meta.output.tags.longDesc.replace(/<STATE>/g,context.query.package.replace(/-/g,' ')),
-        keywords:meta.data.meta.output.tags.longDesc.replace(/<STATE>/g,context.query.package.replace(/-/g,' ')),
+        title:region.metaTitle??meta.data.meta.output.tags.title.replace(/<STATE>/g,context.query.package.replace(/-/g,' ')).replace(/<PRICE>/g,finalprice).replace(/\[State\ Name\]/g,context.query.package.replace(/-/g,' ')),
+        longDesc:region.metaDesc??meta.data.meta.output.tags.longDesc.replace(/<STATE>/g,context.query.package.replace(/-/g,' ')),
+        keywords:region.metaKeywords??meta.data.meta.output.tags.longDesc.replace(/<STATE>/g,context.query.package.replace(/-/g,' ')),
         image:images
     }
+    
+    
+    
 
     
     // finalprice = `₹${finalprice}`
