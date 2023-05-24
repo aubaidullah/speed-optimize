@@ -102,9 +102,9 @@ export async function getServerSideProps(context) {
     let {finalprice,images} = meta.data.meta.output.package
     finalprice = `₹${finalprice} `
     const metas ={
-        title:meta.data.meta.output.tags.title.replace(/<CITY>/g,context.query.city).replace(/<PRICE>/g,finalprice),
-        longDesc:meta.data.meta.output.tags.longDesc.replace(/<CITY>/g,context.query.city),
-        keywords:meta.data.meta.output.tags.longDesc.replace(/<CITY>/g,context.query.city),
+        title:region.metaTitle??meta.data.meta.output.tags.title.replace(/<CITY>/g,context.query.city).replace(/<PRICE>/g,finalprice),
+        longDesc:region.metaDesc??meta.data.meta.output.tags.longDesc.replace(/<CITY>/g,context.query.city),
+        keywords:region.metaKeywords??meta.data.meta.output.tags.longDesc.replace(/<CITY>/g,context.query.city),
         image:images
     }
 

@@ -152,10 +152,23 @@ export async function getServerSideProps(context) {
     // let {finalprice,images} = meta.data.meta.output.package
     // finalprice = `₹${finalprice} `
     
+
+    if(res.data.travelGuide.output.tp == "CITY"){
+        var title = res.data.travelGuide.output.city.metaTitle
+        var desc = res.data.travelGuide.output.city.metaDesc
+        var keyword = res.data.travelGuide.output.city.metaKeywords
+    }else{
+        var title = res.data.travelGuide.output.state.metaTitle
+        var desc = res.data.travelGuide.output.state.metaDesc
+        var keyword = res.data.travelGuide.output.state.metaKeywords        
+    }
+
+
+
     const metas ={
-        title:meta.data.meta.output.tags.title.replace(/<CITY>/g,context.query.city),
-        longDesc:meta.data.meta.output.tags.longDesc.replace(/<CITY>/g,context.query.city),
-        keywords:meta.data.meta.output.tags.keywords.replace(/<CITY>/g,context.query.city)
+        title:title??meta.data.meta.output.tags.title.replace(/<CITY>/g,context.query.city),
+        longDesc:desc??meta.data.meta.output.tags.longDesc.replace(/<CITY>/g,context.query.city),
+        keywords:keyword??meta.data.meta.output.tags.keywords.replace(/<CITY>/g,context.query.city)
     }
 
     // console.log(qna)
