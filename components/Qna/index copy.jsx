@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AiOutlinePlus } from "react-icons/ai";
 import { FiCornerRightDown } from 'react-icons/fi';
 import { FaRegQuestionCircle } from 'react-icons/fa';
-// import { Modal, Collapse } from 'react-bootstrap';
+import { Modal, Collapse } from 'react-bootstrap';
 import { GrClose } from 'react-icons/gr';
 import swal from 'sweetalert';
 import axios from "axios";
@@ -189,7 +189,7 @@ const QnaListing = ({ data, travelGuide }) => {
                                             </button>
                                         </div>
                                     </div>
-                                    <div in={collapse === index ? true : false}>
+                                    <Collapse in={collapse === index ? true : false}>
                                         <div className={tw`ml-[40px]`}>
                                             <div className={tw`mt-[25px]`}>
                                                 <div className={tw`flex`}>
@@ -260,7 +260,7 @@ const QnaListing = ({ data, travelGuide }) => {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </Collapse>
                                 </div>
                             </div>
                         )
@@ -268,12 +268,12 @@ const QnaListing = ({ data, travelGuide }) => {
                 </div>
             </div>
         </main>
-        <div
+        <Modal
             className="query"
             show={open}
             animation={false}
             backdrop="static">
-            <div>
+            <Modal.Body>
                 <span
                 className={tw`float-right text-black`}
                     // style={{ float: "right", color: "black" }}
@@ -317,14 +317,14 @@ const QnaListing = ({ data, travelGuide }) => {
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-        <div
+            </Modal.Body>
+        </Modal>
+        <Modal
             className="reply"
             show={replyModal}
             animation={false}
             backdrop="static">
-            <div>
+            <Modal.Body>
                 <span
                     className={'float-right text-black'}
                     // style={{ float: "right", color: "black" }}
@@ -369,8 +369,8 @@ const QnaListing = ({ data, travelGuide }) => {
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
+            </Modal.Body>
+        </Modal>
     </>
 }
 

@@ -1,7 +1,7 @@
 // import {useEffect,useState} from 'react'
 import * as Constants from "./Constants";
 import React, { Component,useState,useEffect,useRef } from "react";
-// import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button, Form } from "react-bootstrap";
 import DatePicker from '@amir04lm26/react-modern-calendar-date-picker';
 import {BsXLg} from 'react-icons/bs'
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
@@ -12,7 +12,6 @@ import LeadGuest from './Leadguest'
 import swal from "sweetalert";
 import Cookie from 'js-cookie'
 import { tw } from "twind";
-import Modal from "./modal";
 
 
 const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>{
@@ -168,7 +167,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
         }        
     }
 
-    console.log(isshow)
+    // console.log(traveldate)
     useEffect(()=>{
         if (name != '' && email!= '' && mobile!='' && city!='' && traveldate!='' && duration!='' && adult!='') {
 
@@ -181,9 +180,25 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
     return(
         <>
         {show ? <LeadGuest show={show} setShow={() => setShow(!show)} mobile={mobile} email={email} name = {name} /> : null}
-        <Modal changeForm = {changeForm} show = {isshow}>
-            
-            <form onSubmit={handleSubmit} className={tw`bg-white`}>
+        <Modal
+            show={isshow}
+            animation={false}
+            className="login_credential"
+            backdrop="static"
+            // aria-labelledby="contained-modal-title-vcenter"
+            // centered
+            // size="sm"
+        >
+        <Modal.Body>
+          <span className={tw`float-right text-black`} aria-hidden="true">
+            <BsXLg 
+            className={tw`cursor-pointer`}
+            //   style={{cursor: "pointer" }}
+              onClick={()=>changeForm(false)}
+            />
+          </span>
+          <div>
+            <form onSubmit={handleSubmit}>
               <div className="wrapper-box">
                 <div className="wrapper_login">
                   <div className="body_login">
@@ -697,8 +712,10 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                 </div>
               </div>
             </form>
-            
+          </div>
+        </Modal.Body>
         </Modal>
+        
       </>
     )
 }

@@ -58,7 +58,7 @@ const Package = ({item}) =>{
     
     return <>
         {/* <Link href={"/holidays/detail"}> */}
-            <a className={tw`mb-6`}>
+            <a className={tw`flex flex-col`}>
             <div className="pack_box" key={item.id}>
                 <div className="row">
                         <div className="col-lg-12 col-sm-12">
@@ -66,8 +66,8 @@ const Package = ({item}) =>{
                             {/* holidays/shimla-chandigarh-tour-package-110/ */}
                             {/* holidays/eastern-delight-tour-package-191 */}
                                 {/* <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true}> */}
-                                    <div className='row'>
-                                            <div className='col-sm-4 col-xs-12'>
+                                    <div className={tw`flex flex-wrap`}>
+                                            <div className={tw`w-full lg:w-1/3`}>
                                                 <div className={tw`_row ov_auto desk_display_none mb-2`}>
                                                     <div className="flt_left">
                                                         <div>
@@ -172,7 +172,7 @@ const Package = ({item}) =>{
                                         {/* <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true}></Link> */}
                                             <Link href={`${url}`} as={`${url}`} >
                                             {/* <a href={`${url}`}> */}
-                                            <a href={`${url}`} className='col-sm-8 col-xs-12'>
+                                            <a href={`${url}`} className={tw`w-full lg:w-2/3 px-0 lg:px-2`}>
                                                 <div className="contain_blk">
                                                     <div className="_row ov_auto mb_display_none">
                                                         <div className="flt_left">
@@ -472,9 +472,9 @@ const Package = ({item}) =>{
                 
             </div>
 
-            <div className='row mb_display_none'>
-                <div>    
-                    <div className="flt_left col-sm-4 col-xs-12">
+            <div className={tw`row mb_display_none mb-[15px]`}>
+                <div className='flex justify-between'>
+                    <div className={tw`w-1/3`}>
                         <div className="img_meal row _sp_">
                             <div className="icons-meal-info">
                                 <div className="_div">
@@ -531,7 +531,7 @@ const Package = ({item}) =>{
                             </div>
                         </div>
                     </div>
-                    <div className='flt_right col-sm-4 col-sx-12'>
+                    <div className='w-1/3'>
 
                         <div className={tw`buttons overflow-auto`}>
                             <div className="flt_right">

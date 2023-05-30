@@ -1,6 +1,7 @@
 import {tw} from 'twind'
 import MultiCarousel2 from "react-multi-carousel";
 import Link from 'next/link'
+import 'react-multi-carousel/lib/styles.css';
 import * as Constants from '../Constants'
 import { createStateListURL } from '../fun';
 
@@ -18,11 +19,11 @@ const State = ({data}) =>{
         //   item.id + "/";
   
         return (
-          <div key={i}>
+          <div key={i} >
           <Link href={aurl}>
             <a href={aurl}>
               {" "}
-              <div className="px-2 _cr_mb">
+              <div className={tw`px-2 _cr_mb`}>
                 <div className="_des_img">
                   <img
                     className={tw`img-responsive rounded-[8px]`}

@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import '../styles/package.css'
 import '../styles/travel-guide.css'
-import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap/dist/css/bootstrap.css'
 import '@fortawesome/fontawesome-free'
 import '@fortawesome/fontawesome-svg-core'
 import Router from 'next/router'
@@ -17,7 +17,7 @@ import '../styles/hotel.css'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import 'react-rangeslider/lib/index.css'
 // import "react-multi-carousel/"
-import 'react-multi-carousel/lib/styles.css';
+// import 'react-multi-carousel/lib/styles.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Footer from '../components/footer'

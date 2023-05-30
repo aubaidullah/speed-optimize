@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react';
-// import { Modal } from 'react-bootstrap';
-import Modal from './modal';
+import { Modal } from 'react-bootstrap';
 import { GrClose } from 'react-icons/gr';
 import { tw } from 'twind';
 import React from 'react';
@@ -164,11 +163,25 @@ const Login = (props) => {
         <Modal
             show={show}
             animation={false}
-            changeForm = {handleClose}
             className="login_credential login-form"
             backdrop="static"
         >
-            <div>
+            <Modal.Body>
+                <span
+                    className={tw`float-right text-black cursor-pointer relative top-[10px] right-[15px]`}
+                    // style={{
+                    //     float: "right",
+                    //     color: "black",
+                    //     cursor: 'pointer',
+                    //     position: 'relative',
+                    //     top: 10,
+                    //     right: 15
+                    // }}
+                    onClick={handleClose}
+                    aria-hidden="true"
+                >
+                    <GrClose />
+                </span>
                 <div className={tw`mt-3 mb-5 mx-4`}>
                     <form onSubmit={handleLoginSubmit}>
                         <div className="wrapper-box">
@@ -272,18 +285,30 @@ const Login = (props) => {
                         </div>
                     </form>
                 </div>
-            </div>
+            </Modal.Body>
         </Modal>
-
-
         <Modal
             className="body_otp"
             show={showForgotPass}
             animation={false}
             backdrop="static"
-            changeForm = {setShowForgotPass}
         >
-            <div>
+            <Modal.Body>
+                <span
+                    className={tw`float-right text-black cursor-pointer relative top-[10px] right-[15px]`}
+                    // style={{
+                    //     float: "right",
+                    //     color: "black",
+                    //     cursor: 'pointer',
+                    //     position: 'relative',
+                    //     top: 10,
+                    //     right: 15
+                    // }}
+                    onClick={() => setShowForgotPass(!showForgotPass)}
+                    aria-hidden="true"
+                >
+                    <GrClose />
+                </span>
                 <div className={tw`m-3`}>
                     <div className="login_header">
                         <p className={tw`text_color fw-bold ms-1`}>Enter Your Mobile Number</p>
@@ -320,17 +345,29 @@ const Login = (props) => {
                         </div>
                     </form>
                 </div>
-            </div>
+            </Modal.Body>
         </Modal>
-        
-        
         <Modal
             className="body_otp"
             show={showOTP}
             animation={false}
-            changeForm={setShowOTP}
             backdrop="static">
-            <div>
+            <Modal.Body>
+                <span
+                className={tw`float-right text-black cursor-pointer relative top-[10px] right-[15px]`}
+                    // style={{
+                    //     float: "right",
+                    //     color: "black",
+                    //     cursor: 'pointer',
+                    //     position: 'relative',
+                    //     top: 10,
+                    //     right: 15
+                    // }}
+                    onClick={() => setShowOTP(!showOTP)}
+                    aria-hidden="true"
+                >
+                    <GrClose />
+                </span>
                 <div className={tw`m-3`}>
                     <div className="login_header">
                         <p className={tw`text_color`}>We sent an sms with confirmation code to your mobile number</p>
@@ -371,19 +408,30 @@ const Login = (props) => {
                         </p>
                     </div>
                 </div>
-            </div>
+            </Modal.Body>
         </Modal>
-        
-        
-        
         <Modal
             className="body_otp"
             show={showResetPass}
             animation={false}
             backdrop="static"
-            changeForm={setShowResetPass}
         >
-            <div>
+            <Modal.Body>
+                <span
+                className={tw`float-right text-black cursor-pointer relative top-[10px] right-[15px]`}
+                    // style={{
+                    //     float: "right",
+                    //     color: "black",
+                    //     cursor: 'pointer',
+                    //     position: 'relative',
+                    //     top: 10,
+                    //     right: 15
+                    // }}
+                    onClick={() => setShowResetPass(!showResetPass)}
+                    aria-hidden="true"
+                >
+                    <GrClose />
+                </span>
                 <div className={tw`mt-3 mb-5 mx-4`}>
                     <div className="wrapper-box">
                         <div className="wrapper_login">
@@ -471,7 +519,7 @@ const Login = (props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Modal.Body>
         </Modal>
     </>
 }

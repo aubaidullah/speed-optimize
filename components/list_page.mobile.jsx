@@ -10,11 +10,12 @@ import { useSelector } from "react-redux"
 import FilterBy from "./list/filter"
 import { ScrollWrapper } from 'react-bottom-scroll';
 import ReactHtmlParser from "react-html-parser";
-import { Modal } from "react-bootstrap"
+// import { Modal } from "react-bootstrap"
 import {BsXLg} from 'react-icons/bs';
 import Meta from "./meta"
 import { useRouter } from 'next/router'
 import { createCountryListURL, createStateListURL } from "./fun"
+import Modal from "./modal"
 
 // const filtering = useSelector(state=>state.package.package)
 // const FilterBy = dynamic(() => import('./list/filter'), {
@@ -298,23 +299,16 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
             animation={false}
             className="login_credential"
             backdrop="static"
+            changeForm = {setIsshow}
             aria-labelledby="contained-modal-title-vcenter"
             centered        
         
         >
-            <Modal.Body>
-                <div className={tw`overflow-auto`}>
-                    <span className={tw`float-right`}aria-hidden="true">
-                        <BsXLg className={tw`cursor-pointer`} 
-                        // style={{cursor: "pointer" }}
-                        onClick={()=>setIsshow(false)}
-                        />
-                    </span>
-                </div>
+            <div>
                 <div>
                     <FilterBy _pricing={_pricing} setPrice={setPrice} _min={_min} set_Min={set_Min} _max={_max} set_Max={set_Max} set_Places={set_Places} _places={_places} _themes={_themes} set_Themes={set_Themes} page_type={page_type} filter={filter} setKeyword={setFilter} data={places} theme={theme}/>
                 </div>
-            </Modal.Body>
+            </div>
             
             
             <div className='bottom_button_filter' onClick={()=>setIsshow(false)}>
@@ -331,7 +325,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
 
 
 
-            <section className="container">
+            <section className="container m-auto">
                 {/* <div className="row" style={{marginBottom:'30px'}}>
                     <h2>Kiomoi packages</h2>
                 </div> */}

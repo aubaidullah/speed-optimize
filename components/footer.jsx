@@ -29,8 +29,10 @@ const Footer = () => {
                 </ul>
             </div>
             <div className={tw`flex pb-3 pt-4 bg-[#373739]`}>
-                <div className='row'>
-                    <div className={tw`payment_secure flex flex-col justify-center items-center px-4 md:px-0 col-12 col-md-4`}>
+                <div className='row w-full'>
+                    <div className='flex flex-wrap'>
+                    
+                    <div className={tw`w-full lg:w-1/3 payment_secure flex flex-col justify-center items-center px-4 md:px-0 col-12 col-md-4`}>
                         <div>
                             <h4 className={tw`mb-3 text-center md:text-start`}>Secure Payment</h4>
                             <div className={tw`flex gap-3 mb-4 md:mb-0`}>
@@ -67,8 +69,8 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                    <hr className={tw`col-12 col-md-4 text-white w-80 m-auto mb-3 d-block d-md-none`} />
-                    <div className={tw`payment_secure follow-links col-12 col-md-4`}>
+                    {/* <hr className={tw`col-12 col-md-4 text-white w-80 m-auto mb-3 d-block d-md-none`} /> */}
+                    <div className={tw`w-full lg:w-1/3 payment_secure follow-links col-12 col-md-4`}>
                         <h4 className={tw`mb-3 px-3 md:px-0 text-center`}>FOLLOW US ON</h4>
                         <ul className={tw`flex justify-center px-3 md:px-0 gap-4 mb-3 md:mb-0`}>
                             <li className={tw`cursor-pointer text-4xl`}>
@@ -98,8 +100,8 @@ const Footer = () => {
                             </li>
                         </ul>
                     </div>
-                    <hr className={tw`col-12 col-md-4 text-white w-80 m-auto mb-4 d-block d-md-none`} />
-                    <div className={tw`col-12 col-md-4 flex justify-center items-center px-4 md:px-0`}>
+                    {/* <hr className={tw`col-12 col-md-4 text-white w-80 m-auto mb-4 d-block d-md-none`} /> */}
+                    <div className={tw`w-full lg:w-1/3 col-12 col-md-4 flex justify-center items-center px-4 md:px-0`}>
                         <div className={tw`whatsapp-footer flex gap-4`}>
                             <img
                                 src={`${Constants.assets_api}/public/icons/whatsapp.png`}
@@ -113,8 +115,12 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                    <hr className={tw`col-12 col-md-4 text-white w-80 m-auto my-4 d-block d-md-none`} />
-                    <div className={tw`container text_footer_bottom text-center mt-3`}>
+                    {/* <hr className={tw`col-12 col-md-4 text-white w-80 m-auto my-4 d-block d-md-none`} /> */}
+                    
+                    </div>
+                    
+                    
+                    <div className={tw`container text_footer_bottom text-center mt-6`}>
                         <div>
                             <p>
                                 H-187, Lohia Road, Sector-63, Noida 201301 India

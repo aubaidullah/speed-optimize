@@ -211,8 +211,8 @@ const DetailPage = ({ data, related, reviews,meta }) => {
         <BreadCrumbs bread={bread} />
 
         <section className='container'>
-            <div className='row'>
-                <div className='col-sm-8 col-xs-6'>
+            <div className='flex flex-wrap'>
+                <div className={tw`w-full lg:w-2/3`}>
                     <h1 className='h1_title'>{data?.package.name}</h1>
                     <div>
                         <div className='_inline__'>
@@ -223,7 +223,7 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                         </div>
                     </div>
                 </div>
-                <div className='col-sm-4 col-xs-6'>
+                <div className={tw`w-full lg:w-1/3`}>
                     <div className={tw`text-right thms`}>
                         <span class="_themes">Themes</span>
                             {themeRender}
@@ -263,26 +263,36 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                         </ul>
                     </div>
                 </div>
-                <div className='col-sm-8 col-xs-12' id="photos">
-                    <div className="slider_details">
-                        <Carousel
-                            showStatus={false}
-                            showThumbs={false}
-                            showArrows={true}
-                            showIndicators={false}
-                            infinite={true}
-                            autoPlay={true}
-                            className="slider_banner slider_overlay"
-                        >
-                            {data?.package.images.split(',').map((e, index) => {
-                                return e?<Image className='img' src={jpgToWebp({uri:e})} layout="fill" key={index} alt={data?.package?.name} />:""
-                            })}
-                        </Carousel>
+                
+                <div className="flex flex-wrap">
+                    <div className='w-full lg:w-2/3' id="photos">
+                        <div className="slider_details">
+                            <Carousel
+                                showStatus={false}
+                                showThumbs={false}
+                                showArrows={true}
+                                showIndicators={false}
+                                infinite={true}
+                                autoPlay={true}
+                                className="slider_banner slider_overlay"
+                            >
+                                {data?.package.images.split(',').map((e, index) => {
+                                    return e?<Image className='img' src={jpgToWebp({uri:e})} layout="fill" key={index} alt={data?.package?.name} />:""
+                                })}
+                            </Carousel>
+                        </div>
+                    </div>
+
+                    <div className={tw`w-full lg:w-1/3`}>
+                        <div className={tw`pl-0 lg:pl-6`}>
+                            <RightBar data={data} />
+                        </div>
+
                     </div>
                 </div>
-                <div className='col-sm-4 col-xs-12'>
-                    <RightBar data={data} />
-                </div>
+                
+                
+
             </div>
         </section>
 

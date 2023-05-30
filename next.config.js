@@ -7,10 +7,10 @@
 const nextConfig = {
   // trailingSlash: true,
   reactStrictMode: true,
-  assetPrefix : 'https://devassets.kiomoi.com',
+  // assetPrefix : 'https://devassets.kiomoi.com',
   // assetsPrefix:window.location.origin.toString() === "http://localhost:3000"||"https://kiomoitest.kiomoi.com" ?"https://devassets.kiomoi.com":"https://assets.kiomoi.com",
   images: {
-    domains: ['res.cloudinary.com', 'img.kiomoi.com']
+    domains: ['res.cloudinary.com', 'img.kiomoi.com',"res.cloudi"]
     // remotePatterns: [
     //   {
     //     protocol: 'https',

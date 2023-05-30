@@ -2,8 +2,9 @@ import { useEffect, useState,useCallback } from "react"
 import { HiOutlineSearch } from 'react-icons/hi'
 import { AiOutlineLogout, AiOutlineSearch } from 'react-icons/ai';
 import { FaRegUser, FaSearch } from 'react-icons/fa';
+import {ImSpinner} from 'react-icons/im'
 import { BsXLg, BsDot } from 'react-icons/bs'
-import { Spinner } from 'react-bootstrap'
+// import { Spinner } from 'react-bootstrap'
 import * as Constants from './Constants'
 import axios from 'axios'
 import { FaRupeeSign } from 'react-icons/fa'
@@ -168,9 +169,11 @@ const Nav = () => {
                                 size={"20px"}
                             />
 
-                            : <Spinner className="s_icon s_load" animation="border" role="status">
-                                <span className="visually-hidden">Loading...</span>
-                            </Spinner>
+                            : 
+                            // <Spinner className="s_icon s_load" animation="border" role="status">
+                                <ImSpinner className="s_icon s_load" />
+                                // <span className="visually-hidden">Loading...</span>
+                            // </Spinner>
                         }
 
 

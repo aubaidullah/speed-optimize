@@ -123,7 +123,7 @@ const RelatedTour = ({data}) =>{
         return (
           <Link href={aurl}>
             <a>
-              <div className="col-sm-12 col-xs-12 pl-[15px] pr-[15px]">
+              <div className="px-2 pl-[15px] pr-[15px]">
                 <div className="top_rated_box _st_box _tr_box">
                   <div className="des_img">
                     <Image

@@ -1,6 +1,7 @@
 import React, { useEffect,useRef } from 'react';
 import { useState } from 'react';
-import { Modal } from 'react-bootstrap';
+// import { Modal } from 'react-bootstrap';
+import Modal from './modal';
 import swal from 'sweetalert'
 import axios from 'axios';
 import * as Constants from "./Constants";
@@ -77,161 +78,57 @@ const LeadGuest = (props) => {
 
     return (
         <>
-            {/* <Modal
-                className="login_modal"
-                show={show}
-                animation={false}
-                backdrop="static">
-                <Modal.Body>
-                    <span
-                        style={{
-                            float: "right",
-                            color: "black"
-                        }}
-                        onClick={() => setShow(!show)}
-                        aria-hidden="true">
-                        <i className="fa fa-close"></i>
-                    </span>
-                    <div>
-                        <form onSubmit={handleGuestSubmit}>
-                            <div className="wrapper-box">
-                                <div className="wrapper_login">
-                                    <div className="body_login">
-                                        <div className="login_header">
-                                            <img
-                                                src={require("../assets/logo-icon.png")}
-                                                height="50"
-                                                alt=""
-                                            />
-                                            <h4>{props.name?"Your Details":"Enter Following Details"}</h4>
-                                        </div>
-                                    </div>
-                                    <div className="form-group ">
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            name="name"
-                                            onChange={handleChange}
-                                            required
-                                            placeholder="Enter your Name"
-                                            value={props.name??guest.name}
-                                            disabled={props.name?true:false}
-                                        />
-                                    </div>
-                                    <div className="form-group">
-                                        <input
-                                            type="email"
-                                            className="form-control"
-                                            name="email"
-                                            onChange={handleChange}
-                                            required
-                                            placeholder="Enter your Email ID"
-                                            value={props.email??guest.email}
-                                            disabled={props.email?true:false}
-
-                                        />
-                                    </div>
-                                    <div className="form-group">
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            name="mobile"
-                                            onChange={handleChange}
-                                            required
-                                            placeholder="Enter your 10 digit Mobile Number "
-                                            minLength="10"
-                                            maxLength="10"
-                                            value={props.mobile??guest.mobile}
-                                            disabled={props.mobile?true:false}
-
-                                        />
-                                    </div>
-                                    <div className="form-group">
-                                        <button className="btn btn_login" type="submit">
-                                            CONTINUE
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+        <Modal className="body_otp" changeForm = {setOtpModal} show = {otpModal}>
+        {
+            opengest==true?
+            <div>
+                <h4 className={tw`text-center`}>Sending OTP to {guest.mobile}</h4>
+                <p className={tw`text-center`}>please wait...</p>
+            </div>
+            :
+            <div>
+                <div className={tw`login_header w-[90%]`}>
+                    <p className="text_color">
+                        We sent an sms with confirmation code to your mobile number
+                    </p>
+                </div>
+                <form onSubmit={handleOTPSubmit}>
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="otp"
+                            onChange={e => setGuestOTP(e.target.value)}
+                            value={guestOTP}
+                            placeholder="Enter your OTP"
+                            minLength="6"
+                            maxLength="6"
+                        />
+                        <div className="Invalid_num">
+                            {registervalidator.current.message(
+                            "otp",
+                            guestOTP,
+                            "required"
+                            )}
+                        </div>
                     </div>
-                </Modal.Body>
-            </Modal> */}
-            <Modal
-                className="body_otp"
-                show={otpModal}
-                animation={false}
-                backdrop="static">
-                <Modal.Body>
-                    <span
-                        className={tw`float-right text-black`}
-                        // style={{
-                        //     float: "right",
-                        //     color: "black"
-                        // }}
-                        onClick={() => setOtpModal(!otpModal)}
-                        aria-hidden="true">
-                        {/* <i className="fa fa-close"></i> */}
-                        <BsXLg 
-                        className={tw`cursor-pointer`}
-                            // style={{cursor: "pointer" }}
-                            // onClick={()=>changeForm(false)}
-                            />                        
-                    </span>
-
-                    
-                    {
-                        opengest==true?
-                        <div>
-                            <h4 className={tw`text-center`}>Sending OTP to {guest.mobile}</h4>
-                            <p className={tw`text-center`}>please wait...</p>
-                        </div>
-                        :
-                        <div>
-                            <div className={tw`login_header w-[90%]`}>
-                                <p className="text_color">
-                                    We sent an sms with confirmation code to your mobile number
-                                </p>
-                            </div>
-                            <form onSubmit={handleOTPSubmit}>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        name="otp"
-                                        onChange={e => setGuestOTP(e.target.value)}
-                                        value={guestOTP}
-                                        placeholder="Enter your OTP"
-                                        minLength="6"
-                                        maxLength="6"
-                                    />
-                                    <div className="Invalid_num">
-                                        {registervalidator.current.message(
-                                        "otp",
-                                        guestOTP,
-                                        "required"
-                                        )}
-                                    </div>
-                                </div>
-                                <div className="form-group">
-                                    <button className="btn btn_facebook" type="submit">
-                                        Submit OTP
-                                    </button>
-                                </div>
-                            </form>
-                            <div className="form-group">
-                                <p className="proceed_clr">
-                                    BY proceeding, you agree to the{" "}
-                                    <a href="/terms-and-conditions/" target='_blank' className="tnc_color">
-                                        Terms & Conditions
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    }
-
-                </Modal.Body>
-            </Modal>
+                    <div className="form-group">
+                        <button className="btn btn_facebook" type="submit">
+                            Submit OTP
+                        </button>
+                    </div>
+                </form>
+                <div className="form-group">
+                    <p className="proceed_clr">
+                        BY proceeding, you agree to the{" "}
+                        <a href="/terms-and-conditions/" target='_blank' className="tnc_color">
+                            Terms & Conditions
+                        </a>
+                    </p>
+                </div>
+            </div>
+        }
+        </Modal>
         </>
     )
 }

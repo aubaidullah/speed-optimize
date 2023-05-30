@@ -6,9 +6,10 @@ import { AiFillCheckCircle, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai
 import {BsXLg} from 'react-icons/bs'
 import { tw } from "twind";
 import { useState, useRef, useEffect } from "react";
-import { Modal, Collapse } from "react-bootstrap";
+// import { Modal, Collapse } from "react-bootstrap";
 import { useRouter } from "next/router";
 import {FaRupeeSign} from 'react-icons/fa'
+import Modal from "../components/modal";
 
 
 const BookingDetail = () => {
@@ -706,7 +707,7 @@ const BookingDetail = () => {
                                                     </a>
                                                 </h4>
                                             </div>
-                                            <Collapse in={collapse}>
+                                            <div in={collapse}>
                                                 <div
                                                     className="panel-collapse"
                                                 >
@@ -736,7 +737,7 @@ const BookingDetail = () => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </Collapse>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -767,7 +768,7 @@ const BookingDetail = () => {
                                                     </a>
                                                 </h4>
                                             </div>
-                                            <Collapse in={collapse2}>
+                                            <div in={collapse2}>
                                                 <div
                                                     className="panel-collapse2"
                                                 >
@@ -780,7 +781,7 @@ const BookingDetail = () => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </Collapse>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -845,8 +846,11 @@ const BookingDetail = () => {
                     </div>
                 </section>
             </section>
-            <Modal show={showModal} animation={false}>
-                <Modal.Body>
+            <Modal show={showModal} >
+
+            
+            {/* <div show={showModal} animation={false}> */}
+                <div>
                     <a href="/">
                         {" "}
                         <span
@@ -902,7 +906,8 @@ const BookingDetail = () => {
                             </div>
                         </div>
                     </form>
-                </Modal.Body>
+                </div>
+            {/* </div> */}
             </Modal>
         </>
     );
