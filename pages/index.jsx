@@ -1,25 +1,44 @@
 // import RelatedTour from "../components/detail/related_tours";
-import HomePackages from "../components/home/packages";
-import { getarticleQuery, getbanner, getHome,getMetaQuery,getreviewsQuery,getThemeQuery,getTravelGuideHome } from "../components/Graphql/Queries";
+// import HomePackages from "../components/home/packages";
+import { getarticleQuery, getHome,getMetaQuery,getreviewsQuery,getThemeQuery,getTravelGuideHome } from "../components/Graphql/Queries";
 import client from "../components/Graphql/service";
-import Banner from "../components/home/banner"
-import State from "../components/home/state";
+// import Banner from "../components/home/banner"
+// import State from "../components/home/state";
 // import Nav from "../components/Nav"
-import Nav from '../components/HomeNav';
-import TravelGuide from "../components/home/travel_guide";
-import Hotel from "../components/home/hotel";
-import Reviews from "../components/home/reviews";
-import Articles from "../components/home/articles";
-import Themes from "../components/home/theme";
+// import Nav from '../components/HomeNav';
+// import TravelGuide from "../components/home/travel_guide";
+// import Hotel from "../components/home/hotel";
+// import Reviews from "../components/home/reviews";
+// import Articles from "../components/home/articles";
+// import Themes from "../components/home/theme";
 // import Head from 'next/head'
-import Meta from "../components/meta";
+// import Meta from "../components/meta";
+import dynamic from "next/dynamic";
 
+const Meta = dynamic(() => import('@/components/meta'))
+const Nav = dynamic(() => import('@/components/HomeNav'))
+// // 
+
+const State = dynamic(() => import('@/components/home/state'))
+const TravelGuide = dynamic(() => import('@/components/home/travel_guide'))
+const Hotel = dynamic(() => import('@/components/home/hotel'))
+const Reviews = dynamic(() => import('@/components/home/reviews'))
+const Articles = dynamic(() => import('@/components/home/articles'))
+const Themes = dynamic(() => import('@/components/home/theme'))
+const HomePackages = dynamic(() => import('@/components/home/packages'))
+
+
+
+const Banner = dynamic(() => import('@/components/home/banner'))
 const Home_Page = ({home,travel,reviews,articles,theme,meta}) =>{
 
     return <>
     <Meta meta={meta}/>
     <Nav />
     <Banner data={home.banners} />
+    
+    {/* <State data = {home.states}/> */}
+    
     <State data = {home.states}/>
     <TravelGuide data = {travel}/>
     <HomePackages data={home} />

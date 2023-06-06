@@ -1,5 +1,3 @@
-import axios from "axios"
-import Image from "next/image"
 // import Package from "../components/package"
 // import ListPageMobile from '../components/list_page.mobile'
 // import ListPage from '../components/list_page.desktop'
@@ -8,7 +6,7 @@ import dynamic from 'next/dynamic';
 import {getallpackages,getThemeQuery,getMetaQuery} from '../../components/Graphql/Queries'
 import client from '../../components/Graphql/service'
 import {getPackages} from '../../redux_fx/actions'
-import {useSelector,useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux'
 
 // import Nav from "../components/Nav";
 const Nav = dynamic(() => import('../../components/Nav'))

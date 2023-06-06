@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { tw } from "twind"
 import * as Constants from "../Constants"
 
 const Themes = ({data}) =>{
-    console.log(data)
+    // console.log(data)
 
     const themeRender = data.map(function (item, i) {
         // var img = "";
@@ -13,21 +12,21 @@ const Themes = ({data}) =>{
               <div className="_service_list">
                 <div className="ellipse_3">
                 <Link href={`/holidays/theme-${item.tag.trim().toLowerCase().replace(/\s+/g,"-")}/`}>
-                    <a href={`/holidays/theme-${item.tag.trim().toLowerCase().replace(/\s+/g,"-")}/`}>
+                    <div href={`/holidays/theme-${item.tag.trim().toLowerCase().replace(/\s+/g,"-")}/`}>
                         {" "}
                         <div className="icon_display">
-                        <img alt="icon" className={tw`inline`} src={`${Constants.assets_api}/public/icons/Ico_${item.tag.trim()}.png`} />
+                        <img alt="icon" className={`inline`} src={`${Constants.assets_api}/public/icons/Ico_${item.tag.trim()}.png`} />
                         </div>
-                    </a>
+                    </div>
                   </Link>
                 </div>
                 <Link href={`/holidays/theme-${item.tag.trim().toLowerCase().replace(/\s+/g,"-")}/`}>
-                <a href={`/holidays/theme-${item.tag.trim().toLowerCase().replace(/\s+/g,"-")}/`}>
+                <div href={`/holidays/theme-${item.tag.trim().toLowerCase().replace(/\s+/g,"-")}/`}>
                   <div className="_text_-">
                     <h4>{item.tag}</h4>
                     <p>{item.count} Listing</p>
                   </div>
-                </a>
+                </div>
                 </Link>
               </div>
             </>
@@ -46,8 +45,8 @@ const Themes = ({data}) =>{
 
     return <>
     <div className={`container mt-16`}>
-        <div className={tw`flex`}>
-            <div className={tw`hidden lg:w-1/3 lg:block`}>
+        <div className={`flex`}>
+            <div className={`hidden lg:w-1/3 lg:block`}>
                 <div className="kiomoi_box _clr_brand">
                     <h4>Kiomoi Holidays</h4>
                     <h5>Kiomoi Book Domestic and International Holidays</h5>
@@ -67,12 +66,12 @@ const Themes = ({data}) =>{
                         services.
                     </p>
                     <Link href="/holidays/">
-                        <a href="/holidays/">Read More</a>
+                        <div href="/holidays/">Read More</div>
                     </Link>
                                         
                 </div>
             </div>
-            <div className={tw`w-full lg:w-2/3`}>
+            <div className={`w-full lg:w-2/3`}>
                 <div>
                     {themeRender}                    
                 </div>

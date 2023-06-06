@@ -1,10 +1,15 @@
-import Nav from '../components/Nav';
+// import Nav from '../components/Nav';
 import Link from 'next/link';
 import { GrClose } from 'react-icons/gr';
 // import { Modal } from 'react-bootstrap';
 import { useState } from 'react';
 import { tw } from 'twind'
 import * as Constants from '../components/Constants'
+import dynamic from "next/dynamic"
+
+
+const Nav = dynamic(() => import('../components/Nav'))
+
 const Privacy = () => {
 
     const [first, setFirst] = useState(false);
@@ -205,9 +210,9 @@ const Privacy = () => {
                     </li>
                 </ul>
                 <Link href="/bookingdetail">
-                    <a className="proce-pay btn btn_login">
+                    <div className="proce-pay btn btn_login">
                         Procees to Payment
-                    </a>
+                    </div>
                 </Link>
             </div>
         </div>

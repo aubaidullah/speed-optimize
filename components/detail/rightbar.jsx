@@ -1,15 +1,17 @@
 import {IoLocationSharp,IoSunny} from 'react-icons/io5'
 import {MdCheckCircle} from 'react-icons/md'
-import {BsDot,BsStarFill,BsStarHalf,BsChevronDown,BsFillMoonFill} from 'react-icons/bs'
+import {BsChevronDown,BsFillMoonFill} from 'react-icons/bs'
 // import {IoSunny} from 'react-icons/io'
 import {useState} from 'react'
 import axios from 'axios'
 import moment from 'moment'
 import * as Constants from '../Constants'
-import LeadForm from '../leadform'
+// import LeadForm from '../leadform'
 import {FaRupeeSign} from 'react-icons/fa'
 import {tw} from 'twind'
+import dynamic from 'next/dynamic'
 
+const LeadForm = dynamic(() => import('../leadform'))
 
 const RightBar=({data})=>{
     const [sendquery,setSendquery] = useState(false)

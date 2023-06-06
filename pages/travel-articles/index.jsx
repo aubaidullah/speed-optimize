@@ -1,11 +1,18 @@
-import { tw } from "twind"
-import BreadCrumbs from "../../components/breadcrumbs"
-import Nav from "../../components/Nav"
+// import { tw } from "twind"
+// import BreadCrumbs from "../../components/breadcrumbs"
+// import Nav from "../../components/Nav"
 import client from "../../components/Graphql/service"
 import { getarticleQuery,getMetaQuery } from "../../components/Graphql/Queries"
-import ReactHtmlParser from "react-html-parser";
-import Link from "next/link"
-import Meta from "../../components/meta"
+// import ReactHtmlParser from "react-html-parser";
+// import Link from "next/link"
+// import Meta from "../../components/meta"
+import dynamic from "next/dynamic"
+// import S_Article from "@/components/article/s_article";
+
+const S_Article = dynamic(() => import('@/components/article/s_article'))
+const Nav = dynamic(() => import('../../components/Nav'))
+const Meta = dynamic(() => import('../../components/meta'))
+const BreadCrumbs = dynamic(() => import('../../components/breadcrumbs'))
 
 const TravelArticles = ({article,meta}) =>{
     const bread = {
@@ -27,31 +34,11 @@ const TravelArticles = ({article,meta}) =>{
         <div className={"container"}>
             
             <div>
-                <div className={tw`mt-6`}>
+                <div className={`mt-6`}>
                     {article.map((item,index)=>{
                         let aurl = "/travel-articles/"+item.heading.trim().replace(/\s+/g,' ').replace(/\s+/g, "-").replace(/--/g,'-').toLowerCase()+"/"+item.id+"/"
-                        return <div key={index} className={tw`flex flex-wrap mb-6`}>
-                            
-                            <div className={tw`w-full lg:w-1/3`}>
-                                <div>
-                                    <img src={item.images} alt={item.heading}/>
-                                </div>
-                                
-                            </div>
-
-                            <div className={tw`w-full pl-0 lg:w-2/3 lg:pl-4`}>
-                                <div>
-                                    <h2 className={tw`text-xl font-bold`}>{item.heading}</h2>
-                                    {ReactHtmlParser(item.description.substring(0, 450))}
-                                    <Link href={aurl}>
-                                    <a href={aurl} className="text-[#f06726]">
-                                        Read full story
-                                    </a>
-                                    </Link>
-                                </div>
-                            </div>
-
-                        </div>
+                        return <S_Article item={item} aurl={aurl} index={index}/>
+                        
                     })}
                 </div>
             </div>

@@ -1,11 +1,15 @@
-import {tw} from 'twind'
-import MultiCarousel from "react-multi-carousel";
+// import {tw} from 'twind'
+// import MultiCarousel from "react-multi-carousel";
 import Link from 'next/link'
 import ReactHtmlParser from "react-html-parser";
 import * as Constants from '../Constants'
 import { jpgToWebp } from '../fun';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 const Articles = ({data}) =>{
+  const MultiCarousel = dynamic(() => import('react-multi-carousel'))
+  // const ReactHtmlParser = dynamic(() => import('react-html-parser'))
     const responsive = {
         superLargeDesktop: {
           // the naming can be any, depends on you.
@@ -36,7 +40,7 @@ const Articles = ({data}) =>{
         carouselState: { currentSlide },
     } = rest;
     return (
-        <div className={tw`hidden lg:carousel-button-group lg:block `}>
+        <div className={`hidden lg:carousel-button-group lg:block `}>
         <button
             className={`${currentSlide === 0 ? "disable" : ""} left-custom-btn`}
             onClick={() => previous()}
@@ -58,10 +62,11 @@ const Articles = ({data}) =>{
             <div className="col-sm-12 col-xs-12 _cr_mb px-2" key={i}>
               <div className="top_rated_box _box_shadow _bottom popular_dest">
                 <div className="recent_img">
-                  <img
+                  <Image
                     className="img-responsive"
                     src={item.images.length > 0 ? jpgToWebp({uri:item.images}) : `${Constants.assets_api}/public/icons/logo-icon.png`}
                     alt="kiomoi"
+                    fill
                   />
                 </div>
 
@@ -70,10 +75,10 @@ const Articles = ({data}) =>{
                   <h4 className='my-2'>{item.heading}</h4>
                   <div className="t_detail">{ReactHtmlParser(res)} </div>
                   <Link href={aurl}>
-                  <a href={aurl} className="anchor_link _50">
+                  <div href={aurl} className="anchor_link _50">
                     Read Full Story{"  "}
                     {/* <i className="fa fa-long-arrow-right" aria-hidden="true"></i> */}
-                  </a>
+                  </div>
                   </Link>
                 </div>
               </div>                  
@@ -92,20 +97,20 @@ const Articles = ({data}) =>{
 
 
     return <>
-        <section className={tw`Hotels mt-16 _latest_stories_`}>
+        <section className={`Hotels mt-16 _latest_stories_`}>
             <div className="container">
                 <div className='row_'>
                     <div className="box_design_common bg_orange_">
-                        <div className={tw`title_kiomoi flex items-center justify-between mb-6`}>
-                            <div className={tw`2w-full`}>
+                        <div className={`title_kiomoi flex items-center justify-between mb-6`}>
+                            <div className={`2w-full`}>
                                 <h4>Latest Stories</h4>
                                 {/* <p>Discover Incredible Hotels</p> */}
                             </div>
-                            <div className={tw`2w-full`}>
+                            <div className={`2w-full`}>
                                 <Link href="/travel-articles/">
-                                    <a href="/travel-articles/">
+                                    <div href="/travel-articles/">
                                         <div className="btn_view_more">View All</div>
-                                    </a>
+                                    </div>
                                 </Link>
                                 
                             </div>

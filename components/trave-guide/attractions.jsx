@@ -20,7 +20,7 @@ const State_Attraction = ({data}) =>{
         return (
           <div key={i}>
           <Link href={aurl}>
-            <a href={aurl}>
+            <div href={aurl}>
               {" "}
               <div className="px-2 _cr_mb">
                 <div className="des_img">
@@ -39,7 +39,7 @@ const State_Attraction = ({data}) =>{
                   </div>
                 </div>
               </div>
-            </a>
+            </div>
             </Link>
           </div>
         );

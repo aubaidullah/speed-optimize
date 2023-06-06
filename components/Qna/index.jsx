@@ -7,12 +7,22 @@ import { GrClose } from 'react-icons/gr';
 import swal from 'sweetalert';
 import axios from "axios";
 import { tw } from 'twind'
-import Guest from '../../components/guest';
+import dynamic from 'next/dynamic';
+// import Guest from '../../components/guest';
 // import { QNALoading } from '../components/skeleton_l';
 // import * as Constants from "../Constants";
-import ReactHtmlParser from "react-html-parser";
-import BreadCrumbs from '../breadcrumbs';
-import Nav from '../Nav';
+// import ReactHtmlParser from "react-html-parser";
+// import BreadCrumbs from '../breadcrumbs';
+// import Nav from '../Nav';
+// import ParseHtml from '../parseToHtml';
+
+
+
+const ParseHtml = dynamic(() => import('../parseToHtml'))
+const Nav = dynamic(() => import('../Nav'))
+const BreadCrumbs = dynamic(() => import('../breadcrumbs'))
+const Guest = dynamic(() => import('../../components/guest'))
+
 
 const QnaListing = ({ data, travelGuide }) => {
     const [qna, setQna] = useState([]);
@@ -177,7 +187,11 @@ const QnaListing = ({ data, travelGuide }) => {
                                             <div>
                                                 <AiOutlinePlus className={tw`cursor-pointer text-[17px] text-grey-500`} onClick={() => collapse === index ? setCollapse(null) : setCollapse(index)} />
                                             </div>
-                                            <p className={tw`text-[#606060] text-[15px]`} >{ReactHtmlParser(e.question)}</p>
+                                            <p className={tw`text-[#606060] text-[15px]`} >
+                                                {/* {ReactHtmlParser(e.question)} */}
+                                                <ParseHtml text={e.question} />
+                                                
+                                                </p>
                                         </div>
                                         <div>
                                             <button className="reply-btn" onClick={() => {
@@ -229,7 +243,8 @@ const QnaListing = ({ data, travelGuide }) => {
                                                                 return <>
                                                                     <div className={tw`mb-[30px]`}>
                                                                         <div className={tw`bg-white p-[10px] rounded-[5px] text-left border-1 border-solid border-[#eaeaea]`}>
-                                                                            {ReactHtmlParser(rp.replyText)}
+                                                                            {/* {ReactHtmlParser(rp.replyText)} */}
+                                                                            <ParseHtml text={rp.replyText} />
                                                                         </div>
                                                                         <div>
                                                                             <div className={tw`mt-10px`}>

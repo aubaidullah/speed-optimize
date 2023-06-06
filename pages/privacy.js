@@ -1,6 +1,9 @@
-import Nav from '../components/Nav';
 import { tw } from 'twind'
 import * as Constants from '../components/Constants'
+
+
+import dynamic from "next/dynamic";
+const Nav = dynamic(() => import('@/components/HomeNav'))
 
 const Privacy = () => {
     return <>

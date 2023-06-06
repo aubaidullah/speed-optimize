@@ -1,14 +1,13 @@
 import React, { useEffect,useRef } from 'react';
 import { useState } from 'react';
-// import { Modal } from 'react-bootstrap';
-import Modal from './modal';
+// import Modal from './modal';
 import swal from 'sweetalert'
 import axios from 'axios';
 import * as Constants from "./Constants";
 import SimpleReactValidator from "simple-react-validator";
 import Cookie from 'js-cookie'
-import { tw } from 'twind';
-import {BsXLg} from 'react-icons/bs'
+import dynamic from 'next/dynamic';
+const Modal = dynamic(() => import('./modal'))
 
 const LeadGuest = (props) => {
     // Inital Guest States
@@ -82,12 +81,12 @@ const LeadGuest = (props) => {
         {
             opengest==true?
             <div>
-                <h4 className={tw`text-center`}>Sending OTP to {guest.mobile}</h4>
-                <p className={tw`text-center`}>please wait...</p>
+                <h4 className={`text-center`}>Sending OTP to {guest.mobile}</h4>
+                <p className={`text-center`}>please wait...</p>
             </div>
             :
             <div>
-                <div className={tw`login_header w-[90%]`}>
+                <div className={`login_header w-[90%]`}>
                     <p className="text_color">
                         We sent an sms with confirmation code to your mobile number
                     </p>

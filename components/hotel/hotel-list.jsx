@@ -153,9 +153,9 @@ const HotelList = ({hotels}) =>{
                   </div>
                   <div className={tw`price_tag flex items-cetner justify-bewteen`}>
                     <Link href={hurl}>
-                      <a href={hurl} className="btn_anchor">
+                      <div href={hurl} className="btn_anchor">
                         View Details
-                      </a>
+                      </div>
                     </Link>
                     {item.price > 0 ? (
                       <>

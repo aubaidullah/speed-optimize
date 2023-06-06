@@ -1,4 +1,4 @@
-import Nav from "../components/Nav";
+// import Nav from "../components/Nav";
 import axios from "axios";
 import * as Constants from "../components/Constants";
 import swalr from '@sweetalert/with-react'
@@ -6,11 +6,11 @@ import { AiFillCheckCircle, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai
 import {BsXLg} from 'react-icons/bs'
 import { tw } from "twind";
 import { useState, useRef, useEffect } from "react";
-// import { Modal, Collapse } from "react-bootstrap";
 import { useRouter } from "next/router";
-import {FaRupeeSign} from 'react-icons/fa'
-import Modal from "../components/modal";
+import dynamic from "next/dynamic"
 
+const Nav = dynamic(() => import('../components/Nav'))
+const Modal = dynamic(() => import('../components/modal'))
 
 const BookingDetail = () => {
     const router = useRouter()
@@ -70,19 +70,19 @@ const BookingDetail = () => {
         )
     }, [])
 
-    const loadScript = (src) => {
-        return new Promise((resolve) => {
-            const script = document.createElement("script");
-            script.src = src;
-            script.onload = () => {
-                resolve(true);
-            };
-            script.onerror = () => {
-                resolve(false);
-            };
-            document.body.appendChild(script);
-        });
-    }
+    // const loadScript = (src) => {
+    //     return new Promise((resolve) => {
+    //         const script = document.createElement("script");
+    //         script.src = src;
+    //         script.onload = () => {
+    //             resolve(true);
+    //         };
+    //         script.onerror = () => {
+    //             resolve(false);
+    //         };
+    //         document.body.appendChild(script);
+    //     });
+    // }
 
     const initializeRazorpay = () => {
         return new Promise((resolve) => {

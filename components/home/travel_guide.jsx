@@ -1,22 +1,27 @@
-import {tw} from 'twind'
-import Slider from 'react-slick'
-import ReactHtmlParser from "react-html-parser";
 import Link from 'next/link'
 import * as Constants from '../Constants'
 import { createTGCityURL, createTGCountryURL, createTGStateURL, jpgToWebp } from '../fun';
+import dynamic from 'next/dynamic';
+import ReactHtmlParser from 'react-html-parser'
+import Image from 'next/image';
+
+// const ReactHtmlParser = dynamic(() => import('react-html-parser'))
 
 const TravelGuide = ({data}) =>{
+    // const ReactHtmlParser = dynamic(() => import('react-html-parser'))
+    
+    const Slider = dynamic(() => import('react-slick'))
 
 
     const SampleNextArrow = (props)=> {
         const { className, style, onClick } = props;
-        // {tw`hidden lg:carousel-button-group lg:block `}
-        return <div className={tw`hidden lg:block custom-btn right-custom-btn`} onClick={onClick}/>;
+        // {`hidden lg:carousel-button-group lg:block `}
+        return <div className={`hidden lg:block custom-btn right-custom-btn`} onClick={onClick}/>;
       }
   
     const SamplePrevArrow = (props) => {
         const { className, style, onClick } = props;
-        return <div className={tw`hidden lg:block custom-btn left-custom-btn`} onClick={onClick}/>;
+        return <div className={`hidden lg:block custom-btn left-custom-btn`} onClick={onClick}/>;
       }
 
 
@@ -71,27 +76,34 @@ const TravelGuide = ({data}) =>{
         return (
           <div key={i}>
           <Link href={aurl}>
-            <a href={aurl}>
+            <div href={aurl}>
               <div className="col-sm-12 col-xs-12 _cr_mb px-2" key={i}>
-                <div className={tw`box_1 flex`}>
-                  <div className={tw`_inline col-sm-4 col-xs-5 pyce inline`}>
-                    <div className="row">
-                      <img
+                <div className={`box_1 flex`}>
+                  <div className={`_inline col-sm-4 col-xs-5 pyce inline`}>
+                    <div className="row w-[100px] relative h-full">
+                      {/* <img
                         className="img-responsive"
                         src={
                           item.images.length > 0 ? jpgToWebp ({uri:item.images}) : `${Constants.assets_api}/public/icons/logo-icon.png`
                         }
                         alt="kiomoi"
+                      /> */}
+                      <Image 
+                      src={
+                        item.images.length > 0 ? jpgToWebp ({uri:item.images}) : `${Constants.assets_api}/public/icons/logo-icon.png`
+                      }
+                      alt = "kiomoi"
+                      fill
                       />
                     </div>
                   </div>
-                  <div className={tw`_inline col-sm-8 col-xs-7 pt-2 pb-2 pl-3 pr-3`}>
+                  <div className={`_inline col-sm-8 col-xs-7 pt-2 pb-2 pl-3 pr-3`}>
                     <h4>{item.cityName??item.name}</h4>
                     <div className='p'>{d}..</div>
                   </div>
                 </div>
               </div>
-            </a>
+            </div>
             </Link>
           </div>
         );
@@ -147,21 +159,21 @@ const TravelGuide = ({data}) =>{
 
 
     return <>
-        <section className={tw`Travel Guide mt-16`}>
+        <section className={`Travel Guide mt-16`}>
             <div className="container">
                 <div className='row_'>
                     <div className="box_design_common">
-                        <div className={tw`title_kiomoi flex items-center justify-between mb-6`}>
+                        <div className={`title_kiomoi flex items-center justify-between mb-6`}>
                             
-                            <div className={tw`2w-full`}>
+                            <div className={`2w-full`}>
                                 <h4>Places you can explore</h4>
                                 <p></p>
                             </div>
-                            <div className={tw`2w-full`}>
+                            <div className={`2w-full`}>
                               <Link href="/travel-guide/">
-                                <a href="/travel-guide/">
+                                <div href="/travel-guide/">
                                     <div className="btn_view_more">View All</div>
-                                </a>
+                                </div>
                                 </Link>
                             </div>
 

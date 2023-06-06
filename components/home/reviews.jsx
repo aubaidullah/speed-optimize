@@ -1,9 +1,10 @@
-import { tw } from 'twind'
-import MultiCarousel from "react-multi-carousel";
+// import MultiCarousel from "react-multi-carousel";
 import { BsStarFill, BsStarHalf } from 'react-icons/bs'
 import { ImQuotesRight } from 'react-icons/im'
 import * as Constants from '../Constants'
+import dynamic from 'next/dynamic'
 const Reviews = ({ data }) => {
+  const MultiCarousel = dynamic(() => import('react-multi-carousel'))
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -33,7 +34,7 @@ const Reviews = ({ data }) => {
       carouselState: { currentSlide },
     } = rest;
     return (
-      <div className={tw`hidden lg:carousel-button-group lg:block `}>
+      <div className={`hidden lg:carousel-button-group lg:block `}>
         <button
           className={`${currentSlide === 0 ? "disable" : ""} left-custom-btn`}
           onClick={() => previous()}
@@ -66,10 +67,10 @@ const Reviews = ({ data }) => {
       var options = { year: "numeric", month: "long", day: "numeric" };
       return (
         <div key={j}>
-          <div className={tw`col-sm-12 col-xs-12 _cr_mb px-4`} key={i}>
+          <div className={`col-sm-12 col-xs-12 _cr_mb px-4`} key={i}>
             <div className="comment_box _box_shadow">
               <div className="qoute_ text-center">
-                <ImQuotesRight className={tw`icon_size inline text-[30px]`} />
+                <ImQuotesRight className={`icon_size inline text-[30px]`} />
               </div>
               <div className="text-comment">
                 <p>{review.substring(0, 150)}...</p>
@@ -105,12 +106,12 @@ const Reviews = ({ data }) => {
   });
 
   return <div>
-    <section className={tw`Reviews mt-16`}>
+    <section className={`Reviews mt-16`}>
       <div className="container">
         <div className='row_'>
           <div className="box_design_common">
-            <div className={tw`title_kiomoi flex items-center justify-between mb-6`}>
-              <div className={tw`2w-full`}>
+            <div className={`title_kiomoi flex items-center justify-between mb-6`}>
+              <div className={`2w-full`}>
                 <h4>Review & Comments</h4>
                 <p>See What Other's Have to Say</p>
               </div>

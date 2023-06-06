@@ -1,9 +1,13 @@
-import Nav from '../components/Nav';
+// import Nav from '../components/Nav';
 import { tw } from 'twind'
+import dynamic from 'next/dynamic';
 
+
+const Nav = dynamic(() => import('../components/Nav'))
 const TNC = () => {
     return <>
         <Nav />
+        
         <section className={tw`md:px-14 custom-font t_box`}>
             <div>
                 <div className="terms-inner-section">
