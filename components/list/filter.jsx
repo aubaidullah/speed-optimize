@@ -2,9 +2,8 @@ import {tw} from 'twind'
 import Slider from "react-rangeslider";
 import { useState } from 'react';
 import { FaRupeeSign } from 'react-icons/fa';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { clear_filter, duration_filter, getPackages, places_filter, price_filter, setSearchFilter, theme_filter } from '../../redux_fx/actions';
+import { useDispatch } from 'react-redux';
+import { places_filter, theme_filter } from '../../redux_fx/actions';
 
 const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Themes,_places,_themes,page_type,filter,setKeyword,data,theme=undefined}) =>{
 
@@ -13,51 +12,22 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
     // const filtering = useSelector(state=>state.package.package)
     const dispatch = useDispatch()
 
-    // useEffect(()=>{
-    //     setSearchFilter(city)
-    //     // if(city!=undefined){
-    //     //     setSearchFilter(city)
-    //     // }
-    // },[])
 
-
-
-
-
-
-    const [search,setSearch] = useState("")
-    const [places,setPlaces] = useState([])
-    const [duration,setDuration] = useState([])
-    const [themef,setTheme] = useState([])
     const [maxprice,setMaxprice] = useState(5000)
     const [minprice,setMinprice] = useState(1000)
     // console.log(data)
 
-    // useEffect(()=>{
-    //     if(search.length>=2){
-    //         // const x = filtering.filter(item=>item.name.toLowerCase().includes(search.toLowerCase()))
-    //         dispatch(setSearchFilter(search))
-    //         // console.log(filtering.filter(item=>item.name.toLowerCase().includes(search.toLowerCase())))
-    //         // dispatch(filtering.filter(item=>item.name.toLowerCase().includes(search.toLowerCase())))
-    //     }
-    //     else{
-    //         dispatch(setSearchFilter(""))
-    //     }
-        
-    // },[search])
 
 
     const setDurationFilter=(f,l)=>{
         set_Min(f)
         set_Max(l)
-        // dispatch(duration_filter(f,l))
 
     }
     const setPriceFilter=(min,max)=>{
         setMaxprice(max)
         setMinprice(min)
         setPrice({min:min,max:max})
-        // dispatch(price_filter(min,max))
     }
 
 

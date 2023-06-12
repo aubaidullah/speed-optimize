@@ -39,7 +39,7 @@ const Banner = ({ data }) => {
         <div>
             {/* scaleX(1.5) */}
                 <div>
-                    <Image className="img-responsive_banner" src={jpgToWebp({uri:data[0]?.i})} width={500} height={500} loading="eager" />
+                    <Image className="img-responsive_banner" alt='kiomoi banner' src={jpgToWebp({uri:data[0]?.i})} width={500} height={500} loading="eager" />
                 </div>
         </div>
         

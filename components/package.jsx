@@ -11,7 +11,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import {tw} from 'twind'
 import { Carousel } from "react-responsive-carousel";
-import { createDetailUrl, jpgToWebp } from './fun'
+import { createDetailUrl, imgNameByUrl, jpgToWebp } from './fun'
 import dynamic from 'next/dynamic'
 
 const LeadForm = dynamic(() => import('./leadform'))
@@ -147,10 +147,11 @@ const Package = ({item}) =>{
                                                         {/* <div className="bk_img" style={{backgroundImage:`url("${item.images.split('~')[0].replace(/w_400/,'w_300')}")`,backgroundPosition:'cover'}}>
                                                         </div> */}
                                                         <div className='bk_img'>
-                                                            <Image layout="fill" alt={item.name} className={`rounded-[10px]`} objectFit="fill" 
+                                                            <Image layout="fill" alt={imgNameByUrl({url:item.images.split('~')[0]})} className={`rounded-[10px]`} objectFit="fill" 
                                                             src={
                                                                 jpgToWebp({uri:`${item.images.split('~')[0].replace(/w_400/,'w_300')}`})
                                                             } 
+                                                            
                                                             />
                                                         </div>
                                                         

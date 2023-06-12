@@ -1,5 +1,5 @@
 import { Carousel } from "react-responsive-carousel";
-import { jpgToWebp } from '@/components/fun';
+import { imgNameByUrl, jpgToWebp } from '@/components/fun';
 import Image from "next/image";
 const _Carousel = ({data}) =>{
     return (
@@ -14,7 +14,7 @@ const _Carousel = ({data}) =>{
             className="slider_banner slider_overlay"
         >
             {data?.package.images.split(',').map((e, index) => {
-                return e?<Image className='img' src={jpgToWebp({uri:e})} layout="fill" key={index} alt={data?.package?.name} />:""
+                return e?<Image className='img' src={jpgToWebp({uri:e})} layout="fill" key={index} alt={imgNameByUrl({url:e})} />:""
             })}
         </Carousel>
 

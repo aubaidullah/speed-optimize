@@ -213,7 +213,7 @@ const SearchBar = ({img}) =>{
     return <div className={tw`relative`}>
         {/* <img className={tw`w-full object-cover h-[400px] brightness-[75%]`} alt="banner" src={img}/> */}
         <div className={tw`w-full object-cover h-[400px] brightness-[75%]`}>
-            <Image src={img} layout="fill" loading="lazy" />
+            <Image src={img} layout="fill" loading="lazy" alt={img} />
         </div>
         <div className="_container">
             <div className={tw`mt-4 bt-0 lg:bottom-20 absolute left-0 right-0`}>

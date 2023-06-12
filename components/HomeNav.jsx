@@ -1,7 +1,6 @@
-import { useEffect, useState,useCallback } from "react"
+import { useEffect, useState } from "react"
 import { HiOutlineSearch } from 'react-icons/hi'
-import { AiOutlineLogout, AiOutlineSearch } from 'react-icons/ai';
-import { FaRegUser, FaSearch } from 'react-icons/fa';
+import { FaRegUser } from 'react-icons/fa';
 import { BsXLg, BsDot } from 'react-icons/bs'
 import {ImSpinner} from 'react-icons/im'
 // import { Spinner } from 'react-bootstrap'

@@ -3,7 +3,7 @@ import {IoLocationSharp} from 'react-icons/io5'
 import {FaRupeeSign} from 'react-icons/fa'
 import { tw } from "twind";
 import * as Constants from '../Constants'
-import { jpgToWebp } from "../fun";
+import { imgNameByUrl, jpgToWebp } from "../fun";
 import Image from "next/image";
 const Hotel_Design = ({item}) =>{
     const hurl =
@@ -27,6 +27,7 @@ const Hotel_Design = ({item}) =>{
                 <Image 
                     className={tw`img-responsive object-cover h-[200px] w-full rounded-[8px] border-1 border-[#e3e3e3]`}
                     src={item.images.length > 0 ? jpgToWebp({uri:item.images}) : `${Constants.assets_api}/public/icons/logo-icon.png`}
+                    alt={imgNameByUrl({url:item.images})}
                     fill
                 />
 

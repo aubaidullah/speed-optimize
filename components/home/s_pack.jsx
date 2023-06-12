@@ -3,7 +3,7 @@ import {FaRupeeSign} from 'react-icons/fa'
 import * as Constants from '../Constants'
 import Link from 'next/link';
 import Image from 'next/image';
-import { jpgToWebp } from '../fun';
+import { imgNameByUrl, jpgToWebp } from '../fun';
 
 
 const SinglePack = ({item,aurl,i, userRating}) =>{
@@ -22,7 +22,7 @@ const SinglePack = ({item,aurl,i, userRating}) =>{
                         ? jpgToWebp({uri:item.images.split("~")[0]})
                         : `${Constants.assets_api}/public/icons/logo-icon.png`
                     }
-                    alt={item.name}
+                    alt={imgNameByUrl({url:item.images.split("~")[0]??item.name})}
                 />
                 <div className="content_rated">
                     <div className="nature_text_">

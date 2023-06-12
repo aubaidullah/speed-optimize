@@ -6,7 +6,7 @@ import Image from "next/image";
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
 import { useEffect,useState } from "react";
-import { jpgToWebp, strToUrl } from "../../../components/fun";
+import { imgNameByUrl, jpgToWebp, strToUrl } from "../../../components/fun";
 import {BsCheckCircle} from 'react-icons/bs'
 
 
@@ -149,7 +149,7 @@ const HotelDetail = ({hotel,meta}) =>{
                                             <li className="slide">
                                                 {
                                                     hotel.hotel.images
-                                                    ?<Image className='img ht_img' alt={hotel.hotel.name} src={jpgToWebp({uri:hotel.hotel.images.split(',')[0]})} layout="fill" />:
+                                                    ?<Image className='img ht_img' alt={imgNameByUrl({url:hotel.hotel.images.split(',')[0]})} src={jpgToWebp({uri:hotel.hotel.images.split(',')[0]})} layout="fill" />:
                                                     ""
                                                 }
                                                 

@@ -6,7 +6,7 @@ import {FaRupeeSign} from 'react-icons/fa'
 import Image from 'next/image'
 import {tw} from 'twind'
 import * as Constants from '../Constants'
-import { createDetailUrl, jpgToWebp } from "../fun";
+import { createDetailUrl, imgNameByUrl, jpgToWebp } from "../fun";
 
 const RelatedTour = ({data}) =>{
 
@@ -134,7 +134,7 @@ const RelatedTour = ({data}) =>{
                           ? jpgToWebp({uri:item.images.split("~")[0]})
                           : `${Constants.assets_api}/public/icons/logo-icon.png`
                       }
-                      alt={item.name}
+                      alt={imgNameByUrl({url:item.images.split("~")[0]??item.name})}
                     />
                     <div className="content_rated">
                       <div className="nature_text_">

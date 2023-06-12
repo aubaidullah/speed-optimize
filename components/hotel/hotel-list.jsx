@@ -1,10 +1,5 @@
 import Link from "next/link";
 import { tw } from "twind";
-import Slider from 'react-slick'
-import {IoLocationSharp,IoSunny} from 'react-icons/io5'
-import { BsDot,BsStarHalf } from "react-icons/bs";
-import { strToUrl } from "../fun";
-import {FaRupeeSign} from 'react-icons/fa'
 import HotelDesign from "./hotel";
 import * as Constants from '../Constants'
 

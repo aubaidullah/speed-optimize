@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import * as Constants from '../Constants'
-import { createTGCityURL, createTGCountryURL, createTGStateURL, jpgToWebp } from '../fun';
+import { createTGCityURL, createTGCountryURL, createTGStateURL, imgNameByUrl, jpgToWebp } from '../fun';
 import dynamic from 'next/dynamic';
 import ReactHtmlParser from 'react-html-parser'
 import Image from 'next/image';
@@ -92,7 +92,7 @@ const TravelGuide = ({data}) =>{
                       src={
                         item.images.length > 0 ? jpgToWebp ({uri:item.images}) : `${Constants.assets_api}/public/icons/logo-icon.png`
                       }
-                      alt = "kiomoi"
+                      alt = {imgNameByUrl({url:item.images??"kiomoi"}) }
                       fill
                       />
                     </div>

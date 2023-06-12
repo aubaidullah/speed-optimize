@@ -3,7 +3,7 @@ import {tw} from 'twind'
 import Link from 'next/link'
 import 'react-multi-carousel/lib/styles.css';
 import * as Constants from '../Constants'
-import { createStateListURL } from '../fun';
+import { createStateListURL, imgNameByUrl } from '../fun';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
@@ -44,7 +44,7 @@ const State = ({data}) =>{
                           ? item.im.split("~")[0]
                           : `${Constants.assets_api}/public/icons/logo-icon.png`
                       }
-                      alt="kiomoi"
+                      alt={imgNameByUrl({url:item.im.split("~")[0]??"kiomoi"})}
                       fill
                     />
                   <div className="des_cont">

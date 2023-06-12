@@ -64,6 +64,11 @@ export const jpgToWebp = ({uri}) =>{
     // return uri.replace(/\.jpg\.jpg/g,'.jpg.webp').replace(/\.jpg/g,".webp").replace(/\.jpeg\.jpg/g,'.webp')
 }
 
+export const imgNameByUrl = ({url}) =>{
+    return url.replace('.jpg','').split('/').slice(-1)[0].replace(/%20/g,' ')
+
+}
+
 export const createTGStateURL = ({city,id}) =>{
     return `/travel-guide/states/${city?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase()}-${id}`
 }

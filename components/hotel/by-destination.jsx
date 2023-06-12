@@ -2,7 +2,7 @@ import { useState,useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { jpgToWebp } from "../fun";
+import { imgNameByUrl, jpgToWebp } from "../fun";
 import {tw} from 'twind'
 
 
@@ -64,7 +64,7 @@ const HotelByDestination = ({data}) =>{
                             <div className="des_img_hotel">
                                 
                                 {item.iurl
-                                ?<Image src={jpgToWebp({uri:item.iurl})} className={tw`h-full w-[100px]`} alt={item.cname} layout="fill" />
+                                ?<Image src={jpgToWebp({uri:item.iurl})} className={tw`h-full w-[100px]`} alt={imgNameByUrl({url:item.iurl})} layout="fill" />
                                 :<img src={item.iurl} alt={item.cname}/>
                                 }
                             </div>

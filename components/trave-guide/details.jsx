@@ -21,7 +21,7 @@ import Image from 'next/image'
 // import TravelGuide from '../home/travel_guide';
 // import Meta from '../meta';
 import * as Constants from '../Constants'
-import { createCityListURL,createCountryListURL,createStateListURL, createTGCityURL, jpgToWebp } from '../fun';
+import { createCityListURL,createCountryListURL,createStateListURL, createTGCityURL, imgNameByUrl, jpgToWebp } from '../fun';
 // import BreadCrumbs from "../breadcrumbs";
 import dynamic from "next/dynamic";
 // import ParseHtml from '../parseToHtml';
@@ -113,7 +113,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
 
     const imagesRender = data.images.map((img, index) => {
         return <div key={index}>
-            <Image src={jpgToWebp({uri:img.i})} alt="images" className={`img rounded-[8px]`} layout="fill"/>
+            <Image src={jpgToWebp({uri:img.i})} alt={imgNameByUrl({url:img.i})} className={`img rounded-[8px]`} layout="fill"/>
         </div>
     })
 
