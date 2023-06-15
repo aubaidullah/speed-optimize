@@ -7,17 +7,18 @@ import { IoInformationCircle } from 'react-icons/io5'
 import { MdCheckCircle } from 'react-icons/md';
 import { BsDot } from 'react-icons/bs';
 import { Carousel } from "react-responsive-carousel";
-import ReactHtmlParser from "react-html-parser";
 import axios from "axios";
 import { getMetaQuery } from '../../../components/Graphql/Queries';
 import client from '../../../components/Graphql/service';
-import Nav from "../../../components/Nav";
 import * as Constant from '../../../components/Constants'
-import BreadCrumbs from "../../../components/breadcrumbs";
-import Meta from '../../../components/meta';
+import dynamic from 'next/dynamic';
+
+const ParseHtml = dynamic(() => import('@/components/parseToHtml'))
+const Nav = dynamic(() => import('@/components/Nav'))
+const BreadCrumbs = dynamic(() => import('@/components/breadcrumbs'))
+const Meta = dynamic(() => import('@/components/meta'))
 
 const Attraction = ({ data,meta }) => {
-
     const [overview, setOverview] = useState(null);
 
     const [limit, setLimit] = useState(200);
@@ -310,7 +311,8 @@ const Attraction = ({ data,meta }) => {
                     <h2 className={tw`text-xl font-bold ms-1 my-3`}>Overview</h2>
                     <div className={tw``}>
                         <div className="Shape_42">
-                            {ReactHtmlParser(overview)}
+                            <ParseHtml text={overview} />
+                            {/* {ReactHtmlParser(overview)} */}
                             {limit == 150 ||
                                 limit == 200 ? (
                                 <a

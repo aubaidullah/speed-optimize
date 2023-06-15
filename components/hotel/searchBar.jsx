@@ -7,6 +7,7 @@ import * as Constants from '../../components/Constants'
 import { useState,useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from 'next/router'
+import Image from "next/image";
 
 
 
@@ -107,10 +108,6 @@ const _SearchBar = ({img}) =>{
                                         <div className="flt_left">
                                             <span className="s_name">{e?.name}</span>
                                         </div>
-                                        {/* <div className="flt_right">
-                                            <FaRupeeSign className={tw`d_price inline`} />
-                                            <span className="d_price">{e?.price / 100}</span><BsDot className={`inline d_price`} /><span className="n_d">{e?.nights}N & {e?.nights + 1}D</span>
-                                        </div> */}
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +127,6 @@ const _SearchBar = ({img}) =>{
                     <div className={tw`w-full lg:w-1/3 lg:px-2 mb-2`}>
                         <div className={tw`flex`}>
                             <div className={tw`relative z-[2]`}>
-                            {/* calender_multi_clr */}
                                 <img src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`} alt="calendar" className={tw`inline ht_cal_icon`} />
                                 <div className="ht_label">
                                     Check-in
@@ -138,10 +134,8 @@ const _SearchBar = ({img}) =>{
                                 <DatePicker
                                     inputPlaceholder="Check-in"
                                     inputClassName="form-control-hotel rd_left"
-                                    // format="dd-MM-y"
                                     value = {checkindate}
                                     minimumDate={minDate}
-                                    // onChange={(date) => setCheckindate(date)}
                                     onChange={(date)=>setCheckIn(date)}
 
                                     required
@@ -155,11 +149,9 @@ const _SearchBar = ({img}) =>{
                                 <DatePicker
                                     inputPlaceholder="Check-out"
                                     inputClassName="form-control-hotel rd_right"
-                                    // format="dd-MM-y"
                                     value = {checkoutdate}
                                     minimumDate={mincheckoutdate}
                                     onChange={(date) => setCheckoutdate(date)}
-                                    // onChange={(date)=>setCheckout(date)}
                                     required
                                     />                                            
                             </div>                                      
@@ -171,14 +163,8 @@ const _SearchBar = ({img}) =>{
                         <div className={tw`relative`}>
                         <FaRegUser
                             className="ht_cal_icon"
-                            // onClick={() => setShowLogin(!showLogin)}
                             size={"20px"}
                         />
-                        {/* <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} /> */}
-                            {/* <div className="ht_label">
-                                Guest
-                            </div>                                         */}
-                        {/* <input type={'text'} className="form-control-hotel" /> */}
                         <select className="form-control h50 ht_select" >
                             <option value="">2 Travellers, 1 Room</option>
                             <option value="">3 Travellers, 1 Room</option>
@@ -186,10 +172,8 @@ const _SearchBar = ({img}) =>{
                             <option value="">5 Travellers, 2 Rooms</option>
                             <option value="">6 Travellers, 3 Rooms</option>
                             <option value="">7 Travellers, 3 Rooms</option>
-                            {/* <option value="">7 Travellers, 4 Rooms</option> */}
                             <option value="">8 Travellers, 4 Rooms</option>
                             <option value="">9 Travellers, 4 Rooms</option>
-                            {/* <option value="">9 Travellers, 5 Rooms</option> */}
                             <option value="">10 Travellers, 5 Rooms</option>                                                                                        
 
                         </select>
@@ -227,7 +211,10 @@ const _SearchBar = ({img}) =>{
 
 const SearchBar = ({img}) =>{
     return <div className={tw`relative`}>
-        <img className={tw`w-full object-cover h-[400px] brightness-[75%]`} alt="banner" src={img}/>
+        {/* <img className={tw`w-full object-cover h-[400px] brightness-[75%]`} alt="banner" src={img}/> */}
+        <div className={tw`w-full object-cover h-[400px] brightness-[75%]`}>
+            <Image src={img} layout="fill" loading="lazy" alt={img} />
+        </div>
         <div className="_container">
             <div className={tw`mt-4 bt-0 lg:bottom-20 absolute left-0 right-0`}>
                 <div className="container">

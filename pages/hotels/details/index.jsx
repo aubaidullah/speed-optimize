@@ -1,179 +1,28 @@
-import Nav from "../../../components/Nav"
 import { tw } from "twind";
-import BreadCrumbs from "../../../components/breadcrumbs";
 import client from "../../../components/Graphql/service";
 import { getHotelDetail,getMetaQuery } from "../../../components/Graphql/Queries";
 import { BsDot, BsStarFill, BsStarHalf } from 'react-icons/bs'
-import {FaRegUser} from 'react-icons/fa'
-import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
-import {FaRupeeSign} from 'react-icons/fa'
-import Rooms from "../../../components/hotel/rooms";
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
-import DatePicker from '@amir04lm26/react-modern-calendar-date-picker';
-import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import { useEffect,useState } from "react";
-import Meta from "../../../components/meta";
-import { jpgToWebp, strToUrl } from "../../../components/fun";
+import { imgNameByUrl, jpgToWebp, strToUrl } from "../../../components/fun";
 import {BsCheckCircle} from 'react-icons/bs'
-import * as Constants from '../../../components/Constants'
-
-// import PhotoSwipe from 'photoswipe';
-
-
-
-const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutdate,setCheckoutdate,updateHotel}) =>{
-    // console.log(hotel)
-    var yourDate = new Date()
-    const offset = yourDate.getTimezoneOffset()
-    yourDate = new Date(yourDate.getTime() - (offset*60*1000))
-    let x = yourDate.toISOString().split('T')[0].split("-")
-
-    const minDate = {
-        "year":parseInt(x[0]),
-        "month":parseInt(x[1]),
-        "day":parseInt(x[2])
-      }
-
-    const [mincheckoutdate,setminCheckoutdate] = useState("") 
-
-    useEffect(()=>{
-        let today = new Date(`${minDate['year']}-${minDate['month']}-${minDate['day']}`)
-        setCheckindate({"day":parseInt(minDate['day']),"month":parseInt(minDate['month']),"year":parseInt(minDate['year'])})
-  
-        let tomorrow = new Date(`${minDate['year']}-${minDate['month']}-${minDate['day']}`);
-        tomorrow.setDate(today.getDate()+1);
-        let c = tomorrow.toLocaleDateString().split("/")
-  
-        setminCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
-        setCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
-      },[])
-
-
-    const setCheckIn = (date) =>{
-        let today = new Date(`${date['year']}-${date['month']}-${date['day']}`)
-        let tomorrow = new Date(`${date['year']}-${date['month']}-${date['day']}`);
-        tomorrow.setDate(today.getDate()+1);
-        let c = tomorrow.toLocaleDateString().split("/")  
-        setCheckindate(date)
-        setminCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})      
-        setCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
-        // setCheckoutdate(date)
-    }       
-
-    // useEffect(()=>{
-    //     setCheckoutdate(checkindate)
-    // },[checkindate])
-    
-    
-    return  <>
-    <div className={tw`ml-5`}>
-        <div className="Shape_42">
-
-            <div className={tw``}>
-                <div className="relative">
-                <FaRegUser
-                    className="ht_cal_icon"
-                    // onClick={() => setShowLogin(!showLogin)}
-                    size={"20px"}
-                />
-                {/* <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} /> */}
-                    <div className="ht_label">
-                        Guest
-                    </div>                                        
-                {/* <input type={'text'} className="form-control-hotel" /> */}
-                <select className="form-control-hotel">
-                    <option value="" onClick={()=>updateHotel({travellers:2,room:1})}>2 Travellers, 1 Room</option>
-                    <option value="" onClick={()=>updateHotel({travellers:3,room:1})}>3 Travellers, 1 Room</option>
-                    <option value="" onClick={()=>updateHotel({travellers:4,room:2})}>4 Travellers, 2 Rooms</option>
-                    <option value="" onClick={()=>updateHotel({travellers:5,room:2})}>5 Travellers, 2 Rooms</option>
-                    <option value="" onClick={()=>updateHotel({travellers:6,room:3})}>6 Travellers, 3 Rooms</option>
-                    <option value="" onClick={()=>updateHotel({travellers:7,room:3})}>7 Travellers, 3 Rooms</option>
-                    {/* <option value="" onClick={()=>updateHotel({travellers:7,room:4})}>7 Travellers, 4 Rooms</option> */}
-                    <option value="" onClick={()=>updateHotel({travellers:8,room:4})}>8 Travellers, 4 Rooms</option>
-                    <option value="" onClick={()=>updateHotel({travellers:9,room:4})}>9 Travellers, 4 Rooms</option>
-                    {/* <option value="" onClick={()=>updateHotel({travellers:9,room:5})}>9 Travellers, 5 Rooms</option> */}
-                    <option value="" onClick={()=>updateHotel({travellers:10,room:5})}>10 Travellers, 5 Rooms</option>                                                                                        
-
-                </select>
-                </div>
-            </div>
-
-            <div className={tw`flex mt-3`}>
-                <div className="relative z-999">
-                {/* calender_multi_clr */}
-                    <img src={`${Constants}/public/icons/calender_multi_clr.png`} alt="calendar icon" className={tw`inline ht_cal_icon`} />
-                    <div className="ht_label">
-                        Check-in
-                    </div>
-                    <DatePicker
-                        inputPlaceholder="Check-in"
-                        inputClassName="form-control-hotel rd_left"
-                        // format="dd-MM-y"
-                        value = {checkindate}
-                        minimumDate={minDate}
-                        onChange={(date)=>setCheckIn(date)}
-                        required
-                        />
-                </div>
-                <div className="relative z-999">
-                <img src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`} alt="calendar icon" className={tw`inline ht_cal_icon`} />
-                    <div className="ht_label">
-                        Check-out
-                    </div>
-                    <DatePicker
-                        inputPlaceholder="Check-out"
-                        inputClassName="form-control-hotel rd_right"
-                        // format="dd-MM-y"
-                        value = {checkoutdate}
-                        minimumDate={mincheckoutdate}
-                        onChange={(date) => setCheckoutdate(date)}
-                        required
-                        />                                            
-                </div>                                      
-            </div>
-
-            <div className={tw`flex items-center mt-3`}>
-                {hotel.hotel.price
-                ?<>
-                    <div className="price_inr">
-                    <FaRupeeSign className='inline text-[#f79421] text-[15px] mb-[4px]'/>
-                        <span>{selectedHotel?.price}/-</span>
-                    </div>
-                    {/* <div className={tw`ml-3 f_12 c_gray`}>
-                        per night
-                    </div> */}
-                </>:<div className="price_inr">Price on Request</div>}
-            </div>
-
-            <div className={tw`mt-3`}>
-                <button className="w-full btn_listing _btn_clr">
-                    Book
-                </button>
-            </div>
-
-
-            
-        </div>
-    </div>
-</>
-}
-
-
 
 
 
 const HotelDetail = ({hotel,meta}) =>{
+    const BreadCrumbs = dynamic(() => import('@/components/breadcrumbs'))
+    const Nav = dynamic(() => import('@/components/Nav'))
+    const Meta = dynamic(() => import('@/components/meta'))
 
+    const RightContent = dynamic(() => import('@/components/hotel/Right-content'))
+    const Rooms = dynamic(() => import('@/components/hotel/rooms'))
 
     var yourDate = new Date()
     const offset = yourDate.getTimezoneOffset()
     yourDate = new Date(yourDate.getTime() - (offset*60*1000))
     let x = yourDate.toISOString().split('T')[0].split("-")
-
-    // const x = dt.toJSON().split("T")[0].split("-")
-
     const minDate = {
         "year":parseInt(x[0]),
         "month":parseInt(x[1]),
@@ -232,14 +81,6 @@ const HotelDetail = ({hotel,meta}) =>{
     })
    
     
-    // console.log(hotel)
-    
-
-
-
-
-    // console.log(hotel.hotel.images.split(',').length)
-    // console.log(Math.min(...hotel.rooms.map(item => item.price)))
     useEffect(()=>{
         if (hotel.rooms.length!=0){
             let nm = hotel.rooms.reduce(function(prev, curr) {
@@ -289,7 +130,6 @@ const HotelDetail = ({hotel,meta}) =>{
                 <h1 className={tw`text-2xl font-bold`}>{hotel.hotel.name}</h1>
             </div>
             <div>
-                {/* <div>{hotel.hotel.locality}</div> */}
                 <div className={tw`flex items-center rating mb-4`}>
                         <div className='_inline__'>
                             {userRating}
@@ -309,7 +149,7 @@ const HotelDetail = ({hotel,meta}) =>{
                                             <li className="slide">
                                                 {
                                                     hotel.hotel.images
-                                                    ?<Image className='img ht_img' alt={hotel.hotel.name} src={jpgToWebp({uri:hotel.hotel.images.split(',')[0]})} layout="fill" />:
+                                                    ?<Image className='img ht_img' alt={imgNameByUrl({url:hotel.hotel.images.split(',')[0]})} src={jpgToWebp({uri:hotel.hotel.images.split(',')[0]})} layout="fill" />:
                                                     ""
                                                 }
                                                 
@@ -320,20 +160,6 @@ const HotelDetail = ({hotel,meta}) =>{
 
                                     </div>
                                 </div>
-                                {/* <Carousel
-                                    showStatus={false}
-                                    showThumbs={false}
-                                    showArrows={true}
-                                    showIndicators={true}
-                                    infinite={true}
-                                    autoPlay={true}
-                                    className="slider_banner slider_overlay"
-                                >
-                                    {hotel.hotel.images.split(',').map((e, index) => {
-                                        return e.length>5?<Image className='img' href={e} src={e} layout="fill" key={index} />:""
-                                    })}
-                                </Carousel> */}
-
 
                             </div>
                         </div>
@@ -386,39 +212,6 @@ const HotelDetail = ({hotel,meta}) =>{
                                     })
                                 }
                                 
-                                {/* <div style={{height:'50%'}} className={tw`pb-2`}>
-                                    <div style={{height:'100%',width:'100%',position:'relative'}}>
-                                        <a data-pswp-src={hotel.hotel.images.split(',')[1]} 
-                                        >
-                                            <Image className='img' src={hotel.hotel.images.split(',')[1]} layout="fill" style={{borderRadius:'8px'}} />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div style={{height:'50%'}} className={tw`pt-2`}>
-                                    <div style={{height:'100%',width:'100%',position:'relative'}}>
-                                        <a data-pswp-src={hotel.hotel.images.split(',')[2]}
-                                        // data-pswp-height="768"
-                                        >
-                                        <Image className='img' src={hotel.hotel.images.split(',')[2]} layout="fill" style={{borderRadius:'8px'}} />
-                                        </a>
-                                        
-                                    </div>
-                                </div> 
-
-                                <div style={{height:'50%',display:'none'}} className={tw`pt-2`}>
-                                    <div style={{height:'100%',width:'100%',position:'relative'}}>
-                                        <a data-pswp-src={hotel.hotel.images.split(',')[3]}
-                                        // data-pswp-height="768"
-                                        >
-                                        <Image className='img' src={hotel.hotel.images.split(',')[3]} layout="fill" style={{borderRadius:'8px'}} />
-                                        </a>
-                                        
-                                    </div>
-                                </div>                                                                 */}
-
-                                {/* <div>
-                                    <Image className='img' src={hotel.hotel.images.split(',')[0]} layout="fill" />
-                                </div> */}
                             </div>
                         </div>                        
                     </div>
@@ -471,7 +264,6 @@ const HotelDetail = ({hotel,meta}) =>{
                                                         <div>
                                                         <BsCheckCircle color="#44c554" className={tw`inline`}/>
 
-                                                            {/* <img src={"/icons/amenities-icons/1.png"} style={{width:'25px'}} className={tw`inline`} alt="" /> */}
                                                         </div>
                                                         <div className={tw`pl-2`}>
                                                             <span className={tw`text-gray-600 f12`}>{e}</span>
@@ -489,7 +281,6 @@ const HotelDetail = ({hotel,meta}) =>{
                                             </div>
                                                 :""
                                             }
-                                            
 
                                         </div>
                                     </div>

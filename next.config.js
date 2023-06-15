@@ -1,16 +1,9 @@
 /** @type {import('next').NextConfig} */
-
-// const withBundleAnalyzer = require('@next/bundle-analyzer')({
-//   enabled: process.env.ANALYZE === 'true',
-// })
-
 const nextConfig = {
-  // trailingSlash: true,
   reactStrictMode: true,
   assetPrefix : 'https://assets.kiomoi.com',
-  // assetsPrefix:window.location.origin.toString() === "http://localhost:3000"||"https://kiomoitest.kiomoi.com" ?"https://devassets.kiomoi.com":"https://assets.kiomoi.com",
   images: {
-    domains: ['res.cloudinary.com', 'img.kiomoi.com']
+    domains: ['res.cloudinary.com', 'img.kiomoi.com',"res.cloudi","testkiomoi.vercel.app","assets.kiomoi.com"]
     // remotePatterns: [
     //   {
     //     protocol: 'https',
@@ -18,9 +11,6 @@ const nextConfig = {
     //   },
     // ],
   },
-//   Kiomoi.com/countries/india
-// Kiomoi.com/states/sikkim
-// Kiomoi.com/cities/gangtok
   async rewrites() {
     return [
       // {
@@ -223,28 +213,16 @@ const nextConfig = {
 
       // destination_karde.htm
     ]
-  },
-  
-  // webpack: (config, { dev, isServer }) => {
-  //   if (!dev && !isServer) {
-  //     Object.assign(config.resolve.alias, {
-  //       react: 'preact/compat',
-  //       'react-dom/test-utils': 'preact/test-utils',
-  //       'react-dom': 'preact/compat',
-  //     })
-  //   }
-  //   return config
-  // },
-  // async redirects(){
-  //   return [
-  //     {
-  //       source: 'idl_*',
-  //       // destination:'',
-  //       statusCode:410
-  //     }
-  //   ]
-  // }
+  },  
 }
 
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: process.env.ANALYZE === 'true',
+// })
+
+// module.exports = withBundleAnalyzer({})
+
+// module.exports = withBundleAnalyzer({nextConfig})
+
+
 module.exports = nextConfig
-// 😘

@@ -1,8 +1,10 @@
 import client from "../../components/Graphql/service";
 import { getQnaQuery } from "../../components/Graphql/Queries";
-import QnaListing from "../../components/Qna";
+import dynamic from "next/dynamic";
+// import QnaListing from "../../components/Qna";
 
 
+const QnaListing = dynamic(() => import('../../components/Qna'))
 
 const Qna=({qna})=>{
     return <QnaListing data={qna} travelGuide={false}/>

@@ -845,13 +845,13 @@ ul.breadcrumb li {
   text-transform: capitalize;
 }
 ul.breadcrumb li {
-  display: inline;
+  /* display: inline; */
   font-size: 15px;
   align-self:center;
 }
 
 ul.breadcrumb {
-  padding: 10px 16px;
+  padding: 10px 0;
   list-style: none;
   background-color: transparent;
   margin-bottom: 0 !important;
@@ -883,7 +883,7 @@ ul.breadcrumb {
     height: 200px;
   }
   ul.breadcrumb li {
-    display: inline;
+    /* display: inline; */
     font-size: 12px;
 }  
   .search_input input {

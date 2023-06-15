@@ -1,10 +1,5 @@
 import Link from "next/link";
 import { tw } from "twind";
-import Slider from 'react-slick'
-import {IoLocationSharp,IoSunny} from 'react-icons/io5'
-import { BsDot,BsStarHalf } from "react-icons/bs";
-import { strToUrl } from "../fun";
-import {FaRupeeSign} from 'react-icons/fa'
 import HotelDesign from "./hotel";
 import * as Constants from '../Constants'
 
@@ -153,9 +148,9 @@ const HotelList = ({hotels}) =>{
                   </div>
                   <div className={tw`price_tag flex items-cetner justify-bewteen`}>
                     <Link href={hurl}>
-                      <a href={hurl} className="btn_anchor">
+                      <div href={hurl} className="btn_anchor">
                         View Details
-                      </a>
+                      </div>
                     </Link>
                     {item.price > 0 ? (
                       <>

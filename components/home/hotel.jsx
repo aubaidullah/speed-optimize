@@ -1,9 +1,13 @@
-import {tw} from 'twind'
-import MultiCarousel from "react-multi-carousel";
+// import {tw} from 'twind'
+// import MultiCarousel from "react-multi-carousel";
 import Link from 'next/link'
-import Hotel_Design from '../hotel/hotel';
+import dynamic from 'next/dynamic'
+// import Hotel_Design from '../hotel/hotel';
 
 const Hotel = ({data}) =>{
+    const MultiCarousel = dynamic(() => import('react-multi-carousel'))
+    const Hotel_Design = dynamic(() => import('../hotel/hotel'))
+    
     const responsive = {
         superLargeDesktop: {
           // the naming can be any, depends on you.
@@ -34,7 +38,7 @@ const Hotel = ({data}) =>{
         carouselState: { currentSlide },
     } = rest;
     return (
-        <div className={tw`hidden lg:carousel-button-group lg:block `}>
+        <div className={`hidden lg:carousel-button-group lg:block `}>
         <button
             className={`${currentSlide === 0 ? "disable" : ""} left-custom-btn`}
             onClick={() => previous()}
@@ -87,20 +91,20 @@ const Hotel = ({data}) =>{
 
 
     return <>
-        <section className={tw`Hotels mt-16`}>
+        <section className={`Hotels mt-16`}>
             <div className="container">
                 <div className='row_'>
                     <div className="box_design_common">
-                        <div className={tw`title_kiomoi flex items-center justify-between mb-6`}>
-                            <div className={tw`2w-full`}>
+                        <div className={`title_kiomoi flex items-center justify-between mb-6`}>
+                            <div className={`2w-full`}>
                                 <h4>Stay like Royal</h4>
                                 <p>Discover Incredible Hotels</p>
                             </div>
-                            <div className={tw`2w-full`}>
+                            <div className={`2w-full`}>
                                 <Link href="/hotels/">
-                                    <a href="/hotels/">
+                                    <div href="/hotels/">
                                         <div className="btn_view_more">View All</div>
-                                    </a>
+                                    </div>
                                 </Link>
                                 
                             </div>

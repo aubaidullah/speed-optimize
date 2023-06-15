@@ -1,20 +1,27 @@
-import Package from "../components/package"
-import Link from 'next/link'
+// import Package from "../components/package"
 import {AiOutlineArrowDown,AiOutlineArrowUp} from 'react-icons/ai'
 import {BsFilter} from 'react-icons/bs'
-import BreadCrumbs from "./breadcrumbs"
-import {tw} from 'twind'
+// import BreadCrumbs from "./breadcrumbs"
 import dynamic from 'next/dynamic';
 import { useState,useEffect } from "react"
+import {tw} from 'twind'
 import { useSelector } from "react-redux"
-import FilterBy from "./list/filter"
+// import FilterBy from "./list/filter"
 import { ScrollWrapper } from 'react-bottom-scroll';
 import ReactHtmlParser from "react-html-parser";
-import { Modal } from "react-bootstrap"
-import {BsXLg} from 'react-icons/bs';
-import Meta from "./meta"
+// import { Modal } from "react-bootstrap"
+// import {BsXLg} from 'react-icons/bs';
+// import Meta from "./meta"
 import { useRouter } from 'next/router'
 import { createCountryListURL, createStateListURL } from "./fun"
+// import Modal from "./modal"
+
+// const  
+const BreadCrumbs = dynamic(() => import('./breadcrumbs'))
+const Meta = dynamic(() => import('./meta'))
+const FilterBy = dynamic(() => import('./list/filter'))
+const Modal = dynamic(() => import('./modal'))
+const Package = dynamic(() => import('../components/package'))
 
 // const filtering = useSelector(state=>state.package.package)
 // const FilterBy = dynamic(() => import('./list/filter'), {
@@ -298,29 +305,22 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
             animation={false}
             className="login_credential"
             backdrop="static"
+            changeForm = {setIsshow}
             aria-labelledby="contained-modal-title-vcenter"
             centered        
         
         >
-            <Modal.Body>
-                <div className={tw`overflow-auto`}>
-                    <span className={tw`float-right`}aria-hidden="true">
-                        <BsXLg className={tw`cursor-pointer`} 
-                        // style={{cursor: "pointer" }}
-                        onClick={()=>setIsshow(false)}
-                        />
-                    </span>
-                </div>
+            <div>
                 <div>
                     <FilterBy _pricing={_pricing} setPrice={setPrice} _min={_min} set_Min={set_Min} _max={_max} set_Max={set_Max} set_Places={set_Places} _places={_places} _themes={_themes} set_Themes={set_Themes} page_type={page_type} filter={filter} setKeyword={setFilter} data={places} theme={theme}/>
                 </div>
-            </Modal.Body>
+            </div>
             
             
             <div className='bottom_button_filter' onClick={()=>setIsshow(false)}>
-                <div className={tw`flex h-full`}>
-                    <div className={tw`flex h-full w-full`}>
-                        <div className={tw`self-center w-full text-center text-[20px]`} 
+                <div className={`flex h-full`}>
+                    <div className={`flex h-full w-full`}>
+                        <div className={`self-center w-full text-center text-[20px]`} 
                         // style={{alignSelf:'center',width:'100%',textAlign:'center',fontSize:'20px'}}
                         >Apply</div>
                     </div>
@@ -331,13 +331,13 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
 
 
 
-            <section className="container">
+            <section className="container m-auto">
                 {/* <div className="row" style={{marginBottom:'30px'}}>
                     <h2>Kiomoi packages</h2>
                 </div> */}
                 {/* {region?
-                <div className={tw`p-4 bg-white mb-4 _box_shadow_`}>
-                <h2 className={tw`text-2xl pb-2`}>{region?.name}</h2>
+                <div className={`p-4 bg-white mb-4 _box_shadow_`}>
+                <h2 className={`text-2xl pb-2`}>{region?.name}</h2>
                 <div>
                     {ReactHtmlParser(overview)}
                     {overviewlimit == 150 ||
@@ -368,8 +368,8 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
 
                 <div className={tw`flex flex-wrap`}>
                     {region?
-                        <div className={tw`w-full p-4 bg-white mb-4 _box_shadow_ title_listing_ rounded-md`}>
-                        <h1 className={tw`text-2xl pb-2`}>{region?.name}</h1>
+                        <div className={`w-full p-4 bg-white mb-4 _box_shadow_ title_listing_ rounded-md`}>
+                        <h1 className={`text-2xl pb-2`}>{region?.name}</h1>
                         <div>
                             {ReactHtmlParser(overview)}
                             {overviewlimit == 250 ||
@@ -410,21 +410,21 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
 
                         
                         
-                        <div className={tw``}>
-                            <div className={tw`flex items-center justify-between mb-6 pb-2 border-b`}>
+                        <div className={``}>
+                            <div className={`flex items-center justify-between mb-6 pb-2 border-b`}>
                                 <div>
-                                    <h3 className={tw`text-base`}>
+                                    <h3 className={`text-base`}>
                                         {
                                             isMobile?"":"Showing"
                                         }
-                                        <span className={tw`font-bold ml-2`}>
+                                        <span className={`font-bold ml-2`}>
                                             {pack.length!=0?pack.length:data.length} Tour Packages 
                                         </span>
                                         <span>
                                         {page_type=='STATE' || page_type=='COUNTRY'?
                                         <span>
                                             <span> for </span>
-                                            <span className={tw`text-[#F06726]`}>{region?.name}</span>
+                                            <span className={`text-[#F06726]`}>{region?.name}</span>
                                         </span>
                                         
                                         :""
@@ -438,23 +438,23 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                                 {
                                     isMobile==false?<div>
                                     <div className="flex flex-wrap">
-                                        <div className={tw`p-2 sort_w text-bold font-gray-400`}>
+                                        <div className={`p-2 sort_w text-bold font-gray-400`}>
                                             SORT BY : 
                                         </div>
-                                        <div className={tw`p-2 sort_w cursor-pointer`}>
+                                        <div className={`p-2 sort_w cursor-pointer`}>
                                             POPULAR
                                         </div>
-                                        <div className={tw`${!durationfilter?'_b_active':''} p-2  sort_w cursor-pointer`} onClick={()=>setDurationfilter(!durationfilter)}>
+                                        <div className={`${!durationfilter?'_b_active':''} p-2  sort_w cursor-pointer`} onClick={()=>setDurationfilter(!durationfilter)}>
                                             DURATION
                                             {
-                                                durationfilter?<AiOutlineArrowDown className={tw`inline`} />:<AiOutlineArrowUp className={tw`inline`} />
+                                                durationfilter?<AiOutlineArrowDown className={`inline`} />:<AiOutlineArrowUp className={`inline`} />
                                             }
                                             
                                         </div>
-                                        <div className={tw`${!pricefilter?'_b_active':''} p-2 sort_w cursor-pointer`} onClick={()=>setPricefilter(!pricefilter)}>
+                                        <div className={`${!pricefilter?'_b_active':''} p-2 sort_w cursor-pointer`} onClick={()=>setPricefilter(!pricefilter)}>
                                             PRICE
                                             {
-                                                pricefilter?<AiOutlineArrowDown className={tw`inline`} />:<AiOutlineArrowUp className={tw`inline`} />
+                                                pricefilter?<AiOutlineArrowDown className={`inline`} />:<AiOutlineArrowUp className={`inline`} />
                                             }                                            
                                         </div>                                                                                
                                     </div>
@@ -487,9 +487,9 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                                             return  item.name.length>=2 &&(item.name.toLowerCase().includes(filter.keyword) || item.cities.toLowerCase().includes(filter.keyword) || item.theme.toLowerCase().includes(filter.keyword))?
                                             <Package key={index} item={item} />:null
                                         }):
-                                        <div className={tw`mt-16 mb-16 text-center`}>
-                                            <div className={tw`text-2xl font-bold text-[#999]`}>
-                                                <p className={tw`"`}>No package found</p>
+                                        <div className={`mt-16 mb-16 text-center`}>
+                                            <div className={`text-2xl font-bold text-[#999]`}>
+                                                <p className={`"`}>No package found</p>
                                                 
                                             </div>
                                         </div>
@@ -509,8 +509,8 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                 </div>
 
                 {/* {region?
-                <div className={tw`p-4 bg-white_ mb-4 _box_shadow_ title_listing_`}>
-                <h1 className={tw`text-2xl pb-2`}>{region?.name}</h1>
+                <div className={`p-4 bg-white_ mb-4 _box_shadow_ title_listing_`}>
+                <h1 className={`text-2xl pb-2`}>{region?.name}</h1>
                 <div>
                     {ReactHtmlParser(overview)}
                     {overviewlimit == 150 ||

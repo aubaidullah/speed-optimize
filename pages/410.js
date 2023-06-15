@@ -1,5 +1,9 @@
-import Nav from "../components/Nav"
+// import Nav from "../components/Nav"
 import { tw } from "twind"
+import dynamic from "next/dynamic"
+
+
+const Nav = dynamic(() => import('../components/Nav'))
 
 export async function getServerSideProps({ res }) {
     res.statusCode = 410

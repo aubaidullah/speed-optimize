@@ -6,7 +6,7 @@ import {MdCheckCircle} from 'react-icons/md'
 import { useState } from "react"
 import LeadForm from "../leadform"
 import {IoMdArrowDropright,IoMdArrowDropdown} from 'react-icons/io'
-import { Collapse,Accordion } from 'react-bootstrap';
+// import { Collapse,Accordion } from 'react-bootstrap';
 import { useEffect } from "react"
 
 const Rooms1 = ({rooms,selectedRoom,selectRoom}) =>{
@@ -206,7 +206,7 @@ const Rooms = ({rooms,selectedRoom,selectRoom}) =>{
                         :""
                     }                
 
-                <Collapse in={collapse === index ? true : false}>
+                <div in={collapse === index ? true : false}>
                     <div className={tw`w-full p-4`}>
                         <div className={tw`flex flex-wrap`}>
                             <div className={tw`w-full lg:w-1/4`}>
@@ -289,7 +289,7 @@ const Rooms = ({rooms,selectedRoom,selectRoom}) =>{
 
                         </div>
                     </div>
-                </Collapse>
+                </div>
               
               
 

@@ -1,15 +1,19 @@
-import { Carousel } from "react-responsive-carousel";
+
 import { HiOutlineSearch } from 'react-icons/hi';
 import { useEffect, useState } from 'react';
-import { BsXLg, BsDot } from 'react-icons/bs'
+import { BsDot } from 'react-icons/bs'
 import { FaRupeeSign } from 'react-icons/fa'
-import { tw } from 'twind';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from 'next/link'
 import * as Constants from '../Constants';
 import axios from 'axios';
 import { createCityListURL,createCountryListURL,createDetailUrl,createStateListURL, createTGCityURL, createTGCountryURL, createTGStateURL, jpgToWebp } from "../fun";
 
 const Banner = ({ data }) => {
+    // const Image = dynamic(() => import('next/image').then((mod)=>mod.Image))
+    // const Link = dynamic(() => import('next/link').then((mod)=>mod.Link))
+    // const FaRupeeSign = dynamic(() => import('react-icons/fa').then((mod)=>mod.FaRupeeSign))
+    // const BsDot = dynamic(() => import('react-icons/bs').then((mod)=>mod.BsDot))
 
     const [searchkey, setSearchkey] = useState({})
     const [result, setResult] = useState({})
@@ -31,28 +35,15 @@ const Banner = ({ data }) => {
         else setResult({})
     }
     return <>
-    <div className={tw`overflow-hidden slider_banner slider_banner_ slider_overlay`}>
+    <div className={`overflow-hidden slider_banner slider_banner_ slider_overlay`}>
         <div>
             {/* scaleX(1.5) */}
-                <img src={jpgToWebp({uri:data[0]?.i})} className="img-responsive_banner" alt="banner img"/>
+                <div>
+                    <Image className="img-responsive_banner" alt='kiomoi banner' src={jpgToWebp({uri:data[0]?.i})} width={500} height={500} loading="eager" />
+                </div>
         </div>
         
     </div>
-        {/* <Carousel
-            showArrows={true}
-            showStatus={false}
-            showThumbs={false}
-            autoPlay={true}
-            interval={3000}
-            infiniteLoop={true}
-            className={"slider_banner slider_banner_ slider_overlay"}
-        >
-            {data.map((e, index) => {
-                return <img src={e?.i} key={index} className="img-responsive" />
-            })}
-
-
-        </Carousel> */}
 
 
         <div className="container">
@@ -60,20 +51,20 @@ const Banner = ({ data }) => {
                 <HiOutlineSearch
                     className="m_s_icon"
                 />
-                <input type="text" className={tw`form-control z-[999]`} onChange={event => HandleSearch(event.target.value)} placeholder="Search Any Destination, Travel Guide, Trip or Stays" />
+                <input type="text" className={`form-control z-[999]`} onChange={event => HandleSearch(event.target.value)} placeholder="Search Any Destination, Travel Guide, Trip or Stays" />
                 {searchkey.length >= 2 ? (
                     <section className="dropdown-content-home">
                         <div>
                             {result?.packages?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
                                     <Link href={createDetailUrl({name:e?.name,id:e?.id})}>
-                                        <div className={tw`hover:bg-[#fde2df] drop_item`}>
+                                        <div className={`hover:bg-[#fde2df] drop_item`}>
                                             <div className="d_content">
                                                 <div className="flt_left">
                                                     <span className="s_name">{e?.name}</span>
                                                 </div>
                                                 <div className="flt_right">
-                                                    <FaRupeeSign className={tw`d_price inline`} />
+                                                    <FaRupeeSign className={`d_price inline`} />
                                                     <span className="d_price">{e?.price / 100}</span><BsDot className={`inline d_price`} /><span className="n_d">{e?.nights}N & {e?.nights + 1}D</span>
                                                 </div>
                                             </div>
@@ -99,7 +90,7 @@ const Banner = ({ data }) => {
                                 if (url.length>0){
                                     return <div key={index} onClick={() => setSearchkey("")}>
                                     <Link href={url}>
-                                        <div className={tw`hover:bg-[#fde2df] drop_item`}>
+                                        <div className={`hover:bg-[#fde2df] drop_item`}>
                                             <div className="s_name d_content">Tours in {e?.name}</div>
                                         </div>
                                     </Link>

@@ -1,63 +1,38 @@
-import Nav from "../../components/HomeNav"
+// import Nav from "../../components/HomeNav"
 import { tw } from "twind"
 import { useState,useEffect } from "react";
 import client from "../../components/Graphql/service";
-import { getHotelList,getCitiesQuery,getMetaQuery } from "../../components/Graphql/Queries";
-// import {BsDot,BsStarFill,BsStarHalf,BsFillMoonFill} from 'react-icons/bs'
-import MultiCarousel2 from "react-multi-carousel";
-import Image from "next/image";
-import Slider from 'react-slick'
-import {IoLocationSharp,IoSunny} from 'react-icons/io5'
-import { BsDot,BsStarHalf } from "react-icons/bs";
-import Link from "next/link";
-import DatePicker from '@amir04lm26/react-modern-calendar-date-picker';
-import 'react-modern-calendar-datepicker/lib/DatePicker.css';
-import {FaRegUser} from 'react-icons/fa'
+import { getHotelList,getMetaQuery } from "../../components/Graphql/Queries";
+// import MultiCarousel2 from "react-multi-carousel";
+// import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import axios from 'axios'
 import * as Constants from '../../components/Constants'
-import Meta from "../../components/meta";
-import HotelList from "../../components/hotel/hotel-list";
-import SearchBar from "../../components/hotel/searchBar";
-import BreadCrumbs from "../../components/breadcrumbs";
-import { jpgToWebp } from "../../components/fun";
+// import Meta from "../../components/meta";
+// import HotelList from "../../components/hotel/hotel-list";
+// import SearchBar from "../../components/hotel/searchBar";
+// import BreadCrumbs from "../../components/breadcrumbs";
+import dynamic from "next/dynamic";
+// import HotelByDestination from "@/components/hotel/by-destination";
+
+
+const Nav = dynamic(() => import('@/components/HomeNav'))
+const HotelByDestination = dynamic(() => import('@/components/hotel/by-destination'))
+
+const HotelList = dynamic(() => import('@/components/hotel/hotel-list'))
+const SearchBar = dynamic(() => import('@/components/hotel/searchBar'))
+const BreadCrumbs = dynamic(() => import('@/components/breadcrumbs'))       
+const Meta = dynamic(() => import('@/components/meta'))
 
 
 const Hotels = ({data,meta}) =>{
-    const [result, setResult] = useState({})
-    const [loading, setLoading] = useState(false)
-    const [responsive,Setresponsive] = useState({})
-    const [checkindate,setCheckindate] = useState("")
-    const [checkoutdate,setCheckoutdate] = useState("")
-    const [mincheckoutdate,setminCheckoutdate] = useState("")
-    const [searchkey,setSearchkey] = useState("")
+  const [result, setResult] = useState({})
+  const [loading, setLoading] = useState(false)
+  const [checkindate,setCheckindate] = useState("")
+  const [checkoutdate,setCheckoutdate] = useState("")
+  const [mincheckoutdate,setminCheckoutdate] = useState("")
+  const [searchkey,setSearchkey] = useState("")
+  
 
-
-    useEffect(()=>{
-        const res = {
-            superLargeDesktop: {
-              // the naming can be any, depends on you.
-              breakpoint: { max: 4000, min: 3000 },
-              items: 6,
-              // partialVisibilityGutter: 40,
-            },
-            desktop: {
-              breakpoint: { max: 3000, min: 1024 },
-              items: 6,
-              // partialVisibilityGutter: 40,
-            },
-            tablet: {
-              breakpoint: { max: 1024, min: 464 },
-              items: 2,
-              partialVisibilityGutter: 40,
-            },
-            mobile: {
-              breakpoint: { max: 464, min: 0 },
-              items: 2,
-              partialVisibilityGutter: 40,
-            },
-          };  
-          Setresponsive(res)      
-    },[])    
 
 
 
@@ -77,94 +52,7 @@ const Hotels = ({data,meta}) =>{
 
     
     // console.log(data)
-    const ButtonGroup = ({ next, previous, ...rest }) => {
-        const {
-          carouselState: { currentSlide },
-        } = rest;
-        return (
-          <div className={tw`hidden lg:carousel-button-group lg:block `}>
-            <button
-              className={`${currentSlide === 0 ? "disable" : ""} left-custom-btn`}
-              onClick={() => previous()}
-            />
-            <button className="right-custom-btn" onClick={() => next()} />
-          </div>
-        );
-      };    
-
-      const SampleNextArrow = (props)=> {
-        const { className, style, onClick } = props;
-        // {tw`hidden lg:carousel-button-group lg:block `}
-        return <div className={tw`hidden lg:block custom-btn right-custom-btn`} onClick={onClick}/>;
-      }
-  
-    const SamplePrevArrow = (props) => {
-        const { className, style, onClick } = props;
-        return <div className={tw`hidden lg:block custom-btn left-custom-btn`} onClick={onClick}/>;
-      }      
-
-    const hotelRender = data.cities.map((item, i)=>{
-       const hurl = `/hotels/hotel-in-${item.cname?.toLowerCase()}-${item.cid}/`
-        return <div>
-                    <div className={tw`pr-8`}>
-                        <Link href={hurl}>
-                          <a href={hurl}>
-                              <h4 className={tw`text-center pb-2 font-bold`}>{item.cname}</h4>
-                              <div className="des_img_hotel">
-                                  
-                                  {item.iurl
-                                  ?<Image src={jpgToWebp({uri:item.iurl})} className={tw`h-full w-[100px]`} alt={item.cname} layout="fill" />
-                                  :<img src={item.iurl} alt={item.cname}/>
-                                  }
-                              </div>
-                          </a>
-                        </Link>
-                        
-                    </div>
-                </div>
-    })
-
-
-    const settings = {
-        infinite: true,
-        centerPadding: "60px",
-        slidesToShow: 4,
-        // adaptiveHeight: true,
-        variableWidth: true,
-        speed: 500,
-        rows: 3,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
-        responsive: [
-          {
-            breakpoint: 1024,
-            // partialVisibilityGutter: 40,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
-              infinite: true,
-              dots: true,
-            },
-          },
-          {
-            breakpoint: 600,
-            // partialVisibilityGutter: 40,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
-              initialSlide: 2,
-            },
-          },
-          {
-            breakpoint: 480,
-            // partialVisibilityGutter: 25,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-            },
-          },
-        ],
-      };
+   
 
 
 
@@ -200,28 +88,7 @@ const Hotels = ({data,meta}) =>{
 
 
 
-      const HandleSearch = (s_key) =>{
-        if (s_key.length >= 3) {
-          setSearchkey(s_key)
-          Search()
-        }
-        else {
-            setSearchkey(s_key)
-            setResult({})
-      }          
-      }
 
-      // console.log(result)
-      const setCheckIn = (date) =>{
-        let today = new Date(`${date['year']}-${date['month']}-${date['day']}`)
-        let tomorrow = new Date(`${date['year']}-${date['month']}-${date['day']}`);
-        tomorrow.setDate(today.getDate()+2);
-        let c = tomorrow.toLocaleDateString().split("/")  
-        setCheckindate(date)
-        setminCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})      
-        setCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
-        // setCheckoutdate(date)
-      }
     const bimg = "https://testkiomoi.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fkmadmin%2Fimage%2Fupload%2Fv1552993397%2Fkiomoi%2FPelling%2FPelling-2.jpg&w=1920&q=75"
     return <>
      <Meta meta={meta} />
@@ -239,8 +106,8 @@ const Hotels = ({data,meta}) =>{
 
 
         
-        
-        <div className={tw`mt-4`}>
+        <HotelByDestination data={data}/>
+        {/* <div className={tw`mt-4`}>
             <h2 className={tw`_titles_ mb-4`}>Browse by Destination</h2>
             <div className="Shape_42 relative">
             <div className="clearfix"></div>
@@ -261,15 +128,11 @@ const Hotels = ({data,meta}) =>{
                       {hotelRender}
                   </MultiCarousel2>                
             </div>
-        </div>
+        </div> */}
 
         <div className={tw`mt-4 inline`}>
             <h2 className={tw`_titles_ mb-4`}>Explore</h2>
               <HotelList hotels={data.hotels} />
-                {/* <Slider {...settings}>
-                    {exploreRender}
-                </Slider> */}
-
 
         </div>
      </section>

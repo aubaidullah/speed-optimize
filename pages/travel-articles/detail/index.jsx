@@ -1,12 +1,19 @@
-import Nav from "../../../components/Nav"
+// import Nav from "../../../components/Nav"
 import client from "../../../components/Graphql/service"
 import { getArticle, getarticleQuery,getMetaQuery } from "../../../components/Graphql/Queries"
-import BreadCrumbs from "../../../components/breadcrumbs"
-import {tw} from 'twind'
-import ReactHtmlParser from "react-html-parser";
-import Articles from "../../../components/home/articles"
+// import BreadCrumbs from "../../../components/breadcrumbs"
+// import {tw} from 'twind'
+// import Articles from "../../../components/home/articles"
 import { toTitleCase } from "../../../components/fun"
-import Meta from "../../../components/meta"
+import dynamic from "next/dynamic"
+// import ArticleContent from "@/components/article/article_content";
+// import Meta from "../../../components/meta"
+
+const ArticleContent = dynamic(() => import('@/components/article/article_content'))
+const Nav = dynamic(() => import('../../../components/Nav'))
+const BreadCrumbs = dynamic(() => import('../../../components/breadcrumbs'))
+const Articles = dynamic(() => import('../../../components/home/articles'))
+const Meta = dynamic(() => import('../../../components/meta'))
 
 const TravelArticle = ({data,article,meta}) =>{
     
@@ -32,19 +39,20 @@ const TravelArticle = ({data,article,meta}) =>{
         <Nav />
         <BreadCrumbs bread={bread} />
         <section className="container">
-            <h1 className={tw`text-2xl font-bold`}>{data.article.heading}</h1>
-            <div className={tw`w-full lg:w-2/3`}>
-                <div className={tw`mt-6`}>
-                    <div className={tw`flex flex-wrap services_listing`}>
+            <h1 className={`text-2xl font-bold`}>{data.article.heading}</h1>
+            <div className={`w-full lg:w-2/3`}>
+                <div className={`mt-6`}>
+                    <div className={`flex flex-wrap services_listing`}>
                         {data.article.tags.split(',').map((item,index)=>{
                             return <div className="btn_view_more mr-[10px]">{item}</div>
                         })}
                     </div>
                 </div>
-                <div className={tw`mt-6`}>
-                    <div className="article-det">
+                <div className={`mt-6`}>
+                    <ArticleContent data = {data}/>
+                    {/* <div className="article-det">
                         {ReactHtmlParser(data.article.desc)}
-                    </div>
+                    </div> */}
                 </div>
                 
             </div>

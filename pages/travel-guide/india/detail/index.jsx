@@ -1,32 +1,15 @@
-import Nav from "../../../../components/Nav"
-import { IoLocationSharp } from 'react-icons/io5'
 import client from "../../../../components/Graphql/service";
 import { getTravelGuideDetail, getTravelPackage, getTravelHotel, getarticleQuery, getQnaQuery,getMetaQuery } from "../../../../components/Graphql/Queries";
-import { tw } from 'twind'
-import { useState, useEffect } from "react";
-import BreadCrumbs from "../../../../components/breadcrumbs";
-import { Carousel } from "react-responsive-carousel";
-import { BsDot } from 'react-icons/bs'
 import axios from "axios";
-import { FaRupeeSign } from 'react-icons/fa'
-import Link from 'next/link'
-import ReactHtmlParser from "react-html-parser";
-import HomePackages from "../../../../components/home/packages";
-import Hotel from "../../../../components/home/hotel";
-import Articles from "../../../../components/home/articles";
-import QnaListing from "../../../../components/Qna";
-import Content from "../../../../components/trave-guide/content";
-import Leaform from '../../../../components/leadform'
-import State_Attraction from "../../../../components/trave-guide/attractions";
-import Image from 'next/image'
-import Router from "next/router";
-import * as Constants from '../../../../components/Constants'
+import dynamic from "next/dynamic";
 // import TravelGuide from "../../../../components/home/travel_guide";
-import TravelGuideDetailComp from '../../../../components/trave-guide/details'
-import { createCityListURL, createStateListURL } from "../../../../components/fun";
+// import TravelGuideDetailComp from '../../../../components/trave-guide/details'
+// import { createCityListURL, createStateListURL } from "../../../../components/fun";
 
 const TravelGuideDetail = ({ meta,packages_state,data, weather, packages, hotels, article, qna,type }) => {
     // console.log(article)
+    const TravelGuideDetailComp = dynamic(() => import('@/components/trave-guide/details'))
+
     return <TravelGuideDetailComp meta={meta} packages_state={packages_state} data={data} weather={weather} packages={packages} hotels={hotels} article={article} qna={qna} type={type}/>
     // return <TravelGuide packages_state={packages_state} data={data} weather={weather} packages={packages} hotels={hotels} article={article} qna={qna} type={type} />
     // console.log(data)

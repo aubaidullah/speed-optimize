@@ -3,7 +3,8 @@ import {IoLocationSharp} from 'react-icons/io5'
 import {FaRupeeSign} from 'react-icons/fa'
 import { tw } from "twind";
 import * as Constants from '../Constants'
-import { jpgToWebp } from "../fun";
+import { imgNameByUrl, jpgToWebp } from "../fun";
+import Image from "next/image";
 const Hotel_Design = ({item}) =>{
     const hurl =
           "/hotel-" +
@@ -15,14 +16,22 @@ const Hotel_Design = ({item}) =>{
 
     return <div>
             <Link href={hurl}>
-            <a href={hurl}>
+            <div href={hurl}>
                 <div className={tw`pl-0 lg:px-2`}>
-                <div className={tw`h-[200px]`}>
-                    <img 
+                <div className={tw`h-[200px] relative`}>
+                {/* <img 
                     className={tw`img-responsive object-cover h-[200px] w-full rounded-[8px] border-1 border-[#e3e3e3]`}
                     src={item.images.length > 0 ? jpgToWebp({uri:item.images}) : `${Constants.assets_api}/public/icons/logo-icon.png`}
                     alt="kiomoi logo"
+                /> */}
+                <Image 
+                    className={tw`img-responsive object-cover h-[200px] w-full rounded-[8px] border-1 border-[#e3e3e3]`}
+                    src={item.images.length > 0 ? jpgToWebp({uri:item.images}) : `${Constants.assets_api}/public/icons/logo-icon.png`}
+                    alt={imgNameByUrl({url:item.images})}
+                    fill
                 />
+
+
                 </div>
                 <div className={tw`mt-2`}>
                     <div className={tw`flex items-center justify-between`}>
@@ -55,7 +64,7 @@ const Hotel_Design = ({item}) =>{
 
                 </div>
                 </div>
-            </a>
+            </div>
             </Link>
         </div>
 }

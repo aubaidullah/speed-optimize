@@ -1,7 +1,10 @@
 import client from "../../../components/Graphql/service";
-import { getTravelGuideDetail, getTravelPackage, getTravelHotel, getarticleQuery, getQnaQuery,getCountryContent,getMetaQuery } from "../../../components/Graphql/Queries"
-import TravelGuideDetailComp from "../../../components/trave-guide/details";
+import { getTravelGuideDetail, getTravelPackage ,getCountryContent,getMetaQuery } from "../../../components/Graphql/Queries"
+// import TravelGuideDetailComp from "../../../components/trave-guide/details";
+import dynamic from "next/dynamic";
 
+
+const TravelGuideDetailComp = dynamic(() => import('@/components/trave-guide/details'))
 
 const CountryTravelGuideDetail = ({ packages_state,data, weather, packages, hotels, article, qna,type,state_t,meta }) =>{
     return <TravelGuideDetailComp meta={meta} packages_state={packages_state} data={data} weather={weather} packages={packages} hotels={hotels} article={article} qna={qna} type={type} state_t={state_t}/>

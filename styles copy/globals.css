@@ -1,0 +1,492 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html,
+body {
+  background: #f5f4f4 !important;
+  padding: 0;
+  margin: 0;
+  /* touch-action: pan-x pan-y; */
+  
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif !important;
+
+  
+  }
+
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+  display: none;
+}
+.react-multi-carousel-track {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform,transition;
+}
+
+.modal{
+  background: rgba(0,0,0,.522);
+  z-index: 5;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: .375rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.total-value-cost {
+  font-size: 32px;
+}
+._price_clip, .price_tag .fa-inr, .price_tag .price_inr {
+  background-image: linear-gradient(104deg,#f79421 11%,#f06726 51%,#dc2d4d 95%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+* {
+  scrollbar-width: none;
+}
+
+a {
+  color: #5f5f5e;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.modal-content {
+  -webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border: 0 solid rgba(0, 0, 0, .2) !important;
+  border-radius: 20px !important;
+}
+
+.carousel img.img-responsive {
+  width: 100%;
+  vertical-align: top;
+  -webkit-transform: scaleX(1.5);
+  transform: scaleX(1.5);
+  object-fit: contain;
+  border: 0;
+  max-height: 450px;
+  border-radius: 0 0 50% 50% !important
+}
+
+/* .slider_banner .slide {
+  height: 100%;
+} */
+
+.search_input input {
+  height: 79px;
+  border-radius: 40px;
+  padding: 15px 50px;
+  font-size: 20px;
+  font-weight: 400;
+  /* position: relative; */
+  z-index: 52;
+  border: none;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .12);
+  -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .12);
+  -ms-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .12);
+  -o-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .12);
+}
+
+.search_input {
+  position: absolute;
+  max-width: 800px;
+  left: 15px;
+  right: 15px;
+  margin: auto;
+  z-index: 1;
+  /* bottom: -60px; */
+  transform: translateY(-50px);
+
+}
+
+.m_s_icon {
+  position: absolute;
+  right: 15px;
+  top: 27px;
+  font-size: 30px;
+  color: #c7c7c7;
+}
+
+.des_cont {
+  position: absolute;
+  bottom: 20px;
+  width: 80%;
+  margin: 0 auto;
+  right: 0;
+  left: 0;
+}
+
+.des_cont .des_location {
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+}
+
+.des_cont .listing {
+  font-size: 13px;
+  color: #fff;
+  font-weight: 200;
+}
+
+.des_img .des_cont {
+  transition: -webkit-transform .2s;
+  transition: transform .2s;
+  transition: transform .2s, -webkit-transform .2s;
+}
+
+.des_img:hover .des_cont {
+  transform: translateY(-20px);
+}
+
+
+.justify-bewteen {
+  justify-content: space-between;
+}
+
+.bg_orange_ {
+  background-color: #fac526;
+}
+
+.text-orange {
+  color: #f05927;
+}
+
+._plus_more {
+  cursor: pointer;
+}
+
+._box_shadow {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .16);
+}
+
+.custom-footer li {
+  color: #999;
+}
+
+.custom-footer li a:hover {
+  color: white;
+}
+
+.payment_secure img {
+  height: 25px;
+}
+
+.follow-links li {
+  color: #999;
+}
+
+.payment_secure h4 {
+  color: #999;
+}
+
+.follow-links a:hover {
+  color: #ff5100;
+}
+
+.WhatsApp_ h4 {
+  color: #44c554;
+}
+
+.text_footer_bottom p {
+  color: #999;
+  font-size: 12px;
+}
+
+.nav-icon {
+  padding: 13px;
+}
+
+:hover.nav-icon {
+  background-color: rgb(227, 224, 224);
+}
+
+.whatsapp-footer img {
+  height: 60px;
+}
+
+.btn_facebook {
+  transition: 0.2s ease-in;
+  background-color: #fff;
+  color: #ef6725 !important;
+  border: 1px solid #ef6725 !important;
+}
+
+.btn_facebook {
+  transition: 0.2s ease-in;
+  -webkit-transition: 0.2s ease-in;
+  -moz-transition: 0.2s ease-in;
+  -ms-transition: 0.2s ease-in;
+  -o-transition: 0.2s ease-in;
+}
+
+.btn_facebook:hover {
+  background-image: linear-gradient(118deg,
+      #f79421 17%,
+      #f06726 54%,
+      #dc2d4d 95%);
+  color: #fff !important;
+}
+
+.login_width span {
+  background-color: #fff;
+  padding: 6px 10px;
+  font-weight: 500;
+}
+
+.login_width:after {
+  position: absolute;
+  content: "";
+  height: 1px;
+  background-color: #000;
+  opacity: 0.3;
+  left: 0;
+  right: 0;
+  top: 10px;
+  z-index: -1;
+}
+
+.login_width {
+  position: relative;
+  margin: 30px 0;
+  font-size: 14px;
+  z-index: 2;
+  color: #333e66;
+}
+
+.booking-detail {
+  padding: 0px 60px;
+}
+
+.custom-payment {
+  padding: 0px 10px !important;
+}
+
+.tag {
+  padding: 5px 10px;
+  border: 1px solid #c9c4c4;
+  border-radius: 20px;
+  color: #a19b9b;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.custom-font {
+  font-family: "Rubik", sans-serif;
+  line-height: 180%;
+}
+
+.terma-box {
+  border-radius: 30px;
+}
+
+ul>li::marker {
+  font-size: 15px !important;
+  font-weight: 900 !important;
+}
+
+.terma-box ul li {
+  padding-left: 12px;
+  margin: 15px 0px;
+}
+
+.f_12{
+  font-size: 12px;
+}
+.c_gray{
+  color: #999;
+}
+.bt-0{
+  bottom:0;
+}
+
+
+.about-popup img {
+  width: 100%;
+}
+
+.about-popup {
+  padding: 0 30px;
+}
+
+.about-popup span {
+  padding: 70px 20px 20px;
+  background: #fff;
+  border-radius: 20px;
+  text-align: center;
+  float: left;
+  width: 100%;
+}
+
+.about-popup figure {
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  margin: 0px auto;
+  display: table;
+  margin-bottom: 50px;
+}
+
+
+.dropdown-content-home {
+  position: absolute;
+  background-color: #fff;
+  padding-top: 70px;
+  width: 100%;
+  top: 42%;
+  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+  z-index: -1;
+  border-color: #ef672d;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(239, 103, 45, 0.6);
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-left-radius: 30px !important;
+  border-bottom-right-radius: 30px !important;
+}
+
+.dropdown-content-home a:hover {
+  color: #f38e5f;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+
+.about-popup p {
+  margin-bottom: 0;
+}
+
+.des_img::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) -8%,
+    #000000 115%
+  );
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 8px;
+}
+.des_cont .des_location {
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+}
+
+.des_cont{
+  z-index: 1;
+}
+
+.payment_secure h4, .WhatsApp_ h4 {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.text_footer_bottom p {
+  opacity: .63;
+  font-size: 11px;
+  color: #999;
+  margin: 0;
+}
+
+
+.title_listing_ h1, .title_listing_ h4 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #f06726;
+}
+
+
+.modal-open .modal{
+  background:rgba(0,0,0,.5215686274509804)
+}
+.modal-backdrop {
+  background-color: rgba(0,0,0,.06666666666666667);
+}
+
+.container{
+  margin: auto;
+  padding: 0 16px;
+}
+
+
+
+@media (min-width: 1280px)
+{
+  .container {
+    max-width: 1170px !important;
+  }
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+  .t_box {
+    padding: 18px !important;
+  }
+
+
+  .custom-payment {
+    padding: 0px !important;
+  }
+
+  .booking-detail {
+    padding: 0px 15px;
+  }
+
+  .payment_secure img {
+    height: 20px;
+  }
+
+  .whatsapp-footer img {
+    height: 45px;
+  }
+}

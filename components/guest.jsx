@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useRef } from 'react';
-import { Modal } from 'react-bootstrap';
+// import { Modal } from 'react-bootstrap';
 import { GrClose } from 'react-icons/gr';
 import swal from 'sweetalert'
 import axios from 'axios';
@@ -80,12 +80,12 @@ const Guest = (props) => {
 
     return (
         <>
-            <Modal
+            <div
                 className="login_modal"
                 show={show}
                 animation={false}
                 backdrop="static">
-                <Modal.Body>
+                <div>
                     <span
                     className={tw`float-right text-black`}
                         // style={{
@@ -184,14 +184,14 @@ const Guest = (props) => {
                             </div>
                         </form>
                     </div>
-                </Modal.Body>
-            </Modal>
-            <Modal
+                </div>
+            </div>
+            <div
                 className="body_otp"
                 show={otpModal}
                 animation={false}
                 backdrop="static">
-                <Modal.Body>
+                <div>
                     <span className={tw`float-right text-black`}
                         // style={{
                         //     float: "right",
@@ -243,8 +243,8 @@ const Guest = (props) => {
                             </p>
                         </div>
                     </div>
-                </Modal.Body>
-            </Modal>
+                </div>
+            </div>
         </>
     )
 }

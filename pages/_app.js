@@ -1,35 +1,43 @@
-import '../styles/globals.css'
-import '../styles/package.css'
-import '../styles/travel-guide.css'
-import 'bootstrap/dist/css/bootstrap.css'
-import '@fortawesome/fontawesome-free'
-import '@fortawesome/fontawesome-svg-core'
-import Router from 'next/router'
-import NProgress from 'nprogress'
 import 'nprogress/nprogress.css';
-import '../components/main.css'
-import '../styles/leadform.css'
-import '../styles/nav.css'
-import '../styles/detail.css'
-import '../styles/qna.css'
-import '../styles/homepage.css'
-import '../styles/hotel.css'
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import 'react-rangeslider/lib/index.css'
-// import "react-multi-carousel/"
+import '@/styles/globals.css'
+import '@/styles/globals.css'
+import '@/styles/detail.css'
+import '@/styles/global.css'
+import '@/styles/Home.module.css'
+import '@/styles/homepage.css'
+import '@/styles/hotel.css'
+import '@/styles/leadform.css'
+import '@/styles/nav.css'
+import '@/styles/package.css'
+import '@/styles/qna.css'
+import '@/styles/travel-guide.css'
 import 'react-multi-carousel/lib/styles.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Footer from '../components/footer'
-import { ApolloProvider } from "@apollo/client";
-import client from '../components/Graphql/service'
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import dynamic from 'next/dynamic';
+import NProgress from 'nprogress'
+
 import { wrapper } from '../redux_fx/store'
+
+
+
+
+NProgress.configure({ showSpinner: false, minimum: 0.2 })
+
+Router.events.on('routeChangeStart', () => NProgress.start());
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
+
+
+
+const ApolloProvider = dynamic(() => import('@apollo/client').then((mod)=>mod.ApolloProvider))
+const client= dynamic(() => import('@/components/Graphql/service').then((mod)=>mod.client))
+const Footer = dynamic(() => import('@/components/footer'))
+import Router from 'next/router'
 import { useEffect } from 'react'
-import withTwindApp from '@twind/next/app'
-import twindConfig from '../twind.config'
 
 
-//react-multi-carousel
 NProgress.configure({ showSpinner: false, minimum: 0.2 })
 // NProgress.set(0.4);
 
@@ -39,9 +47,11 @@ Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
 
+
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
-    import("react-facebook-pixel")
+    dynamic(()=> import("react-facebook-pixel")
+    // import("react-facebook-pixel")
       .then((x) => x.default)
       .then((ReactPixel) => {
         ReactPixel.init('630837885046995');
@@ -50,7 +60,7 @@ function MyApp({ Component, pageProps }) {
         Router.events.on("routeChangeComplete", () => {
           ReactPixel.pageView();
         });
-      });
+      }));
   });
   return (
     <>
@@ -68,5 +78,6 @@ function MyApp({ Component, pageProps }) {
 
 }
 
-export default wrapper.withRedux(withTwindApp(twindConfig, MyApp))
-// export default withTwindApp(twindConfig, wrapper.withRedux(MyApp))
+// export default MyApp
+
+export default wrapper.withRedux(MyApp)

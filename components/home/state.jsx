@@ -1,11 +1,15 @@
 import {tw} from 'twind'
-import MultiCarousel2 from "react-multi-carousel";
+// import MultiCarousel2 from "react-multi-carousel";
 import Link from 'next/link'
+import 'react-multi-carousel/lib/styles.css';
 import * as Constants from '../Constants'
-import { createStateListURL } from '../fun';
+import { createStateListURL, imgNameByUrl } from '../fun';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 
 const State = ({data}) =>{
+    const MultiCarousel2 = dynamic(() => import('react-multi-carousel'))
 
 
     const statePackagesRender = data.map(function (item, i) {
@@ -18,13 +22,13 @@ const State = ({data}) =>{
         //   item.id + "/";
   
         return (
-          <div key={i}>
+          <div key={i} >
           <Link href={aurl}>
-            <a href={aurl}>
+            <div href={aurl}>
               {" "}
-              <div className="px-2 _cr_mb">
+              <div className={tw`px-2 _cr_mb`}>
                 <div className="_des_img">
-                  <img
+                  {/* <img
                     className={tw`img-responsive rounded-[8px]`}
                     src={
                       item.im.split("~")[0]
@@ -32,14 +36,24 @@ const State = ({data}) =>{
                         : `${Constants.assets_api}/public/icons/logo-icon.png`
                     }
                     alt="kiomoi"
-                  />
+                  /> */}
+                  <Image 
+                    className={tw`img-responsive rounded-[8px]`}
+                      src={
+                        item.im.split("~")[0]
+                          ? item.im.split("~")[0]
+                          : `${Constants.assets_api}/public/icons/logo-icon.png`
+                      }
+                      alt={imgNameByUrl({url:item.im.split("~")[0]??"kiomoi"})}
+                      fill
+                    />
                   <div className="des_cont">
                     <div className="des_location">{item.nm}</div>
                     <div className="listing">{item.cnt} Listings</div>
                   </div>
                 </div>
               </div>
-            </a>
+            </div>
             </Link>
           </div>
         );
@@ -100,12 +114,12 @@ const State = ({data}) =>{
                         </div>
                         <div>
                             <Link href={'/holidays/'}>
-                                <a href={'/holidays/'}>
+                                <div href={'/holidays/'}>
                                     <div className='btn_view_more'>
                                         View all
                                     </div>
                                     
-                                    </a>
+                                    </div>
                             </Link>
                         </div>
 

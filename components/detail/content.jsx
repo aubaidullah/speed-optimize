@@ -197,14 +197,12 @@ const Content = ({data}) =>{
     return <>
         <section className="inclusions">
             <div className='container'>
-                <div className='row'>
-                    <div className='col-sm-12'>
-                        <h4 className="_titles_">Inclusions</h4>
-                    </div>
-                
-
-                <div className='col-sm-8 col-xs-12'>
+                <div className={tw`flex flex-wrap`}>
+                <div className={tw`w-full lg:w-2/3`}>
                     <div className='inclusion'>
+                      <div className='col-sm-12'>
+                          <h4 className="_titles_">Inclusions</h4>
+                      </div>                    
                         <div className={tw`Shape_42 pt-[10px] pb-[10px]`}>
                             <div className="icons-meal-info d_icons-meal-info">
                               <div className="_div">
@@ -421,8 +419,8 @@ const Content = ({data}) =>{
 
                 </div>
 
-                <div className="col-sm-4 col-xs-12">
-                  <div className="bets_price">
+                <div className={tw`w-full lg:w-1/3 lg:pl-6`}>
+                  <div className={tw`bets_price pl-0`}>
                     <div className="_best_price_list">
                       <h4>Best Price Guaranteed</h4>
                       <p>

@@ -1,18 +1,23 @@
 // import {useEffect,useState} from 'react'
 import * as Constants from "./Constants";
-import React, { Component,useState,useEffect,useRef } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
-import DatePicker from '@amir04lm26/react-modern-calendar-date-picker';
-import {BsXLg} from 'react-icons/bs'
+import { useState,useEffect,useRef } from "react";
+// import { Modal, Button, Form } from "react-bootstrap";
+// import DatePicker from '@amir04lm26/react-modern-calendar-date-picker';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import SimpleReactValidator from "simple-react-validator";
 import swalr from '@sweetalert/with-react'
 import axios from "axios";
-import LeadGuest from './Leadguest'
+// import LeadGuest from './Leadguest'
 import swal from "sweetalert";
 import Cookie from 'js-cookie'
-import { tw } from "twind";
+import dynamic from "next/dynamic";
+// import { tw } from "twind";
+// import Modal from "./modal";
 
+
+const Modal = dynamic(() => import('./modal'))
+const LeadGuest = dynamic(() => import('./Leadguest'))
+const DatePicker = dynamic(() => import('@amir04lm26/react-modern-calendar-date-picker'))
 
 const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>{
     // console.log(isshow)
@@ -114,10 +119,10 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                                 swalr(
                                 // "",
                                     <>
-                                    <div className={tw`text-center mb-[15px]`}>
-                                    <img alt="kiomoi" src={`${Constants.assets_api}/public/icons/download.png`} className={tw`inline m-auto`} />
-                                    <p className={tw`pt-[10px] text-center text-[15px]`}>Thanks for query with Kiomoi, your reference number is <b>{res.data.output}</b></p>
-                                    <p className={tw`text-center text-[10px]`}>We assure you within 24 hours response. Feel free to call us on <span className={tw`text-[#f16625]`}>+919650687940</span> or drop a mail on <a href={`mailto:info@kiomoi.com?Subject=Query regarding reference number "+${res.data.output} +"`} target='_top'><span className={tw`text-[#f16625]`} >info@kiomoi.com</span></a> for a sooner response</p>
+                                    <div className={`text-center mb-[15px]`}>
+                                    <img alt="kiomoi" src={`${Constants.assets_api}/public/icons/download.png`} className={`inline m-auto`} />
+                                    <p className={`pt-[10px] text-center text-[15px]`}>Thanks for query with Kiomoi, your reference number is <b>{res.data.output}</b></p>
+                                    <p className={`text-center text-[10px]`}>We assure you within 24 hours response. Feel free to call us on <span className={`text-[#f16625]`}>+919650687940</span> or drop a mail on <a href={`mailto:info@kiomoi.com?Subject=Query regarding reference number "+${res.data.output} +"`} target='_top'><span className={`text-[#f16625]`} >info@kiomoi.com</span></a> for a sooner response</p>
                                     </div>
                                     </>,
                                     {
@@ -167,7 +172,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
         }        
     }
 
-    // console.log(traveldate)
+    console.log(isshow)
     useEffect(()=>{
         if (name != '' && email!= '' && mobile!='' && city!='' && traveldate!='' && duration!='' && adult!='') {
 
@@ -180,41 +185,25 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
     return(
         <>
         {show ? <LeadGuest show={show} setShow={() => setShow(!show)} mobile={mobile} email={email} name = {name} /> : null}
-        <Modal
-            show={isshow}
-            animation={false}
-            className="login_credential"
-            backdrop="static"
-            // aria-labelledby="contained-modal-title-vcenter"
-            // centered
-            // size="sm"
-        >
-        <Modal.Body>
-          <span className={tw`float-right text-black`} aria-hidden="true">
-            <BsXLg 
-            className={tw`cursor-pointer`}
-            //   style={{cursor: "pointer" }}
-              onClick={()=>changeForm(false)}
-            />
-          </span>
-          <div>
-            <form onSubmit={handleSubmit}>
+        <Modal changeForm = {changeForm} show = {isshow}>
+            
+            <form onSubmit={handleSubmit} className={`bg-white`}>
               <div className="wrapper-box">
                 <div className="wrapper_login">
                   <div className="body_login">
                     <div className="login_header">
-                      <div className={tw`flex align-center`}>
+                      <div className={`flex align-center`}>
                         <img
                             src={`${Constants.assets_api}/public/icons/logo-icon.png`}
                             height="50"
                             alt="kiomoi"
-                            className={tw`m-auto`}
+                            className={`m-auto`}
                             // style={{margin:'0 auto'}}
                         />
 
                       </div>
                       
-                      <h4 className={tw`text-xl`}>{packageName}</h4>
+                      <h4 className={`text-xl`}>{packageName}</h4>
                     </div>
 
 
@@ -316,7 +305,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                         <option value="Kolkatta">Kolkatta</option>
                         <option value="Mumbai">Mumbai</option>
                         <option value="Pune">Pune</option>
-                        <option className={tw`text-gray-500`} disabled>---------------------------</option>
+                        <option className={`text-gray-500`} disabled>---------------------------</option>
                         <option value="Agartala">Agartala</option>
                         <option value="Agra">Agra</option>
                         <option value="Ahmedabad">Ahmedabad</option>
@@ -525,9 +514,9 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                 </div> */}
 
 
-                <div className={tw`form-group flex`}>
+                <div className={`form-group flex`}>
                     
-                    <div className={tw`w-full`}>
+                    <div className={`w-full`}>
 
                     {/* <input 
                     type="text"
@@ -571,7 +560,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                     {/* <DatePicker
                     
                     /> */}
-                    <div className={tw`ml-[20px] w-full`}>
+                    <div className={`ml-[20px] w-full`}>
                     <input
                         pattern="[0-9.]+"
                         type="number"
@@ -636,8 +625,8 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                         placeholder="Any Special Request"
                     />
                     </div> */}
-                    <div className={tw`form-group flex`}>
-                    <div className={tw`w-full`}>
+                    <div className={`form-group flex`}>
+                    <div className={`w-full`}>
                         <input
                         pattern="[0-9.]+"
                         type="text"
@@ -648,7 +637,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                         }}
 
                         // type="adults"
-                        className={tw`form-control mr-[10px] mt-[0]`}
+                        className={`form-control mr-[10px] mt-[0]`}
                         name="adults"
                         onChange={(e)=>setAdult(e.target.value)}
                         value={adult}
@@ -669,7 +658,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                     </div>
 
 
-                    <div className={tw`ml-[20px] w-full`}>
+                    <div className={`ml-[20px] w-full`}>
                         <input
                         pattern="[0-9.]+"
                         type="text"
@@ -679,7 +668,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                             }
                         }}
                         // type="children"
-                        className={tw`form-control mt-0`}
+                        className={`form-control mt-0`}
                         name="children"
                         onChange={(e)=>setChildren(e.target.value)}
                         value={children}
@@ -704,7 +693,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
 
                     
                     <div className="form-group">
-                      <button className="btn btn_login" type="submit">
+                      <button className="btn_listing _btn_clr w-full" type="submit">
                         {msg}
                       </button>
                     </div>
@@ -712,10 +701,8 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                 </div>
               </div>
             </form>
-          </div>
-        </Modal.Body>
+            
         </Modal>
-        
       </>
     )
 }

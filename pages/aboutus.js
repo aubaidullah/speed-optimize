@@ -1,10 +1,15 @@
-import Nav from '../components/Nav';
+// import Nav from '../components/Nav';
 import Link from 'next/link';
 import { GrClose } from 'react-icons/gr';
-import { Modal } from 'react-bootstrap';
+// import { Modal } from 'react-bootstrap';
 import { useState } from 'react';
 import { tw } from 'twind'
 import * as Constants from '../components/Constants'
+import dynamic from "next/dynamic"
+
+
+const Nav = dynamic(() => import('../components/Nav'))
+
 const Privacy = () => {
 
     const [first, setFirst] = useState(false);
@@ -154,8 +159,8 @@ const Privacy = () => {
                 </div>
             </div>
         </section>
-        <Modal show={first} animation={false}>
-            <Modal.Body>
+        <div show={first} animation={false}>
+            <div>
                 <span
                     style={{ position: 'absolute', top: 25, right: 25 }}
                     onClick={() => setFirst(!first)}
@@ -205,14 +210,14 @@ const Privacy = () => {
                     </li>
                 </ul>
                 <Link href="/bookingdetail">
-                    <a className="proce-pay btn btn_login">
+                    <div className="proce-pay btn btn_login">
                         Procees to Payment
-                    </a>
+                    </div>
                 </Link>
-            </Modal.Body>
-        </Modal>
-        <Modal show={second} animation={false}>
-            <Modal.Body>
+            </div>
+        </div>
+        <div show={second} animation={false}>
+            <div>
                 <span
                     style={{ position: 'absolute', top: 25, right: 25 }}
                     onClick={() => setSecond(!second)}
@@ -243,10 +248,10 @@ const Privacy = () => {
                         CAREER@KIOMOI.COM
                     </a>
                 </center>
-            </Modal.Body>
-        </Modal>
-        <Modal show={third} animation={false}>
-            <Modal.Body>
+            </div>
+        </div>
+        <div show={third} animation={false}>
+            <div>
                 <span
                     style={{ position: 'absolute', top: 25, right: 25 }}
                     onClick={() => setThird(!third)}
@@ -279,8 +284,8 @@ const Privacy = () => {
                         CAREER@KIOMOI.COM
                     </a>
                 </center>
-            </Modal.Body>
-        </Modal>
+            </div>
+        </div>
     </>
 }
 

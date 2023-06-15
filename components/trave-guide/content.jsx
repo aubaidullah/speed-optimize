@@ -1,4 +1,4 @@
-import { Modal, Collapse } from 'react-bootstrap';
+// import { Collapse } from 'react-bootstrap';
 import ReactHtmlParser from "react-html-parser";
 import { useState } from 'react';
 import {tw} from 'twind'
@@ -43,11 +43,11 @@ const Tabs=({title,desc})=>{
                         </h4>
                     </div>
 
-                    <Collapse in={collapse}>
+                    <div in={collapse}>
                     <div
                         className="panel-collapse"
                         >
-                        <div className="panel-body">
+                        <div className={tw`${collapse?'block':'hidden'} panel-body`}>
                             <div>
                             {ReactHtmlParser(
                                 desc
@@ -55,7 +55,7 @@ const Tabs=({title,desc})=>{
                             </div>
                         </div>
                     </div>
-                    </Collapse>
+                    </div>
 
                 </div>
                 
