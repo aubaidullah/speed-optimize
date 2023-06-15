@@ -5,7 +5,7 @@ const Modal = props =>{
         <div
             // show={isshow}
             animation={false}
-            className={`modal ${props.show?'fixed':'hidden'} inset-0 bg-opacity-50 overflow-y-auto h-full w-full login_credential`}
+            className={`modal ${props.show?'fixed':'hidden'} ${props.className} inset-0 bg-opacity-50 overflow-y-auto h-full w-full login_credential`}
             backdrop="static"
             // aria-labelledby="contained-modal-title-vcenter"
             // centered

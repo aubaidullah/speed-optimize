@@ -60,7 +60,13 @@ const replaceLast=(x, y, z)=>{
 
 export const jpgToWebp = ({uri}) =>{
     // return uri
-    return replaceLast(uri,'.jpg','.webp')
+    try{
+        return replaceLast(uri,'.jpg','.webp')
+    }
+    catch{
+        return uri
+    }
+    
     // return uri.replace(/\.jpg\.jpg/g,'.jpg.webp').replace(/\.jpg/g,".webp").replace(/\.jpeg\.jpg/g,'.webp')
 }
 

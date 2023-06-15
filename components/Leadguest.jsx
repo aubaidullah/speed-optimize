@@ -77,7 +77,7 @@ const LeadGuest = (props) => {
 
     return (
         <>
-        <Modal className="body_otp" changeForm = {setOtpModal} show = {otpModal}>
+        <Modal className={`body_otp z-10`} changeForm = {setOtpModal} show = {otpModal}>
         {
             opengest==true?
             <div>
