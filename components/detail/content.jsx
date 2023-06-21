@@ -37,7 +37,9 @@ const Content = ({data}) =>{
         let c = i + 1;
         let t = "D" + c;
         return (
-          <div key={i}>
+          <div key={i} itemprop="subTrip" itemtype="https://schema.org/TouristTrip" itemScope>
+            <meta itemprop="name" content={item.heading} />
+            <meta itemprop="description" content={item.desc} />
             <div
               className={tw`Shape_42 _details_ _50m _hover _box_shadow p-0`}
               data-toggle="tooltip"
@@ -294,7 +296,8 @@ const Content = ({data}) =>{
                         </div>:""}
 
 
-                        <div className="_blank" id="itinery">
+                        <div className="_blank" id="itinery" itemtype="https://schema.org/TouristTrip" itemScope>
+                          <meta itemprop="name" content={data.package.name} />
                             <h4 className="_titles_">Itinerary</h4>
                             <div
                                 className={

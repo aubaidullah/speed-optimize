@@ -1,6 +1,6 @@
 // import BreadCrumbs from "../../components/breadcrumbs"
 // import Nav from "../../components/Nav"
-// import {tw} from 'twind'
+import {tw} from 'twind'
 import client from "../../components/Graphql/service"
 import {getTravelGuideHome,getMetaQuery} from '../../components/Graphql/Queries'
 // import Image from "next/image"
@@ -9,6 +9,7 @@ import Link from 'next/link'
 // import Meta from "../../components/meta"
 import { createTGCityURL, createTGCountryURL, createTGStateURL } from "../../components/fun"
 import dynamic from "next/dynamic";
+import { useState } from "react";
 // import parseHtml from "@/components/parseToHtml";
 // import { country } from "../../components/Constants"
 
@@ -18,6 +19,7 @@ const Nav = dynamic(() => import('../../components/Nav'))
 const BreadCrumbs = dynamic(() => import('../../components/breadcrumbs'))
 
 const TravelGuide = ({data,meta}) =>{
+    const [search,Setsearch] = useState("")
 
     const bread = {
         disabled:{
@@ -38,11 +40,17 @@ const TravelGuide = ({data,meta}) =>{
             <BreadCrumbs bread={bread}/>
             <section className='container'>
                 <h1 className={`text-2xl font-bold`}>Top Travel Guides</h1>
+                <input type="text" className={tw`mt-4 p-4 border-1 border-gray-300 rounded-lg outline-none w-full bg-transparent`} placeholder="Search Travel Guide" value={search} onChange={(e)=>Setsearch(e.target.value)} />
 
 
                 <section className={`mt-10`}>
                     <div className={`flex flex-wrap`}>
                         {data.map((e,index)=>{
+                            // search=="" || e.match(search) ?
+                            
+                            
+                            
+                                
                             
                             if(e.geoType=='CITY'){
                                 var url = createTGCityURL({city:e.cityName,id:e.id})
@@ -60,7 +68,10 @@ const TravelGuide = ({data,meta}) =>{
                             
                             
                             
-                            return <div className={`w-full lg:w-1/3 md:w-1/2 px-2 mb-5`} key={index}>
+                            return search=="" || e.cityName.toLocaleLowerCase().includes(search.toLocaleLowerCase())?
+                            
+                            
+                            <div className={`w-full lg:w-1/3 md:w-1/2 px-2 mb-5`} key={index}>
                                     
                                     <h2 className={`text-xl mb-2 font-bold`}>{e.cityName}</h2>
                                     <Link href={url}>
@@ -86,7 +97,9 @@ const TravelGuide = ({data,meta}) =>{
                                             </div>
                                         </div>
                                     </Link>
-                                </div>
+                            
+                            </div>:""
+                        
                         })}
 
                     </div>

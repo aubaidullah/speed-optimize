@@ -84,7 +84,7 @@ const Footer = () => {
                                 </a>
                             </li>
                             <li className={`cursor-pointer text-4xl`}>
-                                <a href="https://www.instagram.com/kiomoi_travel/" target="_blank">
+                                <a href="https://www.instagram.com/kiomoi_in/" target="_blank">
                                     <AiFillInstagram />
                                 </a>
                             </li>

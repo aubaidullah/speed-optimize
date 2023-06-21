@@ -1,9 +1,9 @@
 import { useState, useRef } from 'react';
 // import { Modal } from 'react-bootstrap';
 import Modal from './modal';
-import { GrClose } from 'react-icons/gr';
+// import { GrClose } from 'react-icons/gr';
 import { tw } from 'twind';
-import React from 'react';
+// import React from 'react';
 import dynamic from 'next/dynamic';
 import swal from 'sweetalert';
 import axios from 'axios';
