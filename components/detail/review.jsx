@@ -110,6 +110,18 @@ const Reviews = ({reviews}) =>{
         } else { setShow(!show) }
     }
 
+    const uploadMultipleFiles=(e)=> {
+        let fileArray = []
+        // this.fileObj.push(e.target.files)
+        for (let i = 0; i < e.target.files.length; i++) {
+            fileArray.push(URL.createObjectURL(e.target.files[i]))
+        }
+        setImages(fileArray)
+        // this.setState({ file: this.fileArray })
+    }
+    console.log(filearry)
+    console.log(images)
+
 
 
     return (
@@ -138,7 +150,7 @@ const Reviews = ({reviews}) =>{
 
                         <div className="form-group style_form mt-2 h-[130px]">
                             <textarea
-                                className={tw`form-control`}
+                                className={tw`form-control h-full`}
                                 name="review"
                                 required
                                 value={reviewText}
@@ -153,7 +165,22 @@ const Reviews = ({reviews}) =>{
                                 </div>
                                 <label htmlFor="contained-button-file">
                                     <div className={tw`border p-2 ms-3 cursor-pointer`}>
-                                        <BsPlusLg />
+                                        
+                                        <div class="upload_box">
+                                            <label
+                                            class="custom-file-upload"
+                                            for="file-upload"
+                                            id="custom-text"
+                                            >
+                                                <BsPlusLg />
+                                            </label>
+                                            <input
+                                            id="file-upload"
+                                            name="uploaded_file"
+                                            type="file"
+                                            onChange={(e)=>uploadMultipleFiles(e)} multiple
+                                            />
+                                        </div>
                                     </div>
                                 </label>
                             </div>
@@ -173,11 +200,15 @@ const Reviews = ({reviews}) =>{
                                     return (
                                         <div key={i} className="col-6 col-md-4">
                                             <div>
-                                                <img
+                                                <div
                                                     className="w-full max-h-[300px]"
-                                                    src={URL.createObjectURL(image)}
-                                                    alt="Image"
-                                                />
+                                                    // src = {image}
+                                                    // src={URL.createObjectURL(image)}
+                                                    // alt="Image"
+                                                    style={{background:`url(${image})`,backgroundSize:'cover',backgroundRepeat:'no-repeat',backgroundOrigin:'unset',backgroundPosition:'top'}}
+                                                >
+
+                                                </div>
                                             </div>
                                         </div>
                                     )

@@ -5,8 +5,8 @@ import * as Constants from "./Constants"
 const Meta = ({meta}) =>{
     const { asPath, pathname } = useRouter();
     console.log(asPath);
-    // const GA_TRACKING_ID = "GTM-MT2JH48"
-    const GA_TRACKING_ID = "G-CVJVT86DPD"
+    const GA_TRACKING_ID = "GTM-MT2JH48"
+    // const GA_TRACKING_ID = "G-CVJVT86DPD"
     return <>
     <Head>
         <meta charset="utf-8" />
