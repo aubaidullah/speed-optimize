@@ -928,7 +928,7 @@ ul.breadcrumb {
   .__btn_clr {
     color: #fff;
     border: none;
-    background-image: none;
+    /* background-image: none; */
     background-color: grey;
   }
   ._titles_, ._titles {
