@@ -119,7 +119,7 @@ const Reviews = ({reviews}) =>{
         setImages(fileArray)
         // this.setState({ file: this.fileArray })
     }
-    console.log(filearry)
+    // console.log(filearry)
     console.log(images)
 
 
