@@ -62,14 +62,14 @@ function MyApp({ Component, pageProps }) {
   });
   return (
     <>
-      <noscript>
+      {/* <noscript>
         <iframe
           src="https://www.googletagmanager.com/ns.html?id=GTM-MT2JH48"
           height="0"
           width="0"
           style={{ display: "none", visibility: "hidden" }}
         ></iframe>
-      </noscript>
+      </noscript> */}
 
       <style jsx>
         {`
@@ -90,7 +90,7 @@ function MyApp({ Component, pageProps }) {
         src="https://www.googletagmanager.com/gtag/js?id=G-CVJVT86DPD"
       />
 
-      <script
+      {/* <script
         dangerouslySetInnerHTML={{
           __html: `
                 window.dataLayer = window.dataLayer || [];
@@ -101,7 +101,7 @@ function MyApp({ Component, pageProps }) {
                 gtag('config', 'G-CVJVT86DPD');
               `,
         }}
-      />
+      /> */}
     </>
   );
 }

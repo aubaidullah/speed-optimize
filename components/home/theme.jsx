@@ -1,5 +1,6 @@
 import Link from "next/link";
 import * as Constants from "../Constants"
+import { createThemeListURL } from "../fun";
 
 const Themes = ({data}) =>{
     // console.log(data)
@@ -7,12 +8,13 @@ const Themes = ({data}) =>{
     const themeRender = data.map(function (item, i) {
         // var img = "";
         if (i < 5) {
+          let aurl = createThemeListURL({cityname:item.tag.trim()})
           return (
             <>
               <div className="_service_list">
                 <div className="ellipse_3">
-                <Link href={`/holidays/theme-${item.tag.trim().toLowerCase().replace(/\s+/g,"-")}/`}>
-                    <div href={`/holidays/theme-${item.tag.trim().toLowerCase().replace(/\s+/g,"-")}/`}>
+                <Link href={aurl}>
+                    <div href={aurl}>
                         {" "}
                         <div className="icon_display">
                         <img alt="icon" className={`inline`} src={`${Constants.assets_api}/public/icons/Ico_${item.tag.trim()}.png`} />
@@ -20,8 +22,8 @@ const Themes = ({data}) =>{
                     </div>
                   </Link>
                 </div>
-                <Link href={`/holidays/theme-${item.tag.trim().toLowerCase().replace(/\s+/g,"-")}/`}>
-                <div href={`/holidays/theme-${item.tag.trim().toLowerCase().replace(/\s+/g,"-")}/`}>
+                <Link href={aurl}>
+                <div href={aurl}>
                   <div className="_text_-">
                     <h4>{item.tag}</h4>
                     <p>{item.count} Listing</p>
