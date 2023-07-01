@@ -79,20 +79,20 @@ const InternationalPackages = ({data,headers,region,places,theme,meta}) =>{
 export async function getServerSideProps(context) {
 
     context.res.setHeader('Cache-Control', 's-maxage=10'); 
-    // console.log(context.query)
+    console.log(context.query)
     const headers = context.req.headers
 
     let payload = {
         av:'1.3',
         id:context.query.id,
         name:context.query.package.replace(/-/g,' '),
-        // name:'west bengal',
+        // name:'nepal',
         pt:'WEBSITE',
         type:'COUNTRY'
     }
     // console.log(payload)
     const res = await client.query({query:getallpackages,variables:{input:payload}})
-    // console.log(res.data)
+    console.log(res)
 
     const data = res.data.allpackage.output.packages
 

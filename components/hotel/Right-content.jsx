@@ -3,6 +3,8 @@ import DatePicker from '@amir04lm26/react-modern-calendar-date-picker';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import {FaRupeeSign} from 'react-icons/fa'
 import * as Constants from '@/components/Constants'
+import { useState,useEffect } from 'react';
+import { tw } from 'twind';
 
 const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutdate,setCheckoutdate,updateHotel}) =>{
     // console.log(hotel)
@@ -19,17 +21,17 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
 
     const [mincheckoutdate,setminCheckoutdate] = useState("") 
 
-    useEffect(()=>{
-        let today = new Date(`${minDate['year']}-${minDate['month']}-${minDate['day']}`)
-        setCheckindate({"day":parseInt(minDate['day']),"month":parseInt(minDate['month']),"year":parseInt(minDate['year'])})
+    // useEffect(()=>{
+    //     let today = new Date(`${minDate['year']}-${minDate['month']}-${minDate['day']}`)
+    //     setCheckindate({"day":parseInt(minDate['day']),"month":parseInt(minDate['month']),"year":parseInt(minDate['year'])})
   
-        let tomorrow = new Date(`${minDate['year']}-${minDate['month']}-${minDate['day']}`);
-        tomorrow.setDate(today.getDate()+1);
-        let c = tomorrow.toLocaleDateString().split("/")
+    //     let tomorrow = new Date(`${minDate['year']}-${minDate['month']}-${minDate['day']}`);
+    //     tomorrow.setDate(today.getDate()+1);
+    //     let c = tomorrow.toLocaleDateString().split("/")
   
-        setminCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
-        setCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
-      },[])
+    //     setminCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
+    //     setCheckoutdate({"day":parseInt(c[0]),"month":parseInt(c[1]),"year":parseInt(c[2])})
+    //   },[])
 
 
     const setCheckIn = (date) =>{
@@ -84,7 +86,7 @@ const RightContent = ({hotel,selectedHotel,checkindate,setCheckindate,checkoutda
             <div className={tw`flex mt-3`}>
                 <div className="relative z-999">
                 {/* calender_multi_clr */}
-                    <img src={`${Constants}/public/icons/calender_multi_clr.png`} alt="calendar icon" className={tw`inline ht_cal_icon`} />
+                    <img src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`} alt="calendar icon" className={tw`inline ht_cal_icon`} />
                     <div className="ht_label">
                         Check-in
                     </div>

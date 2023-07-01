@@ -22,10 +22,14 @@ const nextConfig = {
         destination:'/holidays/detail'
       },
       
+      // {
+      //   source: '/holidays-international/:package-tour-packages-:id',
+      //   destination: '/holidays/international-package'
+      // },
       {
-        source: '/holidays-international/:package-tour-packages-:id',
+        source: '/holidays/:package-tour-packages-:id:pre([3]{1})',
         destination: '/holidays/international-package'
-      },       
+      },      
       {
         source: '/holidays/:package-tour-packages-:id:pre([2]{1})',
         destination: '/holidays/state-package'
@@ -62,8 +66,12 @@ const nextConfig = {
         source: '/travel-guide/states/:city-:id(\\d+)',
         destination: '/travel-guide/india/detail'
       },      
+      // {
+      //   source: '/holidays/theme-:theme',
+      //   destination: '/holidays/theme'
+      // },
       {
-        source: '/holidays/theme-:theme',
+        source: '/holidays/:theme-tour-packages',
         destination: '/holidays/theme'
       },      
       

@@ -8,6 +8,7 @@ import 'photoswipe/style.css';
 import { useEffect,useState } from "react";
 import { imgNameByUrl, jpgToWebp, strToUrl } from "../../../components/fun";
 import {BsCheckCircle} from 'react-icons/bs'
+import dynamic from "next/dynamic";
 
 
 
@@ -17,7 +18,7 @@ const HotelDetail = ({hotel,meta}) =>{
     const Meta = dynamic(() => import('@/components/meta'))
 
     const RightContent = dynamic(() => import('@/components/hotel/Right-content'))
-    const Rooms = dynamic(() => import('@/components/hotel/rooms'))
+    // const Rooms = dynamic(() => import('@/components/hotel/rooms'))
 
     var yourDate = new Date()
     const offset = yourDate.getTimezoneOffset()
@@ -242,7 +243,7 @@ const HotelDetail = ({hotel,meta}) =>{
                                 <div className={tw`w-full`}>
                                     <div>
                                         <h2 className="_titles_">Select Rooms</h2>
-                                            <Rooms rooms={hotel.rooms} selectedRoom={selectedRoom} selectRoom={selectRoom}/>
+                                            {/* <Rooms rooms={hotel.rooms} selectedRoom={selectedRoom} selectRoom={selectRoom}/> */}
                                     </div>
                                 </div>
                                 <div className={tw`w-full lg:w-1/3`}>
