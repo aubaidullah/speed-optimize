@@ -14,6 +14,7 @@ import ReactHtmlParser from "react-html-parser";
 // import Meta from "./meta"
 import { useRouter } from 'next/router'
 import { createCountryListURL, createStateListURL } from "./fun"
+import RelatedTour from './detail/related_tours';
 // import Modal from "./modal"
 
 // const  
@@ -31,7 +32,7 @@ const Package = dynamic(() => import('../components/package'))
 // const filtr = useSelector(state=>state.filter)
 // console.log(filtr)
 
-const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefined,theme=undefined}) =>{
+const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefined,theme=undefined,related = undefined}) =>{
     
     const [filter,setFilter] = useState({keyword:""})
     const [limit,setLimit] = useState(10)
@@ -497,10 +498,21 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                                 </div>
                                 
                             </ScrollWrapper>
+                            
+                            
                         
                         
 
                     </div>
+                    {
+                        page_type=='CITY'?
+                            <div className={tw`mt-5`}>
+                                <RelatedTour data={related}/>
+                            </div>
+                            
+                        
+                        :""
+                    }
                     
                     
                     

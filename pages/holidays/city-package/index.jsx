@@ -23,7 +23,7 @@ const DeskList = dynamic(() => import('../../../components/list_page.mobile'), {
 
 
 
-const CityPackages = ({data,headers,region,places,city,meta}) =>{
+const CityPackages = ({data,headers,region,places,city,meta,related}) =>{
     console.log(region)
     const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('android') || headers['user-agent'].includes('iphone'))
 
@@ -39,10 +39,10 @@ const CityPackages = ({data,headers,region,places,city,meta}) =>{
 
     if (isMobile==true){
         // return <ListPageMobile data = {data}/>
-        return <><Nav/> <MobileList meta={meta} page_type={'CITY'} data={data??[]} region = {region} places={places} isMobile={isMobile} city={city} /></>
+        return <><Nav/> <MobileList meta={meta} page_type={'CITY'} data={data??[]} region = {region} places={places} isMobile={isMobile} city={city} related={related} /></>
     }
     else{
-        return <><Nav/><DeskList meta={meta} page_type={'CITY'} data = {data??[]} region = {region} places={places} isMobile={isMobile} city={city}/></>
+        return <><Nav/><DeskList meta={meta} page_type={'CITY'} data = {data??[]} region = {region} places={places} isMobile={isMobile} city={city} related={related}/></>
     }    
 
 
@@ -89,13 +89,26 @@ export async function getServerSideProps(context) {
         pt:'WEBSITE',
         type:'CITY'
     }
-    console.log(context.query)
-    console.log(payload)
+    // console.log(context.query)
+    // console.log(payload)
     const res = await client.query({query:getallpackages,variables:{input:payload}})
-    console.log(res.data)
+    // console.log(res.data)
     const data = res.data.allpackage.output?.packages??[]
     const region = res.data.allpackage.output?.region??[]
     const places = res.data.allpackage.output?.fcities??[]
+
+    payload = {
+        av:'1.3',
+        id:region.sid,
+        name:region.sname.replace(/-/g,' '),
+        pt:'WEBSITE',
+        type:'STATE'
+    }
+    
+    const rel_res = await client.query({query:getallpackages,variables:{input:payload}})
+    const rel_package = rel_res.data.allpackage.output
+
+    console.log(rel_package)
 
 
     const meta = await client.query({query:getMetaQuery,variables:{input:{av:"",id:context.query.id,key:'CITY_HOLIDAYS',name:"",pt:'WEBSITE',type:"CITY"}}})
@@ -114,7 +127,7 @@ export async function getServerSideProps(context) {
     // region = []
     // places = []
     headers['user-agent'] = headers['user-agent'].toLocaleLowerCase()
-    return { props: { data,headers,region,places,city:context.query.city,meta:metas}}
+    return { props: { data,headers,region,places,city:context.query.city,meta:metas,related:rel_package}}
 
 }
 
