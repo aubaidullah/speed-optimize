@@ -504,15 +504,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                         
 
                     </div>
-                    {
-                        page_type=='CITY'?
-                            <div className={tw`mt-5`}>
-                                <RelatedTour data={related}/>
-                            </div>
-                            
-                        
-                        :""
-                    }
+                    
                     
                     
                     
@@ -553,6 +545,15 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
 
 
             </section>
+            {
+                        page_type=='CITY'?
+                            <div className={tw`mt-5 w-full`}>
+                                <RelatedTour data={related}/>
+                            </div>
+                            
+                        
+                        :""
+                    }
         </article>    
     </>
     

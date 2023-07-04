@@ -30,6 +30,7 @@ const RelatedTour = dynamic(() => import('../../../components/detail/related_tou
 const Review = dynamic(() => import('@/components/detail/review'))
 
 import { getpackage, getrelatedpackage, getreviewsQuery,getMetaQuery } from '../../../components/Graphql/Queries'
+import { createCountryListURL } from "@/components/fun";
 // import Reviews from "@/components/home/reviews";
 // import ReviewRender from "@/components/detail/review";
 
@@ -86,7 +87,8 @@ const DetailPage = ({ data, related, reviews,meta }) => {
             // },
             {
                 item :`${data?.package.region.split(",")[0]}`,
-                href:`/holidays-international/${data?.package.region.split(",")[0].toLowerCase().replace(/ /g,'-')}-tour-packages/${data?.gid}/`
+                href : createCountryListURL({cityname:data?.package.region,id:data?.gid})
+                // href:`/holidays-international/${data?.package.region.split(",")[0].toLowerCase().replace(/ /g,'-')}-tour-packages/${data?.gid}/`
             }
         ]        
     }
