@@ -791,6 +791,10 @@ ul.bullet_points span{
   -ms-transition: all .3s;
   -o-transition: all .3s;
 }
+.Invalid_num{
+  font-size: 11px;
+  color:red;
+}
 
 .TopRatedTours .left-custom-btn::before {
   line-height: 115%;

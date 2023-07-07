@@ -152,71 +152,78 @@ const DetailPage = ({ data, related, reviews,meta }) => {
         </section>
 
         <section className='container'>
-            <div className='row'>
-                <div className="col-sm-12 col-xs-12">
-                    <div className="detail_slide_nav _30px">
-                        <ul>
-                            <li>
-                                <a href="#photos" className="_c_default">
-                                    Photos
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#overview">Overview</a>
-                            </li>
-                            <li>
-                                <a href="#itinery">Itinerary</a>
-                            </li>
-                            <li>
-                                <a href="#hotels">Hotels</a>
-                            </li>
-                            <li>
-                                <a href="#inclusions">Inclusions</a>
-                            </li>
-                            <li>
-                                <a href="#tnc">T&C</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div className="flex flex-wrap">
-                    <div className='w-full lg:w-2/3' id="photos">
-                        <div className="slider_details">
-                            <_Carousel data={data}/>
-                            {/* <Carousel
-                                showStatus={false}
-                                showThumbs={false}
-                                showArrows={true}
-                                showIndicators={false}
-                                infinite={true}
-                                autoPlay={true}
-                                className="slider_banner slider_overlay"
-                            >
-                                {data?.package.images.split(',').map((e, index) => {
-                                    return e?<Image className='img' src={jpgToWebp({uri:e})} layout="fill" key={index} alt={data?.package?.name} />:""
-                                })}
-                            </Carousel> */}
+            <div className={tw`flex`}>
+
+                <div className={tw`w-full lg:w-2/3`}>
+                    <div className="col-sm-12 col-xs-12">
+                        <div className="detail_slide_nav _30px">
+                            <ul>
+                                <li>
+                                    <a href="#photos" className="_c_default">
+                                        Photos
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#overview">Overview</a>
+                                </li>
+                                <li>
+                                    <a href="#itinery">Itinerary</a>
+                                </li>
+                                <li>
+                                    <a href="#hotels">Hotels</a>
+                                </li>
+                                <li>
+                                    <a href="#inclusions">Inclusions</a>
+                                </li>
+                                <li>
+                                    <a href="#tnc">T&C</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-
-                    <div className={tw`w-full lg:w-1/3`}>
-                        <div className={tw`pl-0 lg:pl-6`}>
-                            <RightBar data={data} />
+                    
+                    <div className="flex flex-wrap">
+                        <div className='w-full' id="photos">
+                            <div className="slider_details">
+                                <_Carousel data={data}/>
+                            </div>
                         </div>
 
+                        {/* <div className={tw`w-full lg:w-1/3`}>
+                            <div className={tw`pl-0 lg:pl-6`}>
+                                <RightBar data={data} />
+                            </div>
+
+                        </div> */}
+
+                        <section className='inclusions'>
+                            <Content data={data} />
+                        </section>   
+
+                    </div>
+
+
+                
+                    
+                    
+
+                </div>
+
+                <div className={tw`w-full lg:w-1/3`}>
+                    <div className={tw`pl-0 lg:pl-6 h_sticky`}>
+                        <RightBar data={data} />
                     </div>
                 </div>
-                
-                
+
 
             </div>
+            
+
+
         </section>
 
-        <section className='inclusions'>
-            <Content data={data} />
-            <RelatedTour data={related} />
-        </section>
+
+        <RelatedTour data={related} />
 
         <Review reviews={reviews}/>
     </>

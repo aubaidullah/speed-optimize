@@ -93,7 +93,7 @@ const RightBar=({data})=>{
                         </div>
                     </div>                    
 
-                    <div className='_b_right_list'>
+                    <div className={tw`_b_right_list mt-0 lg:mt-16`}>
                         <div className='p-[10px]'>
                             <div className='ov_auto'>
                                 <div className='d_location flt_left'>
@@ -322,6 +322,55 @@ const RightBar=({data})=>{
 
                         </div>
                     </div>
+                    
+                    
+                    <div className={tw`w-full mt-20 mb-10`}>
+                    <div className={tw`bets_price pl-0`}>
+                        <div className="_best_price_list">
+                        <h4>Best Price Guaranteed</h4>
+                        <p>
+                            We source services directly from the local suppliers. This
+                            enables us to keep our rates best in the market.
+                        </p>
+                        </div>
+
+                        <div className="tour_planner">
+                        <h4>Dedicated Tour Planner</h4>
+                        <p>
+                        As soon as we receive your request, a dedicated tour planner is assigned who helps you from the planning to the completion of your trip and makes it a memorable one
+                        </p>
+                        </div>
+
+
+                        <div className="customize">
+                        <h4>Customization</h4>
+                        <p>
+                        A virtuoso prepares your itinerary who has personally traveled there and have thorough knowledge about the destinations.
+                        </p>
+                        </div>
+
+
+                        <div className="assistance">
+                        <h4>Assistance 24X7</h4>
+                        <p>
+                        If you are on your trip, there is something bothering you. You can reach out to us at any hour of the day or night
+                        </p>
+                        </div>
+
+
+                        <div className="customer">
+                        <h4>Customers Delight </h4>
+                        <p>
+                        Our customers are our top-most priority. You would love to read their experiences with Kiomoi they have shared publicly.
+                        </p>
+                        </div>
+
+
+                    </div>
+                </div>                    
+                    
+                    
+                    
                     <LeadForm 
                         isshow = {sendquery}
                         packageid={modalinfo.id}
