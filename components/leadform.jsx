@@ -22,6 +22,7 @@ const DatePicker = dynamic(() => import('@amir04lm26/react-modern-calendar-date-
 const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>{
     // console.log(isshow)
     const [show,setShow] = useState(isshow)
+    const [gshow,setGshow] = useState(false)
     const [msg,setMsg] = useState("Send Enquiry")
     const [isclick,setIsclick] = useState(false)
     // const [name,setName] = useState(localStorage.getItem('username')??"")
@@ -169,7 +170,8 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
         console.log(result)
         if (!result) {
             setOpen(!open)
-            setShow(!show)
+            setGshow(!gshow)
+            // setShow(!show)
             // console.log("lskdjflksdjlkfjds")
         }        
     }
@@ -183,11 +185,11 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
             return
         }
         
-    },[show])
+    },[gshow])
     // console.log(ccode)
     return(
         <>
-        {show ? <LeadGuest show={show} setShow={() => setShow(!show)} mobile={mobile} email={email} name = {name} /> : null}
+        {gshow ? <LeadGuest show={gshow} setShow={() => setGshow(!gshow)} mobile={mobile} email={email} name = {name} /> : null}
         <Modal changeForm = {changeForm} show = {isshow}>
             
             <form onSubmit={handleSubmit} className={`bg-white`}>

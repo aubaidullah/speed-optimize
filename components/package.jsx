@@ -572,12 +572,20 @@ const Package = ({item}) =>{
 
             </a>
         {/* </Link> */}
-        <LeadForm key={item.id}
+
+        {
+            sendquery?
+            <LeadForm key={item.id}
             isshow = {sendquery}
             packageid={modalinfo.id}
             packageName={modalinfo.name}
             changeForm = {updateChangeForm}
           />
+          :""
+        }
+        
+
+
     </>    
 }
 
