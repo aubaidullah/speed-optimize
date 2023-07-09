@@ -125,7 +125,7 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
     }
 
     return <>
-        <div className={tw`bg-white sticky rounded-lg`}>
+        <div className={tw`bg-white h_sticky rounded-lg`}>
             <div className={tw`p-3`}>
                 <div className={tw`flex items-center justify-between mb-4`}>
                     <h2 className={tw`text-xl font-bold`}>

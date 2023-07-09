@@ -596,13 +596,15 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
             {/* <Articles data={article} /> */}
 
             {/* <QnaListing data={qna} travelGuide={true} /> */}
-
-            <Leaform 
+            {
+                sendquery?<Leaform 
                 isshow = {sendquery}
                 packageid={data.tg.id}
                 packageName={data.tg.cityName}
                 changeForm = {updateChangeForm}            
-            />
+            />:""
+            }
+            
         </section>
 
     </>

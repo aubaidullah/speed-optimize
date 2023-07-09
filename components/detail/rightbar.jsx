@@ -370,13 +370,15 @@ const RightBar=({data})=>{
                 </div>                    
                     
                     
-                    
-                    <LeadForm 
+                    {
+                        sendquery?<LeadForm 
                         isshow = {sendquery}
                         packageid={modalinfo.id}
                         packageName={modalinfo.name}
                         changeForm = {updateChangeForm}
-                    />
+                    />:""
+                    }
+                    
 
                 </div>
             {/* </div> */}

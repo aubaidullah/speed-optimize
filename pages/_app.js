@@ -15,6 +15,7 @@ import "react-multi-carousel/lib/styles.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import 'react-rangeslider/lib/index.css'
 import dynamic from "next/dynamic";
 import NProgress from "nprogress";
 
