@@ -98,7 +98,7 @@ const Nav = () => {
             {showLogin ? <Login show={showLogin} setShowLogin={setShowLogin} /> : null}
             {!showSearch ?
                 <div className={tw`container`}>
-                    <div className={tw`flex item_group flt_left items-center pt-2`}>
+                    <div className={tw`flex item_group flt_left items-center pt-2 lg:pt-0`}>
                         <div className={tw`logo_item flt_left flex items-center`}>
                             <Link href={'/'}>
 
