@@ -178,18 +178,24 @@ const Nav = () => {
                         </div>
                     </div>
                     <div className={tw`drop_down ${collapse?'block':'hidden'}`} style={{top:"49px"}}>
-                        <div className={tw`flex drop_item items-center`}>
-                            <img alt="trips" src={tripover ? `${Constants.assets_api}/public/icons/icons/ICO-TRIPS-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO TRIPS.png`} />
-                            <div className="s_name d_content pl-4">Trips</div>
-                        </div>
-                        <div className={tw`flex drop_item items-center`}>
-                            <img alt="explore" src={exploreover ? `${Constants.assets_api}/public/icons/icons/ICO-EXPLORE-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO EXPLORE.png`} />
-                            <div className="s_name d_content pl-4">Explore</div>
-                        </div>
-                        <div className={tw`flex drop_item items-center`}>
-                            <img alt="stays" src={stayover ? `${Constants.assets_api}/public/icons/icons/ICO-STAYS-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO STAYS.png`} />                            
-                            <div className="s_name d_content pl-4">Stays</div>
-                        </div>                   
+                        <Link href={'/holidays'}>
+                            <div className={tw`flex drop_item items-center`}>
+                                <img alt="trips" src={tripover ? `${Constants.assets_api}/public/icons/icons/ICO-TRIPS-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO TRIPS.png`} />
+                                <div className="s_name d_content pl-4">Trips</div>
+                            </div>
+                        </Link>
+                        <Link href={'/travel-guide'}>
+                            <div className={tw`flex drop_item items-center`}>
+                                <img alt="explore" src={exploreover ? `${Constants.assets_api}/public/icons/icons/ICO-EXPLORE-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO EXPLORE.png`} />
+                                <div className="s_name d_content pl-4">Explore</div>
+                            </div>
+                        </Link>
+                        <Link href={'/hotels'}>
+                            <div className={tw`flex drop_item items-center`}>
+                                <img alt="stays" src={stayover ? `${Constants.assets_api}/public/icons/icons/ICO-STAYS-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO STAYS.png`} />                            
+                                <div className="s_name d_content pl-4">Stays</div>
+                            </div>
+                        </Link>  
                     </div>                    
                 </div>
                 :
