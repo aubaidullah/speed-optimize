@@ -159,7 +159,7 @@ const Nav = () => {
                                 size={"20px"}
                             />
                         </div>
-                        <div className="item flt_left block lg:hidden">
+                        <div className={tw`item flt_left block lg:hidden`}>
                             {
                                 collapse?<AiOutlineClose 
                                 className="c_it"
