@@ -12,6 +12,7 @@ import swal from "sweetalert";
 import Cookie from 'js-cookie'
 import dynamic from "next/dynamic";
 import { tw } from "twind";
+// import client from "./Graphql/service";
 // import Modal from "./modal";
 
 
@@ -40,6 +41,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
     const [adult,setAdult] = useState("")
     const [ccode,setCcode] = useState("91")
     const [children,setChildren] = useState("")
+    const [country,setCountry] = useState([])
     const [rerender, setRerender] = useState(false);
     
     const [open, setOpen] = useState(false);
@@ -187,6 +189,23 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
         
     },[gshow])
     // console.log(ccode)
+
+    const getCountryList = async () =>{
+        const dt = {
+            "av": "",
+            "home": "",
+            "id": "",
+            "pt": "",
+            "screen": ""
+          }
+        const res = await axios.post(Constants.api + "/api/v1/geo/countries", dt)
+        
+        setCountry(res.data.output)
+    }
+    useEffect(()=>{
+        getCountryList()
+    },[])
+
     return(
         <>
         {gshow ? <LeadGuest show={gshow} setShow={() => setGshow(!gshow)} mobile={mobile} email={email} name = {name} /> : null}
@@ -261,8 +280,12 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                     <div className="form-group">
                         <div className="flex">
                         <select className={tw`w-1/4 form-control`} onChange={(e)=>setCcode(e.target.value)}>
-                        <option value="91">India +91</option>
-                        {/* <option value="">phone</option> */}
+                        {
+                            country.map((item,index)=>{
+                                return <option key={index} value={item.isdCode} selected={item.isdCode=="91"?true:false}>(+{item.isdCode}) {item.code}</option>
+                            })
+                        }
+                        {/* <option value="91">India +91</option>
                         <option value="93">Afghanistan +93</option>
                         <option value="358">Aland Islands +358</option>
                         <option value="355">Albania +355</option>
@@ -512,7 +535,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                         <option value="212">Western Sahara +212</option>
                         <option value="967">Yemen +967</option>
                         <option value="260">Zambia +260</option>
-                        <option value="263">Zimbabwe +263</option>
+                        <option value="263">Zimbabwe +263</option> */}
                         </select>
                         <input
                         pattern="[0-9.]+"

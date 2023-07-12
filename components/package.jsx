@@ -16,7 +16,7 @@ import dynamic from 'next/dynamic'
 
 const LeadForm = dynamic(() => import('./leadform'))
 
-const Package = ({item}) =>{
+const Package = ({index,item}) =>{
 
     // const [modalid,setModalid] = useState()
     // const [modalpackagename,setModalpackagename] = useState()
@@ -60,9 +60,11 @@ const Package = ({item}) =>{
     return <>
         {/* <Link href={"/holidays/detail"}> */}
             <a className={`flex flex-col`}>
-            <div className="pack_box" key={item.id}>
+            <div className="pack_box" key={item.id} itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                <meta itemProp='position' content={index+1} />
                 <div className="row">
-                        <div className="col-lg-12 col-sm-12">
+                        <div className="col-lg-12 col-sm-12" itemType="https://schema.org/TouristTrip" itemScope>
+                            <meta itemProp='partOfTrip' content={`${item.nights+1} Days ${item.nights} Nights`}/>
                             <div>
                             {/* holidays/shimla-chandigarh-tour-package-110/ */}
                             {/* holidays/eastern-delight-tour-package-191 */}
@@ -72,7 +74,7 @@ const Package = ({item}) =>{
                                                 <div className={`_row ov_auto desk_display_none mb-2`}>
                                                     <div className="flt_left">
                                                         <div>
-                                                            <h2 className={`pack_title`}>{item.name}</h2>
+                                                            <h2 className={`pack_title`} itemProp='name'>{item.name}</h2>
                                                             <div className={`flex flex-wrap items-center mt-1`}>
                                                                 <div className="days_night">
                                                                     {/* {item.nights} Nights | {item.nights+1} Days */}
@@ -124,7 +126,15 @@ const Package = ({item}) =>{
                                                         
 
 
-                                                        <div className="rating">
+                                                        <div className="rating" 
+                                                        // itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating"
+                                                        >
+
+                                                            {/* <meta itemProp="ratingValue" content='4.5' />
+                                                            <meta itemProp="bestRating" content='5'/>
+                                                            <meta itemProp='ratingCount' content='26'/> */}
+
+
                                                             <span className='inline'>4.5 <BsDot className='inline'/> 26 Rating</span>
                                                         </div>
                                                     </div>                        
@@ -390,17 +400,18 @@ const Package = ({item}) =>{
                                                             </div>
 
 
-                                                            <div className='text-right'>
+                                                            <div className='text-right' itemProp="offers" itemScope itemType="https://schema.org/AggregateOffer">
+                                                                <meta itemprop="priceCurrency" content="INR" />
                                                                 <div>
 
                                                                 {item.percent?
                                                                     <>
-                                                                        <span className="discount">
+                                                                        <span className="discount" itemProp="offerCount" content={item.percent}>
                                                                             {item.percent}% off
                                                                         </span>
-                                                                        
                                                                         <del>
-                                                                            <FaRupeeSign className={`inline text=[12px] mb-[4px]`} />
+                                                                            <meta itemProp="highPrice" content={item.price}/>
+                                                                            <FaRupeeSign className={`inline text=[12px] mb-[4px]`}/>
                                                                             {item.price}/-
                                                                         </del>
                                                                     </>                                                                
@@ -412,6 +423,7 @@ const Package = ({item}) =>{
 
                                                                 <div>
                                                                     <div className="price_inr">
+                                                                        <meta itemProp='lowPrice' content={item.finalprice}/>
                                                                         <FaRupeeSign className={`inline text-[#f79421] text-[12px] mb-[4px]`} />
                                                                         {item.finalprice}/-
                                                                     </div>
@@ -470,8 +482,6 @@ const Package = ({item}) =>{
                                 </div>
 
                             </div>
-                        </div>
-                        <div>
                         </div>
                 </div>
                 
