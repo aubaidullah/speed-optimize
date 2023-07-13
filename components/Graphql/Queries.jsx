@@ -49,6 +49,22 @@ query package($input:Payload!) {
 `;
 
 
+export const getCountryQuery = gql`
+fragment Payload on REST {
+    av: String,
+    home: String,
+    id: String,
+    pt: String,
+    screen: String
+  }
+query country($input:Payload!) {
+    country(input:$input) @rest(type: "country",method:"POST", path: "/api/v1/geo/countries") {
+      output
+    }
+  }
+`;
+
+
 export const getTravelPackage = gql`
 fragment Payload on REST {
     av: String,

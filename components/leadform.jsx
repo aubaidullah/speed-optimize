@@ -12,7 +12,8 @@ import swal from "sweetalert";
 import Cookie from 'js-cookie'
 import dynamic from "next/dynamic";
 import { tw } from "twind";
-// import client from "./Graphql/service";
+import client from "./Graphql/service";
+import { getCountryQuery } from "./Graphql/Queries";
 // import Modal from "./modal";
 
 
@@ -198,9 +199,12 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
             "pt": "",
             "screen": ""
           }
-        const res = await axios.post(Constants.api + "/api/v1/geo/countries", dt)
+        const res = await client.query({query:getCountryQuery,variables:{input:dt},fetchPolicy:'cache-first'})
+        // const res = await client.query({fetchPolicy})
+        console.log(res.data.country.output)
+        // const res = await axios.post(Constants.api + "/api/v1/geo/countries", dt)
         
-        setCountry(res.data.output)
+        setCountry(res.data.country.output)
     }
     useEffect(()=>{
         getCountryList()
@@ -279,10 +283,10 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                     </div>
                     <div className="form-group">
                         <div className="flex">
-                        <select className={tw`w-1/4 form-control`} onChange={(e)=>setCcode(e.target.value)}>
+                        <select className={tw`w-1/3 form-control`} onChange={(e)=>setCcode(e.target.value)}>
                         {
                             country.map((item,index)=>{
-                                return <option key={index} value={item.isdCode} selected={item.isdCode=="91"?true:false}>(+{item.isdCode}) {item.code}</option>
+                                return <option key={index} value={item.isdCode} selected={item.isdCode=="91"?true:false}>{item.code} +{item.isdCode}</option>
                             })
                         }
                         {/* <option value="91">India +91</option>
@@ -546,7 +550,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
                             }
                             }}
                             // type="text"
-                            className={tw`w-3/4 form-control ml-[20px]`}
+                            className={tw`w-2/3 form-control ml-[20px]`}
                             name="mobile"
                             onChange={(e)=>setMobile(e.target.value)}
                             value={mobile}
