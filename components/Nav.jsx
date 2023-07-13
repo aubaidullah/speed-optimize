@@ -1,6 +1,6 @@
 import { useEffect, useState,useCallback } from "react"
 import { HiOutlineSearch } from 'react-icons/hi'
-import { AiOutlineLogout, AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineLogout, AiOutlineSearch,AiOutlineMenu,AiOutlineClose } from 'react-icons/ai';
 import { FaRegUser, FaSearch } from 'react-icons/fa';
 import {ImSpinner} from 'react-icons/im'
 import { BsXLg, BsDot } from 'react-icons/bs'
@@ -25,6 +25,7 @@ const Nav = () => {
     const [loading, setLoading] = useState(false)
     const [searchkey, setSearchkey] = useState({})
     const [showLogin, setShowLogin] = useState(false);
+    const [collapse, setCollapse] = useState(false);    
     const [result, setResult] = useState({})
     const [addnavClass,setAddnavClass] = useState("")
     const [cls,setCls] = useState('navbar navbar-default normal')
@@ -97,7 +98,7 @@ const Nav = () => {
             {showLogin ? <Login show={showLogin} setShowLogin={setShowLogin} /> : null}
             {!showSearch ?
                 <div className={tw`container`}>
-                    <div className={tw`flex item_group flt_left`}>
+                    <div className={tw`flex item_group flt_left items-center pt-2 lg:pt-0`}>
                         <div className={tw`logo_item flt_left flex items-center`}>
                             <Link href={'/'}>
 
@@ -105,7 +106,7 @@ const Nav = () => {
                                 <img className="brand-logo" alt="kiomoi" src="/icons/kiomoi logo.svg"/>
                             </Link>
                         </div>
-                        <div className={tw`item_group flt_right ml-6`}>
+                        <div className={tw`item_group flt_right ml-6 hidden lg:block`}>
                             <div className="item flt_left">
                                 <Link href={"/holidays"}>
                                     <div className="c_it"
@@ -158,7 +159,44 @@ const Nav = () => {
                                 size={"20px"}
                             />
                         </div>
+                        <div className={tw`item flt_left block lg:hidden`}>
+                            {
+                                collapse?<AiOutlineClose 
+                                className="c_it"
+                                // onClick={()}
+                                onClick={()=>setCollapse(!collapse)}
+                                size={"20px"}                                
+                                />:<AiOutlineMenu
+                                className="c_it"
+                                // onClick={()}
+                                onClick={()=>setCollapse(!collapse)}
+                                size={"20px"}
+                                />
+                            }
+                            
+
+                        </div>
                     </div>
+                    <div className={tw`drop_down ${collapse?'block':'hidden'}`} style={{top:"49px"}}>
+                        <Link href={'/holidays'}>
+                            <div className={tw`flex drop_item items-center`}>
+                                <img alt="trips" src={tripover ? `${Constants.assets_api}/public/icons/icons/ICO-TRIPS-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO TRIPS.png`} />
+                                <div className="s_name d_content pl-4">Trips</div>
+                            </div>
+                        </Link>
+                        <Link href={'/travel-guide'}>
+                            <div className={tw`flex drop_item items-center`}>
+                                <img alt="explore" src={exploreover ? `${Constants.assets_api}/public/icons/icons/ICO-EXPLORE-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO EXPLORE.png`} />
+                                <div className="s_name d_content pl-4">Explore</div>
+                            </div>
+                        </Link>
+                        <Link href={'/hotels'}>
+                            <div className={tw`flex drop_item items-center`}>
+                                <img alt="stays" src={stayover ? `${Constants.assets_api}/public/icons/icons/ICO-STAYS-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO STAYS.png`} />                            
+                                <div className="s_name d_content pl-4">Stays</div>
+                            </div>
+                        </Link>  
+                    </div>                    
                 </div>
                 :
                 <div>

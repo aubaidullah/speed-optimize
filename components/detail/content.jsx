@@ -198,9 +198,9 @@ const Content = ({data}) =>{
 
     return <>
         <section className="inclusions">
-            <div className='container'>
+            <div className='_container'>
                 <div className={tw`flex flex-wrap`}>
-                <div className={tw`w-full lg:w-2/3`}>
+                <div className={tw`w-full`}>
                     <div className='inclusion'>
                       <div className='col-sm-12'>
                           <h4 className="_titles_">Inclusions</h4>
@@ -422,7 +422,7 @@ const Content = ({data}) =>{
 
                 </div>
 
-                <div className={tw`w-full lg:w-1/3 lg:pl-6`}>
+                {/* <div className={tw`w-full lg:w-1/3 lg:pl-6`}>
                   <div className={tw`bets_price pl-0`}>
                     <div className="_best_price_list">
                       <h4>Best Price Guaranteed</h4>
@@ -465,7 +465,7 @@ const Content = ({data}) =>{
 
 
                 </div>
-              </div>
+              </div> */}
             </div>
 
             </div>

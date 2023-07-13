@@ -90,6 +90,7 @@ export async function getServerSideProps(context) {
         pt:'WEBSITE',
         type:'COUNTRY'
     }
+    console.log(payload)
     // console.log(payload)
     const res = await client.query({query:getallpackages,variables:{input:payload}})
     console.log(res)

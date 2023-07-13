@@ -5,6 +5,7 @@ import { BsXLg, BsDot } from 'react-icons/bs'
 import {ImSpinner} from 'react-icons/im'
 // import { Spinner } from 'react-bootstrap'
 import * as Constants from './Constants'
+import { AiOutlineLogout, AiOutlineSearch,AiOutlineMenu,AiOutlineClose } from 'react-icons/ai';
 import axios from 'axios'
 import { FaRupeeSign } from 'react-icons/fa'
 import dynamic from "next/dynamic";
@@ -24,6 +25,7 @@ const Nav = () => {
     const [loading, setLoading] = useState(false)
     const [searchkey, setSearchkey] = useState({})
     const [showLogin, setShowLogin] = useState(false);
+    const [collapse, setCollapse] = useState(false);    
     const [result, setResult] = useState({})
     const [addnavClass,setAddnavClass] = useState("")
     const [cls,setCls] = useState('navbar navbar-default normal')
@@ -113,14 +115,14 @@ const Nav = () => {
             {!showSearch ?
                 <div className={tw`container`}>
                     <div className={tw`flex item_group flt_left`}>
-                    <div className={tw`logo_item flt_left flex items-center`}>
+                    <div className={tw`logo_item flt_left flex items-center pt-2 lg:pt-0`}>
                             <Link href={'/'}>
 
                                 {/* <img className="brand-logo" src={`${router.pathname=='/'?`${Constants.assets_api}/public/icons/download.png`:`${Constants.assets_api}/public/icons/kiomoi.png`}`}/> */}
                                 <img className="brand-logo" src="/icons/kiomoi logo.svg" alt="kiomoi"/>
                             </Link>
                         </div>
-                        <div className={tw`item_group flt_right ml-2 lg:ml-6`}>
+                        <div className={tw`item_group flt_right ml-2 lg:ml-6 hidden lg:block`}>
                             <div className="item flt_left">
                                 <Link href={"/holidays"}>
                                     <div className="c_it"
@@ -178,7 +180,83 @@ const Nav = () => {
                                 size={"20px"}
                             />
                         </div>
+                        <div className={tw`item flt_left block lg:hidden`}>
+                            {
+                                collapse?<AiOutlineClose 
+                                className="c_it"
+                                // onClick={()}
+                                onClick={()=>setCollapse(!collapse)}
+                                size={"20px"}                                
+                                />:<AiOutlineMenu
+                                className="c_it"
+                                // onClick={()}
+                                onClick={()=>setCollapse(!collapse)}
+                                size={"20px"}
+                                />
+                            }
+                            
+
+                        </div>
+
+
                     </div>
+                    {/* <div className="item_group flt_right right_icons">
+                        <div className="item flt_left" onClick={() => SetshowSearch(true)}>
+                            <HiOutlineSearch
+                                // color={"#a7a7a7"}
+                                className="c_it"
+                                size={"20px"}
+                            />
+                        </div>
+                        <div className="item flt_left">
+                            <FaRegUser
+                                className="c_it"
+                                onClick={() => setShowLogin(!showLogin)}
+                                size={"20px"}
+                            />
+                        </div>
+                        <div className="item flt_left block lg:hidden">
+                            {
+                                collapse?<AiOutlineClose 
+                                className="c_it"
+                                // onClick={()}
+                                onClick={()=>setCollapse(!collapse)}
+                                size={"20px"}                                
+                                />:<AiOutlineMenu
+                                className="c_it"
+                                // onClick={()}
+                                onClick={()=>setCollapse(!collapse)}
+                                size={"20px"}
+                                />
+                            }
+                            
+
+                        </div>
+                    </div> */}
+                    <div className={tw`drop_down ${collapse?'block':'hidden'}`} style={{top:"49px"}}>
+                        <Link href={'/holidays'}>
+                            <div className={tw`flex drop_item items-center`}>
+                                <img alt="trips" src={tripover ? `${Constants.assets_api}/public/icons/icons/ICO-TRIPS-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO TRIPS.png`} />
+                                <div className="s_name d_content pl-4">Trips</div>
+                            </div>
+                        </Link>
+                        <Link href={'/travel-guide'}>
+                            <div className={tw`flex drop_item items-center`}>
+                                <img alt="explore" src={exploreover ? `${Constants.assets_api}/public/icons/icons/ICO-EXPLORE-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO EXPLORE.png`} />
+                                <div className="s_name d_content pl-4">Explore</div>
+                            </div>
+                        </Link>
+                        <Link href={'/hotels'}>
+                            <div className={tw`flex drop_item items-center`}>
+                                <img alt="stays" src={stayover ? `${Constants.assets_api}/public/icons/icons/ICO-STAYS-orange.png` : `${Constants.assets_api}/public/icons/icons/ICO STAYS.png`} />                            
+                                <div className="s_name d_content pl-4">Stays</div>
+                            </div>
+                        </Link>  
+                    </div>
+
+
+
+                    
                 </div>
                 :
                 <div>

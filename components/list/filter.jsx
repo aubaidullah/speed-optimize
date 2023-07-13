@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { FaRupeeSign } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { places_filter, theme_filter } from '../../redux_fx/actions';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
 const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Themes,_places,_themes,page_type,filter,setKeyword,data,theme=undefined}) =>{
 
@@ -15,6 +16,9 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
 
     const [maxprice,setMaxprice] = useState(5000)
     const [minprice,setMinprice] = useState(1000)
+    const [dur,setDur] = useState(false)
+    const [fav,setFav] = useState(false)
+    const [thm,setThm] = useState(false)
     // console.log(data)
 
 
@@ -125,7 +129,7 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
     }
 
     return <>
-        <div className={tw`bg-white sticky rounded-lg`}>
+        <div className={tw`bg-white h_sticky rounded-lg`}>
             <div className={tw`p-3`}>
                 <div className={tw`flex items-center justify-between mb-4`}>
                     <h2 className={tw`text-xl font-bold`}>
@@ -144,7 +148,7 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
                 </div>
 
 
-                <div className={tw`border-t border-red-200 py-4`}>
+                <div className={tw`border-t border-gray-200 py-4`}>
                     <div className={tw`flex items-center justify-between mb-4`}>
                         <h2>
                             Price
@@ -184,14 +188,24 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
                 </div>
 
 
-                <div className={tw`border-t border-red-200 py-4`}>
-                    <div className={tw`flex items-center justify-between mb-4`}>
-                        <h2 className={`Price_name`}>
-                            Duration (in Days)
-                        </h2> 
+                <div className={tw`border-t border-gray-200 py-4`}>
+                    <div className={tw`flex items-center justify-between`}>
+                        <div className={`flex justify-between items-center w-full cursor-pointer`} onClick={()=>setDur(!dur)}>
+                            <h2 className={`Price_name`}>
+                                Duration (in Days)
+                                
+                            </h2>
+                            <div className='w-full_'>
+                                {
+                                    dur?<AiOutlineMinus className={`font-bold text-xl`}/>
+                                    :< AiOutlinePlus  className={`font-bold text-xl`}/>
+                                }
+                                
+                            </div>  
+                        </div>
                     </div>
 
-                    <div className='check_list'>
+                    <div className={tw`check_list ${dur?'block':'hidden'}`}>
 
                         <div className="checkbox">
                             <label>
@@ -265,13 +279,26 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
                 {
                     page_type != 'CITY'?
                 
-                    <div className={tw`border-t border-red-200 py-4`}>
-                    <div className={tw`flex items-center justify-between mb-4`}>
-                        <h2 className={`Price_name`}>
-                        Favourite Places
-                        </h2> 
+                    <div className={tw`border-t border-gray-200 py-4`}>
+                    <div className={tw`flex items-center justify-between`}>
+                        <div className={`flex justify-between items-center w-full cursor-pointer`} onClick={()=>setFav(!fav)}>
+                            <h2 className={`Price_name`}>
+                                    Favourite Places
+                                
+                            </h2>
+                            <div className='w-full_'>
+                                {
+                                    fav?<AiOutlineMinus className={`font-bold text-xl`}/>
+                                    :< AiOutlinePlus  className={`font-bold text-xl`}/>
+                                }
+                                
+                            </div>  
+                        </div>
                     </div>
-                    <div className={tw`max-h-[300px] overflow-y-scroll`}>
+
+
+
+                    <div className={tw`max-h-[300px] overflow-y-scroll ${fav?'block':'hidden'}`}>
                         {placeRender}
                     </div>                    
 
@@ -280,13 +307,30 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
                 {
                     page_type == 'STATE' || page_type == 'ALL'?
                 
-                    <div className={tw`border-t border-red-200 py-4`}>
-                    <div className={tw`flex items-center justify-between mb-4`}>
+                    <div className={tw`border-t border-gray-200 py-4`}>
+                    {/* <div className={tw`flex items-center justify-between mb-4`}>
                         <h2 className={`Price_name`}>
                         Themes of Trip
                         </h2> 
+                    </div> */}
+
+                    <div className={tw`flex items-center justify-between`}>
+                        <div className={`flex justify-between items-center w-full cursor-pointer`} onClick={()=>setThm(!thm)}>
+                            <h2 className={`Price_name`}>
+                                Themes of Trip
+                            </h2>
+                            <div className='w-full_'>
+                                {
+                                    thm?<AiOutlineMinus className={`font-bold text-xl`}/>
+                                    :< AiOutlinePlus  className={`font-bold text-xl`}/>
+                                }
+                                
+                            </div>  
+                        </div>
                     </div>
-                    <div className={tw`max-h-[300px] overflow-y-scroll`}>
+
+
+                    <div className={tw`max-h-[300px] overflow-y-scroll ${thm?'block':'hidden'}`}>
                         {themeRender}
                     </div>                    
 
