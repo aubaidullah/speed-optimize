@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
+import Script from "next/script";
 // import Script from 'next/script';
 import * as Constants from "./Constants";
 
@@ -7,6 +8,19 @@ const Meta = ({ meta }) => {
   const { asPath, pathname } = useRouter();
   console.log(asPath);
   const GA_TRACKING_ID = "GTM-MT2JH48";
+  const jsonData = {
+    "@context" : "https://schema.org",
+    "@type" : "Organization",
+    "url" : "http://kiomoi.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Noida",
+      "addressRegion": "IN",
+      "postalCode": "201301",
+      "streetAddress": "201301 H-187, Lohia Road, Sector-63, Noida 201301 India"
+    },
+    "email" : "info@kiomoi.com"
+  }
   // const GA_TRACKING_ID = "G-CVJVT86DPD"
   return (
     <>
@@ -22,6 +36,16 @@ const Meta = ({ meta }) => {
               `
           }}
         />
+
+        <Script 
+          type="application/ld+json" 
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonData) }}
+        
+        />
+
+        {/* </script> */}
+
+
         <meta charset="utf-8" />
         <link
           rel="icon"

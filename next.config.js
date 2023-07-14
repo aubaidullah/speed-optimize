@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  compress : true,
   reactStrictMode: true,
-  assetPrefix : 'https://assets.kiomoi.com',
+  assetPrefix : 'https://devassets.kiomoi.com',
   images: {
     domains: ['res.cloudinary.com', 'img.kiomoi.com',"res.cloudi","testkiomoi.vercel.app","assets.kiomoi.com","devassets.kiomoi.com","kiomoi.com"]
     // remotePatterns: [
@@ -18,7 +19,8 @@ const nextConfig = {
       //   destination: '/holidays/international-package'
       // }, 
       {
-        source:'/holiday-:slug-tour-package-:id',
+        // source:'/holiday-:slug-tour-package-:id',
+        source:'/holidays/:slug-tour-package-:id',
         destination:'/holidays/detail'
       },
       

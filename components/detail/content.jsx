@@ -313,18 +313,18 @@ const Content = ({data}) =>{
                         <div className="hotel_accomodation __50px" id="hotels">
                             <div className="_list_accomodation">
                                 <h4 className="_titles_">Hotel Accomodation</h4>
-                                <table className="table table-hover">
+                                <table className={tw`table-auto_ table-hover acc_table mt-4`}>
                                 <thead>
                                     <tr>
-                                    <th className={tw`algin-middle`}>
-                                        City
-                                    </th>
-                                    <th className={tw`algin-middle`}>
-                                        No. Of Nights
-                                    </th>
-                                    <th className={tw`algin-middle`}>
-                                        Hotel
-                                    </th>
+                                      <th className={tw`algin-middle_`}>
+                                          City
+                                      </th>
+                                      <th className={tw`algin-middle_`}>
+                                          No. Of Nights
+                                      </th>
+                                      <th className={tw`algin-middle_`}>
+                                          Hotel
+                                      </th>
                                     </tr>
                                 </thead>
                                 <tbody>
