@@ -12,8 +12,9 @@
 
 
 .acc_table td,th{
+  background: white;
   padding: 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   text-align: left;
 }
 

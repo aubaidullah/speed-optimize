@@ -11,7 +11,11 @@ const Meta = ({ meta }) => {
   const jsonData = {
     "@context" : "https://schema.org",
     "@type" : "Organization",
-    "url" : "http://kiomoi.com",
+    "@id" : "https://kiomoi.com",
+    "name":"Kiomoi Travels",
+    "description":"Book Holiday Packages, Honeymoon And Vacation Trip",
+    "url" : "https://kiomoi.com",
+    "telephone":"+919650687940",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Noida",
@@ -19,7 +23,16 @@ const Meta = ({ meta }) => {
       "postalCode": "201301",
       "streetAddress": "201301 H-187, Lohia Road, Sector-63, Noida 201301 India"
     },
-    "email" : "info@kiomoi.com"
+    "logo":"https://www.kiomoi.com/icons/kiomoi%20logo.svg",
+    "email" : "info@kiomoi.com",
+    "sameAs":[
+      "https://www.facebook.com/thekiomoi/",
+      "https://twitter.com/ki_omoi",
+      "https://www.instagram.com/kiomoi_in/",
+      "https://www.linkedin.com/company/kiomoi/",
+      "https://www.youtube.com/channel/UCPq6EimDUQ2eknEJgyLqnnA"
+    ],
+
   }
   // const GA_TRACKING_ID = "G-CVJVT86DPD"
   return (
@@ -37,7 +50,7 @@ const Meta = ({ meta }) => {
           }}
         />
 
-        <Script 
+        <script 
           type="application/ld+json" 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonData) }}
         
