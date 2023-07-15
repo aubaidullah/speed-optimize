@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  compress : true,
   reactStrictMode: true,
   assetPrefix : 'https://assets.kiomoi.com',
   images: {
@@ -18,7 +19,8 @@ const nextConfig = {
       //   destination: '/holidays/international-package'
       // }, 
       {
-        source:'/holiday-:slug-tour-package-:id',
+        // source:'/holiday-:slug-tour-package-:id',
+        source:'/holidays/:slug-tour-package-:id',
         destination:'/holidays/detail'
       },
       

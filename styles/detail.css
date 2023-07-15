@@ -10,6 +10,18 @@
     color: orange;    
 }
 
+
+.acc_table td,th{
+  background: white;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+.acc_table th{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
 .detail_slide_nav ul {
     padding: 0;
   }

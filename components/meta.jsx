@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
+import Script from "next/script";
 // import Script from 'next/script';
 import * as Constants from "./Constants";
 
@@ -7,6 +8,32 @@ const Meta = ({ meta }) => {
   const { asPath, pathname } = useRouter();
   console.log(asPath);
   const GA_TRACKING_ID = "GTM-MT2JH48";
+  const jsonData = {
+    "@context" : "https://schema.org",
+    "@type" : "Organization",
+    "@id" : "https://kiomoi.com",
+    "name":"Kiomoi Travels",
+    "description":"Book Holiday Packages, Honeymoon And Vacation Trip",
+    "url" : "https://kiomoi.com",
+    "telephone":"+919650687940",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Noida",
+      "addressRegion": "IN",
+      "postalCode": "201301",
+      "streetAddress": "201301 H-187, Lohia Road, Sector-63, Noida 201301 India"
+    },
+    "logo":"https://www.kiomoi.com/icons/kiomoi%20logo.svg",
+    "email" : "info@kiomoi.com",
+    "sameAs":[
+      "https://www.facebook.com/thekiomoi/",
+      "https://twitter.com/ki_omoi",
+      "https://www.instagram.com/kiomoi_in/",
+      "https://www.linkedin.com/company/kiomoi/",
+      "https://www.youtube.com/channel/UCPq6EimDUQ2eknEJgyLqnnA"
+    ],
+
+  }
   // const GA_TRACKING_ID = "G-CVJVT86DPD"
   return (
     <>
@@ -22,6 +49,16 @@ const Meta = ({ meta }) => {
               `
           }}
         />
+
+        <script 
+          type="application/ld+json" 
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonData) }}
+        
+        />
+
+        {/* </script> */}
+
+
         <meta charset="utf-8" />
         <link
           rel="icon"

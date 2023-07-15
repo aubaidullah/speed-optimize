@@ -60,7 +60,7 @@ const Package = ({index,item}) =>{
     return <>
         {/* <Link href={"/holidays/detail"}> */}
             <a className={`flex flex-col`}>
-            <div className="pack_box" key={item.id} itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+            <div className="pack_box rounded-lg hover:shadow-lg transition-shadow" key={item.id} itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
                 <meta itemProp='position' content={index+1} />
                 <div className="row">
                         <div className="col-lg-12 col-sm-12" itemType="https://schema.org/TouristTrip" itemScope>
