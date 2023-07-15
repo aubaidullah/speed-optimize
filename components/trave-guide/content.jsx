@@ -4,8 +4,8 @@ import { useState } from 'react';
 import {tw} from 'twind'
 import {AiOutlinePlus,AiOutlineMinus} from 'react-icons/ai'
 
-const Tabs=({title,desc})=>{
-    const [collapse, setCollapse] = useState(null);
+const Tabs=({title,desc,clps=null})=>{
+    const [collapse, setCollapse] = useState(clps);
     return     <div>
         <div className="faq-acc">
             <div aria-multiselectable="true" className="panel-group" id="accordion" role="tablist">
@@ -73,17 +73,17 @@ const Tabs=({title,desc})=>{
 
 
 
-const Content =({data})=>{
-    const [collapse, setCollapse] = useState(null);
+const Content =({data,collapse=null})=>{
+    // const [collapse, setCollapse] = useState(null);
     return <>
     
 
     <div>
-        {data.tg.howToReachwHeading?<Tabs title={data.tg.howToReachwHeading} desc={data.tg.howToReachDesc} />:""}
-        {data.tg.eventsHeading?<Tabs title={data.tg.eventsHeading} desc={data.tg.eventsDesc} />:""}
-        {data.tg.factsHeading?<Tabs title={data.tg.factsHeading} desc={data.tg.factsDesc} />:""}
-        {data.tg.foodHeading?<Tabs title={data.tg.foodHeading} desc={data.tg.foodDesc} />:""}
-        {data.tg.marketHeading?<Tabs title={data.tg.marketHeading} desc={data.tg.marketDesc} />:""}
+        {data.tg.howToReachwHeading?<Tabs title={data.tg.howToReachwHeading} desc={data.tg.howToReachDesc} clps={collapse} />:""}
+        {data.tg.eventsHeading?<Tabs title={data.tg.eventsHeading} desc={data.tg.eventsDesc} clps={collapse} />:""}
+        {data.tg.factsHeading?<Tabs title={data.tg.factsHeading} desc={data.tg.factsDesc} clps={collapse} />:""}
+        {data.tg.foodHeading?<Tabs title={data.tg.foodHeading} desc={data.tg.foodDesc} clps={collapse} />:""}
+        {data.tg.marketHeading?<Tabs title={data.tg.marketHeading} desc={data.tg.marketDesc} clps={collapse} />:""}
         {/* <Tabs title={data.tg.factsHeading} desc={data.tg.factsDesc} /> */}
         {/* <Tabs title={data.tg.foodHeading} desc={data.tg.foodDesc} /> */}
         {/* <Tabs title={data.tg.marketHeading} desc={data.tg.marketDesc} /> */}

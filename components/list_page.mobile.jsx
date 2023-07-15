@@ -14,10 +14,14 @@ import ReactHtmlParser from "react-html-parser";
 // import Meta from "./meta"
 import { useRouter } from 'next/router'
 import { createCountryListURL, createStateListURL } from "./fun"
-import RelatedTour from './detail/related_tours';
+// import RelatedTour from './detail/related_tours';
+// import Content from './trave-guide/content';
+// import Tabs
 // import Modal from "./modal"
 
 // const  
+const Content = dynamic(() => import('./trave-guide/content'))
+const RelatedTour = dynamic(() => import('./detail/related_tours'))
 const BreadCrumbs = dynamic(() => import('./breadcrumbs'))
 const Meta = dynamic(() => import('./meta'))
 const FilterBy = dynamic(() => import('./list/filter'))
@@ -32,7 +36,7 @@ const Package = dynamic(() => import('../components/package'))
 // const filtr = useSelector(state=>state.filter)
 // console.log(filtr)
 
-const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefined,theme=undefined,related = undefined}) =>{
+const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefined,theme=undefined,related = undefined,travel=undefined}) =>{
     
     const [filter,setFilter] = useState({keyword:""})
     const [limit,setLimit] = useState(10)
@@ -555,7 +559,27 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                             
                         
                         :""
-                    }
+            }
+
+            {
+                travel?
+                <>
+                <div className='container mt-4'>
+                    <h1 className={tw`mt-8 ${isMobile?"text-xl":'text-3xl'} mb-4 text-center font-semibold`}>Read more About {region?.name}</h1>
+                    <Content data={travel} collapse={true}/>
+                    {/* {data.tg.howToReachwHeading?<Tabs title={data.tg.howToReachwHeading} desc={data.tg.howToReachDesc} />:""}
+                    {data.tg.eventsHeading?<Tabs title={data.tg.eventsHeading} desc={data.tg.eventsDesc} />:""}
+                    {data.tg.factsHeading?<Tabs title={data.tg.factsHeading} desc={data.tg.factsDesc} />:""}
+                    {data.tg.foodHeading?<Tabs title={data.tg.foodHeading} desc={data.tg.foodDesc} />:""}
+                    {data.tg.marketHeading?<Tabs title={data.tg.marketHeading} desc={data.tg.marketDesc} />:""} */}
+                    {/* {<Tabs} */}
+                    {/* <Tabs title={data.tg.factsHeading} desc={data.tg.factsDesc} /> */}
+                    {/* <Tabs title={data.tg.foodHeading} desc={data.tg.foodDesc} /> */}
+                    {/* <Tabs title={data.tg.marketHeading} desc={data.tg.marketDesc} /> */}
+                </div>
+                </>
+                :""
+            }
         </article>    
     </>
     
