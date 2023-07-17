@@ -14,6 +14,8 @@ import ReactHtmlParser from "react-html-parser";
 // import Meta from "./meta"
 import { useRouter } from 'next/router'
 import { createCountryListURL, createStateListURL } from "./fun"
+import State_Attraction from './trave-guide/attractions';
+import TopCities from './trave-guide/top_cities';
 // import RelatedTour from './detail/related_tours';
 // import Content from './trave-guide/content';
 // import Tabs
@@ -577,6 +579,20 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                     {/* <Tabs title={data.tg.foodHeading} desc={data.tg.foodDesc} /> */}
                     {/* <Tabs title={data.tg.marketHeading} desc={data.tg.marketDesc} /> */}
                 </div>
+                <div className='container mt-16  '>
+                    <div className='box_design_common title_kiomoi'>
+                        <h4>Top cities to visit in {region.name}</h4>
+                        <div className={`flex flex-wrap mt-4`}>
+                            {/* <h2>Top Cities</h2> */}
+                            <TopCities data={travel} attlimit={8} _package={true}/>
+                        </div>
+                    </div>
+                </div>
+                
+                <div className='container_ mt-4'>
+                    <State_Attraction data={travel.attn}/>
+                </div>
+
                 </>
                 :""
             }
