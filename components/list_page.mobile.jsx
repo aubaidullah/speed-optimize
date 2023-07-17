@@ -579,6 +579,8 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                     {/* <Tabs title={data.tg.foodHeading} desc={data.tg.foodDesc} /> */}
                     {/* <Tabs title={data.tg.marketHeading} desc={data.tg.marketDesc} /> */}
                 </div>
+                {
+                page_type == 'STATE'?
                 <div className='container mt-16  '>
                     <div className='box_design_common title_kiomoi'>
                         <h4>Top cities to visit in {region.name}</h4>
@@ -587,11 +589,16 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                             <TopCities data={travel} attlimit={8} _package={true}/>
                         </div>
                     </div>
-                </div>
-                
-                <div className='container_ mt-4'>
-                    <State_Attraction data={travel.attn}/>
-                </div>
+                </div>:""
+                }
+
+                {
+                    page_type == 'STATE'?
+                        <div className='container_ mt-4'>
+                        <State_Attraction data={travel.attn}/>
+                    </div>:""
+                }
+
 
                 </>
                 :""
