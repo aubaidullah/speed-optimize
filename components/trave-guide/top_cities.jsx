@@ -17,7 +17,7 @@ const TopCities = ({data,attlimit=5,_package=false}) =>{
                     <Link href={url} key={i}>
                         <div>
                         <div>
-                            <div className={tw`image-squre__ relative`}>
+                            <div className={tw`image-squre__ relative ${_package?'h-44':''}`}>
                                 <Image
                                     className={`w-full h-full rounded-lg`}
                                     src={
