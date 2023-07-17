@@ -12,12 +12,12 @@ const TopCities = ({data,attlimit=5,_package=false}) =>{
             // let url = `/travel-guide/india/city-${item.name.toLowerCase()}/${item.tgid}/`
             // let url = "/travel-guide/india/attraction" + "-" + item.name.trim().replace(/\s+/g, ' ').replace(/-/g, "").replace(/\s+/g, "-").toLowerCase() + "/" + item.id + "/"
             return (
-                <div className={`w-1/4 p-2`}>
+                <div className={`w-1/3 lg:w-1/4 p-2`}>
                     
                     <Link href={url} key={i}>
                         <div>
                         <div>
-                            <div className={tw`image-squre__ relative ${_package?'h-44':''}`}>
+                            <div className={tw`image-squre__ relative lg:${_package?'h-44':''}`}>
                                 <Image
                                     className={`w-full h-full rounded-lg`}
                                     src={
@@ -29,7 +29,7 @@ const TopCities = ({data,attlimit=5,_package=false}) =>{
                                 />
 
                             </div>
-                            <div className={tw`${_package?'font-semibold text-lg text-slate-700':''}`}>{item.name}</div>
+                            <div className={tw`${_package?'text-sm font-semibold lg:text-lg text-slate-700':''}`}>{item.name}</div>
                         </div>
                         </div>
                     </Link>
