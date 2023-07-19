@@ -99,7 +99,7 @@ const Nav = () => {
     //     const cl =
     //     "navbar navbar-default " +
     //     "normal" +
-    //     " " +{addnavClass};        
+    //     " " +{addnavClass};
     // })
     // const cl =
     // "navbar navbar-default " +

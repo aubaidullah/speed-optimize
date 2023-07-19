@@ -1,10 +1,9 @@
 import { useRouter } from "next/router"
-import { getallpackages, getStateByCityQuery,getMetaQuery } from "../../../components/Graphql/Queries"
+import { getallpackages, getStateByCityQuery,getMetaQuery, getTravelGuideQuery } from "../../../components/Graphql/Queries"
 import client from "../../../components/Graphql/service"
 // import Nav from "../../../components/Nav"
 import {useEffect,useState} from 'react'
 import dynamic from 'next/dynamic';
-import axios from "axios";
 
 
 const Nav = dynamic(() => import('../../../components/Nav'))
@@ -23,7 +22,7 @@ const DeskList = dynamic(() => import('../../../components/list_page.mobile'), {
 
 
 
-const CityPackages = ({data,headers,region,places,city,meta,related}) =>{
+const CityPackages = ({data,headers,region,places,city,meta,related,travel}) =>{
     console.log(region)
     const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('android') || headers['user-agent'].includes('iphone'))
 
@@ -39,10 +38,10 @@ const CityPackages = ({data,headers,region,places,city,meta,related}) =>{
 
     if (isMobile==true){
         // return <ListPageMobile data = {data}/>
-        return <><Nav/> <MobileList meta={meta} page_type={'CITY'} data={data??[]} region = {region} places={places} isMobile={isMobile} city={city} related={related} /></>
+        return <><Nav/> <MobileList meta={meta} page_type={'CITY'} data={data??[]} region = {region} places={places} isMobile={isMobile} city={city} related={related} travel={travel} /></>
     }
     else{
-        return <><Nav/><DeskList meta={meta} page_type={'CITY'} data = {data??[]} region = {region} places={places} isMobile={isMobile} city={city} related={related}/></>
+        return <><Nav/><DeskList meta={meta} page_type={'CITY'} data = {data??[]} region = {region} places={places} isMobile={isMobile} city={city} related={related} travel={travel}/></>
     }    
 
 
@@ -108,7 +107,21 @@ export async function getServerSideProps(context) {
     const rel_res = await client.query({query:getallpackages,variables:{input:payload}})
     const rel_package = rel_res.data.allpackage.output
 
-    console.log(rel_package)
+    // console.log(rel_package)
+
+    payload = {
+        "av": "",
+        "geoid": region.sid,
+        "home": "",
+        "id": "",
+        "pagenum": 0,
+        "pid": 0,
+        "pt": "",
+        "size": 0,
+        "type": "State"
+      }
+      const res_travel = await client.query({query:getTravelGuideQuery,variables:{input:payload}})
+
 
 
     const meta = await client.query({query:getMetaQuery,variables:{input:{av:"",id:context.query.id,key:'CITY_HOLIDAYS',name:"",pt:'WEBSITE',type:"CITY"}}})
@@ -127,7 +140,7 @@ export async function getServerSideProps(context) {
     // region = []
     // places = []
     headers['user-agent'] = headers['user-agent'].toLocaleLowerCase()
-    return { props: { data,headers,region,places,city:context.query.city,meta:metas,related:rel_package}}
+    return { props: { data,headers,region,places,city:context.query.city,meta:metas,related:rel_package,travel:res_travel.data.travel.output}}
 
 }
 

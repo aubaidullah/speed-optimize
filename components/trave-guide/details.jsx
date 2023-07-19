@@ -24,6 +24,7 @@ import * as Constants from '../Constants'
 import { createCityListURL,createCountryListURL,createStateListURL, createTGCityURL, imgNameByUrl, jpgToWebp } from '../fun';
 // import BreadCrumbs from "../breadcrumbs";
 import dynamic from "next/dynamic";
+import TopCities from './top_cities';
 // import ParseHtml from '../parseToHtml';
 const ParseHtml = dynamic(() => import('../parseToHtml'))
 const BreadCrumbs = dynamic(() => import('../breadcrumbs'))
@@ -492,34 +493,37 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                                 </div>
                                             )
                                         }):
-                                        data.ctg.slice(0, attlimit).map((item, i) => {
-                                            let url = createTGCityURL({city:item.name,id:item.tgid})
-                                            // let url = `/travel-guide/india/city-${item.name.toLowerCase()}/${item.tgid}/`
-                                            // let url = "/travel-guide/india/attraction" + "-" + item.name.trim().replace(/\s+/g, ' ').replace(/-/g, "").replace(/\s+/g, "-").toLowerCase() + "/" + item.id + "/"
-                                            return (
-                                                <div className={`w-1/4 p-2`}>
+                                        <TopCities data={data}/>
+                                        
+                                        
+                                        // data.ctg.slice(0, attlimit).map((item, i) => {
+                                        //     let url = createTGCityURL({city:item.name,id:item.tgid})
+                                        //     // let url = `/travel-guide/india/city-${item.name.toLowerCase()}/${item.tgid}/`
+                                        //     // let url = "/travel-guide/india/attraction" + "-" + item.name.trim().replace(/\s+/g, ' ').replace(/-/g, "").replace(/\s+/g, "-").toLowerCase() + "/" + item.id + "/"
+                                        //     return (
+                                        //         <div className={`w-1/4 p-2`}>
                                                     
-                                                    <Link href={url} key={i}>
-                                                        <div>
-                                                        <div>
-                                                            <div className="image-squre__">
-                                                                <img
-                                                                    className={`w-full h-full`}
-                                                                    src={
-                                                                        item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`
-                                                                    }
-                                                                    alt="kiomoi logo"
-                                                                />
+                                        //             <Link href={url} key={i}>
+                                        //                 <div>
+                                        //                 <div>
+                                        //                     <div className="image-squre__">
+                                        //                         <img
+                                        //                             className={`w-full h-full`}
+                                        //                             src={
+                                        //                                 item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`
+                                        //                             }
+                                        //                             alt="kiomoi logo"
+                                        //                         />
 
-                                                            </div>
-                                                            <p>{item.name}</p>
-                                                        </div>
-                                                        </div>
-                                                    </Link>
+                                        //                     </div>
+                                        //                     <p>{item.name}</p>
+                                        //                 </div>
+                                        //                 </div>
+                                        //             </Link>
                                                     
-                                                </div>
-                                            )
-                                        })
+                                        //         </div>
+                                        //     )
+                                        // })
 
 
                                     }

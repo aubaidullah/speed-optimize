@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { getallpackages,getThemeQuery,getMetaQuery } from "../../../components/Graphql/Queries"
+import { getallpackages,getThemeQuery,getMetaQuery, getTravelGuideQuery } from "../../../components/Graphql/Queries"
 import client from "../../../components/Graphql/service"
 // import Nav from "../../../components/Nav"
 import {useEffect,useState} from 'react'
@@ -22,7 +22,7 @@ const DeskList = dynamic(() => import('../../../components/list_page.mobile'), {
 
 
 
-const StatePackages = ({data,headers,region,places,theme,meta}) =>{
+const StatePackages = ({data,headers,region,places,theme,meta,travel}) =>{
     const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('android') || headers['user-agent'].includes('iphone'))
 
 
@@ -58,10 +58,10 @@ const StatePackages = ({data,headers,region,places,theme,meta}) =>{
 
     if (isMobile==true){
         // return <ListPageMobile data = {data}/>
-        return <><Nav/> <MobileList meta={meta} page_type={'STATE'} data={data??[]} region = {region} places={places} isMobile={isMobile} theme={theme}  /></>
+        return <><Nav/> <MobileList meta={meta} page_type={'STATE'} data={data??[]} region = {region} places={places} isMobile={isMobile} theme={theme} travel={travel} /></>
     }
     else{
-        return <><Nav/><DeskList meta={meta} page_type={'STATE'} data = {data??[]} region = {region} places={places} isMobile={isMobile} theme={theme}/></>
+        return <><Nav/><DeskList meta={meta} page_type={'STATE'} data = {data??[]} region = {region} places={places} isMobile={isMobile} theme={theme} travel={travel}/></>
     }    
 
 
@@ -114,6 +114,20 @@ export async function getServerSideProps(context) {
         image:images
     }
 
+
+    payload = {
+        "av": "",
+        "geoid": context.query.id,
+        "home": "",
+        "id": "",
+        "pagenum": 0,
+        "pid": 0,
+        "pt": "",
+        "size": 0,
+        "type": "State"
+      }
+      const res_travel = await client.query({query:getTravelGuideQuery,variables:{input:payload}})
+
     
     // finalprice = `₹${finalprice}`
 
@@ -122,7 +136,7 @@ export async function getServerSideProps(context) {
 
     // meta.data.meta.output.tags.title = meta.data.meta.output.package 
 
-    return { props: { data,headers,region,places,theme:res_theme.data.alltheme.output,meta:metas}}
+    return { props: { data,headers,region,places,theme:res_theme.data.alltheme.output,meta:metas,travel:res_travel.data.travel.output}}
 
 }
 

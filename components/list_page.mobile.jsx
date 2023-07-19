@@ -14,15 +14,23 @@ import ReactHtmlParser from "react-html-parser";
 // import Meta from "./meta"
 import { useRouter } from 'next/router'
 import { createCountryListURL, createStateListURL } from "./fun"
-import RelatedTour from './detail/related_tours';
+import State_Attraction from './trave-guide/attractions';
+import TopCities from './trave-guide/top_cities';
+// import { TableLoading } from './skelton';
+// import RelatedTour from './detail/related_tours';
+// import Content from './trave-guide/content';
+// import Tabs
 // import Modal from "./modal"
 
 // const  
+const TableLoading = dynamic(() => import('./skelton').then((mod)=>mod.TableLoading),{ssr:false})
+const Content = dynamic(() => import('./trave-guide/content'))
+const RelatedTour = dynamic(() => import('./detail/related_tours'))
 const BreadCrumbs = dynamic(() => import('./breadcrumbs'))
 const Meta = dynamic(() => import('./meta'))
 const FilterBy = dynamic(() => import('./list/filter'))
 const Modal = dynamic(() => import('./modal'))
-const Package = dynamic(() => import('../components/package'))
+const Package = dynamic(() => import('../components/package'),{loading:()=> <TableLoading />})
 
 // const filtering = useSelector(state=>state.package.package)
 // const FilterBy = dynamic(() => import('./list/filter'), {
@@ -32,7 +40,7 @@ const Package = dynamic(() => import('../components/package'))
 // const filtr = useSelector(state=>state.filter)
 // console.log(filtr)
 
-const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefined,theme=undefined,related = undefined}) =>{
+const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefined,theme=undefined,related = undefined,travel=undefined}) =>{
     
     const [filter,setFilter] = useState({keyword:""})
     const [limit,setLimit] = useState(10)
@@ -555,7 +563,48 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                             
                         
                         :""
-                    }
+            }
+
+            {
+                travel?
+                <>
+                <div className='container mt-4'>
+                    <h1 className={tw`mt-8 ${isMobile?"text-xl":'text-3xl'} mb-4 text-center font-semibold`}>Read more About {region?.name}</h1>
+                    <Content data={travel} collapse={true}/>
+                    {/* {data.tg.howToReachwHeading?<Tabs title={data.tg.howToReachwHeading} desc={data.tg.howToReachDesc} />:""}
+                    {data.tg.eventsHeading?<Tabs title={data.tg.eventsHeading} desc={data.tg.eventsDesc} />:""}
+                    {data.tg.factsHeading?<Tabs title={data.tg.factsHeading} desc={data.tg.factsDesc} />:""}
+                    {data.tg.foodHeading?<Tabs title={data.tg.foodHeading} desc={data.tg.foodDesc} />:""}
+                    {data.tg.marketHeading?<Tabs title={data.tg.marketHeading} desc={data.tg.marketDesc} />:""} */}
+                    {/* {<Tabs} */}
+                    {/* <Tabs title={data.tg.factsHeading} desc={data.tg.factsDesc} /> */}
+                    {/* <Tabs title={data.tg.foodHeading} desc={data.tg.foodDesc} /> */}
+                    {/* <Tabs title={data.tg.marketHeading} desc={data.tg.marketDesc} /> */}
+                </div>
+                {
+                page_type == 'STATE'?
+                <div className='container mt-16  '>
+                    <div className='box_design_common title_kiomoi'>
+                        <h4>Top cities to visit in {region.name}</h4>
+                        <div className={`flex flex-wrap mt-4`}>
+                            {/* <h2>Top Cities</h2> */}
+                            <TopCities data={travel} attlimit={8} _package={true}/>
+                        </div>
+                    </div>
+                </div>:""
+                }
+
+                {
+                    page_type == 'CITY'?
+                        <div className='container_ mt-4'>
+                        <State_Attraction data={travel.attn}/>
+                    </div>:""
+                }
+
+
+                </>
+                :""
+            }
         </article>    
     </>
     

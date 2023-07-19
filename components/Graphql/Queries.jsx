@@ -99,6 +99,26 @@ query hotels($input:Payload!) {
 `;
 
 
+export const getTravelGuideQuery = gql`
+fragment Payload on REST {
+    av: String,
+    geoid: String,
+    home: String,
+    id: String,
+    pagenum: String,
+    pid: String,
+    pt: String,
+    size: String,
+    type: String
+  }
+query travel($input:Payload!) {
+    travel(input:$input) @rest(type: "travel",method:"POST", path: "/api/v1/travelguide/get") {
+      output
+    }
+  }
+`;
+
+
 
 
 export const getCountryContent = gql`

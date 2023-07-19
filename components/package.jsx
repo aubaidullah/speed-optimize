@@ -115,29 +115,18 @@ const Package = ({index,item}) =>{
                                                         </div>
                                                         
                                                     </div>
-                                                    <div className="flt_right inline">
+                                                    {
+                                                        item.sratings!="0"?<div className="flt_right inline">
                                                         <div className="star">
                                                             {userRating}
-                                                            {/* { Math.floor(parseFloat(item.sratings))}
-                                                            <BsStarFill className="icon_size"/>
-                                                            <BsStarFill className="icon_size"/>
-                                                            <BsStarFill className="icon_size"/> */}
-                                                        </div>
-                                                        
-
-
+                                                        </div>                                                        
                                                         <div className="rating" 
-                                                        // itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating"
                                                         >
-
-                                                            {/* <meta itemProp="ratingValue" content='4.5' />
-                                                            <meta itemProp="bestRating" content='5'/>
-                                                            <meta itemProp='ratingCount' content='26'/> */}
-
-
-                                                            <span className='inline'>4.5 <BsDot className='inline'/> 26 Rating</span>
+                                                            <span className='inline'>{item.sratings} <BsDot className='inline'/> {item.suers} Rating</span>
                                                         </div>
-                                                    </div>                        
+                                                    </div>:""
+                                                    }
+                                                                            
                                                 </div>
 
                                                 <div className={``}>
@@ -233,21 +222,18 @@ const Package = ({index,item}) =>{
                                                                 </div>
                                                                 
                                                             </div>
-                                                            <div className="flt_right">
+                                                            {
+                                                                item.sratings!="0"?<div className="flt_right">
                                                                 <div className="star">
                                                                     {userRating}
-                                                                    {/* { Math.floor(parseFloat(item.sratings))}
-                                                                    <BsStarFill className="icon_size"/>
-                                                                    <BsStarFill className="icon_size"/>
-                                                                    <BsStarFill className="icon_size"/> */}
                                                                 </div>
-                                                                
-
-
                                                                 <div className="rating">
-                                                                    <span className='inline'>4.5 <BsDot className='inline' /> 26 Rating</span>
+                                                                    <span className='inline'>{item.sratings} <BsDot className='inline' /> {item.susers} Rating</span>
                                                                 </div>
-                                                            </div>                        
+                                                            </div>:""
+
+                                                            }
+                                                            
                                                         </div>
 
                                                         <div className="location">
