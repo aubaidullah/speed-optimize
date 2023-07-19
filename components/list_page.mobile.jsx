@@ -16,13 +16,14 @@ import { useRouter } from 'next/router'
 import { createCountryListURL, createStateListURL } from "./fun"
 import State_Attraction from './trave-guide/attractions';
 import TopCities from './trave-guide/top_cities';
-import { TableLoading } from './skelton';
+// import { TableLoading } from './skelton';
 // import RelatedTour from './detail/related_tours';
 // import Content from './trave-guide/content';
 // import Tabs
 // import Modal from "./modal"
 
 // const  
+const TableLoading = dynamic(() => import('./skelton').then((mod)=>mod.TableLoading),{ssr:false})
 const Content = dynamic(() => import('./trave-guide/content'))
 const RelatedTour = dynamic(() => import('./detail/related_tours'))
 const BreadCrumbs = dynamic(() => import('./breadcrumbs'))
