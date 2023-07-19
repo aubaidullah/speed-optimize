@@ -16,6 +16,7 @@ import { useRouter } from 'next/router'
 import { createCountryListURL, createStateListURL } from "./fun"
 import State_Attraction from './trave-guide/attractions';
 import TopCities from './trave-guide/top_cities';
+import { TableLoading } from './skelton';
 // import RelatedTour from './detail/related_tours';
 // import Content from './trave-guide/content';
 // import Tabs
@@ -28,7 +29,7 @@ const BreadCrumbs = dynamic(() => import('./breadcrumbs'))
 const Meta = dynamic(() => import('./meta'))
 const FilterBy = dynamic(() => import('./list/filter'))
 const Modal = dynamic(() => import('./modal'))
-const Package = dynamic(() => import('../components/package'))
+const Package = dynamic(() => import('../components/package'),{loading:()=> <TableLoading />})
 
 // const filtering = useSelector(state=>state.package.package)
 // const FilterBy = dynamic(() => import('./list/filter'), {
@@ -593,7 +594,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                 }
 
                 {
-                    page_type == 'STATE'?
+                    page_type == 'CITY'?
                         <div className='container_ mt-4'>
                         <State_Attraction data={travel.attn}/>
                     </div>:""

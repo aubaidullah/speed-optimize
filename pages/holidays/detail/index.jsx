@@ -5,6 +5,8 @@ import dynamic from "next/dynamic";
 
 import { tw } from 'twind'
 import { useState } from 'react';
+import { useRouter } from 'next/router'
+import Head from "next/head";
 // import _Carousel from "@/components/detail/_Carousel";
 
 
@@ -35,6 +37,7 @@ import { createCountryListURL } from "@/components/fun";
 // import ReviewRender from "@/components/detail/review";
 
 const DetailPage = ({ data, related, reviews,meta }) => {
+    const router = useRouter()
 
     const [show, setShow] = useState(null);
 
@@ -114,11 +117,67 @@ const DetailPage = ({ data, related, reviews,meta }) => {
             </>
           );
         }
-      });    
+      });
+      
+    const jsonData = [
+        {
+           "@context":"http://schema.org/",
+           "@type":"Product",
+           "name":data?.package.name,
+           "productId": data?.package.id,
+           "image":data?.package.images.split(',') ?? [],
+           "description":data?.package.description,
+           "url":`https://www.kiomoi.com${router.asPath}`,
+           "aggregateRating":{
+              "@type":"AggregateRating",
+              "ratingValue":data?.package.sratings,
+              "reviewCount":data?.package.susers
+           },
+           "offers":{
+              "@type":"Offer",
+              "url":`https://www.kiomoi.com${router.asPath}`,
+              "priceCurrency":"INR",
+              "price":data?.package.finalprice,
+              "availability":"http://schema.org/InStock",
+              "seller":{
+                 "@type":"Organization",
+                 "name":"Kiomoi Travel"
+              }
+           },
+           "additionalProperty":[
+              {
+                 "@type":"PropertyValue",
+                 "propertyID":"custom_label_0",
+                 "value":"tour"
+              },
+              {
+                 "@type":"PropertyValue",
+                 "propertyID":"custom_label_1",
+                 "value":`${data?.package.region} tour package`
+              },
+              {
+                 "@type":"PropertyValue",
+                 "propertyID":"custom_label_2",
+                 "value":data?.package.region
+              }
+           ]
+        }
+     ]
+
+    //  console.log(router)
 
     // Handle Image Change
 
     return <>
+
+
+        <Head>
+        <script 
+          type="application/ld+json" 
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonData) }}
+        />
+        </Head>
+
         {show ? <Guest show={show} setShow={() => setShow(!show)} /> : null}
         <Meta meta={meta} />
 
@@ -130,14 +189,19 @@ const DetailPage = ({ data, related, reviews,meta }) => {
             <div className='flex flex-wrap'>
                 <div className={tw`w-full lg:w-2/3`}>
                     <h1 className='h1_title'>{data?.package.name}</h1>
-                    <div>
-                        <div className='_inline__'>
-                            {userRating}
+                    {
+                        data?.package.sratings!="0"?
+                        <div>
+                            <div className='_inline__'>
+                                {userRating}
+                            </div>
+                            <div className="_inline__ rating d_rating">
+                                <span>{data?.package.sratings} <BsDot className={tw`inline`} /> {data?.package.susers} Rating</span>
+                            </div>
                         </div>
-                        <div className="_inline__ rating d_rating">
-                            <span>4.5 <BsDot className={tw`inline`} /> 26 Rating</span>
-                        </div>
-                    </div>
+                        :""
+                    }
+                    
                 </div>
                 <div className={tw`w-full lg:w-1/3`}>
                     <div className={tw`text-right thms`}>
