@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { getallpackages,getThemeQuery,getMetaQuery, getTravelGuideQuery } from "../../../components/Graphql/Queries"
+import { getallpackages,getThemeQuery,getMetaQuery, getTravelGuideQuery, getreviewsQuery } from "../../../components/Graphql/Queries"
 import client from "../../../components/Graphql/service"
 // import Nav from "../../../components/Nav"
 import {useEffect,useState} from 'react'
@@ -22,7 +22,7 @@ const DeskList = dynamic(() => import('../../../components/list_page.mobile'), {
 
 
 
-const StatePackages = ({data,headers,region,places,theme,meta,travel}) =>{
+const StatePackages = ({data,headers,region,places,theme,meta,travel, reviews}) =>{
     const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('android') || headers['user-agent'].includes('iphone'))
 
 
@@ -58,10 +58,10 @@ const StatePackages = ({data,headers,region,places,theme,meta,travel}) =>{
 
     if (isMobile==true){
         // return <ListPageMobile data = {data}/>
-        return <><Nav/> <MobileList meta={meta} page_type={'STATE'} data={data??[]} region = {region} places={places} isMobile={isMobile} theme={theme} travel={travel} /></>
+        return <><Nav/> <MobileList meta={meta} page_type={'STATE'} data={data??[]} region = {region} places={places} isMobile={isMobile} theme={theme} travel={travel} reviews={reviews} /></>
     }
     else{
-        return <><Nav/><DeskList meta={meta} page_type={'STATE'} data = {data??[]} region = {region} places={places} isMobile={isMobile} theme={theme} travel={travel}/></>
+        return <><Nav/><DeskList meta={meta} page_type={'STATE'} data = {data??[]} region = {region} places={places} isMobile={isMobile} theme={theme} travel={travel} reviews={reviews}/></>
     }    
 
 
@@ -128,6 +128,26 @@ export async function getServerSideProps(context) {
       }
       const res_travel = await client.query({query:getTravelGuideQuery,variables:{input:payload}})
 
+
+
+      const reviews = await client.query({
+        query: getreviewsQuery,
+        variables: {
+            input: {
+                av: '1.3',
+                id: '0',
+                pt: 'WEBSITE',
+                geoid: context.query.id,
+                pagenum: 1,
+                pid: 0,
+                size: 10,
+                'type': 'PACKAGE'
+            }
+        }
+    })
+
+
+    console.log(reviews.data?.reviews.output)
     
     // finalprice = `₹${finalprice}`
 
@@ -136,7 +156,7 @@ export async function getServerSideProps(context) {
 
     // meta.data.meta.output.tags.title = meta.data.meta.output.package 
 
-    return { props: { data,headers,region,places,theme:res_theme.data.alltheme.output,meta:metas,travel:res_travel.data.travel.output}}
+    return { props: { data,headers,region,places,theme:res_theme.data.alltheme.output,meta:metas,travel:res_travel.data.travel.output,reviews: reviews.data?.reviews.output}}
 
 }
 

@@ -1,26 +1,16 @@
-// import Package from "../components/package"
 import {AiOutlineArrowDown,AiOutlineArrowUp} from 'react-icons/ai'
 import {BsFilter} from 'react-icons/bs'
-// import BreadCrumbs from "./breadcrumbs"
 import dynamic from 'next/dynamic';
 import { useState,useEffect } from "react"
 import {tw} from 'twind'
-import { useSelector } from "react-redux"
-// import FilterBy from "./list/filter"
+// import { useSelector } from "react-redux"
 import { ScrollWrapper } from 'react-bottom-scroll';
 import ReactHtmlParser from "react-html-parser";
-// import { Modal } from "react-bootstrap"
-// import {BsXLg} from 'react-icons/bs';
-// import Meta from "./meta"
 import { useRouter } from 'next/router'
-import { createCountryListURL, createStateListURL } from "./fun"
+import { createCountryListURL, createStateListURL, toTitleCase } from "./fun"
 import State_Attraction from './trave-guide/attractions';
 import TopCities from './trave-guide/top_cities';
-// import { TableLoading } from './skelton';
-// import RelatedTour from './detail/related_tours';
-// import Content from './trave-guide/content';
-// import Tabs
-// import Modal from "./modal"
+import Reviews from './home/reviews';
 
 // const  
 const TableLoading = dynamic(() => import('./skelton').then((mod)=>mod.TableLoading),{ssr:false})
@@ -40,7 +30,7 @@ const Package = dynamic(() => import('../components/package'),{loading:()=> <Tab
 // const filtr = useSelector(state=>state.filter)
 // console.log(filtr)
 
-const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefined,theme=undefined,related = undefined,travel=undefined}) =>{
+const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefined,theme=undefined,related = undefined,travel=undefined,reviews = undefined}) =>{
     
     const [filter,setFilter] = useState({keyword:""})
     const [limit,setLimit] = useState(10)
@@ -57,24 +47,20 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     const [_min,set_Min] = useState(1)
     const [_max,set_Max]  = useState(100)
     const router = useRouter()
-    // console.log(router)
-    
-    
 
 
+    // router.push(
+    //     {
+    //         query:{
+    //             "filter":_themes
+    //         }
+    //     },
+    //     {pathname:`/${router.asPath}?filter=${_themes}`},
+    //     {shallow: true}
+        
+    // )
 
-    const filtering = useSelector(state=>state.filter)
-    
-    const setFiltering = (keyword) =>{
-        // console.log(keyword)
-        setFilter({keyword:keyword})
-    }
-
-    // useEffect(()=>{
-    //     setFilter({keyword:city??""})
-    // },[])
-    
-    // console.log(filter)
+    // console.log(router.query.filter)
     
         const state_bread = {
             disabled:{
@@ -196,18 +182,16 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     
     var pack = []
     
-    // data.map((
-    //     item=>   
-    //         item.pcities.split(",").map((e)=>{
+    useEffect(()=>{
+        try{
+            const n = router.query.filter.split(",").map(arr => toTitleCase(arr))
+            console.log(n)
+            set_Themes(arr => [...arr, ...n])
+        }catch{
             
-    //         if(filtering.places.includes(e)){
-    //             pack.push(item)
-    //         }
-    //     })
-    
-    // )
-    
-    // )
+        }
+        
+    },[])
     
     if(_places.length){
         data = data.filter(e=>e.pcities.split(',').some(x=>_places.includes(x)))
@@ -341,40 +325,6 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
 
 
             <section className="container m-auto">
-                {/* <div className="row" style={{marginBottom:'30px'}}>
-                    <h2>Kiomoi packages</h2>
-                </div> */}
-                {/* {region?
-                <div className={`p-4 bg-white mb-4 _box_shadow_`}>
-                <h2 className={`text-2xl pb-2`}>{region?.name}</h2>
-                <div>
-                    {ReactHtmlParser(overview)}
-                    {overviewlimit == 150 ||
-                        overviewlimit == 200 ? (
-                        <a
-                        onClick={() =>
-                            setOverviewlimit(10000)
-                        }
-                        className="_plus_more"
-                        >
-                        +more
-                        </a>
-                    ) : (
-                        <a
-                        onClick={()=>setOverviewlimit(200)}
-                        className="_plus_more"
-                        >
-                        -less
-                        </a>
-                    )}
-
-                </div>
-                </div>
-                
-                
-                :""
-                } */}
-
                 <div className={tw`flex flex-wrap`}>
                     {region?
                         <div className={`w-full p-4 bg-white mb-4 _box_shadow_ title_listing_ rounded-md`}>
@@ -402,8 +352,6 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
 
                         </div>
                         </div>
-                        
-                        
                         :""
                         }                    
                     {!isMobile?
@@ -414,11 +362,6 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
 
 
                     <div className={tw`w-full lg:w-3/4 `}>
-                        
-
-
-                        
-                        
                         <div className={``}>
                             <div className={`flex items-center justify-between mb-6 pb-2 border-b`}>
                                 <div>
@@ -521,39 +464,6 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                     
 
                 </div>
-
-                {/* {region?
-                <div className={`p-4 bg-white_ mb-4 _box_shadow_ title_listing_`}>
-                <h1 className={`text-2xl pb-2`}>{region?.name}</h1>
-                <div>
-                    {ReactHtmlParser(overview)}
-                    {overviewlimit == 150 ||
-                        overviewlimit == 200 ? (
-                        <a
-                        onClick={() =>
-                            setOverviewlimit(50000)
-                        }
-                        className="_plus_more"
-                        >
-                        +more
-                        </a>
-                    ) : (
-                        <a
-                        onClick={()=>setOverviewlimit(200)}
-                        className="_plus_more"
-                        >
-                        -less
-                        </a>
-                    )}
-
-                </div>
-                </div>
-                
-                
-                :""
-                } */}
-
-
             </section>
             {
                         page_type=='CITY'?
@@ -571,15 +481,6 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                 <div className='container mt-4'>
                     <h1 className={tw`mt-8 ${isMobile?"text-xl":'text-3xl'} mb-4 text-center font-semibold`}>Read more About {region?.name}</h1>
                     <Content data={travel} collapse={true}/>
-                    {/* {data.tg.howToReachwHeading?<Tabs title={data.tg.howToReachwHeading} desc={data.tg.howToReachDesc} />:""}
-                    {data.tg.eventsHeading?<Tabs title={data.tg.eventsHeading} desc={data.tg.eventsDesc} />:""}
-                    {data.tg.factsHeading?<Tabs title={data.tg.factsHeading} desc={data.tg.factsDesc} />:""}
-                    {data.tg.foodHeading?<Tabs title={data.tg.foodHeading} desc={data.tg.foodDesc} />:""}
-                    {data.tg.marketHeading?<Tabs title={data.tg.marketHeading} desc={data.tg.marketDesc} />:""} */}
-                    {/* {<Tabs} */}
-                    {/* <Tabs title={data.tg.factsHeading} desc={data.tg.factsDesc} /> */}
-                    {/* <Tabs title={data.tg.foodHeading} desc={data.tg.foodDesc} /> */}
-                    {/* <Tabs title={data.tg.marketHeading} desc={data.tg.marketDesc} /> */}
                 </div>
                 {
                 page_type == 'STATE'?
@@ -592,6 +493,10 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                         </div>
                     </div>
                 </div>:""
+                }
+
+                {
+                    page_type == 'STATE'?<Reviews data={reviews?.reviews}/>:""
                 }
 
                 {
