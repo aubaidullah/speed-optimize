@@ -147,7 +147,7 @@ export async function getServerSideProps(context) {
     })
 
 
-    console.log(reviews.data?.reviews.output)
+    // console.log(reviews.data?.reviews.output)
     
     // finalprice = `₹${finalprice}`
 

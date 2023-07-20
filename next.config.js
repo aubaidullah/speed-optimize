@@ -2,7 +2,7 @@
 const nextConfig = {
   compress : true,
   reactStrictMode: true,
-  assetPrefix : 'https://devassets.kiomoi.com',
+  assetPrefix : 'https://assets.kiomoi.com',
   images: {
     domains: ['res.cloudinary.com', 'img.kiomoi.com',"res.cloudi","testkiomoi.vercel.app","assets.kiomoi.com","devassets.kiomoi.com","kiomoi.com"]
     // remotePatterns: [
@@ -12,6 +12,17 @@ const nextConfig = {
     //   },
     // ],
   },
+
+  async redirects(){
+    return [
+      {
+        source: '/holiday-:slug-tour-package-:id',
+        destination: '/holidays/:slug-tour-package-:id',
+        permanent: true,
+      }
+    ]
+  },
+
   async rewrites() {
     return [
       // {
