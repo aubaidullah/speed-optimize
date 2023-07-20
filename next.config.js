@@ -12,6 +12,17 @@ const nextConfig = {
     //   },
     // ],
   },
+
+  async redirects(){
+    return [
+      {
+        source: '/holiday-:slug-tour-package-:id',
+        destination: '/holidays/:slug-tour-package-:id',
+        permanent: true,
+      }
+    ]
+  },
+
   async rewrites() {
     return [
       // {
