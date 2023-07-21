@@ -22,7 +22,7 @@ const DeskList = dynamic(() => import('../../../components/list_page.mobile'), {
 
 
 
-const StatePackages = ({data,headers,region,places,theme,meta,travel, reviews}) =>{
+const StatePackages = ({data,headers,region,places,theme,meta,travel, reviews,faqs}) =>{
     const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('android') || headers['user-agent'].includes('iphone'))
 
 
@@ -58,10 +58,10 @@ const StatePackages = ({data,headers,region,places,theme,meta,travel, reviews}) 
 
     if (isMobile==true){
         // return <ListPageMobile data = {data}/>
-        return <><Nav/> <MobileList meta={meta} page_type={'STATE'} data={data??[]} region = {region} places={places} isMobile={isMobile} theme={theme} travel={travel} reviews={reviews} /></>
+        return <><Nav/> <MobileList meta={meta} page_type={'STATE'} data={data??[]} region = {region} places={places} isMobile={isMobile} theme={theme} travel={travel} reviews={reviews} faqs={faqs} /></>
     }
     else{
-        return <><Nav/><DeskList meta={meta} page_type={'STATE'} data = {data??[]} region = {region} places={places} isMobile={isMobile} theme={theme} travel={travel} reviews={reviews}/></>
+        return <><Nav/><DeskList meta={meta} page_type={'STATE'} data = {data??[]} region = {region} places={places} isMobile={isMobile} theme={theme} travel={travel} reviews={reviews} faqs={faqs}/></>
     }    
 
 
@@ -156,7 +156,7 @@ export async function getServerSideProps(context) {
 
     // meta.data.meta.output.tags.title = meta.data.meta.output.package 
 
-    return { props: { data,headers,region,places,theme:res_theme.data.alltheme.output,meta:metas,travel:res_travel.data.travel.output,reviews: reviews.data?.reviews.output}}
+    return { props: { data,headers,region,places,theme:res_theme.data.alltheme.output,meta:metas,travel:res_travel.data.travel.output,reviews: reviews.data?.reviews.output,faqs:res.data.allpackage.output.faqs??[]}}
 
 }
 
