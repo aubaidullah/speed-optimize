@@ -2,7 +2,7 @@
 const nextConfig = {
   compress : true,
   reactStrictMode: true,
-  // assetPrefix : 'https://devassets.kiomoi.com',
+  assetPrefix : 'https://assets.kiomoi.com',
   images: {
     domains: ['res.cloudinary.com', 'img.kiomoi.com',"res.cloudi","testkiomoi.vercel.app","assets.kiomoi.com","devassets.kiomoi.com","kiomoi.com"]
     // remotePatterns: [
