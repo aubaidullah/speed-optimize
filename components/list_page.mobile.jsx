@@ -11,6 +11,7 @@ import { createCountryListURL, createStateListURL, toTitleCase } from "./fun"
 import State_Attraction from './trave-guide/attractions';
 import TopCities from './trave-guide/top_cities';
 import Reviews from './home/reviews';
+import FAQs from './list/faqs';
 
 // const  
 const TableLoading = dynamic(() => import('./skelton').then((mod)=>mod.TableLoading),{ssr:false})
@@ -30,7 +31,7 @@ const Package = dynamic(() => import('../components/package'),{loading:()=> <Tab
 // const filtr = useSelector(state=>state.filter)
 // console.log(filtr)
 
-const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefined,theme=undefined,related = undefined,travel=undefined,reviews = undefined}) =>{
+const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefined,theme=undefined,related = undefined,travel=undefined,reviews = undefined,faqs=undefined}) =>{
     
     const [filter,setFilter] = useState({keyword:""})
     const [limit,setLimit] = useState(10)
@@ -474,12 +475,22 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                         
                         :""
             }
+            {
+                page_type == 'STATE' && faqs.length!=0?
+                <div className='mt-4 container'>
+                    <div className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>
+                        FAQs for {region.name}
+                    </div>
+                    <FAQs data={faqs}/>
+                </div>:""
+                
+            }
 
             {
                 travel?
                 <>
                 <div className='container mt-4'>
-                    <h1 className={tw`mt-8 ${isMobile?"text-xl":'text-3xl'} mb-4 text-center font-semibold`}>Read more About {region?.name}</h1>
+                    <h1 className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>Read more About {region?.name}</h1>
                     <Content data={travel} collapse={true}/>
                 </div>
                 {
@@ -505,6 +516,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                         <State_Attraction data={travel.attn}/>
                     </div>:""
                 }
+                
 
 
                 </>
