@@ -2,7 +2,7 @@
 import client from "../../../components/Graphql/service"
 import { getArticle, getarticleQuery,getMetaQuery } from "../../../components/Graphql/Queries"
 // import BreadCrumbs from "../../../components/breadcrumbs"
-// import {tw} from 'twind'
+import {tw} from 'twind'
 // import Articles from "../../../components/home/articles"
 import { toTitleCase } from "../../../components/fun"
 import dynamic from "next/dynamic"
@@ -40,11 +40,11 @@ const TravelArticle = ({data,article,meta}) =>{
         <BreadCrumbs bread={bread} />
         <section className="container">
             <h1 className={`text-2xl font-bold`}>{data.article.heading}</h1>
-            <div className={`w-full lg:w-2/3`}>
+            <div className={tw`w-full lg:w-2/3`}>
                 <div className={`mt-6`}>
-                    <div className={`flex flex-wrap services_listing`}>
-                        {data.article.tags.split(',').map((item,index)=>{
-                            return <div className="btn_view_more mr-[10px]">{item}</div>
+                    <div className={tw`flex flex-wrap services_listing`}>
+                        {data.article.tags?.split(',').map((item,index)=>{
+                            return <div className="btn_view_more mr-[10px]" key={index+1}>{item}</div>
                         })}
                     </div>
                 </div>

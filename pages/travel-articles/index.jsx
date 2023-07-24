@@ -7,6 +7,7 @@ import { getarticleQuery,getMetaQuery } from "../../components/Graphql/Queries"
 // import Link from "next/link"
 // import Meta from "../../components/meta"
 import dynamic from "next/dynamic"
+import { createArticleURL } from "@/components/fun"
 // import S_Article from "@/components/article/s_article";
 
 const S_Article = dynamic(() => import('@/components/article/s_article'))
@@ -36,7 +37,8 @@ const TravelArticles = ({article,meta}) =>{
             <div>
                 <div className={`mt-6`}>
                     {article.map((item,index)=>{
-                        let aurl = "/travel-articles/"+item.heading.trim().replace(/\s+/g,' ').replace(/\s+/g, "-").replace(/--/g,'-').toLowerCase()+"/"+item.id+"/"
+                        let aurl = createArticleURL({heading:item.heading,id:item.id})
+                        // let aurl = "/travel-articles/"+item.heading.trim().replace(/\s+/g,' ').replace(/\s+/g, "-").replace(/--/g,'-').toLowerCase()+"/"+item.id+"/"
                         return <S_Article item={item} aurl={aurl} index={index}/>
                         
                     })}

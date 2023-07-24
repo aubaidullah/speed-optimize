@@ -87,3 +87,9 @@ export const createTGStateURL = ({city,id}) =>{
 export const createTGCountryURL = ({country,id}) =>{
     return `/travel-guide/countries/${country?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase()}-${id}`
 }
+
+
+export const createArticleURL = ({heading,id}) =>{
+    return "/travel-articles/"+heading.trim().replace(/\s+/g,' ').replace(/\s+/g, "-").replace(/--/g,'-').toLowerCase()+"-"+id+"/"
+    // return `/travel-guide/countries/${country?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase()}-${id}`
+}

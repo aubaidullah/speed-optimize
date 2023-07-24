@@ -12,7 +12,7 @@ import dynamic from "next/dynamic";
 import Link from 'next/link'
 import { tw } from 'twind'
 import {useRouter} from 'next/router'
-import { createStateListURL, createCityListURL,createDetailUrl, createTGCityURL, createTGCountryURL, createTGStateURL, createCountryListURL } from "./fun";
+import { createStateListURL, createCityListURL,createDetailUrl, createTGCityURL, createTGCountryURL, createTGStateURL, createCountryListURL, createArticleURL } from "./fun";
 
 
 const Login = dynamic(() => import('../components/login'));
@@ -337,7 +337,11 @@ const Nav = () => {
                             ))}
                             {result?.articles?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
-                                    <Link href={`/travel-stories-${e?.heading?.replace(/\s+/g, "-").toLowerCase()}-${e?.geoName?.replace(/\s+/g, "-").toLowerCase()}/${e?.id}`}>
+                                    <Link 
+                                    href = {createArticleURL({heading:e?.name,id:e?.id})}
+                                    // href={`/travel-stories-${e?.heading?.replace(/\s+/g, "-").toLowerCase()}-${e?.geoName?.replace(/\s+/g, "-").toLowerCase()}/${e?.id}`}
+                                    
+                                    >
                                         <div className={tw`hover:bg-[#fde2df] drop_item`}>
                                             <div className="s_name d_content">{e?.name}</div>
                                         </div>
