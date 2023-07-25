@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from 'next/link'
 import * as Constants from '../Constants';
 import axios from 'axios';
-import { createCityListURL,createCountryListURL,createDetailUrl,createStateListURL, createTGCityURL, createTGCountryURL, createTGStateURL, jpgToWebp } from "../fun";
+import { createArticleURL, createCityListURL,createCountryListURL,createDetailUrl,createStateListURL, createTGCityURL, createTGCountryURL, createTGStateURL, jpgToWebp } from "../fun";
 
 const Banner = ({ data }) => {
     // const Image = dynamic(() => import('next/image').then((mod)=>mod.Image))
@@ -108,7 +108,12 @@ const Banner = ({ data }) => {
                             ))}
                             {result?.articles?.map((e, index) => (
                                 <div key={index} onClick={() => setSearchkey("")}>
-                                    <Link href={`/travel-stories-${e?.heading?.replace(/\s+/g, "-").toLowerCase()}-${e?.geoName?.replace(/\s+/g, "-").toLowerCase()}/${e?.id}/`}>
+                                    <Link 
+                                    
+                                    href = {createArticleURL({heading:e?.name,id:e?.id})}
+                                    // href={`/travel-stories-${e?.heading?.replace(/\s+/g, "-").toLowerCase()}-${e?.geoName?.replace(/\s+/g, "-").toLowerCase()}/${e?.id}/`}
+                                    
+                                    >
                                         <div className="drop_item">
                                             <div className="s_name d_content">{e?.name}</div>
                                         </div>

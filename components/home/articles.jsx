@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import ReactHtmlParser from "react-html-parser";
 import * as Constants from '../Constants'
-import { imgNameByUrl, jpgToWebp } from '../fun';
+import { createArticleURL, imgNameByUrl, jpgToWebp } from '../fun';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
@@ -54,7 +54,8 @@ const Articles = ({data}) =>{
 
 
     const articleRender = data.map(function (item, i) {
-        var aurl = "/travel-articles/"+item.heading.trim().replace(/\s+/g,' ').replace(/\s+/g, "-").replace(/--/g,'-').toLowerCase()+"/"+item.id+"/"
+      var aurl = createArticleURL({heading:item.heading,id:item.id})
+        // var aurl = "/travel-articles/"+item.heading.trim().replace(/\s+/g,' ').replace(/\s+/g, "-").replace(/--/g,'-').toLowerCase()+"/"+item.id+"/"
         var d = item.description;
         var res = d.substring(0, 50);  
         return (

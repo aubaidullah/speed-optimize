@@ -93,7 +93,7 @@ const nextConfig = {
         destination: '/travel-guide/india/attractions'
       },
       {
-        source: '/travel-articles/:slug/:id',
+        source: '/travel-articles/:slug-:id(\\d+)',
         destination: '/travel-articles/detail'
       },
 
