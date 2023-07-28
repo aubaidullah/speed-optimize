@@ -38,13 +38,6 @@ const Themes = ({data}) =>{
 
 
 
-
-
-
-
-
-
-
     return <>
     <div className={`container mt-16`}>
         <div className={`flex`}>
@@ -53,6 +46,17 @@ const Themes = ({data}) =>{
                     <h4>Kiomoi Holidays</h4>
                     <h5>Kiomoi Book Domestic and International Holidays</h5>
                     <p>
+                    The Kiomoi team of experienced travel advisors will help you get the most out of your trip, ensuring that you have peace of mind and enjoy every moment of your holiday. 
+                    </p>
+                    <p>
+                    Our team is committed to providing exceptional customer service and making sure your trip is an unforgettable experience. We understand that travel can be daunting, so we’re here to help make the planning and booking process as smooth and stress-free as possible. 
+                    </p>
+                    <p>
+                    With Kiomoi, you can immerse yourself in a world of experiences and memories that will last a lifetime. 
+                    <br/>Book with us today and start your journey with Kiomoi!
+                    </p>
+                    
+                    {/* <p>
                         Kiomoi is one of India's leading online travel portals,
                         offering holiday packages in India and abroad. Yatra offers
                         value for money packages, luxury packages, group departures
@@ -66,7 +70,7 @@ const Themes = ({data}) =>{
                         range of holiday packages including niche and exotic
                         packages to its customers, while providing localised
                         services.
-                    </p>
+                    </p> */}
                     <Link href="/holidays/">
                         <div href="/holidays/">Read More</div>
                     </Link>

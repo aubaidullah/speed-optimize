@@ -308,10 +308,10 @@ const BookingDetail = () => {
                         </div>
                     </div>
                     <div className="container">
-                        <div className="row">
-                            <div className="col-md-8 col-xs-12 Shape_42 _details_">
-                                <div className={tw`row md:p-3 pt-2`}>
-                                    <div className={tw`col-md-4 ${!bookingDetails?.lead?.i ? "border" : null} flex justify-center items-center`}>
+                        <div className="row flex">
+                            <div className={tw`w-full lg:w-2/3 col-md-8 col-xs-12 Shape_42 _details_`}>
+                                <div className={tw`flex md:p-3 pt-2`}>
+                                    <div className={tw`w-full lg:w-1/3 ${!bookingDetails?.lead?.i ? "border" : null} flex justify-center items-center`}>
                                         <div className={tw`card_item ${!bookingDetails?.lead?.i ? "py-14" : null}`}>
                                             <div className={tw`card_img`}>
                                                 <img
@@ -326,7 +326,7 @@ const BookingDetail = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className={tw`col-md-8 mt-2 flex flex-col justify-between`}>
+                                    <div className={tw`w-full lg:w-2/3 mt-2 flex flex-col justify-between`}>
                                         <div className="package-name _pn_package">
                                             <div className="_pn_">
                                                 <div className="_pn_left">
@@ -461,7 +461,7 @@ const BookingDetail = () => {
                                 </div>
                             </div>
 
-                            <div className="col-md-4 col-xs-12 mt-2 custom-payment">
+                            <div className={tw`w-full lg:w-1/3 col-md-4 col-xs-12 mt-2 custom-payment`}>
                                 <div className="b_right">
                                     <div className="_b_right_list_1">
                                         <div className="payment-summary">
