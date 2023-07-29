@@ -12,13 +12,17 @@ const Modal = props =>{
             // size="sm"
         >
         <div className={`relative top-20 mx-auto p-5 max-w-lg shadow-lg rounded-xl bg-white`}>
-          <span className={`float-right text-black`} aria-hidden="true">
-            <BsXLg 
-            className={`cursor-pointer`}
-            //   style={{cursor: "pointer" }}
-              onClick={()=>props.changeForm(false)}
-            />
-          </span>
+          {
+            props?.changeForm?          
+            <span className={`float-right text-black`} aria-hidden="true">
+              <BsXLg 
+              className={`cursor-pointer`}
+              //   style={{cursor: "pointer" }}
+                onClick={()=>props.changeForm(false)}
+              />
+            </span>:""
+          }
+
           <div>
             <h3 className={`text-2xl text-center`}>{props?.title}</h3>
           </div>
