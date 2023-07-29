@@ -7,6 +7,18 @@ export const toTitleCase = (phrase) => {
     .join(' ');
 };
 
+
+export const randomRating = () =>{
+    let min = 4
+    let max = 5
+    let rating = Math.round((Math.random()*(max-min)+min)*10)/10
+    let review = Math.round((Math.random()*(50-20)+20))
+    return {
+        "rating":rating,
+        "review":review
+    }
+}
+
 export const strToUrl = (phrase) =>{
     phrase = phrase.replace(/ /g,"-").toLowerCase()
     return phrase
