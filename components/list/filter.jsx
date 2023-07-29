@@ -1,10 +1,13 @@
 import {tw} from 'twind'
 import Slider from "react-rangeslider";
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { FaRupeeSign } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { places_filter, theme_filter } from '../../redux_fx/actions';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import { useRouter } from 'next/router';
+import { createStateListURL } from '../fun';
+// import Link from 'next/link';
 
 const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Themes,_places,_themes,page_type,filter,setKeyword,data,theme=undefined}) =>{
 
@@ -13,13 +16,25 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
     // const filtering = useSelector(state=>state.package.package)
     const dispatch = useDispatch()
 
+    const router = useRouter()
+    // console.log(router)
+
+    const theme_ref = useRef([])
 
     const [maxprice,setMaxprice] = useState(5000)
     const [minprice,setMinprice] = useState(1000)
     const [dur,setDur] = useState(false)
     const [fav,setFav] = useState(false)
-    const [thm,setThm] = useState(false)
-    // console.log(data)
+    const [thm,setThm] = useState(router.query?.theme??false)
+
+    useEffect(()=>{
+        if (router.query?.theme!=undefined){
+            // set_Themes
+            // set_Themes( arr => [...arr, router.query?.theme])
+            set_Themes(router.query?.theme.split(','))
+            theme_ref.current = router.query?.theme.split(',')
+        }
+    })
 
 
 
@@ -34,6 +49,9 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
         setPrice({min:min,max:max})
     }
 
+    const updateUrl = (e) =>{
+        console.log(e)
+    }
 
     const setPlaceFilter=(n_item)=>{
 
@@ -52,19 +70,27 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
     }
     
     const setThemeFilter=(n_item)=>{
-        // console.log(_themes)
-        // console.log(n_item)
+        
         if (_themes.includes(n_item) == true){
-            console.log("existed")
+            // console.log("existed")
             set_Themes(_themes.filter(item => item !== n_item))
+            theme_ref.current = theme_ref.current.filter(item => item !== n_item)
         }
         else{
-            console.log("not existed")
-            // console.log(n_item.trim())
+            theme_ref.current.push(n_item)
             set_Themes( arr => [...arr, n_item])
-            // setTheme( arr => [...arr, n_item]);
         }
-        dispatch(theme_filter(n_item))
+
+        if ('/holidays/state-package' === router.pathname){
+            const as_url = createStateListURL({statename:router.query.package,id:router.query.id})
+            router.push(
+                `${as_url}`,
+                `${as_url}?theme=${theme_ref.current}`,
+                {shallow:true}
+            )
+        }
+
+        
     }    
 
     const placeRender = data.map(function (item, i) {
@@ -96,16 +122,21 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
             
               <div className="checkbox" key={i}>
                 <label>
-                  <input
-                    type="checkbox"
-                    // checked={chec}
-                    className={tw`mr-1`}
-                    checked={_themes.includes(item.tag.trim())}
-                    name="place"
-                    onChange={(e)=>setThemeFilter(item.tag.trim())}
-                    // onClick={() => setPlace(item)}
-                  />
-                  {item.tag}
+                  {/* <Link> */}
+                    <>
+                    <input
+                        type="checkbox"
+                        // checked={chec}
+                        className={tw`mr-1`}
+                        checked={_themes.includes(item.tag.trim())}
+                        name="place"
+                        // onChange={}
+                        onChange={(e)=>{setThemeFilter(item.tag.trim()),updateUrl(item.tag.trim())}}
+                        // onClick={() => setPlace(item)}
+                    />
+                    {item.tag}                  
+                    </>
+                  {/* </Link> */}
                 </label>
               </div>
             
@@ -116,6 +147,7 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
 
     // console.log(places)
     // console.log(themef)
+    // console.log(router)
 
     const clear_filter=()=>{
         set_Max(100)

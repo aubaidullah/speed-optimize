@@ -183,16 +183,16 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     
     var pack = []
     
-    useEffect(()=>{
-        try{
-            const n = router.query.filter.split(",").map(arr => toTitleCase(arr))
-            console.log(n)
-            set_Themes(arr => [...arr, ...n])
-        }catch{
+    // useEffect(()=>{
+    //     try{
+    //         const n = router.query.filter.split(",").map(arr => toTitleCase(arr))
+    //         console.log(n)
+    //         set_Themes(arr => [...arr, ...n])
+    //     }catch{
             
-        }
+    //     }
         
-    },[])
+    // },[])
     
     if(_places.length){
         data = data.filter(e=>e.pcities.split(',').some(x=>_places.includes(x)))
@@ -507,7 +507,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                 }
 
                 {
-                    page_type == 'STATE'?<Reviews data={reviews?.reviews}/>:""
+                    page_type == 'STATE'?<Reviews data={reviews}/>:""
                 }
 
                 {

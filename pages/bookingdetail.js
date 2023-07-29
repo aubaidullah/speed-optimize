@@ -8,6 +8,7 @@ import { tw } from "twind";
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic"
+import Link from "next/link";
 
 const Nav = dynamic(() => import('../components/Nav'))
 const Modal = dynamic(() => import('../components/modal'))
@@ -52,9 +53,9 @@ const BookingDetail = () => {
         key: "",
     })
 
-    const [collapse, setCollapse] = useState(null);
+    const [collapse, setCollapse] = useState(true);
 
-    const [collapse2, setCollapse2] = useState(null);
+    const [collapse2, setCollapse2] = useState(true);
 
     useEffect(() => {
         setShowModal(new URLSearchParams(window.location.search).get("bookingid") ? false : true)
@@ -296,7 +297,7 @@ const BookingDetail = () => {
     return (
         <>
             <Nav />
-            <section className={tw`booking-detail ${showModal == true ? 'blur-[5px]':'blur-[0px]'}`}>
+            <section className={tw`_booking-detail ${showModal == true ? 'blur-[5px]':'blur-[0px]'}`}>
                 <section className="about_place">
                     <div className="container">
                         <div className="row">
@@ -308,10 +309,10 @@ const BookingDetail = () => {
                         </div>
                     </div>
                     <div className="container">
-                        <div className="row">
-                            <div className="col-md-8 col-xs-12 Shape_42 _details_">
-                                <div className={tw`row md:p-3 pt-2`}>
-                                    <div className={tw`col-md-4 ${!bookingDetails?.lead?.i ? "border" : null} flex justify-center items-center`}>
+                        <div className={tw`row flex flex-wrap`}>
+                            <div className={tw`w-full lg:w-2/3 _details_`}>
+                                <div className={tw`flex flex-wrap Shape_42`}>
+                                    <div className={tw`w-full lg:w-1/3 ${!bookingDetails?.lead?.i ? "border" : null} flex justify-center`}>
                                         <div className={tw`card_item ${!bookingDetails?.lead?.i ? "py-14" : null}`}>
                                             <div className={tw`card_img`}>
                                                 <img
@@ -326,7 +327,7 @@ const BookingDetail = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className={tw`col-md-8 mt-2 flex flex-col justify-between`}>
+                                    <div className={tw`w-full lg:w-2/3 lg:pl-2 flex flex-col justify-between pt-2 lg:pt-0`}>
                                         <div className="package-name _pn_package">
                                             <div className="_pn_">
                                                 <div className="_pn_left">
@@ -348,13 +349,8 @@ const BookingDetail = () => {
                                                 {/* <i className="fa fa-map-marker"></i> */}
                                                 <span> {bookingDetails?.lead?.ocity}</span>
                                             </div>
-                                            <div className="_cities">
-                                                <div className="list_city_1">
-                                                    <span></span>
-                                                </div>
-                                            </div>
                                         </div>
-                                        <div className={tw`row info-booking py-3 px-2 Shape_42 m-0 border bg-[#f5f4f4]`}>
+                                        <div className={tw`row flex justify-around info-booking py-3 px-2 Shape_42 m-0 border bg-[#f5f4f4]`}>
                                             <div className={tw`col-4 info-booking-details flex justify-center items-center`}>
                                                 <div>
                                                     <p className={tw`text-xs`}>Trip Start</p>
@@ -389,7 +385,7 @@ const BookingDetail = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className={tw`row package-inclusions md:p-3`}>
+                                <div className={tw`row package-inclusions`}>
                                     <h3 className={tw`text-xl font-semibold my-3`}>Inclusions</h3>
                                     <div className="border Shape_42">
                                         <div className={tw`flex flex-wrap gap-2`}>
@@ -402,7 +398,7 @@ const BookingDetail = () => {
                                             }
                                         </div>
                                         <div className="package-cancellation">
-                                            <div className={tw`row gy-1 Shape_42 border mt-3 md:p-4`}>
+                                            <div className={tw`row gy-1 mt-3 md:p-4`}>
                                                 <div className="col-sm-8 cancel-left mb-2">
                                                     <p className="font-bold text-[13px]">Cancellation charges</p>
                                                 </div>
@@ -459,10 +455,250 @@ const BookingDetail = () => {
                                         </div>
                                     </div>
                                 </div>
+
+                                <section className="inclusions ">
+                                <div className="container_">
+                                    <div className="row">
+                                        <div className="col-md-8 accordions-list p-0">
+                                            <div className="faq-acc">
+                                                <div aria-multiselectable="true" className="panel-group" id="accordion" role="tablist">
+                                                    <div className="panel panel-default">
+                                                        <div className="panel-heading" id="howtoreach" role="tab" >
+                                                            <h3 className="panel-title">
+                                                                <a
+                                                                    aria-controls="headingOne"
+                                                                    aria-expanded="false"
+                                                                    className="collapsed"
+                                                                    role={"button"}
+                                                                    data-toggle="collapse"
+                                                                    onClick={() => collapse === null ? setCollapse(true) : setCollapse(null)}
+                                                                >
+                                                                    <div className={tw`flex justify-between`}>
+                                                                        <div>
+                                                                            Itinerary
+                                                                        </div>
+                                                                        {collapse ? <AiOutlinePlus />:  <AiOutlineMinus />}
+                                                                    </div>
+                                                                </a>
+                                                            </h3>
+                                                        </div>
+
+
+                                                        <div className={tw`${collapse?'hidden':''}`}>
+                                                            <div
+                                                                className="panel-collapse"
+                                                            >
+                                                                <div className="panel-body">
+                                                                    <div>
+                                                                        {
+                                                                            bookingDetails?.itn?.map(function (item, i) {
+                                                                                let c = i + 1;
+                                                                                let t = "D" + c;
+                                                                                return (
+                                                                                    <div
+                                                                                        key={i}
+                                                                                        className="Shape_42 _detail _50m _hover _box_shadow"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="left"
+                                                                                        title={t}
+                                                                                    >
+                                                                                        <h4>
+                                                                                            Day {c}: {item.heading}
+                                                                                        </h4>
+                                                                                        <p>{item.description}</p>
+                                                                                    </div>
+
+                                                                                );
+                                                                            })
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="faq-acc">
+                                                <div aria-multiselectable="true" className="panel-group" id="accordion" role="tablist">
+                                                    <div className="panel panel-default">
+                                                        <div
+                                                            className="panel-heading"
+                                                            id="howtoreach"
+                                                            role="tab"
+                                                        >
+                                                            <h3 className="panel-title">
+                                                                <a
+                                                                    aria-controls="headingOne"
+                                                                    aria-expanded="false"
+                                                                    className="collapsed"
+                                                                    role={"button"}
+                                                                    data-toggle="collapse"
+                                                                    onClick={() => collapse2 === null ? setCollapse2(true) : setCollapse2(null)}
+                                                                >
+
+                                                                    <div className={tw`flex justify-between`}>
+                                                                        <div>
+                                                                            Terms & Conditions and policy
+                                                                        </div>
+                                                                        {collapse2 ? <AiOutlinePlus /> :  <AiOutlineMinus />}
+                                                                    </div>
+                                                                </a>
+                                                            </h3>
+                                                        </div>
+                                                        <div className={tw`${collapse2?'hidden':''}`}>
+                                                            <div
+                                                                className="panel-collapse2"
+                                                            >
+                                                                <hr />
+                                                                <div className="panel-body">
+                                                                    <div>
+                                                                        {bookingDetails?.output?.tnc?.split("<br/>").map(function (item, i) {
+                                                                            return <p key={i} className="mx-2 my-3">{item}</p>
+                                                                        })}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {/* NOT ACTIVATED */}
+                                            <div className="panel panel-default hidden">
+                                                <div className="panel-heading" id="headingc" role="tab">
+                                                    <h4 className="panel-title">
+                                                        <a
+                                                            aria-controls="collapseThree"
+                                                            aria-expanded="false"
+                                                            className="collapsed"
+                                                            data-parent="#accordion"
+                                                            data-toggle="collapse"
+                                                            href="#collapseThree"
+                                                            role="button"
+                                                        >
+                                                            Special Request
+                                                        </a>
+                                                    </h4>
+                                                </div>
+
+                                                <div
+                                                    aria-expanded="false"
+                                                    aria-labelledby="headingThree"
+                                                    className="panel-collapse collapse"
+                                                    id="collapseThree"
+                                                    role="tabpanel"
+                                                >
+                                                    <div className="panel-body">
+                                                        <p>{bookingDetails?.lead?.comments}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </section>
+
+                                <div className="row guest-traveller">
+                                    <div className="col-md-8 col-xs-12 p-0">
+                                        <div className="Shape_42 Guest-treveller-details">
+                                            <h3 className={tw`text-xl font-semibold my-3`}>Guests Traveller Details</h3>
+                                            <form action="">
+                                                <div className="row">
+                                                    <div className="col-md-2 mob-view-2">
+                                                        <label className={tw`my-2`}>Title</label>
+                                                        <br />
+                                                        <select defaultValue={'Mr'} className="form-control">
+                                                            <option value="Mr">
+                                                                Mr.
+                                                            </option>
+                                                            <option value="Mrs">Mrs.</option>
+                                                        </select>
+                                                    </div>
+                                                    <div className="col-md-5">
+                                                        <label className={tw`my-2`}>
+                                                            First Name<sup>*</sup>
+                                                        </label>
+                                                        <br />
+                                                        <input
+                                                            type="text"
+                                                            className="form-control"
+                                                            required
+                                                            placeholder="Enter First Name"
+                                                            name="first-name"
+                                                            readOnly
+                                                            value={bookingDetails?.nm.split(" ")[0] || ""}
+                                                        />
+                                                    </div>
+                                                    <div className="col-md-5">
+                                                        <label className={tw`my-2`}>
+                                                            Last Name<sup>*</sup>
+                                                        </label>
+                                                        <br />
+                                                        <input
+                                                            type="text"
+                                                            className="form-control"
+                                                            required
+                                                            placeholder="Enter Last Name"
+                                                            name="Last-name"
+                                                            readOnly
+                                                            value={bookingDetails?.nm.split(" ")[1] || ""}
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="row">
+                                                    <div className="col-xs-12">
+                                                        <label className={tw`my-2`}>
+                                                            Email Address (Your booking voucher will be sent to
+                                                            the address)
+                                                        </label>
+                                                        <input
+                                                            type="email"
+                                                            className="form-control"
+                                                            required
+                                                            placeholder="Enter Email Address"
+                                                            name="email"
+                                                            readOnly
+                                                            value={bookingDetails?.lead?.email || ""}
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="row form-inline">
+                                                    <div className="col-md-2 mob-view">
+                                                        <label className={tw`my-2`}>Mobile Number</label>
+                                                        <br />
+                                                        <select defaultValue={'91'} className="form-control mb-3">
+                                                            <option value="91">
+                                                                +91
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <div className="col-md-4 phn-no">
+                                                        <label className={tw`my-2`}>Mobile Number</label>
+                                                        <br />
+                                                        <input
+                                                            type="text"
+                                                            required
+                                                            className="form-control"
+                                                            placeholder="Enter Phone Number"
+                                                            name="phone"
+                                                            readOnly
+                                                            value={bookingDetails?.lead?.mobile || ""}
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="row">
+                                                    <div className="col-xs-12"></div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                             </div>
 
-                            <div className="col-md-4 col-xs-12 mt-2 custom-payment">
-                                <div className="b_right">
+                            <div className={tw`w-full lg:w-1/3 mt-2 custom-payment`}>
+                                <div className="b_right h_sticky">
                                     <div className="_b_right_list_1">
                                         <div className="payment-summary">
                                             <div className="flex justify-between payment-heading p-3 bg-[#e4e4e4] pl-[10px] pr-[10px]">
@@ -546,7 +782,7 @@ const BookingDetail = () => {
                                                         <div className="text-center">
                                                             {bookingDetails?.output?.payamt > 0 ? (
                                                                 <button 
-                                                                    className="w-full anchore_coment _w_100 btn_anchor pay-btn"
+                                                                    className={tw`p-0 text-xl w-full form-control _w_100 btn_anchor pay-btn`}
                                                                     onClick={paymentSubmit}
                                                                 >
                                                                     Pay Now
@@ -584,244 +820,10 @@ const BookingDetail = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="row guest-traveller">
-                            <div className="col-md-8 col-xs-12 p-0">
-                                <div className="Shape_42 Guest-treveller-details">
-                                    <h3 className={tw`text-xl font-semibold my-3`}>Guests Traveller Details</h3>
-                                    <form action="">
-                                        <div className="row">
-                                            <div className="col-md-2 mob-view-2">
-                                                <label className={tw`my-2`}>Title</label>
-                                                <br />
-                                                <select defaultValue={'Mr'} className="form-control">
-                                                    <option value="Mr">
-                                                        Mr.
-                                                    </option>
-                                                    <option value="Mrs">Mrs.</option>
-                                                </select>
-                                            </div>
-                                            <div className="col-md-5">
-                                                <label className={tw`my-2`}>
-                                                    First Name<sup>*</sup>
-                                                </label>
-                                                <br />
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    required
-                                                    placeholder="Enter First Name"
-                                                    name="first-name"
-                                                    readOnly
-                                                    value={bookingDetails?.nm.split(" ")[0] || ""}
-                                                />
-                                            </div>
-                                            <div className="col-md-5">
-                                                <label className={tw`my-2`}>
-                                                    Last Name<sup>*</sup>
-                                                </label>
-                                                <br />
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    required
-                                                    placeholder="Enter Last Name"
-                                                    name="Last-name"
-                                                    readOnly
-                                                    value={bookingDetails?.nm.split(" ")[1] || ""}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div className="col-xs-12">
-                                                <label className={tw`my-2`}>
-                                                    Email Address (Your booking voucher will be sent to
-                                                    the address)
-                                                </label>
-                                                <input
-                                                    type="email"
-                                                    className="form-control"
-                                                    required
-                                                    placeholder="Enter Email Address"
-                                                    name="email"
-                                                    readOnly
-                                                    value={bookingDetails?.lead?.email || ""}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="row form-inline">
-                                            <div className="col-md-2 mob-view">
-                                                <label className={tw`my-2`}>Mobile Number</label>
-                                                <br />
-                                                <select defaultValue={'91'} className="form-control mb-3">
-                                                    <option value="91">
-                                                        +91
-                                                    </option>
-                                                </select>
-                                            </div>
-                                            <div className="col-md-4 phn-no">
-                                                <label className={tw`my-2`}>Mobile Number</label>
-                                                <br />
-                                                <input
-                                                    type="text"
-                                                    required
-                                                    className="form-control"
-                                                    placeholder="Enter Phone Number"
-                                                    name="phone"
-                                                    readOnly
-                                                    value={bookingDetails?.lead?.mobile || ""}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div className="col-xs-12"></div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section className="inclusions ">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-8 accordions-list p-0">
-                                <div className="faq-acc">
-                                    <div aria-multiselectable="true" className="panel-group" id="accordion" role="tablist">
-                                        <div className="panel panel-default">
-                                            <div className="panel-heading" id="howtoreach" role="tab" >
-                                                <h4 className="panel-title">
-                                                    <a
-                                                        aria-controls="headingOne"
-                                                        aria-expanded="false"
-                                                        className="collapsed"
-                                                        role={"button"}
-                                                        data-toggle="collapse"
-                                                        onClick={() => collapse === null ? setCollapse(true) : setCollapse(null)}
-                                                    >
-                                                        <div className={tw`flex justify-between`}>
-                                                            <div>
-                                                                Itinerary
-                                                            </div>
-                                                            {collapse ? <AiOutlineMinus /> : <AiOutlinePlus />}
-                                                        </div>
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div in={collapse}>
-                                                <div
-                                                    className="panel-collapse"
-                                                >
-                                                    <div className="panel-body">
-                                                        <div>
-                                                            {
-                                                                bookingDetails?.itn?.map(function (item, i) {
-                                                                    let c = i + 1;
-                                                                    let t = "D" + c;
-                                                                    return (
-                                                                        <div
-                                                                            key={i}
-                                                                            className="Shape_42 _detail _50m _hover _box_shadow"
-                                                                            data-toggle="tooltip"
-                                                                            data-placement="left"
-                                                                            title={t}
-                                                                        >
-                                                                            <h4>
-                                                                                Day {c}: {item.heading}
-                                                                            </h4>
-                                                                            <p>{item.description}</p>
-                                                                        </div>
-
-                                                                    );
-                                                                })
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="faq-acc">
-                                    <div aria-multiselectable="true" className="panel-group" id="accordion" role="tablist">
-                                        <div className="panel panel-default">
-                                            <div
-                                                className="panel-heading"
-                                                id="howtoreach"
-                                                role="tab"
-                                            >
-                                                <h4 className="panel-title">
-                                                    <a
-                                                        aria-controls="headingOne"
-                                                        aria-expanded="false"
-                                                        className="collapsed"
-                                                        role={"button"}
-                                                        data-toggle="collapse"
-                                                        onClick={() => collapse2 === null ? setCollapse2(true) : setCollapse2(null)}
-                                                    >
-
-                                                        <div className={tw`flex justify-between`}>
-                                                            <div>
-                                                                Terms & Conditions and policy
-                                                            </div>
-                                                            {collapse2 ? <AiOutlineMinus /> : <AiOutlinePlus />}
-                                                        </div>
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div in={collapse2}>
-                                                <div
-                                                    className="panel-collapse2"
-                                                >
-                                                    <hr />
-                                                    <div className="panel-body">
-                                                        <div>
-                                                            {bookingDetails?.output?.tnc?.split("<br/>").map(function (item, i) {
-                                                                return <p key={i} className="mx-2 my-3">{item}</p>
-                                                            })}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* NOT ACTIVATED */}
-                                <div className="panel panel-default hidden">
-                                    <div className="panel-heading" id="headingc" role="tab">
-                                        <h4 className="panel-title">
-                                            <a
-                                                aria-controls="collapseThree"
-                                                aria-expanded="false"
-                                                className="collapsed"
-                                                data-parent="#accordion"
-                                                data-toggle="collapse"
-                                                href="#collapseThree"
-                                                role="button"
-                                            >
-                                                Special Request
-                                            </a>
-                                        </h4>
-                                    </div>
-
-                                    <div
-                                        aria-expanded="false"
-                                        aria-labelledby="headingThree"
-                                        className="panel-collapse collapse"
-                                        id="collapseThree"
-                                        role="tabpanel"
-                                    >
-                                        <div className="panel-body">
-                                            <p>{bookingDetails?.lead?.comments}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </section>
 
-                <section className="pay-now">
+                <section className="pay-now hidden">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-8 col-xs-12 pay-now-btn">
@@ -846,12 +848,13 @@ const BookingDetail = () => {
                     </div>
                 </section>
             </section>
-            <Modal show={showModal} >
+            <Modal show={showModal}>
 
             
             {/* <div show={showModal} animation={false}> */}
                 <div>
-                    <a href="/">
+                    
+                    <Link href="/">
                         {" "}
                         <span
                             className="float-right text-black"
@@ -861,7 +864,7 @@ const BookingDetail = () => {
                             <BsXLg />
                             {/* <i className="fa fa-close"></i> */}
                         </span>
-                    </a>
+                    </Link>
                     <form onSubmit={mybookingSubmit}>
                         <div className="wrapper-box">
                             <div className="wrapper_login">

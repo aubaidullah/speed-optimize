@@ -130,21 +130,21 @@ export async function getServerSideProps(context) {
 
 
 
-      const reviews = await client.query({
-        query: getreviewsQuery,
-        variables: {
-            input: {
-                av: '1.3',
-                id: '0',
-                pt: 'WEBSITE',
-                geoid: context.query.id,
-                pagenum: 1,
-                pid: 0,
-                size: 10,
-                'type': 'PACKAGE'
-            }
-        }
-    })
+    //   const reviews = await client.query({
+    //     query: getreviewsQuery,
+    //     variables: {
+    //         input: {
+    //             av: '1.3',
+    //             id: '0',
+    //             pt: 'WEBSITE',
+    //             geoid: context.query.id,
+    //             pagenum: 1,
+    //             pid: 0,
+    //             size: 10,
+    //             'type': 'PACKAGE'
+    //         }
+    //     }
+    // })
 
 
     // console.log(reviews.data?.reviews.output)
@@ -156,7 +156,7 @@ export async function getServerSideProps(context) {
 
     // meta.data.meta.output.tags.title = meta.data.meta.output.package 
 
-    return { props: { data,headers,region,places,theme:res_theme.data.alltheme.output,meta:metas,travel:res_travel.data.travel.output,reviews: reviews.data?.reviews.output,faqs:res.data.allpackage.output.faqs??[]}}
+    return { props: { data,headers,region,places,theme:res_theme.data.alltheme.output,meta:metas,travel:res_travel.data.travel.output,reviews: res.data.allpackage.output.reviews??[],faqs:res.data.allpackage.output.faqs??[]}}
 
 }
 

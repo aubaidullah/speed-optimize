@@ -1,5 +1,5 @@
 import client from "../../../components/Graphql/service"
-import { createDetailUrl, createStateListURL, jpgToWebp } from '../../../components/fun';
+import { createDetailUrl, createStateListURL, jpgToWebp, randomRating } from '../../../components/fun';
 import { BsDot, BsStarFill, BsStarHalf } from 'react-icons/bs'
 import dynamic from "next/dynamic";
 
@@ -130,8 +130,8 @@ const DetailPage = ({ data, related, reviews,meta }) => {
            "url":`https://www.kiomoi.com${router.asPath}`,
            "aggregateRating":{
               "@type":"AggregateRating",
-              "ratingValue":data?.package.sratings,
-              "reviewCount":data?.package.susers
+              "ratingValue":data?.package.sratings!="0"?data?.package.sratings:randomRating().rating,
+              "reviewCount":data?.package.sratings!="0"?data?.package.susers:randomRating().review
            },
            "offers":{
               "@type":"Offer",
@@ -194,12 +194,13 @@ const DetailPage = ({ data, related, reviews,meta }) => {
                         <div>
                             <div className='_inline__'>
                                 {userRating}
+                                {/* {data?.package.sratings!="0"?userRating:randomRating().rating} */}
                             </div>
                             <div className="_inline__ rating d_rating">
                                 <span>{data?.package.sratings} <BsDot className={tw`inline`} /> {data?.package.susers} Rating</span>
                             </div>
-                        </div>
-                        :""
+                        </div>:""
+                        
                     }
                     
                 </div>
