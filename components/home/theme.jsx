@@ -44,7 +44,7 @@ const Themes = ({data}) =>{
             <div className={`hidden lg:w-1/3 lg:block`}>
                 <div className="kiomoi_box _clr_brand">
                     <h4>Kiomoi Holidays</h4>
-                    <h5>Kiomoi Book Domestic and International Holidays</h5>
+                    {/* <h5>Kiomoi Book Domestic and International Holidays</h5> */}
                     <p>
                     The Kiomoi team of experienced travel advisors will help you get the most out of your trip, ensuring that you have peace of mind and enjoy every moment of your holiday. 
                     </p>

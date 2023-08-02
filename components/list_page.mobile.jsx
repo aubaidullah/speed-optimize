@@ -8,10 +8,12 @@ import { ScrollWrapper } from 'react-bottom-scroll';
 import ReactHtmlParser from "react-html-parser";
 import { useRouter } from 'next/router'
 import { createCountryListURL, createStateListURL, toTitleCase } from "./fun"
-import State_Attraction from './trave-guide/attractions';
-import TopCities from './trave-guide/top_cities';
-import Reviews from './home/reviews';
-import FAQs from './list/faqs';
+// import CityTags from './list/city_tags';
+// import State_Attraction from './trave-guide/attractions';
+// import TopCities from './trave-guide/top_cities';
+// import Reviews from './home/reviews';
+// import FAQs from './list/faqs';
+// import Articles from './home/articles';
 
 // const  
 const TableLoading = dynamic(() => import('./skelton').then((mod)=>mod.TableLoading),{ssr:false})
@@ -22,7 +24,12 @@ const Meta = dynamic(() => import('./meta'))
 const FilterBy = dynamic(() => import('./list/filter'))
 const Modal = dynamic(() => import('./modal'))
 const Package = dynamic(() => import('../components/package'),{loading:()=> <TableLoading />})
-
+const CityTags = dynamic(() => import('./list/city_tags'))
+const FAQs = dynamic(() => import('./list/faqs'))
+const Articles = dynamic(() => import('./home/articles'))
+const Reviews = dynamic(() => import('./home/reviews'))
+const TopCities = dynamic(() => import('./trave-guide/top_cities'))
+const State_Attraction = dynamic(() => import('./trave-guide/attractions'))
 // const filtering = useSelector(state=>state.package.package)
 // const FilterBy = dynamic(() => import('./list/filter'), {
 //     ssr: true,
@@ -31,7 +38,7 @@ const Package = dynamic(() => import('../components/package'),{loading:()=> <Tab
 // const filtr = useSelector(state=>state.filter)
 // console.log(filtr)
 
-const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefined,theme=undefined,related = undefined,travel=undefined,reviews = undefined,faqs=undefined}) =>{
+const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefined,theme=undefined,related = undefined,travel=undefined,reviews = undefined,faqs=undefined,articles = undefined,cities = undefined}) =>{
     
     const [filter,setFilter] = useState({keyword:""})
     const [limit,setLimit] = useState(10)
@@ -476,6 +483,17 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                         :""
             }
             {
+                page_type == 'STATE'?
+                <div className='mt-4 container'>
+                    <div className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>
+                        Related Tour Packages in {region.name}
+                    </div>                    
+                    <CityTags cities={cities}/>
+                </div>
+                
+                :""
+            }
+            {
                 page_type == 'STATE' && faqs.length!=0?
                 <div className='mt-4 container'>
                     <div className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>
@@ -507,7 +525,13 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                 }
 
                 {
-                    page_type == 'STATE'?<Reviews data={reviews}/>:""
+                    page_type == 'STATE'?
+                    <>
+                        {reviews?<Reviews data={reviews}/>:""}
+                        {articles?<Articles data={articles}/>:""}
+                    </>
+                    
+                    :""
                 }
 
                 {

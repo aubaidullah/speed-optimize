@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { getallpackages,getThemeQuery,getMetaQuery, getTravelGuideQuery, getreviewsQuery } from "../../../components/Graphql/Queries"
+import { getallpackages,getThemeQuery,getMetaQuery, getTravelGuideQuery, getreviewsQuery, getarticleQuery } from "../../../components/Graphql/Queries"
 import client from "../../../components/Graphql/service"
 // import Nav from "../../../components/Nav"
 import {useEffect,useState} from 'react'
@@ -22,7 +22,7 @@ const DeskList = dynamic(() => import('../../../components/list_page.mobile'), {
 
 
 
-const StatePackages = ({data,headers,region,places,theme,meta,travel, reviews,faqs}) =>{
+const StatePackages = ({data,headers,region,places,theme,meta,travel, reviews,faqs, articles, cities}) =>{
     const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('android') || headers['user-agent'].includes('iphone'))
 
 
@@ -58,10 +58,10 @@ const StatePackages = ({data,headers,region,places,theme,meta,travel, reviews,fa
 
     if (isMobile==true){
         // return <ListPageMobile data = {data}/>
-        return <><Nav/> <MobileList meta={meta} page_type={'STATE'} data={data??[]} region = {region} places={places} isMobile={isMobile} theme={theme} travel={travel} reviews={reviews} faqs={faqs} /></>
+        return <><Nav/> <MobileList meta={meta} page_type={'STATE'} data={data??[]} region = {region} places={places} isMobile={isMobile} theme={theme} travel={travel} reviews={reviews} faqs={faqs} articles={articles} cities={cities}/></>
     }
     else{
-        return <><Nav/><DeskList meta={meta} page_type={'STATE'} data = {data??[]} region = {region} places={places} isMobile={isMobile} theme={theme} travel={travel} reviews={reviews} faqs={faqs}/></>
+        return <><Nav/><DeskList meta={meta} page_type={'STATE'} data = {data??[]} region = {region} places={places} isMobile={isMobile} theme={theme} travel={travel} reviews={reviews} faqs={faqs} articles={articles} cities={cities}/></>
     }    
 
 
@@ -98,6 +98,7 @@ export async function getServerSideProps(context) {
 
     const region = res.data.allpackage.output.region??null
     const places = res.data.allpackage.output.fcities
+    const cities = res.data.allpackage.output.ncities
 
     headers['user-agent'] = headers['user-agent'].toLocaleLowerCase()
 
@@ -120,13 +121,17 @@ export async function getServerSideProps(context) {
         "geoid": context.query.id,
         "home": "",
         "id": "",
-        "pagenum": 0,
+        "pagenum": 1,
         "pid": 0,
         "pt": "",
-        "size": 0,
+        "size": 10,
         "type": "State"
       }
       const res_travel = await client.query({query:getTravelGuideQuery,variables:{input:payload}})
+      const articles = (await client.query({query:getarticleQuery,variables:{input:payload}})).data.articles.output?.articles??[]
+    //   console.log(payload)
+    //   console.log(articles)
+    //   res_travel.data.travel.output
 
 
 
@@ -156,7 +161,7 @@ export async function getServerSideProps(context) {
 
     // meta.data.meta.output.tags.title = meta.data.meta.output.package 
 
-    return { props: { data,headers,region,places,theme:res_theme.data.alltheme.output,meta:metas,travel:res_travel.data.travel.output,reviews: res.data.allpackage.output.reviews??[],faqs:res.data.allpackage.output.faqs??[]}}
+    return { props: { data,headers,region,places,theme:res_theme.data.alltheme.output,meta:metas,travel:res_travel.data.travel.output,reviews: res.data.allpackage.output.reviews??[],faqs:res.data.allpackage.output.faqs??[],articles,cities}}
 
 }
 
