@@ -1,5 +1,5 @@
-import {AiOutlineArrowDown,AiOutlineArrowUp} from 'react-icons/ai'
-import {BsFilter} from 'react-icons/bs'
+import {AiOutlineArrowDown,AiOutlineArrowRight,AiOutlineArrowUp} from 'react-icons/ai'
+import {BsArrowRight, BsFilter} from 'react-icons/bs'
 import dynamic from 'next/dynamic';
 import { useState,useEffect } from "react"
 import {tw} from 'twind'
@@ -7,7 +7,9 @@ import {tw} from 'twind'
 import { ScrollWrapper } from 'react-bottom-scroll';
 import ReactHtmlParser from "react-html-parser";
 import { useRouter } from 'next/router'
-import { createCountryListURL, createStateListURL, toTitleCase } from "./fun"
+import { createCountryListURL, createStateListURL, createTGStateURL, toTitleCase } from "./fun"
+import Link from 'next/link';
+import Image from 'next/image';
 // import CityTags from './list/city_tags';
 // import State_Attraction from './trave-guide/attractions';
 // import TopCities from './trave-guide/top_cities';
@@ -507,9 +509,27 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
             {
                 travel?
                 <>
-                <div className='container mt-4'>
-                    <h1 className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>Read more About {region?.name}</h1>
-                    <Content data={travel} collapse={true}/>
+                <div className='container mt-8'>
+                    {/* <h1 className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>Read more About {region?.name}</h1> */}
+                    {/* <Content data={travel} collapse={true}/> */}
+                    <Link href={createTGStateURL({city:travel.tg.cityName,id:travel.tg.id})}>
+                        {/* Travel Guide {travel.tg.cityName} */}
+                        <div className={tw`flex flex-wrap items-center bg-white p-4 lg:p-6 rounded-lg hover:shadow-lg transition-shadow`}>
+                            <div className={tw`w-full lg:w-1/2`}>
+                                <div className='relative h-40 lg:h-60'>
+                                    <Image className='rounded-lg' src={travel.images[0].i} fill/>
+                                </div>
+                            </div>
+                            <div className={tw`w-full lg:w-1/2 pl-4 lg:pl-0 pt-4 lg:pt-0`}>
+                                <div>
+                                    <h3 className={tw`text-2xl lg:text-3xl font-bold text-center`}>More about {travel.tg.cityName} <BsArrowRight className='inline' /> </h3>   
+                                </div>                                
+                            </div>
+                        </div>
+                    </Link>
+                        
+                    
+                    
                 </div>
                 {
                 page_type == 'STATE'?
