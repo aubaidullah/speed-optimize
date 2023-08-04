@@ -180,14 +180,14 @@ const QnaListing = ({ data, travelGuide }) => {
                     {/* {qna.length !== 0 && loading==false ? qna.map((e, index) => { */}
                     {data.map((e, index) => {
                         return (
-                            <div className="qna-collpase">
-                                <div>
+                            <div className="qna-collpase" itemScope itemType="https://schema.org/QAPage">
+                                <div itemProp="mainEntity" itemScope itemType="https://schema.org/Question">
                                     <div className='question'>
                                         <div className={tw`flex gap-10`}>
                                             <div>
                                                 <AiOutlinePlus className={tw`cursor-pointer text-[17px] text-grey-500`} onClick={() => collapse === index ? setCollapse(null) : setCollapse(index)} />
                                             </div>
-                                            <p className={tw`text-[#606060] text-[15px]`} >
+                                            <p className={tw`text-[#606060] text-[15px]`} itemProp="name">
                                                 {/* {ReactHtmlParser(e.question)} */}
                                                 <ParseHtml text={e.question} />
                                                 
@@ -239,10 +239,11 @@ const QnaListing = ({ data, travelGuide }) => {
                                                     </div>
                                                     <div>
                                                         <div className={tw`text-[#606060]`}>
+                                                            <meta itemProp="answerCount" content={e?.replies?.length} />
                                                             {e?.replies?.map((rp) => {
                                                                 return <>
-                                                                    <div className={tw`mb-[30px]`}>
-                                                                        <div className={tw`bg-white p-[10px] rounded-[5px] text-left border-1 border-solid border-[#eaeaea]`}>
+                                                                    <div className={tw`mb-[30px]`} itemProp="acceptedAnswer" itemScope itemType="https://schema.org/Answer">
+                                                                        <div className={tw`bg-white p-[10px] rounded-[5px] text-left border-1 border-solid border-[#eaeaea]`} itemProp="text">
                                                                             {/* {ReactHtmlParser(rp.replyText)} */}
                                                                             <ParseHtml text={rp.replyText} />
                                                                         </div>
