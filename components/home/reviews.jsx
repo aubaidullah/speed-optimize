@@ -1,15 +1,18 @@
 // import MultiCarousel from "react-multi-carousel";
 import { BsStarFill, BsStarHalf } from 'react-icons/bs'
-import Modal from '../modal'
+// import Modal from '../modal'
 // import { ImQuotesRight } from 'react-icons/im'
 // import * as Constants from '../Constants'
 import { tw } from 'twind'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
+import Link from 'next/link'
 
 
+
+const MultiCarousel = dynamic(() => import('react-multi-carousel'))
+const Modal = dynamic(() => import('../modal'))
 const Reviews = ({ data }) => {
-  const MultiCarousel = dynamic(() => import('react-multi-carousel'))
   
   const [isshow,setIsshow] = useState(false)
   const [rv,setRV] = useState({})
@@ -161,9 +164,16 @@ const Reviews = ({ data }) => {
         <div className='row_'>
           <div className="box_design_common">
             <div className={`title_kiomoi flex items-center justify-between mb-6`}>
-              <div className={`2w-full`}>
-                <h4>Review & Comments</h4>
-              </div>
+                <div className={`2w-full`}>
+                  <h4>Review & Comments</h4>
+                </div>
+                <div className={`2w-full`}>
+                    <Link href={'/reviews/'}>
+                      <div>
+                          <div className="btn_view_more">View All</div>
+                      </div>
+                    </Link>
+                </div>                
             </div>
             <div className="clearfix"></div>
             <MultiCarousel

@@ -1,10 +1,16 @@
 // const { Nav } = require("../components/Nav")
 import { getreviewsQuery } from "@/components/Graphql/Queries"
 import client from "@/components/Graphql/service"
-import Nav from "@/components/Nav"
-import Meta from "@/components/meta"
+// import Nav from "@/components/Nav"
+// import Meta from "@/components/meta"
 import { BsStarFill, BsStarHalf } from "react-icons/bs"
 import { tw } from "twind"
+import dynamic from "next/dynamic"
+
+
+
+const Nav = dynamic(() => import('@/components/Nav'))
+const Meta = dynamic(() => import('@/components/meta'))
 
 const Reviews = ({reviews}) =>{
     var options = { year: "numeric", month: "long", day: "numeric" };
@@ -34,7 +40,7 @@ const Reviews = ({reviews}) =>{
                 });
 
                 return <>
-                <div className="p-4 bg-white border-b border-gray-200">
+                <div className="p-4 mt-2 rounded-lg bg-white border-b border-gray-200">
                     <div>
                         <div className="flex justify-between">
                             <div className="user_title">

@@ -111,17 +111,17 @@ export async function getServerSideProps(context) {
 
     payload = {
         "av": "",
-        "geoid": region.sid,
+        "geoid": context.query.id,
         "home": "",
         "id": "",
         "pagenum": 0,
         "pid": 0,
         "pt": "",
         "size": 0,
-        "type": "State"
+        "type": "City"
       }
       const res_travel = await client.query({query:getTravelGuideQuery,variables:{input:payload}})
-
+    //   const res_travel = []
 
 
     const meta = await client.query({query:getMetaQuery,variables:{input:{av:"",id:context.query.id,key:'CITY_HOLIDAYS',name:"",pt:'WEBSITE',type:"CITY"}}})

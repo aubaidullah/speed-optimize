@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { getallpackages,getThemeQuery,getMetaQuery, getTravelGuideQuery, getreviewsQuery, getarticleQuery } from "../../../components/Graphql/Queries"
+import { getallpackages,getThemeQuery,getMetaQuery, getTravelGuideQuery, getreviewsQuery, getarticleQuery, getStatereArticleQuery } from "../../../components/Graphql/Queries"
 import client from "../../../components/Graphql/service"
 // import Nav from "../../../components/Nav"
 import {useEffect,useState} from 'react'
@@ -120,15 +120,15 @@ export async function getServerSideProps(context) {
         "av": "",
         "geoid": context.query.id,
         "home": "",
-        "id": "",
-        "pagenum": 1,
+        "id": context.query.id,
+        "pagenum": 0,
         "pid": 0,
         "pt": "",
-        "size": 10,
-        "type": "State"
+        "size": 0,
+        "type": "STATE"
       }
       const res_travel = await client.query({query:getTravelGuideQuery,variables:{input:payload}})
-      const articles = (await client.query({query:getarticleQuery,variables:{input:payload}})).data.articles.output?.articles??[]
+      const articles = (await client.query({query:getStatereArticleQuery,variables:{input:payload}})).data.articles.output?.articles??[]
     //   console.log(payload)
     //   console.log(articles)
     //   res_travel.data.travel.output

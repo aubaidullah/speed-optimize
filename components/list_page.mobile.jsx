@@ -440,7 +440,6 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                             bottomCallback={()=>{setLimit(limit+10)}}
                             minScroll={20}
                             className={"row"}
-                            // smoothBehavior={true}
                             >
                                 <div className="row" itemScope itemType="https://schema.org/ItemList">
                                     <meta itemProp='numberOfItems' content={pack.length!=0?pack.length:data.length}/>
@@ -448,6 +447,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                                         data.length?
                                         data.slice(0,limit).map((item,index)=>{
                                             return  item.name.length>=2 &&(item.name.toLowerCase().includes(filter.keyword) || item.cities.toLowerCase().includes(filter.keyword) || item.theme.toLowerCase().includes(filter.keyword))?
+                                            // <div>package</div>:""
                                             <Package index={index} item={item} />:null
                                         }):
                                         <div className={`mt-16 mb-16 text-center`}>
@@ -458,7 +458,6 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                                         </div>
                                     }
                                 </div>
-                                
                             </ScrollWrapper>
                         </div>
                             
