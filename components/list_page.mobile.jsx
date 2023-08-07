@@ -1,5 +1,5 @@
-import {AiOutlineArrowDown,AiOutlineArrowUp} from 'react-icons/ai'
-import {BsFilter} from 'react-icons/bs'
+import {AiOutlineArrowDown,AiOutlineArrowRight,AiOutlineArrowUp} from 'react-icons/ai'
+import {BsArrowRight, BsFilter} from 'react-icons/bs'
 import dynamic from 'next/dynamic';
 import { useState,useEffect } from "react"
 import {tw} from 'twind'
@@ -7,11 +7,15 @@ import {tw} from 'twind'
 import { ScrollWrapper } from 'react-bottom-scroll';
 import ReactHtmlParser from "react-html-parser";
 import { useRouter } from 'next/router'
-import { createCountryListURL, createStateListURL, toTitleCase } from "./fun"
-import State_Attraction from './trave-guide/attractions';
-import TopCities from './trave-guide/top_cities';
-import Reviews from './home/reviews';
-import FAQs from './list/faqs';
+import { createCountryListURL, createStateListURL, createTGStateURL, toTitleCase } from "./fun"
+import Link from 'next/link';
+import Image from 'next/image';
+// import CityTags from './list/city_tags';
+// import State_Attraction from './trave-guide/attractions';
+// import TopCities from './trave-guide/top_cities';
+// import Reviews from './home/reviews';
+// import FAQs from './list/faqs';
+// import Articles from './home/articles';
 
 // const  
 const TableLoading = dynamic(() => import('./skelton').then((mod)=>mod.TableLoading),{ssr:false})
@@ -22,7 +26,12 @@ const Meta = dynamic(() => import('./meta'))
 const FilterBy = dynamic(() => import('./list/filter'))
 const Modal = dynamic(() => import('./modal'))
 const Package = dynamic(() => import('../components/package'),{loading:()=> <TableLoading />})
-
+const CityTags = dynamic(() => import('./list/city_tags'))
+const FAQs = dynamic(() => import('./list/faqs'))
+const Articles = dynamic(() => import('./home/articles'))
+const Reviews = dynamic(() => import('./home/reviews'))
+const TopCities = dynamic(() => import('./trave-guide/top_cities'))
+const State_Attraction = dynamic(() => import('./trave-guide/attractions'))
 // const filtering = useSelector(state=>state.package.package)
 // const FilterBy = dynamic(() => import('./list/filter'), {
 //     ssr: true,
@@ -31,7 +40,7 @@ const Package = dynamic(() => import('../components/package'),{loading:()=> <Tab
 // const filtr = useSelector(state=>state.filter)
 // console.log(filtr)
 
-const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefined,theme=undefined,related = undefined,travel=undefined,reviews = undefined,faqs=undefined}) =>{
+const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefined,theme=undefined,related = undefined,travel=undefined,reviews = undefined,faqs=undefined,articles = undefined,cities = undefined}) =>{
     
     const [filter,setFilter] = useState({keyword:""})
     const [limit,setLimit] = useState(10)
@@ -431,7 +440,6 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                             bottomCallback={()=>{setLimit(limit+10)}}
                             minScroll={20}
                             className={"row"}
-                            // smoothBehavior={true}
                             >
                                 <div className="row" itemScope itemType="https://schema.org/ItemList">
                                     <meta itemProp='numberOfItems' content={pack.length!=0?pack.length:data.length}/>
@@ -439,6 +447,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                                         data.length?
                                         data.slice(0,limit).map((item,index)=>{
                                             return  item.name.length>=2 &&(item.name.toLowerCase().includes(filter.keyword) || item.cities.toLowerCase().includes(filter.keyword) || item.theme.toLowerCase().includes(filter.keyword))?
+                                            // <div>package</div>:""
                                             <Package index={index} item={item} />:null
                                         }):
                                         <div className={`mt-16 mb-16 text-center`}>
@@ -449,7 +458,6 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                                         </div>
                                     }
                                 </div>
-                                
                             </ScrollWrapper>
                         </div>
                             
@@ -476,6 +484,17 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                         :""
             }
             {
+                page_type == 'STATE'?
+                <div className='mt-4 container'>
+                    <div className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>
+                        Related Tour Packages in {region.name}
+                    </div>                    
+                    <CityTags cities={cities}/>
+                </div>
+                
+                :""
+            }
+            {
                 page_type == 'STATE' && faqs.length!=0?
                 <div className='mt-4 container'>
                     <div className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>
@@ -489,9 +508,27 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
             {
                 travel?
                 <>
-                <div className='container mt-4'>
-                    <h1 className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>Read more About {region?.name}</h1>
-                    <Content data={travel} collapse={true}/>
+                <div className='container mt-8'>
+                    {/* <h1 className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>Read more About {region?.name}</h1> */}
+                    {/* <Content data={travel} collapse={true}/> */}
+                    <Link href={createTGStateURL({city:travel.tg.cityName,id:travel.tg.id})}>
+                        {/* Travel Guide {travel.tg.cityName} */}
+                        <div className={tw`flex flex-wrap items-center bg-white p-4 lg:p-6 rounded-lg hover:shadow-lg transition-shadow`}>
+                            <div className={tw`w-full lg:w-1/2`}>
+                                <div className='relative h-40 lg:h-60'>
+                                    <Image className='rounded-lg' src={travel.images[0].i} fill/>
+                                </div>
+                            </div>
+                            <div className={tw`w-full lg:w-1/2 pl-4 lg:pl-0 pt-4 lg:pt-0`}>
+                                <div>
+                                    <h3 className={tw`text-2xl lg:text-3xl font-bold text-center`}>More about {travel.tg.cityName} <BsArrowRight className='inline' /> </h3>   
+                                </div>                                
+                            </div>
+                        </div>
+                    </Link>
+                        
+                    
+                    
                 </div>
                 {
                 page_type == 'STATE'?
@@ -507,7 +544,13 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                 }
 
                 {
-                    page_type == 'STATE'?<Reviews data={reviews}/>:""
+                    page_type == 'STATE'?
+                    <>
+                        {reviews?<Reviews data={reviews}/>:""}
+                        {articles?<Articles data={articles}/>:""}
+                    </>
+                    
+                    :""
                 }
 
                 {

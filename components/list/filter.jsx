@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { places_filter, theme_filter } from '../../redux_fx/actions';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { useRouter } from 'next/router';
-import { createStateListURL } from '../fun';
+import { createStateListURL, toTitleCase } from '../fun';
 // import Link from 'next/link';
 
 const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Themes,_places,_themes,page_type,filter,setKeyword,data,theme=undefined}) =>{
@@ -30,11 +30,13 @@ const FilterBy = ({_pricing,setPrice,_min,set_Min,_max,set_Max,set_Places,set_Th
     useEffect(()=>{
         if (router.query?.theme!=undefined){
             // set_Themes
-            // set_Themes( arr => [...arr, router.query?.theme])
-            set_Themes(router.query?.theme.split(','))
+            set_Themes( router.query?.theme.split(',').map((e)=>toTitleCase(e)))
             theme_ref.current = router.query?.theme.split(',')
         }
+
+        // if (router.query?.)
     })
+    // console.log(router.query)
 
 
 
