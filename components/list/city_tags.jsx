@@ -10,7 +10,7 @@ const CityTags = ({cities}) =>{
                                     {
                                     <Link href={createCityListURL({cityname:item.name,id:item.id})} className={tw` font-medium_`}>
                                         <div className="px-4 py-2 bg-white _b_active rounded-full border-2 border-gray-300 hover:shadow-lg transition-shadow">
-                                            Tours in {item.name}
+                                            {item.name} tour packages
                                         </div>
                                         
                                     </Link>

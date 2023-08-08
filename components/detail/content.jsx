@@ -6,6 +6,9 @@ import {tw} from 'twind'
 import {GiBinoculars} from 'react-icons/gi'
 import {IoLocationSharp,IoSunny, IoCarSportOutline, IoFastFoodOutline} from 'react-icons/io5'
 import {RiHotelLine} from 'react-icons/ri'
+// import { FaQs } from "react-icons/fa"
+import FAQs from "../list/faqs"
+
 
 const Content = ({data}) =>{
     
@@ -15,8 +18,11 @@ const Content = ({data}) =>{
     const [tnclimit,setTnclimit] = useState(253)
     const [tnc,setTnc] = useState()
 
+    const [faqsinfo, setFaqsInfo] = useState([])
+
     
     var d = data?.package.description;
+
     // console.log(d)
 
     useEffect(()=>{
@@ -31,6 +37,13 @@ const Content = ({data}) =>{
     },[tnclimit])
 
 
+    useEffect(()=>{
+      if (data?.faqs.length !== 0)
+      // setTnc(data?.package.tnc.substring(0, tnclimit))
+      setFaqsInfo(data?.faqs)  
+  },[faqsinfo])
+
+  console.log("This is Data for checking FAQ :- ",faqsinfo)
 
 
     const itnRender = data?.itn.map(function (item, i) {
@@ -382,7 +395,15 @@ const Content = ({data}) =>{
                             </div>
                         </div>
 
-                        <div className="hotel_accomodation" id="tnc">
+                        <div>
+                          {/* <span></span> */}
+                          <div className="mt-2 text-2xl mb-4 text-center_ font-semibold text-gray-600">
+                            FAQs
+                          </div>
+                          <FAQs data={faqsinfo} detail={true}/>
+                        </div>
+
+                        <div className="hotel_accomodation mt-6" id="tnc">
                             <div className="_list_accomodation">
                                 <h4 className="_titles_">Terms & Conditions</h4>
                                 <ul className={tw`tnc_d text-sm mt-[30px] mr-0 mb-0`}>

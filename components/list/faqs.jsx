@@ -2,7 +2,7 @@ import { tw } from "twind"
 import {AiOutlineUp,AiOutlineDown, AiOutlineSearch, AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 import { useState } from "react"
 
-const FAQs = ({data}) =>{
+const FAQs = ({data,detail=false}) =>{
 
     const [collapse,setCollapse] = useState(0)
 
@@ -11,7 +11,7 @@ const FAQs = ({data}) =>{
         {
             data.map((item,index)=>{
                 return <>
-                    <div className="p-4 bg-white border-b" key={index} itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <div className={tw`p-4 ${detail==false?'bg-white':''}border-b`} key={index} itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                         <div className={tw`flex justify-between cursor-pointer`} onClick={()=>setCollapse(index==collapse?-1:index)}>
                             <div className="flex items-center text-md font-semibold">
                                 {/* <AiOutlineSearch className={tw`text-[#f05927] text-xl`}/> */}

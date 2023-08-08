@@ -273,6 +273,10 @@ const DetailPage = ({ data, related, reviews,meta }) => {
 
                 </div>
 
+                {/* <div>
+                    <h1>This is Testing.........................</h1>
+                </div> */}
+
                 <div className={tw`w-full hidden lg:w-1/3 lg:block`}>
                     <div className={tw`pl-0 lg:pl-6 h_sticky`}>
                         <RightBar data={data} />

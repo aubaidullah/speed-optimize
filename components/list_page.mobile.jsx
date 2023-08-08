@@ -486,7 +486,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
             {
                 page_type == 'STATE'?
                 <div className='mt-4 container'>
-                    <div className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>
+                    <div className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold text-gray-600`}>
                         Related Tour Packages in {region.name}
                     </div>                    
                     <CityTags cities={cities}/>
@@ -497,7 +497,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
             {
                 page_type == 'STATE' && faqs.length!=0?
                 <div className='mt-4 container'>
-                    <div className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>
+                    <div className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold text-gray-600`}>
                         FAQs for {region.name}
                     </div>
                     <FAQs data={faqs}/>
@@ -521,7 +521,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                             </div>
                             <div className={tw`w-full lg:w-1/2 pl-4 lg:pl-0 pt-4 lg:pt-0`}>
                                 <div>
-                                    <h3 className={tw`text-2xl lg:text-3xl font-bold text-center`}>More about {travel.tg.cityName} <BsArrowRight className='inline' /> </h3>   
+                                    <h3 className={tw`text-2xl lg:text-3xl font-bold text-center text-gray-500`}>More about {travel.tg.cityName} tourism <BsArrowRight className='inline _b_active font-bold' /> </h3>   
                                 </div>                                
                             </div>
                         </div>
