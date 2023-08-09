@@ -22,7 +22,7 @@ const DeskList = dynamic(() => import('../../../components/list_page.mobile'), {
 
 
 
-const CityPackages = ({data,headers,region,places,city,meta,related,travel}) =>{
+const CityPackages = ({data,headers,region,places,city,meta,related,travel,faqs,reviews}) =>{
     console.log(region)
     const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('android') || headers['user-agent'].includes('iphone'))
 
@@ -38,10 +38,10 @@ const CityPackages = ({data,headers,region,places,city,meta,related,travel}) =>{
 
     if (isMobile==true){
         // return <ListPageMobile data = {data}/>
-        return <><Nav/> <MobileList meta={meta} page_type={'CITY'} data={data??[]} region = {region} places={places} isMobile={isMobile} city={city} related={related} travel={travel} /></>
+        return <><Nav/> <MobileList meta={meta} page_type={'CITY'} data={data??[]} region = {region} places={places} isMobile={isMobile} city={city} related={related} travel={travel} faqs={faqs} reviews={reviews} /></>
     }
     else{
-        return <><Nav/><DeskList meta={meta} page_type={'CITY'} data = {data??[]} region = {region} places={places} isMobile={isMobile} city={city} related={related} travel={travel}/></>
+        return <><Nav/><DeskList meta={meta} page_type={'CITY'} data = {data??[]} region = {region} places={places} isMobile={isMobile} city={city} related={related} travel={travel} faqs={faqs} reviews={reviews}/></>
     }    
 
 
@@ -99,7 +99,7 @@ export async function getServerSideProps(context) {
     payload = {
         av:'1.3',
         id:region.sid,
-        name:region.sname.replace(/-/g,' '),
+        name:region?.sname?.replace(/-/g,' '),
         pt:'WEBSITE',
         type:'STATE'
     }
@@ -140,7 +140,7 @@ export async function getServerSideProps(context) {
     // region = []
     // places = []
     headers['user-agent'] = headers['user-agent'].toLocaleLowerCase()
-    return { props: { data,headers,region,places,city:context.query.city,meta:metas,related:rel_package,travel:res_travel.data.travel.output}}
+    return { props: { data,headers,region,places,city:context.query.city,meta:metas,related:rel_package,travel:res_travel.data.travel.output,faqs:res.data.allpackage.output?.faqs??[],reviews: res.data.allpackage.output?.reviews??[]}}
 
 }
 

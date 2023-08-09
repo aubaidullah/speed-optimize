@@ -1,5 +1,6 @@
 import 'react-loading-skeleton/dist/skeleton.css'
 import Skeleton from 'react-loading-skeleton';
+import { tw } from 'twind';
 // export const TableLoading = () =>{
 //     return(
 //         <Skeleton count={5} />
@@ -51,6 +52,14 @@ export const QNALoading = () => {
     )
 }
 
+
+export const SimilarTourLoading = () =>{
+    return <>
+        <div className={tw`container bg-white rounded-lg`}>
+            <Skeleton height={100} />
+        </div>
+    </>
+}
 
 export const TableLoading = () =>{
     return(

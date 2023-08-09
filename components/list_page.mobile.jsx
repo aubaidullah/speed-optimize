@@ -1,5 +1,6 @@
 import {AiOutlineArrowDown,AiOutlineArrowRight,AiOutlineArrowUp} from 'react-icons/ai'
 import {BsArrowRight, BsFilter} from 'react-icons/bs'
+// import {FaArrowRight} from 'react-icons/fa'
 import dynamic from 'next/dynamic';
 import { useState,useEffect } from "react"
 import {tw} from 'twind'
@@ -7,9 +8,10 @@ import {tw} from 'twind'
 import { ScrollWrapper } from 'react-bottom-scroll';
 import ReactHtmlParser from "react-html-parser";
 import { useRouter } from 'next/router'
-import { createCountryListURL, createStateListURL, createTGStateURL, toTitleCase } from "./fun"
+import { createCountryListURL, createStateListURL, createTGStateURL } from "./fun"
 import Link from 'next/link';
 import Image from 'next/image';
+// import { SimilarTourLoading } from './skelton';
 // import CityTags from './list/city_tags';
 // import State_Attraction from './trave-guide/attractions';
 // import TopCities from './trave-guide/top_cities';
@@ -19,7 +21,7 @@ import Image from 'next/image';
 
 // const  
 const TableLoading = dynamic(() => import('./skelton').then((mod)=>mod.TableLoading),{ssr:false})
-const Content = dynamic(() => import('./trave-guide/content'))
+// const Content = dynamic(() => import('./trave-guide/content'))
 const RelatedTour = dynamic(() => import('./detail/related_tours'))
 const BreadCrumbs = dynamic(() => import('./breadcrumbs'))
 const Meta = dynamic(() => import('./meta'))
@@ -220,7 +222,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     console.log(data.length)
 
     if(pricefilter){
-        data = data.sort((a,b)=>a.finalprice - b.finalprice) 
+        data = data.sort((a,b)=>a.finalprice - b.finalprice)
     }
     else{
         data = data.sort((a,b)=> b.finalprice - a.finalprice)
@@ -232,7 +234,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     
     if(durationfilter){
         if (pricefilter)
-            data = data.sort((a,b)=>a.nights - b.nights) 
+            data = data.sort((a,b)=>a.nights - b.nights)
         // else{
         //     data = data.sort((a,b)=>a.nights < b.nights) 
         // }
@@ -240,13 +242,13 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     else{
         // setPricefilter(0)
         if (!pricefilter){
-            data = data.sort((a,b)=>a.nights - b.nights)     
+            data = data.sort((a,b)=>a.nights - b.nights)
         }
         else{
-            data = data.sort((a,b)=>b.nights - a.nights) 
+            data = data.sort((a,b)=>b.nights - a.nights)
         }
         
-    }    
+    }
         
             
     // },[pricefilter])
@@ -338,7 +340,11 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                 <div className={tw`flex flex-wrap`}>
                     {region?
                         <div className={`w-full p-4 bg-white mb-4 _box_shadow_ title_listing_ rounded-md`}>
-                        <h1 className={`text-2xl pb-2`}>{region?.name}</h1>
+                        {
+                            overview?.includes('<h1')?<div className={`text-2xl pb-2 _b_active font-bold`}>{region?.name} Tour packages</div>:<h1 className={`text-2xl pb-2`}>{region?.name} Tour packages</h1>
+                        }
+                        
+                        
                         <div>
                             {ReactHtmlParser(overview)}
                             {overviewlimit == 250 ||
@@ -477,6 +483,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
             {
                         page_type=='CITY'?
                             <div className={tw`mt-5 w-full`}>
+                                {/* <SimilarTourLoading /> */}
                                 <RelatedTour data={related}/>
                             </div>
                             
@@ -495,7 +502,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                 :""
             }
             {
-                page_type == 'STATE' && faqs.length!=0?
+                (page_type == 'STATE' || page_type == 'CITY') && faqs.length!=0?
                 <div className='mt-4 container'>
                     <div className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold text-gray-600`}>
                         FAQs for {region.name}
@@ -543,22 +550,24 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                 </div>:""
                 }
 
+
+                {
+                page_type == 'CITY'?
+                        <div className='container_ mt-4'>
+                        <State_Attraction data={travel.attn}/>
+                    </div>:""
+                }
+                {reviews?<Reviews data={reviews}/>:""}
+                
                 {
                     page_type == 'STATE'?
                     <>
-                        {reviews?<Reviews data={reviews}/>:""}
                         {articles?<Articles data={articles}/>:""}
                     </>
                     
                     :""
                 }
 
-                {
-                    page_type == 'CITY'?
-                        <div className='container_ mt-4'>
-                        <State_Attraction data={travel.attn}/>
-                    </div>:""
-                }
                 
 
 
