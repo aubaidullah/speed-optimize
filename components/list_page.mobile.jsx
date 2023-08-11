@@ -8,7 +8,7 @@ import {tw} from 'twind'
 import { ScrollWrapper } from 'react-bottom-scroll';
 import ReactHtmlParser from "react-html-parser";
 import { useRouter } from 'next/router'
-import { createCountryListURL, createStateListURL, createTGStateURL } from "./fun"
+import { createCountryListURL, createStateListURL, createTGCityURL, createTGCountryURL, createTGStateURL } from "./fun"
 import Link from 'next/link';
 import Image from 'next/image';
 // import { SimilarTourLoading } from './skelton';
@@ -291,6 +291,21 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     // console.log(page_type)
     // console.log(pricefilter)
     // console.log(data.length)
+    
+    if (page_type == 'CITY'){
+        // travel.tg.cityName,id:travel.tg.id
+        const tgURL = createTGCityURL({city:travel.tg.cityName, id:travel.tg.id})
+    }
+    else if (page_type == 'STATE'){
+        const tgURL = createTGStateURL({city:travel.tg.cityName, id:travel.tg.id})
+    }
+    else if( page_type == 'COUNTRY'){
+        const tgURL = createTGCountryURL({country:travel.tg.cityName, id:travel.tg.id})
+    }else{
+        const tgURL = ""
+    }
+    
+    const tgURL = page_type == 'CITY'?createTGCityURL({city:travel.tg.cityName, id:travel.tg.id}):page_type == 'STATE'?createTGStateURL({city:travel.tg.cityName, id:travel.tg.id}):createTGCountryURL({country:travel.tg.cityName, id:travel.tg.id})
     return <>
     <Meta meta={meta} />
     
@@ -491,7 +506,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                         :""
             }
             {
-                page_type == 'STATE'?
+                page_type == 'STATE' || page_type == 'COUNTRY'?
                 <div className='mt-4 container'>
                     <div className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold text-gray-600`}>
                         Related Tour Packages in {region.name}
@@ -502,7 +517,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                 :""
             }
             {
-                (page_type == 'STATE' || page_type == 'CITY') && faqs.length!=0?
+                (page_type == 'STATE' || page_type == 'CITY' || page_type == 'COUNTRY') && faqs.length!=0?
                 <div className='mt-4 container'>
                     <div className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold text-gray-600`}>
                         FAQs for {region.name}
@@ -518,7 +533,13 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                 <div className='container mt-8'>
                     {/* <h1 className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>Read more About {region?.name}</h1> */}
                     {/* <Content data={travel} collapse={true}/> */}
-                    <Link href={createTGStateURL({city:travel.tg.cityName,id:travel.tg.id})}>
+                    
+                    
+                    
+                    <Link 
+                    // href={createTGStateURL({city:travel.tg.cityName,id:travel.tg.id})}
+                    href={tgURL}
+                    >
                         {/* Travel Guide {travel.tg.cityName} */}
                         <div className={tw`flex flex-wrap items-center bg-white p-4 lg:p-6 rounded-lg hover:shadow-lg transition-shadow`}>
                             <div className={tw`w-full lg:w-1/2`}>
@@ -538,7 +559,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                     
                 </div>
                 {
-                page_type == 'STATE'?
+                (page_type == 'STATE' || page_type == 'COUNTRY') && travel?.ctg?
                 <div className='container mt-16  '>
                     <div className='box_design_common title_kiomoi'>
                         <h4>Top cities to visit in {region.name}</h4>
@@ -557,7 +578,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                         <State_Attraction data={travel.attn}/>
                     </div>:""
                 }
-                {reviews.length!=0?<Reviews data={reviews}/>:""}
+                {reviews!=undefined && reviews?.length!=0?<Reviews data={reviews}/>:""}
                 
                 {
                     page_type == 'STATE'?
