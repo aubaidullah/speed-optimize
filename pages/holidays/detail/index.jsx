@@ -292,8 +292,10 @@ const DetailPage = ({ data, related, reviews,meta }) => {
 
 
         <RelatedTour data={related} />
-
-        <Review reviews={reviews}/>
+        <div className="pt-6">
+            <Review reviews={reviews}/>
+        </div>
+        
     </>
 }
 

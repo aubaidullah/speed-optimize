@@ -552,12 +552,12 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
 
 
                 {
-                page_type == 'CITY'?
+                page_type == 'CITY' && travel.attn.length!=0?
                         <div className='container_ mt-4'>
                         <State_Attraction data={travel.attn}/>
                     </div>:""
                 }
-                {reviews?<Reviews data={reviews}/>:""}
+                {reviews.length!=0?<Reviews data={reviews}/>:""}
                 
                 {
                     page_type == 'STATE'?
