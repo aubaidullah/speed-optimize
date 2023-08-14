@@ -172,9 +172,10 @@ const Reviews = ({reviews}) =>{
                                             for="file-upload"
                                             id="custom-text"
                                             >
-                                                <BsPlusLg />
+                                                <BsPlusLg className='cursor-pointer'/>
                                             </label>
                                             <input
+                                            className='hidden'
                                             id="file-upload"
                                             name="uploaded_file"
                                             type="file"
@@ -194,21 +195,21 @@ const Reviews = ({reviews}) =>{
                             </div>
                         </div>
 
-                        <div className="row mt-2 gy-3">
+                        <div className={tw`flex flex-wrap mt-4`}>
                             {images && (
                                 images.map((image, i) => {
                                     return (
-                                        <div key={i} className="col-6 col-md-4">
+                                        <div key={i} className={tw`w-1/3 lg:w-1/4 p-1 lg:p-2`}>
                                             <div>
-                                                <div
-                                                    className="w-full max-h-[300px]"
-                                                    // src = {image}
+                                                <img
+                                                    className="w-full h-[100px] lg:h-[200px]"
+                                                    src = {image}
                                                     // src={URL.createObjectURL(image)}
                                                     // alt="Image"
                                                     style={{background:`url(${image})`,backgroundSize:'cover',backgroundRepeat:'no-repeat',backgroundOrigin:'unset',backgroundPosition:'top'}}
                                                 >
 
-                                                </div>
+                                                </img>
                                             </div>
                                         </div>
                                     )
@@ -218,7 +219,7 @@ const Reviews = ({reviews}) =>{
                     </div>
                 </form>
             </div>
-            <div className="review_client_list">
+            <div className="">
                 <div className={tw`title_kiomoi`}>
                     <h4>Reviews</h4>
                     <hr className={tw`w-full lg:w-2/3 mt-3`} />

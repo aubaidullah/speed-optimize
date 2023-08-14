@@ -4,8 +4,13 @@ import {MdCheckCircle,MdCancel,MdOutlineFlight} from 'react-icons/md'
 import {FaBinoculars} from 'react-icons/fa'
 import {tw} from 'twind'
 import {GiBinoculars} from 'react-icons/gi'
-import {IoLocationSharp,IoSunny, IoCarSportOutline, IoFastFoodOutline} from 'react-icons/io5'
+import {IoCarSportOutline, IoFastFoodOutline} from 'react-icons/io5'
 import {RiHotelLine} from 'react-icons/ri'
+// import { FaQs } from "react-icons/fa"
+// import FAQs from "../list/faqs"
+import dynamic from "next/dynamic"
+
+const FAQs = dynamic(() => import('../list/faqs'))
 
 const Content = ({data}) =>{
     
@@ -15,8 +20,11 @@ const Content = ({data}) =>{
     const [tnclimit,setTnclimit] = useState(253)
     const [tnc,setTnc] = useState()
 
+    const [faqsinfo, setFaqsInfo] = useState([])
+
     
     var d = data?.package.description;
+
     // console.log(d)
 
     useEffect(()=>{
@@ -31,6 +39,11 @@ const Content = ({data}) =>{
     },[tnclimit])
 
 
+    useEffect(()=>{
+      if (data?.faqs.length !== 0)
+      // setTnc(data?.package.tnc.substring(0, tnclimit))
+      setFaqsInfo(data?.faqs)  
+  },[faqsinfo])
 
 
     const itnRender = data?.itn.map(function (item, i) {
@@ -313,7 +326,7 @@ const Content = ({data}) =>{
                         <div className="hotel_accomodation __50px" id="hotels">
                             <div className="_list_accomodation">
                                 <h4 className="_titles_">Hotel Accomodation</h4>
-                                <table className={tw`table-auto_ table-hover acc_table mt-4`}>
+                                <table className={tw`table-auto w-full table-hover acc_table mt-4`}>
                                 <thead>
                                     <tr>
                                       <th className={tw`algin-middle_`}>
@@ -381,8 +394,18 @@ const Content = ({data}) =>{
                                 <p>*Same Day cancellation No refund</p>
                             </div>
                         </div>
+                        {
+                          faqsinfo.length?<div>
+                          {/* <span></span> */}
+                          <div className="_titles_">
+                            FAQs
+                          </div>
+                          <FAQs data={faqsinfo} detail={true}/>
+                        </div>:""
+                        }
+                        
 
-                        <div className="hotel_accomodation" id="tnc">
+                        <div className="hotel_accomodation mt-6" id="tnc">
                             <div className="_list_accomodation">
                                 <h4 className="_titles_">Terms & Conditions</h4>
                                 <ul className={tw`tnc_d text-sm mt-[30px] mr-0 mb-0`}>
