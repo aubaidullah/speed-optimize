@@ -292,20 +292,8 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
     // console.log(pricefilter)
     // console.log(data.length)
     
-    if (page_type == 'CITY'){
-        // travel.tg.cityName,id:travel.tg.id
-        const tgURL = createTGCityURL({city:travel.tg.cityName, id:travel.tg.id})
-    }
-    else if (page_type == 'STATE'){
-        const tgURL = createTGStateURL({city:travel.tg.cityName, id:travel.tg.id})
-    }
-    else if( page_type == 'COUNTRY'){
-        const tgURL = createTGCountryURL({country:travel.tg.cityName, id:travel.tg.id})
-    }else{
-        const tgURL = ""
-    }
     
-    const tgURL = page_type == 'CITY'?createTGCityURL({city:travel.tg.cityName, id:travel.tg.id}):page_type == 'STATE'?createTGStateURL({city:travel.tg.cityName, id:travel.tg.id}):createTGCountryURL({country:travel.tg.cityName, id:travel.tg.id})
+    const tgURL = page_type == 'CITY'?createTGCityURL({city:travel?.tg?.cityName, id:travel?.tg?.id}):page_type == 'STATE'?createTGStateURL({city:travel?.tg?.cityName, id:travel?.tg?.id}):createTGCountryURL({country:travel?.tg?.cityName, id:travel?.tg?.id})
     return <>
     <Meta meta={meta} />
     

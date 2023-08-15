@@ -112,7 +112,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
         ]
     }
 
-    const imagesRender = data.images.map((img, index) => {
+    const imagesRender = data?.images?.map((img, index) => {
         return <div key={index}>
             <Image src={jpgToWebp({uri:img.i})} alt={imgNameByUrl({url:img.i})} className={`img rounded-[8px]`} layout="fill"/>
         </div>
@@ -211,7 +211,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                             autoPlay={true}
                             className="slider_banner slider_overlay"
                         >
-                            {imagesRender.length > 0 ? (
+                            {data?.images!=null && data?.images.length > 0 ? (
                                 imagesRender
                             ) : (
                                 <img src={`${Constants.assets_api}/public/icons/logo-icon.png`} alt="kiomoi logo" />
@@ -233,7 +233,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                     </div>
                                     <div className="cir_bg">
                                         {
-                                            type=='CITY'?data.city.ratings+'/5':type=='STATE'?data.state.ratings+'/5':data.country.ratings+'/5'
+                                            type=='CITY'?data?.city?.ratings+'/5':type=='STATE'?data?.state?.ratings+'/5':data?.country?.ratings+'/5'
                                         }
                                     </div>
                                 </div>
@@ -262,16 +262,16 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                             :<>
                                                 <div className={`w-full lg:1/2`}>
                                                     {
-                                                        rightBlock({ icon: 'calender_multi_clr.png', heading: 'Best Session', desc: type=='CITY'?data.city.visitTime:data.state.visitTime })
+                                                        rightBlock({ icon: 'calender_multi_clr.png', heading: 'Best Session', desc: type=='CITY'?data.city.visitTime:data?.state?.visitTime })
                                                     }
                                                     {
                                                         type=='CITY'?
-                                                        rightBlock({ icon: 'language.png', heading: 'Ideal Duration', desc: type=='CITY'?data.city.idealTripDuration:data.state.idealTripDuration })
-                                                        :rightBlock({ icon: 'new_delhi.png', heading: 'Capital', desc: type=='CITY'?data.city.nearbyAirport:data.state.capital })
+                                                        rightBlock({ icon: 'language.png', heading: 'Ideal Duration', desc: type=='CITY'?data.city.idealTripDuration:data?.state?.idealTripDuration })
+                                                        :rightBlock({ icon: 'new_delhi.png', heading: 'Capital', desc: type=='CITY'?data.city.nearbyAirport:data?.state?.capital })
                                                     }
                                                     {
                                                         type=='STATE'?
-                                                        rightBlock({ icon: 'language.png', heading: 'Major Languages', desc:data.state.languages })
+                                                        rightBlock({ icon: 'language.png', heading: 'Major Languages', desc:data?.state?.languages })
                                                         :""
                                                     }
                                                 </div>
@@ -280,12 +280,12 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                                     {
                                                         type=='CITY'?
                                                         rightBlock({ icon: 'train.png', heading: 'Station:', desc: data.city.nearbyRailway})
-                                                        :rightBlock({ icon: 'plane_icon.png', heading: 'Major Airports', desc: data.state.airports})
+                                                        :rightBlock({ icon: 'plane_icon.png', heading: 'Major Airports', desc: data?.state?.airports})
                                                     }
 
                                                     {   type=='CITY'?
-                                                        rightBlock({ icon: 'plane_icon.png', heading: 'Major Airports', desc: type=='CITY'?data.city.nearbyAirport:data.state.nearbyAirport }):
-                                                        rightBlock({ icon: 'calender_multi_clr.png', heading: 'Ideal Duration', desc: data.state.idealTripDuration })
+                                                        rightBlock({ icon: 'plane_icon.png', heading: 'Major Airports', desc: type=='CITY'?data.city.nearbyAirport:data?.state?.nearbyAirport }):
+                                                        rightBlock({ icon: 'calender_multi_clr.png', heading: 'Ideal Duration', desc: data?.state?.idealTripDuration })
                                                     }
 
                                                     {
@@ -297,7 +297,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                                             </div>
                                                             <div className={`ml-2`}>
                                                                 <div className={`t_12px font-bold`}>Region</div>
-                                                                <div className="t_12px">{data.state.region}</div>
+                                                                <div className="t_12px">{data?.state?.region}</div>
                                                             </div>
                                                         </div>
                                                         
@@ -439,15 +439,15 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                     <div>
                         <div className={`flex justify-between`}>
                             {
-                                type=='CITY'?data.attn.length>0?<h2 className={'_titles_'}>Attractions in {data.tg.cityName}</h2>:""
-                                :data.attn.length>0?<h2 className={`text-xl font-bold`}>Top Cities in {data.tg.cityName}</h2>:""
+                                type=='CITY'?data?.attn?.length>0?<h2 className={'_titles_'}>Attractions in {data?.tg?.cityName}</h2>:""
+                                :data?.attn?.length>0?<h2 className={`text-xl font-bold`}>Top Cities in {data?.tg?.cityName}</h2>:""
                             }
                             
                             
 
                             {
                                 type=='CITY'?
-                                    data.attn.length>0?
+                                    data?.attn?.length>0?
                                         <div>
                                             <Link href={'/travel-guide/'}>
                                                 <div href={'/travel-guide/'}>
@@ -470,7 +470,7 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
                                 <div className={`flex flex-wrap`}>
                                     {
                                         type=='CITY'?
-                                        data.attn.slice(0, attlimit).map((item, i) => {
+                                        data?.attn?.slice(0, attlimit).map((item, i) => {
                                             let url = "/travel-guide/india/attraction" + "-" + item.name.trim().replace(/\s+/g, ' ').replace(/-/g, "").replace(/\s+/g, "-").toLowerCase() + "/" + item.id + "/"
                                             return (
                                                 <div className={`w-1/2 lg:w-1/4 p-2`}>
@@ -557,8 +557,8 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
             }             */}
             {
                 type=='STATE'
-                ?packages_state.length!=0?<HomePackages data={packages_state} />:""
-                :packages.packages.length!=0?<HomePackages data={packages} />:""
+                ?packages_state?.length!=0 && packages_state.package!=null?<HomePackages data={packages_state} />:""
+                :packages?.packages?.length!=0 ?<HomePackages data={packages} />:""
             }
 
 
@@ -577,8 +577,8 @@ const TravelGuideDetailComp = ({ meta,packages_state,data, weather, packages, ho
             {
                 type=='CITY'?
                 article.length!=0?<Articles data={article} />:""
-                // :data.attn
-                :data.attn.length?<State_Attraction data={data.attn}/>:""
+                // :data?.attn
+                :data?.attn?.length?<State_Attraction data={data?.attn}/>:""
             }
             {
                 qna.length!=0?

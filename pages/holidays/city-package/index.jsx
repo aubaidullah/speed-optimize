@@ -140,7 +140,7 @@ export async function getServerSideProps(context) {
     // region = []
     // places = []
     headers['user-agent'] = headers['user-agent'].toLocaleLowerCase()
-    return { props: { data,headers,region,places,city:context.query.city,meta:metas,related:rel_package,travel:res_travel.data.travel.output,faqs:res.data.allpackage.output?.faqs??[],reviews: res.data.allpackage.output?.reviews??[]}}
+    return { props: { data,headers,region,places,city:context.query.city,meta:metas,related:rel_package,travel:res_travel?.data?.travel?.output,faqs:res.data.allpackage.output?.faqs??[],reviews: res.data.allpackage.output?.reviews??[]}}
 
 }
 
