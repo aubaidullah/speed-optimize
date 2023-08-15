@@ -76,7 +76,7 @@ export async function getServerSideProps(context) {
             const res_ = await client.query({ query: getTravelPackage, variables: { input: json_data_ } })
             
             // console.log(res_)
-            const packages_state = res_.data.package.output
+            const packages_state = res_.data.package.output??[]
 
 
             // console.log(packages_state)
@@ -141,9 +141,9 @@ export async function getServerSideProps(context) {
         var desc = res.data.travelGuide.output.city.metaDesc
         var keyword = res.data.travelGuide.output.city.metaKeywords
     }else{
-        var title = res.data.travelGuide.output.state.metaTitle
-        var desc = res.data.travelGuide.output.state.metaDesc
-        var keyword = res.data.travelGuide.output.state.metaKeywords        
+        var title = res.data.travelGuide.output.state?.metaTitle
+        var desc = res.data.travelGuide.output.state?.metaDesc
+        var keyword = res.data.travelGuide.output.state?.metaKeywords        
     }
 
 
