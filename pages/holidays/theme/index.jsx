@@ -68,17 +68,19 @@ export async function getServerSideProps(context) {
     const res = await client.query({query:getallpackages,variables:{input:{'av':'1.3','name':theme_name,'pt':'WEBSITE','type':'THEME'}}})  
     // const data = res.data.allpackage.output.packages.slice(0, 10)
 
-    const data = res.data.allpackage.output.packages
+    const data = res.data.allpackage?.output?.packages
 
-    const region = res.data.allpackage.output.region??null
-    const places = res.data.allpackage.output.fcities
+    const region = res.data.allpackage?.output?.region??null
+    const places = res.data.allpackage?.output?.fcities
 
 
     const meta = await client.query({query:getMetaQuery,variables:{input:{av: "1.3",id: 0,key: "HOLIDAYS",name: "",pt: "WEBSITE",type: ""}}})
     // console.log(places)
     headers['user-agent'] = headers['user-agent'].toLocaleLowerCase()
 
-    return { props: { data,headers,region,places,meta:meta.data.meta.output.tags}}
+    let pr = { data:data??[],headers,region:region??[],places:places??[],meta:meta?.data?.meta?.output?.tags}
+
+    return { props: pr}
   }
   
 

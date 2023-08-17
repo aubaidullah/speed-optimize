@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { getallpackages, getStateByCityQuery,getMetaQuery, getTravelGuideQuery } from "../../../components/Graphql/Queries"
+import { getallpackages, getStateByCityQuery,getMetaQuery, getTravelGuideQuery, getStatereArticleQuery } from "../../../components/Graphql/Queries"
 import client from "../../../components/Graphql/service"
 // import Nav from "../../../components/Nav"
 import {useEffect,useState} from 'react'
@@ -22,7 +22,7 @@ const DeskList = dynamic(() => import('../../../components/list_page.mobile'), {
 
 
 
-const CityPackages = ({data,headers,region,places,city,meta,related,travel,faqs,reviews}) =>{
+const CityPackages = ({data,headers,region,places,city,meta,related,travel,faqs,reviews,articles}) =>{
     console.log(region)
     const [isMobile,setIsMobile]  = useState(headers['user-agent'].includes('android') || headers['user-agent'].includes('iphone'))
 
@@ -38,10 +38,10 @@ const CityPackages = ({data,headers,region,places,city,meta,related,travel,faqs,
 
     if (isMobile==true){
         // return <ListPageMobile data = {data}/>
-        return <><Nav/> <MobileList meta={meta} page_type={'CITY'} data={data??[]} region = {region} places={places} isMobile={isMobile} city={city} related={related} travel={travel} faqs={faqs} reviews={reviews} /></>
+        return <><Nav/> <MobileList meta={meta} page_type={'CITY'} data={data??[]} region = {region} places={places} isMobile={isMobile} city={city} related={related} travel={travel} faqs={faqs} reviews={reviews} articles={articles} /></>
     }
     else{
-        return <><Nav/><DeskList meta={meta} page_type={'CITY'} data = {data??[]} region = {region} places={places} isMobile={isMobile} city={city} related={related} travel={travel} faqs={faqs} reviews={reviews}/></>
+        return <><Nav/><DeskList meta={meta} page_type={'CITY'} data = {data??[]} region = {region} places={places} isMobile={isMobile} city={city} related={related} travel={travel} faqs={faqs} reviews={reviews} articles={articles}/></>
     }    
 
 
@@ -121,6 +121,18 @@ export async function getServerSideProps(context) {
         "type": "City"
       }
       const res_travel = await client.query({query:getTravelGuideQuery,variables:{input:payload}})
+      payload = {
+        "av": "",
+        "geoid": region.sid,
+        "home": "",
+        "id": region.sid,
+        "pagenum": 0,
+        "pid": 0,
+        "pt": "",
+        "size": 0,
+        "type": "STATE"
+      }
+      const articles = (await client.query({query:getStatereArticleQuery,variables:{input:payload}})).data.articles.output?.articles??[]
     //   const res_travel = []
 
 
@@ -140,7 +152,7 @@ export async function getServerSideProps(context) {
     // region = []
     // places = []
     headers['user-agent'] = headers['user-agent'].toLocaleLowerCase()
-    return { props: { data,headers,region,places,city:context.query.city,meta:metas,related:rel_package,travel:res_travel?.data?.travel?.output,faqs:res.data.allpackage.output?.faqs??[],reviews: res.data.allpackage.output?.reviews??[]}}
+    return { props: { data,headers,region,places,city:context.query.city,meta:metas,related:rel_package,travel:res_travel?.data?.travel?.output,faqs:res.data.allpackage.output?.faqs??[],reviews: res.data.allpackage.output?.reviews??[],articles}}
 
 }
 

@@ -497,7 +497,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                 page_type == 'STATE' || page_type == 'COUNTRY'?
                 <div className='mt-4 container'>
                     <div className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold text-gray-600`}>
-                        Related Tour Packages in {region.name}
+                        Related Tour Packages in {region?.name}
                     </div>                    
                     <CityTags cities={cities}/>
                 </div>
@@ -532,7 +532,7 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                         <div className={tw`flex flex-wrap items-center bg-white p-4 lg:p-6 rounded-lg hover:shadow-lg transition-shadow`}>
                             <div className={tw`w-full lg:w-1/2`}>
                                 <div className='relative h-40 lg:h-60'>
-                                    <Image className='rounded-lg' src={travel.images[0].i} fill/>
+                                    <Image className='rounded-lg' src={travel.images[0]?.i} fill/>
                                 </div>
                             </div>
                             <div className={tw`w-full lg:w-1/2 pl-4 lg:pl-0 pt-4 lg:pt-0`}>
@@ -569,9 +569,9 @@ const ListPageMobile = ({meta,page_type,data,region,places,isMobile,city=undefin
                 {reviews!=undefined && reviews?.length!=0?<Reviews data={reviews}/>:""}
                 
                 {
-                    page_type == 'STATE'?
+                    page_type == 'STATE' || page_type == 'CITY'?
                     <>
-                        {articles?<Articles data={articles}/>:""}
+                        {articles.length?<Articles data={articles}/>:""}
                     </>
                     
                     :""

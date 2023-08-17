@@ -21,7 +21,7 @@ const Modal = dynamic(() => import('./modal'))
 const LeadGuest = dynamic(() => import('./Leadguest'))
 const DatePicker = dynamic(() => import('@amir04lm26/react-modern-calendar-date-picker'))
 
-const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>{
+const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm,verify=false}) =>{
     // console.log(isshow)
     const [show,setShow] = useState(isshow)
     const [gshow,setGshow] = useState(false)
@@ -81,7 +81,8 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
             // if (false) {
                 console.log(registervalidator.current.allValid())    
                 if (registervalidator.current.allValid()) {
-                    if (Cookie.get('userid')) {
+                    // if (Cookie.get('userid')) {
+                    if (Cookie.get('userid') || verify==false) {
                         if (isclick === false){
                             setIsclick(true)
                             setMsg("Please wait....")
@@ -212,7 +213,7 @@ const LeadForm = ({isshow,packageid,packageName,packPrice,source,changeForm}) =>
 
     return(
         <>
-        {gshow ? <LeadGuest show={gshow} setShow={() => setGshow(!gshow)} mobile={mobile} email={email} name = {name} /> : null}
+        {gshow && verify ? <LeadGuest show={gshow} setShow={() => setGshow(!gshow)} mobile={mobile} email={email} name = {name} /> : null}
         <Modal changeForm = {changeForm} show = {isshow}>
             
             <form onSubmit={handleSubmit} className={`bg-white`}>

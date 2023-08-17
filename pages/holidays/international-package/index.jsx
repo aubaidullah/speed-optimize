@@ -108,11 +108,11 @@ export async function getServerSideProps(context) {
         "type": "COUNTRY"
       }
     const res_travel = await client.query({query:getTravelGuideQuery,variables:{input:payload}})
-    const data = res.data.allpackage.output.packages
+    const data = res.data.allpackage?.output?.packages
 
-    const region = res.data.allpackage.output.region??null
-    const places = res.data.allpackage.output.fcities
-    const cities = res.data.allpackage.output.ncities.slice(0,10).sort( () => Math.random() - 0.5)
+    const region = res.data.allpackage.output?.region??null
+    const places = res.data.allpackage.output?.fcities
+    const cities = res.data.allpackage.output?.ncities.slice(0,10).sort( () => Math.random() - 0.5)
 
     headers['user-agent'] = headers['user-agent'].toLocaleLowerCase()
 
@@ -123,9 +123,9 @@ export async function getServerSideProps(context) {
     let {finalprice,images} = meta.data.meta.output.package
     finalprice = `₹${finalprice} `
     const metas ={
-        title:region.metaTitle??meta.data.meta.output.tags.title.replace(/<STATE>/g,context.query.package.replace(/-/g,' ')).replace(/<PRICE>/g,finalprice).replace(/\[State\ Name\]/g,context.query.package.replace(/-/g,' ')),
-        longDesc:region.metaDesc??meta.data.meta.output.tags.longDesc.replace(/<STATE>/g,context.query.package.replace(/-/g,' ')),
-        keywords:region.metaKeywords??meta.data.meta.output.tags.longDesc.replace(/<STATE>/g,context.query.package.replace(/-/g,' ')),
+        title:region?.metaTitle??meta.data.meta.output.tags.title.replace(/<STATE>/g,context.query.package.replace(/-/g,' ')).replace(/<PRICE>/g,finalprice).replace(/\[State\ Name\]/g,context.query.package.replace(/-/g,' ')),
+        longDesc:region?.metaDesc??meta.data.meta.output.tags.longDesc.replace(/<STATE>/g,context.query.package.replace(/-/g,' ')),
+        keywords:region?.metaKeywords??meta.data.meta.output.tags.longDesc.replace(/<STATE>/g,context.query.package.replace(/-/g,' ')),
         image:images
     }
     
@@ -140,17 +140,19 @@ export async function getServerSideProps(context) {
 
     // meta.data.meta.output.tags.title = meta.data.meta.output.package 
 
-    return { props: { data,
+    let pr = { data:data??[],
         headers,
         region,
-        places,
+        places:places??[],
         theme:res_theme.data.alltheme.output,
         meta:metas,
-        faqs:res.data.allpackage.output.faqs??[],
+        faqs:res.data.allpackage.output?.faqs??[],
         travel:res_travel.data.travel.output,
-        cities,
-        reviews: res.data.allpackage.output.reviews??[]
-    }}
+        cities:cities??[],
+        reviews: res.data.allpackage?.output?.reviews??[]
+    }
+    // console.log(pr)
+    return { props: pr}
 
 }
 
