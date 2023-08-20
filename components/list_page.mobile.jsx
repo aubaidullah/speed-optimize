@@ -4,6 +4,7 @@ import {
   AiOutlineArrowUp,
 } from "react-icons/ai";
 import { BsArrowRight, BsFilter } from "react-icons/bs";
+import {FaPhoneAlt} from 'react-icons/fa'
 // import {FaArrowRight} from 'react-icons/fa'
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
@@ -49,6 +50,7 @@ const Articles = dynamic(() => import("./home/articles"));
 const Reviews = dynamic(() => import("./home/reviews"));
 const TopCities = dynamic(() => import("./trave-guide/top_cities"));
 const State_Attraction = dynamic(() => import("./trave-guide/attractions"));
+const LeadForm = dynamic(() => import("./leadform"));
 // const filtering = useSelector(state=>state.package.package)
 // const FilterBy = dynamic(() => import('./list/filter'), {
 //     ssr: true,
@@ -82,6 +84,8 @@ const ListPageMobile = ({
   const [durationfilter, setDurationfilter] = useState(1);
   const [_places, set_Places] = useState([]);
   const [_themes, set_Themes] = useState([]);
+  const [sendquery, setSendquery] = useState(false);
+  const [modalinfo, setModalinfo] = useState({});
 
   const [_pricing, setPrice] = useState({ min: 0, max: 1000000 });
 
@@ -323,7 +327,51 @@ const ListPageMobile = ({
           country: travel?.tg?.cityName,
           id: travel?.tg?.id,
         });
-  return (
+
+
+      const updateChangeForm = (val) => {
+        setSendquery(val);
+      };
+
+      const _sendquery = (price, id, name, city) => {
+        // console.log("sldkf")
+        setModalinfo({
+          id,
+          name,
+          city,
+          price,
+        });
+        setSendquery(true);
+      };
+
+      useEffect(()=>{
+        let MINUTE_MS = 120000
+        // setInterval(
+        //   _sendquery(
+        //     0,
+        //     1,
+        //     "Get your quote",
+        //     "",
+        //   ),60000
+        // )
+    
+        const interval = setInterval(() => {
+          // console.log('Logs every minute');
+          console.log("fired")
+          _sendquery(
+            0,
+            1,
+            "Get your quote",
+            "",
+          )
+
+        }, MINUTE_MS);
+    
+        return () => clearInterval(interval);
+      },[])
+
+
+        return (
     <>
       <Meta meta={meta} />
 
@@ -690,6 +738,40 @@ const ListPageMobile = ({
           ""
         )}
       </article>
+
+
+
+      <div className="bottom_bar">
+        <div className={tw`h-full`}>
+          <div className={tw`flex h-full shadow-[3px 1px 4px]`}>
+            <a
+              href="tel:+919650687940"
+              className="w-full"
+            >
+              <div className="flex items-center w-full bottom_bt text-[22px] m-auto justify-center">
+                <FaPhoneAlt />
+                <div className="pl-2">Call</div>
+
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      {sendquery ? (
+        <LeadForm
+          isshow={sendquery}
+          packageid={modalinfo.id}
+          packageName={modalinfo.name}
+          changeForm={updateChangeForm}
+        />
+      ) : (
+        ""
+      )}
+
     </>
   );
 };

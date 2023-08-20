@@ -1164,10 +1164,10 @@ font-size: 16px;
     background: linear-gradient(118deg, #f79421 17%, #f06726 54%, #dc2d4d 95%);
     bottom: 0;
     position: fixed;
-    width: 101%;
+    width: 100%;
     z-index: 1;
     height: 60px;
-    margin-left: -15px;
+    /* margin-left: -15px; */
   }
 
   .bottom_button_filter {

@@ -12,7 +12,7 @@ import { MdCheckCircle, MdOutlineFlight } from "react-icons/md";
 import { FaRupeeSign } from "react-icons/fa";
 import Link from "next/link";
 // import LeadForm from './leadform'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { tw } from "twind";
 import { Carousel } from "react-responsive-carousel";
@@ -57,6 +57,8 @@ const Package = ({ index, item }) => {
   //     "-tour-package-" +
   //     // item.id + "/";
   //     item.id;
+
+  
 
   return (
     <>
