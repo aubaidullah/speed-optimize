@@ -119,10 +119,10 @@ const ListPageMobile = ({
         item: "Holidays Bookings",
         href: "/holidays",
       },
-      {
-        item: "India",
-        href: "/holidays",
-      },
+      // {
+      //   item: "India",
+      //   href: "/holidays",
+      // },
     ],
   };
   const country_st_bread = {
@@ -182,10 +182,10 @@ const ListPageMobile = ({
         item: "Holidays Bookings",
         href: "/holidays",
       },
-      {
-        item: "India",
-        href: "/holidays",
-      },
+      // {
+      //   item: "India",
+      //   href: "/holidays",
+      // },
       {
         item: `${region?.sname}`,
         // href:'/holidays'
