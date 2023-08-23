@@ -345,7 +345,7 @@ const ListPageMobile = ({
       };
 
       useEffect(()=>{
-        let MINUTE_MS = 120000
+        let MINUTE_MS = 20000
         // setInterval(
         //   _sendquery(
         //     0,
@@ -449,9 +449,10 @@ const ListPageMobile = ({
                 className={`w-full p-4 bg-white mb-4 _box_shadow_ title_listing_ rounded-md`}
               >
                 {overview?.includes("<h1") ? (
-                  <div className={`text-2xl pb-2 _b_active font-bold`}>
-                    {region?.name} Tour packages
-                  </div>
+                  // <div className={`text-2xl pb-2 _b_active font-bold`}>
+                  //   {region?.name} Tour packages
+                  // </div>
+                  ""
                 ) : (
                   <h1 className={`text-2xl pb-2`}>
                     {region?.name} Tour packages
