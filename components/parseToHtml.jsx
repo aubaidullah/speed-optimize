@@ -1,6 +1,6 @@
 import ReactHtmlParser from "react-html-parser";
-const ParseHtml = ({text}) =>{
-    return ReactHtmlParser(text)
-}
+const ParseHtml = ({ text }) => {
+  return ReactHtmlParser(text);
+};
 
-export default ParseHtml
+export default ParseHtml;

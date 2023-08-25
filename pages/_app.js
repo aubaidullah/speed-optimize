@@ -15,7 +15,7 @@ import "react-multi-carousel/lib/styles.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import 'react-rangeslider/lib/index.css'
+import "react-rangeslider/lib/index.css";
 import dynamic from "next/dynamic";
 import NProgress from "nprogress";
 
@@ -28,10 +28,10 @@ Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 const ApolloProvider = dynamic(() =>
-  import("@apollo/client").then((mod) => mod.ApolloProvider)
+  import("@apollo/client").then((mod) => mod.ApolloProvider),
 );
 const client = dynamic(() =>
-  import("@/components/Graphql/service").then((mod) => mod.client)
+  import("@/components/Graphql/service").then((mod) => mod.client),
 );
 const Footer = dynamic(() => import("@/components/footer"));
 import Router from "next/router";
@@ -58,7 +58,7 @@ function MyApp({ Component, pageProps }) {
           Router.events.on("routeChangeComplete", () => {
             ReactPixel.pageView();
           });
-        })
+        }),
     );
   });
   return (
@@ -83,7 +83,7 @@ function MyApp({ Component, pageProps }) {
       <ApolloProvider client={client}>
         <Component {...pageProps} />
       </ApolloProvider>
-      
+
       <Footer />
 
       <script
