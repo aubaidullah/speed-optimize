@@ -7,7 +7,7 @@ import { BsArrowRight, BsFilter } from "react-icons/bs";
 import {FaPhoneAlt} from 'react-icons/fa'
 // import {FaArrowRight} from 'react-icons/fa'
 import dynamic from "next/dynamic";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { tw } from "twind";
 // import { useSelector } from "react-redux"
 import { ScrollWrapper } from "react-bottom-scroll";
@@ -77,6 +77,7 @@ const ListPageMobile = ({
 }) => {
   const [filter, setFilter] = useState({ keyword: "" });
   const [limit, setLimit] = useState(10);
+  const [pcount,setPcount] = useState(0)
   const [overviewlimit, setOverviewlimit] = useState(1000);
   const [overview, setOverview] = useState();
   const [isshow, setIsshow] = useState(false);
@@ -86,6 +87,8 @@ const ListPageMobile = ({
   const [_themes, set_Themes] = useState([]);
   const [sendquery, setSendquery] = useState(false);
   const [modalinfo, setModalinfo] = useState({});
+  const p_ref = useRef(0);
+  const MINUTE_MS = useRef(10000)
 
   const [_pricing, setPrice] = useState({ min: 0, max: 1000000 });
 
@@ -260,7 +263,7 @@ const ListPageMobile = ({
       e.finalprice >= _pricing.min &&
       e.finalprice <= _pricing.max,
   );
-  console.log(data.length);
+  // console.log(data.length);
 
   if (pricefilter) {
     data = data.sort((a, b) => a.finalprice - b.finalprice);
@@ -345,27 +348,28 @@ const ListPageMobile = ({
       };
 
       useEffect(()=>{
-        let MINUTE_MS = 20000
-        // setInterval(
-        //   _sendquery(
-        //     0,
-        //     1,
-        //     "Get your quote",
-        //     "",
-        //   ),60000
-        // )
-    
+        // let MINUTE_MS = 10000
         const interval = setInterval(() => {
           // console.log('Logs every minute');
-          console.log("fired")
-          _sendquery(
-            0,
-            1,
-            "Get your quote",
-            "",
-          )
+          // console.log("fired")
+          // setPcount
+          if (p_ref.current < 2){
+            // console.log(p_ref.current)
+            p_ref.current  = p_ref.current + 1
+            // setPcount(pcount+1)
+            _sendquery(
+              0,
+              1,
+              "Get your quote",
+              "",
+            )
+            
+            MINUTE_MS.current = 60000
+            // MINUTE_MS+=20000
+          }
+          
 
-        }, MINUTE_MS);
+        }, MINUTE_MS.current);
     
         return () => clearInterval(interval);
       },[])

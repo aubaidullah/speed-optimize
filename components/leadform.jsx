@@ -76,8 +76,8 @@ const LeadForm = ({
       .padStart(2, 0)}-${traveldate["day"].toString().padStart(2, 0)}`;
     var dd = new Date(tDate);
     var newdate = new Date(tDate);
-    console.log("checkindate...");
-    console.log(dd);
+    // console.log("checkindate...");
+    // console.log(dd);
     newdate.setDate(dd.getDate() + parseInt(duration));
     newdate = newdate.toLocaleDateString().split("/");
 
@@ -88,12 +88,12 @@ const LeadForm = ({
       "-" +
       newdate[0].padStart(2, 0);
 
-    console.log(traveldate);
+    // console.log(traveldate);
 
     // if (localStorage.getItem('userid')) {
     // if (traveldate != "") {
     // if (false) {
-    console.log(registervalidator.current.allValid());
+    // console.log(registervalidator.current.allValid());
     if (registervalidator.current.allValid()) {
       // if (Cookie.get('userid')) {
       if (Cookie.get("userid") || verify == false) {
@@ -115,12 +115,12 @@ const LeadForm = ({
         leaddata.append("pid", packageid);
         leaddata.append("query", "");
         leaddata.append("btype", "package");
-        console.log(checkoutdate);
+        // console.log(checkoutdate);
         const res = await axios.post(
           Constants.api + "/api/v1/lead/submit",
           leaddata,
         );
-        console.log(res);
+        // console.log(res);
         if (res?.data?.result == "success") {
           changeForm(false);
 
@@ -184,7 +184,7 @@ const LeadForm = ({
         return false;
       }
     } else {
-      console.log("show the message");
+      // console.log("show the message");
       registervalidator.current.showMessages();
       forceUpdate(1);
       return true;
@@ -202,7 +202,7 @@ const LeadForm = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     const result = await handleQuerysubmit();
-    console.log(result);
+    // console.log(result);
     if (!result) {
       setOpen(!open);
       setGshow(!gshow);
@@ -211,7 +211,7 @@ const LeadForm = ({
     }
   };
 
-  console.log(isshow);
+  // console.log(isshow);
   useEffect(() => {
     if (
       name != "" &&
@@ -222,7 +222,7 @@ const LeadForm = ({
       duration != "" &&
       adult != ""
     ) {
-      console.log("Submit");
+      // console.log("Submit");
       handleQuerysubmit();
       return;
     }
@@ -243,7 +243,7 @@ const LeadForm = ({
       fetchPolicy: "cache-first",
     });
     // const res = await client.query({fetchPolicy})
-    console.log(res.data.country.output);
+    // console.log(res.data.country.output);
     // const res = await axios.post(Constants.api + "/api/v1/geo/countries", dt)
 
     setCountry(res.data.country.output);
