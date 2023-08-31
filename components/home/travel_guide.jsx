@@ -53,7 +53,7 @@ const TravelGuide = ({ data }) => {
     } else if (item.geoType == "COUNTRY") {
       // console.log(item)
       try {
-        aurl = createTGCountryURL({ country: item.cityName, id: item.id });
+        aurl = createTGCountryURL({ country: item.cityName??item.name, id: item.id??item.tgid });
         // aurl = "/travel-guide/" + item.cityName.replace(/\s+/g, "-").toLowerCase() + "/" + item.cityId + '/';
       } catch {
         aurl = createTGCountryURL({ country: item.name, id: item.id });
@@ -66,21 +66,26 @@ const TravelGuide = ({ data }) => {
       //   item.cityName.replace(/\s+/g, "-").toLowerCase() +
       //   "/" +
       //   item.id + "/";
-    } else {
+    } else //if (item.geoType == "STATE")
+    {
       try {
-        aurl = createTGStateURL({ city: item.cityName, id: item.id });
+        aurl = createTGStateURL({ city: item.cityName??item.name, id: item.id??item.tgid });
         // aurl = `/travel-guide/india/state-` + item.cityName.replace(/\s+/g, "-").toLowerCase() + "/" +item.id +"/"
       } catch {
         aurl = createTGStateURL({ city: item.name, id: item.id });
         // aurl = `/travel-guide/india/state-` + item.name.replace(/\s+/g, "-").toLowerCase() + "/" +item.id +"/"
       }
-
-      // aurl =
-      //   "/travel-guide-india-" +
-      //   item.cityName +
-      //   "/" +
-      //   item.id + "/";
     }
+    // else {
+    //   // console.log(item)
+    //   try {
+    //     aurl = createTGCountryURL({ country: item.cityName??item.name, id: item.id??item.tgid });
+    //     // aurl = "/travel-guide/" + item.cityName.replace(/\s+/g, "-").toLowerCase() + "/" + item.cityId + '/';
+    //   } catch {
+    //     aurl = createTGCountryURL({ country: item.name, id: item.id });
+    //     // aurl = "/travel-guide/" + item.name.replace(/\s+/g, "-").toLowerCase() + "/" + item.cityId + '/';
+    //   }
+    // }
     // console.log(item)
     var d = ReactHtmlParser(
       item.overviewDesc?.substring(0, 100) ?? item.ds.substring(0, 100),
