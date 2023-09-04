@@ -28,6 +28,11 @@ const nextConfig = {
         destination: "/holidays/:slug-tour-package-:id",
         permanent: true,
       },
+      // {
+      //   source: '/holidays-international/:package-tour-packages-:id',
+      //   destination: "/holidays/:package-tour-packages-:id:pre(3)",
+      //   permanent: true,
+      // }
     ];
   },
 
@@ -50,6 +55,10 @@ const nextConfig = {
       {
         source: "/holidays/:package-tour-packages-:id:pre([3]{1})",
         destination: "/holidays/international-package",
+      },
+      {
+        source: "/holidays/:slug-state-tour-packages-:id",
+        destination: "/410",
       },
       {
         source: "/holidays/:package-tour-packages-:id:pre([2]{1})",
@@ -121,6 +130,23 @@ const nextConfig = {
         source: "/mkt/india-holidays/south-india-tour-packages",
         destination: "/mkt/india-holidays/south-india-tour-packages/index.html",
       },
+
+      {
+        source:'/holidays-international/:package-tour-packages-:id',
+        destination:'/410'
+      },
+      {
+        source: "/holidays/:slug",
+        destination: "/410",
+      },
+      {
+        source:'/holidays/\[name\]-tour-package-\[id\]',
+        destination:'/410'
+      },
+      {
+        source: "/holidays/detail",
+        destination: "/410",
+      },      
       {
         source: "/idl:slug",
         destination: "/410",
