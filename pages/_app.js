@@ -18,14 +18,15 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-rangeslider/lib/index.css";
 import dynamic from "next/dynamic";
 import NProgress from "nprogress";
+import { useRouter } from 'next/router'
 
 import { wrapper } from "../redux_fx/store";
 
 NProgress.configure({ showSpinner: false, minimum: 0.2 });
 
-Router.events.on("routeChangeStart", () => NProgress.start());
-Router.events.on("routeChangeComplete", () => NProgress.done());
-Router.events.on("routeChangeError", () => NProgress.done());
+// Router.events.on("routeChangeStart", () => NProgress.start());
+// Router.events.on("routeChangeComplete", () => NProgress.done());
+// Router.events.on("routeChangeError", () => NProgress.done());
 
 const ApolloProvider = dynamic(() =>
   import("@apollo/client").then((mod) => mod.ApolloProvider),
@@ -46,6 +47,7 @@ Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter()
   useEffect(() => {
     dynamic(() =>
       import("react-facebook-pixel")
@@ -60,7 +62,7 @@ function MyApp({ Component, pageProps }) {
           });
         }),
     );
-  });
+  },[router.events]);
   return (
     <>
       {/* <noscript>

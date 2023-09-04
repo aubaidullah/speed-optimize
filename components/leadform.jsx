@@ -14,6 +14,7 @@ import dynamic from "next/dynamic";
 import { tw } from "twind";
 import client from "./Graphql/service";
 import { getCountryQuery } from "./Graphql/Queries";
+import { BiCheck } from "react-icons/bi";
 // import Modal from "./modal";
 
 const Modal = dynamic(() => import("./modal"));
@@ -782,6 +783,20 @@ const LeadForm = ({
                   <button className="btn_listing _btn_clr w-full" type="submit">
                     {msg}
                   </button>
+                </div>
+                <div>
+                  <div className="text-[12px] text-gray-500 text-left">
+                    <div className="flex items-center">
+                      <BiCheck className="text-2xl text-green-500"/>
+                      <p> We assure the privacy of your contact data</p>
+                    </div>
+                    <div className="flex items-center">
+                      <BiCheck className="text-2xl text-green-500"/>
+                      <p>This data will only be used by our team to contact you and no other purposes.</p>
+                    </div>
+                    
+                  </div>
+                  
                 </div>
               </div>
             </div>
