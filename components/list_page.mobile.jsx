@@ -88,7 +88,7 @@ const ListPageMobile = ({
   const [sendquery, setSendquery] = useState(false);
   const [modalinfo, setModalinfo] = useState({});
   const p_ref = useRef(0);
-  const MINUTE_MS = useRef(10000)
+  const MINUTE_MS = useRef(30000)
 
   const [_pricing, setPrice] = useState({ min: 0, max: 1000000 });
 
@@ -364,7 +364,7 @@ const ListPageMobile = ({
               "",
             )
             
-            MINUTE_MS.current = 60000
+            MINUTE_MS.current = 120000
             // MINUTE_MS+=20000
           }
           
