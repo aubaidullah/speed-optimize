@@ -11,7 +11,6 @@ import { useState, useEffect, useRef } from "react";
 import { tw } from "twind";
 // import { useSelector } from "react-redux"
 import { ScrollWrapper } from "react-bottom-scroll";
-import ReactHtmlParser from "react-html-parser";
 import { useRouter } from "next/router";
 import {
   createCountryListURL,
@@ -22,6 +21,7 @@ import {
 } from "./fun";
 import Link from "next/link";
 import Image from "next/image";
+import ParseHtml from "./parseToHtml";
 // import { SimilarTourLoading } from './skelton';
 // import CityTags from './list/city_tags';
 // import State_Attraction from './trave-guide/attractions';
@@ -74,12 +74,13 @@ const ListPageMobile = ({
   faqs = undefined,
   articles = undefined,
   cities = undefined,
+  desc = undefined
 }) => {
   const [filter, setFilter] = useState({ keyword: "" });
   const [limit, setLimit] = useState(10);
   const [pcount,setPcount] = useState(0)
   const [overviewlimit, setOverviewlimit] = useState(1000);
-  const [overview, setOverview] = useState();
+  const [overview, setOverview] = useState(region?.longDesc?.length > 20 ? region?.longDesc : region?.desc ?? "");
   const [isshow, setIsshow] = useState(false);
   const [pricefilter, setPricefilter] = useState(1);
   const [durationfilter, setDurationfilter] = useState(1);
@@ -214,6 +215,7 @@ const ListPageMobile = ({
 
   // var d = region?.desc??""
   var d = region?.longDesc?.length > 20 ? region?.longDesc : region?.desc ?? "";
+  // var d = desc;
   // console.log(d)
 
   useEffect(() => {
@@ -464,7 +466,14 @@ const ListPageMobile = ({
                 )}
 
                 <div>
-                  {ReactHtmlParser(overview)}
+                  {/* {ReactHtmlParser(overview)} */}
+                  {/* {ParseHtml({text:overview})} */}
+                  <div className="__description">
+                    {ParseHtml({text:overview})}
+                  </div>
+                  
+                  
+                  
                   {overviewlimit == 250 || overviewlimit == 1000 ? (
                     <a
                       onClick={() => setOverviewlimit(50000)}

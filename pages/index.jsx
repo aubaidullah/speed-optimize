@@ -126,7 +126,7 @@ export async function getServerSideProps(context) {
       input: {
         av: "",
         id: 0,
-        key: "HOLIDAYS",
+        key: "HOME",
         name: "",
         pt: "WEBSITE",
         type: "",
