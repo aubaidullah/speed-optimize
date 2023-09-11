@@ -89,7 +89,7 @@ const ListPageMobile = ({
   const [sendquery, setSendquery] = useState(false);
   const [modalinfo, setModalinfo] = useState({});
   const p_ref = useRef(0);
-  const MINUTE_MS = useRef(30000)
+  const MINUTE_MS = useRef(45000)
 
   const [_pricing, setPrice] = useState({ min: 0, max: 1000000 });
 
@@ -362,7 +362,7 @@ const ListPageMobile = ({
             _sendquery(
               0,
               1,
-              "Get your quote",
+              "Avail Limited Period Offers Upto 30%* Off for Bigger Groups",
               "",
             )
             
