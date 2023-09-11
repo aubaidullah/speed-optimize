@@ -36,7 +36,7 @@ const client = dynamic(() =>
 );
 const Footer = dynamic(() => import("@/components/footer"));
 import Router from "next/router";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 NProgress.configure({ showSpinner: false, minimum: 0.2 });
 // NProgress.set(0.4);
@@ -48,21 +48,22 @@ Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
-  useEffect(() => {
-    dynamic(() =>
-      import("react-facebook-pixel")
-        // import("react-facebook-pixel")
-        .then((x) => x.default)
-        .then((ReactPixel) => {
-          ReactPixel.init("794577978818419");
-          ReactPixel.pageView();
+  // useEffect(() => {
+  //   dynamic(() =>
+  //     import("react-facebook-pixel")
+  //       // import("react-facebook-pixel")
+  //       .then((x) => x.default)
+  //       .then((ReactPixel) => {
+  //         ReactPixel.init("794577978818419");
+  //         ReactPixel.pageView();
 
-          Router.events.on("routeChangeComplete", () => {
-            ReactPixel.pageView();
-          });
-        }),
-    );
-  },[router.events]);
+  //         Router.events.on("routeChangeComplete", () => {
+  //           ReactPixel.pageView();
+  //         });
+  //       }),
+  //   );
+  // },[router.events]);
+  
   return (
     <>
       {/* <noscript>
