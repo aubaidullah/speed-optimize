@@ -197,16 +197,16 @@ export async function getServerSideProps(context) {
 
   const metas = {
     title:
-      title ??
+      // title ??
       meta.data.meta.output.tags.title.replace(/<CITY>/g, context.query.city),
     longDesc:
-      desc ??
+      // desc ??
       meta.data.meta.output.tags.longDesc.replace(
         /<CITY>/g,
         context.query.city,
       ),
     keywords:
-      keyword ??
+      // keyword ??
       meta.data.meta.output.tags.keywords.replace(
         /<CITY>/g,
         context.query.city,
