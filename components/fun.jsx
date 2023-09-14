@@ -130,6 +130,15 @@ export const createTGCountryURL = ({ country, id }) => {
     .toLowerCase()}-${id}`;
 };
 
+export const createAttractionsURL = ({attraction, city, id }) => {
+  // return `/travel-guide/countries/${country
+  return `/attractions/${attraction}-in-${city}-${id}`.trim()
+  .replace(/\s+/g, " ")
+  .replace(/\s+/g, "-")
+  .replace("--", "-")
+  .toLowerCase();
+};
+
 export const createArticleURL = ({ heading, id }) => {
   return (
     "/travel-articles/" +
