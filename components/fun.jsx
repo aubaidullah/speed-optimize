@@ -71,7 +71,8 @@ export const createStateListURL = ({ statename, id }) => {
 };
 
 export const createTGCityURL = ({ city, id }) => {
-  return `/travel-guide/cities/${city
+  // return `/travel-guide/cities/${city
+  return `/places/${city
     ?.trim()
     .replace(/\s+/g, " ")
     .replace(/\s+/g, "-")
@@ -111,7 +112,8 @@ export const imgNameByUrl = ({ url }) => {
 };
 
 export const createTGStateURL = ({ city, id }) => {
-  return `/travel-guide/states/${city
+  // return `/travel-guide/states/${city
+  return `/states/${city
     ?.trim()
     .replace(/\s+/g, " ")
     .replace(/\s+/g, "-")
@@ -119,12 +121,22 @@ export const createTGStateURL = ({ city, id }) => {
     .toLowerCase()}-${id}`;
 };
 export const createTGCountryURL = ({ country, id }) => {
-  return `/travel-guide/countries/${country
+  // return `/travel-guide/countries/${country
+  return `/countries/${country
     ?.trim()
     .replace(/\s+/g, " ")
     .replace(/\s+/g, "-")
     .replace("--", "-")
     .toLowerCase()}-${id}`;
+};
+
+export const createAttractionsURL = ({attraction, city, id }) => {
+  // return `/travel-guide/countries/${country
+  return `/attractions/${attraction}-in-${city}-${id}`.trim()
+  .replace(/\s+/g, " ")
+  .replace(/\s+/g, "-")
+  .replace("--", "-")
+  .toLowerCase();
 };
 
 export const createArticleURL = ({ heading, id }) => {

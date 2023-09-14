@@ -22,6 +22,7 @@ import Image from "next/image";
 // import Meta from '../meta';
 import * as Constants from "../Constants";
 import {
+  createAttractionsURL,
   createCityListURL,
   createCountryListURL,
   createStateListURL,
@@ -594,18 +595,19 @@ const TravelGuideDetailComp = ({
                       {
                         type == "CITY" ? (
                           data?.attn?.slice(0, attlimit).map((item, i) => {
-                            let url =
-                              "/travel-guide/india/attraction" +
-                              "-" +
-                              item.name
-                                .trim()
-                                .replace(/\s+/g, " ")
-                                .replace(/-/g, "")
-                                .replace(/\s+/g, "-")
-                                .toLowerCase() +
-                              "/" +
-                              item.id +
-                              "/";
+                            // let url =
+                            //   "/travel-guide/india/attraction" +
+                            //   "-" +
+                            //   item.name
+                            //     .trim()
+                            //     .replace(/\s+/g, " ")
+                            //     .replace(/-/g, "")
+                            //     .replace(/\s+/g, "-")
+                            //     .toLowerCase() +
+                            //   "/" +
+                            //   item.id +
+                            //   "/";
+                            let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
                             return (
                               <div className={`w-1/2 lg:w-1/4 p-2`}>
                                 <Link href={url} key={i}>

@@ -81,21 +81,34 @@ const nextConfig = {
         destination: "/410",
       },
       {
-        source: "/travel-guide/cities/:city-:id(\\d+)",
+        source: "/places/:city-:id(\\d+)",
         destination: "/travel-guide/india/detail",
-      },
+      },      
+      // {
+      //   source: "/travel-guide/cities/:city-:id(\\d+)",
+      //   destination: "/travel-guide/india/detail",
+      // },
       {
-        source: "/travel-guide/countries/:country-:id(\\d+)",
+        source: "/countries/:country-:id(\\d+)",
         destination: "/travel-guide/country",
       },
+      
+      // {
+      //   source: "/travel-guide/countries/:country-:id(\\d+)",
+      //   destination: "/travel-guide/country",
+      // },
       {
         source: "/travel-guide/india/state-:city/:id",
         destination: "/410",
       },
       {
-        source: "/travel-guide/states/:city-:id(\\d+)",
+        source: "/states/:city-:id(\\d+)",
         destination: "/travel-guide/india/detail",
-      },
+      },      
+      // {
+      //   source: "/travel-guide/states/:city-:id(\\d+)",
+      //   destination: "/travel-guide/india/detail",
+      // },
       // {
       //   source: '/holidays/theme-:theme',
       //   destination: '/holidays/theme'
@@ -106,7 +119,8 @@ const nextConfig = {
       },
 
       {
-        source: "/travel-guide/india/attraction-:place/:id",
+        // source: "/travel-guide/india/attraction-:place/:id",
+        source : "/attractions/:place-in-:city-:id(\\d+)",
         destination: "/travel-guide/india/attractions",
       },
       {
