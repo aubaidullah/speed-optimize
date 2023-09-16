@@ -88,7 +88,14 @@ export async function getServerSideProps(context) {
 
   const article = [];
   const qna = [];
-
+  // input: {
+  //   av: "",
+  //   id: 0,
+  //   key: "CITY_TRAVELGUIDE",
+  //   name: "",
+  //   pt: "WEBSITE",
+  //   type: "CITY_TRAVELGUIDE",
+  // },
   const meta = await client.query({
     query: getMetaQuery,
     variables: {
@@ -98,7 +105,7 @@ export async function getServerSideProps(context) {
         key: "COUNTRY_TRAVELGUIDE",
         name: "",
         pt: "WEBSITE",
-        type: "",
+        type: "COUNTRY_TRAVELGUIDE",
       },
     },
   });
@@ -114,19 +121,19 @@ export async function getServerSideProps(context) {
       title ??
       meta.data.meta.output.tags.title.replace(
         /<COUNTRY>/g,
-        context.query.city,
+        context.query.country,
       ),
     longDesc:
       desc ??
       meta.data.meta.output.tags.longDesc.replace(
         /<COUNTRY>/g,
-        context.query.city,
+        context.query.country,
       ),
     keywords:
       keyword ??
       meta.data.meta.output.tags.keywords.replace(
         /<COUNTRY>/g,
-        context.query.city,
+        context.query.country,
       ),
   };
 
