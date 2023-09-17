@@ -462,7 +462,7 @@ const ListPageMobile = ({
                   ""
                 ) : (
                   <h1 className={`text-2xl pb-2`}>
-                    {region?.name} Tour packages
+                    {region?.name}  Tour packages
                   </h1>
                 )}
 

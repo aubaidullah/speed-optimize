@@ -11,6 +11,20 @@ input.rupees_ip {
   outline: none;
 }
 
+.__description a{
+  /* color: rgb(240 103 38 / var(--tw-text-opacity)); */
+  color:#F06726;
+  text-decoration: underline;
+}
+
+.__description h2{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  --tw-text-opacity: 1;
+  color: rgba(107,114,128,var(--tw-text-opacity));
+  font-weight: 700;
+}
+
 .range-select {
   background-color: #f9f9f9;
   border: 1px solid #e3e3e3;

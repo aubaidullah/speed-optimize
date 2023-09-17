@@ -329,10 +329,10 @@ const Package = ({ index, item }) => {
                         <div className="img_meal row _sp_">
                           <div className="icons-meal-info">
                             <div className="_div">
-                              <div>
+                              <div className="text-[#c6c5c5]">
                                 <div className={`flex text-center`}>
                                   <MdOutlineFlight
-                                    className={`h-6 lst_aty text-[#c6c5c5]`}
+                                    className={`h-6 lst_aty`}
                                     size={20}
                                   />
                                 </div>
@@ -539,10 +539,10 @@ const Package = ({ index, item }) => {
               <div className="img_meal row _sp_">
                 <div className="icons-meal-info">
                   <div className="_div">
-                    <div>
+                    <div className="text-[#c6c5c5]">
                       <div className={`flex text-center`}>
                         <MdOutlineFlight
-                          className={`h-6 lst_aty text=[#c6c5c5]`}
+                          className={`h-6 lst_aty`}
                           size={20}
                         />
                       </div>
