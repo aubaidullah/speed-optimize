@@ -32,6 +32,36 @@ export const getTravelGuideDetail = gql`
   }
 `;
 
+
+export const getUserById = gql`
+  fragment Payload on REST {
+    id: String
+  }
+  query profile($input: Payload!) {
+    profile(input: $input)
+      @rest(
+        type: "profile"
+        method: "GET"
+        path: "/api/v1/customer/get/{args.input.id}/"
+      )
+      {
+        id,
+        mobile,
+        email,
+        fname,
+        lname,
+        gender,
+        maritalStatus,
+        dob,
+        active,
+        wallet
+      }
+  },
+`;
+
+
+
+
 export const getHotelDetail = gql`
   fragment Payload on REST {
     id: Int
@@ -71,6 +101,24 @@ export const getCountryQuery = gql`
   query country($input: Payload!) {
     country(input: $input)
       @rest(type: "country", method: "POST", path: "/api/v1/geo/countries") {
+      output
+    }
+  }
+`;
+
+export const getWallet = gql`
+  fragment Payload on REST {
+    av: String
+    page: Int
+    id: String
+    pt: String
+    size: Int
+    status: String
+    userid: String
+  }
+  query wallet($input: Payload!) {
+    wallet(input: $input)
+      @rest(type: "wallet", method: "POST", path: "/api/v1/user/wallet") {
       output
     }
   }
