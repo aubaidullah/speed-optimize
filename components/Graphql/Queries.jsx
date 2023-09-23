@@ -124,6 +124,24 @@ export const getWallet = gql`
   }
 `;
 
+export const getBookingHistory = gql`
+  fragment Payload on REST {
+    av: String
+    page: Int
+    id: String
+    pt: String
+    size: Int
+    status: String
+    userid: String
+  }
+  query bookings($input: Payload!) {
+    bookings(input: $input)
+      @rest(type: "bookings", method: "POST", path: "/api/v1/user/bookings") {
+      output
+    }
+  }
+`;
+
 export const getTravelPackage = gql`
   fragment Payload on REST {
     av: String
