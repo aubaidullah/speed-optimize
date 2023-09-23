@@ -42,7 +42,7 @@ const Booking = ({e}) =>{
             </div>
 
             <div>
-                <div>Status: <span className="text-green-500">{e?.status}</span></div>
+                <div>Status: <span className={tw`${e?.status=='CANCELLED'?'text-red-500':e?.status=='CONVERTED'?'_b_active':"text-green-500"} font-semibold`}>{e?.status}</span></div>
                 <div className="flex flex-wrap mt-2 justify-center">
                     {/* <div className={tw`w-1/3 lg:w-1/4`}>
                         <div>

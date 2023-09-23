@@ -1,0 +1,15 @@
+<?xmlns version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <sitemap>
+        <loc>https://www.kiomoi.com/sitemap/home.xml</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.kiomoi.com/sitemap/holidays.xml</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.kiomoi.com/sitemap/travel-guide.xml</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.kiomoi.com/sitemap/article.xml</loc>
+    </sitemap>
+</sitemapindex>
