@@ -17,6 +17,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { tw } from "twind";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 import {
   createStateListURL,
   createCityListURL,
@@ -235,11 +236,19 @@ const Nav = () => {
               )}
 
               <div className="item flt_left">
-                <FaRegUser
-                  className="c_it"
-                  onClick={() => setShowLogin(!showLogin)}
-                  size={"20px"}
-                />
+              {
+                  Cookies.get('userid')?<Link href={'/accounts'}>
+                    <FaRegUser
+                      className="c_it"
+                      // onClick={() => setShowLogin(!showLogin)}
+                      size={"20px"}
+                    />  
+                  </Link>:<FaRegUser
+                      className="c_it"
+                      onClick={() => setShowLogin(!showLogin)}
+                      size={"20px"}
+                    />  
+                }
               </div>
               <div className={tw`item flt_left block lg:hidden`}>
                 {collapse ? (

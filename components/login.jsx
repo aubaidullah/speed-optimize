@@ -7,12 +7,15 @@ import { tw } from "twind";
 import dynamic from "next/dynamic";
 import swal from "sweetalert";
 import axios from "axios";
+// import { cookies } from "next/headers";
+import Cookies from "js-cookie";
 import * as Constants from "./Constants";
 import SimpleReactValidator from "simple-react-validator";
 
 const Register = dynamic(import("./register"));
 
 const Login = (props) => {
+  // const cookie = cookies()
   const [show, setShow] = useState(props.show);
   const [user, setUser] = useState({ username: "", password: "" });
 
@@ -78,10 +81,18 @@ const Login = (props) => {
             showShow(!show);
             setShowOTP(!showOTP);
           } else {
-            localStorage.setItem("useremail", response.data.output.em);
-            localStorage.setItem("userid", response.data.output.id);
-            localStorage.setItem("userphone", response.data.output.mob);
-            localStorage.setItem("username", response.data.output.fn);
+
+            // cookie.set({
+              Cookies.set("useremail", response.data.output.em)
+              Cookies.set("userid", response.data.output.id)
+              Cookies.set("userphone", response.data.output.mob)
+              Cookies.set("username", response.data.output.fn)
+            // })
+            // localStorage.setItem("useremail", response.data.output.em);
+            // localStorage.setItem("userid", response.data.output.id);
+            // localStorage.setItem("userphone", response.data.output.mob);
+            // localStorage.setItem("username", response.data.output.fn);
+
             setShow(!show);
             swal("", "You Have Succesfully Logged In.", "success");
           }
@@ -105,10 +116,21 @@ const Login = (props) => {
         },
       );
       if (response?.data?.result == "success") {
-        localStorage.setItem("useremail", response.data.output.em);
-        localStorage.setItem("userid", response.data.output.id);
-        localStorage.setItem("userphone", response.data.output.mob);
-        localStorage.setItem("username", response.data.output.fn);
+        // localStorage.setItem("useremail", response.data.output.em);
+        // localStorage.setItem("userid", response.data.output.id);
+        // localStorage.setItem("userphone", response.data.output.mob);
+        // localStorage.setItem("username", response.data.output.fn);
+          Cookies.set("useremail", response.data.output.em)
+          Cookies.set("userid", response.data.output.id)
+          Cookies.set("userphone", response.data.output.mob)
+          Cookies.set("username", response.data.output.fn)
+
+        // cookie.set({
+        //   "useremail": response.data.output.em,
+        //   "userid": response.data.output.id,
+        //   "userphone": response.data.output.mob,
+        //   "username": response.data.output.fn
+        // })
         setShowOTP(!showOTP);
         swal("", "You have logged in!", "success");
       } else {
@@ -134,10 +156,20 @@ const Login = (props) => {
         authcode: forgetCredentials.otp,
       });
       if (response?.data?.result == "success") {
-        localStorage.setItem("useremail", response.data.output.em);
-        localStorage.setItem("userid", response.data.output.id);
-        localStorage.setItem("userphone", response.data.output.ph);
-        localStorage.setItem("username", response.data.output.fn);
+          Cookies.set("useremail", response.data.output.em)
+          Cookies.set("userid", response.data.output.id)
+          Cookies.set("userphone", response.data.output.mob)
+          Cookies.set("username", response.data.output.fn)
+        // cookie.set({
+        //   "useremail": response.data.output.em,
+        //   "userid": response.data.output.id,
+        //   "userphone": response.data.output.mob,
+        //   "username": response.data.output.fn
+        // })
+        // localStorage.setItem("useremail", response.data.output.em);
+        // localStorage.setItem("userid", response.data.output.id);
+        // localStorage.setItem("userphone", response.data.output.ph);
+        // localStorage.setItem("username", response.data.output.fn);
         setShowResetPass(!showResetPass);
         swal("", "You have logged in!", "success");
       } else {

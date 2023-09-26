@@ -363,7 +363,7 @@ const ListPageMobile = ({
               0,
               1,
               // "Avail Limited Period Offers Upto 30%* Off for Bigger Groups",
-              `Limited Period Offer! Upto 30% Off on ${travel?.tg?.cityName} Tour Packages`,
+              `Limited Period Offer! Upto 30% Off on ${travel?.tg?.cityName ?? router.query.city} Tour Packages`,
               "",
             )
             

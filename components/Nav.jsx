@@ -17,6 +17,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { tw } from "twind";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 import {
   createCityListURL,
   createStateListURL,
@@ -41,6 +42,7 @@ const Nav = () => {
   const [collapse, setCollapse] = useState(false);
   const [result, setResult] = useState({});
   const [addnavClass, setAddnavClass] = useState("");
+  const [op,setOp] = useState(false)
   const [cls, setCls] = useState("navbar navbar-default normal");
 
   const router = useRouter();
@@ -105,6 +107,16 @@ const Nav = () => {
   // "normal" +
   // " " +{addnavClass};
   // console.log(router.pathname)
+
+  // console.log(localStorage.getItem('userid'))
+
+  const Logout = () =>{
+    Cookies.remove('useremail')
+    Cookies.remove('userid')
+    Cookies.remove('userphone')
+    Cookies.remove('username')
+    router.push("/")
+  }
 
   return (
     <>
@@ -203,11 +215,34 @@ const Nav = () => {
                 />
               </div>
               <div className="item flt_left">
-                <FaRegUser
-                  className="c_it"
-                  onClick={() => setShowLogin(!showLogin)}
-                  size={"20px"}
-                />
+                {
+                  Cookies.get('userid')
+                  ?
+                  
+                  
+                  // <Link >
+                    <div className={tw`relative`}>
+                      <FaRegUser
+                        className="c_it"
+                        onClick={() => setOp(!op)}
+                        size={"20px"}
+                      />  
+                      <div className={tw`absolute bg-white shadow-xl top-7 border-2 ${!op?'hidden':''}`}>
+                        <Link href={'/accounts'}>
+                          <div className=" border-b-2 px-4 py-2 font-semibold text-slate-700"> Profile </div>
+                        </Link>
+                        <div className="px-4 py-2 font-semibold text-slate-700" onClick={()=>Logout()}> Logout </div>
+                      </div>
+                    </div>
+                  // </Link>
+                  
+                  :<FaRegUser
+                      className="c_it"
+                      onClick={() => setShowLogin(!showLogin)}
+                      size={"20px"}
+                    />  
+                }
+                
               </div>
               <div className={tw`item flt_left block lg:hidden`}>
                 {collapse ? (
