@@ -12,21 +12,25 @@ const Booking = ({e}) =>{
                 <div className="text-xl font-bold">Trip ID#{e.id}</div>
                 <BsThreeDotsVertical className={tw`lg:hidden text-xl text-gray-500`} />
                 <div className={tw`lg:flex flex-wrap text-gray-400 hidden`}>
-                    <div className="flex items-center pl-5 cursor-pointer">
+                    <div className={tw`flex items-center pl-5 cursor-pointer ${e.invoiceurl?"":"hidden"}`}>
                         <div>
                             <BiDownload />
                         </div>
                         <div className="pl-2">
-                            Download Invoice    
+                            <a href={e.invoiceurl} target="_blank">
+                                Download Invoice    
+                            </a>
                         </div>                                                    
                     </div>
 
-                    <div className="flex items-center pl-5 cursor-pointer">
+                    <div className={tw`flex items-center pl-5 cursor-pointer ${e.voucherurl?"":"hidden"}`}>
                         <div>
                             <BiDownload />
-                        </div>
+                        </div>                        
                         <div className="pl-2">
-                            Download Itenary 
+                            <a href={e.voucherurl} target="_blank">
+                                Download Itenary
+                            </a>                             
                         </div>                                                    
                     </div>
 
