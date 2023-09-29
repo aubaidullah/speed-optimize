@@ -82,10 +82,10 @@ const TravelGuideDetailComp = ({
         item: "Travel Guide",
         href: "/travel-guide/",
       },
-      {
-        item: "India",
-        href: "/travel-guide/",
-      },
+      // {
+      //   item: "India",
+      //   href: "/travel-guide/",
+      // },
     ],
   };
   const city_bread = {
@@ -101,10 +101,10 @@ const TravelGuideDetailComp = ({
         item: "Travel Guide",
         href: "/travel-guide/",
       },
-      {
-        item: "India",
-        href: "/travel-guide/",
-      },
+      // {
+      //   item: "India",
+      //   href: "/travel-guide/",
+      // },
       {
         item: `${data?.city?.sname}`,
         href: `/travel-guide/states/${data?.city?.sname.toLowerCase()}-${
