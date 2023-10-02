@@ -76,10 +76,10 @@ const DetailPage = ({ data, related, reviews, meta }) => {
               item: "Holidays Booking",
               href: "/holidays/",
             },
-            {
-              item: "India",
-              href: "/holidays/",
-            },
+            // {
+            //   item: "India",
+            //   href: "/holidays/",
+            // },
             {
               item: `${data?.package.region.split(",")[0]}`,
               href: `${createStateListURL({
