@@ -5,7 +5,9 @@ import { GrClose } from "react-icons/gr";
 import swal from "sweetalert";
 import axios from "axios";
 import * as Constants from "./Constants";
+import { tw } from "twind";
 import SimpleReactValidator from "simple-react-validator";
+import Modal from "./modal";
 
 const Guest = (props) => {
   // Inital Guest States
@@ -97,178 +99,186 @@ const Guest = (props) => {
     setGuest({ ...guest, [e.target.name]: e.target.value });
 
   return (
-    <>
-      <div
-        className="login_modal"
-        show={show}
-        animation={false}
-        backdrop="static"
-      >
-        <div>
-          <span
-            className={tw`float-right text-black`}
-            // style={{
-            //     float: "right",
-            //     color: "black"
-            // }}
-            onClick={() => setShow(!show)}
-            aria-hidden="true"
-          >
-            <GrClose className={tw`cursor-pointer`} />
-          </span>
+    
+    
+      <>
+      <Modal changeForm={setShow} show={show}>
+        <div
+          className="login_modal"
+          show={show}
+          animation={false}
+          backdrop="static"
+        >
           <div>
-            <form onSubmit={handleGuestSubmit}>
-              <div className="wrapper-box">
-                <div className="wrapper_login">
-                  <div className="body_login">
-                    <div className="login_header">
-                      {/* <img
-                                                src={require("../assets/logo-icon.png")}
-                                                height="50"
-                                                alt=""
-                                            /> */}
-                      <h4>
-                        {props.name
-                          ? "Your Details"
-                          : "Enter Following Details"}
-                      </h4>
+            {/* <span
+              className={tw`float-right text-black`}
+              // style={{
+              //     float: "right",
+              //     color: "black"
+              // }}
+              onClick={() => setShow(!show)}
+              aria-hidden="true"
+            >
+              <GrClose className={tw`cursor-pointer`} />
+            </span> */}
+            <div>
+              <form onSubmit={handleGuestSubmit}>
+                <div className="wrapper-box">
+                  <div className="wrapper_login">
+                    <div className="body_login">
+                      <div className="login_header">
+                        {/* <img
+                                                  src={require("../assets/logo-icon.png")}
+                                                  height="50"
+                                                  alt=""
+                                              /> */}
+                        <h4>
+                          {props.name
+                            ? "Your Details"
+                            : "Enter Following Details"}
+                        </h4>
+                      </div>
                     </div>
-                  </div>
-                  <div className="form-group ">
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="name"
-                      onChange={handleChange}
-                      required
-                      placeholder="Enter your Name"
-                      value={props.name ?? guest.name}
-                      disabled={props.name ? true : false}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="email"
-                      className="form-control"
-                      name="email"
-                      onChange={handleChange}
-                      required
-                      placeholder="Enter your Email ID"
-                      value={props.email ?? guest.email}
-                      disabled={props.email ? true : false}
-                    />
-                    <div className="Invalid_num">
-                      {registervalidatorn.current.message(
-                        "email",
-                        props.email ?? guest.email,
-                        "required|email",
-                      )}
+                    <div className="form-group ">
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="name"
+                        onChange={handleChange}
+                        required
+                        placeholder="Enter your Name"
+                        value={props.name ?? guest.name}
+                        disabled={props.name ? true : false}
+                      />
                     </div>
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="mobile"
-                      onKeyPress={(event) => {
-                        if (!/[0-9]/.test(event.key)) {
-                          event.preventDefault();
-                        }
-                      }}
-                      onChange={handleChange}
-                      required
-                      placeholder="Enter your 10 digit Mobile Number "
-                      // minLength="10"
-                      pattern="[0-9.]+"
-                      // maxLength="10"
-                      value={props.mobile ?? guest.mobile}
-                      disabled={props.mobile ? true : false}
-                      maxLength={10}
-                      max={10}
-                      size={10}
-                    />
-                    <div className="Invalid_num">
-                      {registervalidatorn.current.message(
-                        "mobile",
-                        props.mobile ?? guest.mobile,
-                        "required|min:10|max:10",
-                      )}
+                    <div className="form-group">
+                      <input
+                        type="email"
+                        className="form-control"
+                        name="email"
+                        onChange={handleChange}
+                        required
+                        placeholder="Enter your Email ID"
+                        value={props.email ?? guest.email}
+                        disabled={props.email ? true : false}
+                      />
+                      <div className="Invalid_num">
+                        {registervalidatorn.current.message(
+                          "email",
+                          props.email ?? guest.email,
+                          "required|email",
+                        )}
+                      </div>
                     </div>
-                  </div>
-                  <div className="form-group">
-                    <button className="btn btn_login" type="submit">
-                      CONTINUE
-                    </button>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="mobile"
+                        onKeyPress={(event) => {
+                          if (!/[0-9]/.test(event.key)) {
+                            event.preventDefault();
+                          }
+                        }}
+                        onChange={handleChange}
+                        required
+                        placeholder="Enter your 10 digit Mobile Number "
+                        // minLength="10"
+                        pattern="[0-9.]+"
+                        // maxLength="10"
+                        value={props.mobile ?? guest.mobile}
+                        disabled={props.mobile ? true : false}
+                        maxLength={10}
+                        max={10}
+                        size={10}
+                      />
+                      <div className="Invalid_num">
+                        {registervalidatorn.current.message(
+                          "mobile",
+                          props.mobile ?? guest.mobile,
+                          "required|min:10|max:10",
+                        )}
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <button className="btn_listing _btn_clr w-full" type="submit">
+                        CONTINUE
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="body_otp"
-        show={otpModal}
-        animation={false}
-        backdrop="static"
-      >
-        <div>
-          <span
-            className={tw`float-right text-black`}
-            // style={{
-            //     float: "right",
-            //     color: "black"
-            // }}
-            onClick={() => setOtpModal(!otpModal)}
-            aria-hidden="true"
-          >
-            <GrClose className={tw`cursor-pointer`} />
-          </span>
+      </Modal>
 
+
+      <Modal changeForm={setOtpModal} show={otpModal}>
+        <div
+          className="body_otp"
+          show={otpModal}
+          animation={false}
+          backdrop="static"
+        >
           <div>
-            <div className="login_header">
-              <p className="text_color">
-                We sent an sms with confirmation code to your mobile number
-              </p>
-            </div>
-            <form onSubmit={handleOTPSubmit}>
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  name="otp"
-                  onChange={(e) => setGuestOTP(e.target.value)}
-                  value={guestOTP}
-                  placeholder="Enter your OTP"
-                  minLength="6"
-                  maxLength="6"
-                />
-                <div className="Invalid_num">
-                  {registervalidator.current.message(
-                    "otp",
-                    guestOTP,
-                    "required",
-                  )}
+            <span
+              className={tw`float-right text-black`}
+              // style={{
+              //     float: "right",
+              //     color: "black"
+              // }}
+              onClick={() => setOtpModal(!otpModal)}
+              aria-hidden="true"
+            >
+              <GrClose className={tw`cursor-pointer`} />
+            </span>
+
+            <div>
+              <div className="login_header">
+                <p className="text_color">
+                  We sent an sms with confirmation code to your mobile number
+                </p>
+              </div>
+              <form onSubmit={handleOTPSubmit}>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="otp"
+                    onChange={(e) => setGuestOTP(e.target.value)}
+                    value={guestOTP}
+                    placeholder="Enter your OTP"
+                    minLength="6"
+                    maxLength="6"
+                  />
+                  <div className="Invalid_num">
+                    {registervalidator.current.message(
+                      "otp",
+                      guestOTP,
+                      "required",
+                    )}
+                  </div>
                 </div>
-              </div>
+                <div className="form-group">
+                  <button className="btn btn_facebook" type="submit">
+                    Submit OTP
+                  </button>
+                </div>
+              </form>
               <div className="form-group">
-                <button className="btn btn_facebook" type="submit">
-                  Submit OTP
-                </button>
+                <p className="proceed_clr">
+                  BY proceeding, you agree to the{" "}
+                  <a href="" className="tnc_color">
+                    Terms & Conditions
+                  </a>
+                </p>
               </div>
-            </form>
-            <div className="form-group">
-              <p className="proceed_clr">
-                BY proceeding, you agree to the{" "}
-                <a href="" className="tnc_color">
-                  Terms & Conditions
-                </a>
-              </p>
             </div>
           </div>
         </div>
-      </div>
-    </>
+      </Modal>
+      </>
   );
 };
 

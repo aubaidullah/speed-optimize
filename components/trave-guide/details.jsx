@@ -565,9 +565,12 @@ const TravelGuideDetailComp = ({
                     ""
                   )
                 ) : data?.attn?.length > 0 ? (
-                  <h2 className={`text-xl font-bold`}>
-                    Top Cities in {data?.tg?.cityName}
-                  </h2>
+                  <div className={tw`flex_ justify-between_`}>
+                    <h2 className={`text-xl font-bold`}>
+                      Top Cities in {data?.tg?.cityName}
+                    </h2>
+                  </div>
+                  
                 ) : (
                   ""
                 )}
@@ -575,8 +578,8 @@ const TravelGuideDetailComp = ({
                 {type == "CITY" ? (
                   data?.attn?.length > 0 ? (
                     <div>
-                      <Link href={"/travel-guide/"}>
-                        <div href={"/travel-guide/"}>
+                      <Link href={`/cities/${data?.tg?.cityName.toLowerCase()}/top-attractions-to-visit-${data?.tg?.id}`}>
+                        <div>
                           <div className="btn_view_more">View all</div>
                         </div>
                       </Link>
@@ -585,7 +588,14 @@ const TravelGuideDetailComp = ({
                     ""
                   )
                 ) : (
-                  ""
+                  <div>
+                    {/* /states/:city/top-places-to-visit-:id */}
+                    <Link href={`/states/${data?.tg?.cityName.toLowerCase()}/top-places-to-visit-${data?.tg?.id}`}>
+                      <div>
+                        <div className="btn_view_more">View all</div>
+                      </div>
+                    </Link>
+                  </div>
                 )}
               </div>
               {data?.attn?.length > 0 || data?.ctg?.length > 0 ? (
@@ -695,7 +705,7 @@ const TravelGuideDetailComp = ({
                 packages.length!=0?<HomePackages data={packages} />:""
             }             */}
         {type == "STATE" ? (
-          packages_state?.length != 0 && packages_state.package != null ? (
+          packages_state?.length != 0 && packages_state.packages != null ? (
             <HomePackages data={packages_state} />
           ) : (
             ""

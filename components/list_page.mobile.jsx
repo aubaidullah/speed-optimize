@@ -469,7 +469,7 @@ const ListPageMobile = ({
                 <div>
                   {/* {ReactHtmlParser(overview)} */}
                   {/* {ParseHtml({text:overview})} */}
-                  <div className="__description">
+                  <div className="__description_">
                     {ParseHtml({text:overview})}
                   </div>
                   
