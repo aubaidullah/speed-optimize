@@ -104,7 +104,17 @@ const nextConfig = {
       {
         source: "/states/:city-:id(\\d+)",
         destination: "/travel-guide/india/detail",
+      },
+
+      {
+        source: "/states/:city/top-places-to-visit-:id(\\d+)",
+        destination: "/travel-guide/places",
+      },
+      {
+        source: "/cities/:city/top-attractions-to-visit-:id(\\d+)",
+        destination: "/travel-guide/places",
       },      
+      // top-attractions-to-visit
       // {
       //   source: "/travel-guide/states/:city-:id(\\d+)",
       //   destination: "/travel-guide/india/detail",

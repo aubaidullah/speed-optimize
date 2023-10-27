@@ -1,4 +1,4 @@
-import ReactHtmlParser from "react-html-parser";
+// import ReactHtmlParser from "react-html-parser";
 const ParseHtml = ({ text }) => {
   // return ReactHtmlParser(text);
   // const [Tags, setTags] = useState("");

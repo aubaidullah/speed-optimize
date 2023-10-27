@@ -3,6 +3,7 @@ import { tw } from "twind";
 import * as Constants from "../Constants";
 import moment from "moment";
 import ReactStars from "react-rating-stars-component";
+import axios from "axios";
 import {
   BsDot,
   BsStarFill,
@@ -12,6 +13,8 @@ import {
   BsPlusLg,
 } from "react-icons/bs";
 import swal from "sweetalert";
+import Guest from '@/components/guest'
+
 
 const ReviewRender = ({ reviews }) => {
   const [maxReview, setMaxreview] = useState(5);
@@ -25,15 +28,17 @@ const ReviewRender = ({ reviews }) => {
               className={tw`w-full lg:w-2/3 flex flex-col md:flex-row justify-between items-start md:items-center`}
             >
               <div className={tw`flex justify-between items-center gap-3 ms-2`}>
-                <div className="coment_photo">
-                  <img
-                    src={`${Constants.assets_api}/public/icons/user_photo.png`}
-                    className={tw`rounded-full`}
+                <div className="coment_photo bg-gray-500 rounded-full flex justify-center">
+                  <div
+                    // src={`${Constants.assets_api}/public/icons/user_photo.png`}
+                    className={tw`rounded-full flex items-center text-white text-xl`}
                     alt="user icon"
-                  />
+                  >
+                  {item.cName[0]}
+                  </div>
                 </div>
                 <div className="coment_title-">
-                  <h3 className={tw`h1_title fs-6`}>{item.cName}</h3>
+                  <h3 className={tw`text-md font-semibold fs-6`}>{item.cName}</h3>
                 </div>
               </div>
               <div className={tw`w-full md:w-auto`}>
@@ -70,12 +75,13 @@ const ReviewRender = ({ reviews }) => {
               </div>
             </div>
             <div className={tw`ms-2 mt-2 w-full lg:w-2/3`}>
-              <details>
+              <p className={tw`text-md ms-2 mt-2`}>{item.review}</p>
+              {/* <details>
                 <summary className={tw`text-xs font-semibold text-[#f06726]`}>
                   <span>Read</span>
                 </summary>
                 <p className={tw`text-md ms-2 mt-2`}>{item.review}</p>
-              </details>
+              </details> */}
             </div>
           </div>
         );
@@ -84,11 +90,12 @@ const ReviewRender = ({ reviews }) => {
   );
 };
 
-const Reviews = ({ reviews }) => {
+const Reviews = ({ reviews, data }) => {
   const [rating, setRating] = useState(null);
   const [reviewText, setReviewText] = useState("");
   const [images, setImages] = useState([]);
-  const [maxReview, setMaxreview] = useState(5);
+  const [maxReview, setMaxReview] = useState(5);
+  const [show,setShow] = useState(false)
 
   const reviewSubmit = async (e) => {
     e?.preventDefault();
@@ -142,7 +149,9 @@ const Reviews = ({ reviews }) => {
   console.log(images);
 
   return (
+    
     <section className="container">
+      {show ? <Guest show={show} setShow={() => setShow(!show)} /> : null}
       <div className={tw`title_kiomoi`}>
         <h4>Give Your Review on this Package</h4>
         <form onSubmit={reviewSubmit}>

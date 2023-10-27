@@ -12,6 +12,10 @@
   padding: 10px;
 }
 
+.pl_img{
+  height: 200px;
+}
+
 .cir_bg {
   background-color: #5da60d;
   border-radius: 3.5px;
