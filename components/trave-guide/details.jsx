@@ -554,7 +554,10 @@ const TravelGuideDetailComp = ({
               </div>
             </div>
 
+            
+
             <div>
+            {/* {type == "COUNTRY" && data.stg ? <TravelGuide data={data.stg} /> : ""} */}
               <div className={`flex justify-between`}>
                 {type == "CITY" ? (
                   data?.attn?.length > 0 ? (
@@ -564,7 +567,7 @@ const TravelGuideDetailComp = ({
                   ) : (
                     ""
                   )
-                ) : data?.attn?.length > 0 ? (
+                ) : data?.attn?.length > 0? (
                   <div className={tw`flex_ justify-between_`}>
                     <h2 className={`text-xl font-bold`}>
                       Top Cities in {data?.tg?.cityName}
@@ -574,11 +577,12 @@ const TravelGuideDetailComp = ({
                 ) : (
                   ""
                 )}
+                
 
                 {type == "CITY" ? (
                   data?.attn?.length > 0 ? (
                     <div>
-                      <Link href={`/cities/${data?.tg?.cityName.toLowerCase()}/top-attractions-to-visit-${data?.tg?.id}`}>
+                      <Link href={`/cities/${data?.tg?.cityName.toLowerCase()}/top-sightseeing-places-and-attractions-to-visit-${data?.tg?.id}`}>
                         <div>
                           <div className="btn_view_more">View all</div>
                         </div>
@@ -590,11 +594,14 @@ const TravelGuideDetailComp = ({
                 ) : (
                   <div>
                     {/* /states/:city/top-places-to-visit-:id */}
-                    <Link href={`/states/${data?.tg?.cityName.toLowerCase()}/top-places-to-visit-${data?.tg?.id}`}>
+                    {
+                      type!="COUNTRY"?<Link href={`/states/${data?.tg?.cityName.toLowerCase()}/top-places-to-visit-${data?.tg?.id}`}>
                       <div>
                         <div className="btn_view_more">View all</div>
                       </div>
-                    </Link>
+                    </Link>:""
+                    }
+                    
                   </div>
                 )}
               </div>
@@ -716,7 +723,7 @@ const TravelGuideDetailComp = ({
           ""
         )}
 
-        {type == "COUNTRY" && data.stg ? <TravelGuide data={data.stg} /> : ""}
+        {type == "COUNTRY" && data.stg ? <TravelGuide data={data.stg} type={"COUNTRY"} /> : ""}
 
         {hotels.length != 0 ? <Hotel data={hotels} /> : ""}
 

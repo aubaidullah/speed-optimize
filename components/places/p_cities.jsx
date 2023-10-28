@@ -15,9 +15,18 @@ const IMG = ({e,index,url,type}) =>{
                     <div>
                         <div className={tw`pl_img_ bg-white rounded-t-lg rounded-b-lg shadow-md`}>
                             <div className={tw`p-2`}>
-                                <div className={tw` text-md font-semibold text-slate-700`}>
-                                    {index+1}. {e.name}
-                                </div>  
+                                <div className={tw`flex justify-between items-center`}>
+                                    <div className={tw` text-[16px] font-semibold text-slate-700`}>
+                                        {index+1}. {e.name}
+                                    </div>  
+                                    {e.ratings
+                                    ?<div className="cir_bg">
+                                    {e.ratings}/5
+                                </div>
+                                :""}
+                                    
+                                </div>
+
                             </div>                            
                             <div className={tw`pl_img relative`}>
                                 <Image 
