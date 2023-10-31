@@ -159,31 +159,71 @@ const IMG = ({e,index,url,type}) =>{
 
 
 const P_Cities = ({data}) =>{
+    // console.log(data.stg)
+    // const Grouping = (list) =>{
+    //     return list.reduce((groups, item) => {
+    //         const group = (groups[item.group] || []);
+    //         group.push(item);
+    //         groups[item.group] = group;
+    //         return groups;
+    //       })
+    // }
+
+    const groups = data?.stg?.reduce((groups, item) => {
+        const group = (groups[item.region] || []);
+        group.push(item);
+        groups[item.region] = group;
+        return groups;
+      }, {});    
+
     return <>
-            <div className={tw`flex flex-wrap`}>
+            <div className={tw`flex_ flex-wrap_`}>
                 
             {data?.state
-            
-            
-            ?data.ctg.map((e,index)=>{
-                // let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
-                let url = createTGCityURL({city:e.name,id:e.tgid})
-                return <IMG index={index} e={e} url={url} type={data.tp}/>
+            ?<div className={tw`flex flex-wrap`}>
+                {
+                    data.ctg.map((e,index)=>{
+                        // let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
+                        let url = createTGCityURL({city:e.name,id:e.tgid})
+                        return <IMG index={index} e={e} url={url} type={data.tp}/>
+                        
+                    })
+                }
                 
-            })
+            </div>
+            
             :data?.country?
-            data.stg.map((e,index)=>{
-                // let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
-                let url = createTGStateURL({city:e.name,id:e.tgid})
-                return <IMG index={index} e={e} url={url} type={data.tp}/>
+            Object.keys(groups).map((key,value)=>{
+                return <>
+                <h3 className={tw`text-xl font-bold mt-8 border-b border-gray-500`}>{key}</h3>
+                <div className={tw`flex flex-wrap pt-2`}>
+                    {Object(groups)[key].map((e,index)=>{
+                        let url = createTGStateURL({city:e.name,id:e.tgid})
+                        return <IMG index={index} e={e} url={url} type={data.tp}/>
+                        
+                    })}      
+                </div>          
                 
+                </>
             })
-            :data.attn.map((e,index)=>{
+            
+            
+            
+            // .map((e,index)=>{
+            //     let url = createTGStateURL({city:e.name,id:e.tgid})
+            //     return <IMG index={index} e={e} url={url} type={data.tp}/>
+                
+            // })
+            :
+            <div className={tw`flex flex-wrap`}>
+            {data.attn.map((e,index)=>{
                 // createAttractionsURL
                 let url = createAttractionsURL({city:data?.tg?.cityName,attraction:e.name,id:e.id})
                 // let url = createTGCityURL
                 return <IMG index={index} e={e} url={url} type={data.tp}/>                
-            })
+            })}</div>
+
+
             }
                 {/* {data.ctg.map((e,index)=>{
                     // let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
