@@ -193,19 +193,34 @@ const P_Cities = ({data}) =>{
             </div>
             
             :data?.country?
-            Object.keys(groups).map((key,value)=>{
-                return <>
-                <h3 className={tw`text-xl font-bold mt-8 border-b border-gray-500`}>{key}</h3>
-                <div className={tw`flex flex-wrap pt-2`}>
-                    {Object(groups)[key].map((e,index)=>{
-                        let url = createTGStateURL({city:e.name,id:e.tgid})
-                        return <IMG index={index} e={e} url={url} type={data.tp}/>
+                <>
+                    {Object.keys(groups).map((key,value)=>{
+                        return <>
+                        <h3 className={tw`text-xl font-bold mt-8 border-b border-gray-500`}>{key}</h3>
+                        <div className={tw`flex flex-wrap pt-2`}>
+                            {Object(groups)[key].map((e,index)=>{
+                                let url = createTGStateURL({city:e.name,id:e.tgid})
+                                return <IMG index={index} e={e} url={url} type={data.tp}/>
+                                
+                            })}      
+                        </div>          
                         
-                    })}      
-                </div>          
-                
+                        </>
+                    })}
+                    <h2 className={`h text-xl font-bold pb-2 _b_active mt-8`}> Top {data?.ctg?.length} Sightseeing Places in {data?.tg?.cityName}</h2>
+                    <div className={tw`flex flex-wrap`}>
+                        {
+                            data.ctg.map((e,index)=>{
+                                // let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
+                                let url = createTGCityURL({city:e.name,id:e.tgid})
+                                return <IMG index={index} e={e} url={url} type={data.tp}/>
+                                
+                            })
+                        }
+                        
+                    </div>
                 </>
-            })
+            
             
             
             
@@ -225,14 +240,6 @@ const P_Cities = ({data}) =>{
 
 
             }
-                {/* {data.ctg.map((e,index)=>{
-                    // let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
-                    let url = data?.city
-                    ?createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
-                    :createTGCityURL({city:e.name,id:e.tgid})
-                    // let url = createTGCityURL
-                    
-                })} */}
             </div>
     </>
 }

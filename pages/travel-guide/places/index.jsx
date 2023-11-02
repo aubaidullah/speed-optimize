@@ -345,7 +345,7 @@ const Places = ({data,packages_state,packages,article,weather}) => {
             </div>
             <div className="mt-6 ">
                 <h2 className={`h text-xl font-bold pb-2 _b_active`}> Top {data?.ctg?.length??data?.attn?.length} {data?.tp =='STATE' || data?.tp =='COUNTRY' ?"Places to visit in" :"Sightseeing Places in"} {data?.tg?.cityName}</h2>
-                <P_Cities data={data}/>
+                  <P_Cities data={data}/>
             </div>
             
             <div>
