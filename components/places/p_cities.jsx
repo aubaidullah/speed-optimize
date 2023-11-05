@@ -16,7 +16,7 @@ const IMG = ({e,index,url,type}) =>{
                         <div className={tw`pl_img_ bg-white rounded-t-lg rounded-b-lg shadow-md`}>
                             <div className={tw`p-2`}>
                                 <div className={tw`flex justify-between items-center`}>
-                                    <div className={tw` text-[16px] font-semibold text-slate-700`}>
+                                    <div className={tw` text-[18px] font-semibold text-slate-700`}>
                                         {index+1}. {e.name}
                                     </div>  
                                     {e.ratings
@@ -196,7 +196,7 @@ const P_Cities = ({data}) =>{
                 <>
                     {Object.keys(groups).map((key,value)=>{
                         return <>
-                        <h3 className={tw`text-xl font-bold mt-8 border-b border-gray-500`}>{key}</h3>
+                        <h3 className={tw`text-xl font-bold mt-8 border-b border-gray-500 _b_active`}> Popular destinations in {key} India </h3>
                         <div className={tw`flex flex-wrap pt-2`}>
                             {Object(groups)[key].map((e,index)=>{
                                 let url = createTGStateURL({city:e.name,id:e.tgid})
@@ -207,18 +207,17 @@ const P_Cities = ({data}) =>{
                         
                         </>
                     })}
-                    <h2 className={`h text-xl font-bold pb-2 _b_active mt-8`}> Top {data?.ctg?.length} Sightseeing Places in {data?.tg?.cityName}</h2>
+                    {/* <h2 className={`h text-xl font-bold pb-2 _b_active mt-8`}> Top {data?.ctg?.length} Sightseeing Places in {data?.tg?.cityName}</h2>
                     <div className={tw`flex flex-wrap`}>
                         {
                             data.ctg.map((e,index)=>{
-                                // let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
                                 let url = createTGCityURL({city:e.name,id:e.tgid})
                                 return <IMG index={index} e={e} url={url} type={data.tp}/>
                                 
                             })
                         }
                         
-                    </div>
+                    </div> */}
                 </>
             
             

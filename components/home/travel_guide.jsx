@@ -186,7 +186,7 @@ const TravelGuide = ({ data,type = undefined }) => {
                   <p></p>
                 </div>
                 <div className={`2w-full`}>
-                  <Link href={type==undefined?"/travel-guide/":`/states/india/top-places-to-visit-96`}> 
+                  <Link href={type==undefined?"/travel-guide/":`/countries/india/top-destinations-to-visit-96`}> 
                   {/* special for india */}
                     <div>
                       <div className="btn_view_more">View All</div>

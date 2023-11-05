@@ -184,7 +184,7 @@ const TravelGuideDetailComp = ({
             <h1 className={`text-2xl font-bold`}>{data.tg.cityName}</h1>
           ) : (
             <h1 className={`text-2xl font-bold`}>
-              Places To Visit in {data.tg.cityName}
+              {data.tg.cityName} tourism and travel guide
             </h1>
           )}
         </div>
@@ -282,7 +282,7 @@ const TravelGuideDetailComp = ({
                     <div className={`flex items-center`}>
                       <IoLocationSharp className="inline" />
                       <span className={`pl-1`}>{data.tg.cityName}</span>
-                      <BsDot className={`inline`} /> <span>India</span>
+                      <BsDot className={`inline`} /> <span>{type=='COUNTRY'?"ASIA":"India"}</span>
                     </div>
                     <div className="cir_bg">
                       {type == "CITY"
@@ -476,7 +476,7 @@ const TravelGuideDetailComp = ({
                           </>
                         )}
                       </div>
-                      <div className={`price_inr text-[9px]`}>onwards</div>
+                      <div className={`text-[10px] text-slate-700`}>onwards</div>
                     </div>
 
                     <div className={`w-full lg:1/2`}>
@@ -727,7 +727,7 @@ const TravelGuideDetailComp = ({
 
         {hotels.length != 0 ? <Hotel data={hotels} /> : ""}
 
-        {type == "CITY" ? (
+        {type == "CITY" || type == "STATE" ? (
           article.length != 0 ? (
             <Articles data={article} />
           ) : (
