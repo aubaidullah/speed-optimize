@@ -153,7 +153,7 @@ export async function getServerSideProps(context) {
     query: getStatereArticleQuery,
     variables: { input: article_data },
   });
-  const article = article_res.data.articles.output.articles;
+  const article = article_res.data.articles?.output?.articles??[];
 
   let qna_data = {
     av: "",
