@@ -13,7 +13,7 @@ import Image from "next/image";
 
 // const ReactHtmlParser = dynamic(() => import('react-html-parser'))
 
-const TravelGuide = ({ data }) => {
+const TravelGuide = ({ data,type = undefined }) => {
   // const ReactHtmlParser = dynamic(() => import('react-html-parser'))
 
   const Slider = dynamic(() => import("react-slick"));
@@ -186,8 +186,9 @@ const TravelGuide = ({ data }) => {
                   <p></p>
                 </div>
                 <div className={`2w-full`}>
-                  <Link href="/travel-guide/">
-                    <div href="/travel-guide/">
+                  <Link href={type==undefined?"/travel-guide/":`/countries/india/top-destinations-to-visit-96`}> 
+                  {/* special for india */}
+                    <div>
                       <div className="btn_view_more">View All</div>
                     </div>
                   </Link>

@@ -1,4 +1,4 @@
-import { getTravelGuideDetail, getTravelPackage, getarticleQuery } from "@/components/Graphql/Queries";
+import { getStatereArticleQuery, getTravelGuideDetail, getTravelPackage, getarticleQuery } from "@/components/Graphql/Queries";
 import client from "@/components/Graphql/service";
 import Nav from "@/components/Nav"
 import axios from "axios";
@@ -14,12 +14,13 @@ import { BsDot } from "react-icons/bs";
 import HomePackages from "@/components/home/packages";
 import { Carousel } from "react-responsive-carousel";
 import rightBlock from "@/components/trave-guide/rightBlock";
+import Articles from "@/components/home/articles";
 
 const Places = ({data,packages_state,packages,article,weather}) => {
     // console.log(data)
     const state_bread = {
         disabled: {
-          item: `Place to visit in ${data.tg.cityName}`,
+          item: data.tp=='COUNTRY'?`Destinations to visit in ${data.tg.cityName}`:`Place to visit in ${data.tg.cityName}`,
         },
         enabled: [
           {
@@ -58,7 +59,7 @@ const Places = ({data,packages_state,packages,article,weather}) => {
             {/* Sightseeing Places & Attractions in */}
             <h1 className={`h pb-2`}>
               
-            {data?.tp =='STATE' || data?.tp =='COUNTRY' ?"Places to visit in":"Sightseeing Places & Attractions in"} {data?.tg?.cityName}
+            {data?.tp =='COUNTRY' ?"Destinations to visit in":data?.tp =='STATE' ?"Top places to visit in":"Sightseeing Places & Attractions in"} {data?.tg?.cityName}
               
               </h1>
           </div>
@@ -95,7 +96,7 @@ const Places = ({data,packages_state,packages,article,weather}) => {
                     <div className={`flex items-center`}>
                       <IoLocationSharp className="inline" />
                       <span className={`pl-1`}>{data.tg.cityName}</span>
-                      <BsDot className={`inline`} /> <span>India</span>
+                      <BsDot className={`inline`} /> <span>{type=='COUNTRY'?"ASIA":"India"}</span>
                     </div>
                     <div className="cir_bg">
                       {type == "CITY"
@@ -289,7 +290,7 @@ const Places = ({data,packages_state,packages,article,weather}) => {
                           </>
                         )}
                       </div>
-                      <div className={`price_inr text-[9px]`}>onwards</div>
+                      <div className={`text-[10px] text-slate-700`}>onwards</div>
                     </div>
 
                     <div className={`w-full lg:1/2`}>
@@ -344,8 +345,13 @@ const Places = ({data,packages_state,packages,article,weather}) => {
 
             </div>
             <div className="mt-6 ">
-                <h2 className={`h text-xl font-bold pb-2 _b_active`}> Top {data?.ctg?.length??data?.attn?.length} {data?.tp =='STATE' || data?.tp =='COUNTRY' ?"Places to visit in" :"Sightseeing Places in"} {data?.tg?.cityName}</h2>
-                <P_Cities data={data}/>
+                
+                {
+                  type!='COUNTRY'
+                  ?<h2 className={`h text-xl font-bold pb-2 _b_active`}> Top {data?.ctg?.length??data?.attn?.length} {data?.tp =='STATE' || data?.tp =='COUNTRY' ?"Places to visit in" :"Sightseeing Places in"} {data?.tg?.cityName}</h2>
+                  :""
+                }
+                  <P_Cities data={data}/>
             </div>
             
             <div>
@@ -363,6 +369,15 @@ const Places = ({data,packages_state,packages,article,weather}) => {
             ) : (
             ""
             )}
+{/* <Articles data={article} /> */}
+              {
+                article.length
+                ?<Articles data={article} />
+                :""  
+              }
+            
+
+            
 
             </div>
         </div>
@@ -399,7 +414,7 @@ export async function getServerSideProps(context) {
         pid: 0,
         pt: "Website",
         size: 10,
-        type: "CITY",
+        type: "COUNTRY",
       };
     
       // console.log(json_data)
@@ -408,6 +423,8 @@ export async function getServerSideProps(context) {
         variables: { input: json_data },
       });
       const packages = res1.data.package.output;
+      // console.log(json_data)
+      // console.log(packages)
     
       // console.log(res.data.travelGuide.output.gid)
       let json_data_ = {
@@ -433,25 +450,27 @@ export async function getServerSideProps(context) {
 
 
       let article_data = {
-        av: "1.3",
-        pt: "WEBSITE",
-        geoid: 0,
-        id: "string",
-        pagenum: 1,
+        av: "",
+        geoid: res.data.travelGuide.output?.city?.sid??res.data.travelGuide.output?.gid,
+        home: "",
+        id: res.data.travelGuide.output?.city?.sid??res.data.travelGuide.output?.gid,
+        pagenum: 0,
         pid: 0,
-        size: 20,
-        type: 0,
+        pt: "",
+        size: 0,
+        type: "STATE",
       };
+      console.log(article_data)
     
       // getQnaQuery
     
       const article_res = await client.query({
-        query: getarticleQuery,
+        query: getStatereArticleQuery,
         variables: { input: article_data },
       });
-      const article = article_res.data.articles.output.articles;
+      const article = article_res.data.articles.output?.articles??[];
     
-      console.log(packages_state)
+      // console.log(packages_state)
 
 
     return {

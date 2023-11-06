@@ -348,7 +348,7 @@ const Package = ({ index, item }) => {
                                     size={20}
                                   />
                                 </div>
-                                <p>Trasnfer</p>
+                                <p>Transfer</p>
                               </div>
                             </div>
 

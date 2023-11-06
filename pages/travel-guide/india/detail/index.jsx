@@ -6,6 +6,7 @@ import {
   getarticleQuery,
   getQnaQuery,
   getMetaQuery,
+  getStatereArticleQuery,
 } from "../../../../components/Graphql/Queries";
 import axios from "axios";
 import dynamic from "next/dynamic";
@@ -138,8 +139,8 @@ export async function getServerSideProps(context) {
   let article_data = {
     av: "1.3",
     pt: "WEBSITE",
-    geoid: 0,
-    id: "string",
+    geoid: res.data.travelGuide.output?.city?.sid??res.data.travelGuide.output?.gid,
+    id: res.data.travelGuide.output?.city?.sid??res.data.travelGuide.output?.gid,
     pagenum: 1,
     pid: 0,
     size: 20,
@@ -149,10 +150,10 @@ export async function getServerSideProps(context) {
   // getQnaQuery
 
   const article_res = await client.query({
-    query: getarticleQuery,
+    query: getStatereArticleQuery,
     variables: { input: article_data },
   });
-  const article = article_res.data.articles.output.articles;
+  const article = article_res.data.articles?.output?.articles??[];
 
   let qna_data = {
     av: "",

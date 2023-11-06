@@ -184,7 +184,7 @@ const TravelGuideDetailComp = ({
             <h1 className={`text-2xl font-bold`}>{data.tg.cityName}</h1>
           ) : (
             <h1 className={`text-2xl font-bold`}>
-              Places To Visit in {data.tg.cityName}
+              {data.tg.cityName} tourism and travel guide
             </h1>
           )}
         </div>
@@ -282,7 +282,7 @@ const TravelGuideDetailComp = ({
                     <div className={`flex items-center`}>
                       <IoLocationSharp className="inline" />
                       <span className={`pl-1`}>{data.tg.cityName}</span>
-                      <BsDot className={`inline`} /> <span>India</span>
+                      <BsDot className={`inline`} /> <span>{type=='COUNTRY'?"ASIA":"India"}</span>
                     </div>
                     <div className="cir_bg">
                       {type == "CITY"
@@ -476,7 +476,7 @@ const TravelGuideDetailComp = ({
                           </>
                         )}
                       </div>
-                      <div className={`price_inr text-[9px]`}>onwards</div>
+                      <div className={`text-[10px] text-slate-700`}>onwards</div>
                     </div>
 
                     <div className={`w-full lg:1/2`}>
@@ -554,7 +554,10 @@ const TravelGuideDetailComp = ({
               </div>
             </div>
 
+            
+
             <div>
+            {/* {type == "COUNTRY" && data.stg ? <TravelGuide data={data.stg} /> : ""} */}
               <div className={`flex justify-between`}>
                 {type == "CITY" ? (
                   data?.attn?.length > 0 ? (
@@ -564,7 +567,7 @@ const TravelGuideDetailComp = ({
                   ) : (
                     ""
                   )
-                ) : data?.attn?.length > 0 ? (
+                ) : data?.attn?.length > 0? (
                   <div className={tw`flex_ justify-between_`}>
                     <h2 className={`text-xl font-bold`}>
                       Top Cities in {data?.tg?.cityName}
@@ -574,11 +577,12 @@ const TravelGuideDetailComp = ({
                 ) : (
                   ""
                 )}
+                
 
                 {type == "CITY" ? (
                   data?.attn?.length > 0 ? (
                     <div>
-                      <Link href={`/cities/${data?.tg?.cityName.toLowerCase()}/top-attractions-to-visit-${data?.tg?.id}`}>
+                      <Link href={`/cities/${data?.tg?.cityName.toLowerCase()}/top-sightseeing-places-and-attractions-to-visit-${data?.tg?.id}`}>
                         <div>
                           <div className="btn_view_more">View all</div>
                         </div>
@@ -590,11 +594,14 @@ const TravelGuideDetailComp = ({
                 ) : (
                   <div>
                     {/* /states/:city/top-places-to-visit-:id */}
-                    <Link href={`/states/${data?.tg?.cityName.toLowerCase()}/top-places-to-visit-${data?.tg?.id}`}>
+                    {
+                      type!="COUNTRY"?<Link href={`/states/${data?.tg?.cityName.toLowerCase()}/top-places-to-visit-${data?.tg?.id}`}>
                       <div>
                         <div className="btn_view_more">View all</div>
                       </div>
-                    </Link>
+                    </Link>:""
+                    }
+                    
                   </div>
                 )}
               </div>
@@ -716,11 +723,11 @@ const TravelGuideDetailComp = ({
           ""
         )}
 
-        {type == "COUNTRY" && data.stg ? <TravelGuide data={data.stg} /> : ""}
+        {type == "COUNTRY" && data.stg ? <TravelGuide data={data.stg} type={"COUNTRY"} /> : ""}
 
         {hotels.length != 0 ? <Hotel data={hotels} /> : ""}
 
-        {type == "CITY" ? (
+        {type == "CITY" || type == "STATE" ? (
           article.length != 0 ? (
             <Articles data={article} />
           ) : (

@@ -15,6 +15,7 @@ import { tw } from "twind";
 import client from "./Graphql/service";
 import { getCountryQuery } from "./Graphql/Queries";
 import { BiCheck } from "react-icons/bi";
+import { useRouter } from 'next/router'
 // import Modal from "./modal";
 
 const Modal = dynamic(() => import("./modal"));
@@ -58,7 +59,9 @@ const LeadForm = ({
   // const registervalidator = new SimpleReactValidator();
   const registervalidator = useRef(new SimpleReactValidator());
   const [, forceUpdate] = useState();
-
+  const router = useRouter()
+  console.log(router.asPath)
+  
   // const [show, setShow] = useState(false);
 
   // console.log(show)
@@ -116,6 +119,7 @@ const LeadForm = ({
         leaddata.append("pid", packageid);
         leaddata.append("query", "");
         leaddata.append("btype", "package");
+        leaddata.append("utm_source",router.asPath) 
         // console.log(checkoutdate);
         const res = await axios.post(
           Constants.api + "/api/v1/lead/submit",

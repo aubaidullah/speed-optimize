@@ -111,7 +111,11 @@ const nextConfig = {
         destination: "/travel-guide/places",
       },
       {
-        source: "/cities/:city/top-attractions-to-visit-:id(\\d+)",
+        source: "/countries/:city/top-destinations-to-visit-:id(\\d+)",
+        destination: "/travel-guide/places",
+      },      
+      {
+        source: "/cities/:city/top-sightseeing-places-and-attractions-to-visit-:id(\\d+)",
         destination: "/travel-guide/places",
       },      
       // top-attractions-to-visit
