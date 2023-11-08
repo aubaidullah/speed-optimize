@@ -60,7 +60,7 @@ const LeadForm = ({
   const registervalidator = useRef(new SimpleReactValidator());
   const [, forceUpdate] = useState();
   const router = useRouter()
-  console.log(router.asPath)
+  console.log(router)
   
   // const [show, setShow] = useState(false);
 
@@ -119,7 +119,7 @@ const LeadForm = ({
         leaddata.append("pid", packageid);
         leaddata.append("query", "");
         leaddata.append("btype", "package");
-        leaddata.append("utm_source",router.asPath) 
+        leaddata.append("utm_source",router?.query?.utm_source) 
         // console.log(checkoutdate);
         const res = await axios.post(
           Constants.api + "/api/v1/lead/submit",
