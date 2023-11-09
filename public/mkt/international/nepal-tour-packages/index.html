@@ -139,7 +139,8 @@
             
             requrl = "https://admin.kiomoi.com/api/v1/lead/add"
 
-
+            let url = new URL(window.location.href)
+            let urlSearch = new URLSearchParams(url.search)
 
             // console.log(date+" "+city+" "+checkout);
             console.log(adult+":"+child)
@@ -165,7 +166,8 @@
                     pageFrom:pageFrom,
                     startDateStr:date.replace('-','/').replace('-','/'),
                     endDateStr:checkout.replace('-','/').replace('-','/'),
-                    status:status
+                    status:status,
+                    utm_source : urlSearch.get('utm_source')                    
                 },
                 crossDomain:true,
                 /*dataType : 'jsonp',*/
