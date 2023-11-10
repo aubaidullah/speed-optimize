@@ -1,12 +1,25 @@
-import { getStatereArticleQuery, getTravelGuideDetail, getTravelPackage, getarticleQuery } from "@/components/Graphql/Queries";
+import {
+  getStatereArticleQuery,
+  getTravelGuideDetail,
+  getTravelPackage,
+  getarticleQuery,
+} from "@/components/Graphql/Queries";
 import client from "@/components/Graphql/service";
-import Nav from "@/components/Nav"
+import Nav from "@/components/Nav";
 import axios from "axios";
 import { tw } from "twind";
 import Image from "next/image";
 import BreadCrumbs from "@/components/breadcrumbs";
 import Link from "next/link";
-import { createCityListURL, createCountryListURL, createStateListURL, createTGCityURL, createTGStateURL, imgNameByUrl, jpgToWebp } from "@/components/fun";
+import {
+  createCityListURL,
+  createCountryListURL,
+  createStateListURL,
+  createTGCityURL,
+  createTGStateURL,
+  imgNameByUrl,
+  jpgToWebp,
+} from "@/components/fun";
 import P_Cities from "@/components/places/p_cities";
 import { FaRupeeSign } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
@@ -16,79 +29,87 @@ import { Carousel } from "react-responsive-carousel";
 import rightBlock from "@/components/trave-guide/rightBlock";
 import Articles from "@/components/home/articles";
 
-const Places = ({data,packages_state,packages,article,weather}) => {
-    // console.log(data)
-    const state_bread = {
-        disabled: {
-          item: data.tp=='COUNTRY'?`Destinations to visit in ${data.tg.cityName}`:`Place to visit in ${data.tg.cityName}`,
-        },
-        enabled: [
-          {
-            item: "Kiomoi",
-            href: "/",
-          },
-          {
-            item: "Travel Guide",
-            href: "/travel-guide/",
-          },
-          {
-            item: data.tg.cityName,
-            href: data?.city?createTGCityURL({city:data.tg.cityName,id:data.tg.id}):createTGStateURL({city:data.tg.cityName,id:data.tg.id}),
-          },
-        ],
-      };
+const Places = ({ data, packages_state, packages, article, weather }) => {
+  // console.log(data)
+  const state_bread = {
+    disabled: {
+      item:
+        data.tp == "COUNTRY"
+          ? `Destinations to visit in ${data.tg.cityName}`
+          : `Place to visit in ${data.tg.cityName}`,
+    },
+    enabled: [
+      {
+        item: "Kiomoi",
+        href: "/",
+      },
+      {
+        item: "Travel Guide",
+        href: "/travel-guide/",
+      },
+      {
+        item: data.tg.cityName,
+        href: data?.city
+          ? createTGCityURL({ city: data.tg.cityName, id: data.tg.id })
+          : createTGStateURL({ city: data.tg.cityName, id: data.tg.id }),
+      },
+    ],
+  };
 
-      const imagesRender = data?.images?.map((img, index) => {
-        return (
-          <div key={index}>
-            <Image
-              src={jpgToWebp({ uri: img.i })}
-              alt={imgNameByUrl({ url: img.i })}
-              className={`img rounded-[8px]`}
-              layout="fill"
-            />
-          </div>
-        );
-      });      
-    const type = data.tp
-    return <>
-        <Nav />
-        <BreadCrumbs bread={state_bread}/>
-        <div className="container">
-          <div className="title_listing_">
-            {/* Sightseeing Places & Attractions in */}
-            <h1 className={`h pb-2`}>
-              
-            {data?.tp =='COUNTRY' ?"Destinations to visit in":data?.tp =='STATE' ?"Top places to visit in":"Sightseeing Places & Attractions in"} {data?.tg?.cityName}
-              
-              </h1>
-          </div>
-            
-            
-            <div className="flex flex-wrap">
-              <div className={tw`w-full lg:w-2/3`}>
-                <div className="slider_details">
-                  <Carousel
-                    showArrows={true}
-                    showStatus={false}
-                    showThumbs={false}
-                    infinite={true}
-                    autoPlay={true}
-                    className="slider_banner slider_overlay"
-                  >
-                    {data?.images != null && data?.images.length > 0 ? (
-                      imagesRender
-                    ) : (
-                      <img
-                        src={`${Constants.assets_api}/public/icons/logo-icon.png`}
-                        alt="kiomoi logo"
-                      />
-                    )}
-                  </Carousel>
-                </div>
-              </div>
+  const imagesRender = data?.images?.map((img, index) => {
+    return (
+      <div key={index}>
+        <Image
+          src={jpgToWebp({ uri: img.i })}
+          alt={imgNameByUrl({ url: img.i })}
+          className={`img rounded-[8px]`}
+          layout="fill"
+        />
+      </div>
+    );
+  });
+  const type = data.tp;
+  return (
+    <>
+      <Nav />
+      <BreadCrumbs bread={state_bread} />
+      <div className="container">
+        <div className="title_listing_">
+          {/* Sightseeing Places & Attractions in */}
+          <h1 className={`h pb-2`}>
+            {data?.tp == "COUNTRY"
+              ? "Destinations to visit in"
+              : data?.tp == "STATE"
+              ? "Top places to visit in"
+              : "Sightseeing Places & Attractions in"}{" "}
+            {data?.tg?.cityName}
+          </h1>
+        </div>
 
-              <div className={tw`w-full lg:w-1/3`}>
+        <div className="flex flex-wrap">
+          <div className={tw`w-full lg:w-2/3`}>
+            <div className="slider_details">
+              <Carousel
+                showArrows={true}
+                showStatus={false}
+                showThumbs={false}
+                infinite={true}
+                autoPlay={true}
+                className="slider_banner slider_overlay"
+              >
+                {data?.images != null && data?.images.length > 0 ? (
+                  imagesRender
+                ) : (
+                  <img
+                    src={`${Constants.assets_api}/public/icons/logo-icon.png`}
+                    alt="kiomoi logo"
+                  />
+                )}
+              </Carousel>
+            </div>
+          </div>
+
+          <div className={tw`w-full lg:w-1/3`}>
             <div className={tw`pl-0 lg:pl-6 `}>
               <div className="_b_right_list_1">
                 <div className="_asia_india">
@@ -96,7 +117,8 @@ const Places = ({data,packages_state,packages,article,weather}) => {
                     <div className={`flex items-center`}>
                       <IoLocationSharp className="inline" />
                       <span className={`pl-1`}>{data.tg.cityName}</span>
-                      <BsDot className={`inline`} /> <span>{type=='COUNTRY'?"ASIA":"India"}</span>
+                      <BsDot className={`inline`} />{" "}
+                      <span>{type == "COUNTRY" ? "ASIA" : "India"}</span>
                     </div>
                     <div className="cir_bg">
                       {type == "CITY"
@@ -290,7 +312,9 @@ const Places = ({data,packages_state,packages,article,weather}) => {
                           </>
                         )}
                       </div>
-                      <div className={`text-[10px] text-slate-700`}>onwards</div>
+                      <div className={`text-[10px] text-slate-700`}>
+                        onwards
+                      </div>
                     </div>
 
                     <div className={`w-full lg:1/2`}>
@@ -341,147 +365,155 @@ const Places = ({data,packages_state,packages,article,weather}) => {
               </div>
             </div>
           </div>
-
-
-            </div>
-            <div className="mt-6 ">
-                
-                {
-                  type!='COUNTRY'
-                  ?<h2 className={`h text-xl font-bold pb-2 _b_active`}> Top {data?.ctg?.length??data?.attn?.length} {data?.tp =='STATE' || data?.tp =='COUNTRY' ?"Places to visit in" :"Sightseeing Places in"} {data?.tg?.cityName}</h2>
-                  :""
-                }
-                  <P_Cities data={data}/>
-            </div>
-            
-            <div>
-
-            {/* <HomePackages data={packages_state} /> */}
-
-            {data?.state ? (
-              packages_state?.length != 0 && packages_state.packages != null ? (
-                <HomePackages data={packages_state} />
-            ) : (
-                ""
-            )
-            ) : packages?.packages?.length != 0 ? (
-            <HomePackages data={packages} />
-            ) : (
-            ""
-            )}
-{/* <Articles data={article} /> */}
-              {
-                article.length
-                ?<Articles data={article} />
-                :""  
-              }
-            
-
-            
-
-            </div>
         </div>
 
+        <div className="mt-6 ">
+          {type != "COUNTRY" ? (
+            <h2 className={`h text-xl font-bold pb-2 _b_active`}>
+              {" "}
+              Top {data?.ctg?.length ?? data?.attn?.length}{" "}
+              {data?.tp == "STATE" || data?.tp == "COUNTRY"
+                ? "Places to visit in"
+                : "Sightseeing Places in"}{" "}
+              {data?.tg?.cityName}
+            </h2>
+          ) : (
+            ""
+          )}
+          {type == "STATE" && data?.ctg?.length > 6 ? (
+            <>
+              <P_Cities data={data} start={0} end={6} />
+
+              <HomePackages data={packages_state} />
+
+              <P_Cities data={data} start={6} />
+            </>
+          ) : (
+            <P_Cities />
+          )}
+        </div>
+
+        <div>
+          {/* <HomePackages data={packages_state} /> */}
+
+          {data?.state ? (
+            packages_state?.length != 0 &&
+            packages_state.packages != null &&
+            data?.ctg?.length <= 6 ? (
+              <HomePackages data={packages_state} />
+            ) : (
+              ""
+            )
+          ) : packages?.packages?.length != 0 ? (
+            <HomePackages data={packages} />
+          ) : (
+            ""
+          )}
+          {/* <Articles data={article} /> */}
+          {article.length ? <Articles data={article} /> : ""}
+        </div>
+      </div>
     </>
-}
+  );
+};
 
 export async function getServerSideProps(context) {
-    let _id = context.query.id;
-    const res = await client.query({
-        query: getTravelGuideDetail,
-        variables: { input: { id: _id } },
-    })
+  let _id = context.query.id;
+  const res = await client.query({
+    query: getTravelGuideDetail,
+    variables: { input: { id: _id } },
+  });
 
-    var resp = null;
-    if (res.data.travelGuide.output.tp == "CITY") {
-      // type = "CITY";
-      let lat = res.data.travelGuide.output.city.lat;
-      let lng = res.data.travelGuide.output.city.lng;
-  
-      resp = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=d6429646ecc55c8a9d2856f91d10ff4f&units=metric`,
-      );
-      // console.log(resp)
-    }    
+  var resp = null;
+  if (res.data.travelGuide.output.tp == "CITY") {
+    // type = "CITY";
+    let lat = res.data.travelGuide.output.city.lat;
+    let lng = res.data.travelGuide.output.city.lng;
 
+    resp = await axios.get(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=d6429646ecc55c8a9d2856f91d10ff4f&units=metric`
+    );
+    // console.log(resp)
+  }
 
+  let json_data = {
+    av: "",
+    geoid: res.data.travelGuide.output.gid,
+    id: "",
+    pagenum: 1,
+    pid: 0,
+    pt: "Website",
+    size: 10,
+    type: "COUNTRY",
+  };
 
-    let json_data = {
-        av: "",
-        geoid: res.data.travelGuide.output.gid,
-        id: "",
-        pagenum: 1,
-        pid: 0,
-        pt: "Website",
-        size: 10,
-        type: "COUNTRY",
-      };
-    
-      // console.log(json_data)
-      const res1 = await client.query({
-        query: getTravelPackage,
-        variables: { input: json_data },
-      });
-      const packages = res1.data.package.output;
-      // console.log(json_data)
-      // console.log(packages)
-    
-      // console.log(res.data.travelGuide.output.gid)
-      let json_data_ = {
-        av: "",
-        geoid: res.data.travelGuide.output.gid,
-        id: "",
-        pagenum: 1,
-        pid: 0,
-        pt: "Website",
-        size: 10,
-        type: "STATE",
-      };
-      // console.log(json_data_)
-    
-      // console.log(json_data)
-      const res_ = await client.query({
-        query: getTravelPackage,
-        variables: { input: json_data_ },
-      });
-    
-      // console.log(res_)
-      const packages_state = res_.data.package.output ?? [];
+  // console.log(json_data)
+  const res1 = await client.query({
+    query: getTravelPackage,
+    variables: { input: json_data },
+  });
+  const packages = res1.data.package.output;
+  // console.log(json_data)
+  // console.log(packages)
 
+  // console.log(res.data.travelGuide.output.gid)
+  let json_data_ = {
+    av: "",
+    geoid: res.data.travelGuide.output.gid,
+    id: "",
+    pagenum: 1,
+    pid: 0,
+    pt: "Website",
+    size: 10,
+    type: "STATE",
+  };
+  // console.log(json_data_)
 
-      let article_data = {
-        av: "",
-        geoid: res.data.travelGuide.output?.city?.sid??res.data.travelGuide.output?.gid,
-        home: "",
-        id: res.data.travelGuide.output?.city?.sid??res.data.travelGuide.output?.gid,
-        pagenum: 0,
-        pid: 0,
-        pt: "",
-        size: 0,
-        type: "STATE",
-      };
-      console.log(article_data)
-    
-      // getQnaQuery
-    
-      const article_res = await client.query({
-        query: getStatereArticleQuery,
-        variables: { input: article_data },
-      });
-      const article = article_res.data.articles.output?.articles??[];
-    
-      // console.log(packages_state)
+  // console.log(json_data)
+  const res_ = await client.query({
+    query: getTravelPackage,
+    variables: { input: json_data_ },
+  });
 
+  // console.log(res_)
+  const packages_state = res_.data.package.output ?? [];
 
-    return {
-        props: {
-            data: res.data.travelGuide.output,
-            packages_state: packages_state,
-            packages,
-            article,
-            weather: resp ? resp.data : {},
-        }
-    }
+  let article_data = {
+    av: "",
+    geoid:
+      res.data.travelGuide.output?.city?.sid ??
+      res.data.travelGuide.output?.gid,
+    home: "",
+    id:
+      res.data.travelGuide.output?.city?.sid ??
+      res.data.travelGuide.output?.gid,
+    pagenum: 0,
+    pid: 0,
+    pt: "",
+    size: 0,
+    type: "STATE",
+  };
+  console.log(article_data);
+
+  // getQnaQuery
+
+  const article_res = await client.query({
+    query: getStatereArticleQuery,
+    variables: { input: article_data },
+  });
+  const article = article_res.data.articles.output?.articles ?? [];
+
+  // console.log(packages_state)
+
+  return {
+    props: {
+      data: res.data.travelGuide.output,
+      packages_state: packages_state,
+      packages,
+      article,
+      weather: resp ? resp.data : {},
+    },
+  };
 }
 
-export default Places
+export default Places;

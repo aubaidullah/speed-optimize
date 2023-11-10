@@ -361,7 +361,7 @@ const ListPageMobile = ({
             // setPcount(pcount+1)
             _sendquery(
               0,
-              1,
+              data[0].id,
               // "Avail Limited Period Offers Upto 30%* Off for Bigger Groups",
               `Limited Period Offer! Upto 30% Off on ${travel?.tg?.cityName ?? router.query.city} Tour Packages`,
               "",

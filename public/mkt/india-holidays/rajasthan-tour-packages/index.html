@@ -146,6 +146,8 @@
             
             requrl = "https://www.kiomoi.com/submitquery.htm"
 
+            let url = new URL(window.location.href)
+            let urlSearch = new URLSearchParams(url.search)
 
 
             // console.log(date+" "+city+" "+checkout);
@@ -172,7 +174,8 @@
                     pageFrom:pageFrom,
                     startDateStr:date.replace('-','/').replace('-','/'),
                     endDateStr:checkout.replace('-','/').replace('-','/'),
-                    status:status
+                    status:status,
+                    utm_source : urlSearch.get('utm_source')                    
                 },
                 crossDomain:true,
                 /*dataType : 'jsonp',*/
