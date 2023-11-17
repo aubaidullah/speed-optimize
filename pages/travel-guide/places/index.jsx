@@ -389,7 +389,7 @@ const Places = ({ data, packages_state, packages, article, weather }) => {
               <P_Cities data={data} start={6} />
             </>
           ) : (
-            <P_Cities />
+            <P_Cities data={data}/>
           )}
         </div>
 
