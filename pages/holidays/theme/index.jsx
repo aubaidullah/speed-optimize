@@ -27,7 +27,7 @@ const DeskList = dynamic(() => import("../../../components/list_page.mobile"), {
   ssr: true,
 });
 
-const ThemePackage = ({ data, headers, region, places, meta }) => {
+const ThemePackage = ({ data, headers, region, places, meta, theme_desc }) => {
   const [isMobile, setIsMobile] = useState(
     headers["user-agent"].includes("android") ||
       headers["user-agent"].includes("iphone"),
@@ -65,6 +65,7 @@ const ThemePackage = ({ data, headers, region, places, meta }) => {
           region={region}
           places={places}
           isMobile={isMobile}
+          theme_desc = {theme_desc}          
         />
       </>
     );
@@ -79,6 +80,7 @@ const ThemePackage = ({ data, headers, region, places, meta }) => {
           region={region}
           places={places}
           isMobile={isMobile}
+          theme_desc = {theme_desc}          
         />
       </>
     );
@@ -103,6 +105,8 @@ export async function getServerSideProps(context) {
 
   const region = res.data.allpackage?.output?.region ?? null;
   const places = res.data.allpackage?.output?.fcities;
+  const theme_desc = res.data.allpackage?.output?.theme_description??""
+
 
   const meta = await client.query({
     query: getMetaQuery,
@@ -126,6 +130,7 @@ export async function getServerSideProps(context) {
     region: region ?? [],
     places: places ?? [],
     meta: meta?.data?.meta?.output?.tags,
+    theme_desc : theme_desc
   };
 
   return { props: pr };
