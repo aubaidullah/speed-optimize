@@ -760,7 +760,7 @@ const TravelGuideDetailComp = ({
         {sendquery ? (
           <Leaform
             isshow={sendquery}
-            packageid={data.tg.id}
+            packageid={data.pid}
             packageName={data.tg.cityName}
             changeForm={updateChangeForm}
           />
