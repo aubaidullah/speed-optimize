@@ -27,6 +27,7 @@ import {
   createCountryListURL,
   createStateListURL,
   createTGCityURL,
+  createTGStateURL,
   imgNameByUrl,
   jpgToWebp,
 } from "../fun";
@@ -173,6 +174,33 @@ const TravelGuideDetailComp = ({
 
   // console.log(packages)
   // console.log(packages_state)
+
+  const NearBy = ({e,index}) =>{
+    return <>
+    
+    <div className={tw`w-1/2`} key={index}>
+      <Link href={type==='STATE'?createTGStateURL({city:e.name, id:e.tgid}):createTGCityURL({city:e.name, id:e.tgid})}>
+        {/* <Image /> */}
+        <div className="pb-2">
+          <div className={tw`relative h-[100px] mx-2 pb-4`}>
+            <Image
+              src={e.images }
+              // alt={imgNameByUrl({ url: img.i })}
+              className={`img rounded-[8px]`}
+              layout="fill"
+            />
+          </div>
+          <div className={tw`ml-2`}>
+              {e.name}
+          </div>
+        </div>
+      </Link>
+    </div>    
+    
+    </>
+  }
+
+
   return (
     <>
       <Meta meta={meta} />
@@ -529,181 +557,211 @@ const TravelGuideDetailComp = ({
           </div>
         </div>
 
-        <div className={`mt-4 w-full lg:w-2/3`}>
-          <div>
-            <h2 className={"_titles_"}>Overview</h2>
-            <div className={``}>
-              <div className="Shape_42">
-                {/* {ReactHtmlParser(overview)} */}
-                <ParseHtml text={overview} />
-                {overviewlimit == 150 || overviewlimit == 200 ? (
-                  <a
-                    onClick={() => setOverviewlimit(10000)}
-                    className="_plus_more"
-                  >
-                    +more
-                  </a>
-                ) : (
-                  <a
-                    onClick={() => setOverviewlimit(200)}
-                    className="_plus_more"
-                  >
-                    -less
-                  </a>
-                )}
-              </div>
-            </div>
 
-            
 
+        <div className={tw`flex flex-wrap`}>
+          <div className={`mt-4 w-full lg:w-2/3`}>
             <div>
-            {/* {type == "COUNTRY" && data.stg ? <TravelGuide data={data.stg} /> : ""} */}
-              <div className={`flex justify-between`}>
-                {type == "CITY" ? (
-                  data?.attn?.length > 0 ? (
-                    <h2 className={"_titles_"}>
-                      Attractions in {data?.tg?.cityName}
-                    </h2>
+              <h2 className={"_titles_"}>Overview</h2>
+              <div className={``}>
+                <div className="Shape_42">
+                  {/* {ReactHtmlParser(overview)} */}
+                  <ParseHtml text={overview} />
+                  {overviewlimit == 150 || overviewlimit == 200 ? (
+                    <a
+                      onClick={() => setOverviewlimit(10000)}
+                      className="_plus_more"
+                    >
+                      +more
+                    </a>
                   ) : (
-                    ""
-                  )
-                ) : data?.attn?.length > 0? (
-                  <div className={tw`flex_ justify-between_`}>
-                    <h2 className={`text-xl font-bold`}>
-                      Top Cities in {data?.tg?.cityName}
-                    </h2>
-                  </div>
-                  
-                ) : (
-                  ""
-                )}
-                
-
-                {type == "CITY" ? (
-                  data?.attn?.length > 0 ? (
-                    <div>
-                      <Link href={`/cities/${data?.tg?.cityName.toLowerCase()}/top-sightseeing-places-and-attractions-to-visit-${data?.tg?.id}`}>
-                        <div>
-                          <div className="btn_view_more">View all</div>
-                        </div>
-                      </Link>
-                    </div>
-                  ) : (
-                    ""
-                  )
-                ) : (
-                  <div>
-                    {/* /states/:city/top-places-to-visit-:id */}
-                    {
-                      type!="COUNTRY"?<Link href={`/states/${data?.tg?.cityName.toLowerCase()}/top-places-to-visit-${data?.tg?.id}`}>
-                      <div>
-                        <div className="btn_view_more">View all</div>
-                      </div>
-                    </Link>:""
-                    }
-                    
-                  </div>
-                )}
+                    <a
+                      onClick={() => setOverviewlimit(200)}
+                      className="_plus_more"
+                    >
+                      -less
+                    </a>
+                  )}
+                </div>
               </div>
-              {data?.attn?.length > 0 || data?.ctg?.length > 0 ? (
-                <div className={``}>
-                  <div className="Shape_42">
-                    <div className={`flex flex-wrap`}>
-                      {
-                        type == "CITY" ? (
-                          data?.attn?.slice(0, attlimit).map((item, i) => {
-                            // let url =
-                            //   "/travel-guide/india/attraction" +
-                            //   "-" +
-                            //   item.name
-                            //     .trim()
-                            //     .replace(/\s+/g, " ")
-                            //     .replace(/-/g, "")
-                            //     .replace(/\s+/g, "-")
-                            //     .toLowerCase() +
-                            //   "/" +
-                            //   item.id +
-                            //   "/";
-                            let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
-                            return (
-                              <div className={`w-1/2 lg:w-1/4 p-2`}>
-                                <Link href={url} key={i}>
-                                  <div>
-                                    <div className="image-squre__">
-                                      <img
-                                        className={`w-full h-full`}
-                                        src={
-                                          item.images.length > 0
-                                            ? item.images
-                                            : `${Constants.assets_api}/public/icons/logo-icon.png`
-                                        }
-                                        alt="kiomoi logo"
-                                      />
-                                    </div>
-                                    <p>{item.name}</p>
-                                  </div>
-                                </Link>
-                              </div>
-                            );
-                          })
-                        ) : (
-                          <TopCities data={data} />
-                        )
 
-                        // data.ctg.slice(0, attlimit).map((item, i) => {
-                        //     let url = createTGCityURL({city:item.name,id:item.tgid})
-                        //     // let url = `/travel-guide/india/city-${item.name.toLowerCase()}/${item.tgid}/`
-                        //     // let url = "/travel-guide/india/attraction" + "-" + item.name.trim().replace(/\s+/g, ' ').replace(/-/g, "").replace(/\s+/g, "-").toLowerCase() + "/" + item.id + "/"
-                        //     return (
-                        //         <div className={`w-1/4 p-2`}>
+              
 
-                        //             <Link href={url} key={i}>
-                        //                 <div>
-                        //                 <div>
-                        //                     <div className="image-squre__">
-                        //                         <img
-                        //                             className={`w-full h-full`}
-                        //                             src={
-                        //                                 item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`
-                        //                             }
-                        //                             alt="kiomoi logo"
-                        //                         />
-
-                        //                     </div>
-                        //                     <p>{item.name}</p>
-                        //                 </div>
-                        //                 </div>
-                        //             </Link>
-
-                        //         </div>
-                        //     )
-                        // })
-                      }
+              <div>
+              {/* {type == "COUNTRY" && data.stg ? <TravelGuide data={data.stg} /> : ""} */}
+                <div className={`flex justify-between`}>
+                  {type == "CITY" ? (
+                    data?.attn?.length > 0 ? (
+                      <h2 className={"_titles_"}>
+                        Attractions in {data?.tg?.cityName}
+                      </h2>
+                    ) : (
+                      ""
+                    )
+                  ) : data?.attn?.length > 0? (
+                    <div className={tw`flex_ justify-between_`}>
+                      <h2 className={`text-xl font-bold`}>
+                        Top Cities in {data?.tg?.cityName}
+                      </h2>
                     </div>
-                    {data?.attn?.length > 0 || data?.ctg?.length > 0 ? (
+                    
+                  ) : (
+                    ""
+                  )}
+                  
+
+                  {type == "CITY" ? (
+                    data?.attn?.length > 0 ? (
                       <div>
-                        <a
-                          onClick={() =>
-                            attlimit == 4 ? setAttlimit(100) : setAttlimit(4)
-                          }
-                        >
-                          <div className="btn_view_more">
-                            View
-                            {attlimit == 4 ? " All " : " Less "}
-                            Tourist place in {data.tg.cityName}
+                        <Link href={`/cities/${data?.tg?.cityName.toLowerCase()}/top-sightseeing-places-and-attractions-to-visit-${data?.tg?.id}`}>
+                          <div>
+                            <div className="btn_view_more">View all</div>
                           </div>
-                        </a>
+                        </Link>
                       </div>
                     ) : (
                       ""
-                    )}
-                  </div>
+                    )
+                  ) : (
+                    <div>
+                      {/* /states/:city/top-places-to-visit-:id */}
+                      {
+                        type!="COUNTRY"?<Link href={`/states/${data?.tg?.cityName.toLowerCase()}/top-places-to-visit-${data?.tg?.id}`}>
+                        <div>
+                          <div className="btn_view_more">View all</div>
+                        </div>
+                      </Link>:""
+                      }
+                      
+                    </div>
+                  )}
                 </div>
-              ) : (
-                ""
-              )}
+                {data?.attn?.length > 0 || data?.ctg?.length > 0 ? (
+                  <div className={``}>
+                    <div className="Shape_42">
+                      <div className={`flex flex-wrap`}>
+                        {
+                          type == "CITY" ? (
+                            data?.attn?.slice(0, attlimit).map((item, i) => {
+                              // let url =
+                              //   "/travel-guide/india/attraction" +
+                              //   "-" +
+                              //   item.name
+                              //     .trim()
+                              //     .replace(/\s+/g, " ")
+                              //     .replace(/-/g, "")
+                              //     .replace(/\s+/g, "-")
+                              //     .toLowerCase() +
+                              //   "/" +
+                              //   item.id +
+                              //   "/";
+                              let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
+                              return (
+                                <div className={`w-1/2 lg:w-1/4 p-2`}>
+                                  <Link href={url} key={i}>
+                                    <div>
+                                      <div className="image-squre__">
+                                        <img
+                                          className={`w-full h-full`}
+                                          src={
+                                            item.images.length > 0
+                                              ? item.images
+                                              : `${Constants.assets_api}/public/icons/logo-icon.png`
+                                          }
+                                          alt="kiomoi logo"
+                                        />
+                                      </div>
+                                      <p>{item.name}</p>
+                                    </div>
+                                  </Link>
+                                </div>
+                              );
+                            })
+                          ) : (
+                            <TopCities data={data} />
+                          )
+
+                          // data.ctg.slice(0, attlimit).map((item, i) => {
+                          //     let url = createTGCityURL({city:item.name,id:item.tgid})
+                          //     // let url = `/travel-guide/india/city-${item.name.toLowerCase()}/${item.tgid}/`
+                          //     // let url = "/travel-guide/india/attraction" + "-" + item.name.trim().replace(/\s+/g, ' ').replace(/-/g, "").replace(/\s+/g, "-").toLowerCase() + "/" + item.id + "/"
+                          //     return (
+                          //         <div className={`w-1/4 p-2`}>
+
+                          //             <Link href={url} key={i}>
+                          //                 <div>
+                          //                 <div>
+                          //                     <div className="image-squre__">
+                          //                         <img
+                          //                             className={`w-full h-full`}
+                          //                             src={
+                          //                                 item.images.length > 0 ? item.images : `${Constants.assets_api}/public/icons/logo-icon.png`
+                          //                             }
+                          //                             alt="kiomoi logo"
+                          //                         />
+
+                          //                     </div>
+                          //                     <p>{item.name}</p>
+                          //                 </div>
+                          //                 </div>
+                          //             </Link>
+
+                          //         </div>
+                          //     )
+                          // })
+                        }
+                      </div>
+                      {data?.attn?.length > 0 || data?.ctg?.length > 0 ? (
+                        <div>
+                          <a
+                            onClick={() =>
+                              attlimit == 4 ? setAttlimit(100) : setAttlimit(4)
+                            }
+                          >
+                            <div className="btn_view_more">
+                              View
+                              {attlimit == 4 ? " All " : " Less "}
+                              Tourist place in {data.tg.cityName}
+                            </div>
+                          </a>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
+              <Content data={data} />
             </div>
-            <Content data={data} />
+          </div>
+          <div className={`mt-4 w-full lg:w-1/3`}>
+            
+              <div className={tw`lg:pl-6`}>
+                <h2 className="_titles_ pl-2">{data.tg.cityName} Nearby {type==='STATE'?"States":"Cities"}  </h2>
+                <div className={tw`flex flex-wrap pt-2`}>
+                  
+                  {
+                    
+                    type === 'STATE'
+                    ?data.stg.slice(0,6).map((e,index)=>{
+                      return <NearBy e={e} index={index} />
+                    })
+                    :""
+                  
+                  }
+                  {
+                        type === 'CITY'
+                        ?data.ctg.slice(0,6).map((e,index)=>{
+                          return <NearBy e={e} index={index} />
+                        })
+                        :""
+                  }
+                </div>
+              </div>
+
           </div>
         </div>
         {/* <HomePackages data={packages} /> */}
@@ -760,7 +818,7 @@ const TravelGuideDetailComp = ({
         {sendquery ? (
           <Leaform
             isshow={sendquery}
-            packageid={data.tg.id}
+            packageid={data.pid}
             packageName={data.tg.cityName}
             changeForm={updateChangeForm}
           />

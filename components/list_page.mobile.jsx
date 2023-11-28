@@ -18,6 +18,7 @@ import {
   createTGCityURL,
   createTGCountryURL,
   createTGStateURL,
+  toTitleCase,
 } from "./fun";
 import Link from "next/link";
 import Image from "next/image";
@@ -74,7 +75,8 @@ const ListPageMobile = ({
   faqs = undefined,
   articles = undefined,
   cities = undefined,
-  desc = undefined
+  desc = undefined,
+  theme_desc = undefined  
 }) => {
   const [filter, setFilter] = useState({ keyword: "" });
   const [limit, setLimit] = useState(10);
@@ -217,13 +219,18 @@ const ListPageMobile = ({
   var d = region?.longDesc?.length > 20 ? region?.longDesc : region?.desc ?? "";
   // var d = desc;
   // console.log(d)
+  console.log(theme_desc)
 
   useEffect(() => {
-    if (region !== null) {
+    if (region !== null || theme_desc !=undefined) {
       if (overviewlimit == 1000) {
-        setOverview(d.substring(0, overviewlimit));
+        theme_desc == undefined ?
+        setOverview(d.substring(0, overviewlimit))
+        :setOverview(theme_desc.substring(0, overviewlimit))
       } else {
-        setOverview(d);
+        theme_desc == undefined ?
+        setOverview(d)
+        :setOverview(theme_desc.substring(0, overviewlimit))
       }
     }
   }, [overviewlimit]);
@@ -363,7 +370,7 @@ const ListPageMobile = ({
               0,
               data[0].id,
               // "Avail Limited Period Offers Upto 30%* Off for Bigger Groups",
-              `Limited Period Offer! Upto 30% Off on ${travel?.tg?.cityName ?? router.query.city} Tour Packages`,
+              `Limited Period Offer! Upto 30% Off on ${travel?.tg?.cityName ?? router.query.city  ?? router.query.theme} Tour Packages`,
               "",
             )
             
@@ -462,7 +469,7 @@ const ListPageMobile = ({
                   ""
                 ) : (
                   <h1 className={`text-2xl pb-2`}>
-                    {region?.name}  Tour packages
+                    {region?.name?? toTitleCase(router.query.theme) }  Tour packages
                   </h1>
                 )}
 

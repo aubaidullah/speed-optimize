@@ -119,7 +119,7 @@ const LeadForm = ({
         leaddata.append("pid", packageid);
         leaddata.append("query", "");
         leaddata.append("btype", "package");
-        leaddata.append("utm_source",router?.query?.utm_source)
+        leaddata.append("utm_source",router?.query?.utm_source??"")
         leaddata.append("utm_url",router?.asPath) 
         // console.log(checkoutdate);
         const res = await axios.post(
