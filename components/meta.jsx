@@ -6,7 +6,6 @@ import * as Constants from "./Constants";
 
 const Meta = ({ meta }) => {
   const { asPath, pathname } = useRouter();
-  console.log(asPath);
   const GA_TRACKING_ID = "GTM-MT2JH48";
   const jsonData = {
     "@context": "https://schema.org",

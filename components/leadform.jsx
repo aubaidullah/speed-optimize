@@ -60,7 +60,6 @@ const LeadForm = ({
   const registervalidator = useRef(new SimpleReactValidator());
   const [, forceUpdate] = useState();
   const router = useRouter()
-  console.log(router)
   
   // const [show, setShow] = useState(false);
 
