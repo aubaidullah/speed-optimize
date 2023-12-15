@@ -351,7 +351,7 @@ const BookingDetail = () => {
                       <div className="_pn_">
                         <div className="_pn_left">
                           <h3 className={tw`font-semibold text-xl`}>
-                            {bookingDetails?.lead?.pname}
+                            {bookingDetails?.lead?.pname ?? "HOTEL Name"}
                           </h3>
                         </div>
                         <div className="_pn_right">
@@ -418,7 +418,7 @@ const BookingDetail = () => {
                     </div>
                   </div>
                 </div>
-                <div className={tw`row package-inclusions`}>
+                <div className={tw`${bookingDetails?.output?.type=='HOTEL'?'hidden':''} row package-inclusions`}>
                   <h3 className={tw`text-xl font-semibold my-3`}>Inclusions</h3>
                   <div className="border Shape_42">
                     <div className={tw`flex flex-wrap gap-2`}>
@@ -508,7 +508,7 @@ const BookingDetail = () => {
                   </div>
                 </div>
 
-                <section className="inclusions ">
+                <section className={`${bookingDetails?.output?.type=='HOTEL'?'hidden':''} inclusions` }>
                   <div className="container_">
                     <div className="row">
                       <div className="col-md-8 accordions-list p-0">
