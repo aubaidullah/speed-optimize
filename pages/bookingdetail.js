@@ -351,7 +351,7 @@ const BookingDetail = () => {
                       <div className="_pn_">
                         <div className="_pn_left">
                           <h3 className={tw`font-semibold text-xl`}>
-                            {bookingDetails?.lead?.pname ?? "HOTEL Name"}
+                            {bookingDetails?.lead?.pname ?? bookingDetails?.lead?.hotel?.name}
                           </h3>
                         </div>
                         <div className="_pn_right">
@@ -370,7 +370,10 @@ const BookingDetail = () => {
                       </div>
                       <div className="location package-location">
                         {/* <i className="fa fa-map-marker"></i> */}
-                        <span> {bookingDetails?.lead?.ocity}</span>
+                        <span> {bookingDetails?.lead?.type == "HOTEL"? bookingDetails?.lead?.hotel?.address :bookingDetails?.lead?.ocity}</span>
+                      </div>
+                      <div className={tw`pt-2`}>
+                        <div className={tw`font-semibold`}>{bookingDetails?.lead?.hotel?.roominfo}</div>
                       </div>
                     </div>
                     <div
