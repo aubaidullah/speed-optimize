@@ -2,7 +2,7 @@
 const nextConfig = {
   compress: true,
   reactStrictMode: true,
-  // assetPrefix: "https://devassets.kiomoi.com",
+  assetPrefix: "https://devassets.kiomoi.com",
   images: {
     domains: [
       "res.cloudinary.com",

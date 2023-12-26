@@ -451,9 +451,14 @@ const BookingDetail = () => {
                     <div>Accomodation </div>
                   </div>
 
+                  {bookingDetails?.lead?.hotel?.roominfo?
                   <div className={tw`flex justify-between`}>
-                    <div>{/\(Room.*?\)/.exec(bookingDetails?.lead?.hotel?.roominfo)[0]} </div>
+                    <div>{/\(Room.*?\)/?.exec(bookingDetails?.lead?.hotel?.roominfo)[0]} </div>
                   </div>
+                  :""
+                  }
+
+                  
                   <div className={tw`flex justify-between`}>
                     <div>All Taxes </div>
                   </div>           
