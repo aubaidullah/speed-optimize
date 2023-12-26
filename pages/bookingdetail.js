@@ -359,22 +359,31 @@ const BookingDetail = () => {
                           <div className="row"></div>
                         </div>
                       </div>
-                      <div
-                        className={tw`location package-location text-[12.5px]`}
-                      >
-                        <span>
-                          {" "}
-                          {bookingDetails?.lead?.nights + 1} Days /{" "}
-                          {bookingDetails?.lead?.nights} Nights
-                        </span>
-                      </div>
+                      
+                      {bookingDetails?.lead?.type != "HOTEL"?
+                        <div
+                          className={tw`location package-location text-[12.5px]`}
+                        >
+                          <span>
+                            {" "}
+                            {bookingDetails?.lead?.nights + 1} Days /{" "}
+                            {bookingDetails?.lead?.nights} Nights
+                          </span>
+                        </div>
+                        :
+                      ""}
                       <div className="location package-location">
                         {/* <i className="fa fa-map-marker"></i> */}
-                        <span> {bookingDetails?.lead?.type == "HOTEL"? bookingDetails?.lead?.hotel?.address :bookingDetails?.lead?.ocity}</span>
+                        <span> {bookingDetails?.lead?.type != "HOTEL"? bookingDetails?.lead?.ocity:""}</span>
                       </div>
-                      <div className={tw`pt-2`}>
-                        <div className={tw`font-semibold`}>{bookingDetails?.lead?.hotel?.roominfo}</div>
-                      </div>
+                      {
+                        bookingDetails?.lead?.type == "HOTEL"
+                        ?<div className={tw`pt-2`}>
+                          <div className={tw``}>{bookingDetails?.lead?.hotel?.address}</div>
+                        </div>
+                      :""
+                      }
+                      
                     </div>
                     <div
                       className={tw`row flex justify-around info-booking py-3 px-2 Shape_42 m-0 border bg-[#f5f4f4]`}
@@ -383,7 +392,7 @@ const BookingDetail = () => {
                         className={tw`col-4 info-booking-details flex justify-center items-center`}
                       >
                         <div>
-                          <p className={tw`text-xs`}>Trip Start</p>
+                          <p className={tw`text-xs`}>{bookingDetails?.lead?.type == "HOTEL"?"Check in":"Trip Start"}</p>
                           <p className={tw`text-xs`}>
                             <strong className={tw`flex`}>
                               <span>{bookingDetails?.lead?.checkin}</span>
@@ -395,7 +404,7 @@ const BookingDetail = () => {
                         className={tw`col-4 info-booking-details flex justify-center items-center`}
                       >
                         <div>
-                          <p className={tw`text-xs`}>Trip End</p>
+                          <p className={tw`text-xs`}>{bookingDetails?.lead?.type == "HOTEL"?"Check out":"Trip End"}</p>
                           <p className={tw`text-xs`}>
                             <strong className={tw`flex`}>
                               <span>{bookingDetails?.lead?.checkout}</span>
@@ -420,6 +429,40 @@ const BookingDetail = () => {
                       </div>
                     </div>
                   </div>
+                </div>
+
+                <div className={tw`flex_ flex-wrap_ Shape_42`}>
+                  
+                  <div className={tw`flex justify-between`}>
+                    <div>Adult : {bookingDetails?.lead?.adults}</div>
+                    <div>Child : {bookingDetails?.lead?.kids}</div>
+                  </div>
+
+                  <div className={tw`flex justify-between`}>
+                    <div>Room Type : {bookingDetails?.lead?.hotel?.roominfo?.split('(')[0]}</div>
+                    <div>No. of Rooms : {bookingDetails?.lead?.hotel?.roominfo?.split('(')[1]}</div>
+                  </div>
+
+                  {/* <div className={tw`flex justify-between`}> */}
+                  <div className={tw`mt-4 text-xl font-semibold`}>Inclusions : </div>
+                  {/* </div> */}
+
+                  <div className={tw`flex justify-between`}>
+                    <div>Accomodation </div>
+                  </div>
+
+                  <div className={tw`flex justify-between`}>
+                    <div>{/\(Room.*?\)/.exec(bookingDetails?.lead?.hotel?.roominfo)[0]} </div>
+                  </div>
+                  <div className={tw`flex justify-between`}>
+                    <div>All Taxes </div>
+                  </div>           
+                  <div className={tw`flex justify-between mt-4`}>
+                    <div>Cancellation Policy </div>
+                  </div>                                    
+
+
+
                 </div>
                 <div className={tw`${bookingDetails?.output?.type=='HOTEL'?'hidden':''} row package-inclusions`}>
                   <h3 className={tw`text-xl font-semibold my-3`}>Inclusions</h3>
@@ -690,49 +733,59 @@ const BookingDetail = () => {
                       </h3>
                       <form action="">
                         <div className="row">
-                          <div className="col-md-2 mob-view-2">
-                            <label className={tw`my-2`}>Title</label>
-                            <br />
-                            <select
-                              defaultValue={"Mr"}
-                              className="form-control"
-                            >
-                              <option value="Mr">Mr.</option>
-                              <option value="Mrs">Mrs.</option>
-                            </select>
+                          
+                          <div className={tw`flex flex-wrap`}>
+                            <div className={tw`w-full col-md-2 mob-view-2 lg:w-1/5 lg:pr-2`}>
+                              <label className={tw`my-2`}>Title</label>
+                              <br />
+                              <select
+                                defaultValue={"Mr"}
+                                className="form-control"
+                              >
+                                <option value="Mr">Mr.</option>
+                                <option value="Mrs">Mrs.</option>
+                              </select>
+                            </div>
+
+                            <div className="col-md-5 lg:w-2/5 lg:pr-2">
+                              <label className={tw`my-2`}>
+                                First Name<sup>*</sup>
+                              </label>
+                              <br />
+                              <input
+                                type="text"
+                                className="form-control"
+                                required
+                                placeholder="Enter First Name"
+                                name="first-name"
+                                readOnly
+                                value={bookingDetails?.nm.split(" ")[0] || ""}
+                              />
+                            </div>
+                            
+                            <div className={tw`w-full col-md-5 lg:w-2/5`}>
+                              <label className={tw`my-2`}>
+                                Last Name<sup>*</sup>
+                              </label>
+                              <br />
+                              <input
+                                type="text"
+                                className="form-control"
+                                required
+                                placeholder="Enter Last Name"
+                                name="Last-name"
+                                readOnly
+                                value={bookingDetails?.nm.split(" ")[1] || ""}
+                              />
+                            </div>
+
                           </div>
-                          <div className="col-md-5">
-                            <label className={tw`my-2`}>
-                              First Name<sup>*</sup>
-                            </label>
-                            <br />
-                            <input
-                              type="text"
-                              className="form-control"
-                              required
-                              placeholder="Enter First Name"
-                              name="first-name"
-                              readOnly
-                              value={bookingDetails?.nm.split(" ")[0] || ""}
-                            />
-                          </div>
-                          <div className="col-md-5">
-                            <label className={tw`my-2`}>
-                              Last Name<sup>*</sup>
-                            </label>
-                            <br />
-                            <input
-                              type="text"
-                              className="form-control"
-                              required
-                              placeholder="Enter Last Name"
-                              name="Last-name"
-                              readOnly
-                              value={bookingDetails?.nm.split(" ")[1] || ""}
-                            />
-                          </div>
+                          
+
+
+
                         </div>
-                        <div className="row">
+                        <div className="row pt-4">
                           <div className="col-xs-12">
                             <label className={tw`my-2`}>
                               Email Address (Your booking voucher will be sent
@@ -749,29 +802,32 @@ const BookingDetail = () => {
                             />
                           </div>
                         </div>
-                        <div className="row form-inline">
-                          <div className="col-md-2 mob-view">
-                            <label className={tw`my-2`}>Mobile Number</label>
-                            <br />
-                            <select
-                              defaultValue={"91"}
-                              className="form-control mb-3"
-                            >
-                              <option value="91">+91</option>
-                            </select>
-                          </div>
-                          <div className="col-md-4 phn-no">
-                            <label className={tw`my-2`}>Mobile Number</label>
-                            <br />
-                            <input
-                              type="text"
-                              required
-                              className="form-control"
-                              placeholder="Enter Phone Number"
-                              name="phone"
-                              readOnly
-                              value={bookingDetails?.lead?.mobile || ""}
-                            />
+
+                        <div className="row form-inline pt-4">
+                          <div className={tw`flex flex-wrap`}>
+                            <div className={tw`w-full col-md-2 mob-view lg:w-1/5 lg:pr-2`}>
+                              <label className={tw`my-2`}>Mobile Number</label>
+                              <br />
+                              <select
+                                defaultValue={"91"}
+                                className="form-control mb-3"
+                              >
+                                <option value="91">+91</option>
+                              </select>
+                            </div>
+                            <div className={tw`w-full col-md-4 phn-no lg:w-4/5`}>
+                              <label className={tw`my-2`}>Mobile Number</label>
+                              <br />
+                              <input
+                                type="text"
+                                required
+                                className="form-control"
+                                placeholder="Enter Phone Number"
+                                name="phone"
+                                readOnly
+                                value={bookingDetails?.lead?.mobile || ""}
+                              />
+                            </div>
                           </div>
                         </div>
                         <div className="row">
