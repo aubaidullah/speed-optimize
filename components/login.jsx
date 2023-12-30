@@ -264,7 +264,7 @@ const Login = (props) => {
                     </div>
 
                     <div className="form-group">
-                      <button className="btn btn_login" type="submit">
+                      <button className="btn_listing _btn_clr w-full" type="submit">
                         CONTINUE
                       </button>
                       <p className="proceed_clr mt-2">

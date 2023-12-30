@@ -42,6 +42,7 @@ const Nav = () => {
   const [collapse, setCollapse] = useState(false);
   const [result, setResult] = useState({});
   const [addnavClass, setAddnavClass] = useState("");
+  const [op,setOp] = useState(false)
   const [cls, setCls] = useState("navbar navbar-default normal");
 
   const router = useRouter();
@@ -237,13 +238,27 @@ const Nav = () => {
 
               <div className="item flt_left">
               {
-                  Cookies.get('userid')?<Link href={'/accounts'}>
-                    <FaRegUser
-                      className="c_it"
-                      // onClick={() => setShowLogin(!showLogin)}
-                      size={"20px"}
-                    />  
-                  </Link>:<FaRegUser
+                  Cookies.get('userid')
+                  ?
+                    <div className={tw`relative c_it`}>
+                      <FaRegUser
+                        className="c_it m-auto"
+                        onClick={() => setOp(!op)}
+                        size={"20px"}
+                      />  
+                      <span className="nav-text">{Cookies.get("username")}</span>
+                      {/* <div className={tw` font-semibold text-slate-600`} onClick={() => setOp(!op)}>{Cookies.get("username")}</div> */}
+                      <div className={tw`absolute bg-white shadow-xl top-7 border-2 ${!op?'hidden':''}`}>
+                        <Link href={'/accounts'}>
+                          <div className=" border-b-2 px-4 py-2 font-semibold text-slate-700"> Profile </div>
+                        </Link>
+                        <div className="px-4 py-2 font-semibold text-slate-700" onClick={()=>Logout()}> Logout </div>
+                      </div>
+                    </div>
+                  
+                  
+                  
+                  :<FaRegUser
                       className="c_it"
                       onClick={() => setShowLogin(!showLogin)}
                       size={"20px"}

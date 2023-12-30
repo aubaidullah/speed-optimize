@@ -42,7 +42,15 @@ def get_travelguide():
     xml = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
     for p in travelguide:
         name = p['cityName'].lower().strip().replace(' ',"-").replace("&","and").replace("--","-")
-        url = f"https://www.kiomoi.com/travel-guide/india/city-{name}/{p['id']}/"  #+name+"-tour-package-"+str(p["id"])+"/"
+        
+        if p['geoType'] == 'STATE':
+            url = f"https://www.kiomoi.com/states/{name}-{p['id']}"
+            # /states/:city-:id
+        elif p['geoType'] == 'CITY':
+            url = f"https://www.kiomoi.com/places/{name}-{p['id']}"
+        else:
+            url = f"https://www.kiomoi.com/countries/{name}-{p['id']}"
+            # url = f"https://www.kiomoi.com/travel-guide/india/city-{name}/{p['id']}/"  #+name+"-tour-package-"+str(p["id"])+"/"
         date = datetime.now().strftime("%Y-%m-%d")
         xml = xml+ f"<url><loc>{url}</loc><lastmod>{date}</lastmod><priority>0.85</priority></url>"
     xml += "</urlset>"
@@ -73,9 +81,9 @@ def get_travelarticle():
     f.write(ET.tostring(element, encoding='unicode').replace('ns0:',''))
     f.close()    
 
-get_package()
+# get_package()
 get_travelguide()
-get_travelarticle()
+# get_travelarticle()
 
 # def get_traveguide():
 #     json_data = {'av': '1.3', 'pt': 'WEBSITE', 'name': ''}

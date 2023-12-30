@@ -142,7 +142,7 @@ export async function getServerSideProps(context) {
   // const region = res.data.allpackage.output.region??null
   // const places = res.data.allpackage.output.fcities
   // console.log(places)
-  // console.log(res_theme.data.alltheme.output)
+  console.log(res_theme.data.alltheme.output)
   return {
     props: {
       home: res.data.home.output,

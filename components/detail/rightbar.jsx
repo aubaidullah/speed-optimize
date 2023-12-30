@@ -2,7 +2,7 @@ import { IoLocationSharp, IoSunny } from "react-icons/io5";
 import { MdCheckCircle } from "react-icons/md";
 import { BsChevronDown, BsFillMoonFill } from "react-icons/bs";
 // import {IoSunny} from 'react-icons/io'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment";
 import * as Constants from "../Constants";
@@ -56,6 +56,10 @@ const RightBar = ({ data }) => {
         } else setPrice(0);
       });
   };
+
+  useEffect(()=>{
+    peopleChange(5)
+  },[])
 
   return (
     <>
