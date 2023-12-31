@@ -1,13 +1,16 @@
 import Link from "next/link";
 import * as Constants from "../Constants";
 import { createThemeListURL } from "../fun";
-
+import { useState } from "react";
+import { tw } from "twind";
 const Themes = ({ data }) => {
+
+  const [theme,setTheme] = useState(5)
   // console.log(data)
 
   const themeRender = data.map(function (item, i) {
     // var img = "";
-    if (i < 5) {
+    if (i < theme) {
       let aurl = createThemeListURL({ cityname: item.tag.trim() });
       return (
         <>
@@ -90,7 +93,24 @@ const Themes = ({ data }) => {
             </div>
           </div>
           <div className={`w-full lg:w-2/3`}>
-            <div>{themeRender}</div>
+            {themeRender}
+            <div className={tw`_service_list ${theme!=5?"hidden":""}`}>
+              <div className="ellipse_3 cursor-pointer hover:shadow-lg" onClick={()=>setTheme(10)}>
+                <div href={"#"}>
+                  <div href={"#"}>
+                    {" "}
+                    <div className={tw`icon_display _text_`}>
+                      <div
+                        alt="icon"
+                        className={`inline text-xl text-[#f06726] font-semibold`}
+                      >
+                          Show more                       
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

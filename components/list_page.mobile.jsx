@@ -91,7 +91,8 @@ const ListPageMobile = ({
   const [sendquery, setSendquery] = useState(false);
   const [modalinfo, setModalinfo] = useState({});
   const p_ref = useRef(0);
-  const MINUTE_MS = useRef(45000)
+  const MINUTE_MS = useRef(8500)
+  const POPUPFORM = useRef(false)
 
   const [_pricing, setPrice] = useState({ min: 0, max: 1000000 });
 
@@ -219,7 +220,6 @@ const ListPageMobile = ({
   var d = region?.longDesc?.length > 20 ? region?.longDesc : region?.desc ?? "";
   // var d = desc;
   // console.log(d)
-  console.log(theme_desc)
 
   useEffect(() => {
     if (region !== null || theme_desc !=undefined) {
@@ -354,33 +354,25 @@ const ListPageMobile = ({
           price,
         });
         setSendquery(true);
+        POPUPFORM.current = true
       };
 
       useEffect(()=>{
         // let MINUTE_MS = 10000
         const interval = setInterval(() => {
-          // console.log('Logs every minute');
-          // console.log("fired")
-          // setPcount
-          if (p_ref.current < 2){
-            // console.log(p_ref.current)
-            p_ref.current  = p_ref.current + 1
-            // setPcount(pcount+1)
-            _sendquery(
-              0,
-              data[0].id,
-              // "Avail Limited Period Offers Upto 30%* Off for Bigger Groups",
-              `Limited Period Offer! Upto 30% Off on ${travel?.tg?.cityName ?? router.query.city  ?? router.query.theme} Tour Packages`,
-              "",
-            )
-            
-            MINUTE_MS.current = 120000
-            // MINUTE_MS+=20000
+          if (true){
+              if (p_ref.current < 2 && POPUPFORM.current == false){
+                p_ref.current  = p_ref.current + 1
+                _sendquery(
+                  0,
+                  data[0].id,
+                  `Limited Period Offer! Upto 30% Off on ${travel?.tg?.cityName ?? router.query.city  ?? router.query.theme} Tour Packages`,
+                  "",
+                )
+                MINUTE_MS.current = 120000
+              } 
           }
-          
-
-        }, MINUTE_MS.current);
-    
+          }, MINUTE_MS.current);
         return () => clearInterval(interval);
       },[])
 
@@ -629,7 +621,7 @@ const ListPageMobile = ({
                               .toLowerCase()
                               .includes(filter.keyword)) ? (
                           // <div>package</div>:""
-                          <Package index={index} item={item} />
+                          <Package index={index} item={item} POPUPFORM = {POPUPFORM} />
                         ) : null;
                       })
                     ) : (

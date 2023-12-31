@@ -221,12 +221,14 @@ const Nav = () => {
                   
                   
                   // <Link >
-                    <div className={tw`relative`}>
+                    <div className={tw`relative c_it`}>
                       <FaRegUser
-                        className="c_it"
+                        className="c_it m-auto"
                         onClick={() => setOp(!op)}
                         size={"20px"}
                       />  
+                      <span className="nav-text">{Cookies.get("username")}</span>
+                      {/* <div className={tw` font-semibold text-slate-600`} onClick={() => setOp(!op)}>{Cookies.get("username")}</div> */}
                       <div className={tw`absolute bg-white shadow-xl top-7 border-2 ${!op?'hidden':''}`}>
                         <Link href={'/accounts'}>
                           <div className=" border-b-2 px-4 py-2 font-semibold text-slate-700"> Profile </div>

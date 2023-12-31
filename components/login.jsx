@@ -264,7 +264,7 @@ const Login = (props) => {
                     </div>
 
                     <div className="form-group">
-                      <button className="btn btn_login" type="submit">
+                      <button className="btn_listing _btn_clr w-full" type="submit">
                         CONTINUE
                       </button>
                       <p className="proceed_clr mt-2">
@@ -289,7 +289,7 @@ const Login = (props) => {
 
                     <div className="form-group">
                       <button
-                        className="btn btn_facebook"
+                        className="btn_listing _btn_clr w-full"
                         onClick={() => {
                           setShow(!show);
                           setShowRegister(!showRegister);
@@ -359,7 +359,7 @@ const Login = (props) => {
                 </div>
               </div>
               <div className="form-group">
-                <button className="btn btn_login" type="submit">
+                <button className="btn_listing _btn_clr w-full" type="submit">
                   Reset Password
                 </button>
               </div>
@@ -400,7 +400,7 @@ const Login = (props) => {
                 </div>
               </div>
               <div className="form-group">
-                <button className="btn btn_facebook" type="submit">
+                <button className="btn_listing _btn_clr w-full" type="submit">
                   Submit OTP
                 </button>
               </div>
@@ -508,7 +508,7 @@ const Login = (props) => {
                       </div>
                     </div>
                     <div className="form-group">
-                      <button className="btn btn_facebook" type="submit">
+                      <button className="btn_listing _btn_clr w-full" type="submit">
                         Reset Password
                       </button>
                     </div>

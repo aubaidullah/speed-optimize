@@ -21,7 +21,7 @@ import dynamic from "next/dynamic";
 
 const LeadForm = dynamic(() => import("./leadform"));
 
-const Package = ({ index, item }) => {
+const Package = ({ index, item, POPUPFORM }) => {
   // const [modalid,setModalid] = useState()
   // const [modalpackagename,setModalpackagename] = useState()
   const [sendquery, setSendquery] = useState(false);
@@ -41,6 +41,7 @@ const Package = ({ index, item }) => {
       price,
     });
     setSendquery(true);
+    POPUPFORM.current = true
   };
 
   var userRating = [];
