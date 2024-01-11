@@ -200,6 +200,18 @@ const nextConfig = {
         destination: "/410",
       },
       {
+        source: "/travel-guide/:slug*",
+        destination: "/410",
+      },
+      {
+        source: "/travel-articles/:slug/:slug1",
+        destination: "/410",
+      },
+      {
+        source: "/travel-articles-:s.htm",
+        destination: "/410",
+      },      
+      {
         source: "/tour-packages-:country/:slug.htm",
         destination: "/410",
       },

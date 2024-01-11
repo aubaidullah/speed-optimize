@@ -1,6 +1,5 @@
 import client from "@/components/Graphql/service";
-import Nav from "@/components/Nav";
-import BreadCrumbs from "@/components/breadcrumbs";
+// import Nav from "@/components/Nav";
 import { useState } from "react";
 import { BiPencil } from "react-icons/bi";
 import { tw } from "twind";
@@ -8,12 +7,14 @@ import * as cookie from 'cookie'
 import { getBookingHistory, getUserById, getWallet } from "@/components/Graphql/Queries";
 import dynamic from "next/dynamic";
 import Cookies from "js-cookie";
-import Login from "@/components/register";
 
 const User = ({ profile, wallet, bookings }) =>{
     const Booking = dynamic(() => import("@/components/accounts/booking_block"));
     const Wallet = dynamic(() => import("@/components/accounts/wallet"));
-    const MyReviews = dynamic(() => import("@/components/accounts/myReviews"));        
+    const MyReviews = dynamic(() => import("@/components/accounts/myReviews"));
+    const Login = dynamic(() => import("@/components/register"));
+    const BreadCrumbs = dynamic(() => import("@/components/breadcrumbs"));
+    const Nav = dynamic(() => import("@/components/Nav"));
 
     const [indx,setIndx] = useState(0)
     

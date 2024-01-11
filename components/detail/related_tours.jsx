@@ -66,7 +66,7 @@ const RelatedTour = ({ data }) => {
     );
   };
 
-  const statePackagesRender = data.packages.map(function (item, i) {
+  const statePackagesRender = data?.packages?.map(function (item, i) {
     var userRating = [];
     var i = 0;
 

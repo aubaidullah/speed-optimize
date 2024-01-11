@@ -2,14 +2,15 @@ import {
   getStatereArticleQuery,
   getTravelGuideDetail,
   getTravelPackage,
-  getarticleQuery,
+  // getarticleQuery,
 } from "@/components/Graphql/Queries";
+import dynamic from "next/dynamic";
 import client from "@/components/Graphql/service";
-import Nav from "@/components/Nav";
+// import Nav from "@/components/Nav";
 import axios from "axios";
 import { tw } from "twind";
 import Image from "next/image";
-import BreadCrumbs from "@/components/breadcrumbs";
+// import BreadCrumbs from "@/components/breadcrumbs";
 import Link from "next/link";
 import {
   createCityListURL,
@@ -20,14 +21,21 @@ import {
   imgNameByUrl,
   jpgToWebp,
 } from "@/components/fun";
-import P_Cities from "@/components/places/p_cities";
+// import P_Cities from "@/components/places/p_cities";
 import { FaRupeeSign } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import { BsDot } from "react-icons/bs";
-import HomePackages from "@/components/home/packages";
+// import HomePackages from "@/components/home/packages";
 import { Carousel } from "react-responsive-carousel";
-import rightBlock from "@/components/trave-guide/rightBlock";
-import Articles from "@/components/home/articles";
+// import rightBlock from "@/components/trave-guide/rightBlock";
+// import Articles from "@/components/home/articles";
+
+const Nav = dynamic(() => import("@/components/Nav"));
+const BreadCrumbs = dynamic(() => import("@/components/breadcrumbs"));
+const P_Cities = dynamic(() => import("@/components/places/p_cities"));
+const HomePackages = dynamic(() => import("@/components/home/packages"));
+const Articles = dynamic(() => import("@/components/home/articles"));
+const rightBlock = dynamic(() => import("@/components/trave-guide/rightBlock"));
 
 const Places = ({ data, packages_state, packages, article, weather }) => {
   // console.log(data)
