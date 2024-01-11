@@ -306,8 +306,11 @@ const DetailPage = ({ data, related, reviews, meta }) => {
           </div>
         </div>
       </section>
-
-      <RelatedTour data={related} />
+      {related
+        ?<RelatedTour data={related} />
+        :""
+      }
+      
       <div className="pt-6">
         <Review reviews={reviews} data={data}/>
       </div>
