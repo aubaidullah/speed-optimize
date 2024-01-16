@@ -431,7 +431,10 @@ const BookingDetail = () => {
                   </div>
                 </div>
 
-                <div className={tw`flex_ flex-wrap_ Shape_42`}>
+
+                {
+                  bookingDetails?.lead?.type == "HOTEL"?
+                  <div className={tw`flex_ flex-wrap_ Shape_42`}>
                   
                   <div className={tw`flex justify-between`}>
                     <div>Adult : {bookingDetails?.lead?.adults}</div>
@@ -469,6 +472,10 @@ const BookingDetail = () => {
 
 
                 </div>
+                :""
+                }
+
+
                 <div className={tw`${bookingDetails?.output?.type=='HOTEL'?'hidden':''} row package-inclusions`}>
                   <h3 className={tw`text-xl font-semibold my-3`}>Inclusions</h3>
                   <div className="border Shape_42">
