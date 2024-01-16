@@ -300,6 +300,38 @@ const nextConfig = {
         source: "/holidays/:city-tour-packages/",
         destination: "/410",
       },
+      {
+        source: "/:slug.htm",
+        destination: "/410"
+      },
+      {
+        source: "/:slug1/:slug2s.htm",
+        destination: "/410"
+      },
+      {
+        source: "/:sl1/:sl2/:sl3.html",
+        destination: "/410"
+      },
+      {
+        source: "/early-sunrise-early-sunset/:slug",
+        destination: "/410"
+      },
+      {
+        source: "/early-sunrise-early-sunset",
+        destination: "/410"
+      },
+      {
+        source: "/travel-stories-:slug/:sl",
+        destination: "/410"
+      },
+      {
+        source: "/hotels/hotel-in--:id",
+        destination: "/410"
+      },
+      {
+        source: "/north-sikkim-tour-itinerary-sightseeing-detail-537",
+        destination: "/410"
+      }
       // {
       //   source :'/travel-guide-india-:slug/:id',
       //   destination : '/410'
