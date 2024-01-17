@@ -32,6 +32,39 @@ const Meta = ({ meta }) => {
       "https://www.youtube.com/channel/UCPq6EimDUQ2eknEJgyLqnnA",
     ],
   };
+
+  const jsonP ={
+    "@context":"http://schema.org/",
+    "@type":"Organization",
+    "name":"KIOMOI TRAVEL SERVICES (P) LTD",
+    "aggregateRating":
+    {
+      "@type":"AggregateRating",
+      "ratingValue":"4.5",
+      "reviewCount":"1"
+    },
+    "review":
+        [
+          {
+          "@type":"Review",
+          "author":
+            {
+              "@type":"Person",
+              "name":"Bhuvanesh Prajapati"
+            },
+            "reviewBody":" I recently visited meghalaya during the long weekend around independence day and I travelled solo and was planning my itinerary all by myself. ",
+            "name":"Kiomoi Reviews",
+            "reviewRating":
+            {
+              "@type":"Rating",
+              "bestRating":"5",
+              "ratingValue":"5",
+              "worstRating": "2.5"
+            }
+          }
+        ]
+    }
+
   // const GA_TRACKING_ID = "G-CVJVT86DPD"
   return (
     <>
@@ -51,6 +84,11 @@ const Meta = ({ meta }) => {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonData) }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonP) }}
         />
 
         {/* </script> */}
