@@ -258,6 +258,25 @@ export const getallpackages = gql`
   }
 `;
 
+
+export const getCityWithThemePackage = gql`
+  fragment Payload on REST {
+    av: String
+    pt: String
+    id: String
+    name: String
+    theme: String
+    type: String
+  }
+  query allpackage($input: Payload!) {
+    allpackage(input: $input)
+      @rest(type: "package", method: "POST", path: "/api/v1/package/theme/list") {
+      output
+    }
+  }
+`;
+
+
 export const getThemeQuery = gql`
   fragment Payload on REST {
     av: String

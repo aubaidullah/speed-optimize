@@ -2,7 +2,7 @@
 const nextConfig = {
   compress: true,
   reactStrictMode: true,
-  assetPrefix: "https://assets.kiomoi.com",
+  assetPrefix: "https://devassets.kiomoi.com",
   images: {
     domains: [
       "res.cloudinary.com",
@@ -61,9 +61,14 @@ const nextConfig = {
         destination: "/410",
       },
       {
+        source: "/holidays/:package-tour-packages-in-:theme-:id:pre([2]{1})",
+        destination: "/holidays/city-theme",
+      },
+      {
         source: "/holidays/:package-tour-packages-:id:pre([2]{1})",
         destination: "/holidays/state-package",
       },
+
       {
         source: "/holidays/:city-tour-packages-:id:pre([1]{1})",
         destination: "/holidays/city-package",

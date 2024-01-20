@@ -101,7 +101,7 @@ const FilterBy = ({
     }
   };
 
-  const placeRender = data.map(function (item, i) {
+  const placeRender = data?.map(function (item, i) {
     if (i < 100) {
       return (
         <div className="checkbox" key={i}>

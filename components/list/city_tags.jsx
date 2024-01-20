@@ -5,7 +5,7 @@ const CityTags = ({ cities }) => {
   return (
     <>
       <div className={tw`flex flex-wrap`}>
-        {cities.map((item, index) => {
+        {cities?.map((item, index) => {
           return (
             <div key={index} className={tw`py-2 px-1`}>
               {
