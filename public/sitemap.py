@@ -71,7 +71,7 @@ def get_travelarticle():
     xml = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
     for p in travelartile:
         # print(p['heading'])
-        name = p['heading'].lower().strip().replace(' ',"-").replace("&","and").replace("--","-")
+        name = p['heading'].lower().strip().replace(' ',"-").replace("&","and").replace("--","-").replace('’','')
         url = "https://www.kiomoi.com/travel-articles/"+name+"-"+str(p["id"])+"/"
         date = datetime.now().strftime("%Y-%m-%d")
         xml = xml+ f"<url><loc>{url}</loc><lastmod>{date}</lastmod><priority>0.85</priority></url>"
