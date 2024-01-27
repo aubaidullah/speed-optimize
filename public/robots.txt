@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /privacy
+Disallow: /terms-and-conditions
+Disallow: /bookingdetail
+Disallow: https://kiomoitest.kiomoi.com/
+Disallow: https://admin.kiomoi.com/
+Disallow: https://admintest.kiomoi.com/
+
+Sitemap: https://www.kiomoi.com/sitemap.xml
