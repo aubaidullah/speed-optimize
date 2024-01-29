@@ -27,7 +27,7 @@ import { IoLocationSharp } from "react-icons/io5";
 import { BsDot } from "react-icons/bs";
 // import HomePackages from "@/components/home/packages";
 import { Carousel } from "react-responsive-carousel";
-// import rightBlock from "@/components/trave-guide/rightBlock";
+import rightBlock from "@/components/trave-guide/rightBlock";
 // import Articles from "@/components/home/articles";
 
 const Nav = dynamic(() => import("@/components/Nav"));
@@ -35,7 +35,7 @@ const BreadCrumbs = dynamic(() => import("@/components/breadcrumbs"));
 const P_Cities = dynamic(() => import("@/components/places/p_cities"));
 const HomePackages = dynamic(() => import("@/components/home/packages"));
 const Articles = dynamic(() => import("@/components/home/articles"));
-const rightBlock = dynamic(() => import("@/components/trave-guide/rightBlock"));
+// const rightBlock = dynamic(() => import("@/components/trave-guide/rightBlock"));
 
 const Places = ({ data, packages_state, packages, article, weather }) => {
   // console.log(data)
