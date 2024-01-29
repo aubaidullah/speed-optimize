@@ -76,7 +76,7 @@ export async function getServerSideProps(context) {
     query: getArticle,
     variables: { input: { id: _id } },
   });
-  console.log(res.data.travelArticle.output);
+  // console.log(res.data.travelArticle.output);
 
   let article_data = {
     av: "1.3",
@@ -115,11 +115,10 @@ export async function getServerSideProps(context) {
   // finalprice = `₹${finalprice} `
 
   const metas = {
-    title: meta.data.meta.output.tags.title.replace(/<ARTICLE>/g, name),
-    longDesc: meta.data.meta.output.tags.longDesc.replace(/<ARTICLE>/g, name),
-    keywords: meta.data.meta.output.tags.keywords.replace(/<ARTICLE>/g, name),
+    title: res.data.travelArticle.output.article.metaTitle,
+    longDesc: res.data.travelArticle.output.article.metaDesc,
+    keywords: res.data.travelArticle.output.article.metaKeywords,
   };
-
   return {
     props: { data: res.data.travelArticle.output, article, meta: metas },
   };

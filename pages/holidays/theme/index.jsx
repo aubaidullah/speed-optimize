@@ -107,20 +107,24 @@ export async function getServerSideProps(context) {
   const places = res.data.allpackage?.output?.fcities;
   const theme_desc = res.data.allpackage?.output?.theme_description??""
 
-
-  const meta = await client.query({
-    query: getMetaQuery,
-    variables: {
-      input: {
-        av: "1.3",
-        id: 0,
-        key: "HOLIDAYS",
-        name: "",
-        pt: "WEBSITE",
-        type: "",
-      },
-    },
-  });
+  const meta = {
+    "title":res.data.allpackage?.output?.theme_meta?.metaTitle,
+    "longDesc":res.data.allpackage?.output?.theme_meta?.metaDesc,
+    "keywords":res.data.allpackage?.output?.theme_meta?.metaKeywords
+  }
+  // const meta = await client.query({
+  //   query: getMetaQuery,
+  //   variables: {
+  //     input: {
+  //       av: "1.3",
+  //       id: 0,
+  //       key: "HOLIDAYS",
+  //       name: "",
+  //       pt: "WEBSITE",
+  //       type: "",
+  //     },
+  //   },
+  // });
   // console.log(places)
   headers["user-agent"] = headers["user-agent"].toLocaleLowerCase();
 
@@ -129,7 +133,7 @@ export async function getServerSideProps(context) {
     headers,
     region: region ?? [],
     places: places ?? [],
-    meta: meta?.data?.meta?.output?.tags,
+    meta: meta,
     theme_desc : theme_desc
   };
 
