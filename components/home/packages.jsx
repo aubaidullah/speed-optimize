@@ -1,10 +1,11 @@
 // import MultiCarousel2 from "react-multi-carousel";
 import Link from "next/link";
+import { tw } from "twind";
 
 // import Pack from './pack'
 import dynamic from "next/dynamic";
 
-const HomePackages = ({ data }) => {
+const HomePackages = ({ data,holiday=false }) => {
   const Pack = dynamic(() => import("./pack"));
 
   return (
@@ -13,10 +14,10 @@ const HomePackages = ({ data }) => {
         <div className="row_">
           <div className={`box_design_common_ relative`}>
             <div
-              className={`title_kiomoi flex items-center justify-between mb-6`}
+              className={`${holiday==false?'title_kiomoi':''} flex items-center justify-between mb-6`}
             >
               <div className={`2w-full`}>
-                <h4>Top Rated Tours</h4>
+                <h4 className={tw`text-2xl font-bold`}>{holiday==false?"Top Rated Tours":"Best Selling Tour Packages"}</h4>
                 <p></p>
               </div>
               <div className={`2w-full`}>

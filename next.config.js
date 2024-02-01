@@ -12,6 +12,8 @@ const nextConfig = {
       "assets.kiomoi.com",
       "devassets.kiomoi.com",
       "kiomoi.com",
+      "kiomoi.vercel.app",
+      "localhost"
     ],
     // remotePatterns: [
     //   {
