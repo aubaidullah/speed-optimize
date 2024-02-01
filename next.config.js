@@ -63,6 +63,18 @@ const nextConfig = {
         destination: "/410",
       },
       {
+        source: "/states",
+        destination: "/travel-guide/IndexPage"
+      },
+      {
+        source: "/places",
+        destination: "/travel-guide/IndexPage"
+      },
+      {
+        source: "/countries",
+        destination: "/travel-guide/IndexPage"
+      },            
+      {
         source: "/holidays/:package-tour-packages-:id:pre([2]{1})",
         destination: "/holidays/state-package",
       },      
