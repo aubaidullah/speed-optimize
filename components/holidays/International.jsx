@@ -105,7 +105,7 @@ const InterNationalPackage = ({ data }) => {
     <div className={tw` container mt-16`}>
       <h2 className={tw`mb-4`}>
           <div>
-                <h4 className={tw`text-2xl font-bold`}>International Destinaions</h4>
+                <h4 className={tw`text-xl lg:text-2xl font-bold`}>International Destinaions</h4>
             </div>
       </h2>
       <div className="Shape_42_ relative">

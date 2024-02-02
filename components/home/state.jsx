@@ -104,7 +104,7 @@ const State = ({ data,holiday=false }) => {
               className={tw`${holiday==false?'title_kiomoi':''} flex items-center justify-between mb-6`}
             >
               <div>
-                <h4 className={tw`text-2xl font-bold`}>Explore Top Destinations</h4>
+                <h4 className={tw`text-xl lg:text-2xl font-bold`}>Explore Top Destinations</h4>
               </div>
               <div>
                 <Link href={"/holidays/"}>

@@ -27,7 +27,7 @@ const HolidayTheme = ({theme}) =>{
         },
         mobile: {
           breakpoint: { max: 464, min: 0 },
-          items: 1,
+          items: 2,
           partialVisibilityGutter: 40,
         },
     };
@@ -36,7 +36,7 @@ const HolidayTheme = ({theme}) =>{
           carouselState: { currentSlide },
         } = rest;
         return (
-          <div className={`lg:carousel-button-group lg:block `}>
+          <div className={`hidden lg:carousel-button-group lg:block `}>
             <button
               className={`${currentSlide === 0 ? "disable" : ""} left-custom-btn`}
               onClick={() => previous()}
@@ -63,7 +63,7 @@ const HolidayTheme = ({theme}) =>{
                       className={`inline`}
                       src={`${
                         Constants.assets_api
-                      }/icons/Ico_${item.tag.trim()}.png`}
+                      }/public/icons/Ico_${item.tag.trim()}.png`}
                     />
                   </div>
                 </div>
@@ -85,7 +85,7 @@ const HolidayTheme = ({theme}) =>{
 
     return <>
         <div className={`container mt-16`}>
-          <h2 className={tw` text-2xl pb-4 font-bold`}>Browse by theme</h2>
+          <h2 className={tw`text-xl lg:text-2xl pb-4 font-bold`}>Browse by theme</h2>
             <div className={tw`relative`}>
                 <MultiCarousel
                     partialVisible={true}

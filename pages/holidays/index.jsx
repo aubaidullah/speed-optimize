@@ -38,23 +38,23 @@ const DeskList = dynamic(() => import("../../components/list_page.mobile"), {
 
 const CanvasImg = () =>{
   return <>
-    <div className="mt-32 mb-52">
+    <div className="lg:mb-52 mb-16 lg:mt-32 mt-16 ">
       <div className={tw`bg-[#A6C7EA] h-80 relative`}>
         <div className="container">
           <div className={tw`flex`}>
             <div className={tw`w-1/3`}>
-              <div className={tw`absolute`} style={{top:'-15%'}}>
+              <div className={tw`absolute top-[-6%] lg:top-[-15%]`}>
                 <img
                     alt="icon"
-                    className={`inline w-[80%]`}
+                    className={`inline w-[40%] lg:w-[80%]`}
                     src={`${
                       Constants.assets_api
-                    }/icons/holiday/Component_440/Component_440.png`}
+                    }/public/icons/holiday/Component_440/Component_440.png`}
                   />
               </div>
             </div>
             <div className={tw`w-2/3`}>
-              <div className={tw`text-[64px]`}>
+              <div className={tw`text-[64px] hidden lg:block`}>
                 <div className={tw`absolute text-[#A6C7EA]`} style={{top:"-24%"}}>
                   Explore Your 
                 </div>
@@ -62,22 +62,38 @@ const CanvasImg = () =>{
                   Best Vacation
                 </div>
               </div>
-                <div className={tw`text-white`}>
-                  <div>
+                <div className={tw`text-white p-6`}>
+                  
+                  <div className={tw` text-[25px]`}>
+                    Explore Your <br /> Best Vacation
+                  </div>                  
+                  <div className={tw`font-light`}>
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
                   </div>
-                  <div className={tw`pt-10 text-lg`}>
+                  <div className={tw`pt-10 text-sm lg:text-lg hidden lg:block`}>
                     <ul className={tw`flex flex-wrap`}>
-                      <li className={tw`pb-4`} style={{flex:'1 33%'}}>Sikkim</li>
-                      <li className={tw`pb-4`} style={{flex:'1 33%'}}>Rajesthan</li>
-                      <li className={tw`pb-4`} style={{flex:'1 33%'}}>Himachal Pradesh</li>
-                      <li className={tw`pb-4`} style={{flex:'1 33%'}}>Kashmir</li>
-                      <li className={tw`pb-4`} style={{flex:'1 33%'}}>Uttarkhand</li>
-                      <li className={tw`pb-4`} style={{flex:'1 33%'}}>Uttaranchal</li>
+                      <li className={tw`pb-1 lg:pb-4`} style={{flex:'1 33%'}}>Sikkim</li>
+                      <li className={tw`pb-1 lg:pb-4`} style={{flex:'1 33%'}}>Rajesthan</li>
+                      <li className={tw`pb-1 lg:pb-4`} style={{flex:'1 33%'}}>Himachal Pradesh</li>
+                      <li className={tw`pb-1 lg:pb-4`} style={{flex:'1 33%'}}>Kashmir</li>
+                      <li className={tw`pb-1 lg:pb-4`} style={{flex:'1 33%'}}>Uttarkhand</li>
+                      <li className={tw`pb-1 lg:pb-4`} style={{flex:'1 33%'}}>Uttaranchal</li>
                     </ul>
                   </div>
                 </div>
             </div>
+          </div>
+          <div>
+          <div className={tw`p-2 text-sm lg:text-lg lg:hidden text-white`}>
+            <ul className={tw`flex flex-wrap`}>
+              <li className={tw`pb-1 lg:pb-4`} style={{flex:'1 33%'}}>Sikkim</li>
+              <li className={tw`pb-1 lg:pb-4`} style={{flex:'1 33%'}}>Rajesthan</li>
+              <li className={tw`pb-1 lg:pb-4`} style={{flex:'1 33%'}}>Himachal Pradesh</li>
+              <li className={tw`pb-1 lg:pb-4`} style={{flex:'1 33%'}}>Kashmir</li>
+              <li className={tw`pb-1 lg:pb-4`} style={{flex:'1 33%'}}>Uttarkhand</li>
+              <li className={tw`pb-1 lg:pb-4`} style={{flex:'1 33%'}}>Uttaranchal</li>
+            </ul>
+          </div>
           </div>
         </div>
       </div>
@@ -91,20 +107,20 @@ const CanvasImg = () =>{
 const BottomBnner = () =>{
   return <>
   <div className={tw`container my-16`}>
-    <div className={tw`bg-[#4488E0] h-40 relative rounded-full`}>
-      <div className="flex items-center h-full">
-        <div className={tw`w-1/2`}>
-              <div className={tw`absolute`} style={{top:'-15%'}}>
+    <div className={tw`bg-[#4488E0] h-80 lg:h-40 relative rounded-[5rem] lg:rounded-full`}>
+      <div className="flex items-center h-full flex-wrap">
+        <div className={tw`w-full lg:w-1/2`}>
+              <div className={tw`absolute top-[-15%]`}>
                 <img
                     alt="icon"
-                    className={`inline w-[80%]`}
+                    className={`lg:inline w-[80%] m-auto lg:m-0`}
                     src={`${
                       Constants.assets_api
-                    }/icons/holiday/bottom_banner.svg`}
+                    }/public/icons/holiday/bottom_banner.svg`}
                   />
               </div>          
         </div>
-        <div className={tw`w-1/2`}>
+        <div className={tw`w-full lg:w-1/2`}>
             <div className={tw`text-xl text-center `}>
               <p className={tw`text-[#FFCC00]`}>Hassle free 24x7 travel assistance</p>
               <div className={tw`text-white pt-4`}>
@@ -133,7 +149,7 @@ const HolidayPage = ({home,theme}) =>{
         <State data={home.states} holiday={true}/>
         <CanvasImg />
         <InterNationalPackage data={home.countries}/>
-        <CityPackages data={home.cities}/>
+        {/* <CityPackages data={home.cities}/> */}
         {/* <InternationalPackages data={home.states} /> */}
         <HomePackages data={home} holiday={true}/>
         <BottomBnner />

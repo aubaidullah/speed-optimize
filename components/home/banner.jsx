@@ -51,12 +51,14 @@ const Banner = ({ data,holiday=false }) => {
   return (
     <>
       <div
-        // className={`overflow-hidden slider_banner slider_banner_ slider_overlay ${holiday?'hidden':''}`}
+        className={`overflow-hidden slider_banner slider_banner_ slider_overlay`}
       >
         <div>
           <div>
             <Image
-              className={`img-responsive_banner w-full ${holiday?'rounded-none':' rounded-br-[50%] rounded-bl-[50%]'}`}
+              className={`img-responsive_banner ${!holiday?'rounded-bl-[50%] rounded-br-[50%]':''}`}
+              // className={`img-responsive_banner ${holiday?'rounded-none':'rounded-bl-[50%] rounded-br-[50%]'}`}
+              // className={`img-responsive_banner w-full ${holiday?'rounded-none':' rounded-br-[50%] rounded-bl-[50%]'}`}
               alt="kiomoi banner"
               src={jpgToWebp({ uri: data[0]?.i??data })}
               width={500}
