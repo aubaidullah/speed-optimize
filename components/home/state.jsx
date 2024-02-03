@@ -7,7 +7,7 @@ import { createStateListURL, imgNameByUrl } from "../fun";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 
-const State = ({ data }) => {
+const State = ({ data,holiday=false }) => {
   const MultiCarousel2 = dynamic(() => import("react-multi-carousel"));
 
   const statePackagesRender = data.map(function (item, i) {
@@ -99,12 +99,12 @@ const State = ({ data }) => {
     <div className={tw`mt-16`}>
       <div className={`container`}>
         <div className="row_">
-          <div className="box_design_common">
+          <div className={tw`${holiday==false?'box_design_common':''}`} style={{'backdrop-filter':'blur(30px)'}}>
             <div
-              className={tw`title_kiomoi flex items-center justify-between mb-6`}
+              className={tw`${holiday==false?'title_kiomoi':''} flex items-center justify-between mb-6`}
             >
               <div>
-                <h4>Explore Top Destinations</h4>
+                <h4 className={tw`text-xl lg:text-2xl font-bold`}>Explore Top Destinations</h4>
               </div>
               <div>
                 <Link href={"/holidays/"}>

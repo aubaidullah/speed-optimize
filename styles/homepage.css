@@ -176,7 +176,7 @@ img {
   border: 0;
   max-height: 500px;
   height: 500px;
-  border-radius: 0 0 50% 50% !important;
+  /* border-radius: 0 0 50% 50% !important; */
   /* transform: scaleX(1.5); */
 }
 

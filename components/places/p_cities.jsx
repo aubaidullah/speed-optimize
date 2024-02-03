@@ -136,12 +136,17 @@ const IMG = ({ e, index, url, type }) => {
                     <Link className="btn_listing" href={url}>
                       Read more
                     </Link>
-                    <Link
+                    {
+                      e.geoid
+                      ?<Link
                       className="btn_listing _btn_clr"
-                      href={createCityListURL({ cityname: e.name, id: e.tgid })}
+                      href={createCityListURL({ cityname: e.name, id: e.geoid })}
                     >
                       View packages
                     </Link>
+                    :""
+                    }
+                    
                   </div>
                 </div>
               </div>

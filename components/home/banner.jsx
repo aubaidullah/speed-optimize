@@ -18,7 +18,7 @@ import {
   jpgToWebp,
 } from "../fun";
 
-const Banner = ({ data }) => {
+const Banner = ({ data,holiday=false }) => {
   // const Image = dynamic(() => import('next/image').then((mod)=>mod.Image))
   // const Link = dynamic(() => import('next/link').then((mod)=>mod.Link))
   // const FaRupeeSign = dynamic(() => import('react-icons/fa').then((mod)=>mod.FaRupeeSign))
@@ -47,18 +47,20 @@ const Banner = ({ data }) => {
       Search();
     } else setResult({});
   };
+  // let img = "https://res.cloudinary.com/kmadmin/image/upload/v1552993397/kiomoi/Pelling/Pelling-2.jpg&w=1920&q=75";
   return (
     <>
       <div
         className={`overflow-hidden slider_banner slider_banner_ slider_overlay`}
       >
         <div>
-          {/* scaleX(1.5) */}
           <div>
             <Image
-              className="img-responsive_banner"
+              className={`img-responsive_banner ${!holiday?'rounded-bl-[50%] rounded-br-[50%]':''}`}
+              // className={`img-responsive_banner ${holiday?'rounded-none':'rounded-bl-[50%] rounded-br-[50%]'}`}
+              // className={`img-responsive_banner w-full ${holiday?'rounded-none':' rounded-br-[50%] rounded-bl-[50%]'}`}
               alt="kiomoi banner"
-              src={jpgToWebp({ uri: data[0]?.i })}
+              src={jpgToWebp({ uri: data[0]?.i??data })}
               width={500}
               height={500}
               loading="eager"

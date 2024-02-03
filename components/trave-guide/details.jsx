@@ -203,7 +203,7 @@ const TravelGuideDetailComp = ({
 
   return (
     <>
-      <Meta meta={meta} />
+      <Meta meta={data.tg} />
       <Nav />
       <BreadCrumbs bread={data.tg.geoType == "COUNTRY" ? con_bread : bread} />
       <section className="container">

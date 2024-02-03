@@ -158,23 +158,23 @@ const Meta = ({ meta }) => {
          }}
          /> */}
 
-        <title>{meta?.title}</title>
+        <title>{meta?.title??meta?.metaTitle}</title>
 
         <link rel="canonical" href={`https://www.kiomoi.com${asPath}`} />
-        <meta name="description" content={meta?.longDesc} />
-        <meta name="keywords" content={meta?.keywords} />
+        <meta name="description" content={meta?.longDesc??meta?.metaDesc} />
+        <meta name="keywords" content={meta?.keywords??meta?.metaKeywords} />
 
-        <meta property="og:title" content={meta?.title} />
+        <meta property="og:title" content={meta?.title??meta?.metaTitle} />
         <meta property="og:url" content={`https://www.kiomoi.com${asPath}`} />
         <meta property="og:site_name" content="thekiomoi" />
         <meta property="fb:admins" content="263867260781770" />
-        <meta property="og:description" content={meta?.longDesc} />
+        <meta property="og:description" content={meta?.longDesc??meta?.metaDesc} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={meta?.image} />
 
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content={meta?.title} />
-        <meta name="twitter:description" content={meta?.longDesc} />
+        <meta name="twitter:title" content={meta?.title??meta?.metaTitle} />
+        <meta name="twitter:description" content={meta?.longDesc??meta?.metaDesc} />
         <meta name="twitter:url" content={`https://www.kiomoi.com${asPath}`} />
         <meta name="twitter:creator" content="@ki_omoi" />
         <meta name="twitter:site" content="@ki_omoi" />
