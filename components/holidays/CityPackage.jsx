@@ -12,7 +12,7 @@ const CityPackages = ({data}) =>{
     // 
     // const MultiCarousel2 = dynamic(() => import("react-multi-carousel"));
     // const Slider = dynamic(() => import("react-slick"));
-    const statePackagesRender = data.slice(0,5).map(function (item, i) {
+    const statePackagesRender = data?.slice(0,5).map(function (item, i) {
         var aurl = createCityListURL({ cityname: item.name, id: item.id });
         // var aurl =
         //   "/holidays/" +

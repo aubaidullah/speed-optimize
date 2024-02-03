@@ -149,7 +149,7 @@ const HolidayPage = ({home,theme}) =>{
         <State data={home.states} holiday={true}/>
         <CanvasImg />
         <InterNationalPackage data={home.countries}/>
-        {/* <CityPackages data={home.cities}/> */}
+        <CityPackages data={home.cities}/>
         {/* <InternationalPackages data={home.states} /> */}
         <HomePackages data={home} holiday={true}/>
         <BottomBnner />
