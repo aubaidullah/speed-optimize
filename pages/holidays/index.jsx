@@ -26,14 +26,6 @@ import InterNationalPackage from "@/components/holidays/International";
 // import Nav from "../components/Nav";
 const Nav = dynamic(() => import("../../components/HomeNav"));
 
-const MobileList = dynamic(() => import("../../components/list_page.mobile"), {
-  ssr: true,
-});
-
-const DeskList = dynamic(() => import("../../components/list_page.mobile"), {
-  ssr: true,
-});
-
 
 
 const CanvasImg = () =>{
@@ -64,7 +56,7 @@ const CanvasImg = () =>{
               </div>
                 <div className={tw`text-white p-6`}>
                   
-                  <div className={tw` text-[25px]`}>
+                  <div className={tw` text-[25px] lg:hidden`}>
                     Explore Your <br /> Best Vacation
                   </div>                  
                   <div className={tw`font-light`}>
@@ -110,7 +102,7 @@ const BottomBnner = () =>{
     <div className={tw`bg-[#4488E0] h-80 lg:h-40 relative rounded-[5rem] lg:rounded-full`}>
       <div className="flex items-center h-full flex-wrap">
         <div className={tw`w-full lg:w-1/2`}>
-              <div className={tw`absolute top-[-15%]`}>
+              <div className={tw`absolute top-[-10%] lg:top-[-15%]`}>
                 <img
                     alt="icon"
                     className={`lg:inline w-[80%] m-auto lg:m-0`}
@@ -124,8 +116,8 @@ const BottomBnner = () =>{
             <div className={tw`text-xl text-center `}>
               <p className={tw`text-[#FFCC00]`}>Hassle free 24x7 travel assistance</p>
               <div className={tw`text-white pt-4`}>
-                <p className={tw`font-bold text-2xl`}>9650687940</p>
-                <p>planmytrip@kiomoi</p>
+                <p className={tw`font-bold text-2xl lg:text-2xl`}>9650687940</p>
+                <p>info@kiomoi.com</p>
               </div>
             </div>
         </div>

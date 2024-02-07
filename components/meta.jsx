@@ -69,6 +69,26 @@ const Meta = ({ meta }) => {
   return (
     <>
       <Head>
+
+
+
+      <link rel="apple-touch-icon" sizes="57x57" href={`${Constants.assets_api}/public/icons/meta/apple-icon-57x57.png`}/>
+      <link rel="apple-touch-icon" sizes="60x60" href={`${Constants.assets_api}/public/icons/meta/apple-icon-60x60.png`}/>
+      <link rel="apple-touch-icon" sizes="72x72" href={`${Constants.assets_api}/public/icons/meta/apple-icon-72x72.png`}/>
+      <link rel="apple-touch-icon" sizes="76x76" href={`${Constants.assets_api}/public/icons/meta/apple-icon-76x76.png`}/>
+      <link rel="apple-touch-icon" sizes="114x114" href={`${Constants.assets_api}/public/icons/meta/apple-icon-114x114.png`}/>
+      <link rel="apple-touch-icon" sizes="120x120" href={`${Constants.assets_api}/public/icons/meta/apple-icon-120x120.png`}/>
+      <link rel="apple-touch-icon" sizes="144x144" href={`${Constants.assets_api}/public/icons/meta/apple-icon-144x144.png`}/>
+      <link rel="apple-touch-icon" sizes="152x152" href={`${Constants.assets_api}/public/icons/meta/apple-icon-152x152.png`}/>
+      <link rel="apple-touch-icon" sizes="180x180" href={`${Constants.assets_api}/public/icons/meta/apple-icon-180x180.png`}/>
+      <link rel="icon" type="image/png" sizes="192x192"  href={`${Constants.assets_api}/public/icons/meta/android-icon-192x192.png`}/>
+      <link rel="icon" type="image/png" sizes="32x32" href={`${Constants.assets_api}/public/icons/meta/favicon-32x32.png`}/>      
+      <link rel="icon" type="image/png" sizes="96x96" href={`${Constants.assets_api}/public/icons/meta/favicon-96x96.png`}/>      
+      <link rel="icon" type="image/png" sizes="16x16" href={`${Constants.assets_api}/public/icons/meta/favicon-16x16.png`}/>
+      <meta name="msapplication-TileImage" content={`${Constants.assets_api}/public/icons/meta/ms-icon-144x144.png`}/>
+      <meta name="msapplication-TileColor" content="#ffffff"/>
+
+
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -94,10 +114,10 @@ const Meta = ({ meta }) => {
         {/* </script> */}
 
         <meta charset="utf-8" />
-        <link
+        {/* <link
           rel="icon"
           href={`${Constants.assets_api}/public/icons/logo.png`}
-        />
+        /> */}
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1"
@@ -184,10 +204,10 @@ const Meta = ({ meta }) => {
         />
         <meta name="robots" content="index" />
 
-        <link
+        {/* <link
           rel="apple-touch-icon"
           href={`${Constants.assets_api}/public/icons/logo.png`}
-        />
+        /> */}
 
         <link
           rel="manifest"

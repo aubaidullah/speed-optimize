@@ -95,7 +95,7 @@ const Themes = ({ data }) => {
           <div className={`w-full lg:w-2/3`}>
             {themeRender}
             <div className={tw`_service_list ${theme!=5?"hidden":""}`}>
-              <div className="ellipse_3 cursor-pointer hover:shadow-lg" onClick={()=>setTheme(10)}>
+              <div className="ellipse_3 cursor-pointer hover:shadow-lg" onClick={()=>setTheme(20)}>
                 <div href={"#"}>
                   <div href={"#"}>
                     {" "}

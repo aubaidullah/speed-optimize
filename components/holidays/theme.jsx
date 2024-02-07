@@ -63,7 +63,7 @@ const HolidayTheme = ({theme}) =>{
                       className={`inline`}
                       src={`${
                         Constants.assets_api
-                      }/public/icons/Ico_${item.tag.trim()}.png`}
+                      }/icons/Ico_${item.tag.trim()}.png`}
                     />
                   </div>
                 </div>

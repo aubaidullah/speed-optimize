@@ -153,7 +153,7 @@ const CityPackages = ({data}) =>{
               </div>
             </div>
 
-            <div className={tw`flex flex-wrap`}>
+            <div className={tw`flex flex-wrap-reverse`}>
                 {statePackagesRender}
                 {/* <Slider {...settings}>{statePackagesRender}</Slider> */}
                 {/* <MultiCarousel2
