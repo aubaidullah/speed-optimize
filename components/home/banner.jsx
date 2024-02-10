@@ -76,7 +76,7 @@ const Banner = ({ data,holiday=false }) => {
             type="text"
             className={`form-control z-[999]`}
             onChange={(event) => HandleSearch(event.target.value)}
-            placeholder="Search Any Destination, Travel Guide, Trip or Stays"
+            placeholder={!holiday?"Search Any Destination, Travel Guide, Trip or Stays":"Search Any Tour or Destination"}
           />
           {searchkey.length >= 2 ? (
             <section className="dropdown-content-home">
@@ -102,6 +102,7 @@ const Banner = ({ data,holiday=false }) => {
                     </Link>
                   </div>
                 ))}
+                
                 {result?.st?.map((e, index) => {
                   let url = "";
                   if (e?.type == "COUNTRY") {
@@ -128,7 +129,8 @@ const Banner = ({ data,holiday=false }) => {
                     );
                   }
                 })}
-                {result?.hotels?.map((e, index) => (
+
+                {!holiday?result?.hotels?.map((e, index) => (
                   <div key={index} onClick={() => setSearchkey("")}>
                     <Link
                       href={`/hotel-${e?.name
@@ -142,8 +144,8 @@ const Banner = ({ data,holiday=false }) => {
                       </div>
                     </Link>
                   </div>
-                ))}
-                {result?.articles?.map((e, index) => (
+                )):""}
+                {!holiday?result?.articles?.map((e, index) => (
                   <div key={index} onClick={() => setSearchkey("")}>
                     <Link
                       href={createArticleURL({ heading: e?.name, id: e?.id })}
@@ -154,8 +156,8 @@ const Banner = ({ data,holiday=false }) => {
                       </div>
                     </Link>
                   </div>
-                ))}
-                {result?.tgs?.map((e, index) => {
+                )):""}
+                {!holiday?result?.tgs?.map((e, index) => {
                   let url;
                   if (e?.geotype == "CITY") {
                     url = createTGCityURL({ city: e?.name, id: e?.id });
@@ -184,7 +186,7 @@ const Banner = ({ data,holiday=false }) => {
                       </Link>
                     </div>
                   );
-                })}
+                }):""}
               </div>
             </section>
           ) : null}

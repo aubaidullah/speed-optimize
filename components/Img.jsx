@@ -10,7 +10,9 @@ const CustomImage = ({img_url,alt,className="",style=""}) =>{
         src={ img_url }
         alt={alt}
         fill
-    />:<img src={`${Constants.assets_api}/public/icons/kiomoi_logo_abstract.png`} className={tw`m-auto h-[99%]`} />
+    />:<div className={tw`bg-[#EFEFEF] h-full flex rounded-xl`}>
+        <img src={`${Constants.assets_api}/icons/defaultimage.svg`} className={tw`m-auto h-[100px]`} style={{height:'100px',width:'auto'}} />
+    </div>
 }
 
 export default CustomImage

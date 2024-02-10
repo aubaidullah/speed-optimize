@@ -5,21 +5,18 @@ import {
   getThemeQuery,
   getMetaQuery,
   getHome,
+  getarticleQuery,
 } from "../../components/Graphql/Queries";
 import client from "../../components/Graphql/service";
-import { getPackages } from "../../redux_fx/actions";
-import { useDispatch } from "react-redux";
-import SearchBar from "@/components/hotel/searchBar";
 import Banner from "@/components/home/banner";
-import Themes from "@/components/home/theme";
 import HolidayTheme from "@/components/holidays/theme";
 import State from "@/components/home/state";
 import HomePackages from "@/components/home/packages";
 import { tw } from "twind";
 import * as Constants from "@/components/Constants";
 import CityPackages from "@/components/holidays/CityPackage";
-import InternationalPackages from "./international-package";
 import InterNationalPackage from "@/components/holidays/International";
+import Articles from "@/components/home/articles";
 // import CityPackages from "./city-package";
 // import * Constants from "@/components/Constants"
 
@@ -130,7 +127,7 @@ const BottomBnner = () =>{
 
 
 
-const HolidayPage = ({home,theme}) =>{
+const HolidayPage = ({home,theme,articles}) =>{
   // let img = "https://res.cloudinary.com/kmadmin/image/upload/v1633196081/kiomoi/1633196080048.jpg"
    let img = "https://res.cloudinary.com/kmadmin/image/upload/v1552993397/kiomoi/Pelling/Pelling-2.jpg";
     return <>
@@ -144,6 +141,7 @@ const HolidayPage = ({home,theme}) =>{
         <CityPackages data={home.cities}/>
         {/* <InternationalPackages data={home.states} /> */}
         <HomePackages data={home} holiday={true}/>
+        <Articles data={articles?.articles} />
         <BottomBnner />
     </>
 }
@@ -162,10 +160,27 @@ export async function getServerSideProps(context) {
     variables: { input: { av: "", id: "", pt: "" } },
   });
 
+  const res_article = await client.query({
+    query: getarticleQuery,
+    variables: {
+      input: {
+        av: "1.3",
+        id: "string",
+        pt: "WEBSITE",
+        geoid: 0,
+        pagenum: 1,
+        pid: 0,
+        size: 20,
+        type: "0",
+      },
+    },
+  });
+
   return {
     props: {
       home: res.data.home.output,
       theme: res_theme.data.alltheme.output,
+      articles: res_article.data.articles.output,
     },
   };  
 

@@ -5,6 +5,7 @@ import { createCityListURL, createStateListURL } from "../fun";
 import { imgNameByUrl } from "../fun";
 import * as Constants from "@/components/Constants";
 import dynamic from "next/dynamic";
+import CustomImage from "../Img";
 
 
 const CityPackages = ({data}) =>{
@@ -37,7 +38,7 @@ const CityPackages = ({data}) =>{
                         }
                         alt="kiomoi"
                       /> */}
-                    <Image
+                    {/* <Image
                       className={tw`img-responsive rounded-[8px]`}
                       src={
                         // item.im.split("~")[0]
@@ -46,7 +47,8 @@ const CityPackages = ({data}) =>{
                       }
                       alt={imgNameByUrl({ url: item.images ?? "kiomoi" })}
                       fill
-                    />
+                    /> */}
+                    <CustomImage img_url={item.images} alt={imgNameByUrl({ url: item.images ?? "kiomoi" })} className={`img-responsive rounded-[8px]`} />
                     <div className="des_cont">
                       <div className="des_location">{item.name}</div>
                     </div>
