@@ -11,7 +11,7 @@ const CustomImage = ({img_url,alt,className="",style=""}) =>{
         alt={alt}
         fill
     />:<div className={tw`bg-[#EFEFEF] h-full flex rounded-xl`}>
-        <img src={`${Constants.assets_api}/icons/defaultimage.svg`} className={tw`m-auto h-[100px]`} style={{height:'100px',width:'auto'}} />
+        <img src={`${Constants.assets_api}/public/icons/defaultimage.svg`} className={tw`m-auto h-[100px]`} style={{height:'100px',width:'auto'}} />
     </div>
 }
 

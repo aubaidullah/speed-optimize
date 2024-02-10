@@ -6,6 +6,7 @@ import {
   getMetaQuery,
   getHome,
   getarticleQuery,
+  getreviewsQuery,
 } from "../../components/Graphql/Queries";
 import client from "../../components/Graphql/service";
 import Banner from "@/components/home/banner";
@@ -17,6 +18,7 @@ import * as Constants from "@/components/Constants";
 import CityPackages from "@/components/holidays/CityPackage";
 import InterNationalPackage from "@/components/holidays/International";
 import Articles from "@/components/home/articles";
+import Reviews from "@/components/home/reviews";
 // import CityPackages from "./city-package";
 // import * Constants from "@/components/Constants"
 
@@ -56,9 +58,9 @@ const CanvasImg = () =>{
                   <div className={tw` text-[25px] lg:hidden`}>
                     Explore Your <br /> Best Vacation
                   </div>                  
-                  <div className={tw`font-light`}>
+                  {/* <div className={tw`font-light`}>
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
-                  </div>
+                  </div> */}
                   <div className={tw`pt-10 text-sm lg:text-lg hidden lg:block`}>
                     <ul className={tw`flex flex-wrap`}>
                       <li className={tw`pb-1 lg:pb-4`} style={{flex:'1 33%'}}>Sikkim</li>
@@ -127,7 +129,7 @@ const BottomBnner = () =>{
 
 
 
-const HolidayPage = ({home,theme,articles}) =>{
+const HolidayPage = ({home,theme,articles,reviews}) =>{
   // let img = "https://res.cloudinary.com/kmadmin/image/upload/v1633196081/kiomoi/1633196080048.jpg"
    let img = "https://res.cloudinary.com/kmadmin/image/upload/v1552993397/kiomoi/Pelling/Pelling-2.jpg";
     return <>
@@ -142,6 +144,7 @@ const HolidayPage = ({home,theme,articles}) =>{
         {/* <InternationalPackages data={home.states} /> */}
         <HomePackages data={home} holiday={true}/>
         <Articles data={articles?.articles} />
+        <Reviews data={reviews?.reviews} /> 
         <BottomBnner />
     </>
 }
@@ -176,11 +179,28 @@ export async function getServerSideProps(context) {
     },
   });
 
+  const res_review = await client.query({
+    query: getreviewsQuery,
+    variables: {
+      input: {
+        av: "1.3",
+        id: "0",
+        pt: "WEBSITE",
+        geoid: 0,
+        pagenum: 1,
+        pid: 0,
+        size: 6,
+        type: "",
+      },
+    },
+  });
+
   return {
     props: {
       home: res.data.home.output,
       theme: res_theme.data.alltheme.output,
       articles: res_article.data.articles.output,
+      reviews: res_review.data.reviews.output,      
     },
   };  
 

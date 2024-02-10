@@ -117,7 +117,7 @@ const State = ({ data,holiday=false }) => {
 
             <MultiCarousel2
               partialVisible={true}
-              autoPlay={true}
+              autoPlay={false}
               customTransition="transform 300ms ease-in-out"
               infinite={true}
               className="toprated_slide"

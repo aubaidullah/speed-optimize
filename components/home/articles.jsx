@@ -52,12 +52,12 @@ const Articles = ({ data }) => {
   const articleRender = data.map(function (item, i) {
     var aurl = createArticleURL({ heading: item.heading, id: item.id });
     // var aurl = "/travel-articles/"+item.heading.trim().replace(/\s+/g,' ').replace(/\s+/g, "-").replace(/--/g,'-').toLowerCase()+"/"+item.id+"/"
-    var d = item.description;
-    var res = d.substring(0, 50);
+    // var d = item.description;
+    // var res = d.substring(0, 50);
     return (
       <div key={i}>
         <div className="col-sm-12 col-xs-12 _cr_mb px-2" key={i}>
-          <Link href={aurl}>
+          {/* <Link href={aurl}> */}
             <div className="top_rated_box _box_shadow _bottom popular_dest">
               <div className="recent_img">
                 <Image
@@ -75,16 +75,16 @@ const Articles = ({ data }) => {
               <div className="price_List">
                 <div className="tour_details">
                   <h4 className="my-2">{item.heading}</h4>
-                  <div className="t_detail">{ReactHtmlParser(res)} </div>
-                  {/* <Link href={aurl}>
+                  {/* <div className="t_detail">{ReactHtmlParser(res)} </div> */}
+                  <Link href={aurl}>
                     <div href={aurl} className="anchor_link _50">
                       Read Full Story{"  "}
                     </div>
-                  </Link> */}
+                  </Link>
                 </div>
               </div>
             </div>
-          </Link>
+          {/* </Link> */}
         </div>
       </div>
     );
