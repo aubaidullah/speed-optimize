@@ -85,6 +85,7 @@ const ListPageMobile = ({
   const [overview, setOverview] = useState(region?.longDesc?.length > 20 ? region?.longDesc : region?.desc ?? "");
   const [isshow, setIsshow] = useState(false);
   const [pricefilter, setPricefilter] = useState(1);
+  const [priority,setPriority] = useState(1)
   const [durationfilter, setDurationfilter] = useState(1);
   const [_places, set_Places] = useState([]);
   const [_themes, set_Themes] = useState([]);
@@ -279,6 +280,13 @@ const ListPageMobile = ({
   } else {
     data = data.sort((a, b) => b.finalprice - a.finalprice);
     // data = data.sort((a,b)=>a.finalprice < b.finalprice)
+  }
+
+
+  if (priority) {
+    data = data.sort((a, b) => a.priority - b.priority);
+  } else {
+    data = data.sort((a, b) => b.priority - a.priority);
   }
 
   if (durationfilter) {
@@ -553,9 +561,22 @@ const ListPageMobile = ({
                         <div className={`p-2 sort_w text-bold font-gray-400`}>
                           SORT BY :
                         </div>
-                        <div className={`p-2 sort_w cursor-pointer`}>
+                        
+                        
+                        <div
+                          className={`${
+                            !priority ? "_b_active" : ""
+                          } p-2 sort_w cursor-pointer`}
+                          onClick={() => setPriority(!priority)}
+                        >
                           POPULAR
+                          {priority ? (
+                            <AiOutlineArrowDown className={`inline`} />
+                          ) : (
+                            <AiOutlineArrowUp className={`inline`} />
+                          )}
                         </div>
+
                         <div
                           className={`${
                             !durationfilter ? "_b_active" : ""

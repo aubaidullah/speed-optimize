@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { createCountryListURL, createStateListURL, imgNameByUrl, jpgToWebp } from "../fun";
 import { tw } from "twind";
 import * as Constants from "@/components/Constants";
+import CustomImage from "../Img";
 
 const MultiCarousel2 = dynamic(() => import("react-multi-carousel"));
 
@@ -77,7 +78,7 @@ const InterNationalPackage = ({ data }) => {
                     }
                     alt="kiomoi"
                   /> */}
-                <Image
+                {/* <Image
                   className={tw`rounded-[8px] h-full`}
                   src={
                     item.im.split("~")[0]
@@ -86,7 +87,8 @@ const InterNationalPackage = ({ data }) => {
                   }
                   alt={imgNameByUrl({ url: item.im.split("~")[0] ?? "kiomoi" })}
                   fill
-                />
+                /> */}
+                <CustomImage img_url={item.im.split("~")[0]} className={`rounded-[8px] h-full`} alt={imgNameByUrl({ url: item.im.split("~")[0] ?? "kiomoi" })}/>
               </div>
               <div className="des_cont_">
                   <div className={tw`des_location font-bold`}>{item.nm}</div>

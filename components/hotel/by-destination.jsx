@@ -4,6 +4,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { imgNameByUrl, jpgToWebp } from "../fun";
 import { tw } from "twind";
+import CustomImage from "../Img";
 
 const MultiCarousel2 = dynamic(() => import("react-multi-carousel"));
 
@@ -61,7 +62,12 @@ const HotelByDestination = ({ data }) => {
             <div href={hurl}>
               <h4 className={tw`text-center pb-2 font-bold`}>{item.cname}</h4>
               <div className="des_img_hotel">
-                {item.iurl ? (
+                <CustomImage 
+                  img_url={jpgToWebp({ uri: item.iurl })} 
+                  className={tw`h-full w-[100px]`}
+                  alt={imgNameByUrl({ url: item.iurl })}
+                  />
+                {/* {item.iurl ? (
                   <Image
                     src={jpgToWebp({ uri: item.iurl })}
                     className={tw`h-full w-[100px]`}
@@ -70,7 +76,7 @@ const HotelByDestination = ({ data }) => {
                   />
                 ) : (
                   <img src={item.iurl} alt={item.cname} />
-                )}
+                )} */}
               </div>
             </div>
           </Link>

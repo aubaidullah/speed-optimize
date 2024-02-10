@@ -854,6 +854,12 @@ float: right;
   position: relative;
   content: "\2192" !important;
 }
+.right-custom-btn:hover,.left-custom-btn:hover{
+  background-color: #f06726;
+}
+.right-custom-btn::before:hover{
+  color: white;
+}
 
 .TopRatedTours .right-custom-btn::before {
   line-height: 115%;

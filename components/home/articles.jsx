@@ -52,38 +52,39 @@ const Articles = ({ data }) => {
   const articleRender = data.map(function (item, i) {
     var aurl = createArticleURL({ heading: item.heading, id: item.id });
     // var aurl = "/travel-articles/"+item.heading.trim().replace(/\s+/g,' ').replace(/\s+/g, "-").replace(/--/g,'-').toLowerCase()+"/"+item.id+"/"
-    var d = item.description;
-    var res = d.substring(0, 50);
+    // var d = item.description;
+    // var res = d.substring(0, 50);
     return (
       <div key={i}>
         <div className="col-sm-12 col-xs-12 _cr_mb px-2" key={i}>
-          <div className="top_rated_box _box_shadow _bottom popular_dest">
-            <div className="recent_img">
-              <Image
-                className="img-responsive"
-                src={
-                  item.images.length > 0
-                    ? jpgToWebp({ uri: item.images })
-                    : `${Constants.assets_api}/public/icons/logo-icon.png`
-                }
-                alt={imgNameByUrl({ url: item.images ?? "kiomoi" })}
-                fill
-              />
-            </div>
+          {/* <Link href={aurl}> */}
+            <div className="top_rated_box _box_shadow _bottom popular_dest">
+              <div className="recent_img">
+                <Image
+                  className="img-responsive"
+                  src={
+                    item.images.length > 0
+                      ? jpgToWebp({ uri: item.images })
+                      : `${Constants.assets_api}/public/icons/logo-icon.png`
+                  }
+                  alt={imgNameByUrl({ url: item.images ?? "kiomoi" })}
+                  fill
+                />
+              </div>
 
-            <div className="price_List">
-              <div className="tour_details">
-                <h4 className="my-2">{item.heading}</h4>
-                <div className="t_detail">{ReactHtmlParser(res)} </div>
-                <Link href={aurl}>
-                  <div href={aurl} className="anchor_link _50">
-                    Read Full Story{"  "}
-                    {/* <i className="fa fa-long-arrow-right" aria-hidden="true"></i> */}
-                  </div>
-                </Link>
+              <div className="price_List">
+                <div className="tour_details">
+                  <h4 className="my-2">{item.heading}</h4>
+                  {/* <div className="t_detail">{ReactHtmlParser(res)} </div> */}
+                  <Link href={aurl}>
+                    <div href={aurl} className="anchor_link _50">
+                      Read Full Story{"  "}
+                    </div>
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
+          {/* </Link> */}
         </div>
       </div>
     );
@@ -99,7 +100,7 @@ const Articles = ({ data }) => {
                 className={`title_kiomoi flex items-center justify-between mb-6`}
               >
                 <div className={`2w-full`}>
-                  <h4>Latest Stories</h4>
+                  <h4>Latest Articles</h4>
                   {/* <p>Discover Incredible Hotels</p> */}
                 </div>
                 <div className={`2w-full`}>

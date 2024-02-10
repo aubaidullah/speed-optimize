@@ -5,34 +5,25 @@ import {
   getThemeQuery,
   getMetaQuery,
   getHome,
+  getarticleQuery,
+  getreviewsQuery,
 } from "../../components/Graphql/Queries";
 import client from "../../components/Graphql/service";
-import { getPackages } from "../../redux_fx/actions";
-import { useDispatch } from "react-redux";
-import SearchBar from "@/components/hotel/searchBar";
 import Banner from "@/components/home/banner";
-import Themes from "@/components/home/theme";
 import HolidayTheme from "@/components/holidays/theme";
 import State from "@/components/home/state";
 import HomePackages from "@/components/home/packages";
 import { tw } from "twind";
 import * as Constants from "@/components/Constants";
 import CityPackages from "@/components/holidays/CityPackage";
-import InternationalPackages from "./international-package";
 import InterNationalPackage from "@/components/holidays/International";
+import Articles from "@/components/home/articles";
+import Reviews from "@/components/home/reviews";
 // import CityPackages from "./city-package";
 // import * Constants from "@/components/Constants"
 
 // import Nav from "../components/Nav";
 const Nav = dynamic(() => import("../../components/HomeNav"));
-
-const MobileList = dynamic(() => import("../../components/list_page.mobile"), {
-  ssr: true,
-});
-
-const DeskList = dynamic(() => import("../../components/list_page.mobile"), {
-  ssr: true,
-});
 
 
 
@@ -64,12 +55,12 @@ const CanvasImg = () =>{
               </div>
                 <div className={tw`text-white p-6`}>
                   
-                  <div className={tw` text-[25px]`}>
+                  <div className={tw` text-[25px] lg:hidden`}>
                     Explore Your <br /> Best Vacation
                   </div>                  
-                  <div className={tw`font-light`}>
+                  {/* <div className={tw`font-light`}>
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
-                  </div>
+                  </div> */}
                   <div className={tw`pt-10 text-sm lg:text-lg hidden lg:block`}>
                     <ul className={tw`flex flex-wrap`}>
                       <li className={tw`pb-1 lg:pb-4`} style={{flex:'1 33%'}}>Sikkim</li>
@@ -110,7 +101,7 @@ const BottomBnner = () =>{
     <div className={tw`bg-[#4488E0] h-80 lg:h-40 relative rounded-[5rem] lg:rounded-full`}>
       <div className="flex items-center h-full flex-wrap">
         <div className={tw`w-full lg:w-1/2`}>
-              <div className={tw`absolute top-[-15%]`}>
+              <div className={tw`absolute top-[-10%] lg:top-[-15%]`}>
                 <img
                     alt="icon"
                     className={`lg:inline w-[80%] m-auto lg:m-0`}
@@ -124,8 +115,8 @@ const BottomBnner = () =>{
             <div className={tw`text-xl text-center `}>
               <p className={tw`text-[#FFCC00]`}>Hassle free 24x7 travel assistance</p>
               <div className={tw`text-white pt-4`}>
-                <p className={tw`font-bold text-2xl`}>9650687940</p>
-                <p>planmytrip@kiomoi</p>
+                <p className={tw`font-bold text-2xl lg:text-2xl`}>9650687940</p>
+                <p>info@kiomoi.com</p>
               </div>
             </div>
         </div>
@@ -138,7 +129,7 @@ const BottomBnner = () =>{
 
 
 
-const HolidayPage = ({home,theme}) =>{
+const HolidayPage = ({home,theme,articles,reviews}) =>{
   // let img = "https://res.cloudinary.com/kmadmin/image/upload/v1633196081/kiomoi/1633196080048.jpg"
    let img = "https://res.cloudinary.com/kmadmin/image/upload/v1552993397/kiomoi/Pelling/Pelling-2.jpg";
     return <>
@@ -152,6 +143,8 @@ const HolidayPage = ({home,theme}) =>{
         <CityPackages data={home.cities}/>
         {/* <InternationalPackages data={home.states} /> */}
         <HomePackages data={home} holiday={true}/>
+        <Articles data={articles?.articles} />
+        <Reviews data={reviews?.reviews} /> 
         <BottomBnner />
     </>
 }
@@ -170,10 +163,44 @@ export async function getServerSideProps(context) {
     variables: { input: { av: "", id: "", pt: "" } },
   });
 
+  const res_article = await client.query({
+    query: getarticleQuery,
+    variables: {
+      input: {
+        av: "1.3",
+        id: "string",
+        pt: "WEBSITE",
+        geoid: 0,
+        pagenum: 1,
+        pid: 0,
+        size: 20,
+        type: "0",
+      },
+    },
+  });
+
+  const res_review = await client.query({
+    query: getreviewsQuery,
+    variables: {
+      input: {
+        av: "1.3",
+        id: "0",
+        pt: "WEBSITE",
+        geoid: 0,
+        pagenum: 1,
+        pid: 0,
+        size: 6,
+        type: "",
+      },
+    },
+  });
+
   return {
     props: {
       home: res.data.home.output,
       theme: res_theme.data.alltheme.output,
+      articles: res_article.data.articles.output,
+      reviews: res_review.data.reviews.output,      
     },
   };  
 
