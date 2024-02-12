@@ -84,9 +84,9 @@ const ListPageMobile = ({
   const [overviewlimit, setOverviewlimit] = useState(1000);
   const [overview, setOverview] = useState(region?.longDesc?.length > 20 ? region?.longDesc : region?.desc ?? "");
   const [isshow, setIsshow] = useState(false);
-  const [pricefilter, setPricefilter] = useState(1);
+  const [pricefilter, setPricefilter] = useState(0);
   const [priority,setPriority] = useState(1)
-  const [durationfilter, setDurationfilter] = useState(1);
+  const [durationfilter, setDurationfilter] = useState(0);
   const [_places, set_Places] = useState([]);
   const [_themes, set_Themes] = useState([]);
   const [sendquery, setSendquery] = useState(false);
@@ -275,33 +275,50 @@ const ListPageMobile = ({
   );
   // console.log(data.length);
 
-  if (pricefilter) {
-    data = data.sort((a, b) => a.finalprice - b.finalprice);
-  } else {
-    data = data.sort((a, b) => b.finalprice - a.finalprice);
-    // data = data.sort((a,b)=>a.finalprice < b.finalprice)
-  }
 
 
   if (priority) {
-    data = data.sort((a, b) => a.priority - b.priority);
-  } else {
-    data = data.sort((a, b) => b.priority - a.priority);
-  }
+    // setPrice(0)
+    // setDurationfilter(0)
+    data = data.sort((a, b) => a.priority - b.priority).sort((a,b) => a.priority === b.priority?a.finalprice - b.finalprice:"");
+  } 
+  // else {
+  //   data = data.sort((a, b) => b.priority - a.priority);
+  // }
+
+  if (pricefilter) {
+    // setDurationfilter(0)
+    // setPriority(0)
+    data = data.sort((a, b) => a.finalprice - b.finalprice);
+  } 
+  // else {
+  //   data = data.sort((a, b) => b.finalprice - a.finalprice);
+  //   // data = data.sort((a,b)=>a.finalprice < b.finalprice)
+  // }
+
+
+  // if (durationfilter) {
+  //   // setPriority(0)
+  //   // setPriority(0)
+  //   data = data.sort((a, b) => a.nights - b.nights);
+  // } else {
+  //   data = data.sort((a, b) => b.nights - a.nights);
+  // }
 
   if (durationfilter) {
-    if (pricefilter) data = data.sort((a, b) => a.nights - b.nights);
+    data = data.sort((a, b) => b.nights - a.nights);
     // else{
     //     data = data.sort((a,b)=>a.nights < b.nights)
     // }
-  } else {
-    // setPricefilter(0)
-    if (!pricefilter) {
-      data = data.sort((a, b) => a.nights - b.nights);
-    } else {
-      data = data.sort((a, b) => b.nights - a.nights);
-    }
-  }
+  } 
+  // else {
+  //   // setPricefilter(0)
+  //   if (!pricefilter) {
+  //     data = data.sort((a, b) => a.nights - b.nights);
+  //   } else {
+  //     data = data.sort((a, b) => b.nights - a.nights);
+  //   }
+  // }
 
   // },[pricefilter])
 
@@ -567,7 +584,7 @@ const ListPageMobile = ({
                           className={`${
                             !priority ? "_b_active" : ""
                           } p-2 sort_w cursor-pointer`}
-                          onClick={() => setPriority(!priority)}
+                          onClick={() => {setPricefilter(0),setDurationfilter(0), setPriority(!priority)}}
                         >
                           POPULAR
                           {priority ? (
@@ -581,7 +598,7 @@ const ListPageMobile = ({
                           className={`${
                             !durationfilter ? "_b_active" : ""
                           } p-2  sort_w cursor-pointer`}
-                          onClick={() => setDurationfilter(!durationfilter)}
+                          onClick={() => {setPricefilter(0),setPriority(0), setDurationfilter(!durationfilter)}}
                         >
                           DURATION
                           {durationfilter ? (
@@ -594,7 +611,7 @@ const ListPageMobile = ({
                           className={`${
                             !pricefilter ? "_b_active" : ""
                           } p-2 sort_w cursor-pointer`}
-                          onClick={() => setPricefilter(!pricefilter)}
+                          onClick={() => {setPriority(0), setDurationfilter(0), setPricefilter(!pricefilter)}}
                         >
                           PRICE
                           {pricefilter ? (
