@@ -18,6 +18,7 @@ import {
   createTGCityURL,
   createTGCountryURL,
   createTGStateURL,
+  createThemeStateListURL,
   toTitleCase,
 } from "./fun";
 import Link from "next/link";
@@ -76,12 +77,13 @@ const ListPageMobile = ({
   articles = undefined,
   cities = undefined,
   desc = undefined,
-  theme_desc = undefined  
+  theme_desc = undefined,
+  pthemes = undefined
 }) => {
   const [filter, setFilter] = useState({ keyword: "" });
   const [limit, setLimit] = useState(10);
   const [pcount,setPcount] = useState(0)
-  const [overviewlimit, setOverviewlimit] = useState(1000);
+  const [overviewlimit, setOverviewlimit] = useState(500);
   const [overview, setOverview] = useState(region?.longDesc?.length > 20 ? region?.longDesc : region?.desc ?? "");
   const [isshow, setIsshow] = useState(false);
   const [pricefilter, setPricefilter] = useState(0);
@@ -224,7 +226,7 @@ const ListPageMobile = ({
 
   useEffect(() => {
     if (region !== null || theme_desc !=undefined) {
-      if (overviewlimit == 1000) {
+      if (overviewlimit == 500) {
         theme_desc == undefined ?
         setOverview(d.substring(0, overviewlimit))
         :setOverview(theme_desc.substring(0, overviewlimit))
@@ -499,7 +501,7 @@ const ListPageMobile = ({
                   
                   
                   
-                  {overviewlimit == 250 || overviewlimit == 1000 ? (
+                  {overviewlimit == 250 || overviewlimit == 500 ? (
                     <a
                       onClick={() => setOverviewlimit(50000)}
                       className="_plus_more"
@@ -508,7 +510,7 @@ const ListPageMobile = ({
                     </a>
                   ) : (
                     <a
-                      onClick={() => setOverviewlimit(1000)}
+                      onClick={() => setOverviewlimit(500)}
                       className="_plus_more"
                     >
                       -less
@@ -544,6 +546,19 @@ const ListPageMobile = ({
             )}
 
             <div className={tw`w-full lg:w-3/4 `}>
+            <div className={tw`mb-2`}>
+             {page_type == "STATE"?
+              <div className={tw`flex flex-wrap gap-3`}>
+                {pthemes.map((e,index)=>{
+                  return (
+                    <Link href={createThemeStateListURL({statename:region?.name,id:router.query.id,themeName:e})}>
+                      <p className={tw` border border-gray-500 px-2 py-1 font-semibold text-slate-600 rounded-lg`}>{e} tour packages</p>
+                    </Link>
+                  )
+                })}
+              </div>  
+            :""}
+            </div>
               <div className={``}>
                 <div
                   className={`flex items-center justify-between mb-6 pb-2 border-b`}

@@ -38,6 +38,7 @@ const StatePackages = ({
   faqs,
   articles,
   cities,
+  pthemes
 }) => {
   const [isMobile, setIsMobile] = useState(
     headers["user-agent"].includes("android") ||
@@ -89,6 +90,7 @@ const StatePackages = ({
           faqs={faqs}
           articles={articles}
           cities={cities}
+          pthemes={pthemes}
         />
       </>
     );
@@ -109,6 +111,7 @@ const StatePackages = ({
           faqs={faqs}
           articles={articles}
           cities={cities}
+          pthemes={pthemes}
         />
       </>
     );
@@ -254,6 +257,7 @@ export async function getServerSideProps(context) {
       faqs: res.data.allpackage.output.faqs ?? [],
       articles,
       cities,
+      pthemes: res.data.allpackage.output.pthemes ?? [],      
     },
   };
 }

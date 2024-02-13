@@ -37,6 +37,7 @@ const ThemeStatePackages = ({
   faqs,
   articles,
   cities,
+  pthemes
 }) => {
   const [isMobile, setIsMobile] = useState(
     headers["user-agent"].includes("android") ||
@@ -73,6 +74,7 @@ const ThemeStatePackages = ({
           faqs={faqs}
           articles={articles}
           cities={cities}
+          pthemes = {pthemes}
         />
       </>
     );
@@ -93,6 +95,7 @@ const ThemeStatePackages = ({
           faqs={faqs}
           articles={articles}
           cities={cities}
+          pthemes = {pthemes}
         />
       </>
     );
@@ -116,7 +119,7 @@ export async function getServerSideProps(context) {
     name: context.query.package.replace(/-/g, " "),
     // name:'west bengal',
     pt: "WEBSITE",
-    theme: toTitleCase(context.query.theme),
+    theme: toTitleCase(context.query.theme.replace(/-/g, " ")),
     type: "STATE",
   };
   // console.log(payload)
@@ -209,6 +212,7 @@ export async function getServerSideProps(context) {
       travel: res_travel.data.travel.output,
       reviews: res.data.allpackage.output.reviews ?? [],
       faqs: res.data.allpackage.output.faqs ?? [],
+      pthemes: res.data.allpackage.output.pthemes ?? [],
       articles,
       cities,
     },
