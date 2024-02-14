@@ -71,7 +71,7 @@ export const createStateListURL = ({ statename, id }) => {
 };
 
 export const createThemeStateListURL = ({ statename,themeName, id }) => {
-  return `/holidays/${themeName.trim().replace(/\s+/g," ").replace(/\s+/g, "-").toLowerCase()}-tour-packages-in-${statename
+  return `/holidays/${themeName?.trim().replace(/\s+/g," ").replace(/\s+/g, "-").toLowerCase()}-tour-packages-in-${statename
     ?.replace(/\s+/g, " ")
     .replace(/\s+/g, "-")
     .toLowerCase()}-${id}2`;

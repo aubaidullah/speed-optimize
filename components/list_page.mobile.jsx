@@ -403,7 +403,6 @@ const ListPageMobile = ({
         return () => clearInterval(interval);
       },[])
 
-
         return (
     <>
       <Meta meta={meta} />
@@ -551,8 +550,8 @@ const ListPageMobile = ({
               <div className={tw`flex flex-wrap gap-3`}>
                 {pthemes.map((e,index)=>{
                   return (
-                    <Link href={createThemeStateListURL({statename:region?.name,id:router.query.id,themeName:e})}>
-                      <p className={tw` border border-gray-500 px-2 py-1 font-semibold text-slate-600 rounded-lg`}>{e} tour packages</p>
+                    <Link key={index} href={createThemeStateListURL({statename:region?.name,id:router.query.id,themeName:e.theme})}>
+                      <p className={tw` border border-gray-500 px-2 py-1 font-semibold text-slate-600 rounded-lg`}>{e.theme} tour packages</p>
                     </Link>
                   )
                 })}
