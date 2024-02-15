@@ -18,6 +18,7 @@ import {
   createTGCityURL,
   createTGCountryURL,
   createTGStateURL,
+  createThemeStateListURL,
   toTitleCase,
 } from "./fun";
 import Link from "next/link";
@@ -76,17 +77,18 @@ const ListPageMobile = ({
   articles = undefined,
   cities = undefined,
   desc = undefined,
-  theme_desc = undefined  
+  theme_desc = undefined,
+  pthemes = undefined
 }) => {
   const [filter, setFilter] = useState({ keyword: "" });
   const [limit, setLimit] = useState(10);
   const [pcount,setPcount] = useState(0)
-  const [overviewlimit, setOverviewlimit] = useState(1000);
+  const [overviewlimit, setOverviewlimit] = useState(500);
   const [overview, setOverview] = useState(region?.longDesc?.length > 20 ? region?.longDesc : region?.desc ?? "");
   const [isshow, setIsshow] = useState(false);
-  const [pricefilter, setPricefilter] = useState(1);
+  const [pricefilter, setPricefilter] = useState(0);
   const [priority,setPriority] = useState(1)
-  const [durationfilter, setDurationfilter] = useState(1);
+  const [durationfilter, setDurationfilter] = useState(0);
   const [_places, set_Places] = useState([]);
   const [_themes, set_Themes] = useState([]);
   const [sendquery, setSendquery] = useState(false);
@@ -224,7 +226,7 @@ const ListPageMobile = ({
 
   useEffect(() => {
     if (region !== null || theme_desc !=undefined) {
-      if (overviewlimit == 1000) {
+      if (overviewlimit == 500) {
         theme_desc == undefined ?
         setOverview(d.substring(0, overviewlimit))
         :setOverview(theme_desc.substring(0, overviewlimit))
@@ -275,33 +277,50 @@ const ListPageMobile = ({
   );
   // console.log(data.length);
 
-  if (pricefilter) {
-    data = data.sort((a, b) => a.finalprice - b.finalprice);
-  } else {
-    data = data.sort((a, b) => b.finalprice - a.finalprice);
-    // data = data.sort((a,b)=>a.finalprice < b.finalprice)
-  }
 
 
   if (priority) {
-    data = data.sort((a, b) => a.priority - b.priority);
-  } else {
-    data = data.sort((a, b) => b.priority - a.priority);
-  }
+    // setPrice(0)
+    // setDurationfilter(0)
+    data = data.sort((a, b) => a.priority - b.priority).sort((a,b) => a.priority === b.priority?a.finalprice - b.finalprice:"");
+  } 
+  // else {
+  //   data = data.sort((a, b) => b.priority - a.priority);
+  // }
+
+  if (pricefilter) {
+    // setDurationfilter(0)
+    // setPriority(0)
+    data = data.sort((a, b) => a.finalprice - b.finalprice);
+  } 
+  // else {
+  //   data = data.sort((a, b) => b.finalprice - a.finalprice);
+  //   // data = data.sort((a,b)=>a.finalprice < b.finalprice)
+  // }
+
+
+  // if (durationfilter) {
+  //   // setPriority(0)
+  //   // setPriority(0)
+  //   data = data.sort((a, b) => a.nights - b.nights);
+  // } else {
+  //   data = data.sort((a, b) => b.nights - a.nights);
+  // }
 
   if (durationfilter) {
-    if (pricefilter) data = data.sort((a, b) => a.nights - b.nights);
+    data = data.sort((a, b) => b.nights - a.nights);
     // else{
     //     data = data.sort((a,b)=>a.nights < b.nights)
     // }
-  } else {
-    // setPricefilter(0)
-    if (!pricefilter) {
-      data = data.sort((a, b) => a.nights - b.nights);
-    } else {
-      data = data.sort((a, b) => b.nights - a.nights);
-    }
-  }
+  } 
+  // else {
+  //   // setPricefilter(0)
+  //   if (!pricefilter) {
+  //     data = data.sort((a, b) => a.nights - b.nights);
+  //   } else {
+  //     data = data.sort((a, b) => b.nights - a.nights);
+  //   }
+  // }
 
   // },[pricefilter])
 
@@ -383,7 +402,6 @@ const ListPageMobile = ({
           }, MINUTE_MS.current);
         return () => clearInterval(interval);
       },[])
-
 
         return (
     <>
@@ -482,7 +500,7 @@ const ListPageMobile = ({
                   
                   
                   
-                  {overviewlimit == 250 || overviewlimit == 1000 ? (
+                  {overviewlimit == 250 || overviewlimit == 500 ? (
                     <a
                       onClick={() => setOverviewlimit(50000)}
                       className="_plus_more"
@@ -491,7 +509,7 @@ const ListPageMobile = ({
                     </a>
                   ) : (
                     <a
-                      onClick={() => setOverviewlimit(1000)}
+                      onClick={() => setOverviewlimit(500)}
                       className="_plus_more"
                     >
                       -less
@@ -527,6 +545,19 @@ const ListPageMobile = ({
             )}
 
             <div className={tw`w-full lg:w-3/4 `}>
+            <div className={tw`mb-2`}>
+             {page_type == "STATE"?
+              <div className={tw`flex flex-wrap gap-3`}>
+                {pthemes.map((e,index)=>{
+                  return (
+                    <Link key={index} href={createThemeStateListURL({statename:region?.name,id:router.query.id,themeName:e.theme})}>
+                      <p className={tw` border border-gray-500 px-2 py-1 font-semibold text-slate-600 rounded-lg`}>{e.theme} tour packages</p>
+                    </Link>
+                  )
+                })}
+              </div>  
+            :""}
+            </div>
               <div className={``}>
                 <div
                   className={`flex items-center justify-between mb-6 pb-2 border-b`}
@@ -567,7 +598,7 @@ const ListPageMobile = ({
                           className={`${
                             !priority ? "_b_active" : ""
                           } p-2 sort_w cursor-pointer`}
-                          onClick={() => setPriority(!priority)}
+                          onClick={() => {setPricefilter(0),setDurationfilter(0), setPriority(!priority)}}
                         >
                           POPULAR
                           {priority ? (
@@ -581,7 +612,7 @@ const ListPageMobile = ({
                           className={`${
                             !durationfilter ? "_b_active" : ""
                           } p-2  sort_w cursor-pointer`}
-                          onClick={() => setDurationfilter(!durationfilter)}
+                          onClick={() => {setPricefilter(0),setPriority(0), setDurationfilter(!durationfilter)}}
                         >
                           DURATION
                           {durationfilter ? (
@@ -594,7 +625,7 @@ const ListPageMobile = ({
                           className={`${
                             !pricefilter ? "_b_active" : ""
                           } p-2 sort_w cursor-pointer`}
-                          onClick={() => setPricefilter(!pricefilter)}
+                          onClick={() => {setPriority(0), setDurationfilter(0), setPricefilter(!pricefilter)}}
                         >
                           PRICE
                           {pricefilter ? (

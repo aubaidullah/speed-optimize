@@ -38,6 +38,7 @@ const StatePackages = ({
   faqs,
   articles,
   cities,
+  pthemes
 }) => {
   const [isMobile, setIsMobile] = useState(
     headers["user-agent"].includes("android") ||
@@ -70,7 +71,6 @@ const StatePackages = ({
       // return <ListPage data = {data}/>
     }
   }, [isMobile]);
-
   if (isMobile == true) {
     // return <ListPageMobile data = {data}/>
     return (
@@ -89,6 +89,7 @@ const StatePackages = ({
           faqs={faqs}
           articles={articles}
           cities={cities}
+          pthemes={pthemes}
         />
       </>
     );
@@ -109,6 +110,7 @@ const StatePackages = ({
           faqs={faqs}
           articles={articles}
           cities={cities}
+          pthemes={pthemes}
         />
       </>
     );
@@ -240,7 +242,6 @@ export async function getServerSideProps(context) {
   // meta.data.meta.output.tags.title = meta.data.meta.output.tags.title.replace(/<STATE>/g,context.query.package.replace(/-/g,' ')).replace(/<PRICE>/g,finalprice).replace(/\[State\ Name\]/g,context.query.package.replace(/-/g,' '))
 
   // meta.data.meta.output.tags.title = meta.data.meta.output.package
-
   return {
     props: {
       data,
@@ -254,6 +255,7 @@ export async function getServerSideProps(context) {
       faqs: res.data.allpackage.output.faqs ?? [],
       articles,
       cities,
+      pthemes: res.data.allpackage.output.pthemes ?? [],      
     },
   };
 }

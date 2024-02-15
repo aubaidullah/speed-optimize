@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { imgNameByUrl, jpgToWebp, strToUrl } from "../../../components/fun";
 import { BsCheckCircle } from "react-icons/bs";
 import dynamic from "next/dynamic";
+import CustomImage from "@/components/Img";
 
 const HotelDetail = ({ hotel, meta }) => {
   const BreadCrumbs = dynamic(() => import("@/components/breadcrumbs"));
@@ -168,7 +169,13 @@ const HotelDetail = ({ hotel, meta }) => {
                               layout="fill"
                             />
                           ) : (
-                            ""
+                            <CustomImage 
+                              className="img ht_img"
+                              alt={imgNameByUrl({
+                                    url: hotel.hotel.images.split(",")[0],
+                                  })}
+                              img_url={""}
+                            />
                           )}
                         </li>
                       </div>
@@ -395,12 +402,10 @@ const HotelDetail = ({ hotel, meta }) => {
 
 export async function getServerSideProps(context) {
   let _id = context.query.id;
-  console.log(_id);
   const res = await client.query({
     query: getHotelDetail,
     variables: { input: { id: _id } },
   });
-  console.log(res.data.hotelDetail.output);
   const hotel = res.data.hotelDetail.output;
 
   const meta = await client.query({
@@ -418,7 +423,6 @@ export async function getServerSideProps(context) {
   });
   let { name: hotelname, price, cityname } = meta.data.meta.output.hotel;
 
-  // let {finalprice,images} = meta.data.meta.output.package
   price = `₹${price} `;
 
   const metas = {
