@@ -61,9 +61,11 @@ const Banner = ({ data,holiday=false }) => {
               // className={`img-responsive_banner w-full ${holiday?'rounded-none':' rounded-br-[50%] rounded-bl-[50%]'}`}
               alt="kiomoi banner"
               src={jpgToWebp({ uri: data[0]?.i??data })}
-              width={500}
-              height={500}
+              width={1000}
+              height={800}
+              // width={`100%`}
               loading="eager"
+              // fill
             />
           </div>
         </div>
