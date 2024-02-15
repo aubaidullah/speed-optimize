@@ -4,6 +4,7 @@ import { tw } from "twind";
 
 
 const CustomImage = ({img_url,alt,className="",style=""}) =>{
+    console.log(img_url)
     return img_url?<Image
         className={className}
         style={style}

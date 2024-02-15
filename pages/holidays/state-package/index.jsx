@@ -71,7 +71,6 @@ const StatePackages = ({
       // return <ListPage data = {data}/>
     }
   }, [isMobile]);
-
   if (isMobile == true) {
     // return <ListPageMobile data = {data}/>
     return (
@@ -243,7 +242,6 @@ export async function getServerSideProps(context) {
   // meta.data.meta.output.tags.title = meta.data.meta.output.tags.title.replace(/<STATE>/g,context.query.package.replace(/-/g,' ')).replace(/<PRICE>/g,finalprice).replace(/\[State\ Name\]/g,context.query.package.replace(/-/g,' '))
 
   // meta.data.meta.output.tags.title = meta.data.meta.output.package
-
   return {
     props: {
       data,
