@@ -2,7 +2,7 @@
 export const api = "https://admin.kiomoi.com";
 // export const api = "https://admintest.kiomoi.com"
 
-export const assets_api = "https://assets.kiomoi.com"
+export const assets_api = "https://devassets.kiomoi.com"
 
 // export const assets_api = "https://assets.kiomoi.com";
 // export const assets_api = "http://localhost:3000";
