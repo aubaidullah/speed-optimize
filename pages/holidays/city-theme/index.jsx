@@ -75,6 +75,7 @@ const ThemeStatePackages = ({
           articles={articles}
           cities={cities}
           pthemes = {pthemes}
+          theme_desc={meta.theme.description}
         />
       </>
     );
@@ -96,6 +97,7 @@ const ThemeStatePackages = ({
           articles={articles}
           cities={cities}
           pthemes = {pthemes}
+          theme_desc={meta.theme.description}
         />
       </>
     );
@@ -134,6 +136,7 @@ export async function getServerSideProps(context) {
   const region = res.data.allpackage.output.region ?? null;
   const places = res.data.allpackage.output.fcities;
   const cities = res.data.allpackage.output.ncities;
+  const theme_meta = res.data.allpackage.output.theme;
 
   headers["user-agent"] = headers["user-agent"].toLocaleLowerCase();
 
@@ -159,24 +162,25 @@ export async function getServerSideProps(context) {
   finalprice = `₹${finalprice} `;
   const metas = {
     title:
-      region.metaTitle ??
+    theme_meta.metaTitle ??
       meta.data.meta.output.tags.title
         .replace(/<STATE>/g, context.query.package.replace(/-/g, " "))
         .replace(/<PRICE>/g, finalprice)
         .replace(/\[State\ Name\]/g, context.query.package.replace(/-/g, " ")),
     longDesc:
-      region.metaDesc ??
+    theme_meta.metaDesc ??
       meta.data.meta.output.tags.longDesc.replace(
         /<STATE>/g,
         context.query.package.replace(/-/g, " "),
       ),
     keywords:
-      region.metaKeywords ??
+    theme_meta.metaKeywords ??
       meta.data.meta.output.tags.longDesc.replace(
         /<STATE>/g,
         context.query.package.replace(/-/g, " "),
       ),
     image: images,
+    theme:theme_meta
   };
 
   payload = {

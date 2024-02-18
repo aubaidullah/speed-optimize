@@ -17,7 +17,8 @@ import {
   createTGStateURL,
   jpgToWebp,
 } from "../fun";
-
+import dynamic from "next/dynamic";
+const MultiCarousel = dynamic(() => import("react-multi-carousel"));
 const Banner = ({ data,holiday=false }) => {
   // const Image = dynamic(() => import('next/image').then((mod)=>mod.Image))
   // const Link = dynamic(() => import('next/link').then((mod)=>mod.Link))
@@ -48,6 +49,31 @@ const Banner = ({ data,holiday=false }) => {
     } else setResult({});
   };
   // let img = "https://res.cloudinary.com/kmadmin/image/upload/v1552993397/kiomoi/Pelling/Pelling-2.jpg&w=1920&q=75";
+
+    const responsive = {
+      desktop: {
+        breakpoint: {
+          max: 3000,
+          min: 1024
+        },
+        items: 1
+      },
+      mobile: {
+        breakpoint: {
+          max: 464,
+          min: 0
+        },
+        items: 1
+      },
+      tablet: {
+        breakpoint: {
+          max: 1024,
+          min: 464
+        },
+        items: 1
+      }
+    };
+
   return (
     <>
       <div
@@ -55,18 +81,54 @@ const Banner = ({ data,holiday=false }) => {
       >
         <div>
           <div>
-            <Image
-              className={`img-responsive_banner ${!holiday?'rounded-bl-[50%] rounded-br-[50%]':''}`}
-              // className={`img-responsive_banner ${holiday?'rounded-none':'rounded-bl-[50%] rounded-br-[50%]'}`}
-              // className={`img-responsive_banner w-full ${holiday?'rounded-none':' rounded-br-[50%] rounded-bl-[50%]'}`}
-              alt="kiomoi banner"
-              src={jpgToWebp({ uri: data[0]?.i??data })}
-              width={1000}
-              height={800}
-              // width={`100%`}
-              loading="eager"
-              // fill
-            />
+            <MultiCarousel
+              customTransition="transform 300ms ease-in-out"
+              additionalTransfrom={0}
+              arrows={false}
+              autoPlay
+              // autoPlaySpeed={3000}
+              centerMode={false}
+              className=""
+              dotListClass=""
+              // draggable
+              focusOnSelect={false}
+              infinite
+              itemClass=""
+              keyBoardControl
+              minimumTouchDrag={80}
+              pauseOnHover
+              renderArrowsWhenDisabled={false}
+              renderButtonGroupOutside={false}
+              // renderDotsOutside
+              nav
+              responsive={responsive}
+              rewind={false}
+              rewindWithAnimation={false}
+              rtl={false}
+              shouldResetAutoplay
+              // showDots
+              sliderClass=""
+              slidesToSlide={1}
+              // swipeable
+              // rtl={false}
+              // centerMode
+          >
+              {/* {themeRender} */}
+              {data.map((e,index)=>{
+                  return <Image
+                  className={`img-responsive_banner ${!holiday?'lg:rounded-bl-[50%] lg:rounded-br-[50%]':''}`}
+                  alt="kiomoi banner"
+                  src={jpgToWebp({ uri: e?.i??e })}
+                  width={1000}
+                  height={800}
+                  loading="eager"
+                  // fill
+              />
+              })
+
+            }
+          </MultiCarousel>
+            
           </div>
         </div>
       </div>
