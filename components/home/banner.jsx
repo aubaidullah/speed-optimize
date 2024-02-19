@@ -18,7 +18,7 @@ import {
   jpgToWebp,
 } from "../fun";
 import dynamic from "next/dynamic";
-const MultiCarousel = dynamic(() => import("react-multi-carousel"));
+// const MultiCarousel = dynamic(() => import("react-multi-carousel"));
 const Banner = ({ data,holiday=false }) => {
   // const Image = dynamic(() => import('next/image').then((mod)=>mod.Image))
   // const Link = dynamic(() => import('next/link').then((mod)=>mod.Link))
@@ -81,53 +81,22 @@ const Banner = ({ data,holiday=false }) => {
       >
         <div>
           <div>
-            <MultiCarousel
-              customTransition="transform 300ms ease-in-out"
-              additionalTransfrom={0}
-              arrows={false}
-              autoPlay
-              // autoPlaySpeed={3000}
-              centerMode={false}
-              className=""
-              dotListClass=""
-              // draggable
-              focusOnSelect={false}
-              infinite
-              itemClass=""
-              keyBoardControl
-              minimumTouchDrag={80}
-              pauseOnHover
-              renderArrowsWhenDisabled={false}
-              renderButtonGroupOutside={false}
-              // renderDotsOutside
-              nav
-              responsive={responsive}
-              rewind={false}
-              rewindWithAnimation={false}
-              rtl={false}
-              shouldResetAutoplay
-              // showDots
-              sliderClass=""
-              slidesToSlide={1}
-              // swipeable
-              // rtl={false}
-              // centerMode
-          >
-              {/* {themeRender} */}
-              {data.map((e,index)=>{
-                  return <Image
-                  className={`img-responsive_banner ${!holiday?'lg:rounded-bl-[50%] lg:rounded-br-[50%]':''}`}
-                  alt="kiomoi banner"
-                  src={jpgToWebp({ uri: e?.i??e })}
-                  width={1000}
-                  height={800}
-                  loading="eager"
-                  // fill
-              />
-              })
 
-            }
-          </MultiCarousel>
+              {
+                data.map((e,index)=>{
+                    return <Image key={index}
+                    className={`img-responsive_banner ${!holiday?'lg:rounded-bl-[50%] lg:rounded-br-[50%]':''}`}
+                    alt="kiomoi banner"
+                    src={jpgToWebp({ uri: e?.i??e })}
+                    width={1000}
+                    height={800}
+                    loading="eager"
+                    // fill
+                />
+                })
+              }
+
+            
             
           </div>
         </div>
