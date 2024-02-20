@@ -184,6 +184,8 @@ img {
   .img-responsive_banner {
     object-fit: unset;
     height: 300px;
+    /* -webkit-transform: scaleX(1);
+    transform: scaleX(1); */
   }
 
   ._service_list {
