@@ -793,8 +793,9 @@ const ListPageMobile = ({
             ) : (
               ""
             )}
+            {/* page_type == "STATE" ||  */}
 
-            {page_type == "STATE" || page_type == "CITY" ? (
+            {page_type == "CITY" ? (
               <>{articles.length ? <Articles data={articles} /> : ""}</>
             ) : (
               ""

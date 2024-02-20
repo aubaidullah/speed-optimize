@@ -75,7 +75,7 @@ const nextConfig = {
         destination: "/travel-guide/IndexPage"
       },                  
       {
-        source: "/holidays/:theme-tour-packages-in-:package-:id:pre([2]{1})",
+        source: "/holidays/:theme-tour-packages-in-:package-:id(\\d+):pre([2]{1})",
         destination: "/holidays/city-theme",
       },
       {
