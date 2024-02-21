@@ -487,7 +487,7 @@ const ListPageMobile = ({
                   ""
                 ) : (
                   <h1 className={`text-2xl pb-2`}>
-                    {region?.name?? toTitleCase(router.query.theme) }  Tour packages
+                    {region?.name?? toTitleCase(router?.query?.theme) }  Tour packages
                   </h1>
                 )}
 
@@ -788,18 +788,19 @@ const ListPageMobile = ({
             ) : (
               ""
             )}
+
+            {/* {page_type == "STATE" || page_type == "CITY" ? (
+              <>{articles.length ? <Articles data={articles} /> : ""}</>
+            ) : (
+              ""
+            )} */}
+
             {reviews != undefined && reviews?.length != 0 ? (
               <Reviews data={reviews} />
             ) : (
               ""
             )}
-            {/* page_type == "STATE" ||  */}
 
-            {page_type == "CITY" ? (
-              <>{articles.length ? <Articles data={articles} /> : ""}</>
-            ) : (
-              ""
-            )}
           </>
         ) : (
           ""

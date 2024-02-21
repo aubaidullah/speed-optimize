@@ -122,6 +122,7 @@ export async function getServerSideProps(context) {
   //     pt:'WEBSITE',
   //     type:'State'
   // }
+  console.log(context.query)
   let payload = {
     av: "1.3",
     id: context.query.id,
