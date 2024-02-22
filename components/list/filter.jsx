@@ -29,27 +29,28 @@ const FilterBy = ({
   // f.filter(package=>package.name.includes('Shimla'))
   // const filtering = useSelector(state=>state.package.package)
   const dispatch = useDispatch();
-
+  
   const router = useRouter();
   // console.log(router)
-
+  
   const theme_ref = useRef([]);
-
+  
   const [maxprice, setMaxprice] = useState(5000);
   const [minprice, setMinprice] = useState(1000);
   const [dur, setDur] = useState(false);
   const [fav, setFav] = useState(false);
   const [thm, setThm] = useState(router.query?.theme ?? false);
-
-  useEffect(() => {
-    if (router.query?.theme != undefined) {
-      // set_Themes
-      set_Themes(router.query?.theme.split(",").map((e) => toTitleCase(e)));
-      theme_ref.current = router.query?.theme.split(",");
-    }
-
-    // if (router.query?.)
-  });
+  
+  // useEffect(() => {
+  //   if (router.query?.theme != undefined) {
+  //     // set_Themes
+  //     set_Themes(router.query?.theme.split(",").map((e) => toTitleCase(e)));
+  //     theme_ref.current = router.query?.theme.split(",");
+  //   }
+    
+  //   // if (router.query?.)
+  // });
+  // return <h1>Filter</h1>
   // console.log(router.query)
 
   const setDurationFilter = (f, l) => {
@@ -354,12 +355,6 @@ const FilterBy = ({
           )}
           {page_type == "STATE" || page_type == "ALL" ? (
             <div className={tw`border-t border-gray-200 py-4`}>
-              {/* <div className={tw`flex items-center justify-between mb-4`}>
-                        <h2 className={`Price_name`}>
-                        Themes of Trip
-                        </h2> 
-                    </div> */}
-
               <div className={tw`flex items-center justify-between`}>
                 <div
                   className={`flex justify-between items-center w-full cursor-pointer`}

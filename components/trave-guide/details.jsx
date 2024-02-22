@@ -34,6 +34,7 @@ import {
 // import BreadCrumbs from "../breadcrumbs";
 import dynamic from "next/dynamic";
 import TopCities from "./top_cities";
+import CustomImage from "../Img";
 // import ParseHtml from '../parseToHtml';
 const ParseHtml = dynamic(() => import("../parseToHtml"));
 const BreadCrumbs = dynamic(() => import("../breadcrumbs"));
@@ -134,11 +135,10 @@ const TravelGuideDetailComp = ({
   const imagesRender = data?.images?.map((img, index) => {
     return (
       <div key={index}>
-        <Image
-          src={jpgToWebp({ uri: img.i })}
-          alt={imgNameByUrl({ url: img.i })}
-          className={`img rounded-[8px]`}
-          layout="fill"
+        <CustomImage 
+        img_url={jpgToWebp({ uri: img.i })}
+        alt={imgNameByUrl({ url: img.i })}
+        className={`img rounded-[8px]`}        
         />
       </div>
     );
@@ -183,11 +183,10 @@ const TravelGuideDetailComp = ({
         {/* <Image /> */}
         <div className="pb-2">
           <div className={tw`relative h-[100px] mx-2 pb-4`}>
-            <Image
-              src={e.images }
+            <CustomImage 
+              img_url={e.images }
               // alt={imgNameByUrl({ url: img.i })}
-              className={`img rounded-[8px]`}
-              layout="fill"
+              className={`img rounded-[8px]`}            
             />
           </div>
           <div className={tw`ml-2`}>
@@ -294,9 +293,13 @@ const TravelGuideDetailComp = ({
                 {data?.images != null && data?.images.length > 0 ? (
                   imagesRender
                 ) : (
-                  <img
-                    src={`${Constants.assets_api}/public/icons/logo-icon.png`}
-                    alt="kiomoi logo"
+                  // <img
+                  //   src={`${Constants.assets_api}/public/icons/logo-icon.png`}
+                  //   alt="kiomoi logo"
+                  // />
+                  <CustomImage
+                      img_url={""}
+                      className=""
                   />
                 )}
               </Carousel>
@@ -740,13 +743,18 @@ const TravelGuideDetailComp = ({
           <div className={`mt-4 w-full lg:w-1/3`}>
             
               <div className={tw`lg:pl-6`}>
-                <h2 className="_titles_ pl-2">{data.tg.cityName} Nearby {type==='STATE'?"States":"Cities"}  </h2>
+                
+                {
+                  data?.stg || data?.ctg? <>
+                    <h2 className="_titles_ pl-2">{data.tg.cityName} Nearby {type==='STATE'?"States":"Cities"}  </h2>                
+                  </>:""
+                }
                 <div className={tw`flex flex-wrap pt-2`}>
                   
                   {
                     
                     type === 'STATE'
-                    ?data.stg.slice(0,6).map((e,index)=>{
+                    ?data?.stg?.slice(0,6).map((e,index)=>{
                       return <NearBy e={e} index={index} />
                     })
                     :""
@@ -754,7 +762,7 @@ const TravelGuideDetailComp = ({
                   }
                   {
                         type === 'CITY'
-                        ?data.ctg.slice(0,6).map((e,index)=>{
+                        ?data.ctg?.slice(0,6).map((e,index)=>{
                           return <NearBy e={e} index={index} />
                         })
                         :""
