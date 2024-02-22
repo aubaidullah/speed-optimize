@@ -6,6 +6,7 @@ import * as Constants from "../Constants";
 import { createStateListURL, imgNameByUrl } from "../fun";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import CustomImage from "../Img";
 
 const State = ({ data,holiday=false }) => {
   const MultiCarousel2 = dynamic(() => import("react-multi-carousel"));
@@ -35,7 +36,7 @@ const State = ({ data,holiday=false }) => {
                     }
                     alt="kiomoi"
                   /> */}
-                <Image
+                {/* <Image
                   className={tw`img-responsive rounded-[8px]`}
                   src={
                     item.im.split("~")[0]
@@ -44,6 +45,12 @@ const State = ({ data,holiday=false }) => {
                   }
                   alt={imgNameByUrl({ url: item.im.split("~")[0] ?? "kiomoi" })}
                   fill
+                /> */}
+                <CustomImage 
+                  className={tw`img-responsive rounded-[8px]`}
+                  img_url={item.im.split("~")[0]}
+                  alt={imgNameByUrl({ url: item.im.split("~")[0] ?? "kiomoi" })}
+
                 />
                 <div className="des_cont">
                   <div className="des_location">{item.nm}</div>
