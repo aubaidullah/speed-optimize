@@ -551,14 +551,14 @@ const ListPageMobile = ({
               <div className={tw`flex flex-wrap gap-3`}>
                 {pthemes?.map((e,index)=>{
                   return (
-                    <Link key={index} href={
+                    <a key={index} target="_blank" href={
                       page_type=="STATE"
                         ? createThemeStateListURL({statename:region?.name,id:router.query.id,themeName:e.theme})
                         : page_type=="CITY"
                         ?createThemeCITYListURL({cityname:region?.name,id:router.query.id,themeName:e.theme}):""
                       }>
                       <p className={tw` border border-gray-500 px-2 py-1 font-semibold text-slate-600 rounded-lg`}>{e.theme} tour packages</p>
-                    </Link>
+                    </a>
                   )
                 })}
               </div>  

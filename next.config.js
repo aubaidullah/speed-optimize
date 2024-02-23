@@ -79,7 +79,7 @@ const nextConfig = {
         destination: "/holidays/city-theme",
       },
       {
-        source: "/holidays/:theme-tour-packages-in-:package-:id(\\d+):pre([2]{2})",
+        source: "/holidays/:theme-tour-packages-in-:package-:id(\\d+):pre([1]{1})",
         destination: "/holidays/city-theme",
       },
       {
