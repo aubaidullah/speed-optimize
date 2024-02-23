@@ -18,6 +18,7 @@ import {
   createTGCityURL,
   createTGCountryURL,
   createTGStateURL,
+  createThemeCITYListURL,
   createThemeStateListURL,
   toTitleCase,
 } from "./fun";
@@ -546,11 +547,16 @@ const ListPageMobile = ({
 
             <div className={tw`w-full lg:w-3/4 `}>
             <div className={tw`mb-2`}>
-             {page_type == "STATE"?
+             {page_type == "STATE" || page_type == "CITY"?
               <div className={tw`flex flex-wrap gap-3`}>
-                {pthemes.map((e,index)=>{
+                {pthemes?.map((e,index)=>{
                   return (
-                    <Link key={index} href={createThemeStateListURL({statename:region?.name,id:router.query.id,themeName:e.theme})}>
+                    <Link key={index} href={
+                      page_type=="STATE"
+                        ? createThemeStateListURL({statename:region?.name,id:router.query.id,themeName:e.theme})
+                        : page_type=="CITY"
+                        ?createThemeCITYListURL({cityname:region?.name,id:router.query.id,themeName:e.theme}):""
+                      }>
                       <p className={tw` border border-gray-500 px-2 py-1 font-semibold text-slate-600 rounded-lg`}>{e.theme} tour packages</p>
                     </Link>
                   )

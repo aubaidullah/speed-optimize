@@ -77,6 +77,13 @@ export const createThemeStateListURL = ({ statename,themeName, id }) => {
     .toLowerCase()}-${id}2`;
 };
 
+export const createThemeCITYListURL = ({ cityname,themeName, id }) => {
+  return `/holidays/${cityname?.trim().replace(/\s+/g," ").replace(/\s+/g, "-").toLowerCase()}-tour-packages-in-${statename
+    ?.replace(/\s+/g, " ")
+    .replace(/\s+/g, "-")
+    .toLowerCase()}-${id}1`;
+};
+
 export const createTGCityURL = ({ city, id }) => {
   // return `/travel-guide/cities/${city
   return `/places/${city
