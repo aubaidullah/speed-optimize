@@ -5,6 +5,7 @@ import * as Constants from "../Constants";
 import { createArticleURL, imgNameByUrl, jpgToWebp } from "../fun";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import CustomImage from "../Img";
 const MultiCarousel = dynamic(() => import("react-multi-carousel"));
 const Articles = ({data}) => {
   
@@ -55,7 +56,7 @@ const Articles = ({data}) => {
           {/* <Link href={aurl}> */}
             <div className="top_rated_box _box_shadow _bottom popular_dest">
               <div className="recent_img">
-                <Image
+                {/* <Image
                   className="img-responsive"
                   src={
                     item.images.length > 0
@@ -64,6 +65,11 @@ const Articles = ({data}) => {
                   }
                   alt={imgNameByUrl({ url: item.images ?? "kiomoi" })}
                   fill
+                /> */}
+                <CustomImage
+                  className="img-responsive"
+                  img_url={jpgToWebp({ uri: item.images })}
+                  alt={imgNameByUrl({ url: item.images ?? "kiomoi" })}
                 />
               </div>
 

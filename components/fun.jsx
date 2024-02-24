@@ -7,6 +7,11 @@ export const toTitleCase = (phrase) => {
     ?.join(" ");
 };
 
+export const random = (srcArray) => {
+  const date = new Date();
+  return (date.getFullYear() * date.getDate() * (date.getMonth() + 1)) % srcArray.length;
+}
+
 export const randomRating = () => {
   let min = 4;
   let max = 5;
