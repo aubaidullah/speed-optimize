@@ -16,7 +16,7 @@ const FAQs = ({ data, detail = false }) => {
       <div itemScope itemType="https://schema.org/FAQPage">
         {data.map((item, index) => {
           return (
-            <>
+            
               <div
                 className={tw`p-4 ${
                   detail == false ? "bg-white" : "text-sm"
@@ -53,7 +53,7 @@ const FAQs = ({ data, detail = false }) => {
                   </div>
                 </div>
               </div>
-            </>
+            
           );
         })}
       </div>

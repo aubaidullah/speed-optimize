@@ -30,22 +30,22 @@ const BreadCrumbs = ({ bread }) => {
           <ul
             className="breadcrumb flex items-center"
             itemScope={true}
-            itemtype="https://schema.org/BreadcrumbList"
+            itemType="https://schema.org/BreadcrumbList"
           >
             {bread.enabled.map((e, index) => {
               return (
                 <li
                   key={index}
-                  itemprop="itemListElement"
+                  itemProp="itemListElement"
                   className="flex items-center"
                   itemScope={true}
-                  itemtype="https://schema.org/ListItem"
+                  itemType="https://schema.org/ListItem"
                 >
                   <>
-                    <Link href={e.href} itemprop="item">
+                    <Link href={e.href} itemProp="item">
                       <div className="_b_active">
-                        <span itemprop="name">{e.item}</span>
-                        <meta itemprop="position" content={index + 1} />
+                        <span itemProp="name">{e.item}</span>
+                        <meta itemProp="position" content={index + 1} />
                       </div>
                     </Link>
                     <TiChevronRight className={tw`bread_icon inline`} />

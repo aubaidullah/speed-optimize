@@ -12,7 +12,7 @@ const TopCities = ({ data, attlimit = 5, _package = false }) => {
         // let url = `/travel-guide/india/city-${item.name.toLowerCase()}/${item.tgid}/`
         // let url = "/travel-guide/india/attraction" + "-" + item.name.trim().replace(/\s+/g, ' ').replace(/-/g, "").replace(/\s+/g, "-").toLowerCase() + "/" + item.id + "/"
         return (
-          <div className={`w-1/3 lg:w-1/4 p-2`}>
+          <div className={`w-1/3 lg:w-1/4 p-2`} key={i}>
             <Link href={url} key={i}>
               <div>
                 <div>

@@ -106,7 +106,7 @@ const State = ({ data,holiday=false }) => {
     <div className={tw`mt-16`}>
       <div className={`container`}>
         <div className="row_">
-          <div className={tw`${holiday==false?'box_design_common':''}`} style={{'backdrop-filter':'blur(30px)'}}>
+          <div className={tw`${holiday==false?'box_design_common':''}`} style={{'backdropFilter':'blur(30px)'}}>
             <div
               className={tw`${holiday==false?'title_kiomoi':''} flex items-center justify-between mb-6`}
             >
