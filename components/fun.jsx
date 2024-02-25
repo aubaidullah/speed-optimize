@@ -14,7 +14,7 @@ export const random = (srcArray) => {
 
 export const randomBanner = (banners,page) =>{
   // console.log(page)
-  const bn = banners.filter((item)=>item.name.includes(page))
+  const bn = banners.filter((item)=>item.type.includes(page))
   return bn[random(bn)]
 }
 

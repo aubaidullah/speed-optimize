@@ -108,7 +108,7 @@ const Banner = ({ data,holiday=false }) => {
                     <Image
                     className={`img-responsive_banner ${!holiday?'lg:rounded-bl-[50%] lg:rounded-br-[50%]':''}`}
                     alt="kiomoi banner"
-                    src={jpgToWebp({ uri: randomBanner(data,holiday?"Holiday":"Home")?.i??"" })}
+                    src={jpgToWebp({ uri: randomBanner(data,holiday?"HOLIDAYS":"HOME")?.i??"" })}
                     width={1000}
                     height={800}
                     loading="eager"
