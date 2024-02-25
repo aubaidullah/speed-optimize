@@ -16,7 +16,8 @@ import {
   createTGCountryURL,
   createTGStateURL,
   jpgToWebp,
-  random
+  random,
+  randomBanner
 } from "../fun";
 import dynamic from "next/dynamic";
 // const MultiCarousel = dynamic(() => import("react-multi-carousel"));
@@ -107,15 +108,12 @@ const Banner = ({ data,holiday=false }) => {
                     <Image
                     className={`img-responsive_banner ${!holiday?'lg:rounded-bl-[50%] lg:rounded-br-[50%]':''}`}
                     alt="kiomoi banner"
-                    src={jpgToWebp({ uri: data[random(data)]?.i??"" })}
+                    src={jpgToWebp({ uri: randomBanner(data,holiday?"Holiday":"Home")?.i??"" })}
                     width={1000}
                     height={800}
                     loading="eager"
                     // fill
                 />
-                // })
-                // data[random()]
-
               }
 
             

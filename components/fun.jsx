@@ -12,6 +12,12 @@ export const random = (srcArray) => {
   return (date.getFullYear() * date.getDate() * (date.getMonth() + 1)) % srcArray.length;
 }
 
+export const randomBanner = (banners,page) =>{
+  // console.log(page)
+  const bn = banners.filter((item)=>item.name.includes(page))
+  return bn[random(bn)]
+}
+
 export const randomRating = () => {
   let min = 4;
   let max = 5;
