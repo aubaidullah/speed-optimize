@@ -36,6 +36,7 @@ const CityPackages = ({
   faqs,
   reviews,
   articles,
+  pthemes
 }) => {
   console.log(region);
   const [isMobile, setIsMobile] = useState(
@@ -73,6 +74,7 @@ const CityPackages = ({
           faqs={faqs}
           reviews={reviews}
           articles={articles}
+          pthemes={pthemes}
         />
       </>
     );
@@ -93,6 +95,7 @@ const CityPackages = ({
           faqs={faqs}
           reviews={reviews}
           articles={articles}
+          pthemes={pthemes}
         />
       </>
     );
@@ -246,6 +249,7 @@ export async function getServerSideProps(context) {
       faqs: res.data.allpackage.output?.faqs ?? [],
       reviews: res.data.allpackage.output?.reviews ?? [],
       articles,
+      pthemes: res.data.allpackage.output.pthemes ?? [],      
     },
   };
 }

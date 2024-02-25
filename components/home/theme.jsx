@@ -13,8 +13,8 @@ const Themes = ({ data }) => {
     if (i < theme) {
       let aurl = createThemeListURL({ cityname: item.tag.trim() });
       return (
-        <>
-          <div className="_service_list">
+        
+          <div className="_service_list" key={i}>
             <div className="ellipse_3">
               <Link href={aurl}>
                 <div href={aurl}>
@@ -40,7 +40,7 @@ const Themes = ({ data }) => {
               </div>
             </Link>
           </div>
-        </>
+        
       );
     }
   });

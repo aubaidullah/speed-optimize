@@ -10,6 +10,7 @@ import {
 import dynamic from "next/dynamic";
 import ReactHtmlParser from "react-html-parser";
 import Image from "next/image";
+import CustomImage from "../Img";
 
 // const ReactHtmlParser = dynamic(() => import('react-html-parser'))
 
@@ -99,19 +100,8 @@ const TravelGuide = ({ data,type = undefined }) => {
               <div className={`box_1 flex`}>
                 <div className={`_inline col-sm-4 col-xs-5 pyce inline`}>
                   <div className="row w-[100px] relative h-full">
-                    {/* <img
-                        className="img-responsive"
-                        src={
-                          item.images.length > 0 ? jpgToWebp ({uri:item.images}) : `${Constants.assets_api}/public/icons/logo-icon.png`
-                        }
-                        alt="kiomoi"
-                      /> */}
-                    <Image
-                      src={
-                        item.images.length > 0
-                          ? jpgToWebp({ uri: item.images })
-                          : `${Constants.assets_api}/public/icons/logo-icon.png`
-                      }
+                    <CustomImage
+                      img_url={ jpgToWebp({ uri: item.images }) }
                       alt={imgNameByUrl({ url: item.images ?? "kiomoi" })}
                       fill
                     />

@@ -255,7 +255,7 @@ export async function getServerSideProps(context) {
       faqs: res.data.allpackage.output.faqs ?? [],
       articles,
       cities,
-      pthemes: res.data.allpackage.output.pthemes ?? [],      
+      pthemes: res.data.allpackage.output.pthemes ?? [],
     },
   };
 }

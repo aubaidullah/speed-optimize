@@ -122,7 +122,7 @@ export async function getServerSideProps(context) {
     // name:'west bengal',
     pt: "WEBSITE",
     theme: toTitleCase(context.query.theme.replace(/-/g, " ")),
-    type: "STATE",
+    type: context.query.pre=="2"?"STATE":"CITY",
   };
   // console.log(payload)
   const res = await client.query({
@@ -151,10 +151,10 @@ export async function getServerSideProps(context) {
       input: {
         av: "",
         id: 0,
-        key: "STATE_HOLIDAYS",
+        key: context.query.pre=="2"?"STATE_HOLIDAYS":"CITY_HOLIDAYS",
         name: "",
         pt: "WEBSITE",
-        type: "STATE",
+        type: context.query.pre=="2"?"STATE":"CITY",
       },
     },
   });
@@ -162,25 +162,25 @@ export async function getServerSideProps(context) {
   finalprice = `₹${finalprice} `;
   const metas = {
     title:
-    theme_meta.metaTitle ??
+    theme_meta?.metaTitle ??
       meta.data.meta.output.tags.title
         .replace(/<STATE>/g, context.query.package.replace(/-/g, " "))
         .replace(/<PRICE>/g, finalprice)
         .replace(/\[State\ Name\]/g, context.query.package.replace(/-/g, " ")),
     longDesc:
-    theme_meta.metaDesc ??
+    theme_meta?.metaDesc ??
       meta.data.meta.output.tags.longDesc.replace(
         /<STATE>/g,
         context.query.package.replace(/-/g, " "),
       ),
     keywords:
-    theme_meta.metaKeywords ??
+    theme_meta?.metaKeywords ??
       meta.data.meta.output.tags.longDesc.replace(
         /<STATE>/g,
         context.query.package.replace(/-/g, " "),
       ),
     image: images,
-    theme:theme_meta
+    theme:theme_meta??""
   };
 
   payload = {
@@ -192,7 +192,7 @@ export async function getServerSideProps(context) {
     pid: 0,
     pt: "",
     size: 0,
-    type: "STATE",
+    type: context.query.pre=="2"?"STATE":"CITY",
   };
   const res_travel = await client.query({
     query: getTravelGuideQuery,
@@ -205,13 +205,13 @@ export async function getServerSideProps(context) {
         variables: { input: payload },
       })
     ).data.articles.output?.articles ?? [];
-  return {
+    return {
     props: {
       data,
       headers,
       region,
       places,
-      theme: res_theme.data.alltheme.output,
+      theme: res_theme.data.alltheme.output??[],
       meta: metas,
       travel: res_travel.data.travel.output,
       reviews: res.data.allpackage.output.reviews ?? [],

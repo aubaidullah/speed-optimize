@@ -1,15 +1,14 @@
 // import {tw} from 'twind'
 // import MultiCarousel from "react-multi-carousel";
 import Link from "next/link";
-import ReactHtmlParser from "react-html-parser";
 import * as Constants from "../Constants";
 import { createArticleURL, imgNameByUrl, jpgToWebp } from "../fun";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-
-const Articles = ({ data }) => {
-  const MultiCarousel = dynamic(() => import("react-multi-carousel"));
-  // const ReactHtmlParser = dynamic(() => import('react-html-parser'))
+import CustomImage from "../Img";
+const MultiCarousel = dynamic(() => import("react-multi-carousel"));
+const Articles = ({data}) => {
+  
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -47,20 +46,17 @@ const Articles = ({ data }) => {
         <button className="right-custom-btn" onClick={() => next()} />
       </div>
     );
-  };
-
+  };  
+  
   const articleRender = data.map(function (item, i) {
     var aurl = createArticleURL({ heading: item.heading, id: item.id });
-    // var aurl = "/travel-articles/"+item.heading.trim().replace(/\s+/g,' ').replace(/\s+/g, "-").replace(/--/g,'-').toLowerCase()+"/"+item.id+"/"
-    // var d = item.description;
-    // var res = d.substring(0, 50);
     return (
       <div key={i}>
         <div className="col-sm-12 col-xs-12 _cr_mb px-2" key={i}>
           {/* <Link href={aurl}> */}
             <div className="top_rated_box _box_shadow _bottom popular_dest">
               <div className="recent_img">
-                <Image
+                {/* <Image
                   className="img-responsive"
                   src={
                     item.images.length > 0
@@ -69,13 +65,17 @@ const Articles = ({ data }) => {
                   }
                   alt={imgNameByUrl({ url: item.images ?? "kiomoi" })}
                   fill
+                /> */}
+                <CustomImage
+                  className="img-responsive"
+                  img_url={jpgToWebp({ uri: item.images })}
+                  alt={imgNameByUrl({ url: item.images ?? "kiomoi" })}
                 />
               </div>
 
               <div className="price_List">
                 <div className="tour_details">
                   <h4 className="my-2">{item.heading}</h4>
-                  {/* <div className="t_detail">{ReactHtmlParser(res)} </div> */}
                   <Link href={aurl}>
                     <div href={aurl} className="anchor_link _50">
                       Read Full Story{"  "}
@@ -89,9 +89,9 @@ const Articles = ({ data }) => {
       </div>
     );
   });
-
-  return (
-    <>
+  
+  return(
+        <>
       <section className={`Hotels mt-16 _latest_stories_`}>
         <div className="container">
           <div className="row_">
@@ -114,7 +114,7 @@ const Articles = ({ data }) => {
               <div className="clearfix"></div>
               <MultiCarousel
                 partialVisible={true}
-                autoPlay={true}
+                autoPlay={false}
                 customTransition="transform 300ms ease-in-out"
                 infinite={true}
                 className="toprated_slide"
@@ -133,7 +133,8 @@ const Articles = ({ data }) => {
         </div>
       </section>
     </>
-  );
-};
+  )  
+}
+
 
 export default Articles;

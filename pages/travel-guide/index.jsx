@@ -17,6 +17,7 @@ import {
 } from "../../components/fun";
 import dynamic from "next/dynamic";
 import { useState } from "react";
+import CustomImage from "@/components/Img";
 // import parseHtml from "@/components/parseToHtml";
 // import { country } from "../../components/Constants"
 
@@ -83,10 +84,10 @@ const TravelGuide = ({ data, meta }) => {
                   <Link href={url}>
                     <div href={url}>
                       <div className={`bg-white rounded-2xl _box_shadow`}>
-                        <div className={`h-56`}>
-                          <img
+                        <div className={`h-56 relative`}>
+                          <CustomImage
                             className={`rounded-t-2xl h-full w-full`}
-                            src={e.images}
+                            img_url={e.images}
                             alt={`${e.cityName} travel guide`}
                           />
                         </div>

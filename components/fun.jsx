@@ -7,6 +7,17 @@ export const toTitleCase = (phrase) => {
     ?.join(" ");
 };
 
+export const random = (srcArray) => {
+  const date = new Date();
+  return (date.getFullYear() * date.getDate() * (date.getMonth() + 1)) % srcArray.length;
+}
+
+export const randomBanner = (banners,page) =>{
+  // console.log(page)
+  const bn = banners.filter((item)=>item.type.includes(page))
+  return bn[random(bn)]
+}
+
 export const randomRating = () => {
   let min = 4;
   let max = 5;
@@ -75,6 +86,13 @@ export const createThemeStateListURL = ({ statename,themeName, id }) => {
     ?.replace(/\s+/g, " ")
     .replace(/\s+/g, "-")
     .toLowerCase()}-${id}2`;
+};
+
+export const createThemeCITYListURL = ({ cityname,themeName, id }) => {
+  return `/holidays/${themeName?.trim().replace(/\s+/g," ").replace(/\s+/g, "-").toLowerCase()}-tour-packages-in-${cityname
+    ?.replace(/\s+/g, " ")
+    .replace(/\s+/g, "-")
+    .toLowerCase()}-${id}1`;
 };
 
 export const createTGCityURL = ({ city, id }) => {

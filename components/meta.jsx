@@ -113,7 +113,7 @@ const Meta = ({ meta }) => {
 
         {/* </script> */}
 
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         {/* <link
           rel="icon"
           href={`${Constants.assets_api}/public/icons/logo.png`}
