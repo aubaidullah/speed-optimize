@@ -114,7 +114,7 @@ export async function getServerSideProps(context) {
   context.res.setHeader("Cache-Control", "s-maxage=10");
   // console.log(context.query)
   const headers = context.req.headers;
-  console.log(context.query);
+  // console.log(context.query);
   let payload = {
     av: "1.3",
     id: context.query.id,
@@ -182,12 +182,12 @@ export async function getServerSideProps(context) {
     image: images,
     theme:theme_meta??""
   };
-
+// context.query.pre=="2"?context.query.id:region.sid
   payload = {
     av: "",
-    geoid: region.sid,
+    geoid: context.query.pre=="2"?context.query.id:region.sid,
     home: "",
-    id: region.sid,
+    id: context.query.pre=="2"?context.query.id:region.sid,
     pagenum: 0,
     pid: 0,
     pt: "",
@@ -198,6 +198,10 @@ export async function getServerSideProps(context) {
     query: getTravelGuideQuery,
     variables: { input: payload },
   });
+  payload["geoid"] = context.query.pre=="2"?context.query.id:region.sid
+  payload["id"] = context.query.pre=="2"?context.query.id:region.sid
+
+  // console.log(payload)
   const articles =
     (
       await client.query({

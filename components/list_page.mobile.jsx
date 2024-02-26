@@ -735,7 +735,7 @@ const ListPageMobile = ({
           ""
         )}
 
-        {travel ? (
+        {travel && travel?.images ? (
           <>
             <div className="container mt-8">
               {/* <h1 className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>Read more About {region?.name}</h1> */}
@@ -753,7 +753,7 @@ const ListPageMobile = ({
                     <div className="relative h-40 lg:h-60">
                       <Image
                         className="rounded-lg"
-                        src={travel.images[0]?.i}
+                        src={travel?.images[0]?.i}
                         fill
                       />
                     </div>
@@ -794,7 +794,6 @@ const ListPageMobile = ({
             ) : (
               ""
             )}
-
 
             {page_type == "STATE" || page_type == "CITY" ? (
               <>{articles.length ? <Articles data={articles} /> : ""}</>
