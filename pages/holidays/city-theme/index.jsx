@@ -185,14 +185,14 @@ export async function getServerSideProps(context) {
 
   payload = {
     av: "",
-    geoid: context.query.id,
+    geoid: region.sid,
     home: "",
-    id: context.query.id,
+    id: region.sid,
     pagenum: 0,
     pid: 0,
     pt: "",
     size: 0,
-    type: context.query.pre=="2"?"STATE":"CITY",
+    type: "STATE",
   };
   const res_travel = await client.query({
     query: getTravelGuideQuery,
