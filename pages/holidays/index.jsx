@@ -19,6 +19,7 @@ import CityPackages from "@/components/holidays/CityPackage";
 import InterNationalPackage from "@/components/holidays/International";
 import Articles from "@/components/home/articles";
 import Reviews from "@/components/home/reviews";
+import Meta from "@/components/meta";
 // import CityPackages from "./city-package";
 // import * Constants from "@/components/Constants"
 
@@ -129,10 +130,11 @@ const BottomBnner = () =>{
 
 
 
-const HolidayPage = ({home,theme,articles,reviews}) =>{
+const HolidayPage = ({home,theme,articles,reviews,metas}) =>{
   // let img = "https://res.cloudinary.com/kmadmin/image/upload/v1633196081/kiomoi/1633196080048.jpg"
    let img = "https://res.cloudinary.com/kmadmin/image/upload/v1552993397/kiomoi/Pelling/Pelling-2.jpg";
     return <>
+        <Meta meta={metas} />
         <Nav />
         {/* <SearchBar /> */}
         <Banner data={home.banners} holiday={true}/>
@@ -195,12 +197,27 @@ export async function getServerSideProps(context) {
     },
   });
 
+  const meta = {
+    "title":"Book Domestic and International Holiday Tour Packages at Kiomoi",
+    "longDesc":"Kiomoi is the place to find the best deals on domestic and international tours. Get up to 30% off on your holiday tours in India by booking your best holiday tour packages!",
+    "keywords":"Holiday Packages in India \
+    International Holiday Packages \
+    Holiday Tour Packages \
+    Internation Tours online \
+    Best holiday Tour Packages \
+    Domestic Holiday Packages \
+    Domestic Tour Packages \
+    Domestic Tour \
+    Domestic Tour Packages in India"
+  }
+
   return {
     props: {
       home: res.data.home.output,
       theme: res_theme.data.alltheme.output,
       articles: res_article.data.articles.output,
-      reviews: res_review.data.reviews.output,      
+      reviews: res_review.data.reviews.output,     
+      metas:meta 
     },
   };  
 
