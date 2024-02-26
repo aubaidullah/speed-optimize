@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { createCountryListURL, createStateListURL, imgNameByUrl, jpgToWebp } from "../fun";
+import { createCountryListURL, imgNameByUrl } from "../fun";
 import { tw } from "twind";
-import * as Constants from "@/components/Constants";
-import CustomImage from "../Img";
 
+const CustomImage = dynamic(() => import("../Img"));
 const MultiCarousel2 = dynamic(() => import("react-multi-carousel"));
 
 const InterNationalPackage = ({ data }) => {

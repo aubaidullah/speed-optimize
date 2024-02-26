@@ -1,31 +1,36 @@
-import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import {
-  getallpackages,
   getThemeQuery,
-  getMetaQuery,
   getHome,
   getarticleQuery,
   getreviewsQuery,
 } from "../../components/Graphql/Queries";
 import client from "../../components/Graphql/service";
-import Banner from "@/components/home/banner";
-import HolidayTheme from "@/components/holidays/theme";
-import State from "@/components/home/state";
-import HomePackages from "@/components/home/packages";
+// import Banner from "@/components/home/banner";
+// import HolidayTheme from "@/components/holidays/theme";
+// import State from "@/components/home/state";
+// import HomePackages from "@/components/home/packages";
 import { tw } from "twind";
 import * as Constants from "@/components/Constants";
-import CityPackages from "@/components/holidays/CityPackage";
-import InterNationalPackage from "@/components/holidays/International";
-import Articles from "@/components/home/articles";
-import Reviews from "@/components/home/reviews";
-import Meta from "@/components/meta";
+// import CityPackages from "@/components/holidays/CityPackage";
+// import InterNationalPackage from "@/components/holidays/International";
+// import Articles from "@/components/home/articles";
+// import Reviews from "@/components/home/reviews";
+// import Meta from "@/components/meta";
 // import CityPackages from "./city-package";
 // import * Constants from "@/components/Constants"
 
 // import Nav from "../components/Nav";
 const Nav = dynamic(() => import("../../components/HomeNav"));
-
+const Banner = dynamic(() => import("@/components/home/banner"));
+const HolidayTheme = dynamic(() => import("@/components/holidays/theme"));
+const State = dynamic(() => import("@/components/home/state"));
+const HomePackages = dynamic(() => import("@/components/home/packages"));
+const CityPackages = dynamic(() => import("@/components/holidays/CityPackage"));
+const InterNationalPackage = dynamic(() => import("@/components/holidays/International"));
+const Articles = dynamic(() => import("@/components/home/articles"));
+const Reviews = dynamic(() => import("@/components/home/reviews"));
+const Meta = dynamic(() => import("@/components/meta"));
 
 
 const CanvasImg = () =>{

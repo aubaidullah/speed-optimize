@@ -1,13 +1,10 @@
 import { tw } from "twind"
 import Link from "next/link";
-import Image from "next/image";
-import { createCityListURL, createStateListURL } from "../fun";
+import { createCityListURL } from "../fun";
 import { imgNameByUrl } from "../fun";
-import * as Constants from "@/components/Constants";
 import dynamic from "next/dynamic";
-import CustomImage from "../Img";
 
-
+const CustomImage = dynamic(() => import("../Img"));
 const CityPackages = ({data}) =>{
     // console.log(data)
     // 
