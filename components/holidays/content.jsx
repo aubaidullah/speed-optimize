@@ -22,7 +22,7 @@ const Content = () =>{
                     In India, Sikkim is a place where you can enjoy breathtaking natural vistas and enthralling adventure activities. If you want to have a wonderful experience during your trip, then you should choose the best <Link href="/holidays/sikkim-tour-packages-342">Sikkim Tour Packages</Link>. This North-eastern State is a perfect destination for honeymooners, rock climbers, rafting enthusiasts, trekkers, and mountaineers. Here, you can also experience Yak safari. 
                     In your <Link href="/holidays/honeymoon-tour-packages-in-sikkim-342">Sikkim Honeymoon Packages</Link>, you should include the following destinations
                 </p>
-                <div className="mb-2">
+                <div className="my-2">
                     <ul className="dd_link">
                         <li><Link href="/places/lachung-106">Lachung</Link></li>
                         <li><Link href="/places/gangtok-49">Gangtok</Link></li>
@@ -42,7 +42,7 @@ const Content = () =>{
                 <p>
                     Known as land of kings, Rajasthan is a perfect holiday destination for wildlife enthusiasts, architecture lovers, history buffs, and foodies. This state is known for hospitality and colourful heritage. If you are going to book <Link href="/holidays/rajasthan-tour-packages-332">Rajasthan Tour Packages</Link>, then you should not forget to include your visit to magnificent desert and forts/palaces. For those who wish to explore India’s rich cultural heritage, visiting this place can be a great decision Some most popular <Link href="/states/rajasthan/top-places-to-visit-35">Holiday Destinations in Rajasthan</Link> are:
                 </p>
-                <div className="mb-2">
+                <div className="my-2">
                     <ul className="dd_link">
                         <li><Link href="/holidays/jaipur-tour-packages-3251">Jaipur</Link></li>
                         <li><Link href="/holidays/udaipur-tour-packages-8261">Udaipur</Link></li>
@@ -65,7 +65,7 @@ const Content = () =>{
                 <p>
                 For those who are looking for the perfect destination for summer vacations, visiting Himachal Pradesh can be a great decision. Being a land of natural beauty, this place is known for gurgling rivers, majestic mountains, verdant jungles and undulated meadows. Choose the right <Link href="/holidays/himachal-pradesh-tour-packages-142">Himachal Tour Packages </Link> and plan your memorable holidays. If you are looking for the best <Link href="/holidays/honeymoon-tour-packages-in-himachal-pradesh-142">Himachal Honeymoon Packages</Link>, then you should include the following places
                 </p>
-                <div className="mb-2">
+                <div className="my-2">
                     <ul className="dd_link">
                         <li><Link href="/holidays/shimla-tour-packages-7341">Shimla</Link></li>
                         <li><Link href="/holidays/dharamshala-tour-packages-2111">Dharamshala</Link></li>
@@ -88,7 +88,7 @@ const Content = () =>{
                 <p>
                 Spend your memorable holidays in Uttarakhand! This place is a land of serene spirituality and great beauty that will give you a fantastic experience. Here, you can witness a lot of footfalls from India and worldwide. By visiting this place, you will get a chance to enjoy natural beauty including lush greens, snow-capped peaks, pristine lakes, meadows and old temples. Some most popular holiday destinations that you should include in your <Link href="/holidays/uttarakhand-tour-packages-392">Uttarakhand Tour Packages</Link> are:
                 </p>
-                <div className="mb-2">
+                <div className="my-2">
                     <ul className="dd_link">
                         <li><Link href="/holidays/mussoorie-tour-packages-5431">Mussoorie</Link></li>
                         <li><Link href="/holidays/dehradun-tour-packages-1921">Dehradun</Link></li>

@@ -640,7 +640,8 @@ a {
 }
 .dd_link {
   display: flex;
-  gap: 15px;
+  gap: 5px 15px;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 464px) {
