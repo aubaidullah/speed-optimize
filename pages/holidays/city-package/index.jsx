@@ -249,7 +249,7 @@ export async function getServerSideProps(context) {
       faqs: res.data.allpackage.output?.faqs ?? [],
       reviews: res.data.allpackage.output?.reviews ?? [],
       articles,
-      pthemes: res.data.allpackage.output.pthemes ?? [],      
+      pthemes: res.data.allpackage?.output?.pthemes ?? [],      
     },
   };
 }

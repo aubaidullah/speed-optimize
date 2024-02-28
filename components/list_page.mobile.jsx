@@ -237,7 +237,7 @@ const ListPageMobile = ({
         :setOverview(theme_desc.substring(0, overviewlimit))
       }
     }
-  }, [overviewlimit]);
+  }, [overviewlimit,router]);
   // pcities.some((item) => array.includes(item))
 
   var pack = [];

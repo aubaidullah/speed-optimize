@@ -170,8 +170,8 @@ img {
 .img-responsive_banner {
   width: 100%;
   vertical-align: top;
-  -webkit-transform: scaleX(1.5);
-  transform: scaleX(1.5);
+  /* -webkit-transform: scaleX(1.5); */
+  /* transform: scaleX(1.5); */
   object-fit: contain;
   border: 0;
   max-height: 500px;
