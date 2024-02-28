@@ -12,6 +12,7 @@ import client from "../../components/Graphql/service";
 // import HomePackages from "@/components/home/packages";
 import { tw } from "twind";
 import * as Constants from "@/components/Constants";
+import Content from "@/components/holidays/content";
 // import CityPackages from "@/components/holidays/CityPackage";
 // import InterNationalPackage from "@/components/holidays/International";
 // import Articles from "@/components/home/articles";
@@ -151,7 +152,8 @@ const HolidayPage = ({home,theme,articles,reviews,metas}) =>{
         {/* <InternationalPackages data={home.states} /> */}
         <HomePackages data={home} holiday={true}/>
         <Articles data={articles?.articles} />
-        <Reviews data={reviews?.reviews} /> 
+        <Reviews data={reviews?.reviews} />
+        <Content /> 
         <BottomBnner />
     </>
 }

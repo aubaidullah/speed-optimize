@@ -635,6 +635,14 @@ a {
   display: block;
 }
 
+.hl_desc a{
+  color: #F06726;
+}
+.dd_link {
+  display: flex;
+  gap: 15px;
+}
+
 @media (max-width: 464px) {
   .mb_display_none {
     display: none;
