@@ -10,7 +10,7 @@ import dynamic from "next/dynamic";
 import { useState, useEffect, useRef } from "react";
 import { tw } from "twind";
 // import { useSelector } from "react-redux"
-import { ScrollWrapper } from "react-bottom-scroll";
+// import { ScrollWrapper } from "react-bottom-scroll";
 import { useRouter } from "next/router";
 import {
   createCountryListURL,
@@ -237,7 +237,7 @@ const ListPageMobile = ({
         :setOverview(theme_desc.substring(0, overviewlimit))
       }
     }
-  }, [overviewlimit]);
+  }, [overviewlimit,router]);
   // pcities.some((item) => array.includes(item))
 
   var pack = [];
@@ -651,7 +651,33 @@ const ListPageMobile = ({
               </div>
 
               <div>
-                <ScrollWrapper
+              {data.length ? (
+                      data.slice(0, limit).map((item, index) => {
+                        return item.name.length >= 2 &&
+                          (item.name.toLowerCase().includes(filter.keyword) ||
+                            item.cities
+                              .toLowerCase()
+                              .includes(filter.keyword) ||
+                            item.theme
+                              .toLowerCase()
+                              .includes(filter.keyword)) ? (
+                          // <div>package</div>:""
+                          <Package key={index} index={index} item={item} POPUPFORM = {POPUPFORM} />
+                        ) : null;
+                      })
+                    ) : (
+                      <div className={`mt-16 mb-16 text-center`}>
+                        <div className={`text-2xl font-bold text-[#999]`}>
+                          <p className={`"`}>No package found</p>
+                        </div>
+                      </div>
+                    )}
+                  <div className={`rounded-full  _btn_clr mt-8 px-4 py-2 border-2 border-gray-300 w-fit m-auto cursor-pointer hover:shadow-xl ${limit>=data.length?"hidden":""}`} onClick={()=>setLimit(limit + 10)}>
+                    <div className="">
+                      Load More Packages..
+                    </div>
+                  </div>
+                {/* <ScrollWrapper
                   wrapperStyle={{ width: "100%", overflowY: "initial" }}
                   bottomCallback={() => {
                     setLimit(limit + 10);
@@ -678,7 +704,6 @@ const ListPageMobile = ({
                             item.theme
                               .toLowerCase()
                               .includes(filter.keyword)) ? (
-                          // <div>package</div>:""
                           <Package key={index} index={index} item={item} POPUPFORM = {POPUPFORM} />
                         ) : null;
                       })
@@ -690,7 +715,7 @@ const ListPageMobile = ({
                       </div>
                     )}
                   </div>
-                </ScrollWrapper>
+                </ScrollWrapper> */}
               </div>
             </div>
           </div>
@@ -735,7 +760,7 @@ const ListPageMobile = ({
           ""
         )}
 
-        {travel ? (
+        {travel && travel?.images ? (
           <>
             <div className="container mt-8">
               {/* <h1 className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>Read more About {region?.name}</h1> */}
@@ -753,7 +778,7 @@ const ListPageMobile = ({
                     <div className="relative h-40 lg:h-60">
                       <Image
                         className="rounded-lg"
-                        src={travel.images[0]?.i}
+                        src={travel?.images[0]?.i}
                         fill
                       />
                     </div>
@@ -794,7 +819,6 @@ const ListPageMobile = ({
             ) : (
               ""
             )}
-
 
             {page_type == "STATE" || page_type == "CITY" ? (
               <>{articles.length ? <Articles data={articles} /> : ""}</>

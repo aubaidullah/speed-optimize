@@ -120,7 +120,11 @@ const Nav = () => {
   // " " +{addnavClass};
   // console.log(router.pathname)
   // console.log(window.scrollY)
-  console.log(addnavClass);
+  // console.log(addnavClass);
+  useEffect(()=>{
+    setResult([])
+    SetshowSearch(false)
+  },[router])  
   return (
     <>
       <nav
@@ -147,12 +151,12 @@ const Nav = () => {
                 </Link>
               </div>
               <div
-                className={tw`item_group flt_right ml-2 lg:ml-6 hidden lg:block`}
+                className={tw`item_group flt_right ml-2 lg:ml-12 hidden lg:flex gap-4`}
               >
                 <div className="item flt_left">
                   <Link href={"/holidays"}>
                     <div
-                      className="c_it"
+                      className="c_it hover:font-red"
                       onMouseOver={() => setTripover(true)}
                       onMouseOut={() => setTripover(false)}
                     >
@@ -168,7 +172,7 @@ const Nav = () => {
                               }`
                         }
                       />
-                      <span className="nav-text">Trips</span>
+                      <span className="nav-text_">Trips</span>
                     </div>
                   </Link>
                 </div>
@@ -191,7 +195,7 @@ const Nav = () => {
                               }`
                         }
                       />
-                      <span className="nav-text">Explore</span>
+                      <span className="nav-text_">Explore</span>
                     </div>
                   </Link>
                 </div>
@@ -214,7 +218,7 @@ const Nav = () => {
                               }`
                         }
                       />
-                      <span className="nav-text">Stays</span>
+                      <span className="nav-text_">Stays</span>
                     </div>
                   </Link>
                 </div>
@@ -258,11 +262,17 @@ const Nav = () => {
                   
                   
                   
-                  :<FaRegUser
-                      className="c_it"
-                      onClick={() => setShowLogin(!showLogin)}
-                      size={"20px"}
-                    />  
+                  :<div>
+                    <div className="_flex _border-2 _px-4 _py-0  _rounded-full _gap-2">
+                      {/* <div>Login</div> */}
+                      <FaRegUser
+                        className="c_it"
+                        onClick={() => setShowLogin(!showLogin)}
+                        size={"20px"}
+                      />   
+                      </div>                 
+                    </div>
+  
                 }
               </div>
               <div className={tw`item flt_left block lg:hidden`}>

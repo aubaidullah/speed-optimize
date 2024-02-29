@@ -104,9 +104,10 @@ const Banner = ({ data,holiday=false }) => {
 
                 // data.map((e,index)=>{
                     // return 
+                    // ${!holiday?'lg:rounded-bl-[50%] lg:rounded-br-[50%]':''}
                     
                     <Image
-                    className={`img-responsive_banner ${!holiday?'lg:rounded-bl-[50%] lg:rounded-br-[50%]':''}`}
+                    className={`img-responsive_banner`}
                     alt="kiomoi banner"
                     src={jpgToWebp({ uri: randomBanner(data,holiday?"HOLIDAYS":"HOME")?.i??"" })}
                     width={1000}
@@ -131,7 +132,7 @@ const Banner = ({ data,holiday=false }) => {
             onChange={(event) => HandleSearch(event.target.value)}
             placeholder={!holiday?"Search Any Destination, Travel Guide, Trip or Stays":"Search Any Tour or Destination"}
           />
-          {searchkey.length >= 2 ? (
+          {result?.packages?.length ? (
             <section className="dropdown-content-home">
               <div>
                 {result?.packages?.map((e, index) => (

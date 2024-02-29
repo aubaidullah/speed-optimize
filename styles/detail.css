@@ -778,7 +778,7 @@ float: right;
   outline: 0;
   transition: all 0.3s;
   border-radius: 35px;
-  z-index: 1000;
+  z-index: 2;
   border: 0;
   background: #fff;
   min-width: 43px;
@@ -794,6 +794,7 @@ float: right;
   -moz-transition: all 0.3s;
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
+  color: rgba(85, 85, 85, 0.4588235294117647);
 }
 .right-custom-btn {
   position: absolute;
@@ -818,6 +819,7 @@ float: right;
   -moz-transition: all 0.3s;
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
+  color: rgba(85, 85, 85, 0.4588235294117647);
 }
 .Invalid_num {
   font-size: 11px;
@@ -830,8 +832,8 @@ float: right;
 }
 
 .left-custom-btn::before {
-  font-size: 20px;
-  color: rgba(85, 85, 85, 0.4588235294117647);
+  font-size: 23px;
+  /* color: rgba(85, 85, 85, 0.4588235294117647); */
   display: block;
   font-family: revicons;
   text-align: center;
@@ -843,19 +845,27 @@ float: right;
   -moz-transform: rotate(180deg) !important;
   -ms-transform: rotate(180deg) !important;
   -o-transform: rotate(180deg) !important;
+  font-weight: bold;
 }
 .right-custom-btn::before {
-  font-size: 20px;
-  color: rgba(85, 85, 85, 0.4588235294117647);
+  font-size: 23px;
+  /* color: rgba(85, 85, 85, 0.4588235294117647); */
   display: block;
   font-family: revicons;
   text-align: center;
   z-index: 2;
   position: relative;
   content: "\2192" !important;
+  font-weight: bold;
 }
+
+/* .left-custom-btn::before:hover, .right-custom-btn::before{
+  color: white;
+} */
+
 .right-custom-btn:hover,.left-custom-btn:hover{
   background-color: #f06726;
+  color: white !important;
 }
 .right-custom-btn::before:hover{
   color: white;

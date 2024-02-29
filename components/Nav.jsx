@@ -117,6 +117,10 @@ const Nav = () => {
     Cookies.remove('username')
     router.push("/")
   }
+  useEffect(()=>{
+    setResult([])
+    SetshowSearch(false)
+  },[router])
 
   return (
     <>
@@ -143,7 +147,7 @@ const Nav = () => {
                   />
                 </Link>
               </div>
-              <div className={tw`item_group flt_right ml-6 hidden lg:block`}>
+              <div className={tw`item_group flt_right ml-12 hidden lg:flex gap-4`}>
                 <div className="item flt_left">
                   <Link href={"/holidays"}>
                     <div
@@ -159,7 +163,7 @@ const Nav = () => {
                             : `${Constants.assets_api}/public/icons/icons/ICO TRIPS.png`
                         }
                       />
-                      <span className="nav-text">Trips</span>
+                      <span className="nav-text_">Trips</span>
                     </div>
                   </Link>
                 </div>
@@ -178,7 +182,7 @@ const Nav = () => {
                             : `${Constants.assets_api}/public/icons/icons/ICO EXPLORE.png`
                         }
                       />
-                      <span className="nav-text">Explore</span>
+                      <span className="nav-text_">Explore</span>
                     </div>
                   </Link>
                 </div>
@@ -197,7 +201,7 @@ const Nav = () => {
                             : `${Constants.assets_api}/public/icons/icons/ICO STAYS.png`
                         }
                       />
-                      <span className="nav-text">Stays</span>
+                      <span className="nav-text_">Stays</span>
                     </div>
                   </Link>
                 </div>

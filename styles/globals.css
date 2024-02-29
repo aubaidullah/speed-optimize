@@ -207,8 +207,8 @@ a {
 
 .m_s_icon {
   position: absolute;
-  right: 15px;
-  top: 27px;
+  right: 25px;
+  top: 25px;
   font-size: 30px;
   color: #c7c7c7;
 }
@@ -500,7 +500,7 @@ ul > li::marker {
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 2px;
 }
 .text_footer_bottom p {
   opacity: 0.63;
@@ -545,11 +545,12 @@ a {
   text-decoration: none;
   color: unset;
 }
-a:focus,
-a:hover {
-  color: #23527c;
+/* a:focus, */
+/* a:hover { */
+  /* color: #23527c; */
+  /* color: white; */
   /* text-decoration: underline; */
-}
+/* } */
 
 .form-control {
   height: 40px;
@@ -632,6 +633,18 @@ a:hover {
 }
 .mb_display_none {
   display: block;
+}
+
+.hl_desc a{
+  color: #F06726;
+}
+.hl_desc p{
+  line-height: 2rem;
+}
+.dd_link {
+  display: flex;
+  gap: 5px 15px;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 464px) {

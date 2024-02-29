@@ -133,7 +133,7 @@ const Footer = () => {
                     WHATSAPP
                   </h4>
                   <a
-                    className={`text-md md:text-lg text-white`}
+                    className={`text-md md:text-lg text-gray-200`}
                     href="whatsapp://send?phone=+919650687940"
                   >
                     +919650687940

@@ -8,7 +8,6 @@ import Image from "next/image";
 import CustomImage from "../Img";
 const MultiCarousel = dynamic(() => import("react-multi-carousel"));
 const Articles = ({data}) => {
-  
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
