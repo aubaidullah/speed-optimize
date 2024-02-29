@@ -262,11 +262,17 @@ const Nav = () => {
                   
                   
                   
-                  :<FaRegUser
-                      className="c_it"
-                      onClick={() => setShowLogin(!showLogin)}
-                      size={"20px"}
-                    />  
+                  :<div>
+                    <div className="_flex _border-2 _px-4 _py-0  _rounded-full _gap-2">
+                      {/* <div>Login</div> */}
+                      <FaRegUser
+                        className="c_it"
+                        onClick={() => setShowLogin(!showLogin)}
+                        size={"20px"}
+                      />   
+                      </div>                 
+                    </div>
+  
                 }
               </div>
               <div className={tw`item flt_left block lg:hidden`}>

@@ -638,6 +638,9 @@ a {
 .hl_desc a{
   color: #F06726;
 }
+.hl_desc p{
+  line-height: 2rem;
+}
 .dd_link {
   display: flex;
   gap: 5px 15px;
