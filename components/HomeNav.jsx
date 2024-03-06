@@ -136,30 +136,26 @@ const Nav = () => {
           <Login show={showLogin} setShowLogin={setShowLogin} />
         ) : null}
         {!showSearch ? (
-          <div className={tw`container`}>
-            <div className={tw`flex item_group flt_left`}>
-              <div
-                className={tw`logo_item flt_left flex items-center pt-2 lg:pt-0`}
-              >
-                <Link href={"/"}>
-                  {/* <img className="brand-logo" src={`${router.pathname=='/'?`${Constants.assets_api}/public/icons/download.png`:`${Constants.assets_api}/public/icons/kiomoi.png`}`}/> */}
-                  <img
-                    className="brand-logo"
-                    src="/icons/kiomoi logo.svg"
-                    alt="kiomoi"
-                  />
-                </Link>
-              </div>
-              <div
-                className={tw`item_group flt_right ml-2 lg:ml-12 hidden lg:flex gap-4`}
-              >
-                <div className="item flt_left">
-                  <Link href={"/holidays"}>
-                    <div
-                      className="c_it hover:font-red"
-                      onMouseOver={() => setTripover(true)}
-                      onMouseOut={() => setTripover(false)}
-                    >
+         <div className={tw`container h-full`}>
+         <div className={`flex justify-between items-center h-full`}>
+               <div className={tw`flex items-center lg:gap-16`}>
+                 <div>
+                   <Link href={"/"}>
+                     {/* <img className="brand-logo" src={`${router.pathname=='/'? `${Constants.assets_api}/public/icons/download.png`:`${Constants.assets_api}/public/icons/kiomoi.png`}`}/> */}
+                     <img
+                       className="brand-logo"
+                       alt="kiomoi"
+                       src="/icons/kiomoi logo.svg"
+                     />
+                   </Link>                  
+                 </div>
+                 <div className={tw`hidden lg:flex items-center gap-2 lg:gap-10`}>
+                   <Link href={"/holidays"}>
+                     <div
+                       className="c_it"
+                       onMouseOver={() => setTripover(true)}
+                       onMouseOut={() => setTripover(false)}
+                     >
                       <img
                         alt="trips"
                         src={
@@ -172,17 +168,16 @@ const Nav = () => {
                               }`
                         }
                       />
-                      <span className="nav-text_">Trips</span>
-                    </div>
-                  </Link>
-                </div>
-                <div className="item flt_left">
-                  <Link href={"/travel-guide"}>
-                    <div
-                      className="c_it"
-                      onMouseOver={() => setExploreover(true)}
-                      onMouseOut={() => setExploreover(false)}
-                    >
+                       <span className="nav-text_">Trips</span>
+                     </div>
+                   </Link>    
+
+                   <Link href={"/travel-guide"}>
+                       <div
+                         className="c_it"
+                         onMouseOver={() => setExploreover(true)}
+                         onMouseOut={() => setExploreover(false)}
+                       >
                       <img
                         alt="explore"
                         src={
@@ -195,17 +190,16 @@ const Nav = () => {
                               }`
                         }
                       />
-                      <span className="nav-text_">Explore</span>
-                    </div>
-                  </Link>
-                </div>
-                <div className="item flt_left">
-                  <Link href="/hotels">
-                    <div
-                      className="c_it"
-                      onMouseOver={() => setStayover(true)}
-                      onMouseOut={() => setStayover(false)}
-                    >
+                         <span className="nav-text_">Explore</span>
+                       </div>
+                     </Link>
+
+                     <Link href={"/hotels"}>
+                       <div
+                         className="c_it"
+                         onMouseOver={() => setStayover(true)}
+                         onMouseOut={() => setStayover(false)}
+                       >
                       <img
                         alt="stays"
                         src={
@@ -218,159 +212,135 @@ const Nav = () => {
                               }`
                         }
                       />
-                      <span className="nav-text_">Stays</span>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="item_group flt_right right_icons">
-              {addnavClass ? (
-                <div
-                  className="item flt_left"
-                  onClick={() => SetshowSearch(true)}
-                >
-                  <HiOutlineSearch
-                    // color={"#a7a7a7"}
-                    className="c_it"
-                    size={"20px"}
-                  />
-                </div>
-              ) : (
-                ""
-              )}
+                         <span className="nav-text_">Stays</span>
+                       </div>
+                     </Link>                  
 
-              <div className="item flt_left">
-              {
-                  Cookies.get('userid')
-                  ?
-                    <div className={tw`relative c_it`}>
-                      <FaRegUser
-                        className="c_it m-auto"
-                        onClick={() => setOp(!op)}
-                        size={"20px"}
-                      />  
-                      <span className="nav-text">{Cookies.get("username")}</span>
-                      {/* <div className={tw` font-semibold text-slate-600`} onClick={() => setOp(!op)}>{Cookies.get("username")}</div> */}
-                      <div className={tw`absolute bg-white shadow-xl top-7 border-2 ${!op?'hidden':''}`}>
-                        <Link href={'/accounts'}>
-                          <div className=" border-b-2 px-4 py-2 font-semibold text-slate-700"> Profile </div>
-                        </Link>
-                        <div className="px-4 py-2 font-semibold text-slate-700" onClick={()=>Logout()}> Logout </div>
-                      </div>
-                    </div>
-                  
-                  
-                  
-                  :<div>
-                    <div className="_flex _border-2 _px-4 _py-0  _rounded-full _gap-2">
-                      {/* <div>Login</div> */}
-                      <FaRegUser
+                 </div>
+
+               </div>
+
+               <div className={tw`flex items-center gap-6 lg:gap-10 cursor-pointer`}>
+                {addnavClass ? (
+                    <div
+                      className="item flt_left"
+                      onClick={() => SetshowSearch(true)}
+                    >
+                      <HiOutlineSearch
+                        // color={"#a7a7a7"}
                         className="c_it"
-                        onClick={() => setShowLogin(!showLogin)}
                         size={"20px"}
-                      />   
-                      </div>                 
+                      />
                     </div>
-  
-                }
-              </div>
-              <div className={tw`item flt_left block lg:hidden`}>
-                {collapse ? (
-                  <AiOutlineClose
-                    className="c_it"
-                    // onClick={()}
-                    onClick={() => setCollapse(!collapse)}
-                    size={"20px"}
-                  />
-                ) : (
-                  <AiOutlineMenu
-                    className="c_it"
-                    // onClick={()}
-                    onClick={() => setCollapse(!collapse)}
-                    size={"20px"}
-                  />
-                )}
-              </div>
-            </div>
-            {/* <div className="item_group flt_right right_icons">
-                        <div className="item flt_left" onClick={() => SetshowSearch(true)}>
-                            <HiOutlineSearch
-                                // color={"#a7a7a7"}
-                                className="c_it"
-                                size={"20px"}
-                            />
-                        </div>
-                        <div className="item flt_left">
-                            <FaRegUser
-                                className="c_it"
-                                onClick={() => setShowLogin(!showLogin)}
-                                size={"20px"}
-                            />
-                        </div>
-                        <div className="item flt_left block lg:hidden">
-                            {
-                                collapse?<AiOutlineClose 
-                                className="c_it"
-                                // onClick={()}
-                                onClick={()=>setCollapse(!collapse)}
-                                size={"20px"}                                
-                                />:<AiOutlineMenu
-                                className="c_it"
-                                // onClick={()}
-                                onClick={()=>setCollapse(!collapse)}
-                                size={"20px"}
-                                />
-                            }
-                            
+                  ) : (
+                    ""
+                  )}   
 
-                        </div>
-                    </div> */}
-            <div
-              className={tw`drop_down ${collapse ? "block" : "hidden"}`}
-              style={{ top: "49px" }}
-            >
-              <Link href={"/holidays"}>
-                <div className={tw`flex drop_item items-center`}>
-                  <img
-                    alt="trips"
-                    src={
-                      tripover
-                        ? `${Constants.assets_api}/public/icons/icons/ICO-TRIPS-orange.png`
-                        : `${Constants.assets_api}/public/icons/icons/ICO TRIPS.png`
-                    }
-                  />
-                  <div className="s_name d_content pl-4">Trips</div>
-                </div>
-              </Link>
-              <Link href={"/travel-guide"}>
-                <div className={tw`flex drop_item items-center`}>
-                  <img
-                    alt="explore"
-                    src={
-                      exploreover
-                        ? `${Constants.assets_api}/public/icons/icons/ICO-EXPLORE-orange.png`
-                        : `${Constants.assets_api}/public/icons/icons/ICO EXPLORE.png`
-                    }
-                  />
-                  <div className="s_name d_content pl-4">Explore</div>
-                </div>
-              </Link>
-              <Link href={"/hotels"}>
-                <div className={tw`flex drop_item items-center`}>
-                  <img
-                    alt="stays"
-                    src={
-                      stayover
-                        ? `${Constants.assets_api}/public/icons/icons/ICO-STAYS-orange.png`
-                        : `${Constants.assets_api}/public/icons/icons/ICO STAYS.png`
-                    }
-                  />
-                  <div className="s_name d_content pl-4">Stays</div>
-                </div>
-              </Link>
-            </div>
-          </div>
+                   <div className={tw``}>
+                   {
+                     Cookies.get('userid')
+                     ?
+                     
+                     
+                     // <Link >
+                       <div className={tw`relative c_it`}>
+                         <FaRegUser
+                           className="c_it_ m-auto"
+                           onClick={() => setOp(!op)}
+                           size={"20px"}
+                         />  
+                         <span className="nav-text">{Cookies.get("username")}</span>
+                         {/* <div className={tw` font-semibold text-slate-600`} onClick={() => setOp(!op)}>{Cookies.get("username")}</div> */}
+                         <div className={tw`absolute bg-white shadow-xl top-7 border-2 ${!op?'hidden':''}`}>
+                           <Link href={'/accounts'}>
+                             <div className=" border-b-2 px-4 py-2 font-semibold text-slate-700"> Profile </div>
+                           </Link>
+                           <div className="px-4 py-2 font-semibold text-slate-700" onClick={()=>Logout()}> Logout </div>
+                         </div>
+                       </div>
+                     
+                     :<div>
+                       <div className={tw`c_it flex-row lg:flex lg:items-center lg:gap-2 lg:border-2 lg:border-gray-300 hover:border-[#f06726] lg:rounded-full lg:px-3 lg:py-2 text-[#a7a7a7] hover:text-[#f06726] cursor-pointer`} onClick={() => setShowLogin(!showLogin)}>
+                         <span className="_c_it hidden lg:flex">Login</span>
+                         <FaRegUser
+                             className=""
+                             size={"20px"}
+                         />  
+                       </div>
+
+                     </div>
+                     
+
+                   }
+                   
+                 </div>   
+
+                 <div className={tw`block lg:hidden mr-3`}>
+                   {collapse ? (
+                     <AiOutlineClose
+                       className="c_it"
+                       // onClick={()}
+                       onClick={() => setCollapse(!collapse)}
+                       size={"20px"}
+                     />
+                   ) : (
+                     <AiOutlineMenu
+                       className="c_it"
+                       // onClick={()}
+                       onClick={() => setCollapse(!collapse)}
+                       size={"20px"}
+                     />
+                   )}
+                 </div>             
+               </div>
+               <div
+             className={tw`drop_down ${collapse ? "block" : "hidden"}`}
+             style={{ top: "49px" }}
+           >
+             <Link href={"/holidays"}>
+               <div className={tw`flex drop_item items-center`}>
+                 <img
+                   alt="trips"
+                   src={
+                     tripover
+                       ? `${Constants.assets_api}/public/icons/icons/ICO-TRIPS-orange.png`
+                       : `${Constants.assets_api}/public/icons/icons/ICO TRIPS.png`
+                   }
+                 />
+                 <div className="s_name d_content pl-4">Trips</div>
+               </div>
+             </Link>
+             <Link href={"/travel-guide"}>
+               <div className={tw`flex drop_item items-center`}>
+                 <img
+                   alt="explore"
+                   src={
+                     exploreover
+                       ? `${Constants.assets_api}/public/icons/icons/ICO-EXPLORE-orange.png`
+                       : `${Constants.assets_api}/public/icons/icons/ICO EXPLORE.png`
+                   }
+                 />
+                 <div className="s_name d_content pl-4">Explore</div>
+               </div>
+             </Link>
+             <Link href={"/hotels"}>
+               <div className={tw`flex drop_item items-center`}>
+                 <img
+                   alt="stays"
+                   src={
+                     stayover
+                       ? `${Constants.assets_api}/public/icons/icons/ICO-STAYS-orange.png`
+                       : `${Constants.assets_api}/public/icons/icons/ICO STAYS.png`
+                   }
+                 />
+                 <div className="s_name d_content pl-4">Stays</div>
+               </div>
+             </Link>
+           </div>                
+         </div>
+       
+         </div>
+         
         ) : (
           <div>
             <div className={tw`container relative`}>
