@@ -415,6 +415,16 @@ export const getMetaQuery = gql`
   }
 `;
 
+
+export const getMetaQueryUniversal = gql`
+  query meta($input: Payload!) {
+    meta(input: $input)
+      @rest(type: "meta", method: "POST", path: "/api/v1/common/tags") {
+      output
+    }
+  }
+`;
+
 // export const getallpackages = gql`
 // fragment Payload on REST {
 //     id: Int

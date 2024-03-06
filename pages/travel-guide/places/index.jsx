@@ -1,4 +1,5 @@
 import {
+  getMetaQueryUniversal,
   getStatereArticleQuery,
   getTravelGuideDetail,
   getTravelPackage,
@@ -28,6 +29,7 @@ import { BsDot } from "react-icons/bs";
 // import HomePackages from "@/components/home/packages";
 import { Carousel } from "react-responsive-carousel";
 import rightBlock from "@/components/trave-guide/rightBlock";
+import Meta from "@/components/meta";
 // import Articles from "@/components/home/articles";
 
 const Nav = dynamic(() => import("@/components/Nav"));
@@ -37,7 +39,7 @@ const HomePackages = dynamic(() => import("@/components/home/packages"));
 const Articles = dynamic(() => import("@/components/home/articles"));
 // const rightBlock = dynamic(() => import("@/components/trave-guide/rightBlock"));
 
-const Places = ({ data, packages_state, packages, article, weather }) => {
+const Places = ({ data, packages_state, packages, article, weather, meta }) => {
   // console.log(data)
   const state_bread = {
     disabled: {
@@ -79,6 +81,7 @@ const Places = ({ data, packages_state, packages, article, weather }) => {
   const type = data.tp;
   return (
     <>
+      <Meta meta={meta} />
       <Nav />
       <BreadCrumbs bread={state_bread} />
       <div className="container">
@@ -433,6 +436,12 @@ export async function getServerSideProps(context) {
   });
 
   var resp = null;
+  var metas = {}
+  const meta = await client.query({
+    query: getMetaQueryUniversal,
+    variables:{input:{}}
+  })
+
   if (res.data.travelGuide.output.tp == "CITY") {
     // type = "CITY";
     let lat = res.data.travelGuide.output.city.lat;
@@ -442,7 +451,67 @@ export async function getServerSideProps(context) {
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=d6429646ecc55c8a9d2856f91d10ff4f&units=metric`
     );
     // console.log(resp)
+
+
+    //
+    const n_meta = meta.data.meta.output.filter((item)=>item.name=="CITY_TOP_ATTRACTIONS")[0]
+      metas = {
+      title:
+          n_meta.title
+          .replace(/< CITY>/g, context.query.city.replace(/-/g, " ")),
+      longDesc:
+        n_meta.longDesc.replace(
+          /<CITY>/g,
+          context.query.city.replace(/-/g, " "),
+        ),
+      keywords:
+        n_meta.keywords.replace(
+          /<CITY>/g,
+          context.query.city.replace(/-/g, " "),
+        ),
+      image: n_meta.imageurl,
+    };
+
+  } else if (res.data.travelGuide.output.tp == "COUNTRY"){
+
+    const n_meta = meta.data.meta.output.filter((item)=>item.name=="COUNTRY_TOP_DESTINATIONS")[0]
+      metas = {
+      title:
+          n_meta.title
+          .replace(/<COUNTRY>/g, context.query.city.replace(/-/g, " ")),
+      longDesc:
+        n_meta.longDesc.replace(
+          /<COUNTRY>/g,
+          context.query.city.replace(/-/g, " "),
+        ),
+      keywords:
+        n_meta.keywords.replace(
+          /<COUNTRY>/g,
+          context.query.city.replace(/-/g, " "),
+        ),
+      image: n_meta.imageurl,
+    };    
+
+  } else{
+    const n_meta = meta.data.meta.output.filter((item)=>item.name=="STATE_TOP_DESTINATIONS")[0]
+      metas = {
+      title:
+          n_meta.title
+          .replace(/<STATE>/g, context.query.city.replace(/-/g, " ")),
+      longDesc:
+        n_meta.longDesc.replace(
+          /<STATE>/g,
+          context.query.city.replace(/-/g, " "),
+        ),
+      keywords:
+        n_meta.keywords.replace(
+          /<STATE>/g,
+          context.query.city.replace(/-/g, " "),
+        ),
+      image: n_meta.imageurl,
+    };
   }
+
 
   let json_data = {
     av: "",
@@ -520,6 +589,7 @@ export async function getServerSideProps(context) {
       packages,
       article,
       weather: resp ? resp.data : {},
+      meta:metas
     },
   };
 }

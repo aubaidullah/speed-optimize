@@ -38,7 +38,7 @@ const Meta = dynamic(() => import("@/components/meta"));
 
 const CanvasImg = () =>{
   return <>
-    <div className="lg:mb-52 mb-16 lg:mt-32 mt-16 ">
+    <div className="lg:mb-52 mb-16 lg:mt-32 mt-12 ">
       <div className={tw`bg-[#A6C7EA] h-[18rem]  lg:h-80 relative`}>
         <div className={tw`container flex lg:block flex-col justify-between h-full`}>
           <div className={tw`flex`}>
