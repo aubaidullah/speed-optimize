@@ -1,11 +1,12 @@
 import client from "../../../components/Graphql/service";
-import { getHotelList } from "../../../components/Graphql/Queries";
+import { getHotelList, getMetaQuery, getMetaQueryUniversal } from "../../../components/Graphql/Queries";
 import { tw } from "twind";
 import { useRouter } from "next/router";
 import { toTitleCase } from "../../../components/fun";
 import dynamic from "next/dynamic";
+import Meta from "@/components/meta";
 
-const SearchHotel = ({ hotels, info }) => {
+const SearchHotel = ({ hotels, info, meta }) => {
   const BreadCrumbs = dynamic(() => import("@/components/breadcrumbs"));
   const Nav = dynamic(() => import("@/components/HomeNav"));
   const SearchBar = dynamic(() => import("@/components/hotel/searchBar"));
@@ -32,6 +33,7 @@ const SearchHotel = ({ hotels, info }) => {
     "https://testkiomoi.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fkmadmin%2Fimage%2Fupload%2Fv1552993397%2Fkiomoi%2FPelling%2FPelling-2.jpg&w=1920&q=75";
   return (
     <>
+      <Meta meta={meta} />
       <Nav />
       <SearchBar img={info ? info.i : bimg} />
 
@@ -80,9 +82,36 @@ export async function getServerSideProps(context) {
   //     keywords:meta.data.meta.output.tags.keywords.replace(/<HOTEL>/g,hotelname).replace(/<CITY>/g,cityname)
   // }
 
+  const meta = await client.query({
+    query: getMetaQueryUniversal,
+    variables: { input: {},},
+  });
+  // let { name: hotelname, price, cityname } = meta.data.meta.output.hotel;
+  const n_meta = meta.data.meta.output.filter((item)=>item.name=="CITY_HOTELS")[0]
+
+  // price = `₹${price} `;
+
+    const metas = {
+      title:
+          n_meta.title
+          .replace(/<CITY>/g, city.replace(/-/g, " ")),
+      longDesc:
+        n_meta.longDesc.replace(
+          /<CITY>/g,
+          city.replace(/-/g, " "),
+        ),
+      keywords:
+        n_meta.keywords.replace(
+          /<CITY>/g,
+          city.replace(/-/g, " "),
+        ),
+      image: n_meta.imageurl,
+    };
+
+
   const hotels = res.data.hotels.output.hotels;
   const info = res.data.hotels.output.images;
-  return { props: { hotels: hotels, info: info } };
+  return { props: { hotels: hotels, info: info, meta: metas } };
 }
 
 export default SearchHotel;

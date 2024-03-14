@@ -12,6 +12,7 @@ import { getMetaQuery } from "../../../components/Graphql/Queries";
 import client from "../../../components/Graphql/service";
 import * as Constant from "../../../components/Constants";
 import dynamic from "next/dynamic";
+import { createTGCityURL, createTGStateURL } from "@/components/fun";
 
 const ParseHtml = dynamic(() => import("@/components/parseToHtml"));
 const Nav = dynamic(() => import("@/components/Nav"));
@@ -37,9 +38,13 @@ const Attraction = ({ data, meta }) => {
         href: "/travel-guide/",
       },
       {
-        item: "India",
-        href: "/travel-guide/",
+        item: data?.stid?.cityName,
+        href: createTGStateURL({city:data?.stid?.cityName,id:data?.stid?.id}),
       },
+      {
+        item: data?.ctid?.cityName,
+        href: createTGCityURL({city:data?.ctid?.cityName,id:data?.ctid?.id}),
+      },      
     ],
   };
 
