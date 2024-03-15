@@ -10,6 +10,7 @@ import {
 } from "../../../../components/Graphql/Queries";
 import axios from "axios";
 import dynamic from "next/dynamic";
+import Meta from "@/components/meta";
 // import TravelGuide from "../../../../components/home/travel_guide";
 // import TravelGuideDetailComp from '../../../../components/trave-guide/details'
 // import { createCityListURL, createStateListURL } from "../../../../components/fun";
@@ -27,21 +28,24 @@ const TravelGuideDetail = ({
 }) => {
   // console.log(article)
   const TravelGuideDetailComp = dynamic(() =>
-    import("@/components/trave-guide/details"),
+    import("@/components/trave-guide/details"),{ssr:true}
   );
 
   return (
-    <TravelGuideDetailComp
-      meta={meta}
-      packages_state={packages_state}
-      data={data}
-      weather={weather}
-      packages={packages}
-      hotels={hotels}
-      article={article}
-      qna={qna}
-      type={type}
-    />
+    <>
+      <Meta meta={data.tg}/>
+      <TravelGuideDetailComp
+        meta={meta}
+        packages_state={packages_state}
+        data={data}
+        weather={weather}
+        packages={packages}
+        hotels={hotels}
+        article={article}
+        qna={qna}
+        type={type}
+      />
+    </>
   );
   // return <TravelGuide packages_state={packages_state} data={data} weather={weather} packages={packages} hotels={hotels} article={article} qna={qna} type={type} />
   // console.log(data)
@@ -218,7 +222,7 @@ export async function getServerSideProps(context) {
 
   // console.log(type)
   // console.log(packages)
-
+  console.log(metas)
   return {
     props: {
       packages_state: packages_state,

@@ -13,6 +13,7 @@ import { tw } from "twind";
 // import { ScrollWrapper } from "react-bottom-scroll";
 import { useRouter } from "next/router";
 import {
+  createCityListURL,
   createCountryListURL,
   createStateListURL,
   createTGCityURL,
@@ -119,7 +120,7 @@ const ListPageMobile = ({
 
   const state_bread = {
     disabled: {
-      item: `${region?.name}`,
+      item: `${region?.name} Tour Packages`,
     },
     enabled: [
       {
@@ -127,7 +128,7 @@ const ListPageMobile = ({
         href: "/",
       },
       {
-        item: "Holidays Bookings",
+        item: "Holidays",
         href: "/holidays",
       },
       // {
@@ -146,7 +147,7 @@ const ListPageMobile = ({
         href: "/",
       },
       {
-        item: "Holidays Bookings",
+        item: "Holidays",
         href: "/holidays",
       },
       {
@@ -162,7 +163,7 @@ const ListPageMobile = ({
   };
   const country_bread = {
     disabled: {
-      item: `${region?.name}`,
+      item: `${region?.name} Tour Packages`,
     },
     enabled: [
       {
@@ -170,7 +171,7 @@ const ListPageMobile = ({
         href: "/",
       },
       {
-        item: "Holidays Bookings",
+        item: "Holidays",
         href: "/holidays",
       },
       // {
@@ -180,9 +181,10 @@ const ListPageMobile = ({
       // }
     ],
   };
-  const city_bread = {
+
+  const theme_state_bread = {
     disabled: {
-      item: `${router.query.city}`,
+      item: `${router?.query?.theme} Tour Packages`,
     },
     enabled: [
       {
@@ -190,7 +192,54 @@ const ListPageMobile = ({
         href: "/",
       },
       {
-        item: "Holidays Bookings",
+        item: "Holidays",
+        href: "/holidays",
+      },
+      {
+        item: `${router?.query?.package}`,
+        href: `${router?.query?.pre=="2"?createStateListURL({statename:router?.query?.package,id:router?.query?.id}):createCityListURL({cityname:router?.query?.package,id:router?.query?.id})}`
+      }
+      // {
+      //     item:`${region?.sname}`,
+      //     href: `/holidays-international/${region?.sname}-tour-packages/${region?.cid}`
+      //     // href:`/holidays-international/nepal-tour-packages/153`
+      // }
+    ],
+  };
+  
+
+  const theme_bread = {
+    disabled: {
+      item: `${router?.query?.theme} Tour Packages`,
+    },
+    enabled: [
+      {
+        item: "Kiomoi",
+        href: "/",
+      },
+      {
+        item: "Holidays",
+        href: "/holidays",
+      },
+      // {
+      //     item:`${region?.sname}`,
+      //     href: `/holidays-international/${region?.sname}-tour-packages/${region?.cid}`
+      //     // href:`/holidays-international/nepal-tour-packages/153`
+      // }
+    ],
+  };  
+
+  const city_bread = {
+    disabled: {
+      item: `${router.query.city} Tour Packages`,
+    },
+    enabled: [
+      {
+        item: "Kiomoi",
+        href: "/",
+      },
+      {
+        item: "Holidays",
         href: "/holidays",
       },
       // {
@@ -210,7 +259,7 @@ const ListPageMobile = ({
 
   const all_bread = {
     disabled: {
-      item: "Holidays Bookings",
+      item: "Holidays",
     },
     enabled: [
       {
@@ -415,10 +464,14 @@ const ListPageMobile = ({
           bread={
             // page_type=='STATE'?state_bread:region?.sname == region?.cname?country_bread:page_type=='CITY'?city_bread:all_bread
 
-            page_type == "STATE"
+            router?.query?.package && router?.query?.theme
+              ? theme_state_bread
+              : page_type == "STATE" 
               ? state_bread
               : page_type == "COUNTRY"
               ? country_bread
+              : page_type == "THEME"
+              ? theme_bread
               : page_type == "CITY" && region?.sname == region?.cname
               ? country_st_bread
               : page_type == "CITY"

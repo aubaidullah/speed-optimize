@@ -10,10 +10,10 @@ const Meta = ({ meta }) => {
   const jsonData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://kiomoi.com",
+    "@id": "https://www.kiomoi.com",
     name: "Kiomoi Travels",
     description: "Book Holiday Packages, Honeymoon And Vacation Trip",
-    url: "https://kiomoi.com",
+    url: "https://www.kiomoi.com",
     telephone: "+919650687940",
     address: {
       "@type": "PostalAddress",

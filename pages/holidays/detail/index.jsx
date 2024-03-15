@@ -73,7 +73,7 @@ const DetailPage = ({ data, related, reviews, meta }) => {
               href: "/",
             },
             {
-              item: "Holidays Booking",
+              item: "Holidays",
               href: "/holidays/",
             },
             // {

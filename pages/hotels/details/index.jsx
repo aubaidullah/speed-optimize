@@ -13,11 +13,12 @@ import { imgNameByUrl, jpgToWebp, strToUrl } from "../../../components/fun";
 import { BsCheckCircle } from "react-icons/bs";
 import dynamic from "next/dynamic";
 import CustomImage from "@/components/Img";
+import Meta from '@/components/meta'
 
 const HotelDetail = ({ hotel, meta }) => {
   const BreadCrumbs = dynamic(() => import("@/components/breadcrumbs"));
   const Nav = dynamic(() => import("@/components/Nav"));
-  const Meta = dynamic(() => import("@/components/meta"));
+  // const Meta = dynamic(() => import("@/components/meta"));
 
   const RightContent = dynamic(() =>
     import("@/components/hotel/Right-content"),

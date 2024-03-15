@@ -84,10 +84,10 @@ const TravelGuideDetailComp = ({
         item: "Travel Guide",
         href: "/travel-guide/",
       },
-      {
-        item: "India",
-        href: "/travel-guide/",
-      },
+      // {
+      //   item: "India",
+      //   href: "/travel-guide/",
+      // },
     ],
   };
   const city_bread = {
@@ -104,14 +104,8 @@ const TravelGuideDetailComp = ({
         href: "/travel-guide/",
       },
       {
-        item: "India",
-        href: "/travel-guide/",
-      },
-      {
         item: `${data?.city?.sname}`,
-        href: `/travel-guide/states/${data?.city?.sname.toLowerCase()}-${
-          data?.city?.sid
-        }`,
+        href: createTGStateURL({city:data?.city?.sname,id:data?.stid?.id})
       },
     ],
   };
@@ -202,9 +196,8 @@ const TravelGuideDetailComp = ({
 
   return (
     <>
-      <Meta meta={data.tg} />
       <Nav />
-      <BreadCrumbs bread={data.tg.geoType == "COUNTRY" ? con_bread : bread} />
+      <BreadCrumbs bread={data.tg.geoType == "COUNTRY" ? con_bread :data.tg.geoType == "CITY"? city_bread:  bread} />
       <section className="container">
         <div className="title_listing_">
           {type == "CITY" ? (
