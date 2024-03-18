@@ -480,11 +480,12 @@ const ListPageMobile = ({
           "reviewCount": 585
         },
         "review": [
+          reviews?
           {
             "@type": "Review",
             "author": {
               "@type": "Person",
-              "name": reviews[0].cName
+              "name": reviews[0]?.cName
             },
             "datePublished": reviews[0]?.modifiedDate,
             "description": reviews[0]?.review,
@@ -495,7 +496,7 @@ const ListPageMobile = ({
               "ratingValue": "5",
               "worstRating": "0"
             }
-          }
+          }:""
         ]
       }      
   

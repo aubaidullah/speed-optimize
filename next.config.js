@@ -30,6 +30,26 @@ const nextConfig = {
         destination: "/holidays/:slug-tour-package-:id",
         permanent: true,
       },
+      {
+        source: "/travelguide",
+        destination: "/travel-guide",
+        permanent: true
+      },
+      {
+        source: "/travel_guide",
+        destination: "/travel-guide",
+        permanent: true
+      },
+      // {
+      //   source: '/_error',
+      //   destination: '/',
+      //   permanent:true
+      // }
+      // {
+      //   source: "/:slug",
+      //   destination:"/",
+      //   permanent:true
+      // }
       // {
       //   source: '/holidays-international/:package-tour-packages-:id',
       //   destination: "/holidays/:package-tour-packages-:id:pre(3)",
