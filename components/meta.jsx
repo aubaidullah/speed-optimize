@@ -169,10 +169,10 @@ const Meta = ({ meta }) => {
           }}
         />
 
-        <script
+        {/* <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonData) }}
-        />
+        /> */}
 
         <script
           type="application/ld+json"
@@ -180,7 +180,7 @@ const Meta = ({ meta }) => {
         />
 
         <script
-          type=""
+          type="application/ld+json"
           dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLocal)}}
         />
 

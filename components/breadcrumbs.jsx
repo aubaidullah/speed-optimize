@@ -42,8 +42,9 @@ const BreadCrumbs = ({ bread }) => {
                   itemType="https://schema.org/ListItem"
                 >
                   <>
-                    <Link href={e.href} itemProp="item">
+                    <Link href={`https://www.kiomoi.com${e.href}`} itemProp="item">
                       <div className="_b_active">
+                        <span></span>
                         <span itemProp="name">{e.item}</span>
                         <meta itemProp="position" content={index + 1} />
                       </div>
@@ -53,7 +54,16 @@ const BreadCrumbs = ({ bread }) => {
                 </li>
               );
             })}
-            <li>{bread.disabled.item}</li>
+            <li
+            itemProp="itemListElement"
+            itemScope={true}
+            itemType="https://schema.org/ListItem"
+            >
+              <span itemProp="name">
+                {bread.disabled.item}
+              </span>
+              <span itemProp="position" content={bread?.enabled?.length+1} />
+              </li>
           </ul>
         </div>
       </section>
