@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { tw } from "twind";
 import { TiChevronRight } from "react-icons/ti";
+import { useRouter } from "next/router";
 const BreadCrumbs = ({ bread }) => {
+  const { asPath, pathname, basePath } = useRouter();
+  const router = useRouter()
   // const bread = {
   //     disabled:{
   //         "item":"Tour package"
@@ -21,7 +24,8 @@ const BreadCrumbs = ({ bread }) => {
   //         }
   //     ]
   // }
-
+  // console.log(router)
+  // console.log(headersList.get('host'))
   return (
     <>
       {/* style={{position:'sticky',top:'60px'}} */}
@@ -59,6 +63,7 @@ const BreadCrumbs = ({ bread }) => {
             itemScope={true}
             itemType="https://schema.org/ListItem"
             >
+              <a href={`https://www.kiomoi.com${asPath}`} itemProp="item"/>
               <span itemProp="name">
                 {bread.disabled.item}
               </span>

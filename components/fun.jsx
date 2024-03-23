@@ -56,7 +56,8 @@ export const createDetailUrl = ({ name, id }) => {
 export const createThemeListURL = ({ cityname }) => {
   return `/holidays/${cityname
     ?.replace(/\s+/g, " ")
-    .replace(/\s+/g, "-")
+    ?.replace(/\s+/g, "-")
+    ?.replace(/-\&-/g, "-and-")
     .toLowerCase()}-tour-packages`;
 };
 
@@ -66,6 +67,29 @@ export const createCityListURL = ({ cityname, id }) => {
     .replace(/\s+/g, "-")
     .toLowerCase()}-tour-packages-${id}1`;
 };
+
+
+export const createAttractionURL = ({ cityname, id }) => {
+  
+  `/cities/${data?.tg?.cityName.toLowerCase()}/top-sightseeing-places-and-attractions-to-visit-${data?.tg?.id}`
+  
+  return `/holidays/${cityname
+    ?.replace(/\s+/g, " ")
+    .replace(/\s+/g, "-")
+    .toLowerCase()}-tour-packages-${id}1`;
+};
+
+export const createPlacesToVisitURL = ({ cityname, id }) => {
+
+  // `/states/${data?.tg?.cityName.toLowerCase()}/top-places-to-visit-${data?.tg?.id}`
+  return `/states/${cityname
+    ?.replace(/\s+/g, " ")
+    ?.replace(/\s+/g, "-")
+    .toLowerCase()}/top-places-to-visit-${id}`;
+};
+
+
+
 export const createCountryListURL = ({ cityname, id }) => {
   // return `/holidays-international/${cityname?.replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages-${id}`
   return `/holidays/${cityname

@@ -91,7 +91,8 @@ export async function getServerSideProps(context) {
   // Fetch data from external API
   context.res.setHeader("Cache-Control", "s-maxage=10");
   const headers = context.req.headers;
-  const theme_name = context.query.theme.replace(/-/g, " ");
+  const theme_name = context.query.theme.replace(/-and-/g, "-&-").replace(/-/g, " ");
+  console.log(theme_name)
 
   const res = await client.query({
     query: getallpackages,

@@ -25,6 +25,7 @@ import {
   createAttractionsURL,
   createCityListURL,
   createCountryListURL,
+  createPlacesToVisitURL,
   createStateListURL,
   createTGCityURL,
   createTGStateURL,
@@ -622,7 +623,10 @@ const TravelGuideDetailComp = ({
                     <div>
                       {/* /states/:city/top-places-to-visit-:id */}
                       {
-                        type!="COUNTRY"?<Link href={`/states/${data?.tg?.cityName.toLowerCase()}/top-places-to-visit-${data?.tg?.id}`}>
+                        type!="COUNTRY"?<Link 
+                        // href={`/states/${data?.tg?.cityName.toLowerCase()}/top-places-to-visit-${data?.tg?.id}`}
+                        href={createPlacesToVisitURL({cityname:data?.tg?.cityName,id:data?.tg?.id})}
+                        >
                         <div>
                           <div className="btn_view_more">View all</div>
                         </div>

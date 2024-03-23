@@ -242,12 +242,12 @@ const DetailPage = ({ data, related, reviews, meta }) => {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(prdJson) }}
         />
-      </Head>
+      </Head> */}
 
       {show ? <Guest show={show} setShow={() => setShow(!show)} /> : null}
       <Meta meta={meta} />
