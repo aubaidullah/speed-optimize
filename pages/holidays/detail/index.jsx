@@ -141,56 +141,56 @@ const DetailPage = ({ data, related, reviews, meta }) => {
     }
   });
 
-  const jsonData = [
-    {
-      "@context": "http://schema.org/",
-      "@type": "Product",
-      name: data?.package.name,
-      productId: data?.package.id,
-      image: data?.package.images.split(",") ?? [],
-      description: data?.package.description,
-      url: `https://www.kiomoi.com${router.asPath}`,
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue:
-          data?.package.sratings != "0"
-            ? data?.package.sratings
-            : randomRating().rating,
-        reviewCount:
-          data?.package.sratings != "0"
-            ? data?.package.susers
-            : randomRating().review,
-      },
-      offers: {
-        "@type": "Offer",
-        url: `https://www.kiomoi.com${router.asPath}`,
-        priceCurrency: "INR",
-        price: data?.package.finalprice,
-        availability: "http://schema.org/InStock",
-        seller: {
-          "@type": "Organization",
-          name: "Kiomoi Travel",
-        },
-      },
-      additionalProperty: [
-        {
-          "@type": "PropertyValue",
-          propertyID: "custom_label_0",
-          value: "tour",
-        },
-        {
-          "@type": "PropertyValue",
-          propertyID: "custom_label_1",
-          value: `${data?.package.region} tour package`,
-        },
-        {
-          "@type": "PropertyValue",
-          propertyID: "custom_label_2",
-          value: data?.package.region,
-        },
-      ],
-    },
-  ];
+  // const jsonData = [
+  //   {
+  //     "@context": "http://schema.org/",
+  //     "@type": "Product",
+  //     name: data?.package.name,
+  //     productId: data?.package.id,
+  //     image: data?.package.images.split(",") ?? [],
+  //     description: data?.package.description,
+  //     url: `https://www.kiomoi.com${router.asPath}`,
+  //     aggregateRating: {
+  //       "@type": "AggregateRating",
+  //       ratingValue:
+  //         data?.package.sratings != "0"
+  //           ? data?.package.sratings
+  //           : randomRating().rating,
+  //       reviewCount:
+  //         data?.package.sratings != "0"
+  //           ? data?.package.susers
+  //           : randomRating().review,
+  //     },
+  //     offers: {
+  //       "@type": "Offer",
+  //       url: `https://www.kiomoi.com${router.asPath}`,
+  //       priceCurrency: "INR",
+  //       price: data?.package.finalprice,
+  //       availability: "http://schema.org/InStock",
+  //       seller: {
+  //         "@type": "Organization",
+  //         name: "Kiomoi Travel",
+  //       },
+  //     },
+  //     additionalProperty: [
+  //       {
+  //         "@type": "PropertyValue",
+  //         propertyID: "custom_label_0",
+  //         value: "tour",
+  //       },
+  //       {
+  //         "@type": "PropertyValue",
+  //         propertyID: "custom_label_1",
+  //         value: `${data?.package.region} tour package`,
+  //       },
+  //       {
+  //         "@type": "PropertyValue",
+  //         propertyID: "custom_label_2",
+  //         value: data?.package.region,
+  //       },
+  //     ],
+  //   },
+  // ];
 
   const prdJson = {
       "@context": "http://schema.org",
