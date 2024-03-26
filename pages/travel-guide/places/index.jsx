@@ -50,7 +50,7 @@ const Places = ({ data, packages_state, packages, article, weather, meta }) => {
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {

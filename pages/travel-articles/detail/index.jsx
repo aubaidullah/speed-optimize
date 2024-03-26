@@ -28,7 +28,7 @@ const TravelArticle = ({ data, article, meta }) => {
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {

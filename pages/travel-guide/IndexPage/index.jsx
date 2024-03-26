@@ -33,7 +33,7 @@ const IndexPage = ({data,meta,pageType}) =>{
       },
       enabled: [
         {
-          item: "Kiomoi",
+          item: "Home",
           href: "/",
         },
       ],

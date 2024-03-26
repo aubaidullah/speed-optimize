@@ -68,11 +68,11 @@ const Package = ({ index, item, POPUPFORM }) => {
         <div
           className="pack_box rounded-lg hover:shadow-lg transition-shadow"
           key={item.id}
-          itemProp="itemListElement"
-          itemScope
-          itemType="https://schema.org/ListItem"
+          // itemProp="itemListElement"
+          // itemScope
+          // itemType="https://schema.org/ListItem"
         >
-          <meta itemProp="position" content={index + 1} />
+          {/* <meta itemProp="position" content={index + 1} /> */}
           <div className="row">
             <div
               className="col-lg-12 col-sm-12"

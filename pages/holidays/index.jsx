@@ -15,6 +15,7 @@ import * as Constants from "@/components/Constants";
 import Content from "@/components/holidays/content";
 import FAQs from "@/components/list/faqs";
 import Link from "next/link";
+import Head from "next/head";
 // import CityPackages from "@/components/holidays/CityPackage";
 // import InterNationalPackage from "@/components/holidays/International";
 // import Articles from "@/components/home/articles";
@@ -169,7 +170,59 @@ const faq = [
 const HolidayPage = ({home,theme,articles,reviews,metas}) =>{
   // let img = "https://res.cloudinary.com/kmadmin/image/upload/v1633196081/kiomoi/1633196080048.jpg"
    let img = "https://res.cloudinary.com/kmadmin/image/upload/v1552993397/kiomoi/Pelling/Pelling-2.jpg";
+
+    const jsonP = {
+      "@context": "http://schema.org",
+        "@type": "Product",
+        "description": "Best offers are available on Domestic and International holiday tour packages at Kiomoi Travel. Book holiday packages at Kiomoi & get upto 30% discount!",
+        "name": "Holiday Tour Packages",
+        "url": "https://www.kiomoi.com/holidays",
+        "image": "https://assets.kiomoi.com/public/icons/holiday/Component_440/Component_440.png",
+        "brand": {
+          "@type": "Brand",
+          "name": "Kiomoi Travel"
+        },
+        "offers": {
+          "@type": "AggregateOffer",
+          "highPrice": "000",
+          "lowPrice": "000",
+          "priceCurrency": "INR"
+          
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": 5,
+          "reviewCount": 585
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": reviews?.reviews[0].cName
+            },
+            "datePublished": reviews?.reviews[0].modifiedDate,
+            "description": reviews?.reviews[0]?.review,
+            "name": metas?.title??metas?.metaTitle,
+            "reviewRating": {
+              "@type": "Rating",
+              "bestRating": "5",
+              "ratingValue": "5",
+              "worstRating": "0"
+            }
+          }
+        ]
+      } 
+
+
+
     return <>
+      <Head>
+      <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonP) }}
+        />        
+      </Head>
         <Meta meta={metas} />
         <Nav />
         {/* <SearchBar /> */}

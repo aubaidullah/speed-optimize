@@ -5,12 +5,28 @@ import dynamic from "next/dynamic";
 const Nav = dynamic(() => import("../components/Nav"));
 
 export async function getServerSideProps({ res }) {
-  res.statusCode = 410;
-  return { props: {} };
+  // res.statusCode = 310;
+  // res.redirect("/")
+
+  // return { props: {} };
+  return {
+    redirect: {
+      permanent: false,
+      destination: "/",
+    },
+    props:{},
+  };
 }
 
+
+
 export default function Error410() {
-  return (
+  // useEffect(() => {
+  //   router.replace("/")
+  // })  
+  return null
+  
+  (
     <>
       <Nav />
       <title>410 | Gone</title>

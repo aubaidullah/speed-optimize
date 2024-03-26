@@ -35,7 +35,7 @@ const TravelGuide = ({ data, meta }) => {
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
     ],

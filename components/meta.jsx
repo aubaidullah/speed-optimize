@@ -33,37 +33,105 @@ const Meta = ({ meta }) => {
     ],
   };
 
-  const jsonP ={
-    "@context":"http://schema.org/",
-    "@type":"Organization",
-    "name":"KIOMOI TRAVEL SERVICES (P) LTD",
-    "aggregateRating":
-    {
-      "@type":"AggregateRating",
-      "ratingValue":"4.5",
-      "reviewCount":"1"
-    },
-    "review":
-        [
-          {
-          "@type":"Review",
-          "author":
-            {
-              "@type":"Person",
-              "name":"Bhuvanesh Prajapati"
-            },
-            "reviewBody":" I recently visited meghalaya during the long weekend around independence day and I travelled solo and was planning my itinerary all by myself. ",
-            "name":"Kiomoi Reviews",
-            "reviewRating":
-            {
-              "@type":"Rating",
-              "bestRating":"5",
-              "ratingValue":"5",
-              "worstRating": "2.5"
-            }
-          }
-        ]
-    }
+  // const jsonP ={
+  //   "@context":"http://schema.org/",
+  //   "@type":"Organization",
+  //   "name":"KIOMOI TRAVEL SERVICES (P) LTD",
+  //   "aggregateRating":
+  //   {
+  //     "@type":"AggregateRating",
+  //     "ratingValue":"4.5",
+  //     "reviewCount":"1"
+  //   },
+  //   "review":
+  //       [
+  //         {
+  //         "@type":"Review",
+  //         "author":
+  //           {
+  //             "@type":"Person",
+  //             "name":"Bhuvanesh Prajapati"
+  //           },
+  //           "reviewBody":" I recently visited meghalaya during the long weekend around independence day and I travelled solo and was planning my itinerary all by myself. ",
+  //           "name":"Kiomoi Reviews",
+  //           "reviewRating":
+  //           {
+  //             "@type":"Rating",
+  //             "bestRating":"5",
+  //             "ratingValue":"5",
+  //             "worstRating": "2.5"
+  //           }
+  //         }
+  //       ]
+  //   }
+
+  const jsonP = {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "url": "https://www.kiomoi.com/",
+    "name": "Kiomoi Travel",
+    "description":"Book Domestic And International Holiday Tour Packages, Honeymoon And Adventure Vacations for Families",
+    "logo": "https://www.kiomoi.com/icons/kiomoi%20logo.svg",
+    "sameAs": [
+      "",
+      "https://www.facebook.com/thekiomoi/",
+      "https://twitter.com/ki_omoi",
+      "https://www.instagram.com/kiomoi_in/",
+      "https://www.linkedin.com/company/kiomoi/",
+      "https://www.youtube.com/channel/UCPq6EimDUQ2eknEJgyLqnnA",
+      "https://in.pinterest.com/kiomoitravel/"
+    ],
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+91-9650687940",
+        "contactType": "Customer Service",
+        "ContactOption": "Customer Service"
+      },
+      {
+        "@type": "ContactPoint",
+        "email": "info@kiomoi.com",
+        "contactType": "Customer Service",
+        "ContactOption": "Send Enquiry"
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+91-9650687940",
+        "contactType": "Customer Service",
+        "ContactOption": "WHATSAPP - For Foreign and Nationals"
+      }
+     
+    ]
+  }
+
+  const jsonLocal = {
+    "@context": "http://schema.org/",
+    "@type": "LocalBusiness",
+    "url": "https://www.kiomoi.com/",
+    "name": "KIOMOI TRAVEL SERVICES (P) LTD",
+    "email": "info@kiomoi.com",
+    "telephone": "+91-9650687940",
+    "image": "https://www.kiomoi.com/icons/kiomoi%20logo.svg",
+    "sameAs": [
+      "https://www.facebook.com/thekiomoi/",
+      "https://twitter.com/ki_omoi",
+      "https://www.instagram.com/kiomoi_in/",
+      "https://www.linkedin.com/company/kiomoi/",
+      "https://www.youtube.com/channel/UCPq6EimDUQ2eknEJgyLqnnA",
+      "https://in.pinterest.com/kiomoitravel/"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": {
+        "@type": "Country",
+        "name": "India"
+      },
+      "streetAddress": "H-187, Sector-63,",
+      "addressLocality": "Lohia Road",
+      "addressRegion": "Noida, Uttar Pradesh",
+      "postalCode": "201301"
+    }  
+  }
 
   // const GA_TRACKING_ID = "G-CVJVT86DPD"
   return (
@@ -101,14 +169,19 @@ const Meta = ({ meta }) => {
           }}
         />
 
-        <script
+        {/* <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonData) }}
-        />
+        /> */}
 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonP) }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLocal)}}
         />
 
         {/* </script> */}
@@ -202,7 +275,7 @@ const Meta = ({ meta }) => {
           name="twitter:image"
           content={`${Constants.assets_api}/public/logo.png`}
         />
-        <meta name="robots" content="index" />
+        <meta name="robots" content="index,follow" />
 
         {/* <link
           rel="apple-touch-icon"

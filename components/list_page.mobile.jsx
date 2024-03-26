@@ -26,6 +26,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import ParseHtml from "./parseToHtml";
+import Head from "next/head";
 // import { SimilarTourLoading } from './skelton';
 // import CityTags from './list/city_tags';
 // import State_Attraction from './trave-guide/attractions';
@@ -104,6 +105,7 @@ const ListPageMobile = ({
   const [_min, set_Min] = useState(1);
   const [_max, set_Max] = useState(100);
   const router = useRouter();
+  const { asPath, pathname } = useRouter();
 
   // router.push(
   //     {
@@ -124,7 +126,7 @@ const ListPageMobile = ({
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {
@@ -143,7 +145,7 @@ const ListPageMobile = ({
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {
@@ -167,7 +169,7 @@ const ListPageMobile = ({
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {
@@ -188,7 +190,7 @@ const ListPageMobile = ({
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {
@@ -214,7 +216,7 @@ const ListPageMobile = ({
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {
@@ -235,7 +237,7 @@ const ListPageMobile = ({
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {
@@ -263,7 +265,7 @@ const ListPageMobile = ({
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
     ],
@@ -453,8 +455,60 @@ const ListPageMobile = ({
         return () => clearInterval(interval);
       },[])
 
-        return (
+  
+
+      const prdJson = {
+      "@context": "http://schema.org",
+        "@type": "Product",
+        "description": meta?.longDesc??meta?.metaDesc,
+        "name": meta?.title??meta?.metaTitle,
+        "url": `https://www.kiomoi.com${asPath}`,
+        "image": meta?.image,
+        "brand": {
+          "@type": "Brand",
+          "name": "Kiomoi Travel"
+        },
+        "offers": {
+          "@type": "AggregateOffer",
+          "Price": "000",
+          "priceCurrency": "INR"
+          
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": 5,
+          "reviewCount": 585
+        },
+        "review": [
+          reviews?
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": reviews[0]?.cName
+            },
+            "datePublished": reviews[0]?.modifiedDate,
+            "description": reviews[0]?.review,
+            "name": meta?.title??meta?.metaTitle,
+            "reviewRating": {
+              "@type": "Rating",
+              "bestRating": "5",
+              "ratingValue": "5",
+              "worstRating": "0"
+            }
+          }:""
+        ]
+      }      
+  
+  
+  return (
     <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(prdJson) }}
+        />
+      </Head>    
       <Meta meta={meta} />
 
       <article>

@@ -7,6 +7,7 @@ import {
 } from "../../../components/fun";
 import { BsDot, BsStarFill, BsStarHalf } from "react-icons/bs";
 import dynamic from "next/dynamic";
+import moment from "moment";
 
 import { tw } from "twind";
 import { useState } from "react";
@@ -69,7 +70,7 @@ const DetailPage = ({ data, related, reviews, meta }) => {
       data?.package?.scope === "DOMESTIC"
         ? [
             {
-              item: "Kiomoi",
+              item: "Home",
               href: "/",
             },
             {
@@ -91,7 +92,7 @@ const DetailPage = ({ data, related, reviews, meta }) => {
           ]
         : [
             {
-              item: "Kiomoi",
+              item: "Home",
               href: "/",
             },
             {
@@ -140,56 +141,100 @@ const DetailPage = ({ data, related, reviews, meta }) => {
     }
   });
 
-  const jsonData = [
-    {
-      "@context": "http://schema.org/",
-      "@type": "Product",
-      name: data?.package.name,
-      productId: data?.package.id,
-      image: data?.package.images.split(",") ?? [],
-      description: data?.package.description,
-      url: `https://www.kiomoi.com${router.asPath}`,
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue:
-          data?.package.sratings != "0"
-            ? data?.package.sratings
-            : randomRating().rating,
-        reviewCount:
-          data?.package.sratings != "0"
-            ? data?.package.susers
-            : randomRating().review,
-      },
-      offers: {
-        "@type": "Offer",
-        url: `https://www.kiomoi.com${router.asPath}`,
-        priceCurrency: "INR",
-        price: data?.package.finalprice,
-        availability: "http://schema.org/InStock",
-        seller: {
-          "@type": "Organization",
-          name: "Kiomoi Travel",
+  // const jsonData = [
+  //   {
+  //     "@context": "http://schema.org/",
+  //     "@type": "Product",
+  //     name: data?.package.name,
+  //     productId: data?.package.id,
+  //     image: data?.package.images.split(",") ?? [],
+  //     description: data?.package.description,
+  //     url: `https://www.kiomoi.com${router.asPath}`,
+  //     aggregateRating: {
+  //       "@type": "AggregateRating",
+  //       ratingValue:
+  //         data?.package.sratings != "0"
+  //           ? data?.package.sratings
+  //           : randomRating().rating,
+  //       reviewCount:
+  //         data?.package.sratings != "0"
+  //           ? data?.package.susers
+  //           : randomRating().review,
+  //     },
+  //     offers: {
+  //       "@type": "Offer",
+  //       url: `https://www.kiomoi.com${router.asPath}`,
+  //       priceCurrency: "INR",
+  //       price: data?.package.finalprice,
+  //       availability: "http://schema.org/InStock",
+  //       seller: {
+  //         "@type": "Organization",
+  //         name: "Kiomoi Travel",
+  //       },
+  //     },
+  //     additionalProperty: [
+  //       {
+  //         "@type": "PropertyValue",
+  //         propertyID: "custom_label_0",
+  //         value: "tour",
+  //       },
+  //       {
+  //         "@type": "PropertyValue",
+  //         propertyID: "custom_label_1",
+  //         value: `${data?.package.region} tour package`,
+  //       },
+  //       {
+  //         "@type": "PropertyValue",
+  //         propertyID: "custom_label_2",
+  //         value: data?.package.region,
+  //       },
+  //     ],
+  //   },
+  // ];
+
+  const prdJson = {
+      "@context": "http://schema.org",
+        "@type": "Product",
+        "name": data?.package.name,
+        "description": data?.package.description,
+        "url": `https://www.kiomoi.com${router.asPath}`,
+        "image": data?.package.images.split(",")[0],
+        "offers": {
+          "@type": "AggregateOffer",
+          "url": `https://www.kiomoi.com${router.asPath}`,
+          "Price": data?.package.finalprice,
+          "priceCurrency": "INR"
         },
-      },
-      additionalProperty: [
-        {
-          "@type": "PropertyValue",
-          propertyID: "custom_label_0",
-          value: "tour",
+        "brand": "Kiomoi Travel",
+        
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": data?.package.sratings != "0"
+          ? data?.package.sratings
+          : randomRating().rating,
+          "reviewCount": data?.package.sratings != "0"
+          ? data?.package.susers
+          : randomRating().review
         },
-        {
-          "@type": "PropertyValue",
-          propertyID: "custom_label_1",
-          value: `${data?.package.region} tour package`,
-        },
-        {
-          "@type": "PropertyValue",
-          propertyID: "custom_label_2",
-          value: data?.package.region,
-        },
-      ],
-    },
-  ];
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": reviews?.reviews?.[0]?.cName
+            },
+            "datePublished": moment(reviews?.reviews?.[0]?.modifiedDate)?.format("DD MMMM YYYY, HH:MM"),
+            "description": reviews?.reviews?.[0]?.review,
+            "name": data?.package.name,
+            "reviewRating": {
+              "@type": "Rating",
+              "bestRating": "5",
+              "ratingValue": "5",
+              "worstRating": "1"
+            }
+          }
+        ]
+      }
 
   //  console.log(router)
 
@@ -200,7 +245,7 @@ const DetailPage = ({ data, related, reviews, meta }) => {
       <Head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonData) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(prdJson) }}
         />
       </Head>
 

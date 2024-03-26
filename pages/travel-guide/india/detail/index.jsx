@@ -23,7 +23,7 @@ const TravelGuideDetail = ({
   packages,
   hotels,
   article,
-  qna,
+  // qna,
   type,
 }) => {
   // console.log(article)
@@ -42,7 +42,7 @@ const TravelGuideDetail = ({
         packages={packages}
         hotels={hotels}
         article={article}
-        qna={qna}
+        // qna={}
         type={type}
       />
     </>
@@ -159,20 +159,20 @@ export async function getServerSideProps(context) {
   });
   const article = article_res.data.articles?.output?.articles??[];
 
-  let qna_data = {
-    av: "",
-    tgid: `${_id}`,
-    did: "",
-    pagenum: 1,
-    pt: "",
-    size: 17,
-  };
+  // let qna_data = {
+  //   av: "",
+  //   tgid: `${_id}`,
+  //   did: "",
+  //   pagenum: 1,
+  //   pt: "",
+  //   size: 17,
+  // };
 
-  const qna_res = await client.query({
-    query: getQnaQuery,
-    variables: { input: qna_data },
-  });
-  const qna = qna_res.data.qna.output.qna;
+  // const qna_res = await client.query({
+  //   query: getQnaQuery,
+  //   variables: { input: qna_data },
+  // });
+  // const qna = qna_res.data.qna.output.qna;
 
   const meta = await client.query({
     query: getMetaQuery,
@@ -231,7 +231,7 @@ export async function getServerSideProps(context) {
       packages,
       hotels,
       article,
-      qna,
+      // qna,
       type,
       meta: metas,
     },

@@ -141,7 +141,7 @@ const QnaListing = ({ data, travelGuide }) => {
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
     ],
