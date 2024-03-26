@@ -275,7 +275,7 @@ const Meta = ({ meta }) => {
           name="twitter:image"
           content={`${Constants.assets_api}/public/logo.png`}
         />
-        <meta name="robots" content="index" />
+        <meta name="robots" content="index,follow" />
 
         {/* <link
           rel="apple-touch-icon"
