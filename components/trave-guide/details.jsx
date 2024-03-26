@@ -47,7 +47,7 @@ const QnaListing = dynamic(() => import("../Qna"));
 const Content = dynamic(() => import("../trave-guide/content"));
 const Leaform = dynamic(() => import("../leadform"));
 const State_Attraction = dynamic(() => import("../trave-guide/attractions"));
-const Meta = dynamic(() => import("../meta"));
+// const Meta = dynamic(() => import("../meta"));
 const TravelGuide = dynamic(() => import("../home/travel_guide"));
 
 const TravelGuideDetailComp = ({
@@ -58,7 +58,7 @@ const TravelGuideDetailComp = ({
   packages,
   hotels,
   article,
-  qna,
+  // qna,
   type,
   state_t = undefined,
 }) => {
@@ -78,7 +78,7 @@ const TravelGuideDetailComp = ({
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {
@@ -97,7 +97,7 @@ const TravelGuideDetailComp = ({
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {
@@ -117,7 +117,7 @@ const TravelGuideDetailComp = ({
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {
@@ -657,12 +657,12 @@ const TravelGuideDetailComp = ({
                               //   "/";
                               let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
                               return (
-                                <div className={`w-1/2 lg:w-1/4 p-2`}>
+                                <div className={`w-1/3 lg:w-1/4 p-2`}>
                                   <Link href={url} key={i}>
                                     <div>
                                       <div className="image-squre__">
                                         <img
-                                          className={`w-full h-full`}
+                                          className={`w-full rounded-lg h-full`}
                                           src={
                                             item.images.length > 0
                                               ? item.images
@@ -802,7 +802,7 @@ const TravelGuideDetailComp = ({
         ) : (
           ""
         )}
-        {qna.length != 0 ? (
+        {/* {qna.length != 0 ? (
           <>
             <QnaListing data={qna} travelGuide={true} />
             <Link href={`/qna/${data.tg.cityName}-${data.tg.id}/`}>
@@ -816,7 +816,7 @@ const TravelGuideDetailComp = ({
           </>
         ) : (
           ""
-        )}
+        )} */}
         {/* <Articles data={article} /> */}
 
         {/* <QnaListing data={qna} travelGuide={true} /> */}

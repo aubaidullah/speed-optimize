@@ -48,11 +48,10 @@ const BreadCrumbs = ({ bread }) => {
                   <>
                     <Link href={`https://www.kiomoi.com${e.href}`} itemProp="item">
                       <div className="_b_active">
-                        <span></span>
                         <span itemProp="name">{e.item}</span>
-                        <meta itemProp="position" content={index + 1} />
                       </div>
                     </Link>
+                    <meta itemProp="position" content={index + 1} />
                     <TiChevronRight className={tw`bread_icon inline`} />
                   </>
                 </li>

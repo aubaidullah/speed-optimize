@@ -8,6 +8,7 @@ import { FaFacebook } from "react-icons/fa";
 import Link from "next/link";
 import * as Constants from "./Constants";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 
 const links = {
@@ -577,10 +578,15 @@ const links = {
 
 const Footer = () => {
   const [collapse,setCollapse] = useState(null)
+  const {asPath} = useRouter()
 
   return (
-    <div className={tw`w-100 overflow-hidden mt-5`}>
-      <div className={tw``}>
+      
+      <div className={tw`w-100 overflow-hidden mt-5`}>
+
+
+      {!asPath.includes("hotels")
+        ?<div className={tw``}>
         <div className={tw`container py-4`}>
           <div className={tw``}>
             {Object.keys(links).map((item,index)=>{
@@ -601,7 +607,9 @@ const Footer = () => {
             })}
           </div>
         </div>
-      </div>
+        </div>
+      :""
+      }
 
 
       <div className={tw`flex justify-center py-3 bg-[#505050]`}>
@@ -758,6 +766,7 @@ const Footer = () => {
         </div>
       </div>
     </div>
+
   );
 };
 

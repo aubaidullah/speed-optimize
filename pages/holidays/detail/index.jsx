@@ -70,7 +70,7 @@ const DetailPage = ({ data, related, reviews, meta }) => {
       data?.package?.scope === "DOMESTIC"
         ? [
             {
-              item: "Kiomoi",
+              item: "Home",
               href: "/",
             },
             {
@@ -92,7 +92,7 @@ const DetailPage = ({ data, related, reviews, meta }) => {
           ]
         : [
             {
-              item: "Kiomoi",
+              item: "Home",
               href: "/",
             },
             {

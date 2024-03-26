@@ -30,7 +30,7 @@ const Attraction = ({ data, meta }) => {
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {
@@ -147,7 +147,7 @@ const Attraction = ({ data, meta }) => {
   );
 
   useEffect(() => {
-    if (data.city.desc) setOverview(data.city.desc.substring(0, limit));
+    if (data.atn.desc) setOverview(data.atn.desc.substring(0, limit));
   }, [limit]);
 
   return (
@@ -307,22 +307,27 @@ const Attraction = ({ data, meta }) => {
                 </div>
               </div>
             </div>
-            <h2 className={tw`text-xl font-bold ms-1 my-3`}>Overview</h2>
-            <div className={tw``}>
-              <div className="Shape_42">
-                <ParseHtml text={overview} />
-                {/* {ReactHtmlParser(overview)} */}
-                {limit == 150 || limit == 200 ? (
-                  <a onClick={() => setLimit(10000)} className="_plus_more">
-                    +more
-                  </a>
-                ) : (
-                  <a onClick={() => setLimit(200)} className="_plus_more">
-                    -less
-                  </a>
-                )}
-              </div>
-            </div>
+            {
+              overview?<>
+                <h2 className={tw`text-xl font-bold ms-1 my-3`}>Overview</h2>
+                <div className={tw``}>
+                  <div className="Shape_42">
+                    <ParseHtml text={overview} />
+                    {/* {ReactHtmlParser(overview)} */}
+                    {limit == 150 || limit == 200 ? (
+                      <a onClick={() => setLimit(10000)} className="_plus_more">
+                        +more
+                      </a>
+                    ) : (
+                      <a onClick={() => setLimit(200)} className="_plus_more">
+                        -less
+                      </a>
+                    )}
+                  </div>
+                </div>              
+              </>:""
+            }
+
             {facility?.map(({ icon, color, text, available }, index) => (
               <div
                 key={index}

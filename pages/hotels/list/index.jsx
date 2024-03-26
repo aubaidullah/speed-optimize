@@ -20,7 +20,7 @@ const SearchHotel = ({ hotels, info, meta }) => {
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {

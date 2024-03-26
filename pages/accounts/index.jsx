@@ -21,7 +21,7 @@ const User = ({ profile, wallet, bookings }) =>{
     const bread = {
         enabled:[
             {
-            'item':'Kiomoi',
+            'item':'Home',
             'href':'/'
             },
         ],

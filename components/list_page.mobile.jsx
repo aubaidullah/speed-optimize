@@ -126,7 +126,7 @@ const ListPageMobile = ({
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {
@@ -145,7 +145,7 @@ const ListPageMobile = ({
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {
@@ -169,7 +169,7 @@ const ListPageMobile = ({
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {
@@ -190,7 +190,7 @@ const ListPageMobile = ({
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {
@@ -216,7 +216,7 @@ const ListPageMobile = ({
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {
@@ -237,7 +237,7 @@ const ListPageMobile = ({
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
       {
@@ -265,7 +265,7 @@ const ListPageMobile = ({
     },
     enabled: [
       {
-        item: "Kiomoi",
+        item: "Home",
         href: "/",
       },
     ],
