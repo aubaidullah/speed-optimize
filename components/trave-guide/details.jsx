@@ -202,7 +202,7 @@ const TravelGuideDetailComp = ({
       <section className="container">
         <div className="title_listing_">
           {type == "CITY" ? (
-            <h1 className={`text-2xl font-bold`}>{data.tg.cityName}</h1>
+            <h1 className={`text-2xl font-bold`}>{data.tg.cityName} tourism and travel guide</h1>
           ) : (
             <h1 className={`text-2xl font-bold`}>
               {data.tg.cityName} tourism and travel guide
