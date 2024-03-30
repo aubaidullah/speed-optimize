@@ -58,7 +58,7 @@ const TravelGuideDetailComp = ({
   packages,
   hotels,
   article,
-  // qna,
+  qna,
   type,
   state_t = undefined,
 }) => {
