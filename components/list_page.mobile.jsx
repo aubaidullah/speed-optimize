@@ -455,50 +455,79 @@ const ListPageMobile = ({
         return () => clearInterval(interval);
       },[])
 
-  
-
       const prdJson = {
-      "@context": "http://schema.org",
-        "@type": "Product",
-        "description": meta?.longDesc??meta?.metaDesc,
-        "name": meta?.title??meta?.metaTitle,
-        "url": `https://www.kiomoi.com${asPath}`,
-        "image": meta?.image,
-        "brand": {
-          "@type": "Brand",
-          "name": "Kiomoi Travel"
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": `https://www.kiomoi.com/${asPath}`
         },
-        "offers": {
-          "@type": "AggregateOffer",
-          "Price": "000",
-          "priceCurrency": "INR"
+        "headline": meta?.title??meta?.metaTitle,
+        "description":overview,
+      "image": meta?.image,  
+        "author": {
+          "@type": "Person",
+          "name": "Kiomoi"
+        },  
+        "publisher": {
+          "@type": "Organization",
+          "@id":`https://www.kiomoi.com/${asPath}#organization`,
+          "name": "Kiomoi",
+             "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.kiomoi.com/icons/kiomoi%20logo.svg"
+          }
+         
+        },
+        "datePublished": "2024-03-22",
+        "dateModified": "2024-03-22"
+        
+      }
+
+
+
+      // const prdJson = {
+      // "@context": "http://schema.org",
+      //   "@type": "Product",
+      //   "description": meta?.longDesc??meta?.metaDesc,
+      //   "name": meta?.title??meta?.metaTitle,
+      //   "url": `https://www.kiomoi.com${asPath}`,
+      //   "image": meta?.image,
+      //   "brand": {
+      //     "@type": "Brand",
+      //     "name": "Kiomoi Travel"
+      //   },
+      //   "offers": {
+      //     "@type": "AggregateOffer",
+      //     "Price": "000",
+      //     "priceCurrency": "INR"
           
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": 5,
-          "reviewCount": 585
-        },
-        "review": [
-          reviews?
-          {
-            "@type": "Review",
-            "author": {
-              "@type": "Person",
-              "name": reviews[0]?.cName
-            },
-            "datePublished": reviews[0]?.modifiedDate,
-            "description": reviews[0]?.review,
-            "name": meta?.title??meta?.metaTitle,
-            "reviewRating": {
-              "@type": "Rating",
-              "bestRating": "5",
-              "ratingValue": "5",
-              "worstRating": "0"
-            }
-          }:""
-        ]
-      }      
+      //   },
+      //   "aggregateRating": {
+      //     "@type": "AggregateRating",
+      //     "ratingValue": 5,
+      //     "reviewCount": 585
+      //   },
+      //   "review": [
+      //     reviews?
+      //     {
+      //       "@type": "Review",
+      //       "author": {
+      //         "@type": "Person",
+      //         "name": reviews[0]?.cName
+      //       },
+      //       "datePublished": reviews[0]?.modifiedDate,
+      //       "description": reviews[0]?.review,
+      //       "name": meta?.title??meta?.metaTitle,
+      //       "reviewRating": {
+      //         "@type": "Rating",
+      //         "bestRating": "5",
+      //         "ratingValue": "5",
+      //         "worstRating": "0"
+      //       }
+      //     }:""
+      //   ]
+      // }      
   
   
   return (

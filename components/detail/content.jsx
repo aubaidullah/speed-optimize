@@ -47,12 +47,12 @@ const Content = ({ data }) => {
     return (
       <div
         key={i}
-        itemprop="subTrip"
-        itemtype="https://schema.org/TouristTrip"
-        itemScope
+        // itemprop="subTrip"
+        // itemtype="https://schema.org/TouristTrip"
+        // itemScope
       >
-        <meta itemprop="name" content={item.heading} />
-        <meta itemprop="description" content={item.desc} />
+        {/* <meta itemprop="name" content={item.heading} />
+        <meta itemprop="description" content={item.desc} /> */}
         <div
           className={tw`Shape_42 _details_ _50m _hover _box_shadow p-0`}
           data-toggle="tooltip"
@@ -292,8 +292,8 @@ const Content = ({ data }) => {
                 <div
                   className="_blank"
                   id="itinery"
-                  itemtype="https://schema.org/TouristTrip"
-                  itemScope
+                  // itemtype="https://schema.org/TouristTrip"
+                  // itemScope
                 >
                   <meta itemprop="name" content={data.package.name} />
                   <h4 className="_titles_">Itinerary</h4>
