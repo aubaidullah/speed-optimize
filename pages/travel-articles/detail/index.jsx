@@ -10,6 +10,8 @@ import { tw } from "twind";
 // import Articles from "../../../components/home/articles"
 import { toTitleCase } from "../../../components/fun";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import Head from "next/head";
 // import ArticleContent from "@/components/article/article_content";
 // import Meta from "../../../components/meta"
 
@@ -22,6 +24,7 @@ const Articles = dynamic(() => import("../../../components/home/articles"));
 const Meta = dynamic(() => import("../../../components/meta"));
 
 const TravelArticle = ({ data, article, meta }) => {
+  const {asPath} = useRouter()
   const bread = {
     disabled: {
       item: `${data.article.heading}`,
@@ -38,8 +41,43 @@ const TravelArticle = ({ data, article, meta }) => {
     ],
   };
 
+  const jsonP = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://www.kiomoi.com${asPath}`
+    },
+    "headline": data.article.heading,
+    "description": `Introduction: ${data.article.desc}`,
+    "image": meta?.image,  
+    "author": {
+      "@type": "Person",
+      "name": "Sharry"
+    },  
+    "publisher": {
+      "@type": "Organization",
+      "@id":`https://www.kiomoi.com${asPath}#organization`,
+      "name": "Kiomoi",
+         "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.kiomoi.com/icons/kiomoi%20logo.svg"
+      }
+     
+    },
+    "datePublished": "2024-03-25",
+    "dateModified": "2024-03-25"
+    
+  }
+
   return (
     <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonP) }}
+        />        
+      </Head>
       <Meta meta={meta} />
       <Nav />
       <BreadCrumbs bread={bread} />

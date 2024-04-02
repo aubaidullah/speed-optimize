@@ -13,6 +13,8 @@ import client from "../../../components/Graphql/service";
 import * as Constant from "../../../components/Constants";
 import dynamic from "next/dynamic";
 import { createTGCityURL, createTGStateURL } from "@/components/fun";
+import { useRouter } from "next/router";
+import Head from "next/head";
 
 const ParseHtml = dynamic(() => import("@/components/parseToHtml"));
 const Nav = dynamic(() => import("@/components/Nav"));
@@ -21,6 +23,7 @@ const Meta = dynamic(() => import("@/components/meta"));
 
 const Attraction = ({ data, meta }) => {
   const [overview, setOverview] = useState(null);
+  const {asPath} = useRouter()
 
   const [limit, setLimit] = useState(200);
 
@@ -150,8 +153,61 @@ const Attraction = ({ data, meta }) => {
     if (data.atn.desc) setOverview(data.atn.desc.substring(0, limit));
   }, [limit]);
 
+  const jsonP = {
+    "@context": "https://schema.org",
+    "@type": "TouristDestination",
+    "name": `${data.atn.name}, Timing, Fee, Location`,
+    "description": `Kiomoi Travel Guide to ${data.atn.name} is there to help you plan the holiday of a lifetime in one of the most incredible destinations`,
+    "url": `https://www.kiomoi.com${asPath}`,
+    "touristType": {
+      "@type": "Audience",
+      "audienceType": [
+       
+        "cultural heritage tourist",
+        "adventure tourist",
+        "family tourist",
+        "religious tourist",
+        "honeymoon tourist",
+        "wildlife tourist"
+        
+      ]
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": data.atn.lat,
+      "longitude": data.atn.lng
+    },
+    
+    "includesAttraction": [
+      {
+        "@type": [
+         
+          "TouristAttraction"
+        ],
+        "name": data.atn.name,
+        "url": `https://www.kiomoi.com/${asPath}`,
+        "image": data?.images ? data.images[0].i:""
+      },
+     
+      // {
+      //   "@type": [
+      //     "City",
+      //     "TouristAttraction"
+      //   ],
+      //   "name": "Gangtok",
+      //   "image": "https://res.cloudinary.com/kmadmin/image/upload/v1618471813/kiomoi/Gangtok_Nathu_La_Pass_1618471812044.jpg"
+      // }
+    ]
+  }
+
   return (
     <>
+    <Head>
+      <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonP) }}
+        />
+    </Head>
       <Meta meta={meta} />
       <Nav />
 

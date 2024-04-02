@@ -11,6 +11,8 @@ import {
 import axios from "axios";
 import dynamic from "next/dynamic";
 import Meta from "@/components/meta";
+import { useRouter } from "next/router";
+import Head from "next/head";
 // import TravelGuide from "../../../../components/home/travel_guide";
 // import TravelGuideDetailComp from '../../../../components/trave-guide/details'
 // import { createCityListURL, createStateListURL } from "../../../../components/fun";
@@ -27,12 +29,36 @@ const TravelGuideDetail = ({
   type,
 }) => {
   // console.log(article)
+  const {asPath} = useRouter()
   const TravelGuideDetailComp = dynamic(() =>
     import("@/components/trave-guide/details"),{ssr:true}
   );
 
+  const jsonP = {
+    "@context":"http://schema.org",
+    "@type":"WebPage",
+    "name":`${data.tg.cityName} tourism and travel guide`,
+    "url":`https://www.kiomoi.com${asPath}`,
+    "description":`${data.tg?.overviewDesc} ${data?.tg?.howToReachDesc} ${data?.tg?.eventsDesc} ${data?.tg?.factsDesc} ${data?.tg?.foodDesc} ${data?.tg?.marketDesc}`,
+    "publisher":
+      {
+      "@type":"Organization",
+      "@id":"https://www.kiomoi.com/",
+      "name":"Kiomoi Travel",
+      "url":"https://www.kiomoi.com/",
+      "logo":"https://www.kiomoi.com/icons/kiomoi%20logo.svg"
+      }
+    }
+    
+
   return (
     <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonP) }}
+        />
+      </Head>    
       <Meta meta={data.tg}/>
       <TravelGuideDetailComp
         meta={meta}

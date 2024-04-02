@@ -537,7 +537,7 @@ const ListPageMobile = ({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(prdJson) }}
         />
-      </Head>    
+      </Head>
       <Meta meta={meta} />
 
       <article>

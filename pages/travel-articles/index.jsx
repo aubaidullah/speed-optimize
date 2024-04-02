@@ -2,6 +2,7 @@
 // import BreadCrumbs from "../../components/breadcrumbs"
 // import Nav from "../../components/Nav"
 import client from "../../components/Graphql/service";
+import Head from "next/head";
 import {
   getarticleQuery,
   getMetaQuery,
@@ -31,8 +32,53 @@ const TravelArticles = ({ article, meta }) => {
     ],
   };
 
+
+  const jsonP = {
+    
+    "@context":"https://schema.org",
+    "@graph":[
+        
+        {
+            "@type":"Webpage",
+            "@id":"https://www.kiomoi.com/travel-articles/#website",
+            "url":"https://www.kiomoi.com/travel-articles",
+            "name":"Kiomoi",
+            "publisher":{
+                "@type": "Organization",
+                "@id":"https://www.kiomoi.com/travel-articles/#organization"
+            }
+           
+        },
+        {
+            "@type":[
+                "CollectionPage"
+            ],
+            "@id":"https://www.kiomoi.com/travel-articles/#webpage",
+            "url":"https://www.kiomoi.com/travel-articles/",
+            "inLanguage":"en",
+            "name":"Article",
+            "isPartOf":{
+                "@id":"https://www.kiomoi.com/travel-articles/#website"
+            },
+            
+            "description":"Get all the latest updates about domestic and International holiday tour packages, adventure trips, best places to Do Paragliding in India , best places to visit in India, weekend getaway trips, top religious places in India, best adventure places in India, top culture and heritage of India, top honeymoon destinations in India, top wildlife sanctuaries in India and top beaches in India related knowledge at Kiomoi website!",
+            "breadcrumb":{
+                "@id":"https://www.kiomoi.com/travel-articles/#breadcrumb"
+            }
+        }]}
+
+
+
+
   return (
     <>
+    
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonP) }}
+        />        
+      </Head>    
       <Meta meta={meta} />
       <Nav />
       <BreadCrumbs bread={bread} />
