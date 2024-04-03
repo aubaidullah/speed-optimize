@@ -174,15 +174,30 @@ const Meta = ({ meta }) => {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonData) }}
         /> */}
 
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonP) }}
-        />
+        {
+          !asPath.includes("/travel-articles") && !asPath.includes("/attractions/")
+          ?
+            <>
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonP) }}
+              />
+              {
+                !asPath.includes("/cities/") && !asPath.includes("/places/") && !asPath.includes("/states/") && !asPath.includes("/travel-guide")
+                ? <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLocal)}}
+                  />
+              :""
+              }
 
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLocal)}}
-        />
+            </>
+          
+          :""
+        }
+        
+
+
 
         {/* </script> */}
 

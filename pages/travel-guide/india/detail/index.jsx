@@ -14,7 +14,7 @@ import Meta from "@/components/meta";
 import { useRouter } from "next/router";
 import Head from "next/head";
 // import TravelGuide from "../../../../components/home/travel_guide";
-// import TravelGuideDetailComp from '../../../../components/trave-guide/details'
+import TravelGuideDetailComp from '../../../../components/trave-guide/details'
 // import { createCityListURL, createStateListURL } from "../../../../components/fun";
 
 const TravelGuideDetail = ({
@@ -30,9 +30,9 @@ const TravelGuideDetail = ({
 }) => {
   // console.log(article)
   const {asPath} = useRouter()
-  const TravelGuideDetailComp = dynamic(() =>
-    import("@/components/trave-guide/details"),{ssr:true}
-  );
+  // const TravelGuideDetailComp = dynamic(() =>
+  //   import("@/components/trave-guide/details")
+  // );
 
   const jsonP = {
     "@context":"http://schema.org",
