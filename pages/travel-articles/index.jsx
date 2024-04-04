@@ -62,9 +62,9 @@ const TravelArticles = ({ article, meta }) => {
             },
             
             "description":"Get all the latest updates about domestic and International holiday tour packages, adventure trips, best places to Do Paragliding in India , best places to visit in India, weekend getaway trips, top religious places in India, best adventure places in India, top culture and heritage of India, top honeymoon destinations in India, top wildlife sanctuaries in India and top beaches in India related knowledge at Kiomoi website!",
-            "breadcrumb":{
-                "@id":"https://www.kiomoi.com/travel-articles/#breadcrumb"
-            }
+            // "breadcrumb":{
+            //     "@id":"https://www.kiomoi.com/travel-articles/#breadcrumb"
+            // }
         }]}
 
 
