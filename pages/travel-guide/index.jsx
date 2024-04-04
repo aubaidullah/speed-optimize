@@ -2,6 +2,7 @@
 // import Nav from "../../components/Nav"
 import { tw } from "twind";
 import client from "../../components/Graphql/service";
+import Head from "next/head";
 import {
   getTravelGuideHome,
   getMetaQuery,
@@ -41,8 +42,30 @@ const TravelGuide = ({ data, meta }) => {
     ],
   };
 
+  const jsonP = {
+  "@context":"https://schema.org",
+  "@graph":
+  [
+  {
+  "@type":"WebPage",
+  "url":"https://www.kiomoi.com/travel-guide",
+  "name":"Travel Guide to Explore Destinations, Attractions & Packages",
+  "datePublished":"2023-02-16",
+  "dateModified":"2024-03-12",
+  "description":"Find information about India tourism. Get all travel information related to Indian cities, tourist attractions, destinations, festivals, things to do."
+  }
+  ]
+  }
+
+
   return (
     <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonP) }}
+        />
+      </Head>    
       <Meta meta={meta} />
       <Nav />
       <BreadCrumbs bread={bread} />

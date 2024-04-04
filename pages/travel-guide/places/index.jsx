@@ -14,6 +14,7 @@ import Image from "next/image";
 // import BreadCrumbs from "@/components/breadcrumbs";
 import Link from "next/link";
 import {
+  createAttractionsURL,
   createCityListURL,
   createCountryListURL,
   createStateListURL,
@@ -30,6 +31,8 @@ import { BsDot } from "react-icons/bs";
 import { Carousel } from "react-responsive-carousel";
 import rightBlock from "@/components/trave-guide/rightBlock";
 import Meta from "@/components/meta";
+import { useRouter } from "next/router";
+import Head from "next/head";
 // import Articles from "@/components/home/articles";
 
 const Nav = dynamic(() => import("@/components/Nav"));
@@ -41,6 +44,7 @@ const Articles = dynamic(() => import("@/components/home/articles"));
 
 const Places = ({ data, packages_state, packages, article, weather, meta }) => {
   // console.log(data)
+  const {asPath} = useRouter()
   const state_bread = {
     disabled: {
       item:
@@ -79,8 +83,46 @@ const Places = ({ data, packages_state, packages, article, weather, meta }) => {
     );
   });
   const type = data.tp;
+
+  
+
+  const jsonP =       {
+    "@context": "http://schema.org",
+    "@type": "ItemList",
+    "url": `https://www.kiomoi.com${asPath}`,
+    "name": `${data?.tp == "COUNTRY" ? "Destinations to visit in" : data?.tp == "STATE" ? "Top places to visit in" : "Top Sightseeing Places & Attractions in"} ${data?.tg?.cityName}`,
+    "description": `${data?.tp == "COUNTRY" ? "Destinations to visit in" : data?.tp == "STATE" ? `Enjoy up to 30% off at KioMoi while visiting the top places in ${data?.tg?.cityName}. Get the best prices and deals on sikkim holiday packages with airfare, hotel and sightseeing.` : `Explore ${data?.tg?.cityName} top attractions and sightseeing places for an unforgettable experience. Plan your trip now & Get Upto 30% Off!`}`,
+    "itemListElement": [type=="STATE"?data.ctg.map((e, index)=>{
+      return {
+        "@type": "ListItem", 
+        "name":e.name, 
+        "position": index+1, 
+        "url":'https://www.kiomoi.com'+createTGCityURL({ city: e.name, id: e.tgid })
+       } 
+    }):data.attn.map((e,index)=>{
+      return {
+        "@type": "ListItem", 
+        "name":e.name, 
+        "position": index+1, 
+        "url":'https://www.kiomoi.com'+createAttractionsURL({city: data?.tg?.cityName, attraction: e.name, id: e.id, })
+      }
+    })
+  
+  
+  ]
+    
+
+  }
+
+
   return (
     <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonP) }}
+        />        
+      </Head>
       <Meta meta={meta} />
       <Nav />
       <BreadCrumbs bread={state_bread} />

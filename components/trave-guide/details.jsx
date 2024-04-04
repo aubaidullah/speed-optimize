@@ -58,7 +58,7 @@ const TravelGuideDetailComp = ({
   packages,
   hotels,
   article,
-  // qna,
+  qna,
   type,
   state_t = undefined,
 }) => {
@@ -202,7 +202,7 @@ const TravelGuideDetailComp = ({
       <section className="container">
         <div className="title_listing_">
           {type == "CITY" ? (
-            <h1 className={`text-2xl font-bold`}>{data.tg.cityName}</h1>
+            <h1 className={`text-2xl font-bold`}>{data.tg.cityName} tourism and travel guide</h1>
           ) : (
             <h1 className={`text-2xl font-bold`}>
               {data.tg.cityName} tourism and travel guide
@@ -802,7 +802,7 @@ const TravelGuideDetailComp = ({
         ) : (
           ""
         )}
-        {/* {qna.length != 0 ? (
+        {qna.length != 0 ? (
           <>
             <QnaListing data={qna} travelGuide={true} />
             <Link href={`/qna/${data.tg.cityName}-${data.tg.id}/`}>
@@ -816,7 +816,7 @@ const TravelGuideDetailComp = ({
           </>
         ) : (
           ""
-        )} */}
+        )}
         {/* <Articles data={article} /> */}
 
         {/* <QnaListing data={qna} travelGuide={true} /> */}

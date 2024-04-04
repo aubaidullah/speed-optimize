@@ -11,8 +11,10 @@ import {
 import axios from "axios";
 import dynamic from "next/dynamic";
 import Meta from "@/components/meta";
+import { useRouter } from "next/router";
+import Head from "next/head";
 // import TravelGuide from "../../../../components/home/travel_guide";
-// import TravelGuideDetailComp from '../../../../components/trave-guide/details'
+import TravelGuideDetailComp from '../../../../components/trave-guide/details'
 // import { createCityListURL, createStateListURL } from "../../../../components/fun";
 
 const TravelGuideDetail = ({
@@ -23,16 +25,40 @@ const TravelGuideDetail = ({
   packages,
   hotels,
   article,
-  // qna,
+  qna,
   type,
 }) => {
   // console.log(article)
-  const TravelGuideDetailComp = dynamic(() =>
-    import("@/components/trave-guide/details"),{ssr:true}
-  );
+  const {asPath} = useRouter()
+  // const TravelGuideDetailComp = dynamic(() =>
+  //   import("@/components/trave-guide/details")
+  // );
+
+  const jsonP = {
+    "@context":"http://schema.org",
+    "@type":"WebPage",
+    "name":`${data.tg.cityName} tourism and travel guide`,
+    "url":`https://www.kiomoi.com${asPath}`,
+    "description":`${data.tg?.overviewDesc} ${data?.tg?.howToReachDesc} ${data?.tg?.eventsDesc} ${data?.tg?.factsDesc} ${data?.tg?.foodDesc} ${data?.tg?.marketDesc}`,
+    "publisher":
+      {
+      "@type":"Organization",
+      "@id":"https://www.kiomoi.com/",
+      "name":"Kiomoi Travel",
+      "url":"https://www.kiomoi.com/",
+      "logo":"https://www.kiomoi.com/icons/kiomoi%20logo.svg"
+      }
+    }
+    
 
   return (
     <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonP) }}
+        />
+      </Head>    
       <Meta meta={data.tg}/>
       <TravelGuideDetailComp
         meta={meta}
@@ -42,7 +68,7 @@ const TravelGuideDetail = ({
         packages={packages}
         hotels={hotels}
         article={article}
-        // qna={}
+        qna={qna}
         type={type}
       />
     </>
@@ -159,20 +185,20 @@ export async function getServerSideProps(context) {
   });
   const article = article_res.data.articles?.output?.articles??[];
 
-  // let qna_data = {
-  //   av: "",
-  //   tgid: `${_id}`,
-  //   did: "",
-  //   pagenum: 1,
-  //   pt: "",
-  //   size: 17,
-  // };
+  let qna_data = {
+    av: "",
+    tgid: `${_id}`,
+    did: "",
+    pagenum: 1,
+    pt: "",
+    size: 17,
+  };
 
-  // const qna_res = await client.query({
-  //   query: getQnaQuery,
-  //   variables: { input: qna_data },
-  // });
-  // const qna = qna_res.data.qna.output.qna;
+  const qna_res = await client.query({
+    query: getQnaQuery,
+    variables: { input: qna_data },
+  });
+  const qna = qna_res.data.qna.output.qna;
 
   const meta = await client.query({
     query: getMetaQuery,
@@ -231,7 +257,7 @@ export async function getServerSideProps(context) {
       packages,
       hotels,
       article,
-      // qna,
+      qna,
       type,
       meta: metas,
     },

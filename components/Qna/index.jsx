@@ -206,13 +206,13 @@ const QnaListing = ({ data, travelGuide }) => {
               return (
                 <div
                   className="qna-collpase"
-                  itemScope
-                  itemType="https://schema.org/QAPage"
+                  // itemScope
+                  // itemType="https://schema.org/QAPage_"
                 >
                   <div
-                    itemProp="mainEntity"
-                    itemScope
-                    itemType="https://schema.org/Question"
+                    // itemProp="mainEntity"
+                    // itemScope
+                    // itemType="https://schema.org/Question_"
                   >
                     <div className="question">
                       <div className={tw`flex gap-10`}>
@@ -300,7 +300,7 @@ const QnaListing = ({ data, travelGuide }) => {
                             <div>
                               <div className={tw`text-[#606060]`}>
                                 <meta
-                                  itemProp="answerCount"
+                                  // itemProp="answerCount"
                                   content={e?.replies?.length}
                                 />
                                 {e?.replies?.map((rp) => {
@@ -308,13 +308,13 @@ const QnaListing = ({ data, travelGuide }) => {
                                     <>
                                       <div
                                         className={tw`mb-[30px]`}
-                                        itemProp="acceptedAnswer"
-                                        itemScope
-                                        itemType="https://schema.org/Answer"
+                                        // itemProp="acceptedAnswer"
+                                        // itemScope
+                                        // itemType="https://schema.org/Answer"
                                       >
                                         <div
                                           className={tw`bg-white p-[10px] rounded-[5px] text-left border-1 border-solid border-[#eaeaea]`}
-                                          itemProp="text"
+                                          // itemProp="text"
                                         >
                                           {/* {ReactHtmlParser(rp.replyText)} */}
                                           <ParseHtml text={rp.replyText} />
