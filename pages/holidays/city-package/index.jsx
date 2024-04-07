@@ -36,7 +36,8 @@ const CityPackages = ({
   faqs,
   reviews,
   articles,
-  pthemes
+  pthemes,
+  overview
 }) => {
   console.log(region);
   const [isMobile, setIsMobile] = useState(
@@ -75,6 +76,7 @@ const CityPackages = ({
           reviews={reviews}
           articles={articles}
           pthemes={pthemes}
+          p_overview={overview}
         />
       </>
     );
@@ -96,6 +98,7 @@ const CityPackages = ({
           reviews={reviews}
           articles={articles}
           pthemes={pthemes}
+          p_overview={overview}
         />
       </>
     );
@@ -143,6 +146,7 @@ export async function getServerSideProps(context) {
   const data = res.data.allpackage.output?.packages ?? [];
   const region = res.data.allpackage.output?.region ?? [];
   const places = res.data.allpackage.output?.fcities ?? [];
+  const overview = res.data.allpackage.output?.region?.longDesc ?? ""
 
   payload = {
     av: "1.3",
@@ -249,7 +253,8 @@ export async function getServerSideProps(context) {
       faqs: res.data.allpackage.output?.faqs ?? [],
       reviews: res.data.allpackage.output?.reviews ?? [],
       articles,
-      pthemes: res.data.allpackage?.output?.pthemes ?? [],      
+      pthemes: res.data.allpackage?.output?.pthemes ?? [],
+      overview
     },
   };
 }
