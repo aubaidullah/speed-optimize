@@ -117,17 +117,20 @@ const Places = ({ data, packages_state, packages, article, weather, meta }) => {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonP) }}
         />        
-      </Head>
+      </Head> */}
       <Meta meta={meta} />
       <Nav />
       <BreadCrumbs bread={state_bread} />
-      <div className="container">
-        <div className="title_listing_">
+      <div className="container" itemScope itemType="https://schema.org/ItemList">
+        <a itemProp="url" href={`https://www.kiomoi.com${asPath}`} />
+        <meta itemProp="description" content={`${data?.tp == "COUNTRY" ? "Destinations to visit in" : data?.tp == "STATE" ? `Enjoy up to 30% off at KioMoi while visiting the top places in ${data?.tg?.cityName}. Get the best prices and deals on sikkim holiday packages with airfare, hotel and sightseeing.` : `Explore ${data?.tg?.cityName} top attractions and sightseeing places for an unforgettable experience. Plan your trip now & Get Upto 30% Off!`}`} />
+
+        <div className="title_listing_" itemProp="name">
           {/* Sightseeing Places & Attractions in */}
           <h1 className={`h pb-2`}>
             {data?.tp == "COUNTRY"
@@ -420,7 +423,7 @@ const Places = ({ data, packages_state, packages, article, weather, meta }) => {
           </div>
         </div>
 
-        <div className="mt-6 ">
+        <div className="mt-6 " itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
           {type != "COUNTRY" ? (
             <h2 className={`h text-xl font-bold pb-2 _b_active`}>
               {" "}

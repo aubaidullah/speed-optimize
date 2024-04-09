@@ -34,31 +34,31 @@ const TravelGuideDetail = ({
   //   import("@/components/trave-guide/details")
   // );
 
-  const jsonP = {
-    "@context":"http://schema.org",
-    "@type":"WebPage",
-    "name":`${data.tg.cityName} tourism and travel guide`,
-    "url":`https://www.kiomoi.com${asPath}`,
-    "description":`${data.tg?.overviewDesc} ${data?.tg?.howToReachDesc} ${data?.tg?.eventsDesc} ${data?.tg?.factsDesc} ${data?.tg?.foodDesc} ${data?.tg?.marketDesc}`,
-    "publisher":
-      {
-      "@type":"Organization",
-      "@id":"https://www.kiomoi.com/",
-      "name":"Kiomoi Travel",
-      "url":"https://www.kiomoi.com/",
-      "logo":"https://www.kiomoi.com/icons/kiomoi%20logo.svg"
-      }
-    }
+  // const jsonP = {
+  //   "@context":"http://schema.org",
+  //   "@type":"WebPage",
+  //   "name":`${data.tg.cityName} tourism and travel guide`,
+  //   "url":`https://www.kiomoi.com${asPath}`,
+  //   "description":`${data.tg?.overviewDesc} ${data?.tg?.howToReachDesc} ${data?.tg?.eventsDesc} ${data?.tg?.factsDesc} ${data?.tg?.foodDesc} ${data?.tg?.marketDesc}`,
+  //   "publisher":
+  //     {
+  //     "@type":"Organization",
+  //     "@id":"https://www.kiomoi.com/",
+  //     "name":"Kiomoi Travel",
+  //     "url":"https://www.kiomoi.com/",
+  //     "logo":"https://www.kiomoi.com/icons/kiomoi%20logo.svg"
+  //     }
+  //   }
     
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonP) }}
         />
-      </Head>    
+      </Head>     */}
       <Meta meta={data.tg}/>
       <TravelGuideDetailComp
         meta={meta}
@@ -248,7 +248,7 @@ export async function getServerSideProps(context) {
 
   // console.log(type)
   // console.log(packages)
-  console.log(metas)
+  // console.log(metas)
   return {
     props: {
       packages_state: packages_state,

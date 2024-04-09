@@ -10,8 +10,10 @@ import {
 import Image from "next/image";
 import rightBlock from "../trave-guide/rightBlock";
 import ParseHtml from "../parseToHtml";
+import { useRouter } from "next/router";
 
 const IMG = ({ e, index, url, type }) => {
+  const {asPath} = useRouter()
   return (
     <>
       <div className={tw`w-full lg:w-1/3`} key={index}>
@@ -26,7 +28,7 @@ const IMG = ({ e, index, url, type }) => {
                   <div
                     className={tw` text-[18px] font-semibold text-slate-700`}
                   >
-                    {index + 1}. {e.name}
+                    <span itemProp="position">{index + 1}</span>. <span itemProp="name">{e.name}</span>
                   </div>
                   {e.ratings ? <div className="cir_bg">{e.ratings}/5</div> : ""}
                 </div>
@@ -133,6 +135,7 @@ const IMG = ({ e, index, url, type }) => {
                     )}
                   </div>
                   <div className="flex justify-between py-2">
+                    <a itemProp="url" href={`https://www.kiomoi.com${asPath}`} />
                     <Link className="btn_listing" href={url}>
                       Read more
                     </Link>

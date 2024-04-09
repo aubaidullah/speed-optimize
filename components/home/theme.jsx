@@ -51,25 +51,20 @@ const Themes = ({ data }) => {
         <div className={`flex`}>
           <div className={`hidden lg:w-1/3 lg:block`}>
             <div className="kiomoi_box _clr_brand">
-              <h4>Kiomoi Holidays</h4>
+              <h1 className="text-[16px] pb-2">Kiomoi: Best Travel Planner Website in India</h1>
               {/* <h5>Kiomoi Book Domestic and International Holidays</h5> */}
+              <p>Discover the World with Kiomoi Travels- Your passport to unforgettable adventures!</p>
               <p>
-                The Kiomoi team of experienced travel advisors will help you get
-                the most out of your trip, ensuring that you have peace of mind
-                and enjoy every moment of your holiday.
+              As, the best travel website, Kiomoi Travels, don’t just plan trip; we craft experience that stay in your memory forever. Whether you crave the thrill of adventure, the calm nature, or the richness of cultural exploration, Kiomoi Travels has the perfect itinerary waiting for you.
               </p>
               <p>
-                Our team is committed to providing exceptional customer service
-                and making sure your trip is an unforgettable experience. We
-                understand that travel can be daunting, so we’re here to help
-                make the planning and booking process as smooth and stress-free
-                as possible.
+              Our passionate staff of travel specialists makes sure that every part of your trip is well-planned, from making hotel reservations to setting thrilling adventures. Our carefully chosen locations throughout the world are sure to satisfy and wanderlust - driven spirit.
               </p>
               <p>
-                With Kiomoi, you can immerse yourself in a world of experiences
-                and memories that will last a lifetime.
-                <br />
-                Book with us today and start your journey with Kiomoi!
+              But the journey is just as important as the final goal. Every stage of your journey will be filled with adventure, comfort, and outstanding support when you work with Kiomoi Travels.              
+              </p>
+              <p>
+              So Why Wait? Enjoy your next journey with Kiomoi Travels as its best travel website and let the world be your playground. Your dream vacation awaits – book now and make memories that will last a lifetime!
               </p>
 
               {/* <p>
@@ -87,9 +82,9 @@ const Themes = ({ data }) => {
                         packages to its customers, while providing localised
                         services.
                     </p> */}
-              <Link href="/holidays/">
+              {/* <Link href="/holidays/">
                 <div href="/holidays/">Read More</div>
-              </Link>
+              </Link> */}
             </div>
           </div>
           <div className={`w-full lg:w-2/3`}>
