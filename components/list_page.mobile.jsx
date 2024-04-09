@@ -908,6 +908,7 @@ const ListPageMobile = ({
         )}
         {(page_type == "STATE" ||
           page_type == "CITY" ||
+          page_type == "THEME" ||
           page_type == "COUNTRY") &&
         faqs.length != 0 ? (
           <div className="mt-4 container">

@@ -248,6 +248,7 @@ export const getallpackages = gql`
     pt: String
     id: String
     name: String
+    theme: String
     type: String
   }
   query allpackage($input: Payload!) {
