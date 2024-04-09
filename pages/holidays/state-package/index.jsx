@@ -38,7 +38,8 @@ const StatePackages = ({
   faqs,
   articles,
   cities,
-  pthemes
+  pthemes,
+  overview
 }) => {
   const [isMobile, setIsMobile] = useState(
     headers["user-agent"].includes("android") ||
@@ -90,6 +91,7 @@ const StatePackages = ({
           articles={articles}
           cities={cities}
           pthemes={pthemes}
+          p_overview={overview}
         />
       </>
     );
@@ -111,6 +113,7 @@ const StatePackages = ({
           articles={articles}
           cities={cities}
           pthemes={pthemes}
+          p_overview={overview}
         />
       </>
     );
@@ -148,6 +151,7 @@ export async function getServerSideProps(context) {
   const region = res.data.allpackage.output.region ?? null;
   const places = res.data.allpackage.output.fcities;
   const cities = res.data.allpackage.output.ncities;
+  const overview = res.data.allpackage.output?.region?.longDesc ?? ""
 
   headers["user-agent"] = headers["user-agent"].toLocaleLowerCase();
 
@@ -256,6 +260,7 @@ export async function getServerSideProps(context) {
       articles,
       cities,
       pthemes: res.data.allpackage.output.pthemes ?? [],
+      overview
     },
   };
 }

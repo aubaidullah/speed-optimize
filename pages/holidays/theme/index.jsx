@@ -27,7 +27,7 @@ const DeskList = dynamic(() => import("../../../components/list_page.mobile"), {
   ssr: true,
 });
 
-const ThemePackage = ({ data, headers, region, places, meta, theme_desc }) => {
+const ThemePackage = ({ data, headers, region, places, meta, faqs, theme_desc,overview }) => {
   const [isMobile, setIsMobile] = useState(
     headers["user-agent"].includes("android") ||
       headers["user-agent"].includes("iphone"),
@@ -65,7 +65,9 @@ const ThemePackage = ({ data, headers, region, places, meta, theme_desc }) => {
           region={region}
           places={places}
           isMobile={isMobile}
-          theme_desc = {theme_desc}          
+          theme_desc = {theme_desc}     
+          p_overview={overview}     
+          faqs={faqs}
         />
       </>
     );
@@ -81,6 +83,8 @@ const ThemePackage = ({ data, headers, region, places, meta, theme_desc }) => {
           places={places}
           isMobile={isMobile}
           theme_desc = {theme_desc}          
+          p_overview={overview}
+          faqs = {faqs}
         />
       </>
     );
@@ -92,12 +96,12 @@ export async function getServerSideProps(context) {
   context.res.setHeader("Cache-Control", "s-maxage=10");
   const headers = context.req.headers;
   const theme_name = context.query.theme.replace(/-and-/g, "-&-").replace(/-/g, " ");
-  console.log(theme_name)
+  // console.log(theme_name)
 
   const res = await client.query({
     query: getallpackages,
     variables: {
-      input: { av: "1.3", name: theme_name, pt: "WEBSITE", type: "THEME" },
+      input: { av: "1.3", name: "",theme:theme_name,name:theme_name, pt: "WEBSITE", type: "THEME" },
     },
   });
   // const data = res.data.allpackage.output.packages.slice(0, 10)
@@ -106,7 +110,8 @@ export async function getServerSideProps(context) {
 
   const region = res.data.allpackage?.output?.region ?? null;
   const places = res.data.allpackage?.output?.fcities;
-  const theme_desc = res.data.allpackage?.output?.theme_description??""
+  const overview = res.data.allpackage?.output?.theme_description??""
+  const faqs = res.data.allpackage?.output?.faqs
 
   const meta = {
     "title":res.data.allpackage?.output?.theme_meta?.metaTitle,
@@ -135,7 +140,9 @@ export async function getServerSideProps(context) {
     region: region ?? [],
     places: places ?? [],
     meta: meta,
-    theme_desc : theme_desc
+    faqs,
+    theme_desc : overview,
+    overview
   };
 
   return { props: pr };

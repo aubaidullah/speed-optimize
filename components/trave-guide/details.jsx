@@ -18,6 +18,7 @@ import Link from "next/link";
 // import Leaform from '../leadform'
 // import State_Attraction from "../trave-guide/attractions";
 import Image from "next/image";
+import { useRouter } from "next/router";
 // import TravelGuide from '../home/travel_guide';
 // import Meta from '../meta';
 import * as Constants from "../Constants";
@@ -37,6 +38,7 @@ import dynamic from "next/dynamic";
 import TopCities from "./top_cities";
 import CustomImage from "../Img";
 // import ParseHtml from '../parseToHtml';
+
 const ParseHtml = dynamic(() => import("../parseToHtml"));
 const BreadCrumbs = dynamic(() => import("../breadcrumbs"));
 const Nav = dynamic(() => import("../Nav"));
@@ -64,8 +66,9 @@ const TravelGuideDetailComp = ({
 }) => {
   console.log(data);
   const [overviewlimit, setOverviewlimit] = useState(200);
-  const [overview, setOverview] = useState();
+  const [overview, setOverview] = useState(data.tg?.overviewDesc);
   const [attlimit, setAttlimit] = useState(4);
+  const {asPath} = useRouter()
   const [sendquery, setSendquery] = useState(false);
 
   const updateChangeForm = (val) => {
@@ -199,8 +202,9 @@ const TravelGuideDetailComp = ({
     <>
       <Nav />
       <BreadCrumbs bread={data.tg.geoType == "COUNTRY" ? con_bread :data.tg.geoType == "CITY"? city_bread:  bread} />
-      <section className="container">
-        <div className="title_listing_">
+      <section className="container" itemScope itemType="https://schema.org/WebPage">
+      <a itemProp="url" href={`https://www.kiomoi.com/${asPath}`}/>
+        <div className="title_listing_" itemProp="name">
           {type == "CITY" ? (
             <h1 className={`text-2xl font-bold`}>{data.tg.cityName} tourism and travel guide</h1>
           ) : (
@@ -556,6 +560,13 @@ const TravelGuideDetailComp = ({
 
 
 
+        <span itemProp="publisher" itemScope itemType="https://schema.org/Organization" >
+          <meta itemProp="name" content="Kiomoi"/>
+          <span itemProp="logo" itemScope itemType="https://schema.org/ImageObject">
+            <meta itemProp="url" content="https://www.kiomoi.com/icons/kiomoi%20logo.svg"  />
+          </span>
+        </span>
+
         <div className={tw`flex flex-wrap`}>
           <div className={`mt-4 w-full lg:w-2/3`}>
             <div>
@@ -563,7 +574,9 @@ const TravelGuideDetailComp = ({
               <div className={``}>
                 <div className="Shape_42">
                   {/* {ReactHtmlParser(overview)} */}
-                  <ParseHtml text={overview} />
+                  {/* {overview} */}
+                  <div itemProp="description" dangerouslySetInnerHTML={{__html:overview}} />
+                  {/* <ParseHtml text={overview} /> */}
                   {overviewlimit == 150 || overviewlimit == 200 ? (
                     <a
                       onClick={() => setOverviewlimit(10000)}

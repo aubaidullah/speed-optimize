@@ -81,13 +81,15 @@ const ListPageMobile = ({
   cities = undefined,
   desc = undefined,
   theme_desc = undefined,
-  pthemes = undefined
+  pthemes = undefined,
+  p_overview = undefined
 }) => {
   const [filter, setFilter] = useState({ keyword: "" });
   const [limit, setLimit] = useState(10);
   const [pcount,setPcount] = useState(0)
   const [overviewlimit, setOverviewlimit] = useState(500);
-  const [overview, setOverview] = useState(region?.longDesc?.length > 20 ? region?.longDesc : region?.desc ?? "");
+  // const [overview, setOverview] = useState(region?.longDesc?.length > 20 ? region?.longDesc : region?.desc ?? "");
+  const [overview,setOverview] = useState(p_overview)
   const [isshow, setIsshow] = useState(false);
   const [pricefilter, setPricefilter] = useState(0);
   const [priority,setPriority] = useState(1)
@@ -272,23 +274,34 @@ const ListPageMobile = ({
   };
 
   // var d = region?.desc??""
-  var d = region?.longDesc?.length > 20 ? region?.longDesc : region?.desc ?? "";
+  // var d = region?.longDesc?.length > 20 ? region?.longDesc : region?.desc ?? "";
   // var d = desc;
   // console.log(d)
 
-  useEffect(() => {
-    if (region !== null || theme_desc !=undefined) {
-      if (overviewlimit == 500) {
-        theme_desc == undefined ?
-        setOverview(d.substring(0, overviewlimit))
-        :setOverview(theme_desc.substring(0, overviewlimit))
-      } else {
-        theme_desc == undefined ?
-        setOverview(d)
-        :setOverview(theme_desc.substring(0, overviewlimit))
-      }
+  // useEffect(() => {
+  //   if (region !== null || theme_desc !=undefined) {
+  //     if (overviewlimit == 500) {
+  //       theme_desc == undefined ?
+  //       setOverview(d.substring(0, overviewlimit))
+  //       :setOverview(theme_desc.substring(0, overviewlimit))
+  //     } else {
+  //       theme_desc == undefined ?
+  //       setOverview(d)
+  //       :setOverview(theme_desc.substring(0, overviewlimit))
+  //     }
+  //   }
+  // }, [overviewlimit,router]);
+
+
+  useEffect(()=>{
+    if (overviewlimit == 500){
+      setOverview(p_overview.substring(0,overviewlimit))
     }
-  }, [overviewlimit,router]);
+    else{
+      setOverview(p_overview)
+    }
+  })
+
   // pcities.some((item) => array.includes(item))
 
   var pack = [];
@@ -532,12 +545,12 @@ const ListPageMobile = ({
   
   return (
     <>
-      <Head>
+      {/* <Head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(prdJson) }}
         />
-      </Head>
+      </Head> */}
       <Meta meta={meta} />
 
       <article>
@@ -612,10 +625,25 @@ const ListPageMobile = ({
         </Modal>
 
         <section className="container m-auto">
-          <div className={tw`flex flex-wrap`}>
+          <div className={tw`flex flex-wrap`} itemScope itemType="https://schema.org/Article">
+            <a itemProp="mainEntityOfPage" href={`https://www.kiomoi.com/${asPath}`}/>
+            <meta itemProp="headline" content={region?.name?? toTitleCase(router?.query?.theme) }  Tour packages />
+            <meta itemProp='image' content={meta?.image} />
+            <span itemProp="author" itemScope itemType="https://schema.org/Person" >
+              <meta itemProp='name' content="Kiomoi" />
+            </span>
+            <span itemProp="publisher" itemScope itemType="https://schema.org/Organization" >
+              <meta itemProp="name" content="Kiomoi"/>
+              <span itemProp="logo" itemScope itemType="https://schema.org/ImageObject">
+                <meta itemProp="url" content="https://www.kiomoi.com/icons/kiomoi%20logo.svg"  />
+              </span>
+              
+
+              </span>
             {region ? (
               <div
                 className={`w-full p-4 bg-white mb-4 _box_shadow_ title_listing_ rounded-md`}
+                itemProp="description"
               >
                 {overview?.includes("<h1") ? (
                   // <div className={`text-2xl pb-2 _b_active font-bold`}>
@@ -880,6 +908,7 @@ const ListPageMobile = ({
         )}
         {(page_type == "STATE" ||
           page_type == "CITY" ||
+          page_type == "THEME" ||
           page_type == "COUNTRY") &&
         faqs.length != 0 ? (
           <div className="mt-4 container">

@@ -14,7 +14,7 @@ const FAQs = dynamic(() => import("../list/faqs"));
 
 const Content = ({ data }) => {
   const [overviewlimit, setOverviewlimit] = useState(200); //desktop:200, mobile : 150
-  const [overview, setOverview] = useState();
+  const [overview, setOverview] = useState(data?.package.description);
 
   const [tnclimit, setTnclimit] = useState(253);
   const [tnc, setTnc] = useState();
@@ -265,7 +265,7 @@ const Content = ({ data }) => {
                   <div className="_blank" id="overview">
                     <h4 className="_titles_">Overview</h4>
                     <div className="Shape_42">
-                      <p>{ReactHtmlParser(overview)}</p>
+                      <p itemProp="description">{ReactHtmlParser(overview)}</p>
                       <div className="text-right">
                         {overviewlimit == 150 || overviewlimit == 200 ? (
                           <a
@@ -295,7 +295,7 @@ const Content = ({ data }) => {
                   // itemtype="https://schema.org/TouristTrip"
                   // itemScope
                 >
-                  <meta itemprop="name" content={data.package.name} />
+                  {/* <meta itemprop="name" content={data.package.name} /> */}
                   <h4 className="_titles_">Itinerary</h4>
                   <div
                     className={

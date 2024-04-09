@@ -29,7 +29,8 @@ const Meta = dynamic(() => import("../../../components/meta"));
 
 const Nav = dynamic(() => import("../../../components/Nav"));
 const RightBar = dynamic(() => import("../../../components/detail/rightbar"));
-const Content = dynamic(() => import("../../../components/detail/content"));
+// const Content = dynamic(() => import("../../../components/detail/content"));
+import Content from "@/components/detail/content";
 const RelatedTour = dynamic(() =>
   import("../../../components/detail/related_tours"),
 );
@@ -192,31 +193,94 @@ const DetailPage = ({ data, related, reviews, meta }) => {
   //   },
   // ];
 
-  const prdJson = {
-      "@context": "http://schema.org",
-        "@type": "Product",
-        "name": data?.package.name,
-        "description": data?.package.description,
-        "url": `https://www.kiomoi.com${router.asPath}`,
-        "image": data?.package.images.split(",")[0],
-        "offers": {
-          "@type": "AggregateOffer",
-          "url": `https://www.kiomoi.com${router.asPath}`,
-          "Price": data?.package.finalprice,
-          "priceCurrency": "INR"
-        },
-        "brand": "Kiomoi Travel",
+  // const prdJson = {
+  //     "@context": "http://schema.org",
+  //       "@type": "Product",
+  //       "name": data?.package.name,
+  //       "description": data?.package.description,
+  //       "url": `https://www.kiomoi.com${router.asPath}`,
+  //       "image": data?.package.images.split(",")[0],
+  //       "offers": {
+  //         "@type": "AggregateOffer",
+  //         "url": `https://www.kiomoi.com${router.asPath}`,
+  //         "Price": data?.package.finalprice,
+  //         "priceCurrency": "INR"
+  //       },
+  //       "brand": "Kiomoi Travel",
         
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": data?.package.sratings != "0"
-          ? data?.package.sratings
-          : randomRating().rating,
-          "reviewCount": data?.package.sratings != "0"
-          ? data?.package.susers
-          : randomRating().review
-        },
-        "review": [
+  //       "aggregateRating": {
+  //         "@type": "AggregateRating",
+  //         "ratingValue": data?.package.sratings != "0"
+  //         ? data?.package.sratings
+  //         : randomRating().rating,
+  //         "reviewCount": data?.package.sratings != "0"
+  //         ? data?.package.susers
+  //         : randomRating().review
+  //       },
+  //       "review": [
+  //         {
+  //           "@type": "Review",
+  //           "author": {
+  //             "@type": "Person",
+  //             "name": reviews?.reviews?.[0]?.cName
+  //           },
+  //           "datePublished": moment(reviews?.reviews?.[0]?.modifiedDate)?.format("DD MMMM YYYY, HH:MM"),
+  //           "description": reviews?.reviews?.[0]?.review,
+  //           "name": data?.package.name,
+  //           "reviewRating": {
+  //             "@type": "Rating",
+  //             "bestRating": "5",
+  //             "ratingValue": "5",
+  //             "worstRating": "1"
+  //           }
+  //         }
+  //       ]
+  //     }
+
+  //  console.log(router)
+
+  // Handle Image Change
+
+  return (
+    <>
+      {/* <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(prdJson) }}
+        />
+      </Head> */}
+
+      {show ? <Guest show={show} setShow={() => setShow(!show)} /> : null}
+      <Meta meta={meta} />
+
+      <Nav />
+
+      <BreadCrumbs bread={bread} />
+
+
+      <div itemScope itemType="https://schema.org/Product">
+        <a itemProp="url" href={`https://www.kiomoi.com/${router.asPath}`}/>
+        <span itemProp="image" content={data?.package.images.split(",")[0]} />
+        <meta itemProp="brand" content="Kiomoi Travel"/>
+        <span itemProp="offers" itemScope itemType="https://schema.org/AggregateOffer">
+          <a itemProp="url" href={`https://www.kiomoi.com${router.asPath}`} />
+            <span itemProp="priceCurrency" content="INR"/>
+            <meta itemProp="price" content={data?.package.finalprice} />
+        </span>
+        <span itemProp="review" itemScope itemType="https://schema.org/Review" >
+          <span itemProp="author" itemScope itemType="https://schema.org/Person">
+            <meta itemProp="name" content={reviews?.reviews?.[0]?.cName}/>
+          </span>
+          <meta itemProp="datePublished" content={moment(reviews?.reviews?.[0]?.modifiedDate)?.format("DD MMMM YYYY, HH:MM")}/>
+          <meta itemProp="description" content={reviews?.reviews?.[0]?.review}/>
+          <meta itemProp="name" content={data?.package.name} />
+          <span itemProp="reviewRating" itemScope itemType="https://schema.org/Rating">
+            <meta itemProp="bestRating" content="5" />
+            <meta itemProp="ratingValue" content="5" />
+            <meta itemProp="worstRating" content="1" />
+          </span>
+        </span>
+        {/* "review": [
           {
             "@type": "Review",
             "author": {
@@ -233,131 +297,111 @@ const DetailPage = ({ data, related, reviews, meta }) => {
               "worstRating": "1"
             }
           }
-        ]
-      }
-
-  //  console.log(router)
-
-  // Handle Image Change
-
-  return (
-    <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(prdJson) }}
-        />
-      </Head>
-
-      {show ? <Guest show={show} setShow={() => setShow(!show)} /> : null}
-      <Meta meta={meta} />
-
-      <Nav />
-
-      <BreadCrumbs bread={bread} />
-
-      <section className="container">
-        <div className="flex flex-wrap">
-          <div className={tw`w-full lg:w-2/3`}>
-            <h1 className="h1_title">{data?.package.name}</h1>
-            {data?.package.sratings != "0" ? (
-              <div>
-                <div className="_inline__">
-                  {userRating}
-                  {/* {data?.package.sratings!="0"?userRating:randomRating().rating} */}
+        ] */}
+        
+        <section className="container">
+          <div className="flex flex-wrap">
+            <div className={tw`w-full lg:w-2/3`}>
+              <h1 className="h1_title" itemProp="name">{data?.package.name}</h1>
+              {data?.package.sratings != "0" ? (
+                <div itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating">
+                  <div className="_inline__">
+                    {userRating}
+                    {/* {data?.package.sratings!="0"?userRating:randomRating().rating} */}
+                  </div>
+                  <div className="_inline__ rating d_rating">
+                    <span>
+                      <span itemProp="ratingValue">{data?.package.sratings}</span> <BsDot className={tw`inline`} />{" "}
+                      <span itemProp="reviewCount">{data?.package.susers}</span> Rating
+                    </span>
+                  </div>
                 </div>
-                <div className="_inline__ rating d_rating">
-                  <span>
-                    {data?.package.sratings} <BsDot className={tw`inline`} />{" "}
-                    {data?.package.susers} Rating
-                  </span>
-                </div>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className={tw`w-full lg:w-1/3`}>
+              <div className={tw`text-right thms`}>
+                <span class="_themes">Themes</span>
+                {themeRender}
               </div>
-            ) : (
-              ""
-            )}
-          </div>
-          <div className={tw`w-full lg:w-1/3`}>
-            <div className={tw`text-right thms`}>
-              <span class="_themes">Themes</span>
-              {themeRender}
             </div>
           </div>
-        </div>
-        <div className="container"></div>
-      </section>
+          <div className="container"></div>
+        </section>
 
-      <section className="container">
-        <div className={tw`flex`}>
-          <div className={tw`w-full lg:w-2/3`}>
-            <div className="col-sm-12 col-xs-12">
-              <div className="detail_slide_nav _30px">
-                <ul>
-                  <li>
-                    <a href="#photos" className="_c_default">
-                      Photos
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#overview">Overview</a>
-                  </li>
-                  <li>
-                    <a href="#itinery">Itinerary</a>
-                  </li>
-                  <li>
-                    <a href="#hotels">Hotels</a>
-                  </li>
-                  <li>
-                    <a href="#inclusions">Inclusions</a>
-                  </li>
-                  <li>
-                    <a href="#tnc">T&C</a>
-                  </li>
-                </ul>
+        <section className="container" >
+          <div className={tw`flex`}>
+            <div className={tw`w-full lg:w-2/3`}>
+              <div className="col-sm-12 col-xs-12">
+                <div className="detail_slide_nav _30px">
+                  <ul>
+                    <li>
+                      <a href="#photos" className="_c_default">
+                        Photos
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#overview">Overview</a>
+                    </li>
+                    <li>
+                      <a href="#itinery">Itinerary</a>
+                    </li>
+                    <li>
+                      <a href="#hotels">Hotels</a>
+                    </li>
+                    <li>
+                      <a href="#inclusions">Inclusions</a>
+                    </li>
+                    <li>
+                      <a href="#tnc">T&C</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap">
+                <div className="w-full" id="photos">
+                  <div className="slider_details">
+                    <_Carousel data={data} />
+                  </div>
+                </div>
+                <div className={tw`w-full initial lg:hidden`}>
+                  <RightBar data={data} />
+                </div>
+
+                {/* <div className={tw`w-full lg:w-1/3`}>
+                              <div className={tw`pl-0 lg:pl-6`}>
+                                  <RightBar data={data} />
+                              </div>
+
+                          </div> */}
+
+                <section className="inclusions">
+                  <Content data={data} />
+                </section>
               </div>
             </div>
 
-            <div className="flex flex-wrap">
-              <div className="w-full" id="photos">
-                <div className="slider_details">
-                  <_Carousel data={data} />
-                </div>
-              </div>
-              <div className={tw`w-full initial lg:hidden`}>
+            {/* <div>
+                      <h1>This is Testing.........................</h1>
+                  </div> */}
+
+            <div className={tw`w-full hidden lg:w-1/3 lg:block`}>
+              <div className={tw`pl-0 lg:pl-6 h_sticky`}>
                 <RightBar data={data} />
               </div>
-
-              {/* <div className={tw`w-full lg:w-1/3`}>
-                            <div className={tw`pl-0 lg:pl-6`}>
-                                <RightBar data={data} />
-                            </div>
-
-                        </div> */}
-
-              <section className="inclusions">
-                <Content data={data} />
-              </section>
             </div>
           </div>
-
-          {/* <div>
-                    <h1>This is Testing.........................</h1>
-                </div> */}
-
-          <div className={tw`w-full hidden lg:w-1/3 lg:block`}>
-            <div className={tw`pl-0 lg:pl-6 h_sticky`}>
-              <RightBar data={data} />
-            </div>
-          </div>
+        </section>
+        {related
+          ?<RelatedTour data={related} />
+          :""
+        }
+        
+        <div className="pt-6">
+          <Review reviews={reviews} data={data}/>
         </div>
-      </section>
-      {related
-        ?<RelatedTour data={related} />
-        :""
-      }
-      
-      <div className="pt-6">
-        <Review reviews={reviews} data={data}/>
       </div>
     </>
   );

@@ -72,17 +72,46 @@ const TravelArticle = ({ data, article, meta }) => {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonP) }}
         />        
-      </Head>
+      </Head> */}
       <Meta meta={meta} />
       <Nav />
       <BreadCrumbs bread={bread} />
-      <section className="container">
-        <h1 className={`text-2xl font-bold`}>{data.article.heading}</h1>
+      <section className="container" itemScope itemType="https://schema.org/BlogPosting">
+      <a itemProp="mainEntityOfPage" href={`https://www.kiomoi.com/${asPath}`}/>
+      <meta itemProp="image" content={meta?.image}/>
+      <span itemProp="author" itemScope itemType="https://schema.org/Person">
+        <meta itemProp="name" content="Sharry" />
+      </span>
+      <span itemProp="publisher" itemScope itemType="https://schema.org/Organization">
+        <meta itemProp="name" content="Kiomoi"/>
+        <span itemProp="logo" itemScope itemType="https://schema.org/ImageObject">
+          <span itemProp="url" content="https://www.kiomoi.com/icons/kiomoi%20logo.svg"/>
+        </span>
+      </span>
+        {/* <span itemProp="mainEntityOfPage" itemScope itemType="https://schema.org/WebPage">
+        
+
+        "publisher": {
+          "@type": "Organization",
+          "@id":`https://www.kiomoi.com${asPath}#organization`,
+          "name": "Kiomoi",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.kiomoi.com/icons/kiomoi%20logo.svg"
+          }
+        
+        },
+        "datePublished": "2024-03-25",
+        "dateModified": "2024-03-25"
+
+
+        </span> */}
+        <h1 className={`text-2xl font-bold`} itemProp="headline">{data.article.heading}</h1>
         <div className={tw`w-full lg:w-2/3`}>
           <div className={`mt-6`}>
             <div className={tw`flex flex-wrap services_listing`}>

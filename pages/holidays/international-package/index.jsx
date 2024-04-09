@@ -34,6 +34,7 @@ const InternationalPackages = ({
   travel,
   cities,
   reviews,
+  overview
 }) => {
   const [isMobile, setIsMobile] = useState(
     headers["user-agent"].includes("android") ||
@@ -84,6 +85,7 @@ const InternationalPackages = ({
           travel={travel}
           cities={cities}
           reviews={reviews}
+          p_overview={overview}
         />
       </>
     );
@@ -103,6 +105,7 @@ const InternationalPackages = ({
           travel={travel}
           cities={cities}
           reviews={reviews}
+          p_overview={overview}
         />
       </>
     );
@@ -154,6 +157,7 @@ export async function getServerSideProps(context) {
   const data = res.data.allpackage?.output?.packages;
 
   const region = res.data.allpackage.output?.region ?? null;
+  const overview = res.data.allpackage.output?.region?.longDesc ?? ""
   const places = res.data.allpackage.output?.fcities;
   const cities = res.data.allpackage.output?.ncities
     .slice(0, 10)
@@ -220,6 +224,7 @@ export async function getServerSideProps(context) {
     travel: res_travel.data.travel.output,
     cities: cities ?? [],
     reviews: res.data.allpackage?.output?.reviews ?? [],
+    overview
   };
   // console.log(pr)
   return { props: pr };

@@ -22,7 +22,7 @@ const BreadCrumbs = dynamic(() => import("@/components/breadcrumbs"));
 const Meta = dynamic(() => import("@/components/meta"));
 
 const Attraction = ({ data, meta }) => {
-  const [overview, setOverview] = useState(null);
+  const [overview, setOverview] = useState(data.atn.desc);
   const {asPath} = useRouter()
 
   const [limit, setLimit] = useState(200);

@@ -10,6 +10,7 @@ import * as Constants from "../Constants";
 import { FaRupeeSign } from "react-icons/fa";
 import { tw } from "twind";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 
 const LeadForm = dynamic(() => import("../leadform"));
 
@@ -23,6 +24,7 @@ const RightBar = ({ data }) => {
   const [packageid, setPackageid] = useState(data?.package.id);
   const [price, setPrice] = useState(data?.package.finalprice);
   const [modalinfo, setModalinfo] = useState({});
+  const {asPath} = useRouter()
 
   const updateChangeForm = (val) => {
     setSendquery(val);
@@ -283,7 +285,14 @@ const RightBar = ({ data }) => {
               <div className="_price_line text-right">
                 <div className="price_tag_banner">
                   <span className="__price">
-                    <FaRupeeSign className={tw`inline`} />
+                  
+                  {/* "offers": {
+          "@type": "AggregateOffer",
+          "url": `https://www.kiomoi.com${router.asPath}`,
+          "Price": data?.package.finalprice,
+          "priceCurrency": "INR"
+        }, */}
+                    <FaRupeeSign className={tw`inline`}  />
                     {parseInt(data?.package.price) > 0 ? (
                       <>
                         {/* <i className="fa fa-inr" style={{ backgroundColor: 'initial' }}></i> */}
