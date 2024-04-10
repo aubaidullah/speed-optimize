@@ -27,6 +27,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ParseHtml from "./parseToHtml";
 import Head from "next/head";
+import { BreadCrumbsLoading, FilterDesktopLoading } from "./list/skelton";
 // import { SimilarTourLoading } from './skelton';
 // import CityTags from './list/city_tags';
 // import State_Attraction from './trave-guide/attractions';
@@ -42,9 +43,9 @@ const TableLoading = dynamic(
 );
 // const Content = dynamic(() => import('./trave-guide/content'))
 const RelatedTour = dynamic(() => import("./detail/related_tours"));
-const BreadCrumbs = dynamic(() => import("./breadcrumbs"));
+const BreadCrumbs = dynamic(() => import("./breadcrumbs"),{loading:()=><BreadCrumbsLoading/>});
 const Meta = dynamic(() => import("./meta"));
-const FilterBy = dynamic(() => import("./list/filter"));
+const FilterBy = dynamic(() => import("./list/filter"),{loading:()=><FilterDesktopLoading />});
 const Modal = dynamic(() => import("./modal"));
 const Package = dynamic(() => import("../components/package"), {
   loading: () => <TableLoading />,
@@ -468,36 +469,6 @@ const ListPageMobile = ({
         return () => clearInterval(interval);
       },[])
 
-      const prdJson = {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": `https://www.kiomoi.com/${asPath}`
-        },
-        "headline": meta?.title??meta?.metaTitle,
-        "description":overview,
-      "image": meta?.image,  
-        "author": {
-          "@type": "Person",
-          "name": "Kiomoi"
-        },  
-        "publisher": {
-          "@type": "Organization",
-          "@id":`https://www.kiomoi.com/${asPath}#organization`,
-          "name": "Kiomoi",
-             "logo": {
-            "@type": "ImageObject",
-            "url": "https://www.kiomoi.com/icons/kiomoi%20logo.svg"
-          }
-         
-        },
-        "datePublished": "2024-03-22",
-        "dateModified": "2024-03-22"
-        
-      }
-
-
 
       // const prdJson = {
       // "@context": "http://schema.org",
@@ -659,7 +630,7 @@ const ListPageMobile = ({
                 <div>
                   {/* {ReactHtmlParser(overview)} */}
                   {/* {ParseHtml({text:overview})} */}
-                  <div className="__description_">
+                  <div className={tw`__description_ overflow-hidden ${overviewlimit == 250 || overviewlimit == 500 ? 'h-36':""}`} >
                     {ParseHtml({text:overview})}
                   </div>
                   
@@ -686,6 +657,7 @@ const ListPageMobile = ({
               ""
             )}
             {!isMobile ? (
+              <>
               <div className={tw`w-full lg:w-1/4 pr-5`}>
                 <FilterBy
                   _pricing={_pricing}
@@ -705,6 +677,8 @@ const ListPageMobile = ({
                   theme={theme}
                 />
               </div>
+              </>
+
             ) : (
               ""
             )}
