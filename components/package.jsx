@@ -160,12 +160,12 @@ const Package = ({ index, item, POPUPFORM }) => {
                         {/* <div className="bk_img" style={{backgroundImage:`url("${item.images.split('~')[0].replace(/w_400/,'w_300')}")`,backgroundPosition:'cover'}}>
                                                         </div> */}
                         <div className="bk_img">
-                          <Image
+                          <img
                             layout="fill"
                             alt={imgNameByUrl({
                               url: item.images.split("~")[0],
                             })}
-                            className={`rounded-[10px]`}
+                            className={`rounded-lg bk_img`}
                             objectFit="fill"
                             src={jpgToWebp({
                               uri: `${item.images
@@ -466,11 +466,12 @@ const Package = ({ index, item, POPUPFORM }) => {
                                 />
                                 <FaRupeeSign
                                   className={`inline text-[#f79421] text-[12px] mb-[4px]`}
+                                  style={{color:'#f79421',fontSize:'12px',marginBottom:'4px'}}
                                 />
                                 {item.finalprice}/-
                               </div>
                               <div>
-                                <p className={`text-[8.8px] text-[#999]`}>
+                                <p style={{fontSize:'8.8px',color:'#999'}}>
                                   Per person on twin sharing
                                 </p>
                               </div>

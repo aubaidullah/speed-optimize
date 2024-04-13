@@ -1,6 +1,5 @@
 import "nprogress/nprogress.css";
 import "@/styles/globals.css";
-import "@/styles/globals.css";
 import "@/styles/detail.css";
 import "@/styles/global.css";
 import "@/styles/Home.module.css";

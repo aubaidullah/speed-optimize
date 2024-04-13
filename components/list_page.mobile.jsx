@@ -810,7 +810,7 @@ const ListPageMobile = ({
                         </div>
                       </div>
                     )}
-                  <div className={`rounded-full  _btn_clr mt-8 px-4 py-2 border-2 border-gray-300 w-fit m-auto cursor-pointer hover:shadow-xl ${limit>=data.length?"hidden":""}`} onClick={()=>setLimit(limit + 10)}>
+                  <div className={`rounded-full  _btn_clr mt-8 px-4 py-2 border-2 border-gray-300 w-fit m-auto cursor-pointer hover:shadow-xl ${limit>=data.length?"hidden":""}`} onClick={()=>setLimit(limit + 10)} style={{width:'max-content',margin:'auto',marginTop:'2rem'}}>
                     <div className="">
                       Load More Packages..
                     </div>
