@@ -1,7 +1,11 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
 
+
+.rounded-xl {
+    border-radius: 0.75rem/* 12px */;
+}
 
 .p-2{
     padding: .5rem;
@@ -12,11 +16,32 @@
 .mt-6 {
     margin-top: 1.5rem;
 }
+.mt-10 {
+    margin-top: 2.5rem;
+  }
+.mb-5 {
+margin-bottom: 1.25rem;
+}
+
+.rounded-2xl {
+    border-radius: 1rem;
+  }
+
+  .rounded-t-2xl {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+.h-56 {
+    height: 14rem;
+  }
 
 .mt-16 {
     margin-top: 4rem;
 }
 
+.m-auto{
+    margin: auto;
+}
 .h-40 {
     height: 10rem;
 }

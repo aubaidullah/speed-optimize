@@ -1,8 +1,8 @@
 // import { Collapse } from 'react-bootstrap';
-import ReactHtmlParser from "react-html-parser";
 import { useState } from "react";
 import { tw } from "twind";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import ParseHtml from "../parseToHtml";
 
 const Tabs = ({ title, desc, clps = null }) => {
   const [collapse, setCollapse] = useState(clps);
@@ -46,7 +46,7 @@ const Tabs = ({ title, desc, clps = null }) => {
                 <div
                   className={tw`${collapse ? "block" : "hidden"} panel-body`}
                 >
-                  <div>{ReactHtmlParser(desc)}</div>
+                  <div>{ParseHtml({text:desc})}</div>
                 </div>
               </div>
             </div>

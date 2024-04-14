@@ -26,7 +26,6 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import ParseHtml from "./parseToHtml";
-import Head from "next/head";
 import { BreadCrumbsLoading, FilterDesktopLoading } from "./list/skelton";
 // import { SimilarTourLoading } from './skelton';
 // import CityTags from './list/city_tags';
@@ -90,7 +89,7 @@ const ListPageMobile = ({
   const [pcount,setPcount] = useState(0)
   const [overviewlimit, setOverviewlimit] = useState(500);
   // const [overview, setOverview] = useState(region?.longDesc?.length > 20 ? region?.longDesc : region?.desc ?? "");
-  const [overview,setOverview] = useState(p_overview)
+  const [overview,setOverview] = useState(p_overview.substring(0,500))
   const [isshow, setIsshow] = useState(false);
   const [pricefilter, setPricefilter] = useState(0);
   const [priority,setPriority] = useState(1)

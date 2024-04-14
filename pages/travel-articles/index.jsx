@@ -7,7 +7,6 @@ import {
   getarticleQuery,
   getMetaQuery,
 } from "../../components/Graphql/Queries";
-// import ReactHtmlParser from "react-html-parser";
 // import Link from "next/link"
 // import Meta from "../../components/meta"
 import dynamic from "next/dynamic";

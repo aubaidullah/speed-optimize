@@ -68,7 +68,10 @@ const ReviewRender = ({ reviews }) => {
                     <span className={tw`text-xs`}>Verfied Review</span>
                     <span className={tw`mx-1`}> | </span>
                     <span className={tw`text-xs`}>
-                      {moment(item.modifiedDate).format("DD MMMM YYYY, HH:MM")}
+                      {
+                        new Date(item.modifiedDate).toDateString()
+                      }
+                      {/* {moment(item.modifiedDate).format("DD MMMM YYYY, HH:MM")} */}
                     </span>
                   </div>
                 </div>

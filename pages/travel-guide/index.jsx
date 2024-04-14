@@ -8,7 +8,6 @@ import {
   getMetaQuery,
 } from "../../components/Graphql/Queries";
 // import Image from "next/image"
-// import ReactHtmlParser from "react-html-parser";
 import Link from "next/link";
 // import Meta from "../../components/meta"
 import {

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import ReactHtmlParser from "react-html-parser";
 import { MdCheckCircle, MdCancel, MdOutlineFlight } from "react-icons/md";
 import { FaBinoculars } from "react-icons/fa";
 import { tw } from "twind";
@@ -9,6 +8,7 @@ import { RiHotelLine } from "react-icons/ri";
 // import { FaQs } from "react-icons/fa"
 // import FAQs from "../list/faqs"
 import dynamic from "next/dynamic";
+import ParseHtml from "../parseToHtml";
 
 const FAQs = dynamic(() => import("../list/faqs"));
 
@@ -265,7 +265,9 @@ const Content = ({ data }) => {
                   <div className="_blank" id="overview">
                     <h4 className="_titles_">Overview</h4>
                     <div className="Shape_42">
-                      <p itemProp="description">{ReactHtmlParser(overview)}</p>
+                      <p itemProp="description">
+                        {ParseHtml({text:overview})}
+                        </p>
                       <div className="text-right">
                         {overviewlimit == 150 || overviewlimit == 200 ? (
                           <a
@@ -393,8 +395,7 @@ const Content = ({ data }) => {
                   <div className="_list_accomodation">
                     <h4 className="_titles_">Terms & Conditions</h4>
                     <ul className={tw`tnc_d text-sm mt-[30px] mr-0 mb-0`}>
-                      {ReactHtmlParser(tnc)}
-
+                      {ParseHtml({text:tnc})}
                       <div className="text-right">
                         {tnclimit == 253 || tnclimit == 253 ? (
                           <a

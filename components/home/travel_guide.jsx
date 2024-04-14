@@ -1,5 +1,4 @@
 import Link from "next/link";
-import * as Constants from "../Constants";
 import {
   createTGCityURL,
   createTGCountryURL,
@@ -8,14 +7,10 @@ import {
   jpgToWebp,
 } from "../fun";
 import dynamic from "next/dynamic";
-import ReactHtmlParser from "react-html-parser";
-import Image from "next/image";
 import CustomImage from "../Img";
-
-// const ReactHtmlParser = dynamic(() => import('react-html-parser'))
+import ParseHtml from "../parseToHtml";
 
 const TravelGuide = ({ data,type = undefined }) => {
-  // const ReactHtmlParser = dynamic(() => import('react-html-parser'))
 
   const Slider = dynamic(() => import("react-slick"));
 
@@ -88,9 +83,7 @@ const TravelGuide = ({ data,type = undefined }) => {
     //   }
     // }
     // console.log(item)
-    var d = ReactHtmlParser(
-      item.overviewDesc?.substring(0, 100) ?? item.ds.substring(0, 100),
-    );
+    var d = ParseHtml({text:item.overviewDesc?.substring(0, 100) ?? item.ds.substring(0, 100),})
 
     return (
       <div key={i}>

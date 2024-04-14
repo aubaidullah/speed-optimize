@@ -36,9 +36,9 @@ module.exports = {
         // safelist: ["html", "body"]
         safelist:{
           standard: ["html", "body"],
-          standard: [/^react-/],
-          deep: [/^react-/],
-          greedy: [/^react-/]
+          // standard: [/^react-/],
+          // deep: [/^react-/],
+          // greedy: [/^react-/]
 
           // content:[
           //   "./node_modules/react-multi-carousel/**/*.js",

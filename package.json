@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
     "@amir04lm26/react-modern-calendar-date-picker": "^1.0.1",
@@ -24,6 +25,7 @@
     "autoprefixer": "10.4.14",
     "axios": "^0.27.2",
     "cookie": "^0.5.0",
+    "cross-env": "^7.0.3",
     "graphql": "^16.5.0",
     "graphql-anywhere": "4.1.0",
     "js-cookie": "^3.0.5",
@@ -40,7 +42,6 @@
     "react-bottom-scroll": "^1.1.2",
     "react-dom": "18.2.0",
     "react-facebook-pixel": "^1.0.4",
-    "react-html-parser": "^2.0.2",
     "react-icons": "^4.4.0",
     "react-loading-skeleton": "^3.3.1",
     "react-modern-calendar-datepicker": "^3.1.6",

@@ -308,6 +308,9 @@ body {
 .modal {
   background: rgba(0, 0, 0, 0.522);
   z-index: 5;
+  left: 0;
+  right: 0;
+  top:1px;
 }
 
 .__description_ h2,.__description_ h3, .__description_ h4, .__description_ h5{

@@ -1,4 +1,3 @@
-// import ReactHtmlParser from "react-html-parser";
 
 const ArticleContent = ({ data }) => {
   return (

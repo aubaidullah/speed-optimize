@@ -21,6 +21,8 @@ import * as Constants from "../../../components/Constants";
 // import Meta from '../../../components/meta';
 // import { createDetailUrl } from '../../components/fun';
 
+// const moment = dynamic(() => import("moment"));
+
 const _Carousel = dynamic(() => import("@/components/detail/_Carousel"));
 const Guest = dynamic(() => import("../../../components/guest"));
 // const Nav = dynamic(() => import('../../../components/Constants'))

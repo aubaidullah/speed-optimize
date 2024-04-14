@@ -11,7 +11,6 @@ import dynamic from "next/dynamic";
 // import Guest from '../../components/guest';
 // import { QNALoading } from '../components/skeleton_l';
 // import * as Constants from "../Constants";
-// import ReactHtmlParser from "react-html-parser";
 // import BreadCrumbs from '../breadcrumbs';
 // import Nav from '../Nav';
 // import ParseHtml from '../parseToHtml';
