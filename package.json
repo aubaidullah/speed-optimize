@@ -34,7 +34,7 @@
     "photoswipe": "^5.3.3",
     "postcss": "8.4.24",
     "postcss-flexbugs-fixes": "^5.0.2",
-    "postcss-preset-env": "^9.5.4",
+    "postcss-preset-env": "^9.5.5",
     "qs": "^6.11.0",
     "react": "18.2.0",
     "react-bottom-scroll": "^1.1.2",

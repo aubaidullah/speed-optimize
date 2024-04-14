@@ -1,6 +1,6 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 
 .p-2{
@@ -8,6 +8,9 @@
 }
 .mb-6 {
     margin-bottom: 1.5rem;
+}
+.mt-6 {
+    margin-top: 1.5rem;
 }
 
 .mt-16 {
@@ -61,6 +64,30 @@
     padding-left: 0.5rem/* 8px */;
     padding-right: 0.5rem/* 8px */;
 }
+
+.pt-2 {
+    padding-top: 0.5rem/* 8px */;
+}
+
+.pb-2 {
+    padding-bottom: 0.5rem/* 8px */;
+}
+.pl-3 {
+    padding-left: 0.75rem/* 12px */;
+}
+.pr-3 {
+    padding-right: 0.75rem/* 12px */;
+}
+
+.text-center{
+    text-align: center;
+}
+
+
+/* .slick-loading .slick-list {
+    background: #fff url(https://assets.kiomoi.com/_next/static/media/ajax-loader.0b80f665.gif) 50% no-repeat
+} */
+
 
 
 @media (min-width: 1024px) {

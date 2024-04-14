@@ -465,7 +465,7 @@ const Package = ({ index, item, POPUPFORM }) => {
                                   content={item.finalprice}
                                 />
                                 <FaRupeeSign
-                                  className={`inline text-[#f79421] text-[12px] mb-[4px]`}
+                                  className={`inline text-[#f79421] text-[12px] mb-[4px] px-2`}
                                   style={{color:'#f79421',fontSize:'12px',marginBottom:'4px'}}
                                 />
                                 {item.finalprice}/-
@@ -535,7 +535,7 @@ const Package = ({ index, item, POPUPFORM }) => {
           </div>
         </div>
 
-        <div className={`row mb_display_none mb-[15px]`}>
+        <div className={`row mb_display_none`} style={{marginBottom:'15px'}}>
           <div className="flex justify-between">
             <div className={`w-1/3`}>
               <div className="img_meal row _sp_">

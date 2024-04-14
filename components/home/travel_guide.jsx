@@ -99,7 +99,7 @@ const TravelGuide = ({ data,type = undefined }) => {
             <div className="col-sm-12 col-xs-12 _cr_mb px-2" key={i}>
               <div className={`box_1 flex`}>
                 <div className={`_inline col-sm-4 col-xs-5 pyce inline`}>
-                  <div className="row w-[100px] relative h-full">
+                  <div className="row relative h-full" style={{width:'100px'}}>
                     <CustomImage
                       img_url={ jpgToWebp({ uri: item.images }) }
                       alt={imgNameByUrl({ url: item.images ?? "kiomoi" })}
