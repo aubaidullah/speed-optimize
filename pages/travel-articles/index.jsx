@@ -11,6 +11,8 @@ import {
 // import Meta from "../../components/meta"
 import dynamic from "next/dynamic";
 import { createArticleURL } from "@/components/fun";
+import { tw } from "twind";
+import { useState } from "react";
 // import S_Article from "@/components/article/s_article";
 
 const S_Article = dynamic(() => import("@/components/article/s_article"));
@@ -19,6 +21,8 @@ const Meta = dynamic(() => import("../../components/meta"));
 const BreadCrumbs = dynamic(() => import("../../components/breadcrumbs"));
 
 const TravelArticles = ({ article, meta }) => {
+  // const [search, Setsearch] = useState("");
+  const [search,Setsearch] = useState("")
   const bread = {
     disabled: {
       item: `Travel Stories`,
@@ -82,16 +86,29 @@ const TravelArticles = ({ article, meta }) => {
       <Nav />
       <BreadCrumbs bread={bread} />
       <div className={"container"}>
+      <input
+          type="text"
+          className={tw`mt-4 p-4 border-1 border-gray-300 rounded-lg outline-none w-full bg-transparent`}
+          placeholder="Search Travel Article"
+          value={search}
+          onChange={(e) => Setsearch(e.target.value)}
+        />        
         <div>
           <div className={`mt-6`}>
             {article.map((item, index) => {
+
+
               let aurl = createArticleURL({
                 heading: item.heading,
                 id: item.id,
               });
               // let aurl = "/travel-articles/"+item.heading.trim().replace(/\s+/g,' ').replace(/\s+/g, "-").replace(/--/g,'-').toLowerCase()+"/"+item.id+"/"
-              return <S_Article item={item} aurl={aurl} index={index} />;
-            })}
+              return search == "" || item.heading.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ?
+               <S_Article item={item} aurl={aurl} index={index} />
+              :""
+            }
+            
+            )}
           </div>
         </div>
       </div>

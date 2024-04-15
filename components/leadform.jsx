@@ -175,8 +175,8 @@ const LeadForm = ({
               </div>
             </>,
             {
-              buttons: false,
-              timer: 4000,
+              // buttons: true,
+              button:"Close"
             },
           );
           return true;

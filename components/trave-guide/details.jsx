@@ -159,7 +159,8 @@ const TravelGuideDetailComp = ({
           <img
             src={`${Constants.assets_api}/public/icons/${icon}`}
             alt="icon"
-            className={`inline h-[15.7px]`}
+            className={`inline`}
+            style={{height:'15.7px'}}
           />
         </div>
         <div className={`ml-4`}>
@@ -499,7 +500,7 @@ const TravelGuideDetailComp = ({
                         ) : (
                           <>
                             <FaRupeeSign
-                              className={`inline text-[#f79421] text-[15px] mb-[4px]`}
+                              className={`inline rupee mb-[4px]`}
                             />
                             {data.mincost / 100}/-
                           </>
