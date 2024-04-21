@@ -99,7 +99,7 @@ const RightBar = ({ data }) => {
         </div>
 
         <div className={`_b_right_list mt-0 lg:mt-16`}>
-          <div className="p-[10px]">
+          <div className="p-2">
             <div className="ov_auto">
               <div className="d_location flt_left">
                 <IoLocationSharp className="inline text-[#999]" size={15} />
@@ -174,7 +174,7 @@ const RightBar = ({ data }) => {
         </div>
 
         <div className="_b_right_list">
-          <div className="p-[10px]">
+          <div className="p-2">
             <div className="ov_auto best_session">
               <div className="flt_left">
                 <MdCheckCircle size={13} className="inline text-[#0d8d06]" />
@@ -189,7 +189,7 @@ const RightBar = ({ data }) => {
           </div>
         </div>
         <div className="_b_right_list">
-          <div className="p-[5px]">
+          <div className="p-2">
             <div className="text-center">
               <span
                 className="check_availability"
@@ -209,7 +209,7 @@ const RightBar = ({ data }) => {
         </div>
 
         <div className="_b_right_list __btn_clr price_banner">
-          <div className="p-[10px]">
+          <div className="p-2">
             <div>
               <div className="_price_line">
                 <div

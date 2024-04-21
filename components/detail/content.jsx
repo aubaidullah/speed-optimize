@@ -54,7 +54,7 @@ const Content = ({ data }) => {
         {/* <meta itemprop="name" content={item.heading} />
         <meta itemprop="description" content={item.desc} /> */}
         <div
-          className={`Shape_42 _details_ _50m _hover _box_shadow p-0`}
+          className={`Shape_42 _details_ _hover _box_shadow p-0`}
           data-toggle="tooltip"
           data-placement="left"
           title={t}
@@ -263,7 +263,7 @@ const Content = ({ data }) => {
 
                 {overview?.length > 0 ? (
                   <div className="_blank" id="overview">
-                    <h4 className="_titles_">Overview</h4>
+                    <h2 className="_titles_">About the tour package</h2>
                     <div className="Shape_42">
                       <p itemProp="description">
                         {ParseHtml({text:overview})}
@@ -298,14 +298,7 @@ const Content = ({ data }) => {
                   // itemScope
                 >
                   {/* <meta itemprop="name" content={data.package.name} /> */}
-                  <h4 className="_titles_">Itinerary</h4>
-                  <div
-                    className={
-                      data?.itn.length > 5
-                        ? "line_design_increaseheight"
-                        : "line_design"
-                    }
-                  ></div>
+                  <h3 className="_titles_">Itinerary</h3>
                   {itnRender}
                 </div>
 
@@ -384,7 +377,7 @@ const Content = ({ data }) => {
                 {faqsinfo.length ? (
                   <div>
                     {/* <span></span> */}
-                    <div className="_titles_">FAQs</div>
+                    <h4 className="_titles_">FAQs</h4>
                     <FAQs data={faqsinfo} detail={true} />
                   </div>
                 ) : (

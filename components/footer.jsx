@@ -612,7 +612,7 @@ const Footer = () => {
       }
 
 
-      <div className={`flex justify-center py-3 bg-[#505050]`}>
+      <div className={`flex justify-center py-3`} style={{backgroundColor:'#505050'}}>
         <ul className={`flex gap-2 custom-footer`}>
           <li className={`cursor-pointer text-sm md:text-sm`}>
             <Link href="/aboutus/">About us </Link>
@@ -632,7 +632,7 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <div className={`flex pb-3 pt-4 bg-[#373739]`}>
+      <div className={`flex pb-3 pt-4`} style={{backgroundColor:'#373739'}}>
         <div className="row w-full">
           <div className="flex flex-wrap">
             <div
