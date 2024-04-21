@@ -8,7 +8,7 @@ import {FaPhoneAlt} from 'react-icons/fa'
 // import {FaArrowRight} from 'react-icons/fa'
 import dynamic from "next/dynamic";
 import { useState, useEffect, useRef } from "react";
-import { tw } from "twind";
+
 // import { useSelector } from "react-redux"
 // import { ScrollWrapper } from "react-bottom-scroll";
 import { useRouter } from "next/router";
@@ -529,7 +529,7 @@ const ListPageMobile = ({
         <BreadCrumbs
           bread={
             // page_type=='STATE'?state_bread:region?.sname == region?.cname?country_bread:page_type=='CITY'?city_bread:all_bread
-
+          
             router?.query?.package && router?.query?.theme
               ? theme_state_bread
               : page_type == "STATE" 
@@ -595,7 +595,7 @@ const ListPageMobile = ({
         </Modal>
 
         <section className="container m-auto">
-          <div className={tw`flex flex-wrap`} itemScope itemType="https://schema.org/Article">
+          <div className={`flex flex-wrap`} itemScope itemType="https://schema.org/Article">
             <a itemProp="mainEntityOfPage" href={`https://www.kiomoi.com/${asPath}`}/>
             <meta itemProp="headline" content={region?.name?? toTitleCase(router?.query?.theme) }  Tour packages />
             <meta itemProp='image' content={meta?.image} />
@@ -629,7 +629,7 @@ const ListPageMobile = ({
                 <div>
                   {/* {ReactHtmlParser(overview)} */}
                   {/* {ParseHtml({text:overview})} */}
-                  <div className={tw`__description_ overflow-hidden ${overviewlimit == 250 || overviewlimit == 500 ? 'h-36':""}`} >
+                  <div className={`__description_ overflow-hidden ${overviewlimit == 250 || overviewlimit == 500 ? 'h-36':""}`} >
                     {ParseHtml({text:overview})}
                   </div>
                   
@@ -657,7 +657,7 @@ const ListPageMobile = ({
             )}
             {!isMobile ? (
               <>
-              <div className={tw`w-full lg:w-1/4 pr-5`}>
+              <div className={`w-full lg:w-1/4 pr-5`}>
                 <FilterBy
                   _pricing={_pricing}
                   setPrice={setPrice}
@@ -682,10 +682,10 @@ const ListPageMobile = ({
               ""
             )}
 
-            <div className={tw`w-full lg:w-3/4 `}>
-            <div className={tw`mb-2`}>
+            <div className={`w-full lg:w-3/4 `}>
+            <div className={`mb-2`}>
              {page_type == "STATE" || page_type == "CITY"?
-              <div className={tw`flex flex-wrap gap-3`}>
+              <div className={`flex flex-wrap gap-3`}>
                 {pthemes?.map((e,index)=>{
                   return (
                     <a key={index} target="_blank" href={
@@ -694,7 +694,7 @@ const ListPageMobile = ({
                         : page_type=="CITY"
                         ?createThemeCITYListURL({cityname:region?.name,id:router.query.id,themeName:e.theme}):""
                       }>
-                      <p className={tw` border border-gray-500 px-2 py-1 font-semibold text-slate-600 rounded-lg`}>{e.theme} tour packages</p>
+                      <p className={` border border-gray-500 px-2 py-1 font-semibold text-slate-600 rounded-lg`}>{e.theme} tour packages</p>
                     </a>
                   )
                 })}
@@ -858,7 +858,7 @@ const ListPageMobile = ({
           </div>
         </section>
         {page_type == "CITY" ? (
-          <div className={tw`mt-5 w-full`}>
+          <div className={`mt-5 w-full`}>
             {/* <SimilarTourLoading /> */}
             <RelatedTour data={related} />
           </div>
@@ -868,7 +868,7 @@ const ListPageMobile = ({
         {page_type == "STATE" || page_type == "COUNTRY" ? (
           <div className="mt-4 container">
             <div
-              className={tw`mt-8 ${
+              className={`mt-8 ${
                 isMobile ? "text-xl" : "text-2xl"
               } mb-4 text-center_ font-semibold text-gray-600`}
             >
@@ -886,7 +886,7 @@ const ListPageMobile = ({
         faqs.length != 0 ? (
           <div className="mt-4 container">
             <div
-              className={tw`mt-8 ${
+              className={`mt-8 ${
                 isMobile ? "text-xl" : "text-2xl"
               } mb-4 text-center_ font-semibold text-gray-600`}
             >
@@ -901,7 +901,7 @@ const ListPageMobile = ({
         {travel && travel?.images ? (
           <>
             <div className="container mt-8">
-              {/* <h1 className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>Read more About {region?.name}</h1> */}
+              {/* <h1 className={`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>Read more About {region?.name}</h1> */}
               {/* <Content data={travel} collapse={true}/> */}
 
               <Link
@@ -910,9 +910,9 @@ const ListPageMobile = ({
               >
                 {/* Travel Guide {travel.tg.cityName} */}
                 <div
-                  className={tw`flex flex-wrap items-center bg-white p-4 lg:p-6 rounded-lg hover:shadow-lg transition-shadow`}
+                  className={`flex flex-wrap items-center bg-white p-4 lg:p-6 rounded-lg hover:shadow-lg transition-shadow`}
                 >
-                  <div className={tw`w-full lg:w-1/2`}>
+                  <div className={`w-full lg:w-1/2`}>
                     <div className="relative h-40 lg:h-60">
                       <Image
                         className="rounded-lg"
@@ -922,11 +922,11 @@ const ListPageMobile = ({
                     </div>
                   </div>
                   <div
-                    className={tw`w-full lg:w-1/2 pl-4 lg:pl-0 pt-4 lg:pt-0`}
+                    className={`w-full lg:w-1/2 pl-4 lg:pl-0 pt-4 lg:pt-0`}
                   >
                     <div>
                       <h3
-                        className={tw`text-2xl lg:text-3xl font-bold text-center text-gray-500`}
+                        className={`text-2xl lg:text-3xl font-bold text-center text-gray-500`}
                       >
                         More about {travel.tg.cityName} tourism{" "}
                         <BsArrowRight className="inline _b_active font-bold" />{" "}
@@ -982,8 +982,8 @@ const ListPageMobile = ({
 
 
       <div className="bottom_bar">
-        <div className={tw`h-full`}>
-          <div className={tw`flex h-full shadow-[3px 1px 4px]`}>
+        <div className={`h-full`}>
+          <div className={`flex h-full shadow-[3px 1px 4px]`}>
             <a
               href="tel:+919650687940"
               className="w-full"

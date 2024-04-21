@@ -1,6 +1,6 @@
 // import BreadCrumbs from "../../components/breadcrumbs"
 // import Nav from "../../components/Nav"
-import { tw } from "twind";
+
 import client from "../../components/Graphql/service";
 import Head from "next/head";
 import {
@@ -72,7 +72,7 @@ const TravelGuide = ({ data, meta }) => {
         <h1 className={`text-2xl font-bold`}>Top Travel Guides</h1>
         <input
           type="text"
-          className={tw`mt-4 p-4 border-1 border-gray-300 rounded-lg outline-none w-full bg-transparent`}
+          className={`mt-4 p-4 border-1 border-gray-300 rounded-lg outline-none w-full bg-transparent`}
           placeholder="Search Travel Guide"
           value={search}
           onChange={(e) => Setsearch(e.target.value)}

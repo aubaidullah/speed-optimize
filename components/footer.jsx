@@ -1,4 +1,4 @@
-import { tw } from "twind";
+// 
 import { AiFillTwitterCircle, AiFillInstagram } from "react-icons/ai";
 import {
   TiSocialYoutubeCircular,
@@ -582,21 +582,21 @@ const Footer = () => {
 
   return (
       
-      <div className={tw`w-100 overflow-hidden mt-5`}>
+      <div className={`w-100 overflow-hidden mt-5`}>
 
 
       {!asPath.includes("hotels")
-        ?<div className={tw``}>
-        <div className={tw`container py-4`}>
-          <div className={tw``}>
+        ?<div className={``}>
+        <div className={`container py-4`}>
+          <div className={``}>
             {Object.keys(links).map((item,index)=>{
               return <div>
-              <h3 className={tw`text-sm lg:text-xl font-semibold mt-8 mb-4 cursor-pointer`} onClick={()=>setCollapse(index == collapse ? -1 : index)}>{item}</h3>
-              <div className={tw`flex flex-wrap gap-4 ${collapse == index ? "" : "hidden lg:flex"}`}>
+              <h3 className={`text-sm lg:text-xl font-semibold mt-8 mb-4 cursor-pointer`} onClick={()=>setCollapse(index == collapse ? -1 : index)}>{item}</h3>
+              <div className={`flex flex-wrap gap-4 ${collapse == index ? "" : "hidden lg:flex"}`}>
                 {links[item].map((i,ind)=>{
-                  return <div className={tw`hover:text-gray-800 text-sm font-light`}>
+                  return <div className={`hover:text-gray-800 text-sm font-light`}>
                       <Link href={i.url.replace("https://www.kiomoi.com",'')}>
-                        <div className={tw`text-sm px-4 py-2 bg-white _b_active rounded-full border-2 border-gray-300 hover:shadow-lg transition-shadow`}>
+                        <div className={`text-sm px-4 py-2 bg-white _b_active rounded-full border-2 border-gray-300 hover:shadow-lg transition-shadow`}>
                           {i.heading}
                         </div>
                       </Link>                  
@@ -612,8 +612,8 @@ const Footer = () => {
       }
 
 
-      <div className={tw`flex justify-center py-3 bg-[#505050]`}>
-        <ul className={tw`flex gap-2 custom-footer`}>
+      <div className={`flex justify-center py-3 bg-[#505050]`}>
+        <ul className={`flex gap-2 custom-footer`}>
           <li className={`cursor-pointer text-sm md:text-sm`}>
             <Link href="/aboutus/">About us </Link>
             <span className={`fs-6 md:fs-4`}> | </span>
@@ -632,11 +632,11 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <div className={tw`flex pb-3 pt-4 bg-[#373739]`}>
+      <div className={`flex pb-3 pt-4 bg-[#373739]`}>
         <div className="row w-full">
           <div className="flex flex-wrap">
             <div
-              className={tw`w-full lg:w-1/3 payment_secure flex flex-col justify-center items-center px-4 md:px-0 col-12 col-md-4`}
+              className={`w-full lg:w-1/3 payment_secure flex flex-col justify-center items-center px-4 md:px-0 col-12 col-md-4`}
             >
               <div>
                 <h4 className={`mb-3 text-center md:text-start`}>
@@ -678,7 +678,7 @@ const Footer = () => {
             </div>
             {/* <hr className={`col-12 col-md-4 text-white w-80 m-auto mb-3 d-block d-md-none`} /> */}
             <div
-              className={tw`w-full lg:w-1/3 payment_secure follow-links col-12 col-md-4`}
+              className={`w-full lg:w-1/3 payment_secure follow-links col-12 col-md-4`}
             >
               <h4 className={`mb-3 px-3 md:px-0 text-center`}>FOLLOW US ON</h4>
               <ul
@@ -722,7 +722,7 @@ const Footer = () => {
             </div>
             {/* <hr className={`col-12 col-md-4 text-white w-80 m-auto mb-4 d-block d-md-none`} /> */}
             <div
-              className={tw`w-full lg:w-1/3 col-12 col-md-4 flex justify-center items-center px-4 md:px-0`}
+              className={`w-full lg:w-1/3 col-12 col-md-4 flex justify-center items-center px-4 md:px-0`}
             >
               <div className={`whatsapp-footer flex gap-4`}>
                 <img

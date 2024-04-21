@@ -11,7 +11,7 @@ import axios from "axios";
 import swal from "sweetalert";
 import Cookie from "js-cookie";
 import dynamic from "next/dynamic";
-import { tw } from "twind";
+
 import client from "./Graphql/service";
 import { getCountryQuery } from "./Graphql/Queries";
 import { BiCheck } from "react-icons/bi";
@@ -332,7 +332,7 @@ const LeadForm = ({
                 <div className="form-group">
                   <div className="flex">
                     <select
-                      className={tw`w-1/3 form-control`}
+                      className={`w-1/3 form-control`}
                       onChange={(e) => setCcode(e.target.value)}
                     >
                       {country.map((item, index) => {
@@ -356,7 +356,7 @@ const LeadForm = ({
                         }
                       }}
                       // type="text"
-                      className={tw`w-2/3 form-control ml-[20px]`}
+                      className={`w-2/3 form-control ml-[20px]`}
                       name="mobile"
                       onChange={(e) => setMobile(e.target.value)}
                       value={mobile}

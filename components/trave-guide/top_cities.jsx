@@ -1,7 +1,7 @@
 import { createTGCityURL } from "../fun";
 import Link from "next/link";
 import * as Constants from "../Constants";
-import { tw } from "twind";
+
 import Image from "next/image";
 
 const TopCities = ({ data, attlimit = 5, _package = false }) => {
@@ -17,7 +17,7 @@ const TopCities = ({ data, attlimit = 5, _package = false }) => {
               <div>
                 <div>
                   <div
-                    className={tw`image-squre__ relative lg:${
+                    className={`image-squre__ relative lg:${
                       _package ? "h-44" : ""
                     }`}
                   >
@@ -34,7 +34,7 @@ const TopCities = ({ data, attlimit = 5, _package = false }) => {
                     />
                   </div>
                   <div
-                    className={tw`${
+                    className={`${
                       _package
                         ? "text-sm font-semibold lg:text-lg text-slate-700"
                         : ""

@@ -1,4 +1,4 @@
-// import { tw } from "twind"
+// 
 // import BreadCrumbs from "../../components/breadcrumbs"
 // import Nav from "../../components/Nav"
 import client from "../../components/Graphql/service";
@@ -11,7 +11,7 @@ import {
 // import Meta from "../../components/meta"
 import dynamic from "next/dynamic";
 import { createArticleURL } from "@/components/fun";
-import { tw } from "twind";
+
 import { useState } from "react";
 // import S_Article from "@/components/article/s_article";
 
@@ -88,7 +88,7 @@ const TravelArticles = ({ article, meta }) => {
       <div className={"container"}>
       <input
           type="text"
-          className={tw`mt-4 p-4 border-1 border-gray-300 rounded-lg outline-none w-full bg-transparent`}
+          className={`mt-4 p-4 border-1 border-gray-300 rounded-lg outline-none w-full bg-transparent`}
           placeholder="Search Travel Article"
           value={search}
           onChange={(e) => Setsearch(e.target.value)}

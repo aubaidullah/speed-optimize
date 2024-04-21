@@ -1,4 +1,4 @@
-import { tw } from "twind"
+
 import Link from "next/link";
 import { createCityListURL } from "../fun";
 import { imgNameByUrl } from "../fun";
@@ -24,10 +24,10 @@ const CityPackages = ({data}) =>{
             <Link href={aurl}>
               <div href={aurl}>
                 {" "}
-                <div className={tw`px-2 _cr_mb`}>
+                <div className={`px-2 _cr_mb`}>
                   <div className="_des_img my-2">
                     {/* <img
-                        className={tw`img-responsive rounded-[8px]`}
+                        className={`img-responsive rounded-[8px]`}
                         src={
                           item.im.split("~")[0]
                             ? item.im.split("~")[0]
@@ -36,7 +36,7 @@ const CityPackages = ({data}) =>{
                         alt="kiomoi"
                       /> */}
                     {/* <Image
-                      className={tw`img-responsive rounded-[8px]`}
+                      className={`img-responsive rounded-[8px]`}
                       src={
                         // item.im.split("~")[0]
                            item.images
@@ -127,7 +127,7 @@ const CityPackages = ({data}) =>{
           carouselState: { currentSlide },
         } = rest;
         return (
-          <div className={tw`hidden lg:carousel-button-group lg:block `}>
+          <div className={`hidden lg:carousel-button-group lg:block `}>
             <button
               className={`${currentSlide === 0 ? "disable" : ""} left-custom-btn`}
               onClick={() => previous()}
@@ -138,10 +138,10 @@ const CityPackages = ({data}) =>{
       };
 
     return <>
-        <div className={tw`container mt-16`}>
+        <div className={`container mt-16`}>
         <div className={`flex items-center justify-between mb-6`} >
               <div>
-                <h4 className={tw`text-2xl font-bold`}>Trending Now</h4>
+                <h4 className={`text-2xl font-bold`}>Trending Now</h4>
               </div>
               <div>
                 <Link href={"/holidays/"}>
@@ -152,7 +152,7 @@ const CityPackages = ({data}) =>{
               </div>
             </div>
 
-            <div className={tw`flex flex-wrap-reverse`}>
+            <div className={`flex flex-wrap-reverse`}>
                 {statePackagesRender}
                 {/* <Slider {...settings}>{statePackagesRender}</Slider> */}
                 {/* <MultiCarousel2

@@ -2,7 +2,7 @@
 const nextConfig = {
   compress: true,
   reactStrictMode: true,
-  assetPrefix: "https://devassets.kiomoi.com",
+  // assetPrefix: "https://devassets.kiomoi.com",
   images: {
     domains: [
       "res.cloudinary.com",
@@ -15,26 +15,8 @@ const nextConfig = {
       "kiomoi.vercel.app",
       "localhost"
     ],
-    // remotePatterns: [
-    //   {
-    //     protocol: 'https',
-    //     hostname: 'res.cloudinary.com',
-    //   },
-    // ],
   },
-  compiler:{
-    styledComponents:true
-  },
-
-//   async rewrites() {
-//     return [
-//       {
-//         source: '/:path*',
-//         destination: '/',
-//       },
-//     ];
-// },
-
+  
   async redirects() {
     return [
       {
@@ -395,22 +377,8 @@ const nextConfig = {
 
       // destination_karde.htm
     ];
-  },
+  },  
 };
 
+export default nextConfig;
 
-
-
-
-
-
-
-// const withBundleAnalyzer = require('@next/bundle-analyzer')({
-//   enabled: process.env.ANALYZE === 'true',
-// })
-
-// module.exports = withBundleAnalyzer({})
-
-// module.exports = withBundleAnalyzer({nextConfig})
-
-module.exports = nextConfig;

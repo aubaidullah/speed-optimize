@@ -1,4 +1,4 @@
-import { tw } from "twind";
+
 import {
   AiOutlineUp,
   AiOutlineDown,
@@ -18,7 +18,7 @@ const FAQs = ({ data, detail = false }) => {
           return (
             
               <div
-                className={tw`p-4 ${
+                className={`p-4 ${
                   detail == false ? "bg-white" : "text-sm"
                 }border-b`}
                 key={index}
@@ -27,11 +27,11 @@ const FAQs = ({ data, detail = false }) => {
                 itemType="https://schema.org/Question"
               >
                 <div
-                  className={tw`flex justify-between cursor-pointer`}
+                  className={`flex justify-between cursor-pointer`}
                   onClick={() => setCollapse(index == collapse ? -1 : index)}
                 >
                   <div className="flex items-center text-md font-semibold">
-                    {/* <AiOutlineSearch className={tw`text-[#f05927] text-xl`}/> */}
+                    {/* <AiOutlineSearch className={`text-[#f05927] text-xl`}/> */}
                     <div>{index + 1}.</div>
                     <div className="ml-2" itemProp="name">
                       {item.question}
@@ -43,12 +43,12 @@ const FAQs = ({ data, detail = false }) => {
                   </div>
                 </div>
                 <div
-                  className={tw`ans mt-2 ${collapse == index ? "" : "hidden"}`}
+                  className={`ans mt-2 ${collapse == index ? "" : "hidden"}`}
                   itemScope
                   itemProp="acceptedAnswer"
                   itemType="https://schema.org/Answer"
                 >
-                  <div className={tw`pl-6 leading-8`} itemProp="text">
+                  <div className={`pl-6 leading-8`} itemProp="text">
                     {item.answer}
                   </div>
                 </div>

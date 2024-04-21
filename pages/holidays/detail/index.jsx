@@ -9,7 +9,7 @@ import { BsDot, BsStarFill, BsStarHalf } from "react-icons/bs";
 import dynamic from "next/dynamic";
 import moment from "moment";
 
-import { tw } from "twind";
+
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
@@ -59,10 +59,10 @@ const DetailPage = ({ data, related, reviews, meta }) => {
   var userRating = [];
   var i = 0;
   for (i; i < Math.floor(parseFloat(data?.package.sratings)); i++) {
-    userRating.push(<BsStarFill key={i} className={tw`d_icon_size inline`} />);
+    userRating.push(<BsStarFill key={i} className={`d_icon_size inline`} />);
   }
   if (data?.package.sratings.length != 1) {
-    userRating.push(<BsStarHalf key={i} className={tw`d_icon_size inline`} />);
+    userRating.push(<BsStarHalf key={i} className={`d_icon_size inline`} />);
   }
 
   const bread = {
@@ -303,7 +303,7 @@ const DetailPage = ({ data, related, reviews, meta }) => {
         
         <section className="container">
           <div className="flex flex-wrap">
-            <div className={tw`w-full lg:w-2/3`}>
+            <div className={`w-full lg:w-2/3`}>
               <h1 className="h1_title" itemProp="name">{data?.package.name}</h1>
               {data?.package.sratings != "0" ? (
                 <div itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating">
@@ -313,7 +313,7 @@ const DetailPage = ({ data, related, reviews, meta }) => {
                   </div>
                   <div className="_inline__ rating d_rating">
                     <span>
-                      <span itemProp="ratingValue">{data?.package.sratings}</span> <BsDot className={tw`inline`} />{" "}
+                      <span itemProp="ratingValue">{data?.package.sratings}</span> <BsDot className={`inline`} />{" "}
                       <span itemProp="reviewCount">{data?.package.susers}</span> Rating
                     </span>
                   </div>
@@ -322,8 +322,8 @@ const DetailPage = ({ data, related, reviews, meta }) => {
                 ""
               )}
             </div>
-            <div className={tw`w-full lg:w-1/3`}>
-              <div className={tw`text-right thms`}>
+            <div className={`w-full lg:w-1/3`}>
+              <div className={`text-right thms`}>
                 <span class="_themes">Themes</span>
                 {themeRender}
               </div>
@@ -333,8 +333,8 @@ const DetailPage = ({ data, related, reviews, meta }) => {
         </section>
 
         <section className="container" >
-          <div className={tw`flex`}>
-            <div className={tw`w-full lg:w-2/3`}>
+          <div className={`flex`}>
+            <div className={`w-full lg:w-2/3`}>
               <div className="col-sm-12 col-xs-12">
                 <div className="detail_slide_nav _30px">
                   <ul>
@@ -368,12 +368,12 @@ const DetailPage = ({ data, related, reviews, meta }) => {
                     <_Carousel data={data} />
                   </div>
                 </div>
-                <div className={tw`w-full initial lg:hidden`}>
+                <div className={`w-full initial lg:hidden`}>
                   <RightBar data={data} />
                 </div>
 
-                {/* <div className={tw`w-full lg:w-1/3`}>
-                              <div className={tw`pl-0 lg:pl-6`}>
+                {/* <div className={`w-full lg:w-1/3`}>
+                              <div className={`pl-0 lg:pl-6`}>
                                   <RightBar data={data} />
                               </div>
 
@@ -389,8 +389,8 @@ const DetailPage = ({ data, related, reviews, meta }) => {
                       <h1>This is Testing.........................</h1>
                   </div> */}
 
-            <div className={tw`w-full hidden lg:w-1/3 lg:block`}>
-              <div className={tw`pl-0 lg:pl-6 h_sticky`}>
+            <div className={`w-full hidden lg:w-1/3 lg:block`}>
+              <div className={`pl-0 lg:pl-6 h_sticky`}>
                 <RightBar data={data} />
               </div>
             </div>

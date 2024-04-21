@@ -11,7 +11,7 @@ import axios from "axios";
 import LeadGuest from "./Leadguest";
 import swal from "sweetalert";
 import Cookie from "js-cookie";
-import { tw } from "twind";
+
 
 const LeadForm = ({
   isshow,
@@ -130,25 +130,25 @@ const LeadForm = ({
           swalr(
             // "",
             <>
-              <div className={tw`text-center mb-[15px]`}>
+              <div className={`text-center mb-[15px]`}>
                 <img
                   alt="kiomoi"
                   src={`${Constants.assets_api}/public/icons/download.png`}
-                  className={tw`inline m-auto`}
+                  className={`inline m-auto`}
                 />
-                <p className={tw`pt-[10px] text-center text-[15px]`}>
+                <p className={`pt-[10px] text-center text-[15px]`}>
                   Thanks for query with Kiomoi, your reference number is{" "}
                   <b>{res.data.output}</b>
                 </p>
-                <p className={tw`text-center text-[10px]`}>
+                <p className={`text-center text-[10px]`}>
                   We assure you within 24 hours response. Feel free to call us
-                  on <span className={tw`text-[#f16625]`}>+919650687940</span>{" "}
+                  on <span className={`text-[#f16625]`}>+919650687940</span>{" "}
                   or drop a mail on{" "}
                   <a
                     href={`mailto:info@kiomoi.com?Subject=Query regarding reference number "+${res.data.output} +"`}
                     target="_top"
                   >
-                    <span className={tw`text-[#f16625]`}>info@kiomoi.com</span>
+                    <span className={`text-[#f16625]`}>info@kiomoi.com</span>
                   </a>{" "}
                   for a sooner response
                 </p>
@@ -232,9 +232,9 @@ const LeadForm = ({
         // size="sm"
       >
         <Modal.Body>
-          <span className={tw`float-right text-black`} aria-hidden="true">
+          <span className={`float-right text-black`} aria-hidden="true">
             <BsXLg
-              className={tw`cursor-pointer`}
+              className={`cursor-pointer`}
               //   style={{cursor: "pointer" }}
               onClick={() => changeForm(false)}
             />
@@ -245,17 +245,17 @@ const LeadForm = ({
                 <div className="wrapper_login">
                   <div className="body_login">
                     <div className="login_header">
-                      <div className={tw`flex align-center`}>
+                      <div className={`flex align-center`}>
                         <img
                           src={`${Constants.assets_api}/public/icons/logo-icon.png`}
                           height="50"
                           alt="kiomoi"
-                          className={tw`m-auto`}
+                          className={`m-auto`}
                           // style={{margin:'0 auto'}}
                         />
                       </div>
 
-                      <h4 className={tw`text-xl`}>{packageName}</h4>
+                      <h4 className={`text-xl`}>{packageName}</h4>
                     </div>
 
                     <div className="form-group ">
@@ -361,7 +361,7 @@ const LeadForm = ({
                         <option value="Kolkatta">Kolkatta</option>
                         <option value="Mumbai">Mumbai</option>
                         <option value="Pune">Pune</option>
-                        <option className={tw`text-gray-500`} disabled>
+                        <option className={`text-gray-500`} disabled>
                           ---------------------------
                         </option>
                         <option value="Agartala">Agartala</option>
@@ -583,8 +583,8 @@ const LeadForm = ({
                     </div>
                 </div> */}
 
-                    <div className={tw`form-group flex`}>
-                      <div className={tw`w-full`}>
+                    <div className={`form-group flex`}>
+                      <div className={`w-full`}>
                         {/* <input 
                     type="text"
                     name = "date" 
@@ -626,7 +626,7 @@ const LeadForm = ({
                       {/* <DatePicker
                     
                     /> */}
-                      <div className={tw`ml-[20px] w-full`}>
+                      <div className={`ml-[20px] w-full`}>
                         <input
                           pattern="[0-9.]+"
                           type="number"
@@ -688,8 +688,8 @@ const LeadForm = ({
                         placeholder="Any Special Request"
                     />
                     </div> */}
-                    <div className={tw`form-group flex`}>
-                      <div className={tw`w-full`}>
+                    <div className={`form-group flex`}>
+                      <div className={`w-full`}>
                         <input
                           pattern="[0-9.]+"
                           type="text"
@@ -699,7 +699,7 @@ const LeadForm = ({
                             }
                           }}
                           // type="adults"
-                          className={tw`form-control mr-[10px] mt-[0]`}
+                          className={`form-control mr-[10px] mt-[0]`}
                           name="adults"
                           onChange={(e) => setAdult(e.target.value)}
                           value={adult}
@@ -719,7 +719,7 @@ const LeadForm = ({
                         </div>
                       </div>
 
-                      <div className={tw`ml-[20px] w-full`}>
+                      <div className={`ml-[20px] w-full`}>
                         <input
                           pattern="[0-9.]+"
                           type="text"
@@ -729,7 +729,7 @@ const LeadForm = ({
                             }
                           }}
                           // type="children"
-                          className={tw`form-control mt-0`}
+                          className={`form-control mt-0`}
                           name="children"
                           onChange={(e) => setChildren(e.target.value)}
                           value={children}

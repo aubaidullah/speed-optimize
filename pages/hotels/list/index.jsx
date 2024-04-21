@@ -1,6 +1,6 @@
 import client from "../../../components/Graphql/service";
 import { getHotelList, getMetaQuery, getMetaQueryUniversal } from "../../../components/Graphql/Queries";
-import { tw } from "twind";
+
 import { useRouter } from "next/router";
 import { toTitleCase } from "../../../components/fun";
 import dynamic from "next/dynamic";
@@ -39,10 +39,10 @@ const SearchHotel = ({ hotels, info, meta }) => {
 
       <BreadCrumbs bread={bread} />
       <section className="container">
-        <div className={tw`mt-4`}>
-          <h2 className={tw`_titles_ mb-4`}>
+        <div className={`mt-4`}>
+          <h2 className={`_titles_ mb-4`}>
             Results in{" "}
-            <span className={tw`primary-color`}>
+            <span className={`primary-color`}>
               {toTitleCase(router.query.city)}
             </span>
           </h2>

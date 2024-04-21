@@ -2,7 +2,7 @@ import client from "@/components/Graphql/service";
 // import Nav from "@/components/Nav";
 import { useState } from "react";
 import { BiPencil } from "react-icons/bi";
-import { tw } from "twind";
+
 import * as cookie from 'cookie'
 import { getBookingHistory, getUserById, getWallet } from "@/components/Graphql/Queries";
 import dynamic from "next/dynamic";
@@ -87,17 +87,17 @@ const User = ({ profile, wallet, bookings }) =>{
                 <h1 className="_b_active text-xl font-semibold">My Account</h1>
                 <div className="mt-4">
                     <div className="flex flex-wrap">
-                        <div className={tw`w-full lg:w-1/5`}>
+                        <div className={`w-full lg:w-1/5`}>
                             <div className="flex flex-wrap p-2 lg:p-4 bg-white rounded-lg">
-                                <div className={tw`w-1/4 lg:w-full h-full_ lg:h-28`}>
-                                    <div className={tw`h-full bg-slate-500 rounded-lg flex text-white`}>
+                                <div className={`w-1/4 lg:w-full h-full_ lg:h-28`}>
+                                    <div className={`h-full bg-slate-500 rounded-lg flex text-white`}>
                                         <span className="m-auto text-center capitalize text-3xl">{profile?.fname[0]}{profile?.lname[0]}</span>
                                     </div>
                                     
                                     {/* <img className="w-full rounded-lg" src='https://www.kiomoi.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fkmadmin%2Fimage%2Fupload%2Fw_400%2Cc_scale%2Cf_auto%2Fv1556099276%2Fkiomoi%2Frajasthan%2FRajasthan.jpg&w=1920&q=75'/> */}
                                 </div>
                                 
-                                <div className={tw`w-3/4 lg:w-full pt-0 lg:pt-4 text-left lg:text-center pl-2 lg:pl-0`}>
+                                <div className={`w-3/4 lg:w-full pt-0 lg:pt-4 text-left lg:text-center pl-2 lg:pl-0`}>
                                     <h2 className="text-2xl">{profile?.fname} {profile?.lname}</h2>
                                     <p className="text-sm">{profile?.email}</p>
                                     <div className="flex text-center items-center m-auto float-right lg:float-none">
@@ -108,8 +108,8 @@ const User = ({ profile, wallet, bookings }) =>{
                                 </div>
                             </div>
                         </div>
-                        <div className={tw`w-full mt-4 lg:w-4/5 lg:mt-0`}>
-                            <div className={tw`p-0 lg:pl-4`}>
+                        <div className={`w-full mt-4 lg:w-4/5 lg:mt-0`}>
+                            <div className={`p-0 lg:pl-4`}>
                                 <div className="bg-white  rounded-lg shadow-md">
                                     <div className="flex overflow-hidden">  
                                         {
@@ -125,7 +125,7 @@ const User = ({ profile, wallet, bookings }) =>{
                                 
     
     
-                                <div className={tw`${indx == 0?'':'hidden'}`}>
+                                <div className={`${indx == 0?'':'hidden'}`}>
                                     <div className="flex flex-wrap justify-between mt-8">
                                         <h1 className=" text-xl font-semibold">My Bookings</h1>
                                         <div className="flex items-end">
@@ -144,15 +144,15 @@ const User = ({ profile, wallet, bookings }) =>{
     
     
     
-                                <div className={tw`${indx == 1?'':'hidden'}`}>
+                                <div className={`${indx == 1?'':'hidden'}`}>
                                     <Wallet data={wallet}/>
                                 </div>
     
-                                <div className={tw`${indx == 2?'':'hidden'}`}>
+                                <div className={`${indx == 2?'':'hidden'}`}>
                                     <MyReviews />
                                 </div>
     
-                                <div className={tw`${indx == 3?'':'hidden'}`} >
+                                <div className={`${indx == 3?'':'hidden'}`} >
                                     <div className="bg-white mt-8 rounded-lg shadow-md">
                                         <div className="p-6">
                                             <div className="flex justify-between">

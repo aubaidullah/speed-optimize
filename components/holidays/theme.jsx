@@ -2,7 +2,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import * as Constants from "../Constants";
-import { tw } from "twind";
+
 import { createThemeListURL } from "../fun";
 const MultiCarousel = dynamic(() => import("react-multi-carousel"));
 
@@ -52,7 +52,7 @@ const HolidayTheme = ({theme}) =>{
         return <div key={i}>
 
 
-        <div className={tw`_service_list_ text-center`}>
+        <div className={`_service_list_ text-center`}>
             <div className="ellipse_3">
               <Link href={aurl}>
                 <div href={aurl}>
@@ -71,7 +71,7 @@ const HolidayTheme = ({theme}) =>{
             </div>
             <Link href={aurl}>
               <div href={aurl}>
-                <div className={tw`_text_- py-4`}>
+                <div className={`_text_- py-4`}>
                   <h4>{item.tag}</h4>
                   <p>{item.count} Listing</p>
                 </div>
@@ -85,8 +85,8 @@ const HolidayTheme = ({theme}) =>{
 
     return <>
         <div className={`container mt-16`}>
-          <h2 className={tw`text-xl lg:text-2xl pb-4 font-bold`}>Browse by theme</h2>
-            <div className={tw`relative`}>
+          <h2 className={`text-xl lg:text-2xl pb-4 font-bold`}>Browse by theme</h2>
+            <div className={`relative`}>
                 <MultiCarousel
                     partialVisible={true}
                     autoPlay={false}

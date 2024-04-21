@@ -8,7 +8,7 @@ import {
   AiOutlinePlus,
 } from "react-icons/ai";
 import { BsXLg } from "react-icons/bs";
-import { tw } from "twind";
+
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
@@ -300,7 +300,7 @@ const BookingDetail = () => {
     <>
       <Nav />
       <section
-        className={tw`_booking-detail ${
+        className={`_booking-detail ${
           showModal == true ? "blur-[5px]" : "blur-[0px]"
         }`}
       >
@@ -309,7 +309,7 @@ const BookingDetail = () => {
             <div className="row">
               <div className="col-sm-8 col-xs-6">
                 <div className="title_listing_">
-                  <h2 className={tw`text-xl font-bold my-3 text-orange`}>
+                  <h2 className={`text-xl font-bold my-3 text-orange`}>
                     Booking Details ({bookingDetails?.bookingid})
                   </h2>
                 </div>
@@ -317,20 +317,20 @@ const BookingDetail = () => {
             </div>
           </div>
           <div className="container">
-            <div className={tw`row flex flex-wrap`}>
-              <div className={tw`w-full lg:w-2/3 _details_`}>
-                <div className={tw`flex flex-wrap Shape_42`}>
+            <div className={`row flex flex-wrap`}>
+              <div className={`w-full lg:w-2/3 _details_`}>
+                <div className={`flex flex-wrap Shape_42`}>
                   <div
-                    className={tw`w-full lg:w-1/3 ${
+                    className={`w-full lg:w-1/3 ${
                       !bookingDetails?.lead?.i ? "border" : null
                     } flex justify-center`}
                   >
                     <div
-                      className={tw`card_item ${
+                      className={`card_item ${
                         !bookingDetails?.lead?.i ? "py-14" : null
                       }`}
                     >
-                      <div className={tw`card_img`}>
+                      <div className={`card_img`}>
                         <img
                           className="rounded"
                           src={
@@ -345,12 +345,12 @@ const BookingDetail = () => {
                     </div>
                   </div>
                   <div
-                    className={tw`w-full lg:w-2/3 lg:pl-2 flex flex-col justify-between pt-2 lg:pt-0`}
+                    className={`w-full lg:w-2/3 lg:pl-2 flex flex-col justify-between pt-2 lg:pt-0`}
                   >
                     <div className="package-name _pn_package">
                       <div className="_pn_">
                         <div className="_pn_left">
-                          <h3 className={tw`font-semibold text-xl`}>
+                          <h3 className={`font-semibold text-xl`}>
                             {bookingDetails?.lead?.pname ?? bookingDetails?.lead?.hotel?.name}
                           </h3>
                         </div>
@@ -362,7 +362,7 @@ const BookingDetail = () => {
                       
                       {bookingDetails?.lead?.type != "HOTEL"?
                         <div
-                          className={tw`location package-location text-[12.5px]`}
+                          className={`location package-location text-[12.5px]`}
                         >
                           <span>
                             {" "}
@@ -378,47 +378,47 @@ const BookingDetail = () => {
                       </div>
                       {
                         bookingDetails?.lead?.type == "HOTEL"
-                        ?<div className={tw`pt-2`}>
-                          <div className={tw``}>{bookingDetails?.lead?.hotel?.address}</div>
+                        ?<div className={`pt-2`}>
+                          <div className={``}>{bookingDetails?.lead?.hotel?.address}</div>
                         </div>
                       :""
                       }
                       
                     </div>
                     <div
-                      className={tw`row flex justify-around info-booking py-3 px-2 Shape_42 m-0 border bg-[#f5f4f4]`}
+                      className={`row flex justify-around info-booking py-3 px-2 Shape_42 m-0 border bg-[#f5f4f4]`}
                     >
                       <div
-                        className={tw`col-4 info-booking-details flex justify-center items-center`}
+                        className={`col-4 info-booking-details flex justify-center items-center`}
                       >
                         <div>
-                          <p className={tw`text-xs`}>{bookingDetails?.lead?.type == "HOTEL"?"Check in":"Trip Start"}</p>
-                          <p className={tw`text-xs`}>
-                            <strong className={tw`flex`}>
+                          <p className={`text-xs`}>{bookingDetails?.lead?.type == "HOTEL"?"Check in":"Trip Start"}</p>
+                          <p className={`text-xs`}>
+                            <strong className={`flex`}>
                               <span>{bookingDetails?.lead?.checkin}</span>
                             </strong>
                           </p>
                         </div>
                       </div>
                       <div
-                        className={tw`col-4 info-booking-details flex justify-center items-center`}
+                        className={`col-4 info-booking-details flex justify-center items-center`}
                       >
                         <div>
-                          <p className={tw`text-xs`}>{bookingDetails?.lead?.type == "HOTEL"?"Check out":"Trip End"}</p>
-                          <p className={tw`text-xs`}>
-                            <strong className={tw`flex`}>
+                          <p className={`text-xs`}>{bookingDetails?.lead?.type == "HOTEL"?"Check out":"Trip End"}</p>
+                          <p className={`text-xs`}>
+                            <strong className={`flex`}>
                               <span>{bookingDetails?.lead?.checkout}</span>
                             </strong>
                           </p>
                         </div>
                       </div>
                       <div
-                        className={tw`col-4 info-booking-details flex justify-center items-center`}
+                        className={`col-4 info-booking-details flex justify-center items-center`}
                       >
                         <div>
-                          <p className={tw`text-xs`}>Travellers</p>
-                          <p className={tw`text-xs`}>
-                            <strong className={tw`flex`}>
+                          <p className={`text-xs`}>Travellers</p>
+                          <p className={`text-xs`}>
+                            <strong className={`flex`}>
                               <span>
                                 {bookingDetails?.lead?.adults} Adults,{" "}
                               </span>
@@ -434,38 +434,38 @@ const BookingDetail = () => {
 
                 {
                   bookingDetails?.lead?.type == "HOTEL"?
-                  <div className={tw`flex_ flex-wrap_ Shape_42`}>
+                  <div className={`flex_ flex-wrap_ Shape_42`}>
                   
-                  <div className={tw`flex justify-between`}>
+                  <div className={`flex justify-between`}>
                     <div>Adult : {bookingDetails?.lead?.adults}</div>
                     <div>Child : {bookingDetails?.lead?.kids}</div>
                   </div>
 
-                  <div className={tw`flex justify-between`}>
+                  <div className={`flex justify-between`}>
                     <div>Room Type : {bookingDetails?.lead?.hotel?.roominfo?.split('(')[0]}</div>
                     <div>No. of Rooms : {bookingDetails?.lead?.hotel?.roominfo?.split('(')[1]}</div>
                   </div>
 
-                  {/* <div className={tw`flex justify-between`}> */}
-                  <div className={tw`mt-4 text-xl font-semibold`}>Inclusions : </div>
+                  {/* <div className={`flex justify-between`}> */}
+                  <div className={`mt-4 text-xl font-semibold`}>Inclusions : </div>
                   {/* </div> */}
 
-                  <div className={tw`flex justify-between`}>
+                  <div className={`flex justify-between`}>
                     <div>Accomodation </div>
                   </div>
 
                   {bookingDetails?.lead?.hotel?.roominfo?
-                  <div className={tw`flex justify-between`}>
+                  <div className={`flex justify-between`}>
                     <div>{/\(Room.*?\)/?.exec(bookingDetails?.lead?.hotel?.roominfo)[0]} </div>
                   </div>
                   :""
                   }
 
                   
-                  <div className={tw`flex justify-between`}>
+                  <div className={`flex justify-between`}>
                     <div>All Taxes </div>
                   </div>           
-                  <div className={tw`flex justify-between mt-4`}>
+                  <div className={`flex justify-between mt-4`}>
                     <div>Cancellation Policy </div>
                   </div>                                    
 
@@ -476,10 +476,10 @@ const BookingDetail = () => {
                 }
 
 
-                <div className={tw`${bookingDetails?.output?.type=='HOTEL'?'hidden':''} row package-inclusions`}>
-                  <h3 className={tw`text-xl font-semibold my-3`}>Inclusions</h3>
+                <div className={`${bookingDetails?.output?.type=='HOTEL'?'hidden':''} row package-inclusions`}>
+                  <h3 className={`text-xl font-semibold my-3`}>Inclusions</h3>
                   <div className="border Shape_42">
-                    <div className={tw`flex flex-wrap gap-2`}>
+                    <div className={`flex flex-wrap gap-2`}>
                       {bookingDetails?.output?.inclusions
                         ?.split("#")
                         .map((inclusion, index) => {
@@ -491,7 +491,7 @@ const BookingDetail = () => {
                         })}
                     </div>
                     <div className="package-cancellation">
-                      <div className={tw`row gy-1 mt-3 md:p-4`}>
+                      <div className={`row gy-1 mt-3 md:p-4`}>
                         <div className="col-sm-8 cancel-left mb-2">
                           <p className="font-bold text-[13px]">
                             Cancellation charges
@@ -503,7 +503,7 @@ const BookingDetail = () => {
                           </p>
                         </div>
                         <div
-                          className={tw`col-sm-8 cancel-left flex items-center gap-2`}
+                          className={`col-sm-8 cancel-left flex items-center gap-2`}
                         >
                           <AiFillCheckCircle color="green" size={15} />
                           {bookingDetails?.policy2?.day > 0 ? (
@@ -519,7 +519,7 @@ const BookingDetail = () => {
                         </div>
                         <div className="col-sm-4 cancel-right"></div>
                         <div
-                          className={tw`col-sm-8 cancel-left  flex items-center gap-2`}
+                          className={`col-sm-8 cancel-left  flex items-center gap-2`}
                         >
                           <AiFillCheckCircle color="green" size={15} />
                           {bookingDetails?.policy2?.dayFrom1 > 0 ? (
@@ -536,7 +536,7 @@ const BookingDetail = () => {
                         </div>
                         <div className="col-sm-4 cancel-right"></div>
                         <div
-                          className={tw`col-sm-8 cancel-left flex items-center gap-2`}
+                          className={`col-sm-8 cancel-left flex items-center gap-2`}
                         >
                           <AiFillCheckCircle color="green" size={15} />
                           {bookingDetails?.policy2?.dayFrom2 > 0 ? (
@@ -596,7 +596,7 @@ const BookingDetail = () => {
                                         : setCollapse(null)
                                     }
                                   >
-                                    <div className={tw`flex justify-between`}>
+                                    <div className={`flex justify-between`}>
                                       <div>Itinerary</div>
                                       {collapse ? (
                                         <AiOutlinePlus />
@@ -608,7 +608,7 @@ const BookingDetail = () => {
                                 </h3>
                               </div>
 
-                              <div className={tw`${collapse ? "hidden" : ""}`}>
+                              <div className={`${collapse ? "hidden" : ""}`}>
                                 <div className="panel-collapse">
                                   <div className="panel-body">
                                     <div>
@@ -665,7 +665,7 @@ const BookingDetail = () => {
                                         : setCollapse2(null)
                                     }
                                   >
-                                    <div className={tw`flex justify-between`}>
+                                    <div className={`flex justify-between`}>
                                       <div>Terms & Conditions and policy</div>
                                       {collapse2 ? (
                                         <AiOutlinePlus />
@@ -676,7 +676,7 @@ const BookingDetail = () => {
                                   </a>
                                 </h3>
                               </div>
-                              <div className={tw`${collapse2 ? "hidden" : ""}`}>
+                              <div className={`${collapse2 ? "hidden" : ""}`}>
                                 <div className="panel-collapse2">
                                   <hr />
                                   <div className="panel-body">
@@ -740,15 +740,15 @@ const BookingDetail = () => {
                 <div className="row guest-traveller">
                   <div className="col-md-8 col-xs-12 p-0">
                     <div className="Shape_42 Guest-treveller-details">
-                      <h3 className={tw`text-xl font-semibold my-3`}>
+                      <h3 className={`text-xl font-semibold my-3`}>
                         Guests Traveller Details
                       </h3>
                       <form action="">
                         <div className="row">
                           
-                          <div className={tw`flex flex-wrap`}>
-                            <div className={tw`w-full col-md-2 mob-view-2 lg:w-1/5 lg:pr-2`}>
-                              <label className={tw`my-2`}>Title</label>
+                          <div className={`flex flex-wrap`}>
+                            <div className={`w-full col-md-2 mob-view-2 lg:w-1/5 lg:pr-2`}>
+                              <label className={`my-2`}>Title</label>
                               <br />
                               <select
                                 defaultValue={"Mr"}
@@ -760,7 +760,7 @@ const BookingDetail = () => {
                             </div>
 
                             <div className="col-md-5 lg:w-2/5 lg:pr-2">
-                              <label className={tw`my-2`}>
+                              <label className={`my-2`}>
                                 First Name<sup>*</sup>
                               </label>
                               <br />
@@ -775,8 +775,8 @@ const BookingDetail = () => {
                               />
                             </div>
                             
-                            <div className={tw`w-full col-md-5 lg:w-2/5`}>
-                              <label className={tw`my-2`}>
+                            <div className={`w-full col-md-5 lg:w-2/5`}>
+                              <label className={`my-2`}>
                                 Last Name<sup>*</sup>
                               </label>
                               <br />
@@ -799,7 +799,7 @@ const BookingDetail = () => {
                         </div>
                         <div className="row pt-4">
                           <div className="col-xs-12">
-                            <label className={tw`my-2`}>
+                            <label className={`my-2`}>
                               Email Address (Your booking voucher will be sent
                               to the address)
                             </label>
@@ -816,9 +816,9 @@ const BookingDetail = () => {
                         </div>
 
                         <div className="row form-inline pt-4">
-                          <div className={tw`flex flex-wrap`}>
-                            <div className={tw`w-full col-md-2 mob-view lg:w-1/5 lg:pr-2`}>
-                              <label className={tw`my-2`}>Mobile Number</label>
+                          <div className={`flex flex-wrap`}>
+                            <div className={`w-full col-md-2 mob-view lg:w-1/5 lg:pr-2`}>
+                              <label className={`my-2`}>Mobile Number</label>
                               <br />
                               <select
                                 defaultValue={"91"}
@@ -827,8 +827,8 @@ const BookingDetail = () => {
                                 <option value="91">+91</option>
                               </select>
                             </div>
-                            <div className={tw`w-full col-md-4 phn-no lg:w-4/5`}>
-                              <label className={tw`my-2`}>Mobile Number</label>
+                            <div className={`w-full col-md-4 phn-no lg:w-4/5`}>
+                              <label className={`my-2`}>Mobile Number</label>
                               <br />
                               <input
                                 type="text"
@@ -851,7 +851,7 @@ const BookingDetail = () => {
                 </div>
               </div>
 
-              <div className={tw`w-full lg:w-1/3 mt-2 custom-payment`}>
+              <div className={`w-full lg:w-1/3 mt-2 custom-payment`}>
                 <div className="b_right h_sticky">
                   <div className="_b_right_list_1">
                     <div className="payment-summary">
@@ -862,13 +862,13 @@ const BookingDetail = () => {
                         <div className="text-[#0072f]">Full Breakup</div>
                       </div>
                       <div className="row total-amt">
-                        <div className={tw`flex justify-between my-2 px-4`}>
+                        <div className={`flex justify-between my-2 px-4`}>
                           <div className="col-xs-8 cost-left">Base Price</div>
                           <div className="col-xs-4 cost-right">
                             &#8377;{bookingDetails?.lead?.price}
                           </div>
                         </div>
-                        <div className={tw`flex justify-between my-2 px-4`}>
+                        <div className={`flex justify-between my-2 px-4`}>
                           <div className="col-xs-8 cost-left">
                             <p>Discount</p>
                           </div>
@@ -876,7 +876,7 @@ const BookingDetail = () => {
                             <p>&#8377; {bookingDetails?.lead?.discount}</p>
                           </div>
                         </div>
-                        <div className={tw`flex justify-between my-2 px-4`}>
+                        <div className={`flex justify-between my-2 px-4`}>
                           <div className="col-xs-8 cost-left">
                             <p>Taxes & Fee</p>
                           </div>
@@ -886,7 +886,7 @@ const BookingDetail = () => {
                         </div>
                       </div>
                       <div className="_border_right hr-line"></div>
-                      <div className={tw`flex justify-between my-2 px-3`}>
+                      <div className={`flex justify-between my-2 px-3`}>
                         <div className="col-xs-8 cost-left">
                           Total Package cost
                         </div>
@@ -895,14 +895,14 @@ const BookingDetail = () => {
                         </div>
                       </div>
                       <div className="_border_right hr-line"></div>
-                      <div className={tw`flex justify-between my-2 px-3`}>
+                      <div className={`flex justify-between my-2 px-3`}>
                         <div className="col-xs-8 cost-left price-left">
                           <p className="py-2">Paid Amount</p>
                           <p className="py-2">Balance Amount</p>
                           <p className="pt-2">
                             Current Payable<sup>*</sup>
                           </p>
-                          <p className={tw`text-xs price-sub`}>(to be paid)</p>
+                          <p className={`text-xs price-sub`}>(to be paid)</p>
                         </div>
                         <div className="col-xs-4 cost-right price-right">
                           <p className="py-2 text-right">
@@ -922,7 +922,7 @@ const BookingDetail = () => {
                           <>
                             <div className="col-xs-6 cost-left total-pay"></div>
                             <div
-                              className={tw`text-right _price_clip total-value-cost`}
+                              className={`text-right _price_clip total-value-cost`}
                             >
                               ₹ {bookingDetails?.output?.payamt} /-
                             </div>
@@ -943,7 +943,7 @@ const BookingDetail = () => {
                             <div className="text-center">
                               {bookingDetails?.output?.payamt > 0 ? (
                                 <button
-                                  className={tw`p-0 text-xl w-full form-control _w_100 btn_anchor pay-btn`}
+                                  className={`p-0 text-xl w-full form-control _w_100 btn_anchor pay-btn`}
                                   onClick={paymentSubmit}
                                 >
                                   Pay Now
@@ -1023,14 +1023,14 @@ const BookingDetail = () => {
             <div className="wrapper-box">
               <div className="wrapper_login">
                 <div className="body_login">
-                  <div className={tw`login_header flex justify-center`}>
+                  <div className={`login_header flex justify-center`}>
                     <img
                       src={`${Constants.assets_api}/public/icons/logo-icon.png`}
                       height="50"
                       alt="kiomoi logo"
                     />
                   </div>
-                  <h4 className={tw`my-2 mb-4`}>My Bookings</h4>
+                  <h4 className={`my-2 mb-4`}>My Bookings</h4>
                   <div className="form-group">
                     <input
                       type="text"

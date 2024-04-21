@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { tw } from "twind";
+
 import { TiChevronRight } from "react-icons/ti";
 import { useRouter } from "next/router";
 const BreadCrumbs = ({ bread }) => {
@@ -52,7 +52,7 @@ const BreadCrumbs = ({ bread }) => {
                       </div>
                     </Link>
                     <meta itemProp="position" content={index + 1} />
-                    <TiChevronRight className={tw`bread_icon inline`} />
+                    <TiChevronRight className={`bread_icon inline`} />
                   </>
                 </li>
               );

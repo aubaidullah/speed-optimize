@@ -8,7 +8,7 @@ import moment from "moment";
 import * as Constants from "../Constants";
 // import LeadForm from '../leadform'
 import { FaRupeeSign } from "react-icons/fa";
-import { tw } from "twind";
+
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 
@@ -68,21 +68,21 @@ const RightBar = ({ data }) => {
       {/* <div className="col-sm-4 col-xs-12"> */}
       <div>
         <div className="bottom_bar">
-          <div className={tw`h-full`}>
-            <div className={tw`flex h-full shadow-[3px 1px 4px]`}>
-              <div className={tw`w-full border-r-1 border-x-slate-950/20`}>
+          <div className={`h-full`}>
+            <div className={`flex h-full shadow-[3px 1px 4px]`}>
+              <div className={`w-full border-r-1 border-x-slate-950/20`}>
                 <div className="bottom_bt">
                   <div>
                     <FaRupeeSign className="inline text-[14px] mb-[4px]" />
                     {parseFloat(data?.package.price)}
-                    <p className={tw`text-[12px] font-light m-0`}>
+                    <p className={`text-[12px] font-light m-0`}>
                       (Taxes extra) Per Person
                     </p>
                   </div>
                 </div>
               </div>
               <div
-                className={tw`w-full`}
+                className={`w-full`}
                 onClick={() =>
                   _sendquery(
                     price,
@@ -98,7 +98,7 @@ const RightBar = ({ data }) => {
           </div>
         </div>
 
-        <div className={tw`_b_right_list mt-0 lg:mt-16`}>
+        <div className={`_b_right_list mt-0 lg:mt-16`}>
           <div className="p-[10px]">
             <div className="ov_auto">
               <div className="d_location flt_left">
@@ -106,16 +106,16 @@ const RightBar = ({ data }) => {
                 <span className="text-[#06188D]">{data?.package.source}</span>
               </div>
               <div className="d_location days_night flt_right">
-                <div className={tw`flex justify-center day_nights`}>
+                <div className={`flex justify-center day_nights`}>
                   <div className="night">
-                    <BsFillMoonFill className={tw`inline pr`} />
-                    <span className={tw`pl-1`}>
+                    <BsFillMoonFill className={`inline pr`} />
+                    <span className={`pl-1`}>
                       {data?.package.nights} Nights
                     </span>
                   </div>
                   <div className="days">
-                    <IoSunny className={tw`inline`} />
-                    <span className={tw`pl-1`}>
+                    <IoSunny className={`inline`} />
+                    <span className={`pl-1`}>
                       {data?.package.nights + 1} Days
                     </span>
                   </div>
@@ -219,13 +219,13 @@ const RightBar = ({ data }) => {
                 >
                   <img
                     src={"/icons/friends.svg"}
-                    className={tw`inline`}
+                    className={`inline`}
                     alt="peoples"
                   />
                   <span className="_2_two cursor-pointer">
                     {people} People{" "}
                     {/* <i className="fa fa fa-angle-down"></i>{" "} */}
-                    <BsChevronDown className={tw`inline`} />
+                    <BsChevronDown className={`inline`} />
                   </span>
                   {showpeopledropdown ? (
                     <div className="dropdown-content">
@@ -269,7 +269,7 @@ const RightBar = ({ data }) => {
                       <span className="_list_p">
                         {data?.package.percent}% Off
                       </span>
-                      <del className={tw`flex justify-between items-center`}>
+                      <del className={`flex justify-between items-center`}>
                         {/* <i className="fa fa-inr"></i> */}
                         <FaRupeeSign className="inline text-[12px]" />
                         {parseFloat(data?.package.price) +
@@ -292,7 +292,7 @@ const RightBar = ({ data }) => {
           "Price": data?.package.finalprice,
           "priceCurrency": "INR"
         }, */}
-                    <FaRupeeSign className={tw`inline`}  />
+                    <FaRupeeSign className={`inline`}  />
                     {parseInt(data?.package.price) > 0 ? (
                       <>
                         {/* <i className="fa fa-inr" style={{ backgroundColor: 'initial' }}></i> */}
@@ -332,8 +332,8 @@ const RightBar = ({ data }) => {
           </div>
         </div>
 
-        <div className={tw`w-full mt-20 mb-10`}>
-          <div className={tw`bets_price pl-0`}>
+        <div className={`w-full mt-20 mb-10`}>
+          <div className={`bets_price pl-0`}>
             <div className="_best_price_list">
               <h4>Best Price Guaranteed</h4>
               <p>

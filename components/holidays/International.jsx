@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { createCountryListURL, imgNameByUrl } from "../fun";
-import { tw } from "twind";
+
 
 const CustomImage = dynamic(() => import("../Img"));
 const MultiCarousel2 = dynamic(() => import("react-multi-carousel"));
@@ -42,7 +42,7 @@ const InterNationalPackage = ({ data }) => {
       carouselState: { currentSlide },
     } = rest;
     return (
-      <div className={tw`hidden lg:carousel-button-group lg:block `}>
+      <div className={`hidden lg:carousel-button-group lg:block `}>
         <button
           className={`${currentSlide === 0 ? "disable" : ""} left-custom-btn`}
           onClick={() => previous()}
@@ -65,10 +65,10 @@ const InterNationalPackage = ({ data }) => {
         <Link href={aurl}>
           <div href={aurl}>
             {" "}
-            <div className={tw`px-2 _cr_mb`}>
-              <div className={tw`my-2 des_img_hotel h-[150px]`}>
+            <div className={`px-2 _cr_mb`}>
+              <div className={`my-2 des_img_hotel h-[150px]`}>
                 {/* <img
-                    className={tw`img-responsive rounded-[8px]`}
+                    className={`img-responsive rounded-[8px]`}
                     src={
                       item.im.split("~")[0]
                         ? item.im.split("~")[0]
@@ -77,7 +77,7 @@ const InterNationalPackage = ({ data }) => {
                     alt="kiomoi"
                   /> */}
                 {/* <Image
-                  className={tw`rounded-[8px] h-full`}
+                  className={`rounded-[8px] h-full`}
                   src={
                     item.im.split("~")[0]
                       ? item.im.split("~")[0]
@@ -89,7 +89,7 @@ const InterNationalPackage = ({ data }) => {
                 <CustomImage img_url={item.im.split("~")[0]} className={`rounded-[8px] h-full`} alt={imgNameByUrl({ url: item.im.split("~")[0] ?? "kiomoi" })}/>
               </div>
               <div className="des_cont_">
-                  <div className={tw`des_location font-bold`}>{item.nm}</div>
+                  <div className={`des_location font-bold`}>{item.nm}</div>
                   {/* <div className="listing">{item.cnt} Listings</div> */}
                 </div>
             </div>
@@ -102,10 +102,10 @@ const InterNationalPackage = ({ data }) => {
 
   return (
     
-    <div className={tw` container mt-16`}>
-      <h2 className={tw`mb-4`}>
+    <div className={` container mt-16`}>
+      <h2 className={`mb-4`}>
           <div>
-                <h4 className={tw`text-xl lg:text-2xl font-bold`}>International Destinaions</h4>
+                <h4 className={`text-xl lg:text-2xl font-bold`}>International Destinaions</h4>
             </div>
       </h2>
       <div className="Shape_42_ relative">

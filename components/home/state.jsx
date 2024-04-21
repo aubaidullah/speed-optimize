@@ -1,4 +1,4 @@
-import { tw } from "twind";
+
 // import MultiCarousel2 from "react-multi-carousel";
 import Link from "next/link";
 import "react-multi-carousel/lib/styles.css";
@@ -25,10 +25,10 @@ const State = ({ data,holiday=false }) => {
         <Link href={aurl}>
           <div href={aurl}>
             {" "}
-            <div className={tw`px-2 _cr_mb`}>
+            <div className={`px-2 _cr_mb`}>
               <div className="_des_img">
                 {/* <img
-                    className={tw`img-responsive rounded-[8px]`}
+                    className={`img-responsive rounded-[8px]`}
                     src={
                       item.im.split("~")[0]
                         ? item.im.split("~")[0]
@@ -37,7 +37,7 @@ const State = ({ data,holiday=false }) => {
                     alt="kiomoi"
                   /> */}
                 {/* <Image
-                  className={tw`img-responsive rounded-[8px]`}
+                  className={`img-responsive rounded-[8px]`}
                   src={
                     item.im.split("~")[0]
                       ? item.im.split("~")[0]
@@ -47,7 +47,7 @@ const State = ({ data,holiday=false }) => {
                   fill
                 /> */}
                 <CustomImage 
-                  className={tw`img-responsive rounded-[8px]`}
+                  className={`img-responsive rounded-[8px]`}
                   img_url={item.im.split("~")[0]}
                   alt={imgNameByUrl({ url: item.im.split("~")[0] ?? "kiomoi" })}
 
@@ -92,7 +92,7 @@ const State = ({ data,holiday=false }) => {
       carouselState: { currentSlide },
     } = rest;
     return (
-      <div className={tw`hidden lg:carousel-button-group lg:block `}>
+      <div className={`hidden lg:carousel-button-group lg:block `}>
         <button
           className={`${currentSlide === 0 ? "disable" : ""} left-custom-btn`}
           onClick={() => previous()}
@@ -103,15 +103,15 @@ const State = ({ data,holiday=false }) => {
   };
 
   return (
-    <div className={tw`mt-16`}>
+    <div className={`mt-16`}>
       <div className={`container`}>
         <div className="row_">
-          <div className={tw`${holiday==false?'box_design_common':''}`} style={{'backdropFilter':'blur(30px)'}}>
+          <div className={`${holiday==false?'box_design_common':''}`} style={{'backdropFilter':'blur(30px)'}}>
             <div
-              className={tw`${holiday==false?'title_kiomoi':''} flex items-center justify-between mb-6`}
+              className={`${holiday==false?'title_kiomoi':''} flex items-center justify-between mb-6`}
             >
               <div>
-                <h4 className={tw`text-xl lg:text-2xl font-bold`}>Explore Top Destinations</h4>
+                <h4 className={`text-xl lg:text-2xl font-bold`}>Explore Top Destinations</h4>
               </div>
               <div>
                 <Link href={"/holidays/"}>
