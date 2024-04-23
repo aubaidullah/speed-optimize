@@ -64,7 +64,7 @@ const Package = ({ index, item, POPUPFORM }) => {
   return (
     <>
       {/* <Link href={"/holidays/detail"}> */}
-      <a className={`flex flex-col`}>
+      <div className={`flex flex-col w-full`}>
         <div
           className="pack_box rounded-lg hover:shadow-lg transition-shadow"
           key={item.id}
@@ -187,9 +187,7 @@ const Package = ({ index, item, POPUPFORM }) => {
                       {/* <img src={item.images.split("~")[0]}/> */}
                     </div>
                   </div>
-                  {/* <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true}></Link> */}
 
-                  {/* <div> */}
                   <Link
                     href={`${url}`}
                     as={`${url}`}
@@ -614,7 +612,7 @@ const Package = ({ index, item, POPUPFORM }) => {
             </div>
           </div>
         </div>
-      </a>
+      </div>
       {/* </Link> */}
 
       {sendquery ? (

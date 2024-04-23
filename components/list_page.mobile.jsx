@@ -653,7 +653,7 @@ const ListPageMobile = ({
               ""
             )}
 
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap w-full">
 
               {!isMobile ? (
                 <>
