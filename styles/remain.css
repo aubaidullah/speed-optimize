@@ -14,6 +14,11 @@
 /* Icons */
 
 /* Arrows */
+
+.text-\[#999\]{
+  color: #999;
+}
+
 .text-\[15px\]{
   font-size: 15px;
 }
@@ -361,7 +366,7 @@
     cursor: pointer;
     display: inline-block;
     position: absolute;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 -1px 3px rgba(0, 0, 0, 0.4);
+    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 -1px 3px rgba(0, 0, 0, 0.4); */
   }
   .rangeslider .rangeslider__handle .rangeslider__active {
     opacity: 1;
@@ -401,7 +406,7 @@
   }
   .rangeslider-horizontal .rangeslider__fill {
     height: 100%;
-    background-color: #7cb342;
+    background-color: #ef672d;
     border-radius: 10px;
     top: 0;
   }
@@ -420,8 +425,8 @@
     top: 6px;
     left: 6px;
     border-radius: 50%;
-    background-color: #dadada;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 -1px 3px rgba(0, 0, 0, 0.4) inset;
+    background-color: #ef672d;
+    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 -1px 3px rgba(0, 0, 0, 0.4) inset; */
   }
   .rangeslider-horizontal .rangeslider__handle-tooltip {
     top: -55px;

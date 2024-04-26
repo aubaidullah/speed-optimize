@@ -1,3 +1,4 @@
+import "nprogress/nprogress.css";
 import "@/styles/globals.css";
 import "@/styles/build.css";
 import "@/styles/detail.css";

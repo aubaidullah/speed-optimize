@@ -410,7 +410,7 @@ const DetailPage = ({ data, related, reviews, meta }) => {
 };
 
 export async function getServerSideProps(context) {
-  // let query = context.query
+  let query = context.query
   let _id = context.query.id;
   let name = context.query.slug;
 
@@ -427,8 +427,19 @@ export async function getServerSideProps(context) {
     name: res.data?.package.output.package.name,
     id: _id,
   });
-  // console.log(query)
 
+  
+  console.log(nurl)
+
+  if (!nurl.includes(query['slug'])){
+      return {
+          redirect: {
+            permanent: false,
+            destination: nurl,
+          },
+          props:{},
+        };
+  }
   // if (`/holidays/${query}/` != nurl){
   //     return {
   //         redirect: {
@@ -438,7 +449,11 @@ export async function getServerSideProps(context) {
   //         props:{},
   //       };
   // }
-  // console.log(createDetailUrl({name,id:_id}))
+  
+  console.log(query)
+  // let url = console.log(createDetailUrl({name,id:_id}))
+  
+  // console.log(url)
   // if res.data?.package.output.package.name
 
   let postD = {

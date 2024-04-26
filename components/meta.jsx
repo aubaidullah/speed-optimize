@@ -224,11 +224,11 @@ const Meta = ({ meta }) => {
           content="lmf2rs35govemhvoa9eitvy3mwv2b2"
         />
 
-        <script
+        {/* <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
           // strategy="afterInteractive"
-        />
+        /> */}
 
         {/* <Script>
 

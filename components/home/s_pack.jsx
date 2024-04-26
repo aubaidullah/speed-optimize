@@ -71,6 +71,8 @@ const SinglePack = ({ item, aurl, i, userRating }) => {
                     {/* <span className="_list_p" style={{display:'none'}}>{item.percent}% Off</span> */}
                     <div className={`text-right`}>
                       <FaRupeeSign
+                        color="#999"
+                        // style={{color:'#999'}}
                         className={`inline text-[#999] text-[12px] mb-[4px]`}
                       />
                       <del>

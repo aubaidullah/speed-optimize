@@ -223,7 +223,7 @@ const Nav = () => {
                         </div>
                       
                       :<div>
-                        <div className={`lg:flex lg:items-center lg:gap-2 lg:border-2 lg:border-gray-300 hover:border-[#f06726] lg:rounded-full lg:px-3 lg:py-2 text-[#a7a7a7] hover:text-[#f06726] cursor-pointer`} onClick={() => setShowLogin(!showLogin)}>
+                        <div className={`_lgn_btn lg:flex lg:items-center lg:gap-2 lg:border-2 lg:border-gray-300 lg:rounded-full lg:px-3 lg:py-2 cursor-pointer`} onClick={() => setShowLogin(!showLogin)}>
                           <span className="_c_it hidden lg:flex">Login</span>
                           <FaRegUser
                               // className="c_it"
