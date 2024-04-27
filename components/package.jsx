@@ -200,7 +200,7 @@ const Package = ({ index, item, POPUPFORM }) => {
                           <div className="flt_left">
                             <div>
                               <h2
-                                className={`pack_title text-xl text-gray-500`}
+                                className={`text-xl text-gray-500 font-bold`}
                               >
                                 {item.name}
                               </h2>

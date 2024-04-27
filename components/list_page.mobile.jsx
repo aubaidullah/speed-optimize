@@ -99,7 +99,7 @@ const ListPageMobile = ({
   const [sendquery, setSendquery] = useState(false);
   const [modalinfo, setModalinfo] = useState({});
   const p_ref = useRef(0);
-  const MINUTE_MS = useRef(8500)
+  const MINUTE_MS = useRef(20000)
   const POPUPFORM = useRef(false)
 
   const [_pricing, setPrice] = useState({ min: 0, max: 1000000 });

@@ -15,8 +15,30 @@
 
 /* Arrows */
 
-.text-\[#999\]{
-  color: #999;
+.text-\[12px\] {
+  font-size: 12px;
+}
+
+.text-\[\#fb050b\] {
+  --tw-text-opacity: 1;
+  color: rgb(251 5 11 / var(--tw-text-opacity));
+}
+.text-\[\#0d8d06\] {
+  --tw-text-opacity: 1;
+  color: rgb(13 141 6 / var(--tw-text-opacity));
+}
+
+.lg\:h-44 {
+  height: 11rem/* 176px */;
+}
+
+.h-\[100px\]{
+  height: 100px;
+}
+
+.text-\[\#c6c5c5\] {
+  --tw-text-opacity: 1;
+  color: rgb(198 197 197 / var(--tw-text-opacity));
 }
 
 .text-\[15px\]{

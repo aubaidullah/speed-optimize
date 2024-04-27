@@ -74,9 +74,9 @@ const Nav = () => {
   };
 
   const listenScrollEvent = (e) => {
-    console.log(window.scrollY);
+    // console.log(window.scrollY);
     if (window.scrollY > 200) {
-      console.log("shrink ");
+      // console.log("shrink ");
       // setAddnavClass('sticky shrink')
       setAddnavClass("navbar-fixed");
     } else {

@@ -328,7 +328,7 @@ const Content = ({ data }) => {
                         return (
                           <li key={i}>
                             <MdCheckCircle
-                              className={`inline text-[#15be03]`}
+                              className={`inline text-[#0d8d06]`}
                             />{" "}
                             <span>{item}</span>
                           </li>

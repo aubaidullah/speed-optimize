@@ -102,7 +102,7 @@ const RightBar = ({ data }) => {
           <div className="p-2">
             <div className="ov_auto">
               <div className="d_location flt_left">
-                <IoLocationSharp className="inline text-[#999]" size={15} />
+                <IoLocationSharp color="#999" className="inline" size={15} />
                 <span className="text-[#06188D]">{data?.package.source}</span>
               </div>
               <div className="d_location days_night flt_right">

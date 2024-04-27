@@ -67,7 +67,7 @@ const DetailPage = ({ data, related, reviews, meta }) => {
 
   const bread = {
     disabled: {
-      item: `${data?.package.name} Tour package ${data?.package.id}`,
+      item: `${data?.package.name.replace(' Tour','')} Tour package ${data?.package.id}`,
     },
     enabled:
       data?.package?.scope === "DOMESTIC"
@@ -324,7 +324,7 @@ const DetailPage = ({ data, related, reviews, meta }) => {
             </div>
             <div className={`w-full lg:w-1/3`}>
               <div className={`text-right thms`}>
-                <span class="_themes">Themes</span>
+                {/* <span class="_themes">Themes</span> */}
                 {themeRender}
               </div>
             </div>

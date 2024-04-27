@@ -79,15 +79,15 @@ const Pack = ({ data }) => {
 
     if (item.sratings - Math.floor(item.sratings) > 0) {
       var star = tmp3.map(function (i) {
-        return <i className="fa fa-star-half-o"></i>;
+        return <i className="fa fa-star-half-o" key={i}></i>;
       });
     } else {
       var star = tmp2.map(function (i) {
-        return <i className="fa fa-star-o"></i>;
+        return <i className="fa fa-star-o" key={i}></i>;
       });
     }
 
-    return <SinglePack item={item} i={i} aurl={aurl} userRating={userRating} />;
+    return <SinglePack item={item} i={i} aurl={aurl} userRating={userRating} key={i} />;
   });
 
   return (
