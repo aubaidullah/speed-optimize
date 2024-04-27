@@ -67,7 +67,7 @@ const DetailPage = ({ data, related, reviews, meta }) => {
 
   const bread = {
     disabled: {
-      item: `${data?.package.name.replace(' Tour','')} Tour package ${data?.package.id}`,
+      item: `${data?.package.name.replace(' Tour','').replace(' Package','')} Tour package ${data?.package.id}`,
     },
     enabled:
       data?.package?.scope === "DOMESTIC"
