@@ -8,7 +8,7 @@ import {FaPhoneAlt} from 'react-icons/fa'
 // import {FaArrowRight} from 'react-icons/fa'
 import dynamic from "next/dynamic";
 import { useState, useEffect, useRef } from "react";
-import { tw } from "twind";
+
 // import { useSelector } from "react-redux"
 // import { ScrollWrapper } from "react-bottom-scroll";
 import { useRouter } from "next/router";
@@ -99,7 +99,7 @@ const ListPageMobile = ({
   const [sendquery, setSendquery] = useState(false);
   const [modalinfo, setModalinfo] = useState({});
   const p_ref = useRef(0);
-  const MINUTE_MS = useRef(8500)
+  const MINUTE_MS = useRef(20000)
   const POPUPFORM = useRef(false)
 
   const [_pricing, setPrice] = useState({ min: 0, max: 1000000 });
@@ -529,7 +529,7 @@ const ListPageMobile = ({
         <BreadCrumbs
           bread={
             // page_type=='STATE'?state_bread:region?.sname == region?.cname?country_bread:page_type=='CITY'?city_bread:all_bread
-
+          
             router?.query?.package && router?.query?.theme
               ? theme_state_bread
               : page_type == "STATE" 
@@ -595,7 +595,7 @@ const ListPageMobile = ({
         </Modal>
 
         <section className="container m-auto">
-          <div className={tw`flex flex-wrap`} itemScope itemType="https://schema.org/Article">
+          <div className={`flex flex-wrap`} itemScope itemType="https://schema.org/Article">
             <a itemProp="mainEntityOfPage" href={`https://www.kiomoi.com/${asPath}`}/>
             <meta itemProp="headline" content={region?.name?? toTitleCase(router?.query?.theme) }  Tour packages />
             <meta itemProp='image' content={meta?.image} />
@@ -611,10 +611,7 @@ const ListPageMobile = ({
 
               </span>
             {region ? (
-              <div
-                className={`w-full p-4 bg-white mb-4 _box_shadow_ title_listing_ rounded-md`}
-                itemProp="description"
-              >
+              <div className={`w-full p-4 bg-white mb-4 _box_shadow_ title_listing_ rounded-md`}itemProp="description" >
                 {overview?.includes("<h1") ? (
                   // <div className={`text-2xl pb-2 _b_active font-bold`}>
                   //   {region?.name} Tour packages
@@ -629,7 +626,7 @@ const ListPageMobile = ({
                 <div>
                   {/* {ReactHtmlParser(overview)} */}
                   {/* {ParseHtml({text:overview})} */}
-                  <div className={tw`__description_ overflow-hidden ${overviewlimit == 250 || overviewlimit == 500 ? 'h-36':""}`} >
+                  <div className={`__description_ overflow-hidden ${overviewlimit == 250 || overviewlimit == 500 ? 'h-36':""}`} >
                     {ParseHtml({text:overview})}
                   </div>
                   
@@ -655,210 +652,216 @@ const ListPageMobile = ({
             ) : (
               ""
             )}
-            {!isMobile ? (
-              <>
-              <div className={tw`w-full lg:w-1/4 pr-5`}>
-                <FilterBy
-                  _pricing={_pricing}
-                  setPrice={setPrice}
-                  _min={_min}
-                  set_Min={set_Min}
-                  _max={_max}
-                  set_Max={set_Max}
-                  set_Places={set_Places}
-                  _places={_places}
-                  _themes={_themes}
-                  set_Themes={set_Themes}
-                  page_type={page_type}
-                  filter={filter}
-                  setKeyword={setFilter}
-                  data={places}
-                  theme={theme}
-                />
+
+            <div className="flex flex-wrap w-full">
+
+              {!isMobile ? (
+                <>
+                <div className={`w-full lg:w-1/4 pr-5`}>
+                  <FilterBy
+                    _pricing={_pricing}
+                    setPrice={setPrice}
+                    _min={_min}
+                    set_Min={set_Min}
+                    _max={_max}
+                    set_Max={set_Max}
+                    set_Places={set_Places}
+                    _places={_places}
+                    _themes={_themes}
+                    set_Themes={set_Themes}
+                    page_type={page_type}
+                    filter={filter}
+                    setKeyword={setFilter}
+                    data={places}
+                    theme={theme}
+                  />
+                </div>
+                </>
+
+              ) : (
+                ""
+              )}
+
+              <div className={`w-full lg:w-3/4 `}>
+              <div className={`mb-2`}>
+              {page_type == "STATE" || page_type == "CITY"?
+                <div className={`flex flex-wrap gap-3`}>
+                  {pthemes?.map((e,index)=>{
+                    return (
+                      <a key={index} target="_blank" href={
+                        page_type=="STATE"
+                          ? createThemeStateListURL({statename:region?.name,id:router.query.id,themeName:e.theme})
+                          : page_type=="CITY"
+                          ?createThemeCITYListURL({cityname:region?.name,id:router.query.id,themeName:e.theme}):""
+                        }>
+                        <p className={` border border-gray-500 px-2 py-1 font-semibold text-slate-600 rounded-lg`}>{e.theme} tour packages</p>
+                      </a>
+                    )
+                  })}
+                </div>  
+              :""}
               </div>
-              </>
-
-            ) : (
-              ""
-            )}
-
-            <div className={tw`w-full lg:w-3/4 `}>
-            <div className={tw`mb-2`}>
-             {page_type == "STATE" || page_type == "CITY"?
-              <div className={tw`flex flex-wrap gap-3`}>
-                {pthemes?.map((e,index)=>{
-                  return (
-                    <a key={index} target="_blank" href={
-                      page_type=="STATE"
-                        ? createThemeStateListURL({statename:region?.name,id:router.query.id,themeName:e.theme})
-                        : page_type=="CITY"
-                        ?createThemeCITYListURL({cityname:region?.name,id:router.query.id,themeName:e.theme}):""
-                      }>
-                      <p className={tw` border border-gray-500 px-2 py-1 font-semibold text-slate-600 rounded-lg`}>{e.theme} tour packages</p>
-                    </a>
-                  )
-                })}
-              </div>  
-            :""}
-            </div>
-              <div className={``}>
-                <div
-                  className={`flex items-center justify-between mb-6 pb-2 border-b`}
-                >
-                  <div>
-                    <h3 className={`text-base`}>
-                      {isMobile ? "" : "Showing"}
-                      <span className={`font-bold ml-2`}>
-                        {pack.length != 0 ? pack.length : data.length} Tour
-                        Packages
-                      </span>
-                      <span>
-                        {
-                          page_type == "STATE" || page_type == "COUNTRY" ? (
-                            <span>
-                              <span> for </span>
-                              <span className={`text-[#F06726]`}>
-                                {region?.name}
-                              </span>
-                            </span>
-                          ) : (
-                            ""
-                          )
-                          // ` for ${region?.name}`:""
-                        }
-                      </span>
-                    </h3>
-                  </div>
-                  {isMobile == false ? (
+                <div className={``}>
+                  <div
+                    className={`flex items-center justify-between mb-6 pb-2 border-b`}
+                  >
                     <div>
-                      <div className="flex flex-wrap">
-                        <div className={`p-2 sort_w text-bold font-gray-400`}>
-                          SORT BY :
-                        </div>
-                        
-                        
-                        <div
-                          className={`${
-                            !priority ? "_b_active" : ""
-                          } p-2 sort_w cursor-pointer`}
-                          onClick={() => {setPricefilter(0),setDurationfilter(0), setPriority(!priority)}}
-                        >
-                          POPULAR
-                          {priority ? (
-                            <AiOutlineArrowDown className={`inline`} />
-                          ) : (
-                            <AiOutlineArrowUp className={`inline`} />
-                          )}
-                        </div>
+                      <h3 className={`text-base`}>
+                        {isMobile ? "" : "Showing"}
+                        <span className={`font-bold ml-2`}>
+                          {pack.length != 0 ? pack.length : data.length} Tour
+                          Packages
+                        </span>
+                        <span>
+                          {
+                            page_type == "STATE" || page_type == "COUNTRY" ? (
+                              <span>
+                                <span> for </span>
+                                <span className={`text-[#F06726]`}>
+                                  {region?.name}
+                                </span>
+                              </span>
+                            ) : (
+                              ""
+                            )
+                            // ` for ${region?.name}`:""
+                          }
+                        </span>
+                      </h3>
+                    </div>
+                    {isMobile == false ? (
+                      <div>
+                        <div className="flex flex-wrap">
+                          <div className={`p-2 sort_w text-bold font-gray-400`}>
+                            SORT BY :
+                          </div>
+                          
+                          
+                          <div
+                            className={`${
+                              !priority ? "_b_active" : ""
+                            } p-2 sort_w cursor-pointer`}
+                            onClick={() => {setPricefilter(0),setDurationfilter(0), setPriority(!priority)}}
+                          >
+                            POPULAR
+                            {priority ? (
+                              <AiOutlineArrowDown className={`inline`} />
+                            ) : (
+                              <AiOutlineArrowUp className={`inline`} />
+                            )}
+                          </div>
 
-                        <div
-                          className={`${
-                            !durationfilter ? "_b_active" : ""
-                          } p-2  sort_w cursor-pointer`}
-                          onClick={() => {setPricefilter(0),setPriority(0), setDurationfilter(!durationfilter)}}
-                        >
-                          DURATION
-                          {durationfilter ? (
-                            <AiOutlineArrowDown className={`inline`} />
-                          ) : (
-                            <AiOutlineArrowUp className={`inline`} />
-                          )}
-                        </div>
-                        <div
-                          className={`${
-                            !pricefilter ? "_b_active" : ""
-                          } p-2 sort_w cursor-pointer`}
-                          onClick={() => {setPriority(0), setDurationfilter(0), setPricefilter(!pricefilter)}}
-                        >
-                          PRICE
-                          {pricefilter ? (
-                            <AiOutlineArrowDown className={`inline`} />
-                          ) : (
-                            <AiOutlineArrowUp className={`inline`} />
-                          )}
+                          <div
+                            className={`${
+                              !durationfilter ? "_b_active" : ""
+                            } p-2  sort_w cursor-pointer`}
+                            onClick={() => {setPricefilter(0),setPriority(0), setDurationfilter(!durationfilter)}}
+                          >
+                            DURATION
+                            {durationfilter ? (
+                              <AiOutlineArrowDown className={`inline`} />
+                            ) : (
+                              <AiOutlineArrowUp className={`inline`} />
+                            )}
+                          </div>
+                          <div
+                            className={`${
+                              !pricefilter ? "_b_active" : ""
+                            } p-2 sort_w cursor-pointer`}
+                            onClick={() => {setPriority(0), setDurationfilter(0), setPricefilter(!pricefilter)}}
+                          >
+                            PRICE
+                            {pricefilter ? (
+                              <AiOutlineArrowDown className={`inline`} />
+                            ) : (
+                              <AiOutlineArrowUp className={`inline`} />
+                            )}
+                          </div>
                         </div>
                       </div>
+                    ) : (
+                      <div>
+                        <BsFilter size={"20px"} onClick={() => setIsshow(true)} />
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                {data.length ? (
+                        data.slice(0, limit).map((item, index) => {
+                          return item.name.length >= 2 &&
+                            (item.name.toLowerCase().includes(filter.keyword) ||
+                              item.cities
+                                .toLowerCase()
+                                .includes(filter.keyword) ||
+                              item.theme
+                                .toLowerCase()
+                                .includes(filter.keyword)) ? (
+                            // <div>package</div>:""
+                            <Package key={index} index={index} item={item} POPUPFORM = {POPUPFORM} />
+                          ) : null;
+                        })
+                      ) : (
+                        <div className={`mt-16 mb-16 text-center`}>
+                          <div className={`text-2xl font-bold text-[#999]`}>
+                            <p className={`"`}>No package found</p>
+                          </div>
+                        </div>
+                      )}
+                    <div className={`rounded-full  _btn_clr mt-8 px-4 py-2 border-2 border-gray-300 w-fit m-auto cursor-pointer hover:shadow-xl ${limit>=data.length?"hidden":""}`} onClick={()=>setLimit(limit + 10)} style={{width:'max-content',margin:'auto',marginTop:'2rem'}}>
+                      <div className="">
+                        Load More Packages..
+                      </div>
                     </div>
-                  ) : (
-                    <div>
-                      <BsFilter size={"20px"} onClick={() => setIsshow(true)} />
+                  {/* <ScrollWrapper
+                    wrapperStyle={{ width: "100%", overflowY: "initial" }}
+                    bottomCallback={() => {
+                      setLimit(limit + 10);
+                    }}
+                    minScroll={20}
+                    className={"row"}
+                  >
+                    <div
+                      className="row"
+                      itemScope
+                      itemType="https://schema.org/ItemList"
+                    >
+                      <meta
+                        itemProp="numberOfItems"
+                        content={pack.length != 0 ? pack.length : data.length}
+                      />
+                      {data.length ? (
+                        data.slice(0, limit).map((item, index) => {
+                          return item.name.length >= 2 &&
+                            (item.name.toLowerCase().includes(filter.keyword) ||
+                              item.cities
+                                .toLowerCase()
+                                .includes(filter.keyword) ||
+                              item.theme
+                                .toLowerCase()
+                                .includes(filter.keyword)) ? (
+                            <Package key={index} index={index} item={item} POPUPFORM = {POPUPFORM} />
+                          ) : null;
+                        })
+                      ) : (
+                        <div className={`mt-16 mb-16 text-center`}>
+                          <div className={`text-2xl font-bold text-[#999]`}>
+                            <p className={`"`}>No package found</p>
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  )}
+                  </ScrollWrapper> */}
                 </div>
               </div>
-
-              <div>
-              {data.length ? (
-                      data.slice(0, limit).map((item, index) => {
-                        return item.name.length >= 2 &&
-                          (item.name.toLowerCase().includes(filter.keyword) ||
-                            item.cities
-                              .toLowerCase()
-                              .includes(filter.keyword) ||
-                            item.theme
-                              .toLowerCase()
-                              .includes(filter.keyword)) ? (
-                          // <div>package</div>:""
-                          <Package key={index} index={index} item={item} POPUPFORM = {POPUPFORM} />
-                        ) : null;
-                      })
-                    ) : (
-                      <div className={`mt-16 mb-16 text-center`}>
-                        <div className={`text-2xl font-bold text-[#999]`}>
-                          <p className={`"`}>No package found</p>
-                        </div>
-                      </div>
-                    )}
-                  <div className={`rounded-full  _btn_clr mt-8 px-4 py-2 border-2 border-gray-300 w-fit m-auto cursor-pointer hover:shadow-xl ${limit>=data.length?"hidden":""}`} onClick={()=>setLimit(limit + 10)} style={{width:'max-content',margin:'auto',marginTop:'2rem'}}>
-                    <div className="">
-                      Load More Packages..
-                    </div>
-                  </div>
-                {/* <ScrollWrapper
-                  wrapperStyle={{ width: "100%", overflowY: "initial" }}
-                  bottomCallback={() => {
-                    setLimit(limit + 10);
-                  }}
-                  minScroll={20}
-                  className={"row"}
-                >
-                  <div
-                    className="row"
-                    itemScope
-                    itemType="https://schema.org/ItemList"
-                  >
-                    <meta
-                      itemProp="numberOfItems"
-                      content={pack.length != 0 ? pack.length : data.length}
-                    />
-                    {data.length ? (
-                      data.slice(0, limit).map((item, index) => {
-                        return item.name.length >= 2 &&
-                          (item.name.toLowerCase().includes(filter.keyword) ||
-                            item.cities
-                              .toLowerCase()
-                              .includes(filter.keyword) ||
-                            item.theme
-                              .toLowerCase()
-                              .includes(filter.keyword)) ? (
-                          <Package key={index} index={index} item={item} POPUPFORM = {POPUPFORM} />
-                        ) : null;
-                      })
-                    ) : (
-                      <div className={`mt-16 mb-16 text-center`}>
-                        <div className={`text-2xl font-bold text-[#999]`}>
-                          <p className={`"`}>No package found</p>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </ScrollWrapper> */}
-              </div>
             </div>
+
+
           </div>
         </section>
         {page_type == "CITY" ? (
-          <div className={tw`mt-5 w-full`}>
+          <div className={`mt-5 w-full`}>
             {/* <SimilarTourLoading /> */}
             <RelatedTour data={related} />
           </div>
@@ -868,7 +871,7 @@ const ListPageMobile = ({
         {page_type == "STATE" || page_type == "COUNTRY" ? (
           <div className="mt-4 container">
             <div
-              className={tw`mt-8 ${
+              className={`mt-8 ${
                 isMobile ? "text-xl" : "text-2xl"
               } mb-4 text-center_ font-semibold text-gray-600`}
             >
@@ -886,7 +889,7 @@ const ListPageMobile = ({
         faqs.length != 0 ? (
           <div className="mt-4 container">
             <div
-              className={tw`mt-8 ${
+              className={`mt-8 ${
                 isMobile ? "text-xl" : "text-2xl"
               } mb-4 text-center_ font-semibold text-gray-600`}
             >
@@ -901,7 +904,7 @@ const ListPageMobile = ({
         {travel && travel?.images ? (
           <>
             <div className="container mt-8">
-              {/* <h1 className={tw`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>Read more About {region?.name}</h1> */}
+              {/* <h1 className={`mt-8 ${isMobile?"text-xl":'text-2xl'} mb-4 text-center_ font-semibold`}>Read more About {region?.name}</h1> */}
               {/* <Content data={travel} collapse={true}/> */}
 
               <Link
@@ -910,9 +913,9 @@ const ListPageMobile = ({
               >
                 {/* Travel Guide {travel.tg.cityName} */}
                 <div
-                  className={tw`flex flex-wrap items-center bg-white p-4 lg:p-6 rounded-lg hover:shadow-lg transition-shadow`}
+                  className={`flex flex-wrap items-center bg-white p-4 lg:p-6 rounded-lg hover:shadow-lg transition-shadow`}
                 >
-                  <div className={tw`w-full lg:w-1/2`}>
+                  <div className={`w-full lg:w-1/2`}>
                     <div className="relative h-40 lg:h-60">
                       <Image
                         className="rounded-lg"
@@ -922,11 +925,11 @@ const ListPageMobile = ({
                     </div>
                   </div>
                   <div
-                    className={tw`w-full lg:w-1/2 pl-4 lg:pl-0 pt-4 lg:pt-0`}
+                    className={`w-full lg:w-1/2 pl-4 lg:pl-0 pt-4 lg:pt-0`}
                   >
                     <div>
                       <h3
-                        className={tw`text-2xl lg:text-3xl font-bold text-center text-gray-500`}
+                        className={`text-2xl lg:text-3xl font-bold text-center text-gray-500`}
                       >
                         More about {travel.tg.cityName} tourism{" "}
                         <BsArrowRight className="inline _b_active font-bold" />{" "}
@@ -982,8 +985,8 @@ const ListPageMobile = ({
 
 
       <div className="bottom_bar">
-        <div className={tw`h-full`}>
-          <div className={tw`flex h-full shadow-[3px 1px 4px]`}>
+        <div className={`h-full`}>
+          <div className={`flex h-full shadow-[3px 1px 4px]`}>
             <a
               href="tel:+919650687940"
               className="w-full"

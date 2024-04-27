@@ -1,15 +1,15 @@
 import Link from "next/link";
-import { tw } from "twind";
+
 import HotelDesign from "./hotel";
 import * as Constants from "../Constants";
 
 const HotelList = ({ hotels }) => {
   const SampleNextArrow = (props) => {
     const { className, style, onClick } = props;
-    // {tw`hidden lg:carousel-button-group lg:block `}
+    // {`hidden lg:carousel-button-group lg:block `}
     return (
       <div
-        className={tw`hidden lg:block custom-btn right-custom-btn`}
+        className={`hidden lg:block custom-btn right-custom-btn`}
         onClick={onClick}
       />
     );
@@ -20,7 +20,7 @@ const HotelList = ({ hotels }) => {
 
     return (
       <div
-        className={tw`hidden lg:block custom-btn left-custom-btn`}
+        className={`hidden lg:block custom-btn left-custom-btn`}
         onClick={onClick}
       />
     );
@@ -89,7 +89,7 @@ const HotelList = ({ hotels }) => {
     //   item.id;
 
     return (
-      <div key={i} className={tw`w-full lg:w-1/4 mb-4`}>
+      <div key={i} className={`w-full lg:w-1/4 mb-4`}>
         <HotelDesign item={item} />
       </div>
     );
@@ -121,8 +121,8 @@ const HotelList = ({ hotels }) => {
     });
 
     return (
-      <div key={i} className={tw`w-full lg:w-1/3 mb-4`}>
-        <div className={tw`col-sm-12 col-xs-12 _cr_mb px-4`} key={i}>
+      <div key={i} className={`w-full lg:w-1/3 mb-4`}>
+        <div className={`col-sm-12 col-xs-12 _cr_mb px-4`} key={i}>
           <div className="top_rated_box _box_shadow _bottom _hotel_shadow">
             <div className="des_img">
               <img
@@ -149,13 +149,13 @@ const HotelList = ({ hotels }) => {
             </div>
             <div className="royal-details">
               <h4>{item.name}</h4>
-              <p className={tw`text-sm c_gray`}>{item.locality}</p>
+              <p className={`text-sm c_gray`}>{item.locality}</p>
             </div>
             <div className="price_List royal_list">
               <div className="cut_price price-cut text-right">
                 <del></del>
               </div>
-              <div className={tw`price_tag flex items-cetner justify-bewteen`}>
+              <div className={`price_tag flex items-cetner justify-bewteen`}>
                 <Link href={hurl}>
                   <div href={hurl} className="btn_anchor">
                     View Details
@@ -179,34 +179,34 @@ const HotelList = ({ hotels }) => {
   });
 
   //   const exploreRender = hotels.map((item,i)=>{
-  //     return        <div key={i} className={tw`w-full lg:w-1/4 mb-4`}>
+  //     return        <div key={i} className={`w-full lg:w-1/4 mb-4`}>
   //         <Link href={`/hotel-${strToUrl(item.name)}-in-${item.cityname.toLocaleLowerCase()}-${item.id}`}>
-  //           <div className={tw`px-2`}>
+  //           <div className={`px-2`}>
   //               <div className="des_img t_rd" style={{margin:0}}>
   //                   <img src={item.images} />
   //               </div>
-  //               <div className={tw`p-2 h_bottom_content`}>
-  //                   <h2 className={tw`font-bold`}>{item.name}</h2>
-  //                   <div className={tw`flex flex-wrap items-center mb-6`}>
+  //               <div className={`p-2 h_bottom_content`}>
+  //                   <h2 className={`font-bold`}>{item.name}</h2>
+  //                   <div className={`flex flex-wrap items-center mb-6`}>
   //                       <IoLocationSharp/>
   //                       {item.cityname}
   //                   </div>
-  //                   <div className={tw`flex flex-wrap items-center`}>
+  //                   <div className={`flex flex-wrap items-center`}>
   //                       <BsStarHalf className="icon_size_h"/>
-  //                       <div className={tw`pl-1`}>{item.ratings}</div>
+  //                       <div className={`pl-1`}>{item.ratings}</div>
 
-  //                       <BsDot className={tw`inline`}/>
+  //                       <BsDot className={`inline`}/>
   //                       12 Reviews
   //                   </div>
-  //                   <div className={tw`border-t-1`}>
-  //                   <div className={tw`flex flex-wrap items-center`}>
+  //                   <div className={`border-t-1`}>
+  //                   <div className={`flex flex-wrap items-center`}>
   //                       {
 
   //                         item.price==0?<div className="price_inr">Price on Request</div>
-  //                         :<><div className={tw`font-bold price_inr`}>
+  //                         :<><div className={`font-bold price_inr`}>
   //                           {item.price}/-
   //                         </div>
-  //                         <div className={tw`pl-2`}>
+  //                         <div className={`pl-2`}>
   //                           night
   //                         </div></>
 
@@ -223,8 +223,8 @@ const HotelList = ({ hotels }) => {
   // })
 
   return (
-    <div className={tw`Shape_42 p-3`}>
-      <div className={tw`flex flex-wrap`}>{exploreRender}</div>
+    <div className={`Shape_42 p-3`}>
+      <div className={`flex flex-wrap`}>{exploreRender}</div>
 
       {/* <div className="clearfix"></div> */}
       {/* <Slider {...settings}>

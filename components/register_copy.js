@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { Modal } from "react-bootstrap";
 import { GrClose } from "react-icons/gr";
-import { tw } from "twind";
+
 import React from "react";
 import swal from "sweetalert";
 import axios from "axios";
@@ -108,7 +108,7 @@ const Login = (props) => {
       >
         <Modal.Body>
           <span
-            className={tw`float-right text-black cursor-pointer relative top-[10px] right-[15px]`}
+            className={`float-right text-black cursor-pointer relative top-[10px] right-[15px]`}
             // style={{
             //     float: "right",
             //     color: "black",
@@ -122,20 +122,20 @@ const Login = (props) => {
           >
             <GrClose />
           </span>
-          <div className={tw`mt-3 mb-4 mx-4`}>
+          <div className={`mt-3 mb-4 mx-4`}>
             <form onSubmit={handleRegisterSubmit}>
               <div className="wrapper-box">
                 <div className="wrapper_login">
                   <div className="body_login">
-                    <div className={tw`login_header`}>
+                    <div className={`login_header`}>
                       <img
-                        className={tw`m-auto w-[40px]`}
+                        className={`m-auto w-[40px]`}
                         src={`${Constants.assets_api}/public/icons/logo-icon.png`}
                         alt="kiomoi"
 
                         // style={{ width: '40px' }}
                       />
-                      <h4 className={tw`text-lg font-semibold text-orange`}>
+                      <h4 className={`text-lg font-semibold text-orange`}>
                         Sign up
                       </h4>
                     </div>
@@ -260,11 +260,11 @@ const Login = (props) => {
                       </button>
                     </div>
                     <div className="form-group">
-                      <p className={tw`proceed_clr`}>
+                      <p className={`proceed_clr`}>
                         BY proceeding, you agree to the{" "}
                         <a
                           href="/terms-and-conditions"
-                          className={tw`text-orange font-semibold`}
+                          className={`text-orange font-semibold`}
                         >
                           Terms & Conditions
                         </a>
@@ -285,7 +285,7 @@ const Login = (props) => {
       >
         <Modal.Body>
           <span
-            className={tw`float-right text-black cursor-pointer relative top-[10px] right-[15px]`}
+            className={`float-right text-black cursor-pointer relative top-[10px] right-[15px]`}
             // style={{
             //     float: "right",
             //     color: "black",
@@ -299,10 +299,10 @@ const Login = (props) => {
           >
             <GrClose />
           </span>
-          <div className={tw`m-3`}>
+          <div className={`m-3`}>
             <div className="login_header">
               <div className="login_header">
-                <p className={tw`text_color`}>
+                <p className={`text_color`}>
                   We sent an sms with confirmation code to your mobile number
                 </p>
               </div>
@@ -331,11 +331,11 @@ const Login = (props) => {
               </div>
             </form>
             <div className="form-group">
-              <p className={tw`proceed_clr`}>
+              <p className={`proceed_clr`}>
                 BY proceeding, you agree to the{" "}
                 <a
                   href="/terms-and-conditions"
-                  className={tw`text-orange font-semibold`}
+                  className={`text-orange font-semibold`}
                 >
                   Terms & Conditions
                 </a>

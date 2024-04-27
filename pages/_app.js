@@ -1,8 +1,7 @@
 import "nprogress/nprogress.css";
 import "@/styles/globals.css";
+import "@/styles/build.css";
 import "@/styles/detail.css";
-import "@/styles/global.css";
-import "@/styles/carousel.css";
 import "@/styles/Home.module.css";
 import "@/styles/homepage.css";
 import "@/styles/hotel.css";
@@ -11,16 +10,21 @@ import "@/styles/nav.css";
 import "@/styles/package.css";
 import "@/styles/qna.css";
 import "@/styles/travel-guide.css";
+import "@/styles/remain.css"
+
 import "react-multi-carousel/lib/styles.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-rangeslider/lib/index.css";
+
+
 import dynamic from "next/dynamic";
 import NProgress from "nprogress";
 import { useRouter } from 'next/router'
 
 import { wrapper } from "../redux_fx/store";
+
 
 NProgress.configure({ showSpinner: false, minimum: 0.2 });
 

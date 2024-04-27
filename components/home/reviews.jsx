@@ -3,7 +3,7 @@ import { BsStarFill, BsStarHalf } from "react-icons/bs";
 // import Modal from '../modal'
 // import { ImQuotesRight } from 'react-icons/im'
 // import * as Constants from '../Constants'
-import { tw } from "twind";
+
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import Link from "next/link";
@@ -62,14 +62,14 @@ const Reviews = ({ data }) => {
       tmp.push(i);
     }
     var indents = tmp.map(function (i) {
-      return <BsStarFill key={i} className={tw`icon_size inline text-sm`} />;
+      return <BsStarFill key={i} className={`icon_size inline text-sm`} />;
     });
     var tmp2 = [];
     for (var i = 0; i < 5 - item.ratings; i++) {
       tmp2.push(i);
     }
     var star = tmp2.map(function (i) {
-      return <BsStarHalf key={i} className={tw`icon_size inline text-sm`} />;
+      return <BsStarHalf key={i} className={`icon_size inline text-sm`} />;
     });
 
     let review = item?.review?.length ? item.review : "";
@@ -134,7 +134,7 @@ const Reviews = ({ data }) => {
         <div key={j}>
           <div className={`col-sm-12 col-xs-12 _cr_mb px-4`} key={j}>
             <div
-              className={tw`comment_box hover:shadow-lg border border-gray-200`}
+              className={`comment_box hover:shadow-lg border border-gray-200`}
             >
               <SReview item={item} />
               {/* <div className="qoute_ text-center">

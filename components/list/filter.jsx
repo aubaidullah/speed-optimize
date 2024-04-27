@@ -1,4 +1,4 @@
-import { tw } from "twind";
+
 import Slider from "react-rangeslider";
 import { useEffect, useState, useRef } from "react";
 import { FaRupeeSign } from "react-icons/fa";
@@ -111,7 +111,7 @@ const FilterBy = ({
               type="checkbox"
               // checked={chec}
               checked={_places.includes(item)}
-              className={tw`mr-1`}
+              className={`mr-1`}
               name="place"
               onChange={(e) => setPlaceFilter(item)}
               // onClick={() => setPlace(item)}
@@ -133,7 +133,7 @@ const FilterBy = ({
               <input
                 type="checkbox"
                 // checked={chec}
-                className={tw`mr-1`}
+                className={`mr-1`}
                 checked={_themes.includes(item.tag.trim())}
                 name="place"
                 // onChange={}
@@ -167,18 +167,18 @@ const FilterBy = ({
 
   return (
     <>
-      <div className={tw`bg-white h_sticky rounded-lg`}>
-        <div className={tw`p-3`}>
-          <div className={tw`flex items-center justify-between mb-4`}>
-            <h2 className={tw`text-xl font-bold`}>Filter by</h2>
+      <div className={`bg-white h_sticky rounded-lg`}>
+        <div className={`p-3`}>
+          <div className={`flex items-center justify-between mb-4`}>
+            <h2 className={`text-xl font-bold`}>Filter by</h2>
             <div
-              className={tw`text-sm cursor-pointer text-[#f06726]`}
+              className={`text-sm cursor-pointer text-[#f06726]`}
               onClick={() => clear_filter()}
             >
               Clear all
             </div>
           </div>
-          <div className={tw`pb-4`}>
+          <div className={`pb-4`}>
             <input
               value={filter?.keyword}
               // onChange={(e)=>{setFiltering===undefined?{}:setFiltering(e.target.value)}}
@@ -189,13 +189,13 @@ const FilterBy = ({
             />
           </div>
 
-          <div className={tw`border-t border-gray-200 py-4`}>
-            <div className={tw`flex items-center justify-between mb-4`}>
+          <div className={`border-t border-gray-200 py-4`}>
+            <div className={`flex items-center justify-between mb-4`}>
               <h2>Price</h2>
             </div>
             <div>
-              <div className={tw`flex justify-between`}>
-                <div className={tw`range-select range_st mr-2`}>
+              <div className={`flex justify-between`}>
+                <div className={`range-select range_st mr-2`}>
                   <span> &#8377; </span>
                   <input
                     type={"number"}
@@ -203,10 +203,10 @@ const FilterBy = ({
                       setMinprice(e.target.value);
                     }}
                     value={minprice}
-                    className={tw`rupees_ip pl-1`}
+                    className={`rupees_ip pl-1`}
                   />
                 </div>
-                <div className={tw`range-select range_st ml-2`}>
+                <div className={`range-select range_st ml-2`}>
                   <span> &#8377; </span>
                   <input
                     type={"number"}
@@ -214,7 +214,7 @@ const FilterBy = ({
                       setMaxprice(e.target.value);
                     }}
                     value={maxprice}
-                    className={tw`rupees_ip pl-1`}
+                    className={`rupees_ip pl-1`}
                   />
                 </div>
               </div>
@@ -227,7 +227,7 @@ const FilterBy = ({
                 onChange={(value) => setPriceFilter(minprice, value)}
               />
             </div>
-            <div className={tw`flex items-center justify-between`}>
+            <div className={`flex items-center justify-between`}>
               <div>
                 <FaRupeeSign className="inline" />
                 {minprice}
@@ -239,8 +239,8 @@ const FilterBy = ({
             </div>
           </div>
 
-          <div className={tw`border-t border-gray-200 py-4`}>
-            <div className={tw`flex items-center justify-between`}>
+          <div className={`border-t border-gray-200 py-4`}>
+            <div className={`flex items-center justify-between`}>
               <div
                 className={`flex justify-between items-center w-full cursor-pointer`}
                 onClick={() => setDur(!dur)}
@@ -256,13 +256,13 @@ const FilterBy = ({
               </div>
             </div>
 
-            <div className={tw`check_list ${dur ? "block" : "hidden"}`}>
+            <div className={`check_list ${dur ? "block" : "hidden"}`}>
               <div className="checkbox">
                 <label>
                   <input
                     type="radio"
                     name="days"
-                    className={tw`mr-1`}
+                    className={`mr-1`}
                     onChange={() => setDurationFilter(1, 7)}
                     checked={_min == 1 && _max == 7}
 
@@ -279,7 +279,7 @@ const FilterBy = ({
                   <input
                     type="radio"
                     name="days"
-                    className={tw`mr-1`}
+                    className={`mr-1`}
                     onChange={() => setDurationFilter(7, 9)}
                     checked={_min == 7 && _max == 9}
                     // checked={checked7}
@@ -295,7 +295,7 @@ const FilterBy = ({
                   <input
                     type="radio"
                     name="days"
-                    className={tw`mr-1`}
+                    className={`mr-1`}
                     onChange={() => setDurationFilter(10, 12)}
                     checked={_min == 10 && _max == 12}
                     // checked={checked10}
@@ -311,7 +311,7 @@ const FilterBy = ({
                   <input
                     type="radio"
                     name="days"
-                    className={tw`mr-1`}
+                    className={`mr-1`}
                     onChange={() => setDurationFilter(13, 100)}
                     checked={_min == 13 && _max == 100}
                     // checked={checked13}
@@ -325,8 +325,8 @@ const FilterBy = ({
             </div>
           </div>
           {page_type != "CITY" ? (
-            <div className={tw`border-t border-gray-200 py-4`}>
-              <div className={tw`flex items-center justify-between`}>
+            <div className={`border-t border-gray-200 py-4`}>
+              <div className={`flex items-center justify-between`}>
                 <div
                   className={`flex justify-between items-center w-full cursor-pointer`}
                   onClick={() => setFav(!fav)}
@@ -343,7 +343,7 @@ const FilterBy = ({
               </div>
 
               <div
-                className={tw`max-h-[300px] overflow-y-scroll ${
+                className={`max-h-[300px] overflow-y-scroll ${
                   fav ? "block" : "hidden"
                 }`}
               >
@@ -354,8 +354,8 @@ const FilterBy = ({
             ""
           )}
           {page_type == "STATE" || page_type == "ALL" ? (
-            <div className={tw`border-t border-gray-200 py-4`}>
-              <div className={tw`flex items-center justify-between`}>
+            <div className={`border-t border-gray-200 py-4`}>
+              <div className={`flex items-center justify-between`}>
                 <div
                   className={`flex justify-between items-center w-full cursor-pointer`}
                   onClick={() => setThm(!thm)}
@@ -372,7 +372,7 @@ const FilterBy = ({
               </div>
 
               <div
-                className={tw`max-h-[300px] overflow-y-scroll ${
+                className={`max-h-[300px] overflow-y-scroll ${
                   thm ? "block" : "hidden"
                 }`}
               >

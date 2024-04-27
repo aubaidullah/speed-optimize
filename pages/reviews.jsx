@@ -4,7 +4,7 @@ import client from "@/components/Graphql/service";
 // import Nav from "@/components/Nav"
 // import Meta from "@/components/meta"
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
-import { tw } from "twind";
+
 import dynamic from "next/dynamic";
 
 const Nav = dynamic(() => import("@/components/Nav"));
@@ -30,7 +30,7 @@ const Reviews = ({ reviews }) => {
             }
             var indents = tmp.map(function (i) {
               return (
-                <BsStarFill key={i} className={tw`icon_size inline text-sm`} />
+                <BsStarFill key={i} className={`icon_size inline text-sm`} />
               );
             });
             var tmp2 = [];
@@ -39,7 +39,7 @@ const Reviews = ({ reviews }) => {
             }
             var star = tmp2.map(function (i) {
               return (
-                <BsStarHalf key={i} className={tw`icon_size inline text-sm`} />
+                <BsStarHalf key={i} className={`icon_size inline text-sm`} />
               );
             });
 

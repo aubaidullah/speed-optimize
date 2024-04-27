@@ -1,5 +1,5 @@
 // import Nav from '../components/Nav';
-import { tw } from "twind";
+
 import dynamic from "next/dynamic";
 
 const Nav = dynamic(() => import("../components/Nav"));
@@ -8,7 +8,7 @@ const TNC = () => {
     <>
       <Nav />
 
-      <section className={tw`md:px-14 custom-font t_box`}>
+      <section className={`md:px-14 custom-font t_box`}>
         <div>
           <div className="terms-inner-section">
             <center className="mt-4">
@@ -25,7 +25,7 @@ const TNC = () => {
               Terms and Conditions{" "}
             </center>
 
-            <div className={tw`terma-box _box_shadow bg-white p-5`}>
+            <div className={`terma-box _box_shadow bg-white p-5`}>
               <p>
                 Welcome to Kiomoi.com! Kiomoi Travel Services Private Limited
                 (KTSPL) you (The User) are deemed to have accepted the terms and
@@ -45,7 +45,7 @@ const TNC = () => {
               <h4 className="text-center text-uppercase my-4 fw-bold fs-6">
                 User Agreement
               </h4>
-              <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
+              <ul className={`list-disc terms_condition px-3 text-[14px]`}>
                 <li>
                   The User certifies that he/she is at least 18 (eighteen) years
                   of age or has the consent of a parent or legal guardian.
@@ -172,7 +172,7 @@ const TNC = () => {
               <h4 className="text-center text-uppercase my-4 fw-bold fs-6">
                 Terms of Service
               </h4>
-              <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
+              <ul className={`list-disc terms_condition px-3 text-[14px]`}>
                 <li>
                   The User certifies that he/she is at least 18 (eighteen) years
                   of age or has the consent of a parent or legal guardian.
@@ -198,7 +198,7 @@ const TNC = () => {
               <h4 className="text-uppercase my-4 fw-bold fs-6">
                 Hotel Booking Terms &amp; Conditions
               </h4>
-              <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
+              <ul className={`list-disc terms_condition px-3 text-[14px]`}>
                 <li>
                   All bookings are subjected to 2.5% bank transaction charges on
                   credit card/net banking/debit card refunds.
@@ -302,7 +302,7 @@ const TNC = () => {
               <h4 className="text-uppercase my-4 fw-bold fs-6">
                 Tour Booking Terms &amp; Conditions
               </h4>
-              <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
+              <ul className={`list-disc terms_condition px-3 text-[14px]`}>
                 <li>
                   The Standard Hotel check-in 1400 Hrs &amp; Check-out time is
                   1100 Hrs. However, these timings may vary from hotel to hotel
@@ -432,7 +432,7 @@ const TNC = () => {
               <h4 className="text-uppercase my-4 fw-bold fs-6">
                 Visa &amp; Insurance Terms &amp; Conditions
               </h4>
-              <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
+              <ul className={`list-disc terms_condition px-3 text-[14px]`}>
                 <li>
                   Kiomoi acts as a facilitator for processing Visa applications.
                   We will guide customers on Visa formalities &amp; Visa
@@ -456,7 +456,7 @@ const TNC = () => {
               <h4 className="text-uppercase my-4 fw-bold fs-6">
                 Online Card Payments Policy
               </h4>
-              <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
+              <ul className={`list-disc terms_condition px-3 text-[14px]`}>
                 <li>
                   Visa/ Master /Amex /Dinner/Rupay Card payments are processed
                   through an online payment gateway system. You need not worry
@@ -492,7 +492,7 @@ const TNC = () => {
                 Delivery of Services How do I get a refund after cancellation my
                 booking?
               </h4>
-              <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
+              <ul className={`list-disc terms_condition px-3 text-[14px]`}>
                 <li>
                   After cancellation your booking, we will send you an email at
                   your email id stating the refund amount.
@@ -544,7 +544,7 @@ const TNC = () => {
               <h4 className="my-4 fw-bold fs-6">
                 Car Cancellation Terms &amp; Conditions:
               </h4>
-              <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
+              <ul className={`list-disc terms_condition px-3 text-[14px]`}>
                 <li>
                   Between 24 hours to 3 days before journey the cancellation
                   charge is 100%. Between 3 days to 1 week before journey the
@@ -576,7 +576,7 @@ const TNC = () => {
               <h4 className="text-centertext-uppercase my-4 fw-bold fs-6">
                 Instant Booking (Book Now Option)
               </h4>
-              <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
+              <ul className={`list-disc terms_condition px-3 text-[14px]`}>
                 <li>
                   You must have completed 18 years of age to check in this
                   hotel.

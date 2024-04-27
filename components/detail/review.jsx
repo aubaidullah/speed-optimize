@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { tw } from "twind";
+
 import * as Constants from "../Constants";
 import moment from "moment";
 import ReactStars from "react-rating-stars-component";
@@ -23,51 +23,51 @@ const ReviewRender = ({ reviews }) => {
     <>
       {reviews?.reviews.slice(0, maxReview).map(function (item, index) {
         return (
-          <div className={tw`my-5`}>
+          <div className={`my-5`}>
             <div
-              className={tw`w-full lg:w-2/3 flex flex-col md:flex-row justify-between items-start md:items-center`}
+              className={`w-full lg:w-2/3 flex flex-col md:flex-row justify-between items-start md:items-center`}
             >
-              <div className={tw`flex justify-between items-center gap-3 ms-2`}>
+              <div className={`flex justify-between items-center gap-3 ms-2`}>
                 <div className="coment_photo bg-gray-500 rounded-full flex justify-center">
                   <div
                     // src={`${Constants.assets_api}/public/icons/user_photo.png`}
-                    className={tw`rounded-full flex items-center text-white text-xl`}
+                    className={`rounded-full flex items-center text-white text-xl`}
                     alt="user icon"
                   >
                   {item.cName[0]}
                   </div>
                 </div>
                 <div className="coment_title-">
-                  <h3 className={tw`text-md font-semibold fs-6`}>{item.cName}</h3>
+                  <h3 className={`text-md font-semibold fs-6`}>{item.cName}</h3>
                 </div>
               </div>
-              <div className={tw`w-full md:w-auto`}>
+              <div className={`w-full md:w-auto`}>
                 <div>
-                  <div className={tw`flex flex-row-reverse`}>
+                  <div className={`flex flex-row-reverse`}>
                     {Array.from("12345")
                       .reverse()
                       .map((i) =>
                         Number(i) <= item.ratings ? (
                           <BsStarFill
                             key={i}
-                            className={tw`d_icon_size inline`}
+                            className={`d_icon_size inline`}
                           />
                         ) : (
-                          <BsStar key={i} className={tw`d_icon_size inline`} />
+                          <BsStar key={i} className={`d_icon_size inline`} />
                         ),
                       )}
                   </div>
                 </div>
-                <div className={tw`flex flex-row-reverse items-center`}>
+                <div className={`flex flex-row-reverse items-center`}>
                   <div>
                     <BsFillCheckCircleFill
                       size={10}
-                      className={tw`inline mr-[3px]`}
+                      className={`inline mr-[3px]`}
                       color="gray"
                     />
-                    <span className={tw`text-xs`}>Verfied Review</span>
-                    <span className={tw`mx-1`}> | </span>
-                    <span className={tw`text-xs`}>
+                    <span className={`text-xs`}>Verfied Review</span>
+                    <span className={`mx-1`}> | </span>
+                    <span className={`text-xs`}>
                       {
                         new Date(item.modifiedDate).toDateString()
                       }
@@ -77,13 +77,13 @@ const ReviewRender = ({ reviews }) => {
                 </div>
               </div>
             </div>
-            <div className={tw`ms-2 mt-2 w-full lg:w-2/3`}>
-              <p className={tw`text-md ms-2 mt-2`}>{item.review}</p>
+            <div className={`ms-2 mt-2 w-full lg:w-2/3`}>
+              <p className={`text-md ms-2 mt-2`}>{item.review}</p>
               {/* <details>
-                <summary className={tw`text-xs font-semibold text-[#f06726]`}>
+                <summary className={`text-xs font-semibold text-[#f06726]`}>
                   <span>Read</span>
                 </summary>
-                <p className={tw`text-md ms-2 mt-2`}>{item.review}</p>
+                <p className={`text-md ms-2 mt-2`}>{item.review}</p>
               </details> */}
             </div>
           </div>
@@ -155,23 +155,23 @@ const Reviews = ({ reviews, data }) => {
     
     <section className="container">
       {show ? <Guest show={show} setShow={() => setShow(!show)} /> : null}
-      <div className={tw`title_kiomoi`}>
+      <div className={`title_kiomoi`}>
         <h4>Give Your Review on this Package</h4>
         <form onSubmit={reviewSubmit}>
           <div
-            className={tw`box_comment_post Shape_42 p-3 p-md-4 p-lg-5 mt-4 w-full lg:w-2/3`}
+            className={`box_comment_post Shape_42 p-3 p-md-4 p-lg-5 mt-4 w-full lg:w-2/3`}
           >
-            <div className={tw`flex justify-between items-center`}>
+            <div className={`flex justify-between items-center`}>
               <div>
                 <span
-                  className={tw`text-xs md:text-lg font-semibold md:font-normal`}
+                  className={`text-xs md:text-lg font-semibold md:font-normal`}
                 >
                   Your Feedback*
                 </span>
               </div>
               <div>
-                <div className={tw`flex items-center`}>
-                  <span className={tw`text-xs md:text-base me-1`}>
+                <div className={`flex items-center`}>
+                  <span className={`text-xs md:text-base me-1`}>
                     Rate your trip :{" "}
                   </span>
                   <ReactStars
@@ -187,7 +187,7 @@ const Reviews = ({ reviews, data }) => {
 
             <div className="form-group style_form mt-2 h-[130px]">
               <textarea
-                className={tw`form-control h-full`}
+                className={`form-control h-full`}
                 name="review"
                 required
                 value={reviewText}
@@ -195,13 +195,13 @@ const Reviews = ({ reviews, data }) => {
                 placeholder="Please write at least 100 characters about your experience at this destination."
               />
             </div>
-            <div className={tw`flex justify-between`}>
+            <div className={`flex justify-between`}>
               <div
-                className={tw`flex items-center text-xs md:text-lg font-semibold md:font-normal`}
+                className={`flex items-center text-xs md:text-lg font-semibold md:font-normal`}
               >
                 <div>Upload Photos</div>
                 <label htmlFor="contained-button-file">
-                  <div className={tw`border p-2 ms-3 cursor-pointer`}>
+                  <div className={`border p-2 ms-3 cursor-pointer`}>
                     <div class="upload_box">
                       <label
                         class="custom-file-upload"
@@ -232,11 +232,11 @@ const Reviews = ({ reviews, data }) => {
               </div>
             </div>
 
-            <div className={tw`flex flex-wrap mt-4`}>
+            <div className={`flex flex-wrap mt-4`}>
               {images &&
                 images.map((image, i) => {
                   return (
-                    <div key={i} className={tw`w-1/3 lg:w-1/4 p-1 lg:p-2`}>
+                    <div key={i} className={`w-1/3 lg:w-1/4 p-1 lg:p-2`}>
                       <div>
                         <img
                           className="w-full h-[100px] lg:h-[200px]"
@@ -260,9 +260,9 @@ const Reviews = ({ reviews, data }) => {
         </form>
       </div>
       <div className="">
-        <div className={tw`title_kiomoi`}>
+        <div className={`title_kiomoi`}>
           <h4>Reviews</h4>
-          <hr className={tw`w-full lg:w-2/3 mt-3`} />
+          <hr className={`w-full lg:w-2/3 mt-3`} />
         </div>
         <div className="_line_review"></div>
         {reviews?.reviews.length > 0 ? (
@@ -272,7 +272,7 @@ const Reviews = ({ reviews, data }) => {
         )}
         {reviews?.reviews.length > 0 && maxReview == 5 ? (
           <div
-            className={tw`text-[#999] w-full hover:text-black lg:w-2/3 flex flex-row-reverse text-lg font-bold cursor-pointer`}
+            className={`text-[#999] w-full hover:text-black lg:w-2/3 flex flex-row-reverse text-lg font-bold cursor-pointer`}
             onClick={() => setMaxReview(reviews.count)}
           >
             View All

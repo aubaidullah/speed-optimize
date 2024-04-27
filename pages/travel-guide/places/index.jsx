@@ -9,7 +9,7 @@ import dynamic from "next/dynamic";
 import client from "@/components/Graphql/service";
 // import Nav from "@/components/Nav";
 import axios from "axios";
-import { tw } from "twind";
+
 import Image from "next/image";
 // import BreadCrumbs from "@/components/breadcrumbs";
 import Link from "next/link";
@@ -143,7 +143,7 @@ const Places = ({ data, packages_state, packages, article, weather, meta }) => {
         </div>
 
         <div className="flex flex-wrap">
-          <div className={tw`w-full lg:w-2/3`}>
+          <div className={`w-full lg:w-2/3`}>
             <div className="slider_details">
               <Carousel
                 showArrows={true}
@@ -165,8 +165,8 @@ const Places = ({ data, packages_state, packages, article, weather, meta }) => {
             </div>
           </div>
 
-          <div className={tw`w-full lg:w-1/3`}>
-            <div className={tw`pl-0 lg:pl-6 `}>
+          <div className={`w-full lg:w-1/3`}>
+            <div className={`pl-0 lg:pl-6 `}>
               <div className="_b_right_list_1">
                 <div className="_asia_india">
                   <div className={`flex justify-between`}>

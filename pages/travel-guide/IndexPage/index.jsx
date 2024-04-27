@@ -1,4 +1,4 @@
-import { tw } from "twind";
+
 import client from "@/components/Graphql/service";
 import {
   getTravelGuideHome,
@@ -48,7 +48,7 @@ const IndexPage = ({data,meta,pageType}) =>{
           </h1>
           <input
             type="text"
-            className={tw`mt-4 p-4 border-1 border-gray-300 rounded-lg outline-none w-full bg-transparent`}
+            className={`mt-4 p-4 border-1 border-gray-300 rounded-lg outline-none w-full bg-transparent`}
             placeholder="Search Travel Guide"
             value={search}
             onChange={(e) => Setsearch(e.target.value)}

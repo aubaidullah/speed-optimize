@@ -4,7 +4,7 @@ import { BsDot, BsStarFill, BsStarHalf, BsChevronDown } from "react-icons/bs";
 import Link from "next/link";
 import { FaRupeeSign } from "react-icons/fa";
 import Image from "next/image";
-import { tw } from "twind";
+
 import * as Constants from "../Constants";
 import { createDetailUrl, imgNameByUrl, jpgToWebp } from "../fun";
 
@@ -165,7 +165,7 @@ const RelatedTour = ({ data }) => {
                   <div className="user_rating">
                     {item.sratings}{" "}
                     {/* <i className="fa fa-circle" aria-hidden="true"></i> */}
-                    <BsDot className={tw`inline`} />
+                    <BsDot className={`inline`} />
                     {item.susers} User Rating
                   </div>
                 </div>
@@ -176,7 +176,7 @@ const RelatedTour = ({ data }) => {
                     <div className="cut_price price-cut text-right">
                       <del>
                         {/* <i className="fa fa-inr"></i> */}
-                        <div className={tw`flex items-center`}>
+                        <div className={`flex items-center`}>
                           <FaRupeeSign className="inline text-[12px] mb-[4px]" />
                           {item.price}/-
                         </div>
@@ -190,7 +190,7 @@ const RelatedTour = ({ data }) => {
                   </>
                 )}
                 <div
-                  className={tw`price_tag flex justify-between items-center`}
+                  className={`price_tag flex justify-between items-center`}
                 >
                   <span className="start_from">Started from</span>
                   <span className="price_inr in">
@@ -217,13 +217,13 @@ const RelatedTour = ({ data }) => {
           <div className="row">
             <div className="box_design_common">
               <div
-                className={tw`title_kiomoi flex items-center justify-between mb-6`}
+                className={`title_kiomoi flex items-center justify-between mb-6`}
               >
-                <div className={tw`2w-full`}>
+                <div className={`2w-full`}>
                   <h4>Similar Tours on Kiomoi</h4>
                   <p></p>
                 </div>
-                <div className={tw`2w-full`}>
+                <div className={`2w-full`}>
                   <a href="/holidays">
                     <div className="btn_view_more">View All</div>
                   </a>

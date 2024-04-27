@@ -1,4 +1,4 @@
-import { tw } from "twind";
+
 import MultiCarousel2 from "react-multi-carousel";
 import Link from "next/link";
 import * as Constants from "../Constants";
@@ -24,7 +24,7 @@ const State_Attraction = ({ data }) => {
             <div className="px-2 _cr_mb">
               <div className="des_img">
                 <img
-                  className={tw`img-responsive rounded-[8px]`}
+                  className={`img-responsive rounded-[8px]`}
                   src={
                     item.images
                       ? item.images
@@ -72,7 +72,7 @@ const State_Attraction = ({ data }) => {
       carouselState: { currentSlide },
     } = rest;
     return (
-      <div className={tw`hidden lg:carousel-button-group lg:block `}>
+      <div className={`hidden lg:carousel-button-group lg:block `}>
         <button
           className={`${currentSlide === 0 ? "disable" : ""} left-custom-btn`}
           onClick={() => previous()}
@@ -83,12 +83,12 @@ const State_Attraction = ({ data }) => {
   };
 
   return (
-    <div className={tw`mt-16`}>
+    <div className={`mt-16`}>
       <div className={`container`}>
         <div className="row_">
           <div className="box_design_common">
             <div
-              className={tw`title_kiomoi flex items-center justify-between mb-6`}
+              className={`title_kiomoi flex items-center justify-between mb-6`}
             >
               <div>
                 <h4>Top Attractions</h4>

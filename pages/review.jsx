@@ -6,7 +6,7 @@ import moment from "moment";
 import * as Constants from "@/components/Constants";
 import { useRouter } from "next/router";
 // import Nav from '@/components/Nav';
-import { tw } from "twind";
+
 import dynamic from "next/dynamic";
 const Nav = dynamic(() => import("@/components/HomeNav"));
 
@@ -127,7 +127,7 @@ const Customer_Review = ({ userinfo }) => {
           </div>
         ) : (
           <>
-            <h2 className={tw`text-2xl _b_active text-center mt-4 font-bold`}>
+            <h2 className={`text-2xl _b_active text-center mt-4 font-bold`}>
               {userinfo.pname}
             </h2>
             <div>
@@ -166,56 +166,56 @@ const Customer_Review = ({ userinfo }) => {
                         <div class="coment_rating _text-right mt-4 mb-4">
                           {reviewstar >= 1 ? (
                             <IoMdStar
-                              className={tw`inline text-xl _b_active`}
+                              className={`inline text-xl _b_active`}
                               onClick={() => setReviewstar(1)}
                             />
                           ) : (
                             <IoMdStarOutline
-                              className={tw`inline text-xl _b_active`}
+                              className={`inline text-xl _b_active`}
                               onClick={() => setReviewstar(1)}
                             />
                           )}
                           {reviewstar >= 2 ? (
                             <IoMdStar
-                              className={tw`inline text-xl _b_active`}
+                              className={`inline text-xl _b_active`}
                               onClick={() => setReviewstar(2)}
                             />
                           ) : (
                             <IoMdStarOutline
-                              className={tw`inline text-xl _b_active`}
+                              className={`inline text-xl _b_active`}
                               onClick={() => setReviewstar(2)}
                             />
                           )}
                           {reviewstar >= 3 ? (
                             <IoMdStar
-                              className={tw`inline text-xl _b_active`}
+                              className={`inline text-xl _b_active`}
                               onClick={() => setReviewstar(3)}
                             />
                           ) : (
                             <IoMdStarOutline
-                              className={tw`inline text-xl _b_active`}
+                              className={`inline text-xl _b_active`}
                               onClick={() => setReviewstar(3)}
                             />
                           )}
                           {reviewstar >= 4 ? (
                             <IoMdStar
-                              className={tw`inline text-xl _b_active`}
+                              className={`inline text-xl _b_active`}
                               onClick={() => setReviewstar(4)}
                             />
                           ) : (
                             <IoMdStarOutline
-                              className={tw`inline text-xl _b_active`}
+                              className={`inline text-xl _b_active`}
                               onClick={() => setReviewstar(4)}
                             />
                           )}
                           {reviewstar >= 5 ? (
                             <IoMdStar
-                              className={tw`inline text-xl _b_active`}
+                              className={`inline text-xl _b_active`}
                               onClick={() => setReviewstar(5)}
                             />
                           ) : (
                             <IoMdStarOutline
-                              className={tw`inline text-xl _b_active`}
+                              className={`inline text-xl _b_active`}
                               onClick={() => setReviewstar(5)}
                             />
                           )}

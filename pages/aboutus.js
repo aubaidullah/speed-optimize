@@ -3,7 +3,7 @@ import Link from "next/link";
 import { GrClose } from "react-icons/gr";
 // import { Modal } from 'react-bootstrap';
 import { useState } from "react";
-import { tw } from "twind";
+
 import * as Constants from "../components/Constants";
 import dynamic from "next/dynamic";
 
@@ -17,7 +17,7 @@ const Privacy = () => {
   return (
     <>
       <Nav />
-      <section className={tw`md:px-14 custom-font t_box`}>
+      <section className={`md:px-14 custom-font t_box`}>
         <div>
           <div className="terms-inner-section">
             <center className="mt-4">
@@ -33,7 +33,7 @@ const Privacy = () => {
 
             <div className="row gy-4 mt-3 mb-5">
               <div className="col-md-4">
-                <div className={tw`about-popup cursor-pointer`}>
+                <div className={`about-popup cursor-pointer`}>
                   <span
                     onClick={() => setFirst(!first)}
                     className="_box_shadow"
@@ -49,7 +49,7 @@ const Privacy = () => {
                 </div>
               </div>
               <div className="col-md-4">
-                <div className={tw`about-popup cursor-pointer`}>
+                <div className={`about-popup cursor-pointer`}>
                   <span
                     onClick={() => setSecond(!second)}
                     className="_box_shadow"
@@ -65,7 +65,7 @@ const Privacy = () => {
                 </div>
               </div>
               <div className="col-md-4">
-                <div className={tw`about-popup cursor-pointer`}>
+                <div className={`about-popup cursor-pointer`}>
                   <span
                     onClick={() => setThird(!third)}
                     className="_box_shadow"
@@ -82,7 +82,7 @@ const Privacy = () => {
               </div>
             </div>
 
-            <div className={tw`p-4`}>
+            <div className={`p-4`}>
               <h4 className="text-center text-uppercase mb-4 fw-bold fs-6">
                 About Us
               </h4>
@@ -112,7 +112,7 @@ const Privacy = () => {
               </p>
             </div>
 
-            <div className={tw`terma-box _box_shadow bg-white my-5 p-5`}>
+            <div className={`terma-box _box_shadow bg-white my-5 p-5`}>
               <h4 className="text-center text-uppercase my-4 fw-bold fs-6">
                 Team
               </h4>
@@ -124,7 +124,7 @@ const Privacy = () => {
               </p>
             </div>
 
-            <div className={tw`terma-box _box_shadow bg-white my-5 p-5`}>
+            <div className={`terma-box _box_shadow bg-white my-5 p-5`}>
               <h4 className="text-center text-uppercase my-4 fw-bold fs-6">
                 Founder
               </h4>
@@ -135,7 +135,7 @@ const Privacy = () => {
               </p>
             </div>
 
-            <div className={tw`terma-box _box_shadow bg-white my-5 p-5`}>
+            <div className={`terma-box _box_shadow bg-white my-5 p-5`}>
               <h4 className="text-center text-uppercase my-4 fw-bold fs-6">
                 Sales Team
               </h4>
@@ -146,7 +146,7 @@ const Privacy = () => {
               </p>
             </div>
 
-            <div className={tw`terma-box _box_shadow bg-white my-5 p-5`}>
+            <div className={`terma-box _box_shadow bg-white my-5 p-5`}>
               <h4 className="text-center text-uppercase my-4 fw-bold fs-6">
                 B.D. Team
               </h4>
@@ -158,7 +158,7 @@ const Privacy = () => {
               </p>
             </div>
 
-            <div className={tw`terma-box _box_shadow bg-white my-5 p-5`}>
+            <div className={`terma-box _box_shadow bg-white my-5 p-5`}>
               <h4 className="text-center text-uppercase my-4 fw-bold fs-6">
                 Tech Team
               </h4>
@@ -170,7 +170,7 @@ const Privacy = () => {
               </p>
             </div>
 
-            <div className={tw`terma-box _box_shadow bg-white my-5 p-5`}>
+            <div className={`terma-box _box_shadow bg-white my-5 p-5`}>
               <h4 className="text-center text-uppercase my-4 fw-bold fs-6">
                 Content & SEO
               </h4>
@@ -183,7 +183,7 @@ const Privacy = () => {
               </p>
             </div>
 
-            <div className={tw`terma-box _box_shadow bg-white my-5 p-5`}>
+            <div className={`terma-box _box_shadow bg-white my-5 p-5`}>
               <h4 className="text-center text-uppercase my-4 fw-bold fs-6">
                 Career
               </h4>

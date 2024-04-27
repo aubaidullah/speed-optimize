@@ -14,7 +14,7 @@ import Link from "next/link";
 // import LeadForm from './leadform'
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { tw } from "twind";
+
 import { Carousel } from "react-responsive-carousel";
 import { createDetailUrl, imgNameByUrl, jpgToWebp } from "./fun";
 import dynamic from "next/dynamic";
@@ -64,7 +64,7 @@ const Package = ({ index, item, POPUPFORM }) => {
   return (
     <>
       {/* <Link href={"/holidays/detail"}> */}
-      <a className={`flex flex-col`}>
+      <div className={`flex flex-col w-full`}>
         <div
           className="pack_box rounded-lg hover:shadow-lg transition-shadow"
           key={item.id}
@@ -87,8 +87,8 @@ const Package = ({ index, item, POPUPFORM }) => {
                 {/* holidays/shimla-chandigarh-tour-package-110/ */}
                 {/* holidays/eastern-delight-tour-package-191 */}
                 {/* <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true}> */}
-                <div className={tw`flex flex-wrap`}>
-                  <div className={tw`w-full lg:w-1/3`}>
+                <div className={`flex flex-wrap`}>
+                  <div className={`w-full lg:w-1/3`}>
                     <div className={`_row ov_auto desk_display_none mb-2`}>
                       <div className="flt_left">
                         <div>
@@ -187,13 +187,11 @@ const Package = ({ index, item, POPUPFORM }) => {
                       {/* <img src={item.images.split("~")[0]}/> */}
                     </div>
                   </div>
-                  {/* <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true}></Link> */}
 
-                  {/* <div> */}
                   <Link
                     href={`${url}`}
                     as={`${url}`}
-                    className={tw`w-full lg:w-2/3 px-0 lg:px-2`}
+                    className={`w-full lg:w-2/3 px-0 lg:px-2`}
                   >
                     {/* <a href={`${url}`}> */}
                     <div href={`${url}`}>
@@ -202,7 +200,7 @@ const Package = ({ index, item, POPUPFORM }) => {
                           <div className="flt_left">
                             <div>
                               <h2
-                                className={`pack_title text-xl text-gray-500`}
+                                className={`text-xl text-gray-500 font-bold`}
                               >
                                 {item.name}
                               </h2>
@@ -614,7 +612,7 @@ const Package = ({ index, item, POPUPFORM }) => {
             </div>
           </div>
         </div>
-      </a>
+      </div>
       {/* </Link> */}
 
       {sendquery ? (

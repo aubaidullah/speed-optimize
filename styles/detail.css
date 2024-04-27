@@ -375,7 +375,7 @@ a {
   margin-left: 30px;
 }
 
-._details_ h4::before {
+/* ._details_ h4::before {
   left: -38px !important;
 }
 ._details_ h4::before {
@@ -387,7 +387,7 @@ a {
   height: 15.4px;
   border-radius: 15.4px;
   left: -57px;
-}
+} */
 
 ._details_ h4 {
   font-weight: 600;

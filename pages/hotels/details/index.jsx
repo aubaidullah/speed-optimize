@@ -1,4 +1,4 @@
-import { tw } from "twind";
+
 import client from "../../../components/Graphql/service";
 import {
   getHotelDetail,
@@ -49,10 +49,10 @@ const HotelDetail = ({ hotel, meta }) => {
   var userRating = [];
   var i = 0;
   for (i; i < Math.floor(parseFloat(hotel.hotel.ratings)); i++) {
-    userRating.push(<BsStarFill key={i} className={tw`d_icon_size inline`} />);
+    userRating.push(<BsStarFill key={i} className={`d_icon_size inline`} />);
   }
   if (hotel.hotel.ratings.length != 1) {
-    userRating.push(<BsStarHalf key={i} className={tw`d_icon_size inline`} />);
+    userRating.push(<BsStarHalf key={i} className={`d_icon_size inline`} />);
   }
 
   const bread = {
@@ -137,22 +137,22 @@ const HotelDetail = ({ hotel, meta }) => {
 
       <Nav />
       <BreadCrumbs bread={bread} />
-      <section className={tw`container`}>
+      <section className={`container`}>
         <div className="title_listing_">
-          <h1 className={tw`text-2xl font-bold`}>{hotel.hotel.name}</h1>
+          <h1 className={`text-2xl font-bold`}>{hotel.hotel.name}</h1>
         </div>
         <div>
-          <div className={tw`flex items-center rating mb-4`}>
+          <div className={`flex items-center rating mb-4`}>
             <div className="_inline__">{userRating}</div>
-            <div className={tw`pl-1 _inline__`}>
-              <span className={tw`text-sm inline`}>
+            <div className={`pl-1 _inline__`}>
+              <span className={`text-sm inline`}>
                 4.5 <BsDot className="inline" /> 26 Rating
               </span>
             </div>
           </div>
           <div className={``}>
-            <div className={tw`flex flex-wrap`}>
-              <div className={tw`w-full lg:w-2/3`}>
+            <div className={`flex flex-wrap`}>
+              <div className={`w-full lg:w-2/3`}>
                 <div className="slider_details" id="gallery">
                   <div className="carousel-root slider_banner slider_overlay">
                     <div className="carousel carousel-slider">
@@ -184,14 +184,14 @@ const HotelDetail = ({ hotel, meta }) => {
                   </div>
                 </div>
               </div>
-              <div className={tw`w-full lg:w-1/3`}>
-                <div className={tw`flex-col ml-5 h-full`} id="right-gallery">
+              <div className={`w-full lg:w-1/3`}>
+                <div className={`flex-col ml-5 h-full`} id="right-gallery">
                   {hotel.hotel.images.split(",").map((e, index) => {
                     return hotel.hotel.images.split(",")[index + 1] !=
                       undefined &&
                       hotel.hotel.images.split(",")[index + 1].length > 5 ? (
                       <div
-                        className={tw`h-[50%] ${
+                        className={`h-[50%] ${
                           index > 1 ? "hidden" : "block"
                         } ${index == 1 ? "pt-2" : "pb-2"}`}
                       >
@@ -208,7 +208,7 @@ const HotelDetail = ({ hotel, meta }) => {
                             {hotel.hotel.images ? (
                               <div>
                                 <Image
-                                  className={tw`ht_img rounded-[8px]`}
+                                  className={`ht_img rounded-[8px]`}
                                   src={
                                     // e
                                     jpgToWebp({
@@ -222,7 +222,7 @@ const HotelDetail = ({ hotel, meta }) => {
                                 />
                                 {index == 1 ? (
                                   <div
-                                    className={tw`absolute text-white right-[10px] bottom-6 lg:bottom-2`}
+                                    className={`absolute text-white right-[10px] bottom-6 lg:bottom-2`}
                                   >
                                     <button className="btn_listing bg-white normal-case">
                                       Show all{" "}
@@ -249,11 +249,11 @@ const HotelDetail = ({ hotel, meta }) => {
             </div>
           </div>
 
-          <div className={tw`flex flex-wrap mt-8`}>
-            <div className={tw`w-full lg:w-2/3`}>
+          <div className={`flex flex-wrap mt-8`}>
+            <div className={`w-full lg:w-2/3`}>
               <div>
-                <div className={tw`flex flex-wrap`}>
-                  <div className={tw`w-full`}>
+                <div className={`flex flex-wrap`}>
+                  <div className={`w-full`}>
                     <div>
                       <h2 className="_titles_">About the place</h2>
                       <div className="Shape_42">
@@ -267,34 +267,34 @@ const HotelDetail = ({ hotel, meta }) => {
               </div>
 
               <div>
-                <div className={tw`flex flex-wrap mt-8`}>
-                  <div className={tw`w-full`}>
+                <div className={`flex flex-wrap mt-8`}>
+                  <div className={`w-full`}>
                     <div>
                       <h2 className="_titles_">Select Rooms</h2>
                       {/* <Rooms rooms={hotel.rooms} selectedRoom={selectedRoom} selectRoom={selectRoom}/> */}
                     </div>
                   </div>
-                  <div className={tw`w-full lg:w-1/3`}></div>
+                  <div className={`w-full lg:w-1/3`}></div>
                 </div>
 
-                <div className={tw`flex mt-8`}>
+                <div className={`flex mt-8`}>
                   <div>
                     <h2 className="_titles_">Amenities</h2>
                     <div className="Shape_42">
-                      <div className={tw`flex flex-wrap`}>
+                      <div className={`flex flex-wrap`}>
                         {hotel.hotel.amenities.split(",").map((e, index) => {
                           if (amlimit > index) {
                             return (
-                              <div className={tw`w-1/2 lg:w-1/4 mb-3`}>
-                                <div className={tw`flex`}>
+                              <div className={`w-1/2 lg:w-1/4 mb-3`}>
+                                <div className={`flex`}>
                                   <div>
                                     <BsCheckCircle
                                       color="#44c554"
-                                      className={tw`inline`}
+                                      className={`inline`}
                                     />
                                   </div>
-                                  <div className={tw`pl-2`}>
-                                    <span className={tw`text-gray-600 f12`}>
+                                  <div className={`pl-2`}>
+                                    <span className={`text-gray-600 f12`}>
                                       {e}
                                     </span>
                                   </div>
@@ -304,9 +304,9 @@ const HotelDetail = ({ hotel, meta }) => {
                           }
                         })}
                         {amlimit == 8 ? (
-                          <div className={tw`w-full text-right`}>
+                          <div className={`w-full text-right`}>
                             <span
-                              className={tw`_plus_more`}
+                              className={`_plus_more`}
                               onClick={() => setAmlimit(1000)}
                             >
                               load more
@@ -321,33 +321,33 @@ const HotelDetail = ({ hotel, meta }) => {
                 </div>
 
                 {hotel.policy ? (
-                  <div className={tw`flex flex-wrap mt-8`}>
-                    <div className={tw`w-full`}>
+                  <div className={`flex flex-wrap mt-8`}>
+                    <div className={`w-full`}>
                       <div>
                         <h2 className="_titles_">Cancellation Policy</h2>
                         <div className="Shape_42">
-                          <div className={tw`mb-2`}>
-                            <span className={tw`font-bold`}>
+                          <div className={`mb-2`}>
+                            <span className={`font-bold`}>
                               100% refund of amount paid{" "}
                             </span>{" "}
                             if cancel at least 7 days before check-in
                           </div>
-                          <div className={tw`mb-2`}>
-                            <span className={tw`font-bold`}>
+                          <div className={`mb-2`}>
+                            <span className={`font-bold`}>
                               {100 - hotel.policy[0]?.amt1}% refund of amount
                               paid{" "}
                             </span>{" "}
                             if cancel at least {hotel.policy[0]?.dayTo1} days
                             before check-in
                           </div>
-                          <div className={tw`mb-2`}>
-                            <span className={tw`font-bold`}>
+                          <div className={`mb-2`}>
+                            <span className={`font-bold`}>
                               No refund of amount paid{" "}
                             </span>{" "}
                             if cancel at least {hotel.policy[0]?.dayFrom2} days
                             before check-in
                           </div>
-                          <div className={tw`mb-2`}>
+                          <div className={`mb-2`}>
                             <span>
                               Free cancellation deadlines are in the property's
                               timezone.
@@ -356,7 +356,7 @@ const HotelDetail = ({ hotel, meta }) => {
                         </div>
                       </div>
                     </div>
-                    <div className={tw`w-full lg:w-1/3`}></div>
+                    <div className={`w-full lg:w-1/3`}></div>
                   </div>
                 ) : (
                   ""
@@ -364,12 +364,12 @@ const HotelDetail = ({ hotel, meta }) => {
               </div>
 
               <div>
-                <div className={tw`flex flex-wrap mt-8`}>
-                  <div className={tw`w-full`}>
+                <div className={`flex flex-wrap mt-8`}>
+                  <div className={`w-full`}>
                     <div>
                       <h2 className="_titles_">Term & Conditions</h2>
                       <div className="Shape_42">
-                        <ul className={tw`list-disc ml-4 hotel_tnc`}>
+                        <ul className={`list-disc ml-4 hotel_tnc`}>
                           {hotel.hotel.tnc.split(",").map((e, index) => {
                             return <li key={index}>{e}</li>;
                           })}
@@ -381,8 +381,8 @@ const HotelDetail = ({ hotel, meta }) => {
               </div>
             </div>
 
-            <div className={tw`w-full lg:w-1/3`}>
-              <div className={tw`w-full h_sticky`}>
+            <div className={`w-full lg:w-1/3`}>
+              <div className={`w-full h_sticky`}>
                 <RightContent
                   hotel={hotel}
                   selectedHotel={selectedHotel}
