@@ -15,23 +15,8 @@ const nextConfig = {
       "kiomoi.vercel.app",
       "localhost"
     ],
-    // remotePatterns: [
-    //   {
-    //     protocol: 'https',
-    //     hostname: 'res.cloudinary.com',
-    //   },
-    // ],
   },
-
-//   async rewrites() {
-//     return [
-//       {
-//         source: '/:path*',
-//         destination: '/',
-//       },
-//     ];
-// },
-
+  
   async redirects() {
     return [
       {
@@ -392,15 +377,8 @@ const nextConfig = {
 
       // destination_karde.htm
     ];
-  },
+  },  
 };
 
-// const withBundleAnalyzer = require('@next/bundle-analyzer')({
-//   enabled: process.env.ANALYZE === 'true',
-// })
+export default nextConfig;
 
-// module.exports = withBundleAnalyzer({})
-
-// module.exports = withBundleAnalyzer({nextConfig})
-
-module.exports = nextConfig;

@@ -6,7 +6,7 @@ import {
   getMetaQuery,
 } from "../../../components/Graphql/Queries";
 // import BreadCrumbs from "../../../components/breadcrumbs"
-import { tw } from "twind";
+
 // import Articles from "../../../components/home/articles"
 import { toTitleCase } from "../../../components/fun";
 import dynamic from "next/dynamic";
@@ -112,9 +112,9 @@ const TravelArticle = ({ data, article, meta }) => {
 
         </span> */}
         <h1 className={`text-2xl font-bold`} itemProp="headline">{data.article.heading}</h1>
-        <div className={tw`w-full lg:w-2/3`}>
+        <div className={`w-full lg:w-2/3`}>
           <div className={`mt-6`}>
-            <div className={tw`flex flex-wrap services_listing`}>
+            <div className={`flex flex-wrap services_listing`}>
               {data.article.tags?.split(",").map((item, index) => {
                 return (
                   <div className="btn_view_more mr-[10px]" key={index + 1}>

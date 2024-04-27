@@ -15,7 +15,7 @@ import axios from "axios";
 import { FaRupeeSign } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { tw } from "twind";
+
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import {
@@ -107,7 +107,7 @@ const Nav = () => {
       <nav
         data-aos="fade-down"
         id="navbar"
-        className={tw`shadow-sm_ navbar-dflt`}
+        className={`shadow-sm_ navbar-dflt`}
       >
         {showLogin ? (
           <Login show={showLogin} setShowLogin={setShowLogin} />
@@ -115,9 +115,9 @@ const Nav = () => {
         {!showSearch ? (
          
          
-         <div className={tw`container h-full`}>
+         <div className={`container h-full`}>
           <div className={`flex justify-between items-center h-full`}>
-                <div className={tw`flex items-center lg:gap-16`}>
+                <div className={`flex items-center lg:gap-16`}>
                   <div>
                     <Link href={"/"}>
                       {/* <img className="brand-logo" src={`${router.pathname=='/'? `${Constants.assets_api}/public/icons/download.png`:`${Constants.assets_api}/public/icons/kiomoi.png`}`}/> */}
@@ -128,7 +128,7 @@ const Nav = () => {
                       />
                     </Link>                  
                   </div>
-                  <div className={tw`hidden lg:flex items-center gap-2 lg:gap-10`}>
+                  <div className={`hidden lg:flex items-center gap-2 lg:gap-10`}>
                     <Link href={"/holidays"}>
                       <div
                         className="c_it"
@@ -187,7 +187,7 @@ const Nav = () => {
 
                 </div>
 
-                <div className={tw`flex items-center gap-6 lg:gap-10 cursor-pointer`}>
+                <div className={`flex items-center gap-6 lg:gap-10 cursor-pointer`}>
                   <div
                       className="_item _flt_left"
                       onClick={() => SetshowSearch(true)}
@@ -199,22 +199,22 @@ const Nav = () => {
                       />
                     </div>
 
-                    <div className={tw``}>
+                    <div className={``}>
                     {
                       Cookies.get('userid')
                       ?
                       
                       
                       // <Link >
-                        <div className={tw`relative c_it`}>
+                        <div className={`relative c_it`}>
                           <FaRegUser
                             className="c_it m-auto"
                             onClick={() => setOp(!op)}
                             size={"20px"}
                           />  
                           <span className="nav-text">{Cookies.get("username")}</span>
-                          {/* <div className={tw` font-semibold text-slate-600`} onClick={() => setOp(!op)}>{Cookies.get("username")}</div> */}
-                          <div className={tw`absolute bg-white shadow-xl top-7 border-2 ${!op?'hidden':''}`}>
+                          {/* <div className={` font-semibold text-slate-600`} onClick={() => setOp(!op)}>{Cookies.get("username")}</div> */}
+                          <div className={`absolute bg-white shadow-xl top-7 border-2 ${!op?'hidden':''}`}>
                             <Link href={'/accounts'}>
                               <div className=" border-b-2 px-4 py-2 font-semibold text-slate-700"> Profile </div>
                             </Link>
@@ -223,7 +223,7 @@ const Nav = () => {
                         </div>
                       
                       :<div>
-                        <div className={tw`lg:flex lg:items-center lg:gap-2 lg:border-2 lg:border-gray-300 hover:border-[#f06726] lg:rounded-full lg:px-3 lg:py-2 text-[#a7a7a7] hover:text-[#f06726] cursor-pointer`} onClick={() => setShowLogin(!showLogin)}>
+                        <div className={`_lgn_btn lg:flex lg:items-center lg:gap-2 lg:border-2 lg:border-gray-300 lg:rounded-full lg:px-3 lg:py-2 cursor-pointer`} onClick={() => setShowLogin(!showLogin)}>
                           <span className="_c_it hidden lg:flex">Login</span>
                           <FaRegUser
                               // className="c_it"
@@ -238,7 +238,7 @@ const Nav = () => {
                     
                   </div>   
 
-                  <div className={tw`block lg:hidden mr-3`}>
+                  <div className={`block lg:hidden mr-3`}>
                     {collapse ? (
                       <AiOutlineClose
                         className="c_it"
@@ -257,11 +257,11 @@ const Nav = () => {
                   </div>             
                 </div>
                 <div
-              className={tw`drop_down ${collapse ? "block" : "hidden"}`}
+              className={`drop_down ${collapse ? "block" : "hidden"}`}
               style={{ top: "49px" }}
             >
               <Link href={"/holidays"}>
-                <div className={tw`flex drop_item items-center`}>
+                <div className={`flex drop_item items-center`}>
                   <img
                     alt="trips"
                     src={
@@ -274,7 +274,7 @@ const Nav = () => {
                 </div>
               </Link>
               <Link href={"/travel-guide"}>
-                <div className={tw`flex drop_item items-center`}>
+                <div className={`flex drop_item items-center`}>
                   <img
                     alt="explore"
                     src={
@@ -287,7 +287,7 @@ const Nav = () => {
                 </div>
               </Link>
               <Link href={"/hotels"}>
-                <div className={tw`flex drop_item items-center`}>
+                <div className={`flex drop_item items-center`}>
                   <img
                     alt="stays"
                     src={
@@ -308,7 +308,7 @@ const Nav = () => {
 
         ) : (
           <div>
-            <div className={tw`container relative`}>
+            <div className={`container relative`}>
               {
                 !loading ? (
                   <HiOutlineSearch className="s_icon" size={"20px"} />
@@ -328,18 +328,18 @@ const Nav = () => {
                 placeholder="Search anything..."
               />
             </div>
-            <section className={tw`drop_down container`}>
+            <section className={`drop_down container`}>
               <div>
                 {result?.packages?.map((e, index) => (
                   <div key={index} onClick={() => setSearchkey("")}>
                     <Link href={createDetailUrl({ name: e?.name, id: e?.id })}>
-                      <div className={tw`hover:bg-[#fde2df] drop_item`}>
+                      <div className={`hover:bg-[#fde2df] drop_item`}>
                         <div className="d_content">
                           <div className="flt_left">
                             <span className="s_name">{e?.name}</span>
                           </div>
                           <div className="flt_right">
-                            <FaRupeeSign className={tw`d_price inline`} />
+                            <FaRupeeSign className={`d_price inline`} />
                             <span className="d_price">{e?.price / 100}</span>
                             <BsDot className={`inline d_price`} />
                             <span className="n_d">
@@ -369,7 +369,7 @@ const Nav = () => {
                     return (
                       <div key={index} onClick={() => setSearchkey("")}>
                         <Link href={url}>
-                          <div className={tw`hover:bg-[#fde2df] drop_item`}>
+                          <div className={`hover:bg-[#fde2df] drop_item`}>
                             <div className="s_name d_content">
                               Tours in {e?.name}
                             </div>
@@ -388,7 +388,7 @@ const Nav = () => {
                         ?.replace(/\s+/g, "-")
                         .toLowerCase()}-${e?.id}`}
                     >
-                      <div className={tw`hover:bg-[#fde2df] drop_item`}>
+                      <div className={`hover:bg-[#fde2df] drop_item`}>
                         <div className="s_name d_content">{e?.name}</div>
                       </div>
                     </Link>
@@ -400,7 +400,7 @@ const Nav = () => {
                       href={createArticleURL({ heading: e?.name, id: e?.id })}
                       // href={`/travel-stories-${e?.heading?.replace(/\s+/g, "-").toLowerCase()}-${e?.geoName?.replace(/\s+/g, "-").toLowerCase()}/${e?.id}`}
                     >
-                      <div className={tw`hover:bg-[#fde2df] drop_item`}>
+                      <div className={`hover:bg-[#fde2df] drop_item`}>
                         <div className="s_name d_content">{e?.name}</div>
                       </div>
                     </Link>
@@ -424,13 +424,13 @@ const Nav = () => {
                     <div key={index} onClick={() => setSearchkey("")}>
                       {/* {e?.geotype === 'CITY' ? (
                                             <Link href={statebycity}>
-                                                <div className={tw`hover:bg-[#fde2df] drop_item`}>
+                                                <div className={`hover:bg-[#fde2df] drop_item`}>
                                                     <div className="s_name d_content">Tours in {e?.name}</div>
                                                 </div>
                                             </Link>
                                         ) : null} */}
                       <Link href={url}>
-                        <div className={tw`hover:bg-[#fde2df] drop_item`}>
+                        <div className={`hover:bg-[#fde2df] drop_item`}>
                           <div className="s_name d_content">{e?.name}</div>
                         </div>
                       </Link>

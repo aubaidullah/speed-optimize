@@ -10,7 +10,7 @@ const SinglePack = ({ item, aurl, i, userRating }) => {
     <>
       <Link href={aurl} key={i}>
         <div href={aurl}>
-          <div className={`col-sm-12 col-xs-12 pl-[15px] pr-[15px]`}>
+          <div className={`col-sm-12 col-xs-12 pl-[15px] pr-[15px]`} style={{paddingLeft:'15px',paddingRight:'15px'}}>
             <div className={`top_rated_box _st_box _tr_box bg-white`}>
               <div className="des_img">
                 <Image
@@ -71,6 +71,8 @@ const SinglePack = ({ item, aurl, i, userRating }) => {
                     {/* <span className="_list_p" style={{display:'none'}}>{item.percent}% Off</span> */}
                     <div className={`text-right`}>
                       <FaRupeeSign
+                        color="#999"
+                        // style={{color:'#999'}}
                         className={`inline text-[#999] text-[12px] mb-[4px]`}
                       />
                       <del>

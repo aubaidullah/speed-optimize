@@ -1,4 +1,4 @@
-import { tw } from "twind";
+
 import DatePicker from "@amir04lm26/react-modern-calendar-date-picker";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { FaRegUser } from "react-icons/fa";
@@ -101,29 +101,29 @@ const _SearchBar = ({ img }) => {
   console.log(router);
   return (
     <>
-      <div className={tw`mt-4`}>
+      <div className={`mt-4`}>
         <div>
-          <div className={tw`flex_`}>
-            <h2 className={tw`_titles_ text-white`}>
+          <div className={`flex_`}>
+            <h2 className={`_titles_ text-white`}>
               Search Home Stay For Your Date
             </h2>
             <div
-              className={tw`flex flex-wrap bg-slate-100/40 Shape_42 border-0`}
+              className={`flex flex-wrap bg-slate-100/40 Shape_42 border-0`}
               // style={{
               // // background:'rgba(251, 250, 250, .3)',
               // border:'none'}}
             >
-              <div className={tw`w-full lg:w-1/4 lg:px-2 mb-2`}>
+              <div className={`w-full lg:w-1/4 lg:px-2 mb-2`}>
                 <div>
                   <input
                     type={"text"}
                     value={searchkey}
                     // value={searchkey}
-                    className={tw`form-control h50 text-capitalize relative`}
+                    className={`form-control h50 text-capitalize relative`}
                     placeholder="Search for a destination"
                     onChange={(event) => HandleSearch(event.target.value)}
                   />
-                  <section className={tw`drop_down container d_htl`}>
+                  <section className={`drop_down container d_htl`}>
                     <div>
                       {result?.cities?.map((e, index) =>
                         index < 10 ? (
@@ -136,7 +136,7 @@ const _SearchBar = ({ img }) => {
                                   setId(e.id);
                               }}
                             >
-                              <div className={tw`hover:bg-[#fde2df] drop_item`}>
+                              <div className={`hover:bg-[#fde2df] drop_item`}>
                                 <div className="d_content">
                                   <div className="flt_left">
                                     <span className="s_name">{e?.name}</span>
@@ -154,15 +154,15 @@ const _SearchBar = ({ img }) => {
                 </div>
               </div>
 
-              <div className={tw`w-full lg:w-3/4`}>
-                <div className={tw`flex flex-wrap items-center`}>
-                  <div className={tw`w-full lg:w-1/3 lg:px-2 mb-2`}>
-                    <div className={tw`flex`}>
-                      <div className={tw`relative z-[2]`}>
+              <div className={`w-full lg:w-3/4`}>
+                <div className={`flex flex-wrap items-center`}>
+                  <div className={`w-full lg:w-1/3 lg:px-2 mb-2`}>
+                    <div className={`flex`}>
+                      <div className={`relative z-[2]`}>
                         <img
                           src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`}
                           alt="calendar"
-                          className={tw`inline ht_cal_icon`}
+                          className={`inline ht_cal_icon`}
                         />
                         <div className="ht_label">Check-in</div>
                         <DatePicker
@@ -174,11 +174,11 @@ const _SearchBar = ({ img }) => {
                           required
                         />
                       </div>
-                      <div className={tw`relative z-[2]`}>
+                      <div className={`relative z-[2]`}>
                         <img
                           src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`}
                           alt="calendar"
-                          className={tw`inline ht_cal_icon`}
+                          className={`inline ht_cal_icon`}
                         />
                         <div className="ht_label">Check-out</div>
                         <DatePicker
@@ -192,9 +192,9 @@ const _SearchBar = ({ img }) => {
                       </div>
                     </div>
                   </div>
-                  <div className={tw`w-full lg:w-1/3 px-0 lg:px-2 mb-2`}>
-                    <div className={tw``}>
-                      <div className={tw`relative`}>
+                  <div className={`w-full lg:w-1/3 px-0 lg:px-2 mb-2`}>
+                    <div className={``}>
+                      <div className={`relative`}>
                         <FaRegUser className="ht_cal_icon" size={"20px"} />
                         <select className="form-control h50 ht_select">
                           <option value="">2 Travellers, 1 Room</option>
@@ -210,11 +210,11 @@ const _SearchBar = ({ img }) => {
                       </div>
                     </div>
                   </div>
-                  <div className={tw`w-full lg:w-1/3 lg:px-2 mb-2`}>
+                  <div className={`w-full lg:w-1/3 lg:px-2 mb-2`}>
                     <Link
                       href={`/hotels/hotel-in-${searchkey?.toLowerCase()}-${id}/`}
                     >
-                      <button className={tw`btn_listing _btn_clr h50 w-full`}>
+                      <button className={`btn_listing _btn_clr h50 w-full`}>
                         Search
                       </button>
                     </Link>
@@ -231,13 +231,13 @@ const _SearchBar = ({ img }) => {
 
 const SearchBar = ({ img }) => {
   return (
-    <div className={tw`relative`}>
-      {/* <img className={tw`w-full object-cover h-[400px] brightness-[75%]`} alt="banner" src={img}/> */}
-      <div className={tw`w-full object-cover h-[400px] brightness-[75%]`}>
+    <div className={`relative`}>
+      {/* <img className={`w-full object-cover h-[400px] brightness-[75%]`} alt="banner" src={img}/> */}
+      <div className={`w-full object-cover h-[400px] brightness-[75%]`}>
         <Image src={img} layout="fill" loading="lazy" alt={img} />
       </div>
       <div className="_container">
-        <div className={tw`mt-4 bt-0 lg:bottom-20 absolute left-0 right-0`}>
+        <div className={`mt-4 bt-0 lg:bottom-20 absolute left-0 right-0`}>
           <div className="container">
             <_SearchBar img={img} />
           </div>

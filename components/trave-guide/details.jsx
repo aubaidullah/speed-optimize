@@ -3,7 +3,7 @@
 import { IoLocationSharp } from "react-icons/io5";
 // import client from "../Graphql/service";
 // import { getTravelGuideDetail, getTravelPackage, getTravelHotel, getarticleQuery, getQnaQuery } from "../Graphql/Queries";
-import { tw } from "twind";
+
 import { useState, useEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { BsDot } from "react-icons/bs";
@@ -159,7 +159,8 @@ const TravelGuideDetailComp = ({
           <img
             src={`${Constants.assets_api}/public/icons/${icon}`}
             alt="icon"
-            className={`inline h-[15.7px]`}
+            className={`inline`}
+            style={{height:'15.7px'}}
           />
         </div>
         <div className={`ml-4`}>
@@ -176,18 +177,18 @@ const TravelGuideDetailComp = ({
   const NearBy = ({e,index}) =>{
     return <>
     
-    <div className={tw`w-1/2`} key={index}>
+    <div className={`w-1/2`} key={index}>
       <Link href={type==='STATE'?createTGStateURL({city:e.name, id:e.tgid}):createTGCityURL({city:e.name, id:e.tgid})}>
         {/* <Image /> */}
         <div className="pb-2">
-          <div className={tw`relative h-[100px] mx-2 pb-4`}>
+          <div className={`relative h-[100px] mx-2 pb-4`}>
             <CustomImage 
               img_url={e.images }
               // alt={imgNameByUrl({ url: img.i })}
               className={`img rounded-[8px]`}            
             />
           </div>
-          <div className={tw`ml-2`}>
+          <div className={`ml-2`}>
               {e.name}
           </div>
         </div>
@@ -277,8 +278,8 @@ const TravelGuideDetailComp = ({
           </ul>
         </div>
 
-        <div className={tw`flex flex-wrap`}>
-          <div className={tw`w-full lg:w-2/3`}>
+        <div className={`flex flex-wrap`}>
+          <div className={`w-full lg:w-2/3`}>
             <div className="slider_details">
               <Carousel
                 showArrows={true}
@@ -303,8 +304,8 @@ const TravelGuideDetailComp = ({
               </Carousel>
             </div>
           </div>
-          <div className={tw`w-full lg:w-1/3`}>
-            <div className={tw`pl-0 lg:pl-6 `}>
+          <div className={`w-full lg:w-1/3`}>
+            <div className={`pl-0 lg:pl-6 `}>
               <div className="_b_right_list_1">
                 <div className="_asia_india">
                   <div className={`flex justify-between`}>
@@ -499,7 +500,7 @@ const TravelGuideDetailComp = ({
                         ) : (
                           <>
                             <FaRupeeSign
-                              className={`inline text-[#f79421] text-[15px] mb-[4px]`}
+                              className={`inline rupee mb-[4px]`}
                             />
                             {data.mincost / 100}/-
                           </>
@@ -567,7 +568,7 @@ const TravelGuideDetailComp = ({
           </span>
         </span>
 
-        <div className={tw`flex flex-wrap`}>
+        <div className={`flex flex-wrap`}>
           <div className={`mt-4 w-full lg:w-2/3`}>
             <div>
               <h2 className={"_titles_"}>Overview</h2>
@@ -609,7 +610,7 @@ const TravelGuideDetailComp = ({
                       ""
                     )
                   ) : data?.attn?.length > 0? (
-                    <div className={tw`flex_ justify-between_`}>
+                    <div className={`flex_ justify-between_`}>
                       <h2 className={`text-xl font-bold`}>
                         Top Cities in {data?.tg?.cityName}
                       </h2>
@@ -752,14 +753,14 @@ const TravelGuideDetailComp = ({
           </div>
           <div className={`mt-4 w-full lg:w-1/3`}>
             
-              <div className={tw`lg:pl-6`}>
+              <div className={`lg:pl-6`}>
                 
                 {
                   data?.stg || data?.ctg? <>
                     <h2 className="_titles_ pl-2">{data.tg.cityName} Nearby {type==='STATE'?"States":"Cities"}  </h2>                
                   </>:""
                 }
-                <div className={tw`flex flex-wrap pt-2`}>
+                <div className={`flex flex-wrap pt-2`}>
                   
                   {
                     

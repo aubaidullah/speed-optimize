@@ -1,8 +1,8 @@
 // import { Collapse } from 'react-bootstrap';
-import ReactHtmlParser from "react-html-parser";
 import { useState } from "react";
-import { tw } from "twind";
+
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import ParseHtml from "../parseToHtml";
 
 const Tabs = ({ title, desc, clps = null }) => {
   const [collapse, setCollapse] = useState(clps);
@@ -33,7 +33,7 @@ const Tabs = ({ title, desc, clps = null }) => {
                     collapse === null ? setCollapse(true) : setCollapse(null)
                   }
                 >
-                  <div className={tw`flex justify-between`}>
+                  <div className={`flex justify-between`}>
                     <div>{title}</div>
                     {collapse ? <AiOutlineMinus /> : <AiOutlinePlus />}
                   </div>
@@ -44,9 +44,9 @@ const Tabs = ({ title, desc, clps = null }) => {
             <div in={collapse}>
               <div className="panel-collapse">
                 <div
-                  className={tw`${collapse ? "block" : "hidden"} panel-body`}
+                  className={`${collapse ? "block" : "hidden"} panel-body`}
                 >
-                  <div>{ReactHtmlParser(desc)}</div>
+                  <div>{ParseHtml({text:desc})}</div>
                 </div>
               </div>
             </div>

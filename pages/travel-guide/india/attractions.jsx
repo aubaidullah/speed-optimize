@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { tw } from "twind";
+
 import { IoLocationSharp } from "react-icons/io5";
 import { CgCheckO } from "react-icons/cg";
 import { AiOutlineCloseCircle } from "react-icons/ai";
@@ -134,16 +134,16 @@ const Attraction = ({ data, meta }) => {
   ));
 
   const rightBlock = ({ icon, heading, desc }) => (
-    <div className={tw`flex`}>
+    <div className={`flex`}>
       <div>
         <img
           src={`${Constant.assets_api}/public/icons/${icon}`}
           alt="icons"
-          className={tw`inline h-[15.7px]`}
+          className={`inline h-[15.7px]`}
         />
       </div>
-      <div className={tw`ml-2`}>
-        <div className={tw`t_12px font-bold`}>{heading}</div>
+      <div className={`ml-2`}>
+        <div className={`t_12px font-bold`}>{heading}</div>
         <div className="t_12px">{desc}</div>
       </div>
     </div>
@@ -214,10 +214,10 @@ const Attraction = ({ data, meta }) => {
       <BreadCrumbs bread={bread} />
 
       <section className="container">
-        <h1 className={tw`text-2xl font-bold pb-3`}>{data.atn.name}</h1>
+        <h1 className={`text-2xl font-bold pb-3`}>{data.atn.name}</h1>
 
-        <div className={tw`flex flex-wrap`}>
-          <div className={tw`w-full lg:w-2/3`}>
+        <div className={`flex flex-wrap`}>
+          <div className={`w-full lg:w-2/3`}>
             <div>
               <Carousel
                 showArrows={true}
@@ -238,30 +238,30 @@ const Attraction = ({ data, meta }) => {
               </Carousel>
             </div>
           </div>
-          <div className={tw`w-full lg:w-1/3`}>
-            <div className={tw`pl-0 lg:pl-6 mt-6 lg:mt-0`}>
+          <div className={`w-full lg:w-1/3`}>
+            <div className={`pl-0 lg:pl-6 mt-6 lg:mt-0`}>
               <div className="_b_right_list_1">
                 <div className="_asia_india">
-                  <div className={tw`flex justify-between`}>
+                  <div className={`flex justify-between`}>
                     <div>
                       <IoLocationSharp className="inline" />
                       {data.atn.cityName}
-                      <BsDot className={tw`inline`} /> India
+                      <BsDot className={`inline`} /> India
                     </div>
                     <div className="cir_bg">{data.city.ratings}/5</div>
                   </div>
                 </div>
-                <div className={tw`p-2`}>
-                  <div className={tw`bg-white pb-2`}>
-                    <div className={tw`flex justify-between`}>
-                      <div className={tw`w-full lg:1/2`}>
+                <div className={`p-2`}>
+                  <div className={`bg-white pb-2`}>
+                    <div className={`flex justify-between`}>
+                      <div className={`w-full lg:1/2`}>
                         {rightBlock({
                           icon: `plane_icon.png`,
                           heading: "NearBy Airport",
                           desc: data.city.nearbyAirport,
                         })}
                       </div>
-                      <div className={tw`w-full lg:1/2`}>
+                      <div className={`w-full lg:1/2`}>
                         {rightBlock({
                           icon: "calender_multi_clr.png",
                           heading: "Best Season",
@@ -273,16 +273,16 @@ const Attraction = ({ data, meta }) => {
                 </div>
               </div>
               <div className="_b_right_list_1">
-                <div className={tw`p-2`}>
-                  <div className={tw`bg-white pb-2`}>
-                    <div className={tw`flex justify-between`}>
-                      <div className={tw`w-full lg:1/2`}>
+                <div className={`p-2`}>
+                  <div className={`bg-white pb-2`}>
+                    <div className={`flex justify-between`}>
+                      <div className={`w-full lg:1/2`}>
                         <p>
                           <MdCheckCircle className="inline text-[#15be03] mr-[5px]" />
                           <span className="t_12px">Part Payment Available</span>
                         </p>
                       </div>
-                      <div className={tw`w-full lg:1/2`}>
+                      <div className={`w-full lg:1/2`}>
                         <p>
                           <MdCheckCircle className="inline text-[#15be03] mr-[5px]" />
                           <span className="t_12px">
@@ -296,42 +296,42 @@ const Attraction = ({ data, meta }) => {
               </div>
             </div>
           </div>
-          <div className={tw`w-full lg:w-2/3 mt-3`}>
+          <div className={`w-full lg:w-2/3 mt-3`}>
             <div className="_b_right_list_1">
-              <div className={tw`bg-white p-3`}>
-                <div className={tw`flex justify-between`}>
-                  <div className={tw`w-full lg:1/2`}>
+              <div className={`bg-white p-3`}>
+                <div className={`flex justify-between`}>
+                  <div className={`w-full lg:1/2`}>
                     <ul>
-                      <li className={tw`m-4`}>
+                      <li className={`m-4`}>
                         <b>Visiting Time : </b>
                         <span>
                           {data.atn.openingTime} Hrs- {data.atn.closingTime} Hrs
                         </span>
                       </li>
-                      <li className={tw`m-4`}>
+                      <li className={`m-4`}>
                         <b>Ideal Duration : </b>
                         <span>{data.atn.idealDuration} </span>
                       </li>
-                      <li className={tw`m-4`}>
+                      <li className={`m-4`}>
                         <b>Best for : </b>
                         <span>{data.atn.theme}</span>
                       </li>
-                      <li className={tw`m-4`}>
+                      <li className={`m-4`}>
                         <b>Distance from City Centre : </b>
                         <span>{data.atn.distance}</span>
                       </li>
-                      <li className={tw`m-4`}>
+                      <li className={`m-4`}>
                         <b>Local Transport Mode : </b>
                         <span>{data.atn.transportation}</span>
                       </li>
                     </ul>
                   </div>
-                  <div className={tw`w-full lg:1/2`}>
+                  <div className={`w-full lg:1/2`}>
                     <ul>
-                      <li className={tw`m-4`}>
+                      <li className={`m-4`}>
                         <b>Entry Ticket : </b>
                       </li>
-                      <li className={tw`m-4`}>
+                      <li className={`m-4`}>
                         <span>
                           <b>Adult :</b>
                         </span>
@@ -341,7 +341,7 @@ const Attraction = ({ data, meta }) => {
                         </span>
                         <span>INR {data.atn.childTicketCost}</span>
                       </li>
-                      <li className={tw`m-4`}>
+                      <li className={`m-4`}>
                         <span>
                           <b>Student :</b>
                         </span>
@@ -351,10 +351,10 @@ const Attraction = ({ data, meta }) => {
                         </span>
                         <span>INR {data.atn.foreignerTicketCost}</span>
                       </li>
-                      <li className={tw`m-4`}>
+                      <li className={`m-4`}>
                         <b>Latitude :</b> <span> {data.atn.lat}</span>
                       </li>
-                      <li className={tw`m-4`}>
+                      <li className={`m-4`}>
                         <b>Longitude :</b>
                         <span> {data.atn.lng}</span>
                       </li>
@@ -365,8 +365,8 @@ const Attraction = ({ data, meta }) => {
             </div>
             {
               overview?<>
-                <h2 className={tw`text-xl font-bold ms-1 my-3`}>Overview</h2>
-                <div className={tw``}>
+                <h2 className={`text-xl font-bold ms-1 my-3`}>Overview</h2>
+                <div className={``}>
                   <div className="Shape_42">
                     <ParseHtml text={overview} />
                     {/* {ReactHtmlParser(overview)} */}
@@ -387,13 +387,13 @@ const Attraction = ({ data, meta }) => {
             {facility?.map(({ icon, color, text, available }, index) => (
               <div
                 key={index}
-                className={tw`Shape_42 p-3 my-3 border-1 border-gray-400/25`}
+                className={`Shape_42 p-3 my-3 border-1 border-gray-400/25`}
               >
-                <div className={tw`flex justify-between`}>
+                <div className={`flex justify-between`}>
                   <div
-                    className={tw`flex gap-4 font-semibold text-lg items-center`}
+                    className={`flex gap-4 font-semibold text-lg items-center`}
                   >
-                    <div className={tw`text-3xl ms-3 text-[${color}]`}>
+                    <div className={`text-3xl ms-3 text-[${color}]`}>
                       {icon === "check" ? (
                         <CgCheckO />
                       ) : icon === "cross" ? (
@@ -404,7 +404,7 @@ const Attraction = ({ data, meta }) => {
                     </div>
                     {text}
                   </div>
-                  <div className={tw`text-lg text-[${color}]`}>{available}</div>
+                  <div className={`text-lg text-[${color}]`}>{available}</div>
                 </div>
               </div>
             ))}

@@ -1,4 +1,4 @@
-import { tw } from "twind";
+
 import Link from "next/link";
 import { IoLocationSharp } from "react-icons/io5";
 import {
@@ -16,25 +16,25 @@ const IMG = ({ e, index, url, type }) => {
   const {asPath} = useRouter()
   return (
     <>
-      <div className={tw`w-full lg:w-1/3`} key={index}>
+      <div className={`w-full lg:w-1/3`} key={index}>
         {/* <img src={e.i} /> */}
-        <div className={tw`p-2`}>
+        <div className={`p-2`}>
           <div>
             <div
-              className={tw`pl_img_ bg-white rounded-t-lg rounded-b-lg shadow-md`}
+              className={`pl_img_ bg-white rounded-t-lg rounded-b-lg shadow-md`}
             >
-              <div className={tw`p-2`}>
-                <div className={tw`flex justify-between items-center`}>
+              <div className={`p-2`}>
+                <div className={`flex justify-between items-center`}>
                   <div
-                    className={tw` text-[18px] font-semibold text-slate-700`}
+                    className={` text-[18px] font-semibold text-slate-700`}
                   >
                     <span itemProp="position">{index + 1}</span>. <span itemProp="name">{e.name}</span>
                   </div>
                   {e.ratings ? <div className="cir_bg">{e.ratings}/5</div> : ""}
                 </div>
               </div>
-              <div className={tw`pl_img relative`}>
-                <Image src={e.images} className={tw` rounded-lg_`} fill />
+              <div className={`pl_img relative`}>
+                <Image src={e.images} className={` rounded-lg_`} fill />
               </div>
               <div>
                 <div className={`p-2 bg-white rounded-b-2xl`}>
@@ -181,9 +181,9 @@ const P_Cities = ({ data, start = undefined, end = undefined }) => {
 
   return (
     <>
-      <div className={tw`flex_ flex-wrap_`}>
+      <div className={`flex_ flex-wrap_`}>
         {data?.state ? (
-          <div className={tw`flex flex-wrap`}>
+          <div className={`flex flex-wrap`}>
             {start === undefined && end == undefined
               ? data.ctg.map((e, index) => {
                   // let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
@@ -210,12 +210,12 @@ const P_Cities = ({ data, start = undefined, end = undefined }) => {
               return (
                 <>
                   <h3
-                    className={tw`text-xl font-bold mt-8 border-b border-gray-500 _b_active`}
+                    className={`text-xl font-bold mt-8 border-b border-gray-500 _b_active`}
                   >
                     {" "}
                     Popular destinations in {key} India{" "}
                   </h3>
-                  <div className={tw`flex flex-wrap pt-2`}>
+                  <div className={`flex flex-wrap pt-2`}>
                     {Object(groups)[key].map((e, index) => {
                       let url = createTGStateURL({ city: e.name, id: e.tgid });
                       return (
@@ -227,7 +227,7 @@ const P_Cities = ({ data, start = undefined, end = undefined }) => {
               );
             })}
             {/* <h2 className={`h text-xl font-bold pb-2 _b_active mt-8`}> Top {data?.ctg?.length} Sightseeing Places in {data?.tg?.cityName}</h2>
-                    <div className={tw`flex flex-wrap`}>
+                    <div className={`flex flex-wrap`}>
                         {
                             data.ctg.map((e,index)=>{
                                 let url = createTGCityURL({city:e.name,id:e.tgid})
@@ -244,7 +244,7 @@ const P_Cities = ({ data, start = undefined, end = undefined }) => {
           //     return <IMG index={index} e={e} url={url} type={data.tp}/>
 
           // })
-          <div className={tw`flex flex-wrap`}>
+          <div className={`flex flex-wrap`}>
             {data.attn.map((e, index) => {
               // createAttractionsURL
               let url = createAttractionsURL({

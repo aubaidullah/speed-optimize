@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import ReactHtmlParser from "react-html-parser";
 import { MdCheckCircle, MdCancel, MdOutlineFlight } from "react-icons/md";
 import { FaBinoculars } from "react-icons/fa";
-import { tw } from "twind";
+
 import { GiBinoculars } from "react-icons/gi";
 import { IoCarSportOutline, IoFastFoodOutline } from "react-icons/io5";
 import { RiHotelLine } from "react-icons/ri";
 // import { FaQs } from "react-icons/fa"
 // import FAQs from "../list/faqs"
 import dynamic from "next/dynamic";
+import ParseHtml from "../parseToHtml";
 
 const FAQs = dynamic(() => import("../list/faqs"));
 
@@ -54,19 +54,19 @@ const Content = ({ data }) => {
         {/* <meta itemprop="name" content={item.heading} />
         <meta itemprop="description" content={item.desc} /> */}
         <div
-          className={tw`Shape_42 _details_ _50m _hover _box_shadow p-0`}
+          className={`Shape_42 _details_ _hover _box_shadow p-0`}
           data-toggle="tooltip"
           data-placement="left"
           title={t}
         >
-          <h4 className={tw`pt-[10px] pr-[10px] pb-0 pl-[10px] mb-0`}>
+          <h4 className={`pt-[10px] pr-[10px] pb-0 pl-[10px] mb-0`}>
             Day {c}: {item.heading}
           </h4>
-          <p className={tw`p-[10px] mb-[10px]`}>{item.desc}</p>
-          <div className={tw`Shape_53 text-sm p-[10px] relative`}>
-            <div className={tw`flex`}>
-              <div className={tw`_location_ flex gap-[10px]`}>
-                <FaBinoculars className={tw`text-[17px]`} />
+          <p className={`p-[10px] mb-[10px]`}>{item.desc}</p>
+          <div className={`Shape_53 text-sm p-[10px] relative`}>
+            <div className={`flex`}>
+              <div className={`_location_ flex gap-[10px]`}>
+                <FaBinoculars className={`text-[17px]`} />
                 {/* <i className="fa fa-binoculars" aria-hidden="true"></i>{" "} */}
                 <p>
                   {item.attractions.replace(/#/g, " - ").replace(/\//g, " ")}{" "}
@@ -112,7 +112,7 @@ const Content = ({ data }) => {
         <td>
           <div className="">
             <div className="_city_name_ inline">{hn}</div>
-            <div className={tw`text-[0.8em] inline`}>/similar</div>
+            <div className={`text-[0.8em] inline`}>/similar</div>
           </div>
         </td>
       </tr>
@@ -190,19 +190,19 @@ const Content = ({ data }) => {
     <>
       <section className="inclusions">
         <div className="_container">
-          <div className={tw`flex flex-wrap`}>
-            <div className={tw`w-full`}>
+          <div className={`flex flex-wrap`}>
+            <div className={`w-full`}>
               <div className="inclusion">
                 <div className="col-sm-12">
                   <h4 className="_titles_">Inclusions</h4>
                 </div>
-                <div className={tw`Shape_42 pt-[10px] pb-[10px]`}>
+                <div className={`Shape_42 pt-[10px] pb-[10px]`}>
                   <div className="icons-meal-info d_icons-meal-info">
                     <div className="_div">
                       <div>
-                        <div className={tw`flex text-center`}>
+                        <div className={`flex text-center`}>
                           <MdOutlineFlight
-                            className={tw`h-6 ml-auto mr-auto text-[#c6c5c5]`}
+                            className={`h-6 ml-auto mr-auto text-[#c6c5c5]`}
                             size={20}
                           />
                         </div>
@@ -212,9 +212,9 @@ const Content = ({ data }) => {
 
                     <div className="_div">
                       <div>
-                        <div className={tw`flex text-center`}>
+                        <div className={`flex text-center`}>
                           <IoCarSportOutline
-                            className={tw`h-6 ml-auto mr-auto`}
+                            className={`h-6 ml-auto mr-auto`}
                             size={20}
                           />
                         </div>
@@ -224,9 +224,9 @@ const Content = ({ data }) => {
 
                     <div className="_div">
                       <div>
-                        <div className={tw`flex text-center`}>
+                        <div className={`flex text-center`}>
                           <IoFastFoodOutline
-                            className={tw`h-6 ml-auto mr-auto`}
+                            className={`h-6 ml-auto mr-auto`}
                             size={20}
                           />
                         </div>
@@ -236,9 +236,9 @@ const Content = ({ data }) => {
 
                     <div className="_div">
                       <div>
-                        <div className={tw`flex text-center`}>
+                        <div className={`flex text-center`}>
                           <RiHotelLine
-                            className={tw`h-6 ml-auto mr-auto`}
+                            className={`h-6 ml-auto mr-auto`}
                             size={20}
                           />
                         </div>
@@ -249,9 +249,9 @@ const Content = ({ data }) => {
                     <div className="_div">
                       <div>
                         {/* GiBinoculars */}
-                        <div className={tw`flex text-center`}>
+                        <div className={`flex text-center`}>
                           <GiBinoculars
-                            className={tw`h-6 ml-auto mr-auto`}
+                            className={`h-6 ml-auto mr-auto`}
                             size={20}
                           />
                         </div>
@@ -263,9 +263,11 @@ const Content = ({ data }) => {
 
                 {overview?.length > 0 ? (
                   <div className="_blank" id="overview">
-                    <h4 className="_titles_">Overview</h4>
+                    <h2 className="_titles_">About the tour package</h2>
                     <div className="Shape_42">
-                      <p itemProp="description">{ReactHtmlParser(overview)}</p>
+                      <p itemProp="description">
+                        {ParseHtml({text:overview})}
+                        </p>
                       <div className="text-right">
                         {overviewlimit == 150 || overviewlimit == 200 ? (
                           <a
@@ -296,14 +298,7 @@ const Content = ({ data }) => {
                   // itemScope
                 >
                   {/* <meta itemprop="name" content={data.package.name} /> */}
-                  <h4 className="_titles_">Itinerary</h4>
-                  <div
-                    className={
-                      data?.itn.length > 5
-                        ? "line_design_increaseheight"
-                        : "line_design"
-                    }
-                  ></div>
+                  <h3 className="_titles_">Itinerary</h3>
                   {itnRender}
                 </div>
 
@@ -311,13 +306,13 @@ const Content = ({ data }) => {
                   <div className="_list_accomodation">
                     <h4 className="_titles_">Hotel Accomodation</h4>
                     <table
-                      className={tw`table-auto w-full table-hover acc_table mt-4`}
+                      className={`table-auto w-full table-hover acc_table mt-4`}
                     >
                       <thead>
                         <tr>
-                          <th className={tw`algin-middle_`}>City</th>
-                          <th className={tw`algin-middle_`}>No. Of Nights</th>
-                          <th className={tw`algin-middle_`}>Hotel</th>
+                          <th className={`algin-middle_`}>City</th>
+                          <th className={`algin-middle_`}>No. Of Nights</th>
+                          <th className={`algin-middle_`}>Hotel</th>
                         </tr>
                       </thead>
                       <tbody>{hotelRender}</tbody>
@@ -333,7 +328,7 @@ const Content = ({ data }) => {
                         return (
                           <li key={i}>
                             <MdCheckCircle
-                              className={tw`inline text-[#15be03]`}
+                              className={`inline text-[#0d8d06]`}
                             />{" "}
                             <span>{item}</span>
                           </li>
@@ -350,7 +345,7 @@ const Content = ({ data }) => {
                       {data?.package.exclusions.split("#").map((item, i) => {
                         return (
                           <li key={i}>
-                            <MdCancel className={tw`inline text-[#fb050b]`} />{" "}
+                            <MdCancel className={`inline text-[#fb050b]`} />{" "}
                             <span>{item}</span>
                           </li>
                         );
@@ -368,7 +363,7 @@ const Content = ({ data }) => {
                   <div className="_pay_policy">
                     <h4 className="_titles_">
                       Cancellation Policy
-                      <span className={tw`text-[12px] font-light`}>
+                      <span className={`text-[12px] font-light`}>
                         (Apply on total Package cost)
                       </span>
                     </h4>
@@ -382,7 +377,7 @@ const Content = ({ data }) => {
                 {faqsinfo.length ? (
                   <div>
                     {/* <span></span> */}
-                    <div className="_titles_">FAQs</div>
+                    <h4 className="_titles_">FAQs</h4>
                     <FAQs data={faqsinfo} detail={true} />
                   </div>
                 ) : (
@@ -392,9 +387,8 @@ const Content = ({ data }) => {
                 <div className="hotel_accomodation mt-6" id="tnc">
                   <div className="_list_accomodation">
                     <h4 className="_titles_">Terms & Conditions</h4>
-                    <ul className={tw`tnc_d text-sm mt-[30px] mr-0 mb-0`}>
-                      {ReactHtmlParser(tnc)}
-
+                    <ul className={`tnc_d text-sm mt-[30px] mr-0 mb-0`}>
+                      {ParseHtml({text:tnc})}
                       <div className="text-right">
                         {tnclimit == 253 || tnclimit == 253 ? (
                           <a
@@ -421,8 +415,8 @@ const Content = ({ data }) => {
               </div>
             </div>
 
-            {/* <div className={tw`w-full lg:w-1/3 lg:pl-6`}>
-                  <div className={tw`bets_price pl-0`}>
+            {/* <div className={`w-full lg:w-1/3 lg:pl-6`}>
+                  <div className={`bets_price pl-0`}>
                     <div className="_best_price_list">
                       <h4>Best Price Guaranteed</h4>
                       <p>

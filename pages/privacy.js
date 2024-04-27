@@ -1,4 +1,4 @@
-import { tw } from "twind";
+
 import * as Constants from "../components/Constants";
 
 import dynamic from "next/dynamic";
@@ -8,7 +8,7 @@ const Privacy = () => {
   return (
     <>
       <Nav />
-      <section className={tw`md:px-14 custom-font t_box`}>
+      <section className={`md:px-14 custom-font t_box`}>
         <div>
           <div className="terms-inner-section">
             <center className="mt-4">
@@ -23,7 +23,7 @@ const Privacy = () => {
             </h4>
             <center className="text-center mt-3 mb-4 fs-2">Privacy</center>
 
-            <div className={tw`terma-box _box_shadow bg-white p-5`}>
+            <div className={`terma-box _box_shadow bg-white p-5`}>
               <p>
                 Your privacy is very important to Kiomoi.com. That's why we've
                 provided this Privacy Policy, which gives you an insight into
@@ -43,7 +43,7 @@ const Privacy = () => {
                 We use Personal Information in order to provide and enhance the
                 Products or Services offered on our Site
               </h4>
-              <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
+              <ul className={`list-disc terms_condition px-3 text-[14px]`}>
                 <li>
                   To issue invoices, administer accounts, collect and process
                   payments.
@@ -65,7 +65,7 @@ const Privacy = () => {
                 From time to time, we may disclose your Personal Information as
                 follows:
               </h4>
-              <ul className={tw`list-disc terms_condition px-3 text-[14px]`}>
+              <ul className={`list-disc terms_condition px-3 text-[14px]`}>
                 <li>
                   To those travel service providers with which you make
                   arrangements through our Site, for example, airlines, car

@@ -158,6 +158,16 @@ nav {
   height: 20px;
 }
 
+._lgn_btn{
+  color: #a7a7a7;
+}
+
+._lgn_btn:hover{
+  border-color: #f06726;
+  color: #f06726;
+}
+
+
 @media (max-width: 480px) {
   .right_icons .item {
     padding: 15px 10px 15px 15px;

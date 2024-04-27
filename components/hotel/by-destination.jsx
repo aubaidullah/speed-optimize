@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { imgNameByUrl, jpgToWebp } from "../fun";
-import { tw } from "twind";
+
 import CustomImage from "../Img";
 
 const MultiCarousel2 = dynamic(() => import("react-multi-carousel"));
@@ -43,7 +43,7 @@ const HotelByDestination = ({ data }) => {
       carouselState: { currentSlide },
     } = rest;
     return (
-      <div className={tw`hidden lg:carousel-button-group lg:block `}>
+      <div className={`hidden lg:carousel-button-group lg:block `}>
         <button
           className={`${currentSlide === 0 ? "disable" : ""} left-custom-btn`}
           onClick={() => previous()}
@@ -57,20 +57,20 @@ const HotelByDestination = ({ data }) => {
     const hurl = `/hotels/hotel-in-${item.cname?.toLowerCase()}-${item.cid}/`;
     return (
       <div>
-        <div className={tw`pr-8`}>
+        <div className={`pr-8`}>
           <Link href={hurl}>
             <div href={hurl}>
-              <h4 className={tw`text-center pb-2 font-bold`}>{item.cname}</h4>
+              <h4 className={`text-center pb-2 font-bold`}>{item.cname}</h4>
               <div className="des_img_hotel">
                 <CustomImage 
                   img_url={jpgToWebp({ uri: item.iurl })} 
-                  className={tw`h-full w-[100px]`}
+                  className={`h-full w-[100px]`}
                   alt={imgNameByUrl({ url: item.iurl })}
                   />
                 {/* {item.iurl ? (
                   <Image
                     src={jpgToWebp({ uri: item.iurl })}
-                    className={tw`h-full w-[100px]`}
+                    className={`h-full w-[100px]`}
                     alt={imgNameByUrl({ url: item.iurl })}
                     layout="fill"
                   />
@@ -86,8 +86,8 @@ const HotelByDestination = ({ data }) => {
   });
 
   return (
-    <div className={tw`mt-4`}>
-      <h2 className={tw`_titles_ mb-4`}>Browse by Destination</h2>
+    <div className={`mt-4`}>
+      <h2 className={`_titles_ mb-4`}>Browse by Destination</h2>
       <div className="Shape_42 relative">
         <div className="clearfix"></div>
         <MultiCarousel2

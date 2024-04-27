@@ -6,12 +6,11 @@ import { FaRegQuestionCircle } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
 import swal from "sweetalert";
 import axios from "axios";
-import { tw } from "twind";
+
 import dynamic from "next/dynamic";
 // import Guest from '../../components/guest';
 // import { QNALoading } from '../components/skeleton_l';
 // import * as Constants from "../Constants";
-// import ReactHtmlParser from "react-html-parser";
 // import BreadCrumbs from '../breadcrumbs';
 // import Nav from '../Nav';
 // import ParseHtml from '../parseToHtml';
@@ -163,7 +162,7 @@ const QnaListing = ({ data, travelGuide }) => {
       >
         {/* <main className={`main _listing_page _70`}> */}
         {travelGuide == false ? <BreadCrumbs bread={bread} /> : ""}
-        <div className={tw`container text-left`}>
+        <div className={`container text-left`}>
           {/* <div className='qna-box'>
                     <div>
                         <h4>{data[0]?.geoname} QnA</h4>
@@ -177,23 +176,23 @@ const QnaListing = ({ data, travelGuide }) => {
                     </div>
                 </div> */}
 
-          <div className={tw`mt-4 qna-box`}>
-            <div className={tw`flex justify-between`}>
+          <div className={`mt-4 qna-box`}>
+            <div className={`flex justify-between`}>
               <div>
-                <h4 className={tw`text-xl font-bold`}>
+                <h4 className={`text-xl font-bold`}>
                   {data[0]?.geoname} QnA
                 </h4>
-                <p className={tw`text-[12px] text-[#999]`}>
+                <p className={`text-[12px] text-[#999]`}>
                   YOUR QUERIES AND ANSWERS
                 </p>
               </div>
               <div>
                 <a
-                  className={tw`btn_view_more _logo_clr flex flex-wrap items-center`}
+                  className={`btn_view_more _logo_clr flex flex-wrap items-center`}
                   onClick={() => setOpen(!open)}
                 >
-                  <FaRegQuestionCircle className={tw`text-[13px]`} />
-                  <div className={tw`ml-2`}> Ask a Question</div>
+                  <FaRegQuestionCircle className={`text-[13px]`} />
+                  <div className={`ml-2`}> Ask a Question</div>
                 </a>
               </div>
             </div>
@@ -215,10 +214,10 @@ const QnaListing = ({ data, travelGuide }) => {
                     // itemType="https://schema.org/Question_"
                   >
                     <div className="question">
-                      <div className={tw`flex gap-10`}>
+                      <div className={`flex gap-10`}>
                         <div>
                           <AiOutlinePlus
-                            className={tw`cursor-pointer text-[17px] text-grey-500`}
+                            className={`cursor-pointer text-[17px] text-grey-500`}
                             onClick={() =>
                               collapse === index
                                 ? setCollapse(null)
@@ -227,7 +226,7 @@ const QnaListing = ({ data, travelGuide }) => {
                           />
                         </div>
                         <p
-                          className={tw`text-[#606060] text-[15px]`}
+                          className={`text-[#606060] text-[15px]`}
                           itemProp="name"
                         >
                           {/* {ReactHtmlParser(e.question)} */}
@@ -250,18 +249,18 @@ const QnaListing = ({ data, travelGuide }) => {
                       </div>
                     </div>
                     <div in={collapse === index ? true : false}>
-                      <div className={tw`ml-[40px]`}>
-                        <div className={tw`mt-[25px]`}>
-                          <div className={tw`flex`}>
+                      <div className={`ml-[40px]`}>
+                        <div className={`mt-[25px]`}>
+                          <div className={`flex`}>
                             <div className="coment_photo">
                               <div
-                                className={tw`h-[50px] w-[50px] rounded-[50px] flex bg-[#${Math.floor(
+                                className={`h-[50px] w-[50px] rounded-[50px] flex bg-[#${Math.floor(
                                   Math.random() * 16777215,
                                 ).toString(16)}]`}
                                 // style={{ height: '50px', width: '50px', borderRadius: '50px', background: `#${Math.floor(Math.random() * 16777215).toString(16)}`, display: 'flex' }}
                               >
                                 <span
-                                  className={tw`block text-center text-[30px] text-white ml-[15px] self-center`}
+                                  className={`block text-center text-[30px] text-white ml-[15px] self-center`}
                                   // style={{ display: 'block', textAlign: 'center', alignSelf: 'center', fontSize: '30px', color: 'white', marginLeft: '15px' }}
                                 >
                                   {e.username[0].toUpperCase()}
@@ -269,36 +268,36 @@ const QnaListing = ({ data, travelGuide }) => {
                               </div>
                               {/* <img src={require("../assets/coment_photo.png")} alt="" /> */}
                             </div>
-                            <div className={tw`ml-10px self-center`}>
+                            <div className={`ml-10px self-center`}>
                               <div
-                                className={tw`text-grey-500 text-[13px] font-bold uppercase`}
+                                className={`text-grey-500 text-[13px] font-bold uppercase`}
                               >
                                 {e.username}
                               </div>
-                              <div className={tw`text-[11px] text-[#606060]`}>
+                              <div className={`text-[11px] text-[#606060]`}>
                                 Asked on {e.createdDate}
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div className={tw`ml-[25px] mt-[50px]`}>
+                        <div className={`ml-[25px] mt-[50px]`}>
                           <div>
-                            <div className={tw`overflow-auto`}>
-                              <div className={tw`float-left`}>
+                            <div className={`overflow-auto`}>
+                              <div className={`float-left`}>
                                 <span
-                                  className={tw`text-[13px] text-[#606060]`}
+                                  className={`text-[13px] text-[#606060]`}
                                 >
                                   Reply
                                 </span>
                               </div>
-                              <div className={tw`float-left mt-[7px] mr-[5px]`}>
+                              <div className={`float-left mt-[7px] mr-[5px]`}>
                                 <span>
                                   <FiCornerRightDown />
                                 </span>
                               </div>
                             </div>
                             <div>
-                              <div className={tw`text-[#606060]`}>
+                              <div className={`text-[#606060]`}>
                                 <meta
                                   // itemProp="answerCount"
                                   content={e?.replies?.length}
@@ -307,47 +306,47 @@ const QnaListing = ({ data, travelGuide }) => {
                                   return (
                                     <>
                                       <div
-                                        className={tw`mb-[30px]`}
+                                        className={`mb-[30px]`}
                                         // itemProp="acceptedAnswer"
                                         // itemScope
                                         // itemType="https://schema.org/Answer"
                                       >
                                         <div
-                                          className={tw`bg-white p-[10px] rounded-[5px] text-left border-1 border-solid border-[#eaeaea]`}
+                                          className={`bg-white p-[10px] rounded-[5px] text-left border-1 border-solid border-[#eaeaea]`}
                                           // itemProp="text"
                                         >
                                           {/* {ReactHtmlParser(rp.replyText)} */}
                                           <ParseHtml text={rp.replyText} />
                                         </div>
                                         <div>
-                                          <div className={tw`mt-10px`}>
+                                          <div className={`mt-10px`}>
                                             <div className="flex">
                                               {/* <div className="coment_photo">
                                                                                         <img src={require("../assets/coment_photo.png")} alt="" />
                                                                                     </div> */}
 
                                               <div
-                                                className={tw`flex h-[50px] w-[50px] rounded-[50px] bg-[#${Math.floor(
+                                                className={`flex h-[50px] w-[50px] rounded-[50px] bg-[#${Math.floor(
                                                   Math.random() * 16777215,
                                                 ).toString(16)}]`}
                                               >
                                                 <span
-                                                  className={tw`block text-center self-center text-[30px] text-white ml-[15px]`}
+                                                  className={`block text-center self-center text-[30px] text-white ml-[15px]`}
                                                 >
                                                   {rp.username[0].toUpperCase()}
                                                 </span>
                                               </div>
 
                                               <div
-                                                className={tw`ml-[10px] self-center`}
+                                                className={`ml-[10px] self-center`}
                                               >
                                                 <div
-                                                  className={tw`text-gray-500 font-bold text-[13px] uppercase`}
+                                                  className={`text-gray-500 font-bold text-[13px] uppercase`}
                                                 >
                                                   {rp?.username}
                                                 </div>
                                                 <div
-                                                  className={tw`text-[11px] text-[#606060]`}
+                                                  className={`text-[11px] text-[#606060]`}
                                                 >
                                                   Replied on {e.createdDate}
                                                 </div>
@@ -375,12 +374,12 @@ const QnaListing = ({ data, travelGuide }) => {
       <div className="query" show={open} animation={false} backdrop="static">
         <div>
           <span
-            className={tw`float-right text-black`}
+            className={`float-right text-black`}
             // style={{ float: "right", color: "black" }}
             onClick={() => setOpen(!open)}
             aria-hidden="true"
           >
-            <GrClose className={tw`cursor-pointer`} />
+            <GrClose className={`cursor-pointer`} />
           </span>
           <div>
             <form onSubmit={handleQuestionSubmit}>
@@ -399,7 +398,7 @@ const QnaListing = ({ data, travelGuide }) => {
                   <div className="form-group">
                     <textarea
                       name="question"
-                      className={tw`form-control h-[200px]`}
+                      className={`form-control h-[200px]`}
                       required
                       value={question ? question : ""}
                       onChange={(e) => setQuestion(e.target.value)}

@@ -1,5 +1,5 @@
 // import Nav from "../../components/HomeNav"
-import { tw } from "twind";
+
 import { useState, useEffect } from "react";
 import client from "../../components/Graphql/service";
 import { getHotelList, getMetaQuery } from "../../components/Graphql/Queries";
@@ -105,11 +105,11 @@ const Hotels = ({ data, meta }) => {
       <SearchBar img={bimg} />
       <BreadCrumbs bread={bread} />
       <section className="container">
-        <div className={tw`mt-4`}></div>
+        <div className={`mt-4`}></div>
 
         <HotelByDestination data={data} />
-        {/* <div className={tw`mt-4`}>
-            <h2 className={tw`_titles_ mb-4`}>Browse by Destination</h2>
+        {/* <div className={`mt-4`}>
+            <h2 className={`_titles_ mb-4`}>Browse by Destination</h2>
             <div className="Shape_42 relative">
             <div className="clearfix"></div>
                 <MultiCarousel2
@@ -131,8 +131,8 @@ const Hotels = ({ data, meta }) => {
             </div>
         </div> */}
 
-        <div className={tw`mt-4 inline`}>
-          <h2 className={tw`_titles_ mb-4`}>Explore</h2>
+        <div className={`mt-4 inline`}>
+          <h2 className={`_titles_ mb-4`}>Explore</h2>
           <HotelList hotels={data.hotels} />
         </div>
       </section>

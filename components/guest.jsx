@@ -5,7 +5,7 @@ import { GrClose } from "react-icons/gr";
 import swal from "sweetalert";
 import axios from "axios";
 import * as Constants from "./Constants";
-import { tw } from "twind";
+
 import SimpleReactValidator from "simple-react-validator";
 import Modal from "./modal";
 
@@ -111,7 +111,7 @@ const Guest = (props) => {
         >
           <div>
             {/* <span
-              className={tw`float-right text-black`}
+              className={`float-right text-black`}
               // style={{
               //     float: "right",
               //     color: "black"
@@ -119,7 +119,7 @@ const Guest = (props) => {
               onClick={() => setShow(!show)}
               aria-hidden="true"
             >
-              <GrClose className={tw`cursor-pointer`} />
+              <GrClose className={`cursor-pointer`} />
             </span> */}
             <div>
               <form onSubmit={handleGuestSubmit}>
@@ -223,7 +223,7 @@ const Guest = (props) => {
         >
           <div>
             <span
-              className={tw`float-right text-black`}
+              className={`float-right text-black`}
               // style={{
               //     float: "right",
               //     color: "black"
@@ -231,7 +231,7 @@ const Guest = (props) => {
               onClick={() => setOtpModal(!otpModal)}
               aria-hidden="true"
             >
-              <GrClose className={tw`cursor-pointer`} />
+              <GrClose className={`cursor-pointer`} />
             </span>
 
             <div>

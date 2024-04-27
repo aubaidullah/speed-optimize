@@ -1,5 +1,5 @@
 // import Nav from "../components/Nav"
-import { tw } from "twind";
+
 import dynamic from "next/dynamic";
 
 const Nav = dynamic(() => import("../components/Nav"));
@@ -30,9 +30,9 @@ export default function Error410() {
     <>
       <Nav />
       <title>410 | Gone</title>
-      <div className={tw`h-screen`}>
-        <div className={tw`flex items-center h-full`}>
-          <h1 className={tw`text-3xl text-center w-full c_gray`}>Gone | 410</h1>
+      <div className={`h-screen`}>
+        <div className={`flex items-center h-full`}>
+          <h1 className={`text-3xl text-center w-full c_gray`}>Gone | 410</h1>
         </div>
       </div>
     </>

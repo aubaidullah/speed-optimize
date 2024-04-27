@@ -10,7 +10,7 @@ import client from "../../components/Graphql/service";
 // import HolidayTheme from "@/components/holidays/theme";
 // import State from "@/components/home/state";
 // import HomePackages from "@/components/home/packages";
-import { tw } from "twind";
+
 import * as Constants from "@/components/Constants";
 import Content from "@/components/holidays/content";
 import FAQs from "@/components/list/faqs";
@@ -40,11 +40,11 @@ const Meta = dynamic(() => import("@/components/meta"));
 const CanvasImg = () =>{
   return <>
     <div className="lg:mb-52 mb-16 lg:mt-32 mt-12 ">
-      <div className={tw`bg-[#A6C7EA] h-[18rem]  lg:h-80 relative`}>
-        <div className={tw`container flex lg:block flex-col justify-between h-full`}>
-          <div className={tw`flex`}>
-            <div className={tw`w-1/3`}>
-              <div className={tw`absolute top-[-6%] lg:top-[-15%]`}>
+      <div className={`bg-[#A6C7EA] h-[18rem]  lg:h-80 relative`}>
+        <div className={`container flex lg:block flex-col justify-between h-full`}>
+          <div className={`flex`}>
+            <div className={`w-1/3`}>
+              <div className={`absolute top-[-6%] lg:top-[-15%]`}>
                 <img
                     alt="icon"
                     className={`inline w-[40%] lg:w-[80%]`}
@@ -54,35 +54,35 @@ const CanvasImg = () =>{
                   />
               </div>
             </div>
-            <div className={tw`w-2/3`}>
-              <div className={tw`text-[64px] hidden lg:block`}>
-                <div className={tw`absolute text-[#A6C7EA]`} style={{top:"-24%"}}>
+            <div className={`w-2/3`}>
+              <div className={`text-[64px] hidden lg:block`}>
+                <div className={`absolute text-[#A6C7EA]`} style={{top:"-24%"}}>
                   Explore Your 
                 </div>
-                <div className={tw`text-white`}>
+                <div className={`text-white`}>
                   Best Vacation
                 </div>
               </div>
-                <div className={tw`text-white p-6`}>
+                <div className={`text-white p-6`}>
                   
-                  <div className={tw` text-[25px] lg:hidden`}>
+                  <div className={` text-[25px] lg:hidden`}>
                     Explore Your <br /> Best Vacation
                   </div>                  
-                  {/* <div className={tw`font-light`}>
+                  {/* <div className={`font-light`}>
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
                   </div> */}
-                  <div className={tw`pt-10 text-sm lg:text-lg hidden lg:block`}>
-                    <ul className={tw`flex flex-wrap`}>
-                      <li className={tw`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/kerala-tour-packages-192"}>Kerala</Link></li>
-                      <li className={tw`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/cherrapunji-tour-packages-9591"}>Cherrapunjee</Link></li>
+                  <div className={`pt-10 text-sm lg:text-lg hidden lg:block`}>
+                    <ul className={`flex flex-wrap`}>
+                      <li className={`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/kerala-tour-packages-192"}>Kerala</Link></li>
+                      <li className={`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/cherrapunji-tour-packages-9591"}>Cherrapunjee</Link></li>
 
-                      <li className={tw`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/kaziranga-tour-packages-4111"}>Kaziranga</Link></li>
-                      <li className={tw`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/tawang-tour-packages-7941"}>Tawang</Link></li>
-                      <li className={tw`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/rajasthan-tour-packages-332"}>Rajasthan</Link></li>
-                      <li className={tw`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/dwarka-tour-packages-2321"}>Dwarka</Link></li>
-                      <li className={tw`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/odisha-tour-packages-292"}>Odisha</Link></li>
-                      <li className={tw`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/udaipur-tour-packages-8261"}>Udaipur</Link></li>
-                      <li className={tw`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/puri-tour-packages-6451"}>Puri</Link></li>
+                      <li className={`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/kaziranga-tour-packages-4111"}>Kaziranga</Link></li>
+                      <li className={`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/tawang-tour-packages-7941"}>Tawang</Link></li>
+                      <li className={`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/rajasthan-tour-packages-332"}>Rajasthan</Link></li>
+                      <li className={`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/dwarka-tour-packages-2321"}>Dwarka</Link></li>
+                      <li className={`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/odisha-tour-packages-292"}>Odisha</Link></li>
+                      <li className={`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/udaipur-tour-packages-8261"}>Udaipur</Link></li>
+                      <li className={`pb-1 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/puri-tour-packages-6451"}>Puri</Link></li>
                     </ul>
                   </div>
                 </div>
@@ -90,18 +90,18 @@ const CanvasImg = () =>{
           </div>
           <div>
             {/* We need to put Links:  Kerala,  Cherrapunjee, Rajasthan,  Kashmir, Odisha, Udaipur, Puri, Dwarka, Tawang, Kaziranga */}
-          <div className={tw`p-2 text-sm lg:text-lg lg:hidden text-white`}>
-            <ul className={tw`flex flex-wrap`}>
-              <li className={tw`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/kerala-tour-packages-192"}>Kerala</Link></li>
-              <li className={tw`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/cherrapunji-tour-packages-9591"}>Cherrapunjee</Link></li>
+          <div className={`p-2 text-sm lg:text-lg lg:hidden text-white`}>
+            <ul className={`flex flex-wrap`}>
+              <li className={`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/kerala-tour-packages-192"}>Kerala</Link></li>
+              <li className={`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/cherrapunji-tour-packages-9591"}>Cherrapunjee</Link></li>
 
-              <li className={tw`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/kaziranga-tour-packages-4111"}>Kaziranga</Link></li>
-              <li className={tw`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/tawang-tour-packages-7941"}>Tawang</Link></li>
-              <li className={tw`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/rajasthan-tour-packages-332"}>Rajasthan</Link></li>
-              <li className={tw`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/dwarka-tour-packages-2321"}>Dwarka</Link></li>
-              <li className={tw`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/odisha-tour-packages-292"}>Odisha</Link></li>
-              <li className={tw`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/udaipur-tour-packages-8261"}>Udaipur</Link></li>
-              <li className={tw`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/puri-tour-packages-6451"}>Puri</Link></li>
+              <li className={`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/kaziranga-tour-packages-4111"}>Kaziranga</Link></li>
+              <li className={`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/tawang-tour-packages-7941"}>Tawang</Link></li>
+              <li className={`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/rajasthan-tour-packages-332"}>Rajasthan</Link></li>
+              <li className={`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/dwarka-tour-packages-2321"}>Dwarka</Link></li>
+              <li className={`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/odisha-tour-packages-292"}>Odisha</Link></li>
+              <li className={`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/udaipur-tour-packages-8261"}>Udaipur</Link></li>
+              <li className={`pb-2 font-bold lg:pb-4`} style={{flex:'1 33%'}}><Link href={"/holidays/puri-tour-packages-6451"}>Puri</Link></li>
             </ul>
           </div>
           </div>
@@ -116,11 +116,11 @@ const CanvasImg = () =>{
 
 const BottomBnner = () =>{
   return <>
-  <div className={tw`container my-16`}>
-    <div className={tw`bg-[#4488E0] h-80 lg:h-40 relative rounded-[5rem] lg:rounded-full`}>
+  <div className={`container my-16`}>
+    <div className={`bg-[#4488E0] h-80 lg:h-40 relative rounded-[5rem] lg:rounded-full`}>
       <div className="flex items-center h-full flex-wrap">
-        <div className={tw`w-full lg:w-1/2`}>
-              <div className={tw`absolute top-[-10%] lg:top-[-15%]`}>
+        <div className={`w-full lg:w-1/2`}>
+              <div className={`absolute top-[-10%] lg:top-[-15%]`}>
                 <img
                     alt="icon"
                     className={`lg:inline w-[80%] m-auto lg:m-0`}
@@ -130,11 +130,11 @@ const BottomBnner = () =>{
                   />
               </div>          
         </div>
-        <div className={tw`w-full lg:w-1/2`}>
-            <div className={tw`text-xl text-center `}>
-              <p className={tw`text-[#FFCC00]`}>Hassle free 24x7 travel assistance</p>
-              <div className={tw`text-white pt-4`}>
-                <p className={tw`font-bold text-2xl lg:text-2xl`}>9650687940</p>
+        <div className={`w-full lg:w-1/2`}>
+            <div className={`text-xl text-center `}>
+              <p className={`text-[#FFCC00]`}>Hassle free 24x7 travel assistance</p>
+              <div className={`text-white pt-4`}>
+                <p className={`font-bold text-2xl lg:text-2xl`}>9650687940</p>
                 <p>info@kiomoi.com</p>
               </div>
             </div>

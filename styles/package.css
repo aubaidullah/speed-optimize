@@ -4,6 +4,19 @@
   background: white;
 }
 
+
+.load_more{
+  width: max-content;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
+
+
 input.rupees_ip {
   border: none;
   background-color: transparent;
@@ -181,6 +194,12 @@ del {
   font-weight: 300;
   margin: 0px;
 }
+.price_inr svg{
+  color: #f79421;
+  font-size: 12px;
+  
+}
+
 .price_inr {
   background-image: linear-gradient(
     104deg,

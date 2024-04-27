@@ -4,7 +4,7 @@ import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { FaRupeeSign } from "react-icons/fa";
 import * as Constants from "@/components/Constants";
 import { useState, useEffect } from "react";
-import { tw } from "twind";
+
 
 const RightContent = ({
   hotel,
@@ -66,16 +66,16 @@ const RightContent = ({
 
   return (
     <>
-      <div className={tw`ml-5`}>
+      <div className={`ml-5`}>
         <div className="Shape_42">
-          <div className={tw``}>
+          <div className={``}>
             <div className="relative">
               <FaRegUser
                 className="ht_cal_icon"
                 // onClick={() => setShowLogin(!showLogin)}
                 size={"20px"}
               />
-              {/* <img src={`/icons/calender_multi_clr.png`} alt="" className={tw`inline ht_cal_icon`} /> */}
+              {/* <img src={`/icons/calender_multi_clr.png`} alt="" className={`inline ht_cal_icon`} /> */}
               <div className="ht_label">Guest</div>
               {/* <input type={'text'} className="form-control-hotel" /> */}
               <select className="form-control-hotel">
@@ -139,13 +139,13 @@ const RightContent = ({
             </div>
           </div>
 
-          <div className={tw`flex mt-3`}>
+          <div className={`flex mt-3`}>
             <div className="relative z-999">
               {/* calender_multi_clr */}
               <img
                 src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`}
                 alt="calendar icon"
-                className={tw`inline ht_cal_icon`}
+                className={`inline ht_cal_icon`}
               />
               <div className="ht_label">Check-in</div>
               <DatePicker
@@ -162,7 +162,7 @@ const RightContent = ({
               <img
                 src={`${Constants.assets_api}/public/icons/calender_multi_clr.png`}
                 alt="calendar icon"
-                className={tw`inline ht_cal_icon`}
+                className={`inline ht_cal_icon`}
               />
               <div className="ht_label">Check-out</div>
               <DatePicker
@@ -177,14 +177,14 @@ const RightContent = ({
             </div>
           </div>
 
-          <div className={tw`flex items-center mt-3`}>
+          <div className={`flex items-center mt-3`}>
             {hotel.hotel.price ? (
               <>
                 <div className="price_inr">
                   <FaRupeeSign className="inline text-[#f79421] text-[15px] mb-[4px]" />
                   <span>{selectedHotel?.price}/-</span>
                 </div>
-                {/* <div className={tw`ml-3 f_12 c_gray`}>
+                {/* <div className={`ml-3 f_12 c_gray`}>
                         per night
                     </div> */}
               </>
@@ -193,7 +193,7 @@ const RightContent = ({
             )}
           </div>
 
-          <div className={tw`mt-3`}>
+          <div className={`mt-3`}>
             <button className="w-full btn_listing _btn_clr">Book</button>
           </div>
         </div>
