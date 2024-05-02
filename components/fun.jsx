@@ -41,8 +41,8 @@ export const createDetailUrl = ({name,id}) => {
       .replace(/\s+/g, " ")
       .replace(/\s+/g, "-")
       .toLowerCase()
-      .replace(/-tour-package/g, "")
-      .replace(/-tour/g, "")
+      // .replace(/-tour-package/g, "")
+      // .replace(/-tour/g, "")
     }-0${id}`
 
     return y

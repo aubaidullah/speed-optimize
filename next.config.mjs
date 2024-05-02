@@ -33,12 +33,13 @@ const nextConfig = {
         source: "/travel_guide",
         destination: "/travel-guide",
         permanent: true
-      },
-      {
-        source: "/holidays/:slug-tour-package-:id",
-        destination : "/holidays/:slug-0:id",
-        permanent: true
       }
+      // ,
+      // {
+      //   source: "/holidays/:slug-tour-package-:id",
+      //   destination : "/holidays/:slug-0:id",
+      //   permanent: true
+      // }
       // {
       //   source: '/_error',
       //   destination: '/',
@@ -64,13 +65,13 @@ const nextConfig = {
       //   destination: '/holidays/international-package'
       // },
       {
-        // source:'/holiday-:slug-tour-package-:id',
-        source: "/holidays/:slug-tour-package-:id",
-        destination: "/holidays/detail",
-      },
-      {
         source: "/holidays/:slug-:pre([0]{1}):id(\\d+)",
         destination: "/holidays/detail"
+      },
+      {
+        // source:'/holiday-:slug-tour-package-:id',
+        source: "/holidays/:slug-tour-package-:id",
+        destination: "/holidays/detail/redirctToNew",
       },
 
       // {
