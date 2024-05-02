@@ -143,7 +143,20 @@ export async function getServerSideProps(context) {
     variables: { input: payload },
   });
   // console.log(res.data)
-  const data = res.data.allpackage.output?.packages ?? [];
+
+  try{
+    var data = res.data.allpackage.output.packages;
+  } catch{
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/holidays",
+        },
+        props:{},
+      };
+  }
+
+  // const data = res.data.allpackage.output?.packages ?? [];
   const region = res.data.allpackage.output?.region ?? [];
   const places = res.data.allpackage.output?.fcities ?? [];
   const overview = res.data.allpackage.output?.region?.longDesc ?? ""

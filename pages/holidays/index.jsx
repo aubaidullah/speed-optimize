@@ -39,7 +39,7 @@ const Meta = dynamic(() => import("@/components/meta"));
 
 const CanvasImg = () =>{
   return <>
-    <div className="lg:mb-52 mb-16 lg:mt-32 mt-12 ">
+    <div className="mb-20 lg:mb-24 mt-20 lg:h-96">
       <div className={`bg-[#A6C7EA] h-[18rem]  lg:h-80 relative`}>
         <div className={`container flex lg:block flex-col justify-between h-full`}>
           <div className={`flex`}>
@@ -56,7 +56,7 @@ const CanvasImg = () =>{
             </div>
             <div className={`w-2/3`}>
               <div className={`text-[64px] hidden lg:block`}>
-                <div className={`absolute text-[#A6C7EA]`} style={{top:"-24%"}}>
+                <div className={`absolute text-[#A6C7EA]`} style={{top:"-26%",color:"#A6C7EA"}}>
                   Explore Your 
                 </div>
                 <div className={`text-white`}>

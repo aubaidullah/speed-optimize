@@ -34,7 +34,21 @@ export const strToUrl = (phrase) => {
   return phrase;
 };
 
-export const createDetailUrl = ({ name, id }) => {
+export const createDetailUrl = ({name,id}) => {
+    
+    const y =  `/holidays/${name
+      .trim()
+      .replace(/\s+/g, " ")
+      .replace(/\s+/g, "-")
+      .toLowerCase()
+      // .replace(/-tour-package/g, "")
+      // .replace(/-tour/g, "")
+    }-0${id}`
+
+    return y
+}
+
+export const createDetailUrl1 = ({ name, id }) => {
   // const x = "/holidays/" +
   // name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase().replace(/-tour-package/g,'').replace(/-tour/g,'').replace(/&/g,'and') +
   // "-tour-package-" +

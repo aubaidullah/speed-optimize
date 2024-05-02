@@ -15,6 +15,7 @@ import dynamic from "next/dynamic";
 import { createTGCityURL, createTGStateURL } from "@/components/fun";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import FAQs from "@/components/list/faqs";
 
 const ParseHtml = dynamic(() => import("@/components/parseToHtml"));
 const Nav = dynamic(() => import("@/components/Nav"));
@@ -384,6 +385,10 @@ const Attraction = ({ data, meta }) => {
               </>:""
             }
 
+            <h2 className={`text-xl font-bold ms-1 my-3`}>FAQs</h2>
+
+            <FAQs data={data.faqs} />
+{/* 
             {facility?.map(({ icon, color, text, available }, index) => (
               <div
                 key={index}
@@ -408,6 +413,8 @@ const Attraction = ({ data, meta }) => {
                 </div>
               </div>
             ))}
+ */}
+
           </div>
         </div>
       </section>
