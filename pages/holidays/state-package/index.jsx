@@ -139,14 +139,24 @@ export async function getServerSideProps(context) {
     pt: "WEBSITE",
     type: "State",
   };
-  // console.log(payload)
+  console.log(payload)
   const res = await client.query({
     query: getallpackages,
     variables: { input: payload },
   });
   // console.log(res.data)
 
-  const data = res.data.allpackage.output.packages;
+  try{
+    var data = res.data.allpackage.output.packages;
+  } catch{
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/holidays",
+        },
+        props:{},
+      };
+  }
 
   const region = res.data.allpackage.output.region ?? null;
   const places = res.data.allpackage.output.fcities;

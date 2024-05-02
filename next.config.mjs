@@ -34,6 +34,11 @@ const nextConfig = {
         destination: "/travel-guide",
         permanent: true
       },
+      {
+        source: "/holidays/:slug-tour-package-:id",
+        destination : "/holidays/:slug-0:id",
+        permanent: true
+      }
       // {
       //   source: '/_error',
       //   destination: '/',
@@ -62,6 +67,10 @@ const nextConfig = {
         // source:'/holiday-:slug-tour-package-:id',
         source: "/holidays/:slug-tour-package-:id",
         destination: "/holidays/detail",
+      },
+      {
+        source: "/holidays/:slug-:pre([0]{1}):id(\\d+)",
+        destination: "/holidays/detail"
       },
 
       // {

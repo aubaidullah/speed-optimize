@@ -15,6 +15,41 @@
 
 /* Arrows */
 
+.h-\[18rem\] {
+  height: 18rem/* 288px */;
+}
+
+.text-\[64px\] {
+  font-size: 64px;
+}
+
+.bg-\[\#A6C7EA\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(166 199 234 / var(--tw-bg-opacity));
+}
+
+.top-\[-6\%\] {
+  top: -6%;
+}
+.w-\[40\%\] {
+  width: 40%;
+}
+
+@media (min-width: 1024px) {
+  .lg\:top-\[-15\%\] {
+      top: -15%;
+  }
+  .lg\:w-\[80\%\] {
+    width: 80%;
+}
+.lg\:h-96 {
+  height: 24rem/* 384px */;
+}
+.lg\:mb-24 {
+  margin-bottom: 6rem/* 96px */;
+}
+}
+
 .text-\[12px\] {
   font-size: 12px;
 }
