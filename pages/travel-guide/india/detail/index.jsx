@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 // import TravelGuide from "../../../../components/home/travel_guide";
 import TravelGuideDetailComp from '../../../../components/trave-guide/details'
+import { textDecode } from "@/components/fun";
 // import { createCityListURL, createStateListURL } from "../../../../components/fun";
 
 const TravelGuideDetail = ({
@@ -73,24 +74,24 @@ const TravelGuideDetail = ({
       />
     </>
   );
-  // return <TravelGuide packages_state={packages_state} data={data} weather={weather} packages={packages} hotels={hotels} article={article} qna={qna} type={type} />
-  // console.log(data)
-  // return <Nav />
 };
 
 export async function getServerSideProps(context) {
   context.res.setHeader("Cache-Control", "s-maxage=10");
   console.log(context.query);
+
+  if (context.query.slug){
+    let slug = textDecode({text:context.query.slug})
+  }
+
   let _id = context.query.id;
   const res = await client.query({
     query: getTravelGuideDetail,
     variables: { input: { id: _id } },
   });
 
-  // Router.pathname
 
   var resp = null;
-  // console.log(res.data.travelGuide.output)
 
   var type = "STATE";
 
@@ -102,10 +103,8 @@ export async function getServerSideProps(context) {
     resp = await axios.get(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=d6429646ecc55c8a9d2856f91d10ff4f&units=metric`,
     );
-    // console.log(resp)
   }
 
-  // console.log(res.data.travelGuide.output.gid)
   let json_data = {
     av: "",
     geoid: res.data.travelGuide.output.gid,
@@ -117,14 +116,12 @@ export async function getServerSideProps(context) {
     type: "CITY",
   };
 
-  // console.log(json_data)
   const res1 = await client.query({
     query: getTravelPackage,
     variables: { input: json_data },
   });
   const packages = res1.data.package.output;
 
-  // console.log(res.data.travelGuide.output.gid)
   let json_data_ = {
     av: "",
     geoid: res.data.travelGuide.output.gid,
@@ -135,22 +132,12 @@ export async function getServerSideProps(context) {
     size: 10,
     type: "STATE",
   };
-  // console.log(json_data_)
-
-  // console.log(json_data)
   const res_ = await client.query({
     query: getTravelPackage,
     variables: { input: json_data_ },
   });
 
-  // console.log(res_)
   const packages_state = res_.data.package.output ?? [];
-
-  // console.log(packages_state)
-
-  // const res_travel = await client.query({query:getTravelGuideHome,variables:{input:{'av':'1.3','pt':'WEBSITE','geoid':0,'id':'0','pagenum':0,'pid':0,'type':0}}})
-  // let data = res_travel.data.travelguide.output
-  // console.log(res.data)
 
   let hotel_data = {
     av: "1.3",
@@ -176,8 +163,6 @@ export async function getServerSideProps(context) {
     size: 20,
     type: 0,
   };
-
-  // getQnaQuery
 
   const article_res = await client.query({
     query: getStatereArticleQuery,
@@ -213,8 +198,6 @@ export async function getServerSideProps(context) {
       },
     },
   });
-  // let {finalprice,images} = meta.data.meta.output.package
-  // finalprice = `₹${finalprice} `
 
   if (res.data.travelGuide.output.tp == "CITY") {
     var title = res.data.travelGuide.output.city.metaTitle;
@@ -228,10 +211,8 @@ export async function getServerSideProps(context) {
 
   const metas = {
     title:
-      // title ??
       meta.data.meta.output.tags.title.replace(/<CITY>/g, context.query.city),
     longDesc:
-      // desc ??
       meta.data.meta.output.tags.longDesc.replace(
         /<CITY>/g,
         context.query.city,
@@ -244,11 +225,6 @@ export async function getServerSideProps(context) {
       ),
   };
 
-  // console.log(qna)
-
-  // console.log(type)
-  // console.log(packages)
-  // console.log(metas)
   return {
     props: {
       packages_state: packages_state,

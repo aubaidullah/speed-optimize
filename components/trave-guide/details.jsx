@@ -30,6 +30,7 @@ import {
   createStateListURL,
   createTGCityURL,
   createTGStateURL,
+  createTravelGuideDetailWithSlug,
   imgNameByUrl,
   jpgToWebp,
 } from "../fun";
@@ -68,7 +69,7 @@ const TravelGuideDetailComp = ({
   const [overviewlimit, setOverviewlimit] = useState(200);
   const [overview, setOverview] = useState(data.tg?.overviewDesc);
   const [attlimit, setAttlimit] = useState(4);
-  const {asPath} = useRouter()
+  const {asPath,query} = useRouter()
   const [sendquery, setSendquery] = useState(false);
 
   const updateChangeForm = (val) => {
@@ -218,13 +219,20 @@ const TravelGuideDetailComp = ({
         <div className="detail_slide_nav _30px">
           <ul>
             <li>
-              <a className="_c_active" href="#overview">
+              <a className={`${query?.slug?"":"_c_active"}`} href={createTGCityURL({city:query.city,id:query.id})}>
                 Overview
               </a>
             </li>
             {data.tg.howToReachwHeading ? (
               <li>
-                <a href={`#${data.tg.howToReachwHeading}`}>
+                <a 
+                
+                className={`${query?.slug?.replace(/-/g," ") == data.tg.howToReachwHeading.toLowerCase() ? "_c_active":""}`}
+                
+                href={
+                  createTravelGuideDetailWithSlug({city:query.city,slug:data.tg.howToReachwHeading,id:query.id})
+                  
+                }>
                   {data.tg.howToReachwHeading}
                 </a>
               </li>
@@ -233,7 +241,12 @@ const TravelGuideDetailComp = ({
             )}
             {data.tg.eventsHeading ? (
               <li>
-                <a href={`#${data.tg.eventsHeading}`}>
+                <a 
+                  className={`${query?.slug?.replace(/-/g," ") == data.tg.eventsHeading.toLowerCase() ? "_c_active":""}`}
+                  href={
+                  // `#${data.tg.eventsHeading}`
+                  createTravelGuideDetailWithSlug({city:query.city,slug:data.tg.eventsHeading,id:query.id})
+                  } >
                   {data.tg.eventsHeading}
                 </a>
               </li>
@@ -242,21 +255,39 @@ const TravelGuideDetailComp = ({
             )}
             {data.tg.factsHeading ? (
               <li>
-                <a href={`#${data.tg.factsHeading}`}>{data.tg.factsHeading}</a>
+                <a 
+
+                  className={`${query?.slug?.replace(/-/g," ") == data.tg.factsHeading.toLowerCase() ? "_c_active":""}`}
+                  href={
+                  // `#${data.tg.factsHeading}`
+                  createTravelGuideDetailWithSlug({city:query.city,slug:data.tg.factsHeading,id:query.id})
+                  }>{data.tg.factsHeading}</a>
               </li>
             ) : (
               ""
             )}
             {data.tg.foodHeading ? (
               <li>
-                <a href={`#${data.tg.foodHeading}`}>{data.tg.foodHeading}</a>
+                <a 
+                
+                className={`${query?.slug?.replace(/-/g," ") == data.tg.foodHeading.toLowerCase() ? "_c_active":""}`}
+
+                href={
+                  createTravelGuideDetailWithSlug({city:query.city,slug:data.tg.foodHeading,id:query.id})
+                  // `#${data.tg.foodHeading}`
+                  
+                  }>{data.tg.foodHeading}</a>
               </li>
             ) : (
               ""
             )}
             {data.marketHeading ? (
               <li>
-                <a href={`#${data.marketHeading}</}`}>{data.marketHeading}</a>
+                <a 
+                className={`${query?.slug?.replace(/-/g," ") == data.marketHeading.toLowerCase() ? "_c_active":""}`}
+                href={
+                  createTravelGuideDetailWithSlug({city:query.city,slug:data.marketHeading,id:query.id})
+                }>{data.marketHeading}</a>
               </li>
             ) : (
               ""
@@ -268,7 +299,12 @@ const TravelGuideDetailComp = ({
                     :""} */}
             {data.tg.marketHeading ? (
               <li>
-                <a href={`#${data.tg.marketHeading}`}>
+                <a 
+                className={`${query?.slug?.replace(/-/g," ") == data.tg.marketHeading.toLowerCase() ? "_c_active":""}`}
+                href={
+                  createTravelGuideDetailWithSlug({city:query.city,slug:data.tg.marketHeading,id:query.id})
+                  
+                  }>
                   {data.tg.marketHeading}
                 </a>
               </li>
@@ -571,6 +607,12 @@ const TravelGuideDetailComp = ({
         <div className={`flex flex-wrap`}>
           <div className={`mt-4 w-full lg:w-2/3`}>
             <div>
+              {query?.slug?
+              
+            
+              <Content data={data} />
+              :<>
+              
               <h2 className={"_titles_"}>Overview</h2>
               <div className={``}>
                 <div className="Shape_42">
@@ -594,7 +636,11 @@ const TravelGuideDetailComp = ({
                     </a>
                   )}
                 </div>
-              </div>
+              </div>              
+              
+              </>
+              }
+
 
               
 
@@ -748,7 +794,7 @@ const TravelGuideDetailComp = ({
                   ""
                 )}
               </div>
-              <Content data={data} />
+
             </div>
           </div>
           <div className={`mt-4 w-full lg:w-1/3`}>

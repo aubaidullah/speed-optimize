@@ -3,6 +3,8 @@ import { useState } from "react";
 
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import ParseHtml from "../parseToHtml";
+// import { aspath} from useRouter()
+import { useRouter } from "next/router";
 
 const Tabs = ({ title, desc, clps = null }) => {
   const [collapse, setCollapse] = useState(clps);
@@ -57,12 +59,13 @@ const Tabs = ({ title, desc, clps = null }) => {
   );
 };
 
-const Content = ({ data, collapse = null }) => {
+const Content = ({ data, collapse = true }) => {
   // const [collapse, setCollapse] = useState(null);
+  const {query} = useRouter()
   return (
     <>
       <div>
-        {data.tg.howToReachwHeading ? (
+        {data.tg.howToReachwHeading && query?.slug?.replace(/-/g," ") ==  data.tg.howToReachwHeading.toLowerCase() ? (
           <Tabs
             title={data.tg.howToReachwHeading}
             desc={data.tg.howToReachDesc}
@@ -71,7 +74,7 @@ const Content = ({ data, collapse = null }) => {
         ) : (
           ""
         )}
-        {data.tg.eventsHeading ? (
+        {data.tg.eventsHeading && query?.slug?.replace(/-/g," ") == data.tg.eventsHeading.toLowerCase() ? (
           <Tabs
             title={data.tg.eventsHeading}
             desc={data.tg.eventsDesc}
@@ -80,7 +83,7 @@ const Content = ({ data, collapse = null }) => {
         ) : (
           ""
         )}
-        {data.tg.factsHeading ? (
+        {data.tg.factsHeading && query?.slug?.replace(/-/g," ") == data.tg.factsHeading .toLowerCase()? (
           <Tabs
             title={data.tg.factsHeading}
             desc={data.tg.factsDesc}
@@ -89,7 +92,7 @@ const Content = ({ data, collapse = null }) => {
         ) : (
           ""
         )}
-        {data.tg.foodHeading ? (
+        {data.tg.foodHeading && query?.slug?.replace(/-/g," ") == data.tg.foodHeading.toLowerCase() ? (
           <Tabs
             title={data.tg.foodHeading}
             desc={data.tg.foodDesc}
@@ -98,7 +101,7 @@ const Content = ({ data, collapse = null }) => {
         ) : (
           ""
         )}
-        {data.tg.marketHeading ? (
+        {data.tg.marketHeading && query?.slug?.replace(/-/g," ") == data.tg.marketHeading .toLowerCase()? (
           <Tabs
             title={data.tg.marketHeading}
             desc={data.tg.marketDesc}
