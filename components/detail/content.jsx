@@ -62,7 +62,7 @@ const Content = ({ data }) => {
           <h4 className={`pt-[10px] pr-[10px] pb-0 pl-[10px] mb-0`}>
             Day {c}: {item.heading}
           </h4>
-          <p className={`p-[10px] mb-[10px]`}>{item.desc}</p>
+          <p className={`p-[10px]`}>{item.desc}</p>
           <div className={`Shape_53 text-sm p-[10px] relative`}>
             <div className={`flex`}>
               <div className={`_location_ flex gap-[10px]`}>

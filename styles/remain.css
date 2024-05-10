@@ -35,6 +35,17 @@
   width: 40%;
 }
 
+/* p-[10px] mb-[20px] */
+
+.p-\[10px\]{
+  padding: 10px;
+}
+
+.mb-\[20px\]{
+  margin-bottom: 20px;
+}
+
+
 @media (min-width: 1024px) {
   .lg\:top-\[-15\%\] {
       top: -15%;

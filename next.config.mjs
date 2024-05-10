@@ -2,7 +2,7 @@
 const nextConfig = {
   compress: true,
   reactStrictMode: true,
-  assetPrefix: "https://assets.kiomoi.com",
+  assetPrefix: "https://devassets.kiomoi.com",
   images: {
     domains: [
       "res.cloudinary.com",
@@ -63,6 +63,7 @@ const nextConfig = {
       // {
       //   source: '/holidays/international-:package-tour-packages/:id',
       //   destination: '/holidays/international-package'
+      // /cities/:city/top-sightseeing-places-and-attractions-to-visit-:id(\\d+)
       // },
       {
         source: "/holidays/:slug-:pre([0]{1}):id(\\d+)",
@@ -165,10 +166,10 @@ const nextConfig = {
         source: "/countries/:city/top-destinations-to-visit-:id(\\d+)",
         destination: "/travel-guide/places",
       },      
-      {
-        source: "/cities/:city/top-sightseeing-places-and-attractions-to-visit-:id(\\d+)",
-        destination: "/travel-guide/places",
-      },      
+      // {
+      //   source: "/cities/:city/top-sightseeing-places-and-attractions-to-visit-:id(\\d+)",
+      //   destination: "/travel-guide/places",
+      // },
       // top-attractions-to-visit
       // {
       //   source: "/travel-guide/states/:city-:id(\\d+)",

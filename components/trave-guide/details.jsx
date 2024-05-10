@@ -38,6 +38,7 @@ import {
 import dynamic from "next/dynamic";
 import TopCities from "./top_cities";
 import CustomImage from "../Img";
+import P_Cities from "../places/p_cities";
 // import ParseHtml from '../parseToHtml';
 
 const ParseHtml = dynamic(() => import("../parseToHtml"));
@@ -270,13 +271,11 @@ const TravelGuideDetailComp = ({
               <li>
                 <a 
                 
-                className={`${query?.slug?.replace(/-/g," ") == data.tg.foodHeading.toLowerCase() ? "_c_active":""}`}
-
-                href={
-                  createTravelGuideDetailWithSlug({city:query.city,slug:data.tg.foodHeading,id:query.id})
-                  // `#${data.tg.foodHeading}`
-                  
-                  }>{data.tg.foodHeading}</a>
+                className={`${query?.slug?.replace(/-/g," ") == data.tg.foodHeading.toLowerCase() || query?.slug == "top-sightseeing-places-and-attractions-to-visit" ? "_c_active":""}`}
+                
+                href={`/places/${data?.tg?.cityName.toLowerCase()}/top-sightseeing-places-and-attractions-to-visit-${data?.tg?.id}`} >
+                    
+                    {data.tg.foodHeading}</a>
               </li>
             ) : (
               ""
@@ -609,8 +608,22 @@ const TravelGuideDetailComp = ({
             <div>
               {query?.slug?
               
-            
-              <Content data={data} />
+              <>
+                <Content data={data} />
+                {data.tg.foodHeading?
+
+                // <>
+                <>
+                <h2 className={"_titles_"}>
+                  Attractions in {data?.tg?.cityName}
+                </h2>
+                <P_Cities data={data} />
+                </>
+                :""
+                
+              
+              }
+               </>
               :<>
               
               <h2 className={"_titles_"}>Overview</h2>
@@ -647,15 +660,18 @@ const TravelGuideDetailComp = ({
               <div>
               {/* {type == "COUNTRY" && data.stg ? <TravelGuide data={data.stg} /> : ""} */}
                 <div className={`flex justify-between`}>
-                  {type == "CITY" ? (
-                    data?.attn?.length > 0 ? (
-                      <h2 className={"_titles_"}>
-                        Attractions in {data?.tg?.cityName}
-                      </h2>
-                    ) : (
-                      ""
-                    )
-                  ) : data?.attn?.length > 0? (
+                  {type == "CITY" ?  ""
+                  // (
+                  //   data?.attn?.length > 0 ? (
+                  //     <h2 className={"_titles_"}>
+                  //       Attractions in {data?.tg?.cityName}
+                  //     </h2>
+                  //   ) : (
+                  //     ""
+                  //   )
+                  // ) 
+                  
+                  : data?.attn?.length > 0? (
                     <div className={`flex_ justify-between_`}>
                       <h2 className={`text-xl font-bold`}>
                         Top Cities in {data?.tg?.cityName}
@@ -669,13 +685,14 @@ const TravelGuideDetailComp = ({
 
                   {type == "CITY" ? (
                     data?.attn?.length > 0 ? (
-                      <div>
-                        <Link href={`/cities/${data?.tg?.cityName.toLowerCase()}/top-sightseeing-places-and-attractions-to-visit-${data?.tg?.id}`}>
-                          <div>
-                            <div className="btn_view_more">View all</div>
-                          </div>
-                        </Link>
-                      </div>
+                      ""
+                      // <div>
+                      //   <Link href={`/cities/${data?.tg?.cityName.toLowerCase()}/top-sightseeing-places-and-attractions-to-visit-${data?.tg?.id}`}>
+                      //     <div>
+                      //       <div className="btn_view_more">View all</div>
+                      //     </div>
+                      //   </Link>
+                      // </div>
                     ) : (
                       ""
                     )
@@ -698,46 +715,12 @@ const TravelGuideDetailComp = ({
                 </div>
                 {data?.attn?.length > 0 || data?.ctg?.length > 0 ? (
                   <div className={``}>
-                    <div className="Shape_42">
+                    <div className="Shape_42_">
                       <div className={`flex flex-wrap`}>
                         {
-                          type == "CITY" ? (
-                            data?.attn?.slice(0, attlimit).map((item, i) => {
-                              // let url =
-                              //   "/travel-guide/india/attraction" +
-                              //   "-" +
-                              //   item.name
-                              //     .trim()
-                              //     .replace(/\s+/g, " ")
-                              //     .replace(/-/g, "")
-                              //     .replace(/\s+/g, "-")
-                              //     .toLowerCase() +
-                              //   "/" +
-                              //   item.id +
-                              //   "/";
-                              let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
-                              return (
-                                <div className={`w-1/3 lg:w-1/4 p-2`}>
-                                  <Link href={url} key={i}>
-                                    <div>
-                                      <div className="image-squre__">
-                                        <img
-                                          className={`w-full rounded-lg h-full`}
-                                          src={
-                                            item.images.length > 0
-                                              ? item.images
-                                              : `${Constants.assets_api}/public/icons/logo-icon.png`
-                                          }
-                                          alt="kiomoi logo"
-                                        />
-                                      </div>
-                                      <p>{item.name}</p>
-                                    </div>
-                                  </Link>
-                                </div>
-                              );
-                            })
-                          ) : (
+                          type == "CITY" ? "" 
+                          
+                          : (
                             <TopCities data={data} />
                           )
 
@@ -771,7 +754,7 @@ const TravelGuideDetailComp = ({
                           // })
                         }
                       </div>
-                      {data?.attn?.length > 0 || data?.ctg?.length > 0 ? (
+                      {/* {data?.ctg?.length > 0 ? (
                         <div>
                           <a
                             onClick={() =>
@@ -787,7 +770,7 @@ const TravelGuideDetailComp = ({
                         </div>
                       ) : (
                         ""
-                      )}
+                      )} */}
                     </div>
                   </div>
                 ) : (
