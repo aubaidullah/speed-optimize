@@ -610,7 +610,7 @@ const TravelGuideDetailComp = ({
               
               <>
                 <Content data={data} />
-                {data.tg.foodHeading?
+                {query?.slug?.replace(/-/g," ") == data.tg.foodHeading.toLowerCase() || query?.slug == "top-sightseeing-places-and-attractions-to-visit"?
 
                 // <>
                 <>
@@ -845,7 +845,7 @@ const TravelGuideDetailComp = ({
         ) : (
           ""
         )}
-        {qna.length != 0 ? (
+        {/* {qna.length != 0 ? (
           <>
             <QnaListing data={qna} travelGuide={true} />
             <Link href={`/qna/${data.tg.cityName}-${data.tg.id}/`}>
@@ -859,7 +859,7 @@ const TravelGuideDetailComp = ({
           </>
         ) : (
           ""
-        )}
+        )} */}
         {/* <Articles data={article} /> */}
 
         {/* <QnaListing data={qna} travelGuide={true} /> */}

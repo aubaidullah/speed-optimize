@@ -92,7 +92,7 @@ const Content = ({ data, collapse = true }) => {
         ) : (
           ""
         )}
-        {data.tg.foodHeading && query?.slug?.replace(/-/g," ") == data.tg.foodHeading.toLowerCase() ? (
+        {data.tg.foodHeading && query?.slug?.replace(/-/g," ") == data.tg.foodHeading.toLowerCase() || query?.slug == "top-sightseeing-places-and-attractions-to-visit"? (
           <Tabs
             title={data.tg.foodHeading}
             desc={data.tg.foodDesc}
