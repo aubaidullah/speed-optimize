@@ -68,9 +68,15 @@ export const createDetailUrl1 = ({ name, id }) => {
 };
 
 
-export const createTravelGuideDetailWithSlug = ({city,slug,id}) =>{
-  return `/places/${city}/${slug.replace(/\s+/g, "-").toLowerCase()}-${id}`
-}
+export const createTravelGuideDetailWithSlug = ({city,slug,id,type}) =>{
+  if(type == "STATE")
+    return `/states/${city}/${slug.replace(/\s+/g, "-").toLowerCase()}-${id}`
+  else if(type == "COUNTRY")
+    return `/countries/${city}/${slug.replace(/\s+/g, "-").toLowerCase()}-${id}`
+  else
+    return `/places/${city}/${slug.replace(/\s+/g, "-").toLowerCase()}-${id}`
+
+  }
 
 export const textEncode = ({text})=>{
   return text.replace(/\s+/g, "-").toLowerCase()

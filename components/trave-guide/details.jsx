@@ -231,7 +231,7 @@ const TravelGuideDetailComp = ({
                 className={`${query?.slug?.replace(/-/g," ") == data.tg.howToReachwHeading.toLowerCase() ? "_c_active":""}`}
                 
                 href={
-                  createTravelGuideDetailWithSlug({city:query.city,slug:data.tg.howToReachwHeading,id:query.id})
+                  createTravelGuideDetailWithSlug({type:type,city:query.city??query.country,slug:data.tg.howToReachwHeading,id:query.id})
                   
                 }>
                   {data.tg.howToReachwHeading}
@@ -246,7 +246,7 @@ const TravelGuideDetailComp = ({
                   className={`${query?.slug?.replace(/-/g," ") == data.tg.eventsHeading.toLowerCase() ? "_c_active":""}`}
                   href={
                   // `#${data.tg.eventsHeading}`
-                  createTravelGuideDetailWithSlug({city:query.city,slug:data.tg.eventsHeading,id:query.id})
+                  createTravelGuideDetailWithSlug({type:type,city:query.city??query.country,slug:data.tg.eventsHeading,id:query.id})
                   } >
                   {data.tg.eventsHeading}
                 </a>
@@ -261,7 +261,7 @@ const TravelGuideDetailComp = ({
                   className={`${query?.slug?.replace(/-/g," ") == data.tg.factsHeading.toLowerCase() ? "_c_active":""}`}
                   href={
                   // `#${data.tg.factsHeading}`
-                  createTravelGuideDetailWithSlug({city:query.city,slug:data.tg.factsHeading,id:query.id})
+                  createTravelGuideDetailWithSlug({type:type,city:query.city??query.country,slug:data.tg.factsHeading,id:query.id})
                   }>{data.tg.factsHeading}</a>
               </li>
             ) : (
@@ -275,7 +275,7 @@ const TravelGuideDetailComp = ({
                 
                 href={
                   // `/places/${data?.tg?.cityName.toLowerCase()}/top-sightseeing-places-and-attractions-to-visit-${data?.tg?.id}`
-                  createTravelGuideDetailWithSlug({city:query.city,slug:data.tg.eventsHeading,id:query.id})
+                  createTravelGuideDetailWithSlug({type:type,city:query.city??query.country,slug:data.tg.foodHeading,id:query.id})
                   } >
                     
                     {data.tg.foodHeading}</a>
@@ -288,7 +288,7 @@ const TravelGuideDetailComp = ({
                 <a 
                 className={`${query?.slug?.replace(/-/g," ") == data.marketHeading.toLowerCase() ? "_c_active":""}`}
                 href={
-                  createTravelGuideDetailWithSlug({city:query.city,slug:data.marketHeading,id:query.id})
+                  createTravelGuideDetailWithSlug({type:type,city:query.city??query.country,slug:data.marketHeading,id:query.id})
                 }>{data.marketHeading}</a>
               </li>
             ) : (
@@ -304,7 +304,7 @@ const TravelGuideDetailComp = ({
                 <a 
                 className={`${query?.slug?.replace(/-/g," ") == data.tg.marketHeading.toLowerCase() ? "_c_active":""}`}
                 href={
-                  createTravelGuideDetailWithSlug({city:query.city,slug:data.tg.marketHeading,id:query.id})
+                  createTravelGuideDetailWithSlug({type:type,city:query.city??query.country,slug:data.tg.marketHeading,id:query.id})
                   
                   }>
                   {data.tg.marketHeading}

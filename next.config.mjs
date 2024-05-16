@@ -132,6 +132,17 @@ const nextConfig = {
         source: "/places/:city-:id(\\d+)",
         destination: "/travel-guide/india/detail",
       },
+
+      {
+        source: "/countries/:country/:slug-:id(\\d+)",
+        destination: "/travel-guide/country",
+      },
+
+      {
+        source: "/states/:city/:slug-:id(\\d+)",
+        destination: "/travel-guide/india/detail",
+      },
+
       {
         source: "/places/:city/:slug-:id(\\d+)",
         destination: "/travel-guide/india/detail",
