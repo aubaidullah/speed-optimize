@@ -273,7 +273,10 @@ const TravelGuideDetailComp = ({
                 
                 className={`${query?.slug?.replace(/-/g," ") == data.tg.foodHeading.toLowerCase() || query?.slug == "top-sightseeing-places-and-attractions-to-visit" ? "_c_active":""}`}
                 
-                href={`/places/${data?.tg?.cityName.toLowerCase()}/top-sightseeing-places-and-attractions-to-visit-${data?.tg?.id}`} >
+                href={
+                  // `/places/${data?.tg?.cityName.toLowerCase()}/top-sightseeing-places-and-attractions-to-visit-${data?.tg?.id}`
+                  createTravelGuideDetailWithSlug({city:query.city,slug:data.tg.eventsHeading,id:query.id})
+                  } >
                     
                     {data.tg.foodHeading}</a>
               </li>
