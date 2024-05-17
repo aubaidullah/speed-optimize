@@ -29,10 +29,13 @@ import {
   createPlacesToVisitURL,
   createStateListURL,
   createTGCityURL,
+  createTGCountryURL,
   createTGStateURL,
   createTravelGuideDetailWithSlug,
   imgNameByUrl,
   jpgToWebp,
+  textDecode,
+  toTitleCase,
 } from "../fun";
 // import BreadCrumbs from "../breadcrumbs";
 import dynamic from "next/dynamic";
@@ -207,12 +210,23 @@ const TravelGuideDetailComp = ({
       <BreadCrumbs bread={data.tg.geoType == "COUNTRY" ? con_bread :data.tg.geoType == "CITY"? city_bread:  bread} />
       <section className="container" itemScope itemType="https://schema.org/WebPage">
       <a itemProp="url" href={`https://www.kiomoi.com/${asPath}`}/>
-        <div className="title_listing_" itemProp="name">
+        <div className="title_listing_ block lg:hidden" itemProp="name">
           {type == "CITY" ? (
-            <h1 className={`text-2xl font-bold`}>{data.tg.cityName} tourism and travel guide</h1>
+            <h1 className={`text-2xl font-bold`}>
+              
+              {query.slug? 
+              <>{toTitleCase(textDecode({text:query.slug}))} in {data.tg.cityName}</>
+              :<>{data.tg.cityName} tourism and travel guide</>
+              }
+              
+              </h1>
           ) : (
             <h1 className={`text-2xl font-bold`}>
-              {data.tg.cityName} tourism and travel guide
+              {/* {data.tg.cityName} tourism and travel guide */}
+              {query.slug? 
+              <>{toTitleCase(textDecode({text:query.slug}))} in {data.tg.cityName}</>
+              :<>{ textDecode({text:data.tg.cityName})} tourism and travel guide</>
+              }              
             </h1>
           )}
         </div>
@@ -220,7 +234,7 @@ const TravelGuideDetailComp = ({
         <div className="detail_slide_nav _30px">
           <ul>
             <li>
-              <a className={`${query?.slug?"":"_c_active"}`} href={createTGCityURL({city:query.city,id:query.id})}>
+              <a className={`${query?.slug?"":"_c_active"}`} href={type=="CITY"?createTGCityURL({city:query.city,id:query.id}):type=="STATE"?createTGStateURL({city:query.city,id:query.id}):createTGCountryURL({country:query.country,id:query.id})}>
                 Overview
               </a>
             </li>
@@ -343,6 +357,29 @@ const TravelGuideDetailComp = ({
             </div>
           </div>
           <div className={`w-full lg:w-1/3`}>
+            <div className="lg:pl-6 mb-4 hidden lg:block">
+            <div className="title_listing_" itemProp="name">
+              {type == "CITY" ? (
+                <h1 className={`text-2xl font-bold`}>
+                  
+                  {query.slug? 
+                  <>{toTitleCase(textDecode({text:query.slug}))} in {data.tg.cityName}</>
+                  :<>{data.tg.cityName} tourism and travel guide</>
+                  }
+                  
+                  </h1>
+              ) : (
+                <h1 className={`text-2xl font-bold`}>
+                  {/* {data.tg.cityName} tourism and travel guide */}
+                  {query.slug? 
+                  <>{toTitleCase(textDecode({text:query.slug}))} in {data.tg.cityName}</>
+                  :<>{ textDecode({text:data.tg.cityName})} tourism and travel guide</>
+                  }              
+                </h1>
+              )}
+            </div>
+            </div>
+
             <div className={`pl-0 lg:pl-6 `}>
               <div className="_b_right_list_1">
                 <div className="_asia_india">
@@ -789,7 +826,7 @@ const TravelGuideDetailComp = ({
                 
                 {
                   data?.stg || data?.ctg? <>
-                    <h2 className="_titles_ pl-2">{data.tg.cityName} Nearby {type==='STATE'?"States":"Cities"}  </h2>                
+                    <h2 className="_titles_ pl-2">{data.tg.cityName} Nearby {type==='STATE'?"States":type==="CITY"?"Cities":"Countries"}  </h2>                
                   </>:""
                 }
                 <div className={`flex flex-wrap pt-2`}>
