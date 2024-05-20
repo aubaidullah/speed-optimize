@@ -5,7 +5,7 @@ export default function Custom404() {
   export const getServerSideProps = () => {
     return {
       redirect: {
-        destination: '/',
+        destination: '/holidays',
       },
     };
   };

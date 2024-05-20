@@ -25,6 +25,22 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/holidays/-tour-packages",
+        destination: "/holidays",
+        permanent: true
+      },
+      {
+        source: "/holidays/tour-packages",
+        destination: "/holidays",
+        permanent: true
+      },      
+
+      {
+        source : "/holidays/:slug/:id",
+        destination: "/holidays",
+        permanent: true
+      },
+      {
         source: "/travelguide",
         destination: "/travel-guide",
         permanent: true

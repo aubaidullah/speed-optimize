@@ -307,7 +307,7 @@ const DetailPage = ({ data, related, reviews, meta }) => {
             <div className={`w-full lg:w-2/3`}>
               <h1 className="h1_title" itemProp="name">{data?.package.name}</h1>
               {data?.package.sratings != "0" ? (
-                <div itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating">
+                <div className="mb-2" itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating">
                   <div className="_inline__">
                     {userRating}
                     {/* {data?.package.sratings!="0"?userRating:randomRating().rating} */}
@@ -336,7 +336,7 @@ const DetailPage = ({ data, related, reviews, meta }) => {
         <section className="container" >
           <div className={`flex`}>
             <div className={`w-full lg:w-2/3`}>
-              <div className="col-sm-12 col-xs-12">
+              <div className="hidden col-sm-12 col-xs-12">
                 <div className="detail_slide_nav _30px">
                   <ul>
                     <li>

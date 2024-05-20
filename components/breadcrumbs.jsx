@@ -29,7 +29,7 @@ const BreadCrumbs = ({ bread }) => {
   return (
     <>
       {/* style={{position:'sticky',top:'60px'}} */}
-      <section className="container">
+      <section className="container hidden lg:block">
         <div className="row_">
           <ul
             className="breadcrumb flex items-center"
