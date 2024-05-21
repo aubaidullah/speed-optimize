@@ -183,7 +183,7 @@ const TravelGuideDetailComp = ({
     return <>
     
     <div className={`w-1/2`} key={index}>
-      <Link href={type==='STATE'?createTGStateURL({city:e.name, id:e.tgid}):createTGCityURL({city:e.name, id:e.tgid})}>
+      <Link href={type==='STATE'?createTGStateURL({city:e.name??e.cityName, id:e.tgid??e.id}):type=="CITY"?createTGCityURL({city:e.name??e.cityName, id:e.tgid??e.id}):createTGCountryURL({country:e.cityName,id:e.id})}>
         {/* <Image /> */}
         <div className="pb-2">
           <div className={`relative h-[100px] mx-2 pb-4`}>
@@ -194,7 +194,7 @@ const TravelGuideDetailComp = ({
             />
           </div>
           <div className={`ml-2`}>
-              {e.name}
+              {e.name??e.cityName}
           </div>
         </div>
       </Link>
@@ -203,6 +203,11 @@ const TravelGuideDetailComp = ({
     </>
   }
 
+  // const getTab = (tab) =>{
+  //   {
+  //     if(tab == "")
+  //   }
+  // }
 
   return (
     <>
@@ -216,7 +221,7 @@ const TravelGuideDetailComp = ({
               
               {query.slug? 
               <>{toTitleCase(textDecode({text:query.slug}))} in {data.tg.cityName}</>
-              :<>{data.tg.cityName} tourism and travel guide</>
+              :<>{data.tg.cityName} Tourism And Travel Guide</>
               }
               
               </h1>
@@ -225,7 +230,7 @@ const TravelGuideDetailComp = ({
               {/* {data.tg.cityName} tourism and travel guide */}
               {query.slug? 
               <>{toTitleCase(textDecode({text:query.slug}))} in {data.tg.cityName}</>
-              :<>{ textDecode({text:data.tg.cityName})} tourism and travel guide</>
+              :<>{ textDecode({text:data.tg.cityName})} Tourism And Travel Guide</>
               }              
             </h1>
           )}
@@ -623,7 +628,7 @@ const TravelGuideDetailComp = ({
                 </div>
                 <div className={`pt-2`}>
                   <div
-                    className={`btn_listing _btn_clr cursor-pointer w-full text-center text-[12px]`}
+                    className={`btn_listing _btn_clr cursor-pointer w-full text-center`}
                     onClick={() => setSendquery(true)}
                   >
                     KNOW MORE & GET CUSTOMIZE
@@ -847,6 +852,15 @@ const TravelGuideDetailComp = ({
                         })
                         :""
                   }
+
+                  {
+                        type === 'COUNTRY'
+                        ?data.countries?.slice(0,6).map((e,index)=>{
+                          return <NearBy e={e} index={index} />
+                        })
+                        :""
+                  }
+
                 </div>
               </div>
 

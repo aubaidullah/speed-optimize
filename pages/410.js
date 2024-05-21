@@ -1,5 +1,6 @@
 // import Nav from "../components/Nav"
 
+import { redirect } from "next/dist/server/api-utils";
 import dynamic from "next/dynamic";
 
 const Nav = dynamic(() => import("../components/Nav"));
@@ -35,15 +36,34 @@ export async function getServerSideProps({ res }) {
     destination = "/"
   }
   // return { props: {} };
-  return {
-    redirect: destination == "/"?{
-      permanent: false,
-      destination: destination,
-    }:{},
+  
+  return destination == "/"?{
+    // redirect: {},
+    // redirect:null,
+    props:{},
+  }:{
+    permanent: false,
+    destination: destination,
     props:{},
   };
+
+
+  // return {
+  //   redirect: destination != "/"?{
+  //     permanent: false,
+  //     destination: destination,
+  //   }:{},
+  //   props:{},
+  // };  
 }
 
+
+
+
+// destination == "/"?{
+//   permanent: false,
+//   destination: destination,
+// }:{}
 
 
 export default function Error410() {

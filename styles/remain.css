@@ -28,6 +28,11 @@
   background-color: rgb(166 199 234 / var(--tw-bg-opacity));
 }
 
+.bg-\[#EFEFEF\]{
+  background-color: #EFEFEF;
+  --tw-bg-opacity: 1;
+}
+
 .top-\[-6\%\] {
   top: -6%;
 }
