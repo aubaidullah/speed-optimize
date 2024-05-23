@@ -12,11 +12,11 @@ import rightBlock from "../trave-guide/rightBlock";
 import ParseHtml from "../parseToHtml";
 import { useRouter } from "next/router";
 
-const IMG = ({ e, index, url, type }) => {
+const IMG = ({ e, index, url, type,count=3 }) => {
   const {asPath} = useRouter()
   return (
     <>
-      <div className={`w-full lg:w-1/3`} key={index}>
+      <div className={`w-full lg:w-1/${count}`} key={index}>
         {/* <img src={e.i} /> */}
         <div className={`p-2`}>
           <div>
@@ -109,6 +109,7 @@ const IMG = ({ e, index, url, type }) => {
                                   <div>
                                     <IoLocationSharp
                                       className={`inline h-[15.7px]`}
+                                      // style={{height:'15.7px'}}
                                     />
                                     {/* <img src={`/icons/${icon}`} alt="" className={`inline`} style={{ height: '15.7px' }} /> */}
                                   </div>
@@ -134,8 +135,8 @@ const IMG = ({ e, index, url, type }) => {
                       e.description
                     )}
                   </div>
+                  <a itemProp="url" href={`https://www.kiomoi.com${asPath}`} />
                   <div className="flex justify-between py-2">
-                    <a itemProp="url" href={`https://www.kiomoi.com${asPath}`} />
                     <Link className="btn_listing" href={url}>
                       Read more
                     </Link>
@@ -161,7 +162,7 @@ const IMG = ({ e, index, url, type }) => {
   );
 };
 
-const P_Cities = ({ data, start = undefined, end = undefined }) => {
+const P_Cities = ({ data, start = undefined, end = undefined,count=3 }) => {
   // console.log(data.stg)
   // const Grouping = (list) =>{
   //     return list.reduce((groups, item) => {
@@ -188,19 +189,19 @@ const P_Cities = ({ data, start = undefined, end = undefined }) => {
               ? data.ctg.map((e, index) => {
                   // let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
                   let url = createTGCityURL({ city: e.name, id: e.tgid });
-                  return <IMG index={index} e={e} url={url} type={data.tp} />;
+                  return <IMG count={count} index={index} e={e} url={url} type={data.tp} />;
                 })
               : start != undefined && end != undefined
               ? data.ctg.slice(start, end).map((e, index) => {
                   // let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
                   let url = createTGCityURL({ city: e.name, id: e.tgid });
-                  return <IMG index={index} e={e} url={url} type={data.tp} />;
+                  return <IMG count={count} index={index} e={e} url={url} type={data.tp} />;
                 })
               : data.ctg.slice(start).map((e, index) => {
                   // let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
                   let url = createTGCityURL({ city: e.name, id: e.tgid });
                   return (
-                    <IMG index={index + start} e={e} url={url} type={data.tp} />
+                    <IMG count={count} index={index + start} e={e} url={url} type={data.tp} />
                   );
                 })}
           </div>
@@ -219,7 +220,7 @@ const P_Cities = ({ data, start = undefined, end = undefined }) => {
                     {Object(groups)[key].map((e, index) => {
                       let url = createTGStateURL({ city: e.name, id: e.tgid });
                       return (
-                        <IMG index={index} e={e} url={url} type={data.tp} />
+                        <IMG count={count} index={index} e={e} url={url} type={data.tp} />
                       );
                     })}
                   </div>
@@ -231,7 +232,7 @@ const P_Cities = ({ data, start = undefined, end = undefined }) => {
                         {
                             data.ctg.map((e,index)=>{
                                 let url = createTGCityURL({city:e.name,id:e.tgid})
-                                return <IMG index={index} e={e} url={url} type={data.tp}/>
+                                return <IMG count={count} index={index} e={e} url={url} type={data.tp}/>
                                 
                             })
                         }

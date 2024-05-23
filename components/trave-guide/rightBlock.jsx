@@ -7,6 +7,7 @@ const rightBlock = ({ icon, heading, desc }) => {
             src={`${Constants.assets_api}/public/icons/${icon}`}
             alt="icon"
             className={`inline h-[15.7px]`}
+            style={{height:'15.7px'}}
           />
         </div>
         <div className={`ml-4`}>

@@ -215,29 +215,31 @@ const TravelGuideDetailComp = ({
       <BreadCrumbs bread={data.tg.geoType == "COUNTRY" ? con_bread :data.tg.geoType == "CITY"? city_bread:  bread} />
       <section className="container" itemScope itemType="https://schema.org/WebPage">
       <a itemProp="url" href={`https://www.kiomoi.com/${asPath}`}/>
-        <div className="title_listing_ block lg:hidden" itemProp="name">
-          {type == "CITY" ? (
-            <h1 className={`text-2xl font-bold`}>
-              
-              {query.slug? 
-              <>{toTitleCase(textDecode({text:query.slug}))} in {data.tg.cityName}</>
-              :<>{data.tg.cityName} Tourism And Travel Guide</>
-              }
-              
-              </h1>
-          ) : (
-            <h1 className={`text-2xl font-bold`}>
-              {/* {data.tg.cityName} tourism and travel guide */}
-              {query.slug? 
-              <>{toTitleCase(textDecode({text:query.slug}))} in {data.tg.cityName}</>
-              :<>{ textDecode({text:data.tg.cityName})} Tourism And Travel Guide</>
-              }              
-            </h1>
-          )}
-        </div>
+        <meta itemProp="name" content={`${query.slug} in ${data.tg.cityName}`} />
         {/* <h1 className={`text-2xl font-bold`}>{data.tg.cityName}</h1> */}
-        <div className="detail_slide_nav _30px">
+        <div className="detail_slide_nav pt-2 pb-4">
           <ul>
+            {data.priority.map((e,index)=>{
+              return <>
+                      <li key={index}>
+                        <Link 
+                        
+                        className={`${query?.slug?.replace(/-/g," ") == e.heading.toLowerCase() ? "_c_active":""}`}
+                        
+                        
+                        href={
+                          e.heading.toLowerCase() != 'overview'?  
+                          createTravelGuideDetailWithSlug({type:type,city:query.city??query.country,slug:e.heading,id:query.id}):
+                          `${type=="CITY"?createTGCityURL({city:query.city,id:query.id}):type=="STATE"?createTGStateURL({city:query.city,id:query.id}):createTGCountryURL({country:query.country,id:query.id})}`
+                        }>
+                          {e.heading}
+                        </Link>
+                      </li>            
+              </>
+            })}
+          </ul>
+          
+          <ul style={{display:'none'}}>
             <li>
               <a className={`${query?.slug?"":"_c_active"}`} href={type=="CITY"?createTGCityURL({city:query.city,id:query.id}):type=="STATE"?createTGStateURL({city:query.city,id:query.id}):createTGCountryURL({country:query.country,id:query.id})}>
                 Overview
@@ -264,7 +266,6 @@ const TravelGuideDetailComp = ({
                 <a 
                   className={`${query?.slug?.replace(/-/g," ") == data.tg.eventsHeading.toLowerCase() ? "_c_active":""}`}
                   href={
-                  // `#${data.tg.eventsHeading}`
                   createTravelGuideDetailWithSlug({type:type,city:query.city??query.country,slug:data.tg.eventsHeading,id:query.id})
                   } >
                   {data.tg.eventsHeading}
@@ -276,10 +277,8 @@ const TravelGuideDetailComp = ({
             {data.tg.factsHeading ? (
               <li>
                 <a 
-
                   className={`${query?.slug?.replace(/-/g," ") == data.tg.factsHeading.toLowerCase() ? "_c_active":""}`}
                   href={
-                  // `#${data.tg.factsHeading}`
                   createTravelGuideDetailWithSlug({type:type,city:query.city??query.country,slug:data.tg.factsHeading,id:query.id})
                   }>{data.tg.factsHeading}</a>
               </li>
@@ -293,7 +292,6 @@ const TravelGuideDetailComp = ({
                 className={`${query?.slug?.replace(/-/g," ") == data.tg.foodHeading.toLowerCase() || query?.slug == "top-sightseeing-places-and-attractions-to-visit" ? "_c_active":""}`}
                 
                 href={
-                  // `/places/${data?.tg?.cityName.toLowerCase()}/top-sightseeing-places-and-attractions-to-visit-${data?.tg?.id}`
                   createTravelGuideDetailWithSlug({type:type,city:query.city??query.country,slug:data.tg.foodHeading,id:query.id})
                   } >
                     
@@ -313,11 +311,6 @@ const TravelGuideDetailComp = ({
             ) : (
               ""
             )}
-            {/* {data.tg.foodHeading
-                    ?<li>
-                        <a href={`#${data.tg.foodHeading}`}>{data.tg.foodHeading}</a>
-                    </li>
-                    :""} */}
             {data.tg.marketHeading ? (
               <li>
                 <a 
@@ -359,6 +352,27 @@ const TravelGuideDetailComp = ({
                   />
                 )}
               </Carousel>
+            
+              <div className="title_listing_ block lg:hidden">
+                {type == "CITY" ? (
+                  <h1 className={`text-2xl font-bold my-2`}>
+                    
+                    {query.slug? 
+                    <>{toTitleCase(textDecode({text:query.slug}))} in {data.tg.cityName}</>
+                    :<>{data.tg.cityName} Tourism And Travel Guide</>
+                    }
+                    
+                    </h1>
+                ) : (
+                  <h1 className={`text-2xl font-bold my-2`}>
+                    {/* {data.tg.cityName} tourism and travel guide */}
+                    {query.slug? 
+                    <>{toTitleCase(textDecode({text:query.slug}))} in {data.tg.cityName}</>
+                    :<>{ textDecode({text:data.tg.cityName})} Tourism And Travel Guide</>
+                    }              
+                  </h1>
+                )}
+              </div>
             </div>
           </div>
           <div className={`w-full lg:w-1/3`}>
@@ -369,7 +383,7 @@ const TravelGuideDetailComp = ({
                   
                   {query.slug? 
                   <>{toTitleCase(textDecode({text:query.slug}))} in {data.tg.cityName}</>
-                  :<>{data.tg.cityName} tourism and travel guide</>
+                  :<>{data.tg.cityName} Tourism And Travel Guide</>
                   }
                   
                   </h1>
@@ -378,7 +392,7 @@ const TravelGuideDetailComp = ({
                   {/* {data.tg.cityName} tourism and travel guide */}
                   {query.slug? 
                   <>{toTitleCase(textDecode({text:query.slug}))} in {data.tg.cityName}</>
-                  :<>{ textDecode({text:data.tg.cityName})} tourism and travel guide</>
+                  :<>{ textDecode({text:data.tg.cityName})} Tourism And Travel Guide</>
                   }              
                 </h1>
               )}
@@ -649,7 +663,7 @@ const TravelGuideDetailComp = ({
         </span>
 
         <div className={`flex flex-wrap`}>
-          <div className={`mt-4 w-full lg:w-2/3`}>
+          <div className={`mt-4 w-full lg:w-2/3`}>            
             <div>
               {query?.slug?
               
@@ -665,11 +679,12 @@ const TravelGuideDetailComp = ({
                 <P_Cities data={data} />
                 </>
                 :""
+
                 
               
               }
                </>
-              :<>
+              :<>            
               
               <h2 className={"_titles_"}>Overview</h2>
               <div className={``}>
@@ -705,17 +720,7 @@ const TravelGuideDetailComp = ({
               <div>
               {/* {type == "COUNTRY" && data.stg ? <TravelGuide data={data.stg} /> : ""} */}
                 <div className={`flex justify-between`}>
-                  {type == "CITY" ?  ""
-                  // (
-                  //   data?.attn?.length > 0 ? (
-                  //     <h2 className={"_titles_"}>
-                  //       Attractions in {data?.tg?.cityName}
-                  //     </h2>
-                  //   ) : (
-                  //     ""
-                  //   )
-                  // ) 
-                  
+                  {/* {type == "CITY" ?  ""
                   : data?.attn?.length > 0? (
                     <div className={`flex_ justify-between_`}>
                       <h2 className={`text-xl font-bold`}>
@@ -725,7 +730,7 @@ const TravelGuideDetailComp = ({
                     
                   ) : (
                     ""
-                  )}
+                  )} */}
                   
 
                   {type == "CITY" ? (
@@ -744,7 +749,7 @@ const TravelGuideDetailComp = ({
                   ) : (
                     <div>
                       {/* /states/:city/top-places-to-visit-:id */}
-                      {
+                      {/* {
                         type!="COUNTRY"?<Link 
                         // href={`/states/${data?.tg?.cityName.toLowerCase()}/top-places-to-visit-${data?.tg?.id}`}
                         href={createPlacesToVisitURL({cityname:data?.tg?.cityName,id:data?.tg?.id})}
@@ -753,7 +758,7 @@ const TravelGuideDetailComp = ({
                           <div className="btn_view_more">View all</div>
                         </div>
                       </Link>:""
-                      }
+                      } */}
                       
                     </div>
                   )}
@@ -763,11 +768,11 @@ const TravelGuideDetailComp = ({
                     <div className="Shape_42_">
                       <div className={`flex flex-wrap`}>
                         {
-                          type == "CITY" ? "" 
+                          // type == "CITY" ? "" 
                           
-                          : (
-                            <TopCities data={data} />
-                          )
+                          // : (
+                          //   <TopCities data={data} />
+                          // )
 
                           // data.ctg.slice(0, attlimit).map((item, i) => {
                           //     let url = createTGCityURL({city:item.name,id:item.tgid})
@@ -871,6 +876,20 @@ const TravelGuideDetailComp = ({
         {/* {
                 packages.length!=0?<HomePackages data={packages} />:""
             }             */}
+
+
+        {type== "STATE" && query?.slug?.startsWith("places-to-visit")?
+          <P_Cities data={data} count={3} />:""
+        }
+
+        {type == "COUNTRY" && data.stg && query?.slug?.startsWith("top-destination")?
+                
+              // <h2>lskdjflksdjlkfjlkds</h2>
+              <P_Cities data={data} count={4}/>
+              :""
+            
+          
+          }
         {type == "STATE" ? (
           packages_state?.length != 0 && packages_state.packages != null ? (
             <HomePackages data={packages_state} />
@@ -883,7 +902,9 @@ const TravelGuideDetailComp = ({
           ""
         )}
 
-        {type == "COUNTRY" && data.stg ? <TravelGuide data={data.stg} type={"COUNTRY"} /> : ""}
+        {/* {type == "COUNTRY" && data.stg ? <TravelGuide data={data.stg} type={"COUNTRY"} /> : ""} */}
+        
+
 
         {hotels.length != 0 ? <Hotel data={hotels} /> : ""}
 

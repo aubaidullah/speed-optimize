@@ -966,7 +966,10 @@ font-weight: 300;
     padding-left: 5px;
   }
   .detail_slide_nav {
-    display: none;
+    /* display: none; */
+    display: flex;
+    white-space: nowrap;
+    overflow-x: scroll;
   }
   #photos .carousel .slide img {
     height: 200px !important;
