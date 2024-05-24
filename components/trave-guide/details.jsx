@@ -183,7 +183,7 @@ const TravelGuideDetailComp = ({
     return <>
     
     <div className={`w-1/2`} key={index}>
-      <Link href={type==='STATE'?createTGStateURL({city:e.name??e.cityName, id:e.tgid??e.id}):type=="CITY"?createTGCityURL({city:e.name??e.cityName, id:e.tgid??e.id}):createTGCountryURL({country:e.cityName,id:e.id})}>
+      <Link href={type==='STATE'?createTGStateURL({city:e.name??e.cityName, id:e.tgid??e.id}):type=="CITY"?createTGCityURL({city:e.name??e.cityName, id:e.tgid??e.id}):createTGCountryURL({country:e.name??e.cityName,id:e.tgid??e.id})}>
         {/* <Image /> */}
         <div className="pb-2">
           <div className={`relative h-[100px] mx-2 pb-4`}>
@@ -836,7 +836,11 @@ const TravelGuideDetailComp = ({
                 
                 {
                   data?.stg || data?.ctg? <>
-                    <h2 className="_titles_ pl-2">{data.tg.cityName} Nearby {type==='STATE'?"States":type==="CITY"?"Cities":"Countries"}  </h2>                
+
+                    {/* <h2 className="_titles_ pl-2">{data.tg.cityName} Nearby {type==='STATE'?"States":type==="CITY"?"Cities":"Countries"}  </h2>                 */}
+                  <h2 className="_titles_ pl-2">
+                    {type==='STATE'?"Similar Destinations":type==="CITY"?"Similar Places":"Nearby Countries"}
+                  </h2>
                   </>:""
                 }
                 <div className={`flex flex-wrap pt-2`}>
