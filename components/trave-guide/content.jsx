@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 
 const Tabs = ({ title, desc, clps = null }) => {
   const [collapse, setCollapse] = useState(clps);
+  const [cl,setCl] = useState(true)
   return (
     <div>
       <div className="faq-acc">
@@ -17,7 +18,7 @@ const Tabs = ({ title, desc, clps = null }) => {
           id="accordion"
           role="tablist"
         >
-          <div className="panel panel-default">
+          <div className={`panel panel-default ${cl?"max-h-96":""}  overflow-hidden cursor-pointer`} onClick={()=>setCl(!cl)}>
             <div
               className="panel-heading"
               // id="howtoreach"

@@ -40,6 +40,10 @@
   width: 40%;
 }
 
+
+.max-h-96 {
+  max-height: 24rem/* 384px */;
+}
 /* p-[10px] mb-[20px] */
 
 .p-\[10px\]{

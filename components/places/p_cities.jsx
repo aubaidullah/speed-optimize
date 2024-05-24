@@ -12,7 +12,7 @@ import rightBlock from "../trave-guide/rightBlock";
 import ParseHtml from "../parseToHtml";
 import { useRouter } from "next/router";
 
-const IMG = ({ e, index, url, type,count=3 }) => {
+const IMG = ({ e, index, url, type,count=3,button=true }) => {
   const {asPath} = useRouter()
   return (
     <>
@@ -33,9 +33,11 @@ const IMG = ({ e, index, url, type,count=3 }) => {
                   {e.ratings ? <div className="cir_bg">{e.ratings}/5</div> : ""}
                 </div>
               </div>
+              <Link href={url}>
               <div className={`pl_img relative`}>
                 <Image src={e.images} className={` rounded-lg_`} fill />
               </div>
+              </Link>
               <div>
                 <div className={`p-2 bg-white rounded-b-2xl`}>
                   <div className={`bg-white`}>
@@ -136,10 +138,14 @@ const IMG = ({ e, index, url, type,count=3 }) => {
                     )}
                   </div>
                   <a itemProp="url" href={`https://www.kiomoi.com${asPath}`} />
+                  {button?
                   <div className="flex justify-between py-2">
-                    <Link className="btn_listing" href={url}>
-                      Read more
-                    </Link>
+                    
+                      <Link className="btn_listing" href={url}>
+                        Read more
+                      </Link>
+                    
+
                     {
                       e.geoid
                       ?<Link
@@ -151,7 +157,7 @@ const IMG = ({ e, index, url, type,count=3 }) => {
                     :""
                     }
                     
-                  </div>
+                  </div>:""}
                 </div>
               </div>
             </div>
@@ -162,7 +168,7 @@ const IMG = ({ e, index, url, type,count=3 }) => {
   );
 };
 
-const P_Cities = ({ data, start = undefined, end = undefined,count=3 }) => {
+const P_Cities = ({ data, start = undefined, end = undefined,count=3, button=true }) => {
   // console.log(data.stg)
   // const Grouping = (list) =>{
   //     return list.reduce((groups, item) => {
@@ -189,19 +195,19 @@ const P_Cities = ({ data, start = undefined, end = undefined,count=3 }) => {
               ? data.ctg.map((e, index) => {
                   // let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
                   let url = createTGCityURL({ city: e.name, id: e.tgid });
-                  return <IMG count={count} index={index} e={e} url={url} type={data.tp} />;
+                  return <IMG button={button} count={count} index={index} e={e} url={url} type={data.tp} />;
                 })
               : start != undefined && end != undefined
               ? data.ctg.slice(start, end).map((e, index) => {
                   // let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
                   let url = createTGCityURL({ city: e.name, id: e.tgid });
-                  return <IMG count={count} index={index} e={e} url={url} type={data.tp} />;
+                  return <IMG button={button} count={count} index={index} e={e} url={url} type={data.tp} />;
                 })
               : data.ctg.slice(start).map((e, index) => {
                   // let url = createAttractionsURL({city:data?.tg?.cityName,attraction:item.name,id:item.id})
                   let url = createTGCityURL({ city: e.name, id: e.tgid });
                   return (
-                    <IMG count={count} index={index + start} e={e} url={url} type={data.tp} />
+                    <IMG button={button} count={count} index={index + start} e={e} url={url} type={data.tp} />
                   );
                 })}
           </div>
@@ -214,13 +220,13 @@ const P_Cities = ({ data, start = undefined, end = undefined,count=3 }) => {
                     className={`text-xl font-bold mt-8 border-b border-gray-500 _b_active`}
                   >
                     {" "}
-                    Popular destinations in {key} India{" "}
+                    Popular Destinations In {key} India{" "}
                   </h3>
                   <div className={`flex flex-wrap pt-2`}>
                     {Object(groups)[key].map((e, index) => {
                       let url = createTGStateURL({ city: e.name, id: e.tgid });
                       return (
-                        <IMG count={count} index={index} e={e} url={url} type={data.tp} />
+                        <IMG button={button} count={count} index={index} e={e} url={url} type={data.tp} />
                       );
                     })}
                   </div>
@@ -232,7 +238,7 @@ const P_Cities = ({ data, start = undefined, end = undefined,count=3 }) => {
                         {
                             data.ctg.map((e,index)=>{
                                 let url = createTGCityURL({city:e.name,id:e.tgid})
-                                return <IMG count={count} index={index} e={e} url={url} type={data.tp}/>
+                                return <IMG button={button} count={count} index={index} e={e} url={url} type={data.tp}/>
                                 
                             })
                         }
@@ -242,7 +248,7 @@ const P_Cities = ({ data, start = undefined, end = undefined,count=3 }) => {
         ) : (
           // .map((e,index)=>{
           //     let url = createTGStateURL({city:e.name,id:e.tgid})
-          //     return <IMG index={index} e={e} url={url} type={data.tp}/>
+          //     return <IMG button={button} index={index} e={e} url={url} type={data.tp}/>
 
           // })
           <div className={`flex flex-wrap`}>
@@ -254,7 +260,7 @@ const P_Cities = ({ data, start = undefined, end = undefined,count=3 }) => {
                 id: e.id,
               });
               // let url = createTGCityURL
-              return <IMG index={index} e={e} url={url} type={data.tp} />;
+              return <IMG button={button} count={count} index={index} e={e} url={url} type={data.tp} />;
             })}
           </div>
         )}
