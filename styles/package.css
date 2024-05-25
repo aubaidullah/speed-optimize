@@ -214,7 +214,7 @@ del {
 }
 
 .btn_listing {
-  font-size: 12px;
+  font-size: 14px;
   color: #403f3f;
   padding: 8px 15px;
   text-transform: uppercase;
@@ -240,8 +240,8 @@ del {
   -o-transition:
     0.3s border,
     0.3s color ease-in;
-  font-size: 12px;
-  padding: 10px 12px;
+  padding: 12px 12px;
+  font-weight: bold;
   vertical-align: middle;
   line-height: 120%;
 }

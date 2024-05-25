@@ -98,7 +98,7 @@ const RightBar = ({ data }) => {
           </div>
         </div>
 
-        <div className={`_b_right_list mt-0 lg:mt-16`}>
+        <div className={`_b_right_list mt-0`}>
           <div className="p-2">
             <div className="ov_auto">
               <div className="d_location flt_left">

@@ -25,6 +25,22 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/holidays/-tour-packages",
+        destination: "/holidays",
+        permanent: true
+      },
+      {
+        source: "/holidays/tour-packages",
+        destination: "/holidays",
+        permanent: true
+      },      
+
+      {
+        source : "/holidays/:slug/:id",
+        destination: "/holidays",
+        permanent: true
+      },
+      {
         source: "/travelguide",
         destination: "/travel-guide",
         permanent: true
@@ -63,6 +79,7 @@ const nextConfig = {
       // {
       //   source: '/holidays/international-:package-tour-packages/:id',
       //   destination: '/holidays/international-package'
+      // /cities/:city/top-sightseeing-places-and-attractions-to-visit-:id(\\d+)
       // },
       {
         source: "/holidays/:slug-:pre([0]{1}):id(\\d+)",
@@ -130,7 +147,22 @@ const nextConfig = {
       {
         source: "/places/:city-:id(\\d+)",
         destination: "/travel-guide/india/detail",
-      },      
+      },
+
+      {
+        source: "/countries/:country/:slug-:id(\\d+)",
+        destination: "/travel-guide/country",
+      },
+
+      {
+        source: "/states/:city/:slug-:id(\\d+)",
+        destination: "/travel-guide/india/detail",
+      },
+
+      {
+        source: "/places/:city/:slug-:id(\\d+)",
+        destination: "/travel-guide/india/detail",
+      },
       // {
       //   source: "/travel-guide/cities/:city-:id(\\d+)",
       //   destination: "/travel-guide/india/detail",
@@ -161,10 +193,10 @@ const nextConfig = {
         source: "/countries/:city/top-destinations-to-visit-:id(\\d+)",
         destination: "/travel-guide/places",
       },      
-      {
-        source: "/cities/:city/top-sightseeing-places-and-attractions-to-visit-:id(\\d+)",
-        destination: "/travel-guide/places",
-      },      
+      // {
+      //   source: "/cities/:city/top-sightseeing-places-and-attractions-to-visit-:id(\\d+)",
+      //   destination: "/travel-guide/places",
+      // },
       // top-attractions-to-visit
       // {
       //   source: "/travel-guide/states/:city-:id(\\d+)",

@@ -67,6 +67,26 @@ export const createDetailUrl1 = ({ name, id }) => {
   return y;
 };
 
+
+export const createTravelGuideDetailWithSlug = ({city,slug,id,type}) =>{
+  if(type == "STATE")
+    return `/states/${city}/${slug.replace(/\s+/g, "-").toLowerCase()}-${id}`
+  else if(type == "COUNTRY")
+    return `/countries/${city}/${slug.replace(/\s+/g, "-").toLowerCase()}-${id}`
+  else
+    return `/places/${city}/${slug.replace(/\s+/g, "-").toLowerCase()}-${id}`
+
+  }
+
+export const textEncode = ({text})=>{
+  return text.replace(/\s+/g, "-").toLowerCase()
+}
+
+export const textDecode = ({text}) =>{
+  return text.replace(/-/g," ")
+}
+
+
 export const createThemeListURL = ({ cityname }) => {
   return `/holidays/${cityname
     ?.replace(/\s+/g, " ")

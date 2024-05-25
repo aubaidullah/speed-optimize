@@ -116,7 +116,7 @@ function MyApp({ Component, pageProps }) {
 
 export const getStaticProps = (context) => {
   if (context.res.statusCode === 404) {
-    res.writeHead(301, { Location: '/' })
+    res.writeHead(301, { Location: '/holidays' })
     res.end()
   }
 };

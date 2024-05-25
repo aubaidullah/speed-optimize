@@ -73,7 +73,7 @@ export async function getServerSideProps(context) {
     query: getCountryContent,
     variables: { input: { av: "", id: "", pt: "" } },
   });
-  console.log(res1.data);
+  // console.log(res1.data);
   const content = res2.data.content.output;
   const hotels = content.hotels;
   const states = content.states;
