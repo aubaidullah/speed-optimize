@@ -69,7 +69,7 @@ const TravelGuideDetailComp = ({
   type,
   state_t = undefined,
 }) => {
-  console.log(data);
+  // console.log(data);
   const [overviewlimit, setOverviewlimit] = useState(900);
   const [overview, setOverview] = useState(data.tg?.overviewDesc);
   const [attlimit, setAttlimit] = useState(4);
@@ -860,24 +860,31 @@ const TravelGuideDetailComp = ({
                   {
                     
                     type === 'STATE'
-                    ?data?.stg?.slice(0,6).map((e,index)=>{
-                      return <NearBy e={e} index={index} />
+                    ?data?.stg?.slice(0,7).map((e,index)=>{
+                      return  e.name.toLowerCase() != data.tg.cityName.toLowerCase()?<>
+                      <NearBy e={e} index={index} /></>:""
                     })
                     :""
                   
                   }
                   {
                         type === 'CITY'
-                        ?data.ctg?.slice(0,6).map((e,index)=>{
-                          return <NearBy e={e} index={index} />
+                        
+                        ?data.ctg?.slice(0,7).map((e,index)=>{
+                         
+                          return e.name.toLowerCase() != data.tg.cityName.toLowerCase()?
+                          <>
+                            <NearBy e={e} index={index} />
+                          </>:""
                         })
                         :""
                   }
 
                   {
                         type === 'COUNTRY'
-                        ?data.countries?.slice(0,6).map((e,index)=>{
-                          return <NearBy e={e} index={index} />
+                        ?data.countries?.slice(0,7).map((e,index)=>{
+                          return e.name.toLowerCase() != data.tg.cityName.toLowerCase()?<>
+                          <NearBy e={e} index={index} /></>:""
                         })
                         :""
                   }

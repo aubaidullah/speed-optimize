@@ -615,7 +615,7 @@ export async function getServerSideProps(context) {
     size: 0,
     type: "STATE",
   };
-  console.log(article_data);
+  // console.log(article_data);
 
   // getQnaQuery
 
