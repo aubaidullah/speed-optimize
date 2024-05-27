@@ -35,16 +35,23 @@ export async function getServerSideProps({ res }) {
   else{
     destination = "/"
   }
-  // return { props: {} };
+  // return { 
+  //   // redirect:{},
+  //   // redirect:{
+  //   //   permanent
+  //   // },
+  //   props: {} 
+  // };
   
   return destination == "/"?{
-    // redirect: {},
-    // redirect:null,
     props:{},
   }:{
-    permanent: false,
-    destination: destination,
-    props:{},
+      redirect : {
+        permanent :false,
+        destination: destination,
+        permanent : true
+      },
+      props:{}
   };
 
 

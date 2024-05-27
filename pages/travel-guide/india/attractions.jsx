@@ -273,7 +273,7 @@ const Attraction = ({ data, meta }) => {
                   </div>
                 </div>
               </div>
-              <div className="_b_right_list_1">
+              <div className="_b_right_list_1 hidden">
                 <div className={`p-2`}>
                   <div className={`bg-white pb-2`}>
                     <div className={`flex justify-between`}>
