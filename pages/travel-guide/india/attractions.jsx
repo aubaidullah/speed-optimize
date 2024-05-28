@@ -215,7 +215,7 @@ const Attraction = ({ data, meta }) => {
       <BreadCrumbs bread={bread} />
 
       <section className="container">
-        <h1 className={`text-2xl font-bold pb-3`}>{data.atn.name}</h1>
+        <h1 className={`_titles_`}>{data.atn.name}</h1>
 
         <div className={`flex flex-wrap`}>
           <div className={`w-full lg:w-2/3`}>
@@ -385,7 +385,7 @@ const Attraction = ({ data, meta }) => {
               </>:""
             }
 
-            <h2 className={`text-xl font-bold ms-1 my-3`}>FAQs</h2>
+            <h2 className={`_titles_`}>FAQs</h2>
 
             <FAQs data={data.faqs} />
 {/* 
