@@ -907,7 +907,7 @@ const TravelGuideDetailComp = ({
             <h2 className={"_titles_"}>
               Attractions in {data?.tg?.cityName}
             </h2>
-          <P_Cities data={data} count={3} button={type=="CITY"?false:true}/>
+          <P_Cities data={data} count={4} button={type=="CITY"?false:true}/>
           </>
           
           :""

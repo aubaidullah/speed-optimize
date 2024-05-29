@@ -30,7 +30,8 @@ const TravelGuideDetail = ({
   type,
 }) => {
   // console.log(article)
-  const {asPath} = useRouter()
+  // const {asPath} = useRouter()
+  const {asPath,query} = useRouter()
   // const TravelGuideDetailComp = dynamic(() =>
   //   import("@/components/trave-guide/details")
   // );
@@ -50,6 +51,7 @@ const TravelGuideDetail = ({
   //     "logo":"https://www.kiomoi.com/icons/kiomoi%20logo.svg"
   //     }
   //   }
+
     
 
   return (
@@ -60,7 +62,14 @@ const TravelGuideDetail = ({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonP) }}
         />
       </Head>     */}
-      <Meta meta={data.tg}/>
+      {/* <Meta meta={data.tg}/> */}
+
+      {
+        data.priority.map((e,index)=>{
+          return query?.slug?.replace(/-/g," ") == e.heading.toLowerCase() || !query?.slug && e.heading.toLowerCase() == "overview" ? <Meta meta={e} />:""
+        })
+      }
+
       <TravelGuideDetailComp
         meta={meta}
         packages_state={packages_state}

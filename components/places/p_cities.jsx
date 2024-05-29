@@ -36,10 +36,15 @@ const IMG = ({ e, index, url, type,count=3,button=true }) => {
               <Link href={url}>
               <div className={`pl_img relative`}>
                 <Image src={e.images} className={` rounded-lg_`} fill />
+                <div className=" absolute bottom-2 font-extralight text-sm text-center w-full" style={{bottom:'2px'}}>
+                  <div className="border-2 rounded-full text-white px-2 drop-shadow-xl w-fit m-auto" style={{textShadow:'2px 1px 1px #f06726'}}>
+                    {e?.description}
+                  </div>
+                </div>
               </div>
               </Link>
               <div>
-                <div className={`p-2 bg-white rounded-b-2xl`}>
+                <div className={`p-2 bg-white rounded-b-2xl hidden`}>
                   <div className={`bg-white`}>
                     {type === "STATE" ? (
                       <div>
