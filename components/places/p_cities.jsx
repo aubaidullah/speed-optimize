@@ -16,7 +16,7 @@ const IMG = ({ e, index, url, type,count=3,button=true }) => {
   const {asPath} = useRouter()
   return (
     <>
-      <div className={`w-full lg:w-1/${count}`} key={index}>
+      <div className={`w-full lg:w-1/${count} mb-6`} key={index}>
         {/* <img src={e.i} /> */}
         <div className={`p-2`}>
           <div>
@@ -35,16 +35,18 @@ const IMG = ({ e, index, url, type,count=3,button=true }) => {
               </div>
               <Link href={url}>
               <div className={`pl_img relative`}>
-                <Image src={e.images} className={` rounded-lg_`} fill />
-                <div className=" absolute bottom-2 font-extralight text-sm text-center w-full" style={{bottom:'2px'}}>
-                  <div className="border-2 rounded-full text-white px-2 drop-shadow-xl w-fit m-auto" style={{textShadow:'2px 1px 1px #f06726'}}>
+                <Image src={e.images} className={` rounded-lg_ ${type=='CITY'?'rounded-b-lg':''}`} fill />
+                <div className=" absolute bottom-2 font-extralight w-full" style={{bottom:'2px',fontSize:'11px'}}>
+                  <div className="px-2 drop-shadow-xl w-fit _b_active" 
+                  // style={{textShadow:'2px 1px 1px #f06726'}}
+                  >
                     {e?.description}
                   </div>
                 </div>
               </div>
               </Link>
               <div>
-                <div className={`p-2 bg-white rounded-b-2xl hidden`}>
+                <div className={`p-2 bg-white rounded-b-2xl ${type != "STATE" ? 'hidden':'' }`}>
                   <div className={`bg-white`}>
                     {type === "STATE" ? (
                       <div>
@@ -257,7 +259,7 @@ const P_Cities = ({ data, start = undefined, end = undefined,count=3, button=tru
 
           // })
           <div className={`flex flex-wrap`}>
-            {data.attn.map((e, index) => {
+            {/* {data.attn.map((e, index) => {
               // createAttractionsURL
               let url = createAttractionsURL({
                 city: data?.tg?.cityName,
@@ -266,7 +268,30 @@ const P_Cities = ({ data, start = undefined, end = undefined,count=3, button=tru
               });
               // let url = createTGCityURL
               return <IMG button={button} count={count} index={index} e={e} url={url} type={data.tp} />;
-            })}
+            })
+            
+            } */}
+            {start === undefined && end == undefined
+              ? data.attn.map((e, index) => {
+                  let url = createAttractionsURL({city:data?.tg?.cityName,attraction:e.name,id:e.id})
+                  // let url = createTGCityURL({ city: e.name, id: e.tgid });
+                  return <IMG button={button} count={count} index={index} e={e} url={url} type={data.tp} />;
+                })
+              : start != undefined && end != undefined
+              ? data.attn.slice(start, end).map((e, index) => {
+                let url = createAttractionsURL({city:data?.tg?.cityName,attraction:e.name,id:e.id})
+                  // let url = createTGCityURL({ city: e.name, id: e.tgid });
+                  return <IMG button={button} count={count} index={index} e={e} url={url} type={data.tp} />;
+                })
+              : data.attn.slice(start).map((e, index) => {
+                  let url = createAttractionsURL({city:data?.tg?.cityName,attraction:e.name,id:e.id})
+                  // let url = createTGCityURL({ city: e.name, id: e.tgid });
+                  return (
+                    <IMG button={button} count={count} index={index + start} e={e} url={url} type={data.tp} />
+                  );
+                })}
+
+            
           </div>
         )}
       </div>

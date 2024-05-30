@@ -4,6 +4,7 @@ import * as Constants from "../Constants";
 import Link from "next/link";
 import Image from "next/image";
 import { imgNameByUrl, jpgToWebp } from "../fun";
+import ParseHtml from "../parseToHtml";
 
 const SinglePack = ({ item, aurl, i, userRating }) => {
   return (
@@ -39,7 +40,7 @@ const SinglePack = ({ item, aurl, i, userRating }) => {
                     </div>
                     <div className="_text_trip">
                       <h4>{item.name}</h4>
-                      <p>{item.description.substring(0, 70)}...</p>
+                      <p>{ParseHtml({text:item.description.substring(0, 70)})}...</p>
                     </div>
                   </div>
                 </div>

@@ -5,7 +5,7 @@ import Link from "next/link";
 // import Pack from './pack'
 import dynamic from "next/dynamic";
 
-const HomePackages = ({ data,holiday=false }) => {
+const HomePackages = ({ data,holiday=false,tg=false }) => {
   const Pack = dynamic(() => import("./pack"));
 
   return (
@@ -17,7 +17,13 @@ const HomePackages = ({ data,holiday=false }) => {
               className={`${holiday==false?'title_kiomoi':''} flex items-center justify-between mb-6`}
             >
               <div className={`2w-full`}>
-                <h4 className={`text-xl lg:text-2xl font-bold`}>{holiday==false?"Top Rated Tours":"Best Selling Tour Packages"}</h4>
+                {
+                  tg?
+                  <h4 className={`text-xl lg:text-2xl font-bold`}>{tg}</h4>
+                  :<h4 className={`text-xl lg:text-2xl font-bold`}>{holiday==false?"Top Rated Tours":"Best Selling Tour Packages"}</h4>
+                }
+                {/* <h4 className={`text-xl lg:text-2xl font-bold`}>{holiday==false?"Top Rated Tours":"Best Selling Tour Packages"}</h4> */}
+                
                 <p></p>
               </div>
               <div className={`2w-full`}>
