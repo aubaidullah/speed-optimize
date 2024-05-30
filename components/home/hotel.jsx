@@ -4,7 +4,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 // import Hotel_Design from '../hotel/hotel';
 
-const Hotel = ({ data }) => {
+const Hotel = ({ data,heading=false }) => {
   const MultiCarousel = dynamic(() => import("react-multi-carousel"));
   const Hotel_Design = dynamic(() => import("../hotel/hotel"));
 
@@ -88,8 +88,15 @@ const Hotel = ({ data }) => {
                 className={`title_kiomoi flex items-center justify-between mb-6`}
               >
                 <div className={`2w-full`}>
-                  <h4>Stay like Royal</h4>
-                  <p>Discover Incredible Hotels</p>
+                  {
+                    <h4>{heading}</h4>??
+                    <>
+                      <h4>Stay like Royal</h4>
+                      <p>Discover Incredible Hotels</p>                    
+                    </>
+
+                  }
+                  
                 </div>
                 <div className={`2w-full`}>
                   <Link href="/hotels/">

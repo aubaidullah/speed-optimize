@@ -907,7 +907,16 @@ const TravelGuideDetailComp = ({
             <h2 className={"_titles_"}>
               Attractions in {data?.tg?.cityName}
             </h2>
-          <P_Cities data={data} count={3} button={type=="CITY"?false:true}/>
+          {/* <P_Cities data={data} count={4} button={type=="CITY"?false:true}/> */}
+          <>
+          
+          <P_Cities data={data} start={0} end={type=="STATE"?6:8} count={type=="STATE"?3:4} />
+            
+            <div className="mb-16">
+              <HomePackages data={type=="STATE"?packages_state:packages} tg={`Popular Tours in ${data?.tg?.cityName}`} />
+            </div>
+          <P_Cities data={data} start={type=="STATE"?6:8} count={type=="STATE"?3:4}/>
+          </>
           </>
           
           :""
@@ -921,23 +930,27 @@ const TravelGuideDetailComp = ({
             
           
           }
-        {type == "STATE" ? (
+
+          {/* type== "STATE" && query?.slug?.startsWith("places-to-visit") || type=="CITY" && query?.slug?.startsWith("places-to-visit") */}
+        {type == "STATE" && !query?.slug?.startsWith("places-to-visit") ? (
           packages_state?.length != 0 && packages_state.packages != null ? (
-            <HomePackages data={packages_state} />
+            <HomePackages data={packages_state} tg={`Popular Tours in ${data?.tg?.cityName}`} />
           ) : (
             ""
           )
-        ) : packages?.packages?.length != 0 ? (
-          <HomePackages data={packages} />
+        ) : type=="CITY" && !query?.slug?.startsWith("places-to-visit")? packages?.packages?.length != 0 ? (
+          <HomePackages data={packages} tg={`Popular Tours in ${data?.tg?.cityName}`} />
         ) : (
           ""
-        )}
+        ):""
+      
+      }
 
         {type == "COUNTRY" && data.stg &&  !query?.slug?.startsWith("top-destination") ? <TravelGuide data={data.stg} type={"COUNTRY"} /> : ""}
         
 
 
-        {hotels.length != 0 ? <Hotel data={hotels} /> : ""}
+        {hotels.length != 0 ? <Hotel data={hotels} heading={`Popular Stays in ${data?.tg?.cityName}`} /> : ""}
 
         {type == "CITY" || type == "STATE" ? (
           article.length != 0 ? (
