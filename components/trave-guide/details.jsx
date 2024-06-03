@@ -67,6 +67,8 @@ const TravelGuideDetailComp = ({
   article,
   qna,
   type,
+  // headers,
+  isMobile,
   state_t = undefined,
 }) => {
   // console.log(data);
@@ -353,7 +355,8 @@ const TravelGuideDetailComp = ({
                 )}
               </Carousel>
             
-              <div className="title_listing_ block lg:hidden">
+            {isMobile?
+              <div className="title_listing_ block">
                 {type == "CITY" ? (
                   <h1 className={`text-2xl font-bold my-2`}>
                     
@@ -372,32 +375,38 @@ const TravelGuideDetailComp = ({
                     }              
                   </h1>
                 )}
-              </div>
+              </div>:""
+            }
+
+
             </div>
           </div>
           <div className={`w-full lg:w-1/3`}>
+            {!isMobile?
             <div className="lg:pl-6 mb-4 hidden lg:block">
-            <div className="title_listing_" itemProp="name">
-              {type == "CITY" ? (
-                <h1 className={`text-2xl font-bold`}>
-                  
-                  {query.slug? 
-                  <>{toTitleCase(textDecode({text:query.slug}))} in {data.tg.cityName}</>
-                  :<>{data.tg.cityName} Tourism And Travel Guide</>
-                  }
-                  
+              <div className="title_listing_" itemProp="name">
+                {type == "CITY" ? (
+                  <h1 className={`text-2xl font-bold`}>
+                    
+                    {query.slug? 
+                    <>{toTitleCase(textDecode({text:query.slug}))} in {data.tg.cityName}</>
+                    :<>{data.tg.cityName} Tourism And Travel Guide</>
+                    }
+                    
+                    </h1>
+                ) : (
+                  <h1 className={`text-2xl font-bold`}>
+                    {/* {data.tg.cityName} tourism and travel guide */}
+                    {query.slug? 
+                    <>{toTitleCase(textDecode({text:query.slug}))} in {data.tg.cityName}</>
+                    :<>{ textDecode({text:data.tg.cityName})} Tourism And Travel Guide</>
+                    }              
                   </h1>
-              ) : (
-                <h1 className={`text-2xl font-bold`}>
-                  {/* {data.tg.cityName} tourism and travel guide */}
-                  {query.slug? 
-                  <>{toTitleCase(textDecode({text:query.slug}))} in {data.tg.cityName}</>
-                  :<>{ textDecode({text:data.tg.cityName})} Tourism And Travel Guide</>
-                  }              
-                </h1>
-              )}
-            </div>
-            </div>
+                )}
+              </div>
+            </div>:""
+
+              }
 
             <div className={`pl-0 lg:pl-6 `}>
               <div className="_b_right_list_1">
