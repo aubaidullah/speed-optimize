@@ -1,7 +1,9 @@
 import { getAttractioneHome, getMetaQuery } from "@/components/Graphql/Queries";
 import client from "@/components/Graphql/service";
 import CustomImage from "@/components/Img";
+import { createAttractionsURL } from "@/components/fun";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 
 const Nav = dynamic(() => import("@/components/Nav"));
@@ -25,14 +27,23 @@ const Attractions = ({data,meta}) =>{
     <BreadCrumbs bread={bread} />
     <div className="container">
         <div>
-            <div className="flex flex-wrap">
+          <h1 className="text-2xl font-bold">
+            Top Attractions
+          </h1>
+            <div className="mt-6 flex flex-wrap">
                 {data.attractions.map((e,index)=>{
-                    return <div key={index} className="w-1/4">
-                            <div>
-
-                              <CustomImage img_url={undefined} />
-                              {e.name}
-
+                    return <div key={index} className="w-full lg:w-1/4">
+                            <div className="px-4 py-2">
+                              <Link href={createAttractionsURL({attraction:e.name,city:e.cityName,id:e.id})}>
+                                <div>
+                                  <div className="relative h-[200px]">
+                                    <CustomImage img_url={e?.images} className="rounded-lg" />
+                                  </div>
+                                  <div className=" font-semibold pt-2">
+                                    {e.name}
+                                  </div>
+                                </div>
+                              </Link>
                             </div>
                         </div>
                 })}
@@ -59,7 +70,7 @@ export async function getServerSideProps(context) {
             "pagenum": 1,
             "pid": 0,
             "pt": "",
-            "size": 30,
+            "size": 80,
             "type": ""
         },
       },
