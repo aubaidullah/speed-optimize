@@ -72,9 +72,10 @@ const TravelGuide = ({ data, meta }) => {
         <h1 className={`text-2xl font-bold`}>Top Travel Guides</h1>
         <input
           type="text"
-          className={`mt-4 p-4 border-1 border-gray-300 rounded-lg outline-none w-full bg-transparent`}
+          className={`mt-4 p-4 rounded-lg outline-none w-full bg-transparent`}
           placeholder="Search Travel Guide"
           value={search}
+          style={{border:"1px solid ", borderColor:'gray'}}
           onChange={(e) => Setsearch(e.target.value)}
         />
 

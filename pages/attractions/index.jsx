@@ -4,15 +4,17 @@ import CustomImage from "@/components/Img";
 import { createAttractionsURL } from "@/components/fun";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useState } from "react";
 
 
 const Nav = dynamic(() => import("@/components/Nav"));
 const BreadCrumbs = dynamic(() => import("@/components/breadcrumbs"));
 
 const Attractions = ({data,meta}) =>{
+    const  [limit,setLimit] = useState(20)
     const bread = {
         disabled: {
-          item: `Travel Guide`,
+          item: `Travel Blogs`,
         },
         enabled: [
           {
@@ -31,7 +33,7 @@ const Attractions = ({data,meta}) =>{
             Top Attractions
           </h1>
             <div className="mt-6 flex flex-wrap">
-                {data.attractions.map((e,index)=>{
+                {data.attractions.slice(0,limit).map((e,index)=>{
                     return <div key={index} className="w-full lg:w-1/4">
                             <div className="px-4 py-2">
                               <Link href={createAttractionsURL({attraction:e.name,city:e.cityName,id:e.id})}>
@@ -47,6 +49,9 @@ const Attractions = ({data,meta}) =>{
                             </div>
                         </div>
                 })}
+            </div>
+            <div className="flex mt-8">
+              <button className="btn_listing _btn_clr m-auto" onClick={()=>setLimit(limit+36)}> Load more</button>
             </div>
         </div>
     </div>
@@ -70,7 +75,7 @@ export async function getServerSideProps(context) {
             "pagenum": 1,
             "pid": 0,
             "pt": "",
-            "size": 80,
+            "size": 200,
             "type": ""
         },
       },
