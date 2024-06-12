@@ -35,7 +35,7 @@ const Attractions = ({data,meta}) =>{
             <div className="mt-6 flex flex-wrap">
                 {data.attractions.slice(0,limit).map((e,index)=>{
                     return <div key={index} className="w-full lg:w-1/4">
-                            <div className="px-4 py-2">
+                            <div className="px-2 py-4">
                               <Link href={createAttractionsURL({attraction:e.name,city:e.cityName,id:e.id})}>
                                 <div>
                                   <div className="relative h-[200px]">
