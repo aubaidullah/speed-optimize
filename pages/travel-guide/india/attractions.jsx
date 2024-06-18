@@ -453,20 +453,20 @@ export async function getServerSideProps(context) {
   // let {finalprice,images} = meta.data.meta.output.package
   // finalprice = `₹${finalprice} `
 
-  const metas = {
-    title: meta.data.meta.output.tags.title.replace(
-      /<COUNTRY>/g,
-      context.query.place,
-    ),
-    longDesc: meta.data.meta.output.tags.longDesc.replace(
-      /<COUNTRY>/g,
-      context.query.place,
-    ),
-    keywords: meta.data.meta.output.tags.keywords.replace(
-      /<COUNTRY>/g,
-      context.query.place,
-    ),
-  };
+  // const metas = {
+  //   title: meta.data.meta.output.tags.title.replace(
+  //     /<COUNTRY>/g,
+  //     context.query.place,
+  //   ),
+  //   longDesc: meta.data.meta.output.tags.longDesc.replace(
+  //     /<COUNTRY>/g,
+  //     context.query.place,
+  //   ),
+  //   keywords: meta.data.meta.output.tags.keywords.replace(
+  //     /<COUNTRY>/g,
+  //     context.query.place,
+  //   ),
+  // };
 
 
   // {city:data?.ctid?.cityName,id:data?.ctid?.id}
@@ -500,6 +500,13 @@ export async function getServerSideProps(context) {
   const packages = res1.data.package.output;
 
 
+
+  const metas ={
+    title:resp.data.output.atn.metaTitle,
+    longDesc:resp.data.output.atn.metaKeywords,
+    keywords:resp.data.output.atn.metaDesc,
+    image:resp.data.output.images[0]?.i
+  }
   // console.log(packages)
 
 
