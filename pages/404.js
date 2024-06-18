@@ -1,7 +1,9 @@
 // import Nav from "../components/Nav"
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
+import * as Constants from "../components/Constants"
 
 const Nav = dynamic(() => import("../components/Nav"));
 
@@ -66,6 +68,12 @@ export default function Error404() {
                Back to Home Page
               </Link>
             </div>
+          </div>
+          <div className="relative">
+            <Image  
+              src={`${Constants.assets_api}/icons/404.png`}
+              fill
+            />
           </div>
         </div>
       </div>
