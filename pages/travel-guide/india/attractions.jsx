@@ -503,8 +503,8 @@ export async function getServerSideProps(context) {
 
   const metas ={
     title:resp.data.output.atn.metaTitle,
-    longDesc:resp.data.output.atn.metaKeywords,
-    keywords:resp.data.output.atn.metaDesc,
+    longDesc:resp.data.output.atn.metaDesc,
+    keywords:resp.data.output.atn.metaKeywords,
     image:resp.data.output.images[0]?.i
   }
   // console.log(packages)
