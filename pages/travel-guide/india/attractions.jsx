@@ -8,7 +8,7 @@ import { MdCheckCircle } from "react-icons/md";
 import { BsDot } from "react-icons/bs";
 import { Carousel } from "react-responsive-carousel";
 import axios from "axios";
-import { getMetaQuery } from "../../../components/Graphql/Queries";
+import { getMetaQuery, getTravelPackage, getallpackages } from "../../../components/Graphql/Queries";
 import client from "../../../components/Graphql/service";
 import * as Constant from "../../../components/Constants";
 import dynamic from "next/dynamic";
@@ -16,13 +16,14 @@ import { createTGCityURL, createTGStateURL } from "@/components/fun";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import FAQs from "@/components/list/faqs";
+import HomePackages from "@/components/home/packages";
 
 const ParseHtml = dynamic(() => import("@/components/parseToHtml"));
 const Nav = dynamic(() => import("@/components/Nav"));
 const BreadCrumbs = dynamic(() => import("@/components/breadcrumbs"));
 const Meta = dynamic(() => import("@/components/meta"));
 
-const Attraction = ({ data, meta }) => {
+const Attraction = ({ data, meta, packages }) => {
   const [overview, setOverview] = useState(data.atn.desc);
   const {asPath} = useRouter()
 
@@ -419,6 +420,9 @@ const Attraction = ({ data, meta }) => {
 
           </div>
         </div>
+        <>
+              <HomePackages data={packages} tg={`Popular Tours in ${data?.ctid?.cityName}`} />
+            </>
       </section>
     </>
   );
@@ -449,25 +453,68 @@ export async function getServerSideProps(context) {
   // let {finalprice,images} = meta.data.meta.output.package
   // finalprice = `₹${finalprice} `
 
-  const metas = {
-    title: meta.data.meta.output.tags.title.replace(
-      /<COUNTRY>/g,
-      context.query.place,
-    ),
-    longDesc: meta.data.meta.output.tags.longDesc.replace(
-      /<COUNTRY>/g,
-      context.query.place,
-    ),
-    keywords: meta.data.meta.output.tags.keywords.replace(
-      /<COUNTRY>/g,
-      context.query.place,
-    ),
+  // const metas = {
+  //   title: meta.data.meta.output.tags.title.replace(
+  //     /<COUNTRY>/g,
+  //     context.query.place,
+  //   ),
+  //   longDesc: meta.data.meta.output.tags.longDesc.replace(
+  //     /<COUNTRY>/g,
+  //     context.query.place,
+  //   ),
+  //   keywords: meta.data.meta.output.tags.keywords.replace(
+  //     /<COUNTRY>/g,
+  //     context.query.place,
+  //   ),
+  // };
+
+
+  // {city:data?.ctid?.cityName,id:data?.ctid?.id}
+  let json_data = {
+    av: "",
+    // http://172.18.128.1:3000
+    geoid: resp.data.output?.ctid?.cityId,
+    // id: resp.data.output?.ctid?.id,
+    pagenum: 1,
+    pid: 0,
+    pt: "Website",
+    size: 10,
+    type: "CITY",
   };
+
+  // let json_data = {
+  //   av: "1.3",
+  //   id: resp.data.output?.ctid?.id,
+  //   // name: region?.sname?.replace(/-/g, " "),
+  //   pt: "WEBSITE",
+  //   type: "CITY",
+  // };
+
+  // console.log(json_data)
+
+  const res1 = await client.query({
+    query: getTravelPackage,
+    variables: { input: json_data },
+  });
+
+  const packages = res1.data.package.output;
+
+
+
+  const metas ={
+    title:resp.data.output.atn.metaTitle,
+    longDesc:resp.data.output.atn.metaDesc,
+    keywords:resp.data.output.atn.metaKeywords,
+    image:resp.data.output.images[0]?.i
+  }
+  // console.log(packages)
+
 
   return {
     props: {
       data: resp.data.output,
       meta: metas,
+      packages
     },
   };
 }

@@ -1,6 +1,9 @@
 // import Nav from "../components/Nav"
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
+import Link from "next/link";
+import * as Constants from "../components/Constants"
 
 const Nav = dynamic(() => import("../components/Nav"));
 
@@ -54,9 +57,26 @@ export default function Error404() {
     <>
       <Nav />
       <title>404 | Not Found</title>
-      <div className={`h-screen`}>
-        <div className={`flex items-center h-full`}>
-          <h1 className={`text-3xl text-center w-full c_gray`}>Not Found | 404</h1>
+      
+      <div className={`container h-screen`}>
+        <div className={`flex flex-wrap items-center justify-between h-full`}>
+          <div style={{marginTop:'-10em'}}>
+            <h1 className={`text-3xl font-semibold text-center_ w-full`}>Ohh! You are landed at wrong place</h1>
+            <div className="mt-2 text-xl">You may have misstyped the address on the page may have moved</div>
+            <div className="mt-6 flex">
+              <Link className="btn_listing _btn_clr m-auto lg:m-0" href={"/"}>
+               Back to Home Page
+              </Link>
+            </div>
+          </div>
+          <div className="relative">
+            <Image  
+              src={`${Constants.assets_api}/icons/404.png`}
+              // fill
+              height={'300'}
+              width={'500'}
+            />
+          </div>
         </div>
       </div>
     </>

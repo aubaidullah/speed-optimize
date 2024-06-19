@@ -465,6 +465,24 @@ export const getTravelGuideHome = gql`
   }
 `;
 
+
+export const getAttractioneHome = gql`
+  fragment Payload on REST {
+    id: Int
+  }
+  query attraction($input: Payload!) {
+    attraction(input: $input)
+      @rest(
+        type: "attraction"
+        method: "POST"
+        path: "/api/v1/attraction/list"
+      ) {
+      output
+    }
+  }
+`;
+
+
 export const getHome = gql`
   fragment Payload on REST {
     id: Int

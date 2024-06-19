@@ -112,11 +112,14 @@ export async function getServerSideProps(context) {
   const places = res.data.allpackage?.output?.fcities;
   const overview = res.data.allpackage?.output?.theme_description??""
   const faqs = res.data.allpackage?.output?.faqs
-
+  
+  // console.log(data)
+  
+  if(res.data?.allpackage?.output!=undefined) {
   const meta = {
-    "title":res.data.allpackage?.output?.theme_meta?.metaTitle,
-    "longDesc":res.data.allpackage?.output?.theme_meta?.metaDesc,
-    "keywords":res.data.allpackage?.output?.theme_meta?.metaKeywords
+    "title":res.data?.allpackage?.output?.theme_meta?.metaTitle,
+    "longDesc":res.data?.allpackage?.output?.theme_meta?.metaDesc,
+    "keywords":res.data?.allpackage?.output?.theme_meta?.metaKeywords
   }
   // const meta = await client.query({
   //   query: getMetaQuery,
@@ -131,21 +134,35 @@ export async function getServerSideProps(context) {
   //     },
   //   },
   // });
-  // console.log(places)
+  console.log(meta)
   headers["user-agent"] = headers["user-agent"].toLocaleLowerCase();
 
-  let pr = {
-    data: data ?? [],
-    headers,
-    region: region ?? [],
-    places: places ?? [],
-    meta: meta,
-    faqs,
-    theme_desc : overview,
-    overview
-  };
 
-  return { props: pr };
+    let pr = {
+      data: data ?? [],
+      headers,
+      region: region ?? [],
+      places: places ?? [],
+      meta: meta,
+      faqs,
+      theme_desc : overview,
+      overview
+    };
+  
+    return { props: pr };
+
+  } else{
+    return {
+      redirect : {
+          permanent :false,
+          destination: '/holidays',
+          permanent : true
+        },
+        props:{}
+    }
+  }
+
+
 }
 
 export default ThemePackage;

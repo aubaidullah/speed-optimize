@@ -167,7 +167,7 @@ const ListPageMobile = ({
   };
   const country_bread = {
     disabled: {
-      item: `${region?.name} Tour Packages`,
+      item: `${region?.name || router.query.package} Tour Packages`,
     },
     enabled: [
       {
@@ -718,7 +718,7 @@ const ListPageMobile = ({
                               <span>
                                 <span> for </span>
                                 <span className={`text-[#F06726]`}>
-                                  {region?.name}
+                                  {region?.name || router?.query?.package}
                                 </span>
                               </span>
                             ) : (
@@ -893,7 +893,7 @@ const ListPageMobile = ({
                 isMobile ? "text-xl" : "text-2xl"
               } mb-4 text-center_ font-semibold text-gray-600`}
             >
-              FAQs for {region.name}
+              FAQs for {region?.name}
             </div>
             <FAQs data={faqs} />
           </div>

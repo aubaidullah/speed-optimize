@@ -10,7 +10,7 @@ const CustomImage = ({img_url,alt,className="",style=""}) =>{
         src={ img_url }
         alt={alt}
         fill
-    />:<div className={`bg-[#EFEFEF] w-full h-full flex rounded-xl`}>
+    />:<div className={`bg-[#EFEFEF] w-full h-full flex rounded-xl`} style={{background:'#EFEFEF'}}>
         <img src={`${Constants.assets_api}/public/icons/defaultimage.svg`} className={`m-auto h-[100px]`} style={{height:'100px',width:'auto'}} />
     </div>
 }

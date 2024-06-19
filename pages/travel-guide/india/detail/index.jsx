@@ -16,6 +16,7 @@ import Head from "next/head";
 // import TravelGuide from "../../../../components/home/travel_guide";
 import TravelGuideDetailComp from '../../../../components/trave-guide/details'
 import { textDecode } from "@/components/fun";
+import { useState } from "react";
 // import { createCityListURL, createStateListURL } from "../../../../components/fun";
 
 const TravelGuideDetail = ({
@@ -28,6 +29,7 @@ const TravelGuideDetail = ({
   article,
   qna,
   type,
+  headers
 }) => {
   // console.log(article)
   // const {asPath} = useRouter()
@@ -52,6 +54,11 @@ const TravelGuideDetail = ({
   //     }
   //   }
 
+
+  const [isMobile, setIsMobile] = useState(
+    headers["user-agent"].includes("android") ||
+      headers["user-agent"].includes("iphone"),
+  );
     
 
   return (
@@ -80,12 +87,17 @@ const TravelGuideDetail = ({
         article={article}
         qna={qna}
         type={type}
+        // headers={headers}
+        isMobile = {isMobile}
       />
     </>
   );
 };
 
 export async function getServerSideProps(context) {
+  const headers = context.req.headers;
+
+  headers["user-agent"] = headers["user-agent"].toLocaleLowerCase();
   context.res.setHeader("Cache-Control", "s-maxage=10");
   console.log(context.query);
 
@@ -245,6 +257,7 @@ export async function getServerSideProps(context) {
       qna,
       type,
       meta: metas,
+      headers
     },
   };
 }
