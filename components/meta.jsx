@@ -108,7 +108,7 @@ const Meta = ({ meta }) => {
     "@context": "http://schema.org/",
     "@type": "LocalBusiness",
     "url": "https://www.kiomoi.com/",
-    "name": "KIOMOI TRAVEL SERVICES (P) LTD",
+    "name": "KIOMOI TRAVEL SERVICES PVT LTD",
     "email": "info@kiomoi.com",
     "telephone": "+91-9650687940",
     "image": "https://www.kiomoi.com/icons/kiomoi%20logo.svg",

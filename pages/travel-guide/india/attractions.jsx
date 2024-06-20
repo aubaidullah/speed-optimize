@@ -276,6 +276,78 @@ const Attraction = ({ data, meta, packages }) => {
                   </div>
                 </div>
               </div>
+
+              <div className="_b_right_list_1">
+              <div className={`bg-white p-3`}>
+                <div className={`flex justify-between`}>
+                  <div className={`w-full lg:1/2`}>
+                    <ul>
+                      <li className={`mx-2 my-4`}>
+                        <b>Visiting Time : </b>
+                        <span>
+                          {data.atn.openingTime.split(":")[0]} - {data.atn.closingTime.split(":")[0]}
+                        </span>
+                      </li>
+                      <li className={`mx-2 my-4`}>
+                        <b>Ideal Duration : </b>
+                        <span>{data.atn.idealDuration} Hrs</span>
+                      </li>
+                      {
+                        data.atn.theme?<li className={`mx-2 my-4`}>
+                        <b>Best for : </b>
+                        <span>{data.atn.theme}</span>
+                      </li>:""
+                      }
+                      
+                      <li className={`mx-2 my-4`}>
+                        <b>Distance from City Centre : </b>
+                        <span>{data.atn.distance} km</span>
+                      </li>
+                      <li className={`mx-2 my-4`}>
+                        <b>Local Transport Mode : </b>
+                        <span>{data.atn.transportation}</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className={`w-full lg:1/2`}>
+                    <ul>
+                      <li className={`mx-2 my-4`}>
+                        <b>Entry Ticket : </b>
+                        <span>0</span>
+                      </li>
+                      <li className={`mx-2 my-4`}>
+                        <span>
+                          <b>Adult :</b>
+                        </span>
+                        <span>INR {data.atn.adultTicketCost}</span>
+                        <span>
+                          <b>, Child :</b>
+                        </span>
+                        <span>INR {data.atn.childTicketCost}</span>
+                      </li>
+                      <li className={`mx-2 my-4`}>
+                        <span>
+                          <b>Student :</b>
+                        </span>
+                        <span>INR {data.atn.studentTicketCost}</span>
+                        <span>
+                          <b>, Foreigner :</b>
+                        </span>
+                        <span>INR {data.atn.foreignerTicketCost}</span>
+                      </li>
+                      {/* <li className={`mx-2 my-4`}>
+                        <b>Latitude :</b> <span> {data.atn.lat}</span>
+                      </li>
+                      <li className={`mx-2 my-4`}>
+                        <b>Longitude :</b>
+                        <span> {data.atn.lng}</span>
+                      </li> */}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
               <div className="_b_right_list_1 hidden">
                 <div className={`p-2`}>
                   <div className={`bg-white pb-2`}>
@@ -299,79 +371,18 @@ const Attraction = ({ data, meta, packages }) => {
                 </div>
               </div>
             </div>
+
+
+
+
           </div>
           <div className={`w-full lg:w-2/3 mt-3`}>
-            <div className="_b_right_list_1">
-              <div className={`bg-white p-3`}>
-                <div className={`flex justify-between`}>
-                  <div className={`w-full lg:1/2`}>
-                    <ul>
-                      <li className={`m-4`}>
-                        <b>Visiting Time : </b>
-                        <span>
-                          {data.atn.openingTime} Hrs- {data.atn.closingTime} Hrs
-                        </span>
-                      </li>
-                      <li className={`m-4`}>
-                        <b>Ideal Duration : </b>
-                        <span>{data.atn.idealDuration} </span>
-                      </li>
-                      <li className={`m-4`}>
-                        <b>Best for : </b>
-                        <span>{data.atn.theme}</span>
-                      </li>
-                      <li className={`m-4`}>
-                        <b>Distance from City Centre : </b>
-                        <span>{data.atn.distance}</span>
-                      </li>
-                      <li className={`m-4`}>
-                        <b>Local Transport Mode : </b>
-                        <span>{data.atn.transportation}</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className={`w-full lg:1/2`}>
-                    <ul>
-                      <li className={`m-4`}>
-                        <b>Entry Ticket : </b>
-                      </li>
-                      <li className={`m-4`}>
-                        <span>
-                          <b>Adult :</b>
-                        </span>
-                        <span>INR {data.atn.adultTicketCost}</span>
-                        <span>
-                          <b>, Child :</b>
-                        </span>
-                        <span>INR {data.atn.childTicketCost}</span>
-                      </li>
-                      <li className={`m-4`}>
-                        <span>
-                          <b>Student :</b>
-                        </span>
-                        <span>INR {data.atn.studentTicketCost}</span>
-                        <span>
-                          <b>, Foreigner :</b>
-                        </span>
-                        <span>INR {data.atn.foreignerTicketCost}</span>
-                      </li>
-                      <li className={`m-4`}>
-                        <b>Latitude :</b> <span> {data.atn.lat}</span>
-                      </li>
-                      <li className={`m-4`}>
-                        <b>Longitude :</b>
-                        <span> {data.atn.lng}</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
             {
               overview?<>
                 <h2 className={`text-xl font-bold ms-1 my-3`}>Overview</h2>
                 <div className={``}>
                   <div className="Shape_42">
+                    <div className="panel-body" itemProp="description">
                     <ParseHtml text={overview} />
                     {/* {ReactHtmlParser(overview)} */}
                     {limit == 150 || limit == 200 ? (
@@ -383,6 +394,7 @@ const Attraction = ({ data, meta, packages }) => {
                         -less
                       </a>
                     )}
+                    </div>
                   </div>
                 </div>              
               </>:""
