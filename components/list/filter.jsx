@@ -167,7 +167,7 @@ const FilterBy = ({
 
   return (
     <>
-      <div className={`bg-white h_sticky rounded-lg`}>
+      <div className={`bg-white_ mt-6 h_sticky rounded-lg`}>
         <div className={`p-3`}>
           <div className={`flex items-center justify-between mb-4`}>
             <h2 className={`text-xl font-bold`}>Filter by</h2>
