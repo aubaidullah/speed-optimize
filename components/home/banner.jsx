@@ -21,7 +21,7 @@ import {
 } from "../fun";
 import dynamic from "next/dynamic";
 // const MultiCarousel = dynamic(() => import("react-multi-carousel"));
-const Banner = ({ data,holiday=false }) => {
+const Banner = ({ data, holiday = false }) => {
   // const Image = dynamic(() => import('next/image').then((mod)=>mod.Image))
   // const Link = dynamic(() => import('next/link').then((mod)=>mod.Link))
   // const FaRupeeSign = dynamic(() => import('react-icons/fa').then((mod)=>mod.FaRupeeSign))
@@ -52,73 +52,77 @@ const Banner = ({ data,holiday=false }) => {
   };
   // let img = "https://res.cloudinary.com/kmadmin/image/upload/v1552993397/kiomoi/Pelling/Pelling-2.jpg&w=1920&q=75";
 
-    const responsive = {
-      desktop: {
-        breakpoint: {
-          max: 3000,
-          min: 1024
-        },
-        items: 1
+  const responsive = {
+    desktop: {
+      breakpoint: {
+        max: 3000,
+        min: 1024
       },
-      mobile: {
-        breakpoint: {
-          max: 464,
-          min: 0
-        },
-        items: 1
+      items: 1
+    },
+    mobile: {
+      breakpoint: {
+        max: 464,
+        min: 0
       },
-      tablet: {
-        breakpoint: {
-          max: 1024,
-          min: 464
-        },
-        items: 1
-      }
-    };
+      items: 1
+    },
+    tablet: {
+      breakpoint: {
+        max: 1024,
+        min: 464
+      },
+      items: 1
+    }
+  };
 
 
 
-// const generateRandomSrc = (array) =>  {
-//   // source.innerText = `Today's video ${srcArray[random()]}`
-// }
+  // const generateRandomSrc = (array) =>  {
+  //   // source.innerText = `Today's video ${srcArray[random()]}`
+  // }
   return (
     <>
       <div
         className={`overflow-hidden slider_banner slider_banner_ slider_overlay`}
       >
+        <div className="banner-caption">
+          <h2>Your world of joy</h2>
+          <p>Find what makes you happy anytime, anywhere</p>
+        </div>
         <div>
           <div>
 
-              {
-                // data.map((e,index)=>{
-                //     return <Image key={index}
-                //     className={`img-responsive_banner ${!holiday?'lg:rounded-bl-[50%] lg:rounded-br-[50%]':''}`}
-                //     alt="kiomoi banner"
-                //     src={jpgToWebp({ uri: e?.i??e })}
-                //     width={1000}
-                //     height={800}
-                //     loading="eager"
-                //     // fill
-                // />
-                // })
+            {
+              // data.map((e,index)=>{
+              //     return <Image key={index}
+              //     className={`img-responsive_banner ${!holiday?'lg:rounded-bl-[50%] lg:rounded-br-[50%]':''}`}
+              //     alt="kiomoi banner"
+              //     src={jpgToWebp({ uri: e?.i??e })}
+              //     width={1000}
+              //     height={800}
+              //     loading="eager"
+              //     // fill
+              // />
+              // })
 
-                // data.map((e,index)=>{
-                    // return 
-                    // ${!holiday?'lg:rounded-bl-[50%] lg:rounded-br-[50%]':''}
-                    
-                    <Image
-                    className={`img-responsive_banner`}
-                    alt="kiomoi banner"
-                    src={jpgToWebp({ uri: randomBanner(data,holiday?"HOLIDAYS":"HOME")?.i??"" })}
-                    width={1000}
-                    height={800}
-                    loading="eager"
-                    // fill
-                />
-              }
+              // data.map((e,index)=>{
+              // return 
+              // ${!holiday?'lg:rounded-bl-[50%] lg:rounded-br-[50%]':''}
 
-            
-            
+              <Image
+                className={`img-responsive_banner`}
+                alt="kiomoi banner"
+                src={jpgToWebp({ uri: randomBanner(data, holiday ? "HOLIDAYS" : "HOME")?.i ?? "" })}
+                width={1000}
+                height={800}
+                loading="eager"
+              // fill
+              />
+            }
+
+
+
           </div>
         </div>
       </div>
@@ -130,7 +134,7 @@ const Banner = ({ data,holiday=false }) => {
             type="text"
             className={`form-control z-[999]`}
             onChange={(event) => HandleSearch(event.target.value)}
-            placeholder={!holiday?"Search Any Destination, Travel Guide, Trip or Stays":"Search Any Tour or Destination"}
+            placeholder={!holiday ? "Search Any Destination, Travel Guide, Trip or Stays" : "Search Any Tour or Destination"}
           />
           {result?.packages?.length ? (
             <section className="dropdown-content-home">
@@ -156,7 +160,7 @@ const Banner = ({ data,holiday=false }) => {
                     </Link>
                   </div>
                 ))}
-                
+
                 {result?.st?.map((e, index) => {
                   let url = "";
                   if (e?.type == "COUNTRY") {
@@ -184,34 +188,34 @@ const Banner = ({ data,holiday=false }) => {
                   }
                 })}
 
-                {!holiday?result?.hotels?.map((e, index) => (
+                {!holiday ? result?.hotels?.map((e, index) => (
                   <div key={index} onClick={() => setSearchkey("")}>
                     <Link
                       href={`/hotel-${e?.name
                         ?.replace(/\s+/g, "-")
                         .toLowerCase()}-in-${e?.geotype
-                        ?.replace(/\s+/g, "-")
-                        .toLowerCase()}-${e?.id}/`}
+                          ?.replace(/\s+/g, "-")
+                          .toLowerCase()}-${e?.id}/`}
                     >
                       <div className="drop_item">
                         <div className="s_name d_content">{e?.name}</div>
                       </div>
                     </Link>
                   </div>
-                )):""}
-                {!holiday?result?.articles?.map((e, index) => (
+                )) : ""}
+                {!holiday ? result?.articles?.map((e, index) => (
                   <div key={index} onClick={() => setSearchkey("")}>
                     <Link
                       href={createArticleURL({ heading: e?.name, id: e?.id })}
-                      // href={`/travel-stories-${e?.heading?.replace(/\s+/g, "-").toLowerCase()}-${e?.geoName?.replace(/\s+/g, "-").toLowerCase()}/${e?.id}/`}
+                    // href={`/travel-stories-${e?.heading?.replace(/\s+/g, "-").toLowerCase()}-${e?.geoName?.replace(/\s+/g, "-").toLowerCase()}/${e?.id}/`}
                     >
                       <div className="drop_item">
                         <div className="s_name d_content">{e?.name}</div>
                       </div>
                     </Link>
                   </div>
-                )):""}
-                {!holiday?result?.tgs?.map((e, index) => {
+                )) : ""}
+                {!holiday ? result?.tgs?.map((e, index) => {
                   let url;
                   if (e?.geotype == "CITY") {
                     url = createTGCityURL({ city: e?.name, id: e?.id });
@@ -240,7 +244,7 @@ const Banner = ({ data,holiday=false }) => {
                       </Link>
                     </div>
                   );
-                }):""}
+                }) : ""}
               </div>
             </section>
           ) : null}

@@ -164,7 +164,7 @@ const Nav = () => {
                             : `${
                                 addnavClass
                                   ? `${Constants.assets_api}/public/icons/icons/ICO TRIPS.png`
-                                  : `${Constants.assets_api}/public/icons/icons/ICO-TRIPS-white.png`
+                                  : `${Constants.assets_api}/public/icons/icons/ICO TRIPS.png`
                               }`
                         }
                       />
@@ -186,7 +186,7 @@ const Nav = () => {
                             : `${
                                 addnavClass
                                   ? `${Constants.assets_api}/public/icons/icons/ICO EXPLORE.png`
-                                  : `${Constants.assets_api}/public/icons/icons/ICO-EXPLORE-white.png`
+                                  : `${Constants.assets_api}/public/icons/icons/ICO EXPLORE.png`
                               }`
                         }
                       />
@@ -208,7 +208,7 @@ const Nav = () => {
                             : `${
                                 addnavClass
                                   ? `${Constants.assets_api}/public/icons/icons/ICO STAYS.png`
-                                  : `${Constants.assets_api}/public/icons/icons/ICO-STAYS-white.png`
+                                  : `${Constants.assets_api}/public/icons/icons/ICO STAYS.png`
                               }`
                         }
                       />
@@ -260,7 +260,7 @@ const Nav = () => {
                        </div>
                      
                      :<div>
-                       <div className={`_lgn_btn lg:flex lg:items-center lg:gap-2 lg:border-2 lg:border-gray-300 lg:rounded-full lg:px-3 lg:py-2 cursor-pointer`} onClick={() => setShowLogin(!showLogin)}>
+                       <div className={`_lgn_btn lg:flex lg:items-center lg:gap-2 lg:border-2 lg:border-dark-gray-300 lg:rounded-full lg:px-3 lg:py-2 cursor-pointer`} onClick={() => setShowLogin(!showLogin)}>
                          <span className="_c_it hidden lg:flex">Login</span>
                          <FaRegUser
                              className=""
