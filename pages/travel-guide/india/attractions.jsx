@@ -281,6 +281,7 @@ const Attraction = ({ data, meta, packages }) => {
               <div className={`bg-white p-3`}>
                 <div className={`flex justify-between`}>
                   <div className={`w-full lg:1/2`}>
+                    
                     <ul>
                       <li className={`mx-2 my-4`}>
                         <b>Visiting Time : </b>
@@ -311,29 +312,55 @@ const Attraction = ({ data, meta, packages }) => {
                   </div>
                   <div className={`w-full lg:1/2`}>
                     <ul>
-                      <li className={`mx-2 my-4`}>
+                      {/* <li className={`mx-2 my-4`}>
                         <b>Entry Ticket : </b>
                         <span>0</span>
+                      </li> */}
+                      <li className={`mx-2 my-4`}>
+                        {
+                          data.atn.adultTicketCost?
+                          <>
+                            <span>
+                              <b>Adult :</b>
+                            </span>
+                            <span>INR {data.atn.adultTicketCost}</span>                          
+                          </>:""
+
+                        }
+
+                        {
+                          data.atn.childTicketCost?
+                          <>
+                          <span>
+                            <b>, Child :</b>
+                          </span>
+                          <span>INR {data.atn.childTicketCost}</span>                          
+                          </>:""
+
+                        }
+                        
+
                       </li>
                       <li className={`mx-2 my-4`}>
-                        <span>
-                          <b>Adult :</b>
-                        </span>
-                        <span>INR {data.atn.adultTicketCost}</span>
-                        <span>
-                          <b>, Child :</b>
-                        </span>
-                        <span>INR {data.atn.childTicketCost}</span>
-                      </li>
-                      <li className={`mx-2 my-4`}>
-                        <span>
-                          <b>Student :</b>
-                        </span>
-                        <span>INR {data.atn.studentTicketCost}</span>
-                        <span>
-                          <b>, Foreigner :</b>
-                        </span>
-                        <span>INR {data.atn.foreignerTicketCost}</span>
+                        {
+                          data.atn.studentTicketCost?
+                          <>
+                            <span>
+                              <b>Student :</b>
+                            </span>
+                            <span>INR {data.atn.studentTicketCost}</span>                          
+                          </>:""
+                        }
+
+                        {data.atn.foreignerTicketCost?
+                          <>
+                            <span>
+                              <b>, Foreigner :</b>
+                            </span>
+                            <span>INR {data.atn.foreignerTicketCost}</span>                          
+                          </>:""
+                        }
+
                       </li>
                       {/* <li className={`mx-2 my-4`}>
                         <b>Latitude :</b> <span> {data.atn.lat}</span>
