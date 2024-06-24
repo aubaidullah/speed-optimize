@@ -300,10 +300,15 @@ const Attraction = ({ data, meta, packages }) => {
                       </li>:""
                       }
                       
-                      <li className={`mx-2 my-4`}>
-                        <b>Distance from City Centre : </b>
-                        <span>{data.atn.distance} km</span>
-                      </li>
+                      {
+                        data.atn.distance?
+                        <li className={`mx-2 my-4`}>
+                          <b>Distance from City Centre : </b>
+                          <span>{data.atn.distance} km</span>
+                        </li>:""
+                      }
+                      
+
                       <li className={`mx-2 my-4`}>
                         <b>Local Transport Mode : </b>
                         <span>{data.atn.transportation}</span>
