@@ -279,31 +279,53 @@ const Attraction = ({ data, meta, packages }) => {
 
               <div className="_b_right_list_1">
               <div className={`bg-white p-3`}>
-                <div className={`flex justify-between`}>
+                <div className={`flex justify-between t_12px`}>
                   <div className={`w-full lg:1/2`}>
+                    
                     <ul>
-                      <li className={`mx-2 my-4`}>
+                      <li className={`mx-0 my-4`}>
                         <b>Visiting Time : </b>
                         <span>
-                          {data.atn.openingTime.split(":")[0]} - {data.atn.closingTime.split(":")[0]}
+                          { 
+                            parseInt(data.atn.openingTime.split(":")[0]) == 12?
+                            `${data.atn.openingTime.split(":")[0]} PM`:
+                            parseInt(data.atn.openingTime.split(":")[0]) > 11?
+                            `${parseInt(data.atn.openingTime.split(":")[0])%12} PM`
+                            :`${data.atn.openingTime.split(":")[0]} AM`
+                             
+                          
+                          
+                          } - {
+                            // data.atn.closingTime.split(":")[0]
+                            parseInt(data.atn.closingTime.split(":")[0]) == 12?
+                            `${data.atn.closingTime.split(":")[0]} PM`:
+                            parseInt(data.atn.closingTime.split(":")[0]) > 11?
+                            `${parseInt(data.atn.closingTime.split(":")[0])%12} PM`
+                            :`${data.atn.closingTime.split(":")[0]} AM`                            
+                            }
                         </span>
                       </li>
-                      <li className={`mx-2 my-4`}>
+                      <li className={`mx-0 my-4`}>
                         <b>Ideal Duration : </b>
                         <span>{data.atn.idealDuration} Hrs</span>
                       </li>
                       {
-                        data.atn.theme?<li className={`mx-2 my-4`}>
+                        data.atn.theme?<li className={`mx-0 my-4`}>
                         <b>Best for : </b>
                         <span>{data.atn.theme}</span>
                       </li>:""
                       }
                       
-                      <li className={`mx-2 my-4`}>
-                        <b>Distance from City Centre : </b>
-                        <span>{data.atn.distance} km</span>
-                      </li>
-                      <li className={`mx-2 my-4`}>
+                      {
+                        data.atn.distance?
+                        <li className={`mx-0 my-4`}>
+                          <b>Distance from City Centre : </b>
+                          <span>{data.atn.distance} km</span>
+                        </li>:""
+                      }
+                      
+
+                      <li className={`mx-0 my-4`}>
                         <b>Local Transport Mode : </b>
                         <span>{data.atn.transportation}</span>
                       </li>
@@ -311,29 +333,55 @@ const Attraction = ({ data, meta, packages }) => {
                   </div>
                   <div className={`w-full lg:1/2`}>
                     <ul>
-                      <li className={`mx-2 my-4`}>
+                      {/* <li className={`mx-0 my-4`}>
                         <b>Entry Ticket : </b>
                         <span>0</span>
+                      </li> */}
+                      <li className={`mx-0 my-4`}>
+                        {
+                          data.atn.adultTicketCost?
+                          <>
+                            <span>
+                              <b>Adult :</b>
+                            </span>
+                            <span>INR {data.atn.adultTicketCost}</span>                          
+                          </>:""
+
+                        }
+
+                        {
+                          data.atn.childTicketCost?
+                          <>
+                          <span>
+                            <b>, Child :</b>
+                          </span>
+                          <span>INR {data.atn.childTicketCost}</span>                          
+                          </>:""
+
+                        }
+                        
+
                       </li>
-                      <li className={`mx-2 my-4`}>
-                        <span>
-                          <b>Adult :</b>
-                        </span>
-                        <span>INR {data.atn.adultTicketCost}</span>
-                        <span>
-                          <b>, Child :</b>
-                        </span>
-                        <span>INR {data.atn.childTicketCost}</span>
-                      </li>
-                      <li className={`mx-2 my-4`}>
-                        <span>
-                          <b>Student :</b>
-                        </span>
-                        <span>INR {data.atn.studentTicketCost}</span>
-                        <span>
-                          <b>, Foreigner :</b>
-                        </span>
-                        <span>INR {data.atn.foreignerTicketCost}</span>
+                      <li className={`mx-0 my-4`}>
+                        {
+                          data.atn.studentTicketCost?
+                          <>
+                            <span>
+                              <b>Student :</b>
+                            </span>
+                            <span>INR {data.atn.studentTicketCost}</span>                          
+                          </>:""
+                        }
+
+                        {data.atn.foreignerTicketCost?
+                          <>
+                            <span>
+                              <b>, Foreigner :</b>
+                            </span>
+                            <span>INR {data.atn.foreignerTicketCost}</span>                          
+                          </>:""
+                        }
+
                       </li>
                       {/* <li className={`mx-2 my-4`}>
                         <b>Latitude :</b> <span> {data.atn.lat}</span>
