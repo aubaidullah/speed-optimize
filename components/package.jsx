@@ -199,11 +199,11 @@ const Package = ({ index, item, POPUPFORM }) => {
                         <div className="_row ov_auto mb_display_none">
                           <div className="flt_left">
                             <div>
-                              <h2
+                              <h3
                                 className={`text-xl text-gray-500 font-bold`}
                               >
                                 {item.name}
-                              </h2>
+                              </h3>
 
                               <div
                                 className={`flex flex-wrap items-center mt-1`}
