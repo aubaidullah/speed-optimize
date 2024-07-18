@@ -149,10 +149,10 @@ const Reviews = ({ data }) => {
 
   return (
     <div>
-      <section className={`Reviews mt-16`}>
+      <section className={`Reviews mt-16 bg_light pt-60`}>
         <div className="container">
           <div className="row_">
-            <div className="box_design_common">
+            <div className="relative pb-60 border-bottom-dark">
               <div
                 className={`title_kiomoi flex items-center justify-between mb-6`}
               >
@@ -173,7 +173,7 @@ const Reviews = ({ data }) => {
                 autoPlay={false}
                 customTransition="transform 300ms ease-in-out"
                 infinite={true}
-                className="toprated_slide"
+                className="toprated_slide review-slider"
                 loop
                 renderButtonGroupOutside={true}
                 customButtonGroup={<ButtonGroup />}
@@ -181,6 +181,7 @@ const Reviews = ({ data }) => {
                 margin={10}
                 nav
                 responsive={responsive}
+                dots={true}
               >
                 {ReviewRender}
               </MultiCarousel>

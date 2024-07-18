@@ -87,8 +87,131 @@ const Banner = ({ data, holiday = false }) => {
         className={`overflow-hidden slider_banner slider_banner_ slider_overlay`}
       >
         <div className="banner-caption">
-          <h2>Your world of joy</h2>
-          <p>Find what makes you happy anytime, anywhere</p>
+          <div className="container">
+            <h2>Your world of joy</h2>
+            <p>Find what makes you happy anytime, anywhere</p>
+            <div className="search_input">
+              <HiOutlineSearch className="m_s_icon" />
+              <input
+                type="text"
+                className={`form-control z-[999]`}
+                onChange={(event) => HandleSearch(event.target.value)}
+                placeholder={!holiday ? "Search Any Destination, Travel Guide, Trip or Stays" : "Search Any Tour or Destination"}
+              />
+              {result?.packages?.length ? (
+                <section className="dropdown-content-home">
+                  <div>
+                    {result?.packages?.map((e, index) => (
+                      <div key={index} onClick={() => setSearchkey("")}>
+                        <Link href={createDetailUrl({ name: e?.name, id: e?.id })}>
+                          <div className={`hover:bg-[#fde2df] drop_item`}>
+                            <div className="d_content">
+                              <div className="flt_left">
+                                <span className="s_name">{e?.name}</span>
+                              </div>
+                              <div className="flt_right">
+                                <FaRupeeSign className={`d_price inline`} />
+                                <span className="d_price">{e?.price / 100}</span>
+                                <BsDot className={`inline d_price`} />
+                                <span className="n_d">
+                                  {e?.nights}N & {e?.nights + 1}D
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </Link>
+                      </div>
+                    ))}
+
+                    {result?.st?.map((e, index) => {
+                      let url = "";
+                      if (e?.type == "COUNTRY") {
+                        url = createCountryListURL({ cityname: e?.name, id: e.id });
+                      } else if (e?.type == "STATE") {
+                        url = createStateListURL({ statename: e?.name, id: e.id });
+                        // url = `/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
+                      } else {
+                        url = createCityListURL({ cityname: e?.name, id: e?.id });
+                      }
+                      // console.log(url)
+
+                      if (url.length > 0) {
+                        return (
+                          <div key={index} onClick={() => setSearchkey("")}>
+                            <Link href={url}>
+                              <div className={`hover:bg-[#fde2df] drop_item`}>
+                                <div className="s_name d_content">
+                                  Tours in {e?.name}
+                                </div>
+                              </div>
+                            </Link>
+                          </div>
+                        );
+                      }
+                    })}
+
+                    {!holiday ? result?.hotels?.map((e, index) => (
+                      <div key={index} onClick={() => setSearchkey("")}>
+                        <Link
+                          href={`/hotel-${e?.name
+                            ?.replace(/\s+/g, "-")
+                            .toLowerCase()}-in-${e?.geotype
+                              ?.replace(/\s+/g, "-")
+                              .toLowerCase()}-${e?.id}/`}
+                        >
+                          <div className="drop_item">
+                            <div className="s_name d_content">{e?.name}</div>
+                          </div>
+                        </Link>
+                      </div>
+                    )) : ""}
+                    {!holiday ? result?.articles?.map((e, index) => (
+                      <div key={index} onClick={() => setSearchkey("")}>
+                        <Link
+                          href={createArticleURL({ heading: e?.name, id: e?.id })}
+                        // href={`/travel-stories-${e?.heading?.replace(/\s+/g, "-").toLowerCase()}-${e?.geoName?.replace(/\s+/g, "-").toLowerCase()}/${e?.id}/`}
+                        >
+                          <div className="drop_item">
+                            <div className="s_name d_content">{e?.name}</div>
+                          </div>
+                        </Link>
+                      </div>
+                    )) : ""}
+                    {!holiday ? result?.tgs?.map((e, index) => {
+                      let url;
+                      if (e?.geotype == "CITY") {
+                        url = createTGCityURL({ city: e?.name, id: e?.id });
+                        // url = "/travel-guide/india/city-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
+                      } else if (e?.geotype == "STATE") {
+                        url = createTGStateURL({ city: e?.name, id: e?.id });
+                        // url = "/travel-guide/india/state-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
+                      } else {
+                        url = createTGCountryURL({ country: e?.name, id: e?.id });
+                        // url = "/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
+                      }
+                      // let statebycity = "/holidays/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase() + "-tour-packages/";
+                      return (
+                        <div key={index} onClick={() => setSearchkey("")}>
+                          {/* {e?.geotype === 'CITY' ? (
+                                            <Link href={statebycity}>
+                                                <div className="drop_item">
+                                                    <div className="s_name d_content">Tours in {e?.name}</div>
+                                                </div>
+                                            </Link>
+                                        ) : null} */}
+                          <Link href={url}>
+                            <div className="drop_item">
+                              <div className="s_name d_content">{e?.name}</div>
+                            </div>
+                          </Link>
+                        </div>
+                      );
+                    }) : ""}
+                  </div>
+                </section>
+              ) : null}
+            </div>
+          </div>
         </div>
         <div>
           <div>
@@ -127,129 +250,7 @@ const Banner = ({ data, holiday = false }) => {
         </div>
       </div>
 
-      <div className="container">
-        <div className="search_input">
-          <HiOutlineSearch className="m_s_icon" />
-          <input
-            type="text"
-            className={`form-control z-[999]`}
-            onChange={(event) => HandleSearch(event.target.value)}
-            placeholder={!holiday ? "Search Any Destination, Travel Guide, Trip or Stays" : "Search Any Tour or Destination"}
-          />
-          {result?.packages?.length ? (
-            <section className="dropdown-content-home">
-              <div>
-                {result?.packages?.map((e, index) => (
-                  <div key={index} onClick={() => setSearchkey("")}>
-                    <Link href={createDetailUrl({ name: e?.name, id: e?.id })}>
-                      <div className={`hover:bg-[#fde2df] drop_item`}>
-                        <div className="d_content">
-                          <div className="flt_left">
-                            <span className="s_name">{e?.name}</span>
-                          </div>
-                          <div className="flt_right">
-                            <FaRupeeSign className={`d_price inline`} />
-                            <span className="d_price">{e?.price / 100}</span>
-                            <BsDot className={`inline d_price`} />
-                            <span className="n_d">
-                              {e?.nights}N & {e?.nights + 1}D
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
 
-                {result?.st?.map((e, index) => {
-                  let url = "";
-                  if (e?.type == "COUNTRY") {
-                    url = createCountryListURL({ cityname: e?.name, id: e.id });
-                  } else if (e?.type == "STATE") {
-                    url = createStateListURL({ statename: e?.name, id: e.id });
-                    // url = `/holidays/${e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase()}-tour-packages/${e?.id}`
-                  } else {
-                    url = createCityListURL({ cityname: e?.name, id: e?.id });
-                  }
-                  // console.log(url)
-
-                  if (url.length > 0) {
-                    return (
-                      <div key={index} onClick={() => setSearchkey("")}>
-                        <Link href={url}>
-                          <div className={`hover:bg-[#fde2df] drop_item`}>
-                            <div className="s_name d_content">
-                              Tours in {e?.name}
-                            </div>
-                          </div>
-                        </Link>
-                      </div>
-                    );
-                  }
-                })}
-
-                {!holiday ? result?.hotels?.map((e, index) => (
-                  <div key={index} onClick={() => setSearchkey("")}>
-                    <Link
-                      href={`/hotel-${e?.name
-                        ?.replace(/\s+/g, "-")
-                        .toLowerCase()}-in-${e?.geotype
-                          ?.replace(/\s+/g, "-")
-                          .toLowerCase()}-${e?.id}/`}
-                    >
-                      <div className="drop_item">
-                        <div className="s_name d_content">{e?.name}</div>
-                      </div>
-                    </Link>
-                  </div>
-                )) : ""}
-                {!holiday ? result?.articles?.map((e, index) => (
-                  <div key={index} onClick={() => setSearchkey("")}>
-                    <Link
-                      href={createArticleURL({ heading: e?.name, id: e?.id })}
-                    // href={`/travel-stories-${e?.heading?.replace(/\s+/g, "-").toLowerCase()}-${e?.geoName?.replace(/\s+/g, "-").toLowerCase()}/${e?.id}/`}
-                    >
-                      <div className="drop_item">
-                        <div className="s_name d_content">{e?.name}</div>
-                      </div>
-                    </Link>
-                  </div>
-                )) : ""}
-                {!holiday ? result?.tgs?.map((e, index) => {
-                  let url;
-                  if (e?.geotype == "CITY") {
-                    url = createTGCityURL({ city: e?.name, id: e?.id });
-                    // url = "/travel-guide/india/city-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
-                  } else if (e?.geotype == "STATE") {
-                    url = createTGStateURL({ city: e?.name, id: e?.id });
-                    // url = "/travel-guide/india/state-" + e?.name?.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
-                  } else {
-                    url = createTGCountryURL({ country: e?.name, id: e?.id });
-                    // url = "/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").replace('--', "-").toLowerCase() + "/" + e?.id + "/"
-                  }
-                  // let statebycity = "/holidays/" + e?.name.trim().replace(/\s+/g, ' ').replace(/\s+/g, "-").toLowerCase() + "-tour-packages/";
-                  return (
-                    <div key={index} onClick={() => setSearchkey("")}>
-                      {/* {e?.geotype === 'CITY' ? (
-                                            <Link href={statebycity}>
-                                                <div className="drop_item">
-                                                    <div className="s_name d_content">Tours in {e?.name}</div>
-                                                </div>
-                                            </Link>
-                                        ) : null} */}
-                      <Link href={url}>
-                        <div className="drop_item">
-                          <div className="s_name d_content">{e?.name}</div>
-                        </div>
-                      </Link>
-                    </div>
-                  );
-                }) : ""}
-              </div>
-            </section>
-          ) : null}
-        </div>
-      </div>
     </>
   );
 };

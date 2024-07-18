@@ -591,7 +591,8 @@ ul.bullet_points span {
   padding: 0 0 30px;
 }
 
-.title_kiomoi h4 {
+.title_kiomoi h4,
+.title_kiomoi h2 {
   font-size: 30px;
   color: #333;
   font-weight: 700;
@@ -634,6 +635,7 @@ ul.bullet_points span {
 ._st_box {
   height: 395px;
   background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .08), 0 4px 12px rgba(0, 0, 0, .05);
   transition: box-shadow 0.2s;
   -webkit-transition: box-shadow 0.2s;
   -moz-transition: 0.2s box-shadow;
@@ -823,7 +825,8 @@ ul.bullet_points span {
 }
 
 ._tr_box:hover {
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  /*box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);*/
+  box-shadow: 0 1px 10px rgba(0, 0, 0, .08), 0 4px 16px rgba(0, 0, 0, .08);
 }
 
 .left-custom-btn {
@@ -850,6 +853,7 @@ ul.bullet_points span {
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
   color: rgba(85, 85, 85, 0.4588235294117647);
+  line-height: 42px;
 }
 
 .right-custom-btn {
@@ -982,6 +986,12 @@ font-weight: 300;} */
   /* --bs-breadcrumb-divider:url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;); */
 }
 
+@media (max-width: 767px) {
+  .search_input input {
+    font-size: 20px;
+  }
+}
+
 @media (max-width: 464px) {
   .slide {
     height: 200px;
@@ -992,7 +1002,6 @@ font-weight: 300;} */
   }
 
   ul.breadcrumb li {
-    /* display: inline; */
     font-size: 12px;
   }
 
@@ -1000,13 +1009,8 @@ font-weight: 300;} */
     height: 40px;
     padding: 0 10px;
     line-height: 40px;
-    /* max-width: 300px; */
     margin: 0 auto;
     font-size: 12px;
-  }
-
-  .search_input {
-    transform: translateY(-130px);
   }
 
   .thms {
@@ -1014,12 +1018,15 @@ font-weight: 300;} */
   }
 
   .m_s_icon {
-    top: 12px;
-    /* right: 30px; */
-    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    top: 2px;
+    right: 2px;
   }
 
-  .title_kiomoi h4 {
+  .title_kiomoi h4,
+  .title_kiomoi h2 {
     font-size: 16px;
   }
 
@@ -1033,7 +1040,6 @@ font-weight: 300;} */
   }
 
   .detail_slide_nav {
-    /* display: none; */
     display: flex;
     white-space: nowrap;
     overflow-x: scroll;
@@ -1050,7 +1056,6 @@ font-weight: 300;} */
   .__btn_clr {
     color: #fff;
     border: none;
-    /* background-image: none; */
     background-color: grey;
   }
 
@@ -1102,6 +1107,16 @@ font-weight: 300;} */
   .carousel-button-group {
     display: none;
   }
+  .banner-caption p {
+    font-size: 16px;
+  }
+}
+
+.review-slider,
+.home-hotels-list .toprated_slide,
+.TopRatedTours .toprated_slide {
+  margin-left: -16px;
+  margin-right: -16px;
 }
 
 .frieds img {
@@ -1114,8 +1129,7 @@ font-weight: 300;} */
   height: 200px;
   border-radius: 15px;
   background-color: #fff;
-  /* border:1px solid; */
-  padding: 15px;
+  padding: 25px;
   position: relative;
   margin-bottom: 20px;
 }
@@ -1176,7 +1190,8 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,.2);} */
 
 .bg_orange_ .btn_view_more {
   border: 1px solid #fff;
-  color: #fff;
+  color: #000;
+  background-color: #fff;
 }
 
 .bg_orange_ h4 {
@@ -1255,13 +1270,21 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,.2);} */
   font-weight: 400;
 }
 
-/* @media (max-width: 767px)
-.title_kiomoi h3 {
-font-size: 16px;} */
-
 .bottom_bar,
 .bottom_button_filter {
   display: none;
+}
+
+.h-auto {
+  height: auto;
+}
+
+.radius-12 {
+  border-radius: 12px;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
 }
 
 @media (max-width: 450px) {
@@ -1277,14 +1300,12 @@ font-size: 16px;} */
     left: 0;
     right: 0;
     height: 60px;
-    /* margin-left: -15px; */
   }
 
   .bottom_button_filter {
     display: inline;
     display: initial;
     color: #fff;
-    /* background: linear-gradient(118deg,#f79421 17%,#f06726 54%,#dc2d4d 95%); */
     background: black;
     bottom: 15px;
     position: fixed;
@@ -1294,7 +1315,6 @@ font-size: 16px;} */
     border-radius: 50px;
     margin-left: 5%;
     cursor: pointer;
-    /* margin-left: -15px; */
   }
 
   .bottom_bt {
@@ -1303,9 +1323,18 @@ font-size: 16px;} */
     font-size: 18px;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    /* width: 50%; */
     text-align: center;
     font-weight: 700;
     width: 50%;
+  }
+}
+
+@media (min-width: 1024px) and (max-width:1080px) {
+  .left-custom-btn {
+    left: -10px;
+  }
+
+  .right-custom-btn {
+    right: -10px;
   }
 }

@@ -5,7 +5,8 @@
   height: 100%;
   top: 0;
   z-index: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.5) 100%);
+  background-color: rgba(0, 0, 0, 0.3);
+ /* background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.5) 100%);*/
 }
 
 .box_1 p {
@@ -36,7 +37,7 @@
 
 .box_1 {
   border-radius: 7px;
-  background-color: #f7f7f7;
+  background-color: #fff;
   overflow: hidden;
   margin: 3px 0 25px;
   transition: box-shadow 0.2s;
@@ -198,6 +199,7 @@ img {
 
 .slider_banner {
   position: relative;
+  padding-top: 60px;
 }
 
 .banner-caption {
@@ -205,14 +207,16 @@ img {
   width: 100%;
   text-align: center;
   bottom: 100px;
+  bottom: 40%;
+  transform: translateY(50%);
 }
 
 .banner-caption h2 {
   color: #fff;
   font-size: 64px;
   font-weight: 700;
-  line-height: 74px;
-  text-shadow: 0px 0px 30px #000;
+  line-height: 1.2;
+  text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.56);
 }
 
 .banner-caption p {
@@ -224,6 +228,11 @@ img {
 
 .top-destinations {
   background: #fff;
-  padding-top: 100px;
+  padding-top: 60px;
   padding-bottom: 40px;
+}
+@media (max-width: 767px) {
+  .banner-caption h2 {
+    font-size: 44px;
+  }
 }

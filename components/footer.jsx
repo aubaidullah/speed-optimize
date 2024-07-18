@@ -582,7 +582,7 @@ const Footer = () => {
 
   return (
       
-      <div className={`w-100 overflow-hidden mt-5`}>
+      <div className={`w-100 overflow-hidden bg_light`}>
 
 
       {!asPath.includes("hotels")
@@ -639,9 +639,9 @@ const Footer = () => {
               className={`w-full lg:w-1/3 payment_secure flex flex-col justify-center items-center px-4 md:px-0 col-12 col-md-4`}
             >
               <div>
-                <div className={`mb-3 text-center md:text-start`}>
+                <h4 className={`mb-3 text-center md:text-start`}>
                   Secure Payment
-                </div>
+                </h4>
                 <div className={`flex gap-3 mb-4 md:mb-0`}>
                   <span>
                     <img
@@ -680,7 +680,7 @@ const Footer = () => {
             <div
               className={`w-full lg:w-1/3 payment_secure follow-links col-12 col-md-4`}
             >
-              <div className={`mb-3 px-3 md:px-0 text-center`}>FOLLOW US ON</div>
+              <h4 className={`mb-3 px-3 md:px-0 text-center`}>FOLLOW US ON</h4>
               <ul
                 className={`flex justify-center px-3 md:px-0 gap-4 mb-3 md:mb-0`}
               >
@@ -730,9 +730,9 @@ const Footer = () => {
                   alt="whatsapp"
                 />
                 <div className="WhatsApp_">
-                  <div className={`text-md md:text-lg font-bold mb-2`}>
+                  <h4 className={`text-md md:text-lg font-bold mb-2`}>
                     WHATSAPP
-                  </div>
+                  </h4>
                   <a
                     className={`text-md md:text-lg text-gray-200`}
                     href="whatsapp://send?phone=+919650687940"
