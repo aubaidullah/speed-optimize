@@ -21,7 +21,7 @@ import dynamic from "next/dynamic";
 
 const LeadForm = dynamic(() => import("./leadform"));
 
-const Package = ({ index, item, POPUPFORM }) => {
+const Package = ({ index, item, POPUPFORM, isMobile }) => {
   // const [modalid,setModalid] = useState()
   // const [modalpackagename,setModalpackagename] = useState()
   const [sendquery, setSendquery] = useState(false);
@@ -89,12 +89,13 @@ const Package = ({ index, item, POPUPFORM }) => {
                 {/* <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true}> */}
                 <div className={`flex flex-wrap`}>
                   <div className={`w-full lg:w-1/3`}>
-                    <div className={`_row ov_auto desk_display_none mb-2`}>
+                    {
+                      isMobile?<div className={`_row ov_auto desk_display_none mb-2`}>
                       <div className="flt_left">
                         <div>
-                          <h2 className={`pack_title`} itemProp="name">
+                          <h3 className={`pack_title`} itemProp="name">
                             {item.name}
-                          </h2>
+                          </h3>
                           <div className={`flex flex-wrap items-center mt-1`}>
                             <div className="days_night">
                               {/* {item.nights} Nights | {item.nights+1} Days */}
@@ -142,6 +143,9 @@ const Package = ({ index, item, POPUPFORM }) => {
                         ""
                       )}
                     </div>
+                    :""
+                    }
+                    
 
                     <div className={``}>
                       <Carousel
@@ -196,7 +200,9 @@ const Package = ({ index, item, POPUPFORM }) => {
                     {/* <a href={`${url}`}> */}
                     <div href={`${url}`}>
                       <div className="contain_blk">
-                        <div className="_row ov_auto mb_display_none">
+                        
+                        {
+                          !isMobile?<div className="_row ov_auto mb_display_none">
                           <div className="flt_left">
                             <div>
                               <h3
@@ -254,6 +260,10 @@ const Package = ({ index, item, POPUPFORM }) => {
                             ""
                           )}
                         </div>
+                        :""
+                        }
+                        
+
 
                         <div className="location">
                           <IoLocationSharp className="inline" />

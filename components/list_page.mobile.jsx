@@ -799,7 +799,7 @@ const ListPageMobile = ({
                                 .toLowerCase()
                                 .includes(filter.keyword)) ? (
                             // <div>package</div>:""
-                            <Package key={index} index={index} item={item} POPUPFORM = {POPUPFORM} />
+                            <Package key={index} index={index} item={item} POPUPFORM = {POPUPFORM} isMobile={isMobile} />
                           ) : null;
                         })
                       ) : (
