@@ -582,7 +582,7 @@ const Footer = () => {
 
   return (
       
-      <div className={`w-100 overflow-hidden mt-5`}>
+      <div className={`w-100 overflow-hidden bg_light`}>
 
 
       {!asPath.includes("hotels")
@@ -591,12 +591,12 @@ const Footer = () => {
           <div className={``}>
             {Object.keys(links).map((item,index)=>{
               return <div key={index}>
-              <h3 className={`text-sm lg:text-xl font-semibold mt-8 mb-4 cursor-pointer`} onClick={()=>setCollapse(index == collapse ? -1 : index)}>{item}</h3>
-              <div className={`flex flex-wrap gap-4 ${collapse == index ? "" : "hidden lg:flex"}`}>
+              <h2 className={`text-sm lg:text-xl font-semibold mt-8 mb-4 cursor-pointer`} onClick={()=>setCollapse(index == collapse ? -1 : index)}>{item}</h2>
+              <div className={`flex flex-wrap gap-3 ${collapse == index ? "" : "hidden lg:flex"}`}>
                 {links[item].map((i,ind)=>{
-                  return <div className={`hover:text-gray-800 text-sm font-light`} key={ind}>
+                  return <div className={`hover:text-gray-800 text-sm font-light footer-link`} key={ind}>
                       <Link href={i.url.replace("https://www.kiomoi.com",'')}>
-                        <div className={`text-sm px-4 py-2 bg-white _b_active rounded-full border-2 border-gray-300 hover:shadow-lg transition-shadow`}>
+                        <div className={`footer-link-btn text-sm px-4 py-1 bg-white _b_active rounded-full border-2 border-gray-300 hover:shadow-lg transition-shadow`}>
                           {i.heading}
                         </div>
                       </Link>                  

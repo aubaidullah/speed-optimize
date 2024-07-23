@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
   --max-width:1100px;
@@ -49,18 +50,15 @@ body {
 } */
 
 
-
+h1, h2, h3, h4{  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;}
 body {
   color: rgb(var(--foreground-rgb));
-  background: #f5f4f4;
-  /* background: rgb(var(--background-start-rgb)); */
-  /* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
+  background: #f7f8fa;
 }
+.pt-60{ padding-top: 60px;}
+.pb-60{ padding-bottom: 60px;}
 
 #nprogress .bar {
   /* background: linear-gradient(to right,#00c4a7,#276cda,#00c4a7) !important; */
@@ -82,9 +80,6 @@ body {
     0 0 10px #f79421,
     0 0 5px #f79421 !important;
 }
-/* #nprogress .peg {
-
-} */
 
 #nprogress .spinner-icon {
   border-top-color: #f79421 !important;
@@ -464,22 +459,26 @@ a {
 }
 
 .search_input {
-  position: absolute;
+  position: relative;
   max-width: 800px;
-  left: 15px;
-  right: 15px;
-  margin: auto;
+  margin: 20px auto;
   z-index: 1;
-  /* bottom: -60px; */
-  transform: translateY(-50px);
+  /* bottom: -60px; 
+  transform: translateY(-50px);*/
 }
 
 .m_s_icon {
   position: absolute;
-  right: 25px;
-  top: 25px;
+  right: 5px;
+  top: 5px;
   font-size: 30px;
-  color: #c7c7c7;
+  color: #fff;
+  background: #d11d5b;
+  width: 70px;
+  height: 70px;
+  padding: 20px;
+  border-radius: 70px;
+  cursor: pointer;
 }
 
 .des_cont {
@@ -525,10 +524,15 @@ a {
   background-color: #fac526;
 }
 
+.bg_white {
+  background-color: #fff;
+}
+.bg_light{background-color: #f9f4f4;}
 .text-orange {
   color: #f05927;
 }
-
+.border-top-dark{ border-top: 1px solid #bbb;}
+.border-bottom-dark{ border-bottom: 1px solid #bbb;}
 ._plus_more {
   cursor: pointer;
 }
@@ -927,10 +931,14 @@ a {
 
 @media (min-width: 1280px) {
   .container {
-    max-width: 1170px !important;
+    max-width: 1270px !important;
   }
 }
-
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1336px !important;
+  }
+}
 @media only screen and (max-width: 600px) {
   .container {
     padding: 0 5px;

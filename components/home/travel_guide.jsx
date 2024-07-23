@@ -157,10 +157,10 @@ const TravelGuide = ({ data,type = undefined }) => {
 
   return (
     <>
-      <section className={`Travel Guide mt-16`}>
+      <section className={`Travel Guide bg_light pt-60 pb-60`}>
         <div className="container">
           <div className="row_">
-            <div className="box_design_common">
+            <div className="">
               <div
                 className={`title_kiomoi flex items-center justify-between mb-6`}
               >

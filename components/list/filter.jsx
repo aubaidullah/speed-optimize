@@ -170,7 +170,7 @@ const FilterBy = ({
       <div className={`bg-white_ mt-6 h_sticky rounded-lg`}>
         <div className={`p-3`}>
           <div className={`flex items-center justify-between mb-4`}>
-            <h2 className={`text-xl font-bold`}>Filter by</h2>
+            <div className={`text-xl font-bold`}>Filter by</div>
             <div
               className={`text-sm cursor-pointer text-[#f06726]`}
               onClick={() => clear_filter()}
@@ -191,7 +191,7 @@ const FilterBy = ({
 
           <div className={`border-t border-gray-200 py-4`}>
             <div className={`flex items-center justify-between mb-4`}>
-              <h2>Price</h2>
+              <div>Price</div>
             </div>
             <div>
               <div className={`flex justify-between`}>
@@ -245,7 +245,7 @@ const FilterBy = ({
                 className={`flex justify-between items-center w-full cursor-pointer`}
                 onClick={() => setDur(!dur)}
               >
-                <h2 className={`Price_name`}>Duration (in Days)</h2>
+                <div className={`Price_name`}>Duration (in Days)</div>
                 <div className="w-full_">
                   {dur ? (
                     <AiOutlineMinus className={`font-bold text-xl`} />
@@ -331,7 +331,7 @@ const FilterBy = ({
                   className={`flex justify-between items-center w-full cursor-pointer`}
                   onClick={() => setFav(!fav)}
                 >
-                  <h2 className={`Price_name`}>Favourite Places</h2>
+                  <div className={`Price_name`}>Favourite Places</div>
                   <div className="w-full_">
                     {fav ? (
                       <AiOutlineMinus className={`font-bold text-xl`} />
@@ -360,7 +360,7 @@ const FilterBy = ({
                   className={`flex justify-between items-center w-full cursor-pointer`}
                   onClick={() => setThm(!thm)}
                 >
-                  <h2 className={`Price_name`}>Themes of Trip</h2>
+                  <div className={`Price_name`}>Themes of Trip</div>
                   <div className="w-full_">
                     {thm ? (
                       <AiOutlineMinus className={`font-bold text-xl`} />
