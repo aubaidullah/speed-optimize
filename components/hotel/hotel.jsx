@@ -19,8 +19,8 @@ const Hotel_Design = ({ item }) => {
   return (
     <div>
       <Link href={hurl}>
-        <div href={hurl}>
-          <div className={`pl-0 lg:px-2`}>
+        <div className={`px-4`} href={hurl}>
+          <div className={`_st_box _tr_box h-auto bg-white radius-12 mb-3`}>
             <div className={`h-[200px] relative`}>
               {/* <img 
                     className={`img-responsive object-cover h-[200px] w-full rounded-[8px] border-1 border-[#e3e3e3]`}
@@ -43,7 +43,7 @@ const Hotel_Design = ({ item }) => {
                 alt={imgNameByUrl({ url: item.images })}
                 />
             </div>
-            <div className={`mt-2`}>
+            <div className={`mt-4 price_List pb-4`}>
               <div className={`flex items-center justify-between`}>
                 <h2 className={`font-medium`}>{item.name}</h2>
                 {/* <span>{item.ratings}</span> */}

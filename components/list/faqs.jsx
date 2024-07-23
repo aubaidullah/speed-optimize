@@ -33,9 +33,9 @@ const FAQs = ({ data, detail = false }) => {
                   <div className="flex items-center text-md font-semibold">
                     {/* <AiOutlineSearch className={`text-[#f05927] text-xl`}/> */}
                     <div>{index + 1}.</div>
-                    <div className="ml-2" itemProp="name">
+                    <h4 className="ml-2" itemProp="name">
                       {item.question}
-                    </div>
+                    </h4>
                   </div>
 
                   <div>

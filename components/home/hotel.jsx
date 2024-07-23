@@ -80,10 +80,10 @@ const Hotel = ({ data,heading=false }) => {
 
   return (
     <>
-      <section className={`Hotels mt-16`}>
+      <section className={`Hotels mt-16 home-hotels-list`}>
         <div className="container">
           <div className="row_">
-            <div className="box_design_common">
+            <div className="relative">
               <div
                 className={`title_kiomoi flex items-center justify-between mb-6`}
               >

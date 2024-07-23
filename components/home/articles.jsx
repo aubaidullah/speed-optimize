@@ -74,7 +74,7 @@ const Articles = ({data}) => {
 
               <div className="price_List">
                 <div className="tour_details">
-                  <h4 className="my-2">{item.heading}</h4>
+                  <h2 className="my-2">{item.heading}</h2>
                   <Link href={aurl}>
                     <div href={aurl} className="anchor_link _50">
                       Read Full Story{"  "}
@@ -99,7 +99,7 @@ const Articles = ({data}) => {
                 className={`title_kiomoi flex items-center justify-between mb-6`}
               >
                 <div className={`2w-full`}>
-                  <h4>Latest Articles</h4>
+                  <h2>Latest Articles</h2>
                   {/* <p>Discover Incredible Hotels</p> */}
                 </div>
                 <div className={`2w-full`}>

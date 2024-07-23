@@ -103,10 +103,10 @@ const State = ({ data,holiday=false }) => {
   };
 
   return (
-    <div className={`mt-16`}>
+    <div className={`top-destinations`}>
       <div className={`container`}>
         <div className="row_">
-          <div className={`${holiday==false?'box_design_common':''}`} style={{'backdropFilter':'blur(30px)'}}>
+          <div className={`${holiday==false?'':''}`} style={{'backdropFilter':'blur(30px)'}}>
             <div
               className={`${holiday==false?'title_kiomoi':''} flex items-center justify-between mb-6`}
             >
