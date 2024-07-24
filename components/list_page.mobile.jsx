@@ -706,7 +706,7 @@ const ListPageMobile = ({
                     className={`flex items-center justify-between mb-6 pb-2 border-b`}
                   >
                     <div>
-                      <h3 className={`text-base`}>
+                      <h2 className={`text-base`}>
                         {isMobile ? "" : "Showing"}
                         <span className={`font-bold ml-2`}>
                           {pack.length != 0 ? pack.length : data.length} Tour
@@ -727,7 +727,7 @@ const ListPageMobile = ({
                             // ` for ${region?.name}`:""
                           }
                         </span>
-                      </h3>
+                      </h2>
                     </div>
                     {isMobile == false ? (
                       <div>
@@ -799,7 +799,7 @@ const ListPageMobile = ({
                                 .toLowerCase()
                                 .includes(filter.keyword)) ? (
                             // <div>package</div>:""
-                            <Package key={index} index={index} item={item} POPUPFORM = {POPUPFORM} />
+                            <Package key={index} index={index} item={item} POPUPFORM = {POPUPFORM} isMobile={isMobile}/>
                           ) : null;
                         })
                       ) : (
@@ -888,13 +888,13 @@ const ListPageMobile = ({
           page_type == "COUNTRY") &&
         faqs.length != 0 ? (
           <div className="mt-4 container">
-            <div
+            <h2
               className={`mt-8 ${
                 isMobile ? "text-xl" : "text-2xl"
               } mb-4 text-center_ font-semibold text-gray-600`}
             >
               FAQs for {region?.name}
-            </div>
+            </h2>
             <FAQs data={faqs} />
           </div>
         ) : (
@@ -928,12 +928,12 @@ const ListPageMobile = ({
                     className={`w-full lg:w-1/2 pl-4 lg:pl-0 pt-4 lg:pt-0`}
                   >
                     <div>
-                      <h3
+                      <h2
                         className={`text-2xl lg:text-3xl font-bold text-center text-gray-500`}
                       >
                         More about {travel.tg.cityName} tourism{" "}
                         <BsArrowRight className="inline _b_active font-bold" />{" "}
-                      </h3>
+                      </h2>
                     </div>
                   </div>
                 </div>
@@ -942,7 +942,7 @@ const ListPageMobile = ({
             {(page_type == "STATE" || page_type == "COUNTRY") && travel?.ctg ? (
               <div className="container mt-16  ">
                 <div className="box_design_common title_kiomoi">
-                  <h4>Top cities to visit in {region.name}</h4>
+                  <h2>Top cities to visit in {region.name}</h2>
                   <div className={`flex flex-wrap mt-4`}>
                     {/* <h2>Top Cities</h2> */}
                     <TopCities data={travel} attlimit={8} _package={true} />

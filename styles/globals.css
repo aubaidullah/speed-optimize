@@ -553,7 +553,7 @@ a {
   color: #999;
 }
 
-.payment_secure h4 {
+.payment_secure div {
   color: #999;
 }
 
@@ -561,7 +561,7 @@ a {
   color: #ff5100;
 }
 
-.WhatsApp_ h4 {
+.WhatsApp_ div {
   color: #44c554;
 }
 
@@ -764,8 +764,8 @@ ul > li::marker {
   z-index: 1;
 }
 
-.payment_secure h4,
-.WhatsApp_ h4 {
+.payment_secure div,
+.WhatsApp_ div {
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;

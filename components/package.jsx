@@ -21,7 +21,7 @@ import dynamic from "next/dynamic";
 
 const LeadForm = dynamic(() => import("./leadform"));
 
-const Package = ({ index, item, POPUPFORM }) => {
+const Package = ({ index, item, POPUPFORM, isMobile }) => {
   // const [modalid,setModalid] = useState()
   // const [modalpackagename,setModalpackagename] = useState()
   const [sendquery, setSendquery] = useState(false);
@@ -89,60 +89,63 @@ const Package = ({ index, item, POPUPFORM }) => {
                 {/* <Link href={`/holidays/[name]-tour-package-[id]/`} as={`${url}`} prefetch={true}> */}
                 <div className={`flex flex-wrap`}>
                   <div className={`w-full lg:w-1/3`}>
-                    <div className={`_row ov_auto desk_display_none mb-2`}>
-                      <div className="flt_left">
-                        <div>
-                          <h2 className={`pack_title`} itemProp="name">
-                            {item.name}
-                          </h2>
-                          <div className={`flex flex-wrap items-center mt-1`}>
-                            <div className="days_night">
-                              {/* {item.nights} Nights | {item.nights+1} Days */}
-                              <div className={`flex justify-center day_nights`}>
-                                <div className="night">
-                                  <BsFillMoonFill className={`inline pr`} />
-                                  <span className={`pl-1`}>
-                                    {item.nights} Nights
-                                  </span>
-                                </div>
-                                <div className="days">
-                                  <IoSunny className={`inline`} />
-                                  <span className={`pl-1`}>
-                                    {item.nights + 1} Days
-                                  </span>
+                    
+                    {
+                      isMobile?
+                      <div className={`_row ov_auto desk_display_none mb-2`}>
+                        <div className="flt_left">
+                          <div>
+                            <h3 className={`pack_title`} itemProp="name">
+                              {item.name}
+                            </h3>
+                            <div className={`flex flex-wrap items-center mt-1`}>
+                              <div className="days_night">
+                                {/* {item.nights} Nights | {item.nights+1} Days */}
+                                <div className={`flex justify-center day_nights`}>
+                                  <div className="night">
+                                    <BsFillMoonFill className={`inline pr`} />
+                                    <span className={`pl-1`}>
+                                      {item.nights} Nights
+                                    </span>
+                                  </div>
+                                  <div className="days">
+                                    <IoSunny className={`inline`} />
+                                    <span className={`pl-1`}>
+                                      {item.nights + 1} Days
+                                    </span>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
 
-                            <div className={`ml-4 two_peoples`}>
-                              <div className={`flex flex-wrap items-center`}>
-                                <span className="frieds">
-                                  <img
-                                    alt="2 people"
-                                    src={"/icons/friends_.svg"}
-                                  />
-                                </span>
-                                <span className="_2_two">2</span>
+                              <div className={`ml-4 two_peoples`}>
+                                <div className={`flex flex-wrap items-center`}>
+                                  <span className="frieds">
+                                    <img
+                                      alt="2 people"
+                                      src={"/icons/friends_.svg"}
+                                    />
+                                  </span>
+                                  <span className="_2_two">2</span>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      {item.sratings != "0" ? (
-                        <div className="flt_right inline">
-                          <div className="star">{userRating}</div>
-                          <div className="rating">
-                            <span className="inline">
-                              {item.sratings} <BsDot className="inline" />{" "}
-                              {item.suers} Rating
-                            </span>
+                        {item.sratings != "0" ? (
+                          <div className="flt_right inline">
+                            <div className="star">{userRating}</div>
+                            <div className="rating">
+                              <span className="inline">
+                                {item.sratings} <BsDot className="inline" />{" "}
+                                {item.suers} Rating
+                              </span>
+                            </div>
                           </div>
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                    </div>
-
+                        ) : (
+                          ""
+                        )}
+                      </div>:""
+                    }
                     <div className={``}>
                       <Carousel
                         showStatus={false}
@@ -196,14 +199,17 @@ const Package = ({ index, item, POPUPFORM }) => {
                     {/* <a href={`${url}`}> */}
                     <div href={`${url}`}>
                       <div className="contain_blk">
-                        <div className="_row ov_auto mb_display_none">
+                        
+                        {
+                        
+                          !isMobile?<div className="_row ov_auto mb_display_none">
                           <div className="flt_left">
                             <div>
-                              <h2
+                              <h3
                                 className={`text-xl text-gray-500 font-bold`}
                               >
                                 {item.name}
-                              </h2>
+                              </h3>
 
                               <div
                                 className={`flex flex-wrap items-center mt-1`}
@@ -253,8 +259,8 @@ const Package = ({ index, item, POPUPFORM }) => {
                           ) : (
                             ""
                           )}
-                        </div>
-
+                          </div>:""
+                        }
                         <div className="location">
                           <IoLocationSharp className="inline" />
                           {item.source}

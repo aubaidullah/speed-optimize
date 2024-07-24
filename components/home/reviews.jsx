@@ -157,7 +157,7 @@ const Reviews = ({ data }) => {
                 className={`title_kiomoi flex items-center justify-between mb-6`}
               >
                 <div className={`2w-full`}>
-                  <h4>Review & Comments</h4>
+                  <h2>Review & Comments</h2>
                 </div>
                 <div className={`2w-full`}>
                   <Link href={"/reviews/"}>

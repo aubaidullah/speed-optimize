@@ -591,7 +591,7 @@ const Footer = () => {
           <div className={``}>
             {Object.keys(links).map((item,index)=>{
               return <div key={index}>
-              <h3 className={`text-sm lg:text-xl font-semibold mt-8 mb-4 cursor-pointer`} onClick={()=>setCollapse(index == collapse ? -1 : index)}>{item}</h3>
+              <h2 className={`text-sm lg:text-xl font-semibold mt-8 mb-4 cursor-pointer`} onClick={()=>setCollapse(index == collapse ? -1 : index)}>{item}</h2>
               <div className={`flex flex-wrap gap-4 ${collapse == index ? "" : "hidden lg:flex"}`}>
                 {links[item].map((i,ind)=>{
                   return <div className={`hover:text-gray-800 text-sm font-light`} key={ind}>
@@ -680,7 +680,7 @@ const Footer = () => {
             <div
               className={`w-full lg:w-1/3 payment_secure follow-links col-12 col-md-4`}
             >
-              <h4 className={`mb-3 px-3 md:px-0 text-center`}>FOLLOW US ON</h4>
+              <div className={`mb-3 px-3 md:px-0 text-center`}>FOLLOW US ON</div>
               <ul
                 className={`flex justify-center px-3 md:px-0 gap-4 mb-3 md:mb-0`}
               >
@@ -730,9 +730,9 @@ const Footer = () => {
                   alt="whatsapp"
                 />
                 <div className="WhatsApp_">
-                  <h4 className={`text-md md:text-lg font-bold mb-2`}>
+                  <div className={`text-md md:text-lg font-bold mb-2`}>
                     WHATSAPP
-                  </h4>
+                  </div>
                   <a
                     className={`text-md md:text-lg text-gray-200`}
                     href="whatsapp://send?phone=+919650687940"
