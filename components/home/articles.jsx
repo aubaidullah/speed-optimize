@@ -99,7 +99,7 @@ const Articles = ({data}) => {
                 className={`title_kiomoi flex items-center justify-between mb-6`}
               >
                 <div className={`2w-full`}>
-                  <h2>Latest Articles</h2>
+                  <h2 className="text-white">Latest Articles</h2>
                   {/* <p>Discover Incredible Hotels</p> */}
                 </div>
                 <div className={`2w-full`}>

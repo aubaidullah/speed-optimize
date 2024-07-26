@@ -560,7 +560,7 @@ ul.bullet_points span {
 .inclusions + .TopRatedTours {
   padding: 0 0 30px;
 }
-.title_kiomoi h4 {
+.title_kiomoi h4, .title_kiomoi h2 {
   font-size: 30px;
   color: #707070;
   font-weight: 700;
