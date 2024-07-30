@@ -7,6 +7,7 @@ import Image from "next/image";
 
 import * as Constants from "../Constants";
 import { createDetailUrl, imgNameByUrl, jpgToWebp } from "../fun";
+import ParseHtml from "../parseToHtml";
 
 const RelatedTour = ({ data }) => {
   const [responsive, Setresponsive] = useState({});
@@ -140,8 +141,8 @@ const RelatedTour = ({ data }) => {
                       <span className="days"> 2 People </span>
                     </div>
                     <div className="_text_trip">
-                      <h4>{item.name}</h4>
-                      <p>{item.description.substring(0, 70)}...</p>
+                      <h3>{item.name}</h3>
+                      <p>{ParseHtml({text:item.description.substring(0, 70)})}...</p>
                     </div>
                   </div>
                 </div>
@@ -220,7 +221,7 @@ const RelatedTour = ({ data }) => {
                 className={`title_kiomoi flex items-center justify-between mb-6`}
               >
                 <div className={`2w-full`}>
-                  <h4>Similar Tours on Kiomoi</h4>
+                  <h2>Similar Tours on Kiomoi</h2>
                   <p></p>
                 </div>
                 <div className={`2w-full`}>
