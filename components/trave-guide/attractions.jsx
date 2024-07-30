@@ -33,7 +33,7 @@ const State_Attraction = ({ data }) => {
                   alt="kiomoi logo"
                 />
                 <div className="des_cont">
-                  <div className="des_location">{item.name}</div>
+                  <div className="des_location"><h3>{item.name}</h3></div>
                   {/* <div className="listing">{item.cnt} Listings</div> */}
                 </div>
               </div>
@@ -91,7 +91,7 @@ const State_Attraction = ({ data }) => {
               className={`title_kiomoi flex items-center justify-between mb-6`}
             >
               <div>
-                <h4>Top Attractions</h4>
+                <h2>Top Attractions</h2>
               </div>
               <div>
                 {/* <Link href={'/holidays'}>

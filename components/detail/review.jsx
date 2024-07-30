@@ -78,7 +78,7 @@ const ReviewRender = ({ reviews }) => {
               </div>
             </div>
             <div className={`ms-2 mt-2 w-full lg:w-2/3`}>
-              <p className={`text-md ms-2 mt-2`}>{item.review}</p>
+              <p className={`text-md ms-2 mt-2`}><h3>{item.review}</h3></p>
               {/* <details>
                 <summary className={`text-xs font-semibold text-[#f06726]`}>
                   <span>Read</span>
@@ -156,7 +156,7 @@ const Reviews = ({ reviews, data }) => {
     <section className="container">
       {show ? <Guest show={show} setShow={() => setShow(!show)} /> : null}
       <div className={`title_kiomoi`}>
-        <h4>Give Your Review on this Package</h4>
+        <h2>Give Your Review on this Package</h2>
         <form onSubmit={reviewSubmit}>
           <div
             className={`box_comment_post Shape_42 p-3 p-md-4 p-lg-5 mt-4 w-full lg:w-2/3`}

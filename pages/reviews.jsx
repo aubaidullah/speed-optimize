@@ -48,14 +48,14 @@ const Reviews = ({ reviews }) => {
                 <div className="p-4 mt-2 rounded-lg bg-white border-b border-gray-200">
                   <div>
                     <div className="flex justify-between">
-                      <div className="user_title">{item.cName}</div>
+                      <div className="user_title"><h3>{item.cName}</h3></div>
                       <div>
                         {indents}
                         {star}
                       </div>
                     </div>
                     <div className="pt-2">
-                      <div>{item.review}</div>
+                      <div><h4>{item.review}</h4></div>
                       <div>
                         <div className="verified_ text-right text-sm text-gray-500 italic pt-2">
                           <span>Verfied Review</span>

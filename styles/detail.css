@@ -391,15 +391,15 @@ a {
   left: -57px;
 } */
 
-._details_ h4 {
+._details_ h3 {
   font-weight: 600;
 }
-._details_ h4,
+._details_ h3,
 .h4_title {
   font-size: 18px;
   position: relative;
 }
-._hover:hover h4 {
+._hover:hover h3 {
   color: #e84f34;
 }
 ._hover:hover {
@@ -495,7 +495,7 @@ ul.bullet_points span {
 .bets_price {
   color: #5b5863;
 }
-.bets_price h4 {
+.bets_price h3 {
   position: relative;
   font-size: 16px;
   font-weight: 500;
@@ -701,7 +701,7 @@ float: right;
   height: 54px;
 }
 
-._text_trip h4,
+._text_trip h3,
 .nature_text_ h4 {
   font-size: 16px;
   font-weight: 700;

@@ -28,10 +28,10 @@ const Modal = (props) => {
           ) : (
             ""
           )}
-
-          <div>
-            <h3 className={`text-2xl text-center`}>{props?.title}</h3>
-          </div>
+          {
+            props?.title?<div> <h3 className={`text-2xl text-center`}>{props?.title}</h3></div>
+            :""
+          }
           <div>{props.children}</div>
         </div>
       </div>

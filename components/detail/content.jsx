@@ -59,9 +59,9 @@ const Content = ({ data }) => {
           data-placement="left"
           title={t}
         >
-          <h4 className={`pt-[10px] pr-[10px] pb-0 pl-[10px] mb-0`}>
+          <h3 className={`pt-[10px] pr-[10px] pb-0 pl-[10px] mb-0`}>
             Day {c}: {item.heading}
-          </h4>
+          </h3>
           <p className={`p-[10px]`}>{item.desc}</p>
           <div className={`Shape_53 text-sm p-[10px] relative`}>
             <div className={`flex`}>
@@ -194,7 +194,7 @@ const Content = ({ data }) => {
             <div className={`w-full`}>
               <div className="inclusion">
                 <div className="col-sm-12">
-                  <h4 className="_titles_">Inclusions</h4>
+                  <h2 className="_titles_">Inclusions</h2>
                 </div>
                 <div className={`Shape_42 pt-[10px] pb-[10px]`}>
                   <div className="icons-meal-info d_icons-meal-info">
@@ -298,13 +298,13 @@ const Content = ({ data }) => {
                   // itemScope
                 >
                   {/* <meta itemprop="name" content={data.package.name} /> */}
-                  <h3 className="_titles_">Itinerary</h3>
+                  <h2 className="_titles_">Itinerary</h2>
                   {itnRender}
                 </div>
 
                 <div className="hotel_accomodation __50px" id="hotels">
                   <div className="_list_accomodation">
-                    <h4 className="_titles_">Hotel Accomodation</h4>
+                    <h2 className="_titles_">Hotel Accomodation</h2>
                     <table
                       className={`table-auto w-full table-hover acc_table mt-4`}
                     >
@@ -322,7 +322,7 @@ const Content = ({ data }) => {
 
                 <div id="inclusions" className="hotel_accomodation">
                   <div className="_list_accomodation">
-                    <h4 className="_titles_">Inclusions</h4>
+                    <h2 className="_titles_">Inclusions</h2>
                     <ul className="bullet_points">
                       {data?.package.inclusions.split("#").map((item, i) => {
                         return (
@@ -340,7 +340,7 @@ const Content = ({ data }) => {
 
                 <div id="inclusions" className="hotel_accomodation">
                   <div className="_list_accomodation">
-                    <h4 className="_titles_">Exclusions</h4>
+                    <h2 className="_titles_">Exclusions</h2>
                     <ul className="bullet_points">
                       {data?.package.exclusions.split("#").map((item, i) => {
                         return (
@@ -356,7 +356,7 @@ const Content = ({ data }) => {
 
                 <div className="payment_policy">
                   <div className="_pay_policy">
-                    <h4 className="_titles_">Payment Policy</h4>
+                    <h2 className="_titles_">Payment Policy</h2>
                     {paymentpolicyrender}
                     <p>*All Payment must be cleared before travel start</p>
                   </div>
@@ -377,7 +377,7 @@ const Content = ({ data }) => {
                 {faqsinfo.length ? (
                   <div>
                     {/* <span></span> */}
-                    <h4 className="_titles_">FAQs</h4>
+                    <h2 className="_titles_">FAQs</h2>
                     <FAQs data={faqsinfo} detail={true} />
                   </div>
                 ) : (
@@ -386,7 +386,7 @@ const Content = ({ data }) => {
 
                 <div className="hotel_accomodation mt-6" id="tnc">
                   <div className="_list_accomodation">
-                    <h4 className="_titles_">Terms & Conditions</h4>
+                    <h2 className="_titles_">Terms & Conditions</h2>
                     <ul className={`tnc_d text-sm mt-[30px] mr-0 mb-0`}>
                       {ParseHtml({text:tnc})}
                       <div className="text-right">
