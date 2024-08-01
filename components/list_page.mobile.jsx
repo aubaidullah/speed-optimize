@@ -953,7 +953,7 @@ const ListPageMobile = ({
               ""
             )}
 
-            {page_type == "CITY" && travel.attn.length != 0 ? (
+            {page_type == "CITY" && (travel?.attn?.length != 0 && travel?.attn) ? (
               <div className="container_ mt-4">
                 <State_Attraction data={travel.attn} />
               </div>
