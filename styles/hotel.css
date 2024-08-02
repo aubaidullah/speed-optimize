@@ -1,0 +1,192 @@
+.h_desc {
+  font-size: 15px;
+  color: rgb(104, 104, 104);
+}
+.d_htl {
+  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+  left: 0;
+  right: 0;
+  border-color: transparent;
+  position: absolute;
+  z-index: 3;
+}
+
+.des_img_hotel,
+.recent_img {
+  position: relative;
+  margin: 0 0 30px;
+  overflow: hidden;
+}
+.des_img_hotel {
+  height: 100px;
+  border-radius: 0;
+  transition: box-shadow 0.2s;
+}
+.des_img_hotel img {
+  border-radius: 10px;
+}
+
+.des_img_ex_::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background-image: linear-gradient(
+    180deg,
+    hsla(0, 0%, 100%, 0) -8%,
+    #000 115%
+  );
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 8px;
+}
+
+.des_img_ex {
+  height: 150px;
+  border-radius: 0;
+  transition: box-shadow 0.2s;
+}
+
+.des_img_ex,
+.img {
+  position: relative;
+  overflow: hidden;
+}
+
+.hotel_img {
+  height: 100px;
+  width: 100%;
+}
+.bwhite {
+  background-color: white;
+}
+.f12 {
+  font-size: 12px;
+}
+
+.ht_img,
+.pswp__img {
+  object-fit: cover;
+}
+
+.ht_label {
+  position: absolute;
+  z-index: 1;
+  font-size: 10px;
+  padding-left: 27px;
+  color: #999;
+  padding-top: 9px;
+}
+.hotel_tnc {
+  line-height: 25px;
+}
+.ht_cal_icon {
+  height: 15.7px;
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  padding-left: 7px;
+  height: 15.7px;
+  position: absolute;
+  color: #7b7b7b;
+}
+
+.form-control-hotel {
+  display: block;
+  width: 100%;
+  padding: 10px 26px 0 !important;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #757677;
+  background-color: #fff;
+  background-clip: padding-box;
+  height: 50px;
+  border: 1px solid #ced4da;
+  border-top-color: rgb(206, 212, 218);
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-right-color: rgb(206, 212, 218);
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-bottom-color: rgb(206, 212, 218);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: rgb(206, 212, 218);
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+.rd_left {
+  border-radius: 4.7px 0 0 4.7px;
+}
+.rd_right {
+  border-radius: 0 4.7px 4.7px 0;
+}
+
+.DatePicker {
+  z-index: 0 !important;
+}
+
+.icon_size_h {
+  font-size: 12px;
+  color: orange;
+}
+.h_bottom_content {
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+}
+.t_rd {
+  border-radius: 10px 10px 0 0;
+}
+
+.DatePicker__calendarContainer div {
+  z-index: 0;
+}
+.btn_listing:hover {
+  background-image: linear-gradient(
+    118deg,
+    #f79421 17%,
+    #f06726 54%,
+    #dc2d4d 95%
+  );
+  cursor: pointer;
+  color: white;
+  border: transparent;
+}
+._selected {
+  cursor: not-allowed !important;
+  background-image: linear-gradient(
+    118deg,
+    #f79421 17%,
+    #f06726 54%,
+    #dc2d4d 95%
+  );
+  color: white;
+  border: transparent;
+}
+.h_sticky {
+  position: sticky;
+  top: 70px;
+}
+
+.h50 {
+  height: 50px;
+}
+.ht_select {
+  padding-left: 25px;
+  color: #757677;
+}
